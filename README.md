@@ -24,7 +24,7 @@
 
 **Running server** : `php artisan serve`
 
-Artisan error with `php artisan serve` => `composer update` or `composer install`
+Errors ? `composer update` and `npm install` or `yarn install`
 
 **Best tutorial** : https://laracasts.com/series/laravel-from-scratch-2018
 
