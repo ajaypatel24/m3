@@ -4,6 +4,29 @@ import {Link} from 'react-router-dom';
 
 export default class Login extends React.Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+    handleLogin = (email, password) => {
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage)
+            // ...
+        });
+    };
+    handleEmailChange = (e) => {
+      this.setState({email: e.target.value});
+    };
+    handlePasswordChange = (e) => {
+        this.setState({password: e.target.value});
+    };
     render()
     {
         return (
@@ -15,10 +38,12 @@ export default class Login extends React.Component
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                             <InputGroup.Text id="basic-addon1">
-                                <i className="fas fa-user"></i>
+                                <i className="fas fa-user"/>
                             </InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
+                            value={this.state.email}
+                            onChange={this.handleEmailChange}
                             placeholder="Username"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -31,6 +56,9 @@ export default class Login extends React.Component
                             </InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
+                            value={this.state.password}
+                            onChange={this.handlePasswordChange}
+                            type="password"
                             placeholder="Password"
                             aria-label="Password"
                             aria-describedby="basic-addon2"
@@ -49,7 +77,8 @@ export default class Login extends React.Component
                         this.props.handleClose()
                     }}>Close</Button>
                     <Button variant='success' onClick={() => {
-                        this.props.handleClose()
+                        this.handleLogin();
+                        this.props.handleClose();
                     }}>Login</Button>
                 </Modal.Footer>
             </Modal>

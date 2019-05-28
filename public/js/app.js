@@ -79275,16 +79275,46 @@ var Login =
 function (_React$Component) {
   _inherits(Login, _React$Component);
 
-  function Login() {
+  function Login(props) {
+    var _this;
+
     _classCallCheck(this, Login);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Login).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
+
+    _this.handleLogin = function (email, password) {
+      firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password)["catch"](function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage); // ...
+      });
+    };
+
+    _this.handleEmailChange = function (e) {
+      _this.setState({
+        email: e.target.value
+      });
+    };
+
+    _this.handlePasswordChange = function (e) {
+      _this.setState({
+        password: e.target.value
+      });
+    };
+
+    _this.state = {
+      email: '',
+      password: ''
+    };
+    return _this;
   }
 
   _createClass(Login, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
         show: this.props.show,
@@ -79298,6 +79328,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-user"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
+        value: this.state.email,
+        onChange: this.handleEmailChange,
         placeholder: "Username",
         "aria-label": "Username",
         "aria-describedby": "basic-addon1"
@@ -79308,6 +79340,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-key"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
+        value: this.state.password,
+        onChange: this.handlePasswordChange,
+        type: "password",
         placeholder: "Password",
         "aria-label": "Password",
         "aria-describedby": "basic-addon2"
@@ -79324,12 +79359,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "danger",
         onClick: function onClick() {
-          _this.props.handleClose();
+          _this2.props.handleClose();
         }
       }, "Close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "success",
         onClick: function onClick() {
-          _this.props.handleClose();
+          _this2.handleLogin();
+
+          _this2.props.handleClose();
         }
       }, "Login")));
     }

@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "firebase": "^6.0.4",
         "react-bootstrap": "^1.0.0-beta.8",
         "react-close-on-escape": "^3.0.0",
         "react-keyboard-event-handler": "^1.4.1",

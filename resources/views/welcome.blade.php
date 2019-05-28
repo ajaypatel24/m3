@@ -7,7 +7,8 @@
 
     <title>M3</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href={{ URL::asset('css/index.css') }} rel="stylesheet">
     <link
             rel="stylesheet"
@@ -20,5 +21,28 @@
 @include('footer')
 <div id="root"></div>
 <script src="../js/app.js"></script>
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+<script>
+    // TODO: Replace the following with your app's Firebase project configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyD_xohMcXSJccx8WcAWXX15jjD0Ds4wRRk",
+        authDomain: "m3coop-7943c.firebaseapp.com",
+        databaseURL: "https://m3coop-7943c.firebaseio.com",
+        projectId: "m3coop-7943c",
+        storageBucket: "m3coop-7943c.appspot.com",
+        messagingSenderId: "85673074593",
+        appId: "1:85673074593:web:c675f25f37729aae"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+</body>
 </body>
 </html>
