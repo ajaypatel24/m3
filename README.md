@@ -13,7 +13,6 @@
 * **Prettier** : https://github.com/prettier/prettier => code formatter
 * **Firebase** : https://firebase.google.com/docs/auth/web/start => Authentication and database
 * **Moment** : https://momentjs.com/ => Time and date library
-* **Escaping components** : https://www.npmjs.com/package/react-close-on-escape
 
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
