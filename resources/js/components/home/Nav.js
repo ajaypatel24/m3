@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import Question from './Question';
 
 export default class Nav extends React.Component{
     render(){
@@ -6,6 +8,7 @@ export default class Nav extends React.Component{
             <nav className="navbar home-nav">
                 <img src={window.location.origin + "/img/cadet_logo.jpg"} className="navbar-brand mb-0 h1 nav-img"/>
                 <button type="button" className="btn btn-danger btn-lg login-btn-color">Log In</button>
+
             </nav>
         );
     }
