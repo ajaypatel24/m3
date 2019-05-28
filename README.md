@@ -24,6 +24,8 @@
 
 **Running server** : `php artisan serve`
 
+Artisan error with `php artisan serve` => `composer update` or `composer install`
+
 **Best tutorial** : https://laracasts.com/series/laravel-from-scratch-2018
 
 * **Laravel Documentation** : https://laravel.com/docs/5.8/installation
