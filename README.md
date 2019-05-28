@@ -18,6 +18,9 @@
 
 **Testing** : Mocha (test runner), Chai (assertion), Enzyme (component tests) and Jest (snapshot tests)
 
+Error : class-property not supported
+https://babeljs.io/docs/en/babel-plugin-proposal-class-properties
+
 ## Resources Laravel (Front End)
 
 **Laravel and dependencies** (COMPOSER) : https://laravel.com/docs/5.8/installation
