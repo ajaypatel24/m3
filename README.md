@@ -24,7 +24,12 @@
 
 **Running server** : `php artisan serve`
 
-Errors ? `composer update` and `npm install` or `yarn install`
+**Setuping server locally** :
+1. `composer install`
+2. `npm install`
+3. rename .env.example to .env (it's in the root)
+4. `php artisan key:generate`
+5. `php artisan server` && `npm run watch`
 
 **Best tutorial** : https://laracasts.com/series/laravel-from-scratch-2018
 
