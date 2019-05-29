@@ -14,6 +14,7 @@
     </head>
     <body>
         @include('footer')
+        <script>var t= '<?php echo csrf_field(); ?>';</script>
         <div id="root"></div>
        <script src="../js/app.js"></script>
     </body>
