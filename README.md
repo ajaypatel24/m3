@@ -11,7 +11,7 @@
 * **React Formik** : https://github.com/jaredpalmer/formik => Form tool
 * **PropType** : https://reactjs.org/docs/typechecking-with-proptypes.html => Type checking for properties
 * **Prettier** : https://github.com/prettier/prettier => code formatter
-* **Firebase** : https://firebase.google.com/docs/auth/web/start => Authentication (and database ?)
+* **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Authentication (and database ?)
 * **Moment** : https://momentjs.com/ => Time and date library
 
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
