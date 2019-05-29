@@ -108,7 +108,8 @@ export default class Question extends React.Component {
             QuebecAddress: "",
             City: "",
             PostalCode: "",
-            CorporateAddress: ""
+            CorporateAddress: "",
+                selectedOption: ""
 
         };
     }
@@ -130,6 +131,12 @@ export default class Question extends React.Component {
         console.log("Name: ", e.target.name);
         console.log("Value: ", e.target.value);
     };
+
+    handleOptionChange (changeEvent) {
+        this.setState({
+            selectedOption: changeEvent.target.value
+        });
+    }
 
 
 
@@ -227,6 +234,7 @@ S
                 <Form.Group>
                     <Col sm="5">
                     <Form.Label>Type of Business</Form.Label>
+
                     <Form.Check type= "radio" label={'PME Manufacturiere'} />
                     <Form.Check type="radio" label={'TPE Manufacturiere'} />
                     <Form.Check type="radio" label={'Entreprise en Distribution'} />
@@ -274,8 +282,20 @@ S
                     <Col sm="5">
                     <Form.Label>Does your business have committee working towards sustainable development
                     </Form.Label>
-                    <Form.Check type="radio" label={'Yes'}  />
-                    <Form.Check type="radio" label={'No'} />
+                        <Form.Check
+                            type="radio"
+                            label="Yes"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios1"
+                        />
+                        <Form.Check
+                            type="radio"
+                            label="No"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios2"
+                        />
+                        <radio name="group">h</radio>
+                        <radio name="group">j</radio>
                     </Col>
                 </Form.Group>
 
@@ -283,8 +303,18 @@ S
                     <Col sm="5">
                     <Form.Label>Does your business have committee working towards sustainable development
                     </Form.Label>
-                    <Form.Check type="radio" label={'Yes'}  />
-                    <Form.Check type="radio" label={'No'} />
+                        <Form.Check
+                            type="radio"
+                            label="Yes"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios1"
+                        />
+                        <Form.Check
+                            type="radio"
+                            label="No"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios2"
+                        />
                     </Col>
                 </Form.Group>
 
@@ -292,10 +322,30 @@ S
                     <Col sm="5">
                     <Form.Label>On what level does your business operate
                     </Form.Label>
-                    <Form.Check type="radio" label={'Regional'}  />
-                    <Form.Check type="radio" label={'Provinicial'} />
-                    <Form.Check type="radio" label={'National'} />
-                    <Form.Check type="radio" label={'International'} />
+                        <Form.Check
+                            type="radio"
+                            label="Regional"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios1"
+                        />
+                        <Form.Check
+                            type="radio"
+                            label="Provincial"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios2"
+                        />
+                        <Form.Check
+                            type="radio"
+                            label="National"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios3"
+                        />
+                        <Form.Check
+                            type="radio"
+                            label="International"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios4"
+                        />
                     </Col>
                 </Form.Group>
 
@@ -303,10 +353,10 @@ S
                     <Col sm="5">
                     <Form.Label>What is your general client base
                     </Form.Label>
-                    <Form.Check type="radio" label={'Individuals'}  />
-                    <Form.Check type="radio" label={'Businesses'} />
-                    <Form.Check type="radio" label={'Buying groups'} />
-                    <Form.Check type="radio" label={'Resellers or Distributors'} />
+                    <Form.Check type="radio" label="Individuals" name="formHorizontalRadios" id="formHorizontalRadios1" />
+                    <Form.Check type="radio" label="Businesses" name="formHorizontalRadios" id="formHorizontalRadios2" />
+                    <Form.Check type="radio" label="Buying groups" name="formHorizontalRadios" id="formHorizontalRadios3" />
+                    <Form.Check type="radio" label="Resellers or Distributors" name="formHorizontalRadios" id="formHorizontalRadios4" />
                     </Col>
                 </Form.Group>
 
@@ -314,10 +364,10 @@ S
                     <Col sm="5">
                     <Form.Label>What is your general client base
                     </Form.Label>
-                    <Form.Check type="radio" label={'Individuals'}  />
-                    <Form.Check type="radio" label={'Businesses'} />
-                    <Form.Check type="radio" label={'Buying groups'} />
-                    <Form.Check type="radio" label={'Resellers or Distributors'} />
+                    <Form.Check type="radio" label={'Individuals'} name="formHorizontalRadios" id="formHorizontalRadios1" />
+                    <Form.Check type="radio" label={'Businesses'} name="formHorizontalRadios" id="formHorizontalRadios2"/>
+                    <Form.Check type="radio" label={'Buying groups'} name="formHorizontalRadios" id="formHorizontalRadios3"/>
+                    <Form.Check type="radio" label={'Resellers or Distributors'} name="formHorizontalRadios" id="formHorizontalRadios4"/>
                     </Col>
                 </Form.Group>
 

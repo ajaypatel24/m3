@@ -79246,7 +79246,8 @@ function (_React$Component) {
       QuebecAddress: "",
       City: "",
       PostalCode: "",
-      CorporateAddress: ""
+      CorporateAddress: "",
+      selectedOption: ""
     };
     return _this;
   }
@@ -79267,6 +79268,13 @@ function (_React$Component) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleOptionChange",
+    value: function handleOptionChange(changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
     }
   }, {
     key: "render",
@@ -79425,60 +79433,96 @@ function (_React$Component) {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Does your business have committee working towards sustainable development"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Yes'
+        label: "Yes",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'No'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        label: "No",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("radio", {
+        name: "group"
+      }, "h"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("radio", {
+        name: "group"
+      }, "j"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Does your business have committee working towards sustainable development"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Yes'
+        label: "Yes",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'No'
+        label: "No",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios2"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "On what level does your business operate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Regional'
+        label: "Regional",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Provinicial'
+        label: "Provincial",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios2"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'National'
+        label: "National",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios3"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'International'
+        label: "International",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios4"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What is your general client base"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Individuals'
+        label: "Individuals",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Businesses'
+        label: "Businesses",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios2"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Buying groups'
+        label: "Buying groups",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios3"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Resellers or Distributors'
+        label: "Resellers or Distributors",
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios4"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What is your general client base"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Individuals'
+        label: 'Individuals',
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Businesses'
+        label: 'Businesses',
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios2"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Buying groups'
+        label: 'Buying groups',
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios3"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
-        label: 'Resellers or Distributors'
+        label: 'Resellers or Distributors',
+        name: "formHorizontalRadios",
+        id: "formHorizontalRadios4"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         controlId: "formGridState"
