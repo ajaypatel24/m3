@@ -1,17 +1,13 @@
-.home-nav {
-    background-color: white;
-    border-bottom: 8px solid red;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding-left: 2.5% !important;
-    padding-right: 2.5% !important;
-}
-
-.nav-img {
-    max-width: 7.5%;
-}
-
 .login-btn-color{
     background-color:red !important;
+    border-color: red !important;
+}
+
+.signup-btn-color{
+    background-color: #284B63 !important;
+    border-color: #284B63 !important;
+}
+
+.red-text{
+    color:red;
 }

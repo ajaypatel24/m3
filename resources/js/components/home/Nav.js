@@ -1,15 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Question from './Question';
+import {Navbar, Form, Button} from "react-bootstrap";
+import Login from "../nav-forms/Login";
 
-export default class Nav extends React.Component{
-    render(){
-        return(
-            <nav className="navbar home-nav">
-                <img src={window.location.origin + "/img/cadet_logo.jpg"} className="navbar-brand mb-0 h1 nav-img"/>
-                <button type="button" className="btn btn-danger btn-lg login-btn-color">Log In</button>
+export default class Nav extends React.Component
+{
+    constructor(props, context)
+    {
+        super(props, context);
 
-            </nav>
+        this.state = {
+            showLogin: false,
+        };
+    }
+
+    handleOpenLogin = () => {
+        this.setState({
+            showLogin: true
+        });
+    };
+
+    handleCloseLogin = () => {
+      this.setState({
+          showLogin:false
+      });
+    };
+
+
+    render()
+    {
+        return (
+            <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
+                <Navbar.Brand className="ml-3" href="#home">
+                    <img
+                        src={window.location.origin + "/img/cadet_logo.svg"}
+                        width="100"
+                        height="100"
+                        className="d-inline-block align-top"
+                        alt="Cadet Logo"
+                    />
+                </Navbar.Brand>
+                <Form className="mr-3" inline>
+                    <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
+                    <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
+                    <span className="ml-2"/>
+                    <Button className="signup-btn-color"><i className="fas fa-user-plus"/><span className="ml-1">Sign Up</span></Button>
+                </Form>
+            </Navbar>
         );
     }
 }
