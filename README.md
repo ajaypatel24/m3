@@ -14,7 +14,8 @@
 * **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Authentication (and database ?)
 * **Moment** : https://momentjs.com/ => Time and date library
 
-**Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+**Asynchronous Server-Side Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+https://developers.google.com/web/updates/2015/03/introduction-to-fetch <= Good resource
 
 **Testing** : Mocha (test runner), Chai (assertion), Enzyme (component tests) and Jest (snapshot tests)
 
