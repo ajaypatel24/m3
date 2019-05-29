@@ -13,6 +13,12 @@ class LoginController extends Controller
 
     function login()
     {
+        $email = request('email');
+        $pass = request('password');
 
+        echo('email :' . $email);
+        echo('password :' . $pass);
+
+        return null;
     }
 }

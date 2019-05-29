@@ -15,15 +15,13 @@ export default class Nav extends React.Component
 
     handleOpenLogin = () => {
         this.setState({
-            showLogin: true,
-            showSignUp: this.state.showSignUp
+            showLogin: true
         });
     };
 
     handleCloseLogin = () => {
       this.setState({
-          showLogin:false,
-          showSignUp: this.state.showSignUp
+          showLogin:false
       });
     };
 

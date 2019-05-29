@@ -79088,15 +79088,13 @@ function (_React$Component) {
 
     _this.handleOpenLogin = function () {
       _this.setState({
-        showLogin: true,
-        showSignUp: _this.state.showSignUp
+        showLogin: true
       });
     };
 
     _this.handleCloseLogin = function () {
       _this.setState({
-        showLogin: false,
-        showSignUp: _this.state.showSignUp
+        showLogin: false
       });
     };
 
@@ -79282,13 +79280,34 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
 
-    _this.handleLogin = function (email, password) {
-      firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password)["catch"](function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage); // ...
+    _this.handleError = function () {
+      _this.setState({
+        emailAndPasswordShow: 'd-flex justify-content-center'
+      });
+    };
+
+    _this.revertError = function () {
+      _this.setState({
+        emailAndPasswordShow: 'd-none'
+      });
+    };
+
+    _this.handleLoginRequest = function () {
+      var data = {
+        email: _this.state.email,
+        password: _this.state.password
+      };
+      fetch('/', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+          "Content-type": "application/json"
+        }
+      }).then(function (data) {
+        console.log('Request succeeded with JSON response', data);
+      })["catch"](function (error) {
+        console.log('Request failed', error);
       });
     };
 
@@ -79306,7 +79325,8 @@ function (_React$Component) {
 
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      emailAndPasswordShow: 'd-none'
     };
     return _this;
   }
@@ -79314,22 +79334,71 @@ function (_React$Component) {
   _createClass(Login, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
         show: this.props.show,
         onHide: this.props.handleClose
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalHeader, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalBody, {
+        handleEmailChange: this.handleEmailChange,
+        handlePasswordChange: this.handlePasswordChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalFooter, {
+        handleLoginRequest: this.handleLoginRequest,
+        emailAndPasswordShow: this.state.emailAndPasswordShow,
+        handleClose: this.props.handleClose
+      }));
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+var ModalHeader =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(ModalHeader, _React$Component2);
+
+  function ModalHeader() {
+    _classCallCheck(this, ModalHeader);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModalHeader).apply(this, arguments));
+  }
+
+  _createClass(ModalHeader, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
         className: "d-flex justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Login"));
+    }
+  }]);
+
+  return ModalHeader;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var ModalBody =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(ModalBody, _React$Component3);
+
+  function ModalBody() {
+    _classCallCheck(this, ModalBody);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModalBody).apply(this, arguments));
+  }
+
+  _createClass(ModalBody, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Prepend, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Text, {
         id: "basic-addon1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-user"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
-        value: this.state.email,
-        onChange: this.handleEmailChange,
+        value: this.props.email,
+        onChange: this.props.handleEmailChange,
         placeholder: "Username",
         "aria-label": "Username",
         "aria-describedby": "basic-addon1"
@@ -79340,8 +79409,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-key"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
-        value: this.state.password,
-        onChange: this.handlePasswordChange,
+        value: this.props.password,
+        onChange: this.props.handlePasswordChange,
         type: "password",
         placeholder: "Password",
         "aria-label": "Password",
@@ -79354,7 +79423,32 @@ function (_React$Component) {
         className: "ml-2"
       }, "Remember me"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/forgot_password"
-      }, " Forgot your password? "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Footer, {
+      }, " Forgot your password? ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "red-text ".concat(this.props.emailAndPasswordShow)
+      }, "Your email and password don't match"));
+    }
+  }]);
+
+  return ModalBody;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var ModalFooter =
+/*#__PURE__*/
+function (_React$Component4) {
+  _inherits(ModalFooter, _React$Component4);
+
+  function ModalFooter() {
+    _classCallCheck(this, ModalFooter);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModalFooter).apply(this, arguments));
+  }
+
+  _createClass(ModalFooter, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Footer, {
         className: "d-flex justify-content-between"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "danger",
@@ -79364,18 +79458,14 @@ function (_React$Component) {
       }, "Close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "success",
         onClick: function onClick() {
-          _this2.handleLogin();
-
-          _this2.props.handleClose();
+          _this2.props.handleLoginRequest();
         }
-      }, "Login")));
+      }, "Login"));
     }
   }]);
 
-  return Login;
+  return ModalFooter;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
 
 /***/ }),
 
