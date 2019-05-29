@@ -3,7 +3,7 @@ import React from 'react';
 export default class Dashboard extends React.Component{
     render(){
         return(
-            <div></div>
+            <div>this is the dashboard</div>
         );
     }
 }
