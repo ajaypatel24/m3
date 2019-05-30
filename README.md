@@ -108,3 +108,5 @@ If .env is not included :
 
     MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+    
+Why we need an SSL certificate => https://security.stackexchange.com/questions/113393/how-to-securely-transfer-password-from-a-registration-page-to-the-database
