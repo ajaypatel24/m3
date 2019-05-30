@@ -28,6 +28,7 @@
         "multiselect-dropdown-react": "^1.0.5",
         "react-bootstrap": "^1.0.0-beta.8",
         "react-router": "^5.0.0",
-        "react-router-dom": "^5.0.0"
+        "react-router-dom": "^5.0.0",
+        "react-select": "^3.0.3"
     }
 }
