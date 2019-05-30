@@ -87,7 +87,9 @@ export default class Question extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         {/*handles submit */
         }
-        this.state = {
+
+        {/*
+
             FirstName: "",
             LastName: "",
             Organization: "",
@@ -95,6 +97,12 @@ export default class Question extends React.Component {
             Email: "",
             Password: "",
             PasswordVerify: "",
+            */}
+
+        this.state = {
+
+
+
             BusinessName: "",
             QuebecAddress: "",
             City: "",
@@ -104,6 +112,7 @@ export default class Question extends React.Component {
             SCIAN: "",
             EmployeeNumber: "",
             OfferToClient: "",
+            Confirm: "",
 
 
         };
@@ -173,13 +182,14 @@ export default class Question extends React.Component {
         return (
 
 
-            <form method="POST" action="/" onSubmit={this.handleSubmit}> {/*start of form*/}
+            <form method="POST" action="/" > {/*start of form*/}
 
 
 
+                {/*
 
                 <Col sm="5">
-                    <Form.Group controlId="Name"> {/* group 1, basic information */}
+                    <Form.Group controlId="Name">
                         <Form.Row>
                             <Col lg="4">
                                 <Form.Label>First Name</Form.Label>
@@ -230,6 +240,7 @@ export default class Question extends React.Component {
                 </Col>
 
                 <Form.Group controlId="formBasicPassword">
+                    <Col sm="5">
                     <Form.Label>Password</Form.Label>
 
                     <Form.Control name="Password" type="password" placeholder="Password" onChange={this.handleChange}
@@ -237,10 +248,10 @@ export default class Question extends React.Component {
                     <Form.Label>Verify Password</Form.Label>
                     <Form.Control name="PasswordVerify" type="password" placeholder="Verify Password"
                                   onChange={this.handleChange} value={this.state.PasswordVerify}/>
-
+                    </Col>
                 </Form.Group>
 
-
+                */}
                 {/*group 2*/}
 
                 <Form.Group controlId="BusinessInformation">
@@ -271,6 +282,7 @@ export default class Question extends React.Component {
 
 
                 <Form.Group>
+                    <Col sm="5">
                             <Form.Label>Type of Business</Form.Label>
 
 
@@ -295,18 +307,21 @@ export default class Question extends React.Component {
                                         name="formHorizontalRadios4"
                                         id="formHorizontalRadios5"/>
 
-
+                    </Col>
                 </Form.Group>
 
                 <Form.Group> { /*SCIAN code */}
 
+                    <Col sm="5">
                             <Form.Label>Sectors of Activity</Form.Label>
 
                             <Select options={data} onChange={this.handleChange} value={this.state.SCIAN}/>
-                </Form.Group>
+                    </Col>
+                    </Form.Group>
 
 
                 <Form.Group>
+                    <Col sm="5">
                             <Form.Label>How is the business classed</Form.Label>
                             <Form.Check type="radio" label={'Société par actions'} name="formHorizontalRadios0"
                                         id="formHorizontalRadios1"/>
@@ -320,12 +335,7 @@ export default class Question extends React.Component {
                             <Form.Check type="radio" label={'autre'}/>
 
 
-                            <Form.Check type="radio" label={'Organisme sans but lucratif'} name="formHorizontalRadios0"
-                                        id="formHorizontalRadios1"/>
-                            <Form.Check type="radio" label={'autre'} name="formHorizontalRadios"
-                                        id="formHorizontalRadios1"/>
-
-
+                    </Col>
                 </Form.Group>
 
                 <Form.Group>
@@ -340,14 +350,14 @@ export default class Question extends React.Component {
                                                   onChange={this.handleChange}>
 
                                         <option> Self Employed</option>
-                                        <option> 1 - 10</option>
-                                        <option> 11 - 50</option>
-                                        <option> 51 - 200</option>
-                                        <option> 201 - 500</option>
-                                        <option> 501 - 1000</option>
-                                        <option> 1,001 - 5,000</option>
-                                        <option> 5,001 - 10,000</option>
-                                        <option> 10,000+</option>
+                                        <option> 1 - 10 </option>
+                                        <option> 11 - 50 </option>
+                                        <option> 51 - 200 </option>
+                                        <option> 201 - 500 </option>
+                                        <option> 501 - 1000 </option>
+                                        <option> 1,001 - 5,000 </option>
+                                        <option> 5,001 - 10,000 </option>
+                                        <option> 10,000+ </option>
 
                                     </Form.Control>
                                 </Col>
@@ -357,6 +367,7 @@ export default class Question extends React.Component {
 
 
                 <Form.Group>
+                    <Col sm="5">
                             <Form.Label>Does your business have committee working towards sustainable development
                             </Form.Label>
 
@@ -374,7 +385,7 @@ export default class Question extends React.Component {
                                 id="formHorizontalRadios2"
                             />
 
-
+                    </Col>
                 </Form.Group>
 
                         <Form.Group>
@@ -432,20 +443,21 @@ export default class Question extends React.Component {
                                 <Form.Label>What is your general client base
                                 </Form.Label>
                                 <Form.Check type="radio" label="Individuals" name="formHorizontalRadios3"
-                                            id="formHorizontalRadios1"/>
+                                            id="individuals"  value={this.check} onChange={this.handleChange}/>
                                 <Form.Check type="radio" label="Businesses" name="formHorizontalRadios3"
-                                            id="formHorizontalRadios2"/>
+                                            id="Businesses" value={this.state.Confirm} onChange={this.handleChange}/>
                                 <Form.Check type="radio" label="Buying groups" name="formHorizontalRadios3"
-                                            id="formHorizontalRadios3"/>
+                                            id="Buyinggroups" value={this.state.Confirm} onChange={this.handleChange}/>
                                 <Form.Check type="radio" label="Resellers or Distributors" name="formHorizontalRadios3"
-                                            id="formHorizontalRadios4"/>
+                                            id="Resellers" value={this.state.Confirm} onChange={this.handleChange}/>
                             </Col>
                         </Form.Group>
 
 
                         <Form.Group as={Col}>
 
-                            <Col sm="5">
+
+                            <Col lg="5">
                                 <Form.Label>What do you Offer to Clients</Form.Label>
                                 <Form.Control as="textarea" rows="3" name="OfferToClient" type="text"
                                               onChange={this.handleChange}
@@ -484,6 +496,8 @@ export default class Question extends React.Component {
                                 Submit
                             </Button>
                         </Col>
+
+
 
 
             </form>
