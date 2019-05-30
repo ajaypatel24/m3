@@ -11,7 +11,7 @@
 * **React Formik** : https://github.com/jaredpalmer/formik => Form tool
 * **PropType** : https://reactjs.org/docs/typechecking-with-proptypes.html => Type checking for properties
 * **Prettier** : https://github.com/prettier/prettier => code formatter
-* **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Authentication (and database ?)
+* **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Gpogle and Facebook Authentication
 * **Moment** : https://momentjs.com/ => Time and date library
 * **ReCaptcha** : https://www.google.com/recaptcha/intro/v3.html
             => setting up local server : https://stackoverflow.com/questions/3232904/using-recaptcha-on-localhost
