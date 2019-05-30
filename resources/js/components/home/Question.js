@@ -5,7 +5,6 @@ import { Col } from 'react-bootstrap';
 import Select from 'react-select';
 
 
-import Multiselect from 'multiselect-dropdown-react';
 
 
 const data = [{
@@ -82,13 +81,9 @@ const data = [{
 
 
 
-const formValid = formErrors => {
-    let valid = true;
 
-    Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
-});
-    return valid;
-};
+
+
 
 export default class Question extends React.Component {
 
@@ -105,12 +100,17 @@ export default class Question extends React.Component {
             Role: "",
             Email: "",
             Password: "",
+                PasswordVerify: "",
             BusinessName: "",
             QuebecAddress: "",
             City: "",
             PostalCode: "",
             CorporateAddress: "",
-                onSelectOptions: "",
+                IncomeValue: "",
+                SCIAN: "",
+                EmployeeNumber: "",
+                OfferToClient: "",
+
 
 
         };
@@ -118,7 +118,14 @@ export default class Question extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+
         const data = this.state;
+        let h = Password === PasswordVerify;
+        if (!h){
+            alert("Passwords do not match")
+        }
+        this.state.name;
         console.log(data);
 
     };
@@ -147,6 +154,22 @@ export default class Question extends React.Component {
     }
 
 
+    formValid (){
+        const{FirstName, LastName, Organization, Role,
+            Email, Password, BusinessName, QuebecAddress,
+            City, PostalCode, CorporateAddress} = this.state;
+
+        let g = FirstName && LastName && Organization && Role &&
+            Email && Password && BusinessName && QuebecAddress &&
+            City && PostalCode && CorporateAddress;
+        let h = Password === PasswordVerify;
+        if (!h){
+            alert("Passwords do not match")
+        }
+        console.log(g);
+        return g && h
+        //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
+    };
 
 
     render() {
@@ -154,7 +177,7 @@ export default class Question extends React.Component {
         return (
 
 
-            <form method="POST" action = "/" /* onSubmit={this.handleSubmit} */ > {/*start of form*/}
+            <form method="POST" action = "/"  onSubmit={this.handleSubmit} > {/*start of form*/}
 
             <span dangerouslySetInnerHTML={{__html: t}}/>
 
@@ -165,11 +188,11 @@ export default class Question extends React.Component {
                        <Form.Row>
                            <Col lg="4">
                         <Form.Label>First Name</Form.Label>
-                               <Form.Control name="FirstName" type="firstname" placeholder="First Name" onChange={this.handleChange} value={this.state.firstname}/>
+                               <Form.Control minlength="3" maxlength="15" name="FirstName" type="firstname" placeholder="First Name" onChange={this.handleChange} value={this.state.firstname}/>
                            </Col>
                            <Col lg="4">
                                <Form.Label>Last Name</Form.Label>
-                        <Form.Control name="LastName" type="lastname" placeholder="Last Name" onChange={this.handleChange} value={this.state.lastname}/>
+                        <Form.Control minlength="3" maxlength="15" name="LastName" type="lastname" placeholder="Last Name" onChange={this.handleChange} value={this.state.lastname}/>
                            </Col>
                        </Form.Row>
                            </Form.Group>
@@ -183,10 +206,10 @@ export default class Question extends React.Component {
 
                         <Col lg="4">
                         <Form.Label>Organization</Form.Label>
-                        <Form.Control name="Organization" type="orgname" placeholder="Organization Name" onChange={this.handleChange} value={this.state.email}/>
+                        <Form.Control minlength="2" maxlength="15" name="Organization" type="orgname" placeholder="Organization Name" onChange={this.handleChange} value={this.state.Organization}/>
 
                         <Form.Label>Role</Form.Label>
-                        <Form.Control name="Role" type="function" placeholder="Your Role" onChange={this.handleChange} value={this.state.Role}/>
+                        <Form.Control maxlength="15" name="Role" type="function" placeholder="Your Role" onChange={this.handleChange} value={this.state.Role}/>
                         </Col>
 
                         </Form.Row>
@@ -212,7 +235,12 @@ export default class Question extends React.Component {
                     <Col sm="5">
                     <Form.Label>Password</Form.Label>
                         <Form.Control name = "Password" type="password" placeholder="Password" onChange={this.handleChange} value={this.state.Password}/>
+                        <Form.Label>Verify Password</Form.Label>
+                        <Form.Control name = "PasswordVerify" type="password" placeholder="Verify Password" onChange={this.handleChange} value={this.state.PasswordVerify} />
+
                     </Col>
+
+
                 </Form.Group>
 
 
@@ -228,7 +256,7 @@ export default class Question extends React.Component {
                         <Form.Label>Quebec Address</Form.Label>
                     <Form.Control name="QuebecAddress" type="address" placeholder="Quebec address" onChange={this.handleChange} value={this.state.QuebecAddress}/>
                     <Form.Label>City</Form.Label>
-                    <Form.Control name="City" type="city" placeholder="city" onChange={this.handleChange} value={this.state.City} />
+                    <Form.Control name="City" type="city" placeholder="City" onChange={this.handleChange} value={this.state.City} />
                     <Form.Label>Postal Code</Form.Label>
                     <Form.Control name="PostalCode" type="PostalCode" placeholder="Postal Code" onChange={this.handleChange} value={this.state.PostalCode}/>
 
@@ -245,11 +273,26 @@ export default class Question extends React.Component {
                     <Col sm="5">
                     <Form.Label>Type of Business</Form.Label>
 
-                    <Form.Check type= "radio" label={'PME Manufacturiere'} />
-                    <Form.Check type="radio" label={'TPE Manufacturiere'} />
-                    <Form.Check type="radio" label={'Entreprise en Distribution'} />
-                    <Form.Check type="radio" label={'Entreprise de Services'} />
-                    <Form.Check type="radio" label={'autre'} />
+                    <Form.Check type= "radio"
+                                label={'PME Manufacturiere'}
+                                name="formHorizontalRadios4"
+                                id="formHorizontalRadios1"/>
+                    <Form.Check type="radio"
+                                label={'TPE Manufacturiere'}
+                                name="formHorizontalRadios4"
+                                id="formHorizontalRadios2"/>
+                    <Form.Check type="radio"
+                                label={'Entreprise en Distribution'}
+                                name="formHorizontalRadios4"
+                                id="formHorizontalRadios3"/>
+                    <Form.Check type="radio"
+                                label={'Entreprise de Services'}
+                                name="formHorizontalRadios4"
+                                id="formHorizontalRadios4"/>
+                    <Form.Check type="radio"
+                                label={'autre'}
+                                name="formHorizontalRadios4"
+                                id="formHorizontalRadios5"/>
                     </Col>
                 </Form.Group>
 
@@ -259,7 +302,7 @@ export default class Question extends React.Component {
                     <Form.Text className="text-muted">
                         Select 1 or multiple
                     </Form.Text>
-                    <Select options={data} />
+                    <Select options={data} onChange={this.handleChange} value={this.state.SCIAN}/>
                     </Col>
 
 
@@ -291,18 +334,20 @@ export default class Question extends React.Component {
 
                         <Col sm="5">
                             <Form.Label>Number of employees</Form.Label>
-                            <Form.Control as="select">
-                                <option>Select Range</option>
-                                <option> {"<"} 99,999$" </option>
-                                <option> 100,000$ - 449,999$ </option>
-                                <option> 500,000$ - 999,999$ </option>
-                                <option> 1,000,000$ - 4,999,999$ </option>
-                                <option> 5,000,000$ - 9,999,999$ </option>
-                                <option> 10,000,000$ - 24,999,999$ </option>
-                                <option> 25,000,000$ - 49,999,999$ </option>
-                                <option> 50,000,000$ - 99,999,999$ </option>
-                                <option> 100,000,000$ - 249,999,999$ </option>
-                                <option> {">"} 250,000,000$ </option>
+                            <Form.Control as="select" name="EmployeeNumber" placeholder="Select Range"
+                                          value={this.state.EmployeeNumber}
+                                          onChange={this.handleChange} >
+
+                                <option> Self Employed </option>
+                                <option> 1 - 10 </option>
+                                <option> 11 - 50 </option>
+                                <option> 51 - 200 </option>
+                                <option> 201 - 500 </option>
+                                <option> 501 - 1000 </option>
+                                <option> 1,001 - 5,000 </option>
+                                <option> 5,001 - 10,000 </option>
+                                <option> 10,000+ </option>
+
                             </Form.Control>
                         </Col>
                     </Form.Group>
@@ -320,8 +365,7 @@ export default class Question extends React.Component {
                             label="Yes"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios1"
-                            value="option1"
-                            checked={this.state.selectedOption === "option1"}
+
                         />
                         <Form.Check
                             type="radio"
@@ -396,13 +440,13 @@ export default class Question extends React.Component {
 
 
 
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
 
                     <Col sm="5">
                 <Form.Label>What do you Offer to Clients</Form.Label>
-                <Form.Control as="select">
-                    <option>Choose...</option>
-                    <option>...</option>
+                <Form.Control as="textarea" rows="3" name="OfferToClient" type="text" onChange={this.handleChange}
+                              value={this.state.OfferToClient} placeholder="a short description is required">
+
                 </Form.Control>
                     </Col>
                 </Form.Group>
@@ -412,7 +456,9 @@ export default class Question extends React.Component {
 
                     <Col sm="5">
                     <Form.Label>Business annual total income</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" name = "IncomeValue"
+                                   value={this.state.IncomeValue}
+                    onChange={this.handleChange}>
                         <option>Select Range</option>
                         <option> {"<"} 99,999$" </option>
                         <option> 100,000$ - 449,999$ </option>
@@ -429,7 +475,7 @@ export default class Question extends React.Component {
                 </Form.Group>
 
                 <Col sm="5">
-                <Button variant="primary" type="submit" >
+                <Button variant="primary" type="submit" /* disabled={!this.formValid()} */ >
                     Submit
                 </Button>
                 </Col>
