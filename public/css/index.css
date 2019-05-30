@@ -1,13 +1,24 @@
+:root {
+    --main-bg-color: #F8F9FA;
+    --primary-color: #284B63;
+    --secondary-color: #FF0000;
+}
+
 .login-btn-color{
-    background-color:red !important;
-    border-color: red !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
-.signup-btn-color{
-    background-color: #284B63 !important;
-    border-color: #284B63 !important;
+.login-btn-color-font {
+    background-color: var(--primary-color) !important;
+    color: white;
+    font-size: 1.5rem;
 }
 
-.red-text{
-    color:red;
+.icon-transform {
+    transform: translate(-30%, 20%);
+}
+
+.red-text {
+    color: red;
 }

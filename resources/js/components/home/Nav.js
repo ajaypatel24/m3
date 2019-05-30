@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, Form, Button} from "react-bootstrap";
+import {Button, Form, Navbar} from "react-bootstrap";
 import Login from "../nav-forms/Login";
 
 export default class Nav extends React.Component
@@ -42,8 +42,6 @@ export default class Nav extends React.Component
                 <Form className="mr-3" inline>
                     <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
                     <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
-                    <span className="ml-2"/>
-                    <Button className="signup-btn-color"><i className="fas fa-user-plus"/><span className="ml-1">Sign Up</span></Button>
                 </Form>
             </Navbar>
         );

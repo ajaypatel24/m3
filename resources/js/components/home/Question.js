@@ -1,12 +1,7 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
+import {Button, Col, Form} from 'react-bootstrap';
 
 import Select from 'react-select';
-
-
-
 
 
 const data = [{
@@ -293,6 +288,7 @@ export default class Question extends React.Component {
                                 label={'autre'}
                                 name="formHorizontalRadios4"
                                 id="formHorizontalRadios5"/>
+                </Form.Group>
                     </Col>
 
                 </Form.Group>
@@ -483,7 +479,6 @@ export default class Question extends React.Component {
                     Submit
                 </Button>
                 </Col>
-
             </form>
 
 
