@@ -13,6 +13,8 @@
 * **Prettier** : https://github.com/prettier/prettier => code formatter
 * **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Authentication (and database ?)
 * **Moment** : https://momentjs.com/ => Time and date library
+* **ReCaptcha** : https://www.google.com/recaptcha/intro/v3.html
+            => setting up local server : https://stackoverflow.com/questions/3232904/using-recaptcha-on-localhost
 
 **Asynchronous Server-Side Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 https://developers.google.com/web/updates/2015/03/introduction-to-fetch <= Good resource
@@ -44,7 +46,8 @@ if your using PHPStorm, remember there is a tab to the right that allows to view
 3. rename .env.example to .env (it's in the root)
 4. `php artisan key:generate`
 5. In .env set DB CONFIG settings to your database, user and name
-6. `php artisan server` && `npm run watch`
+6. `php artisan migrate` (potentially run seeding command, if you have test data loaded, or predefined data)
+7. `php artisan server` && `npm run watch`
 
 => Make sure .env is in .gitignore, otherwise your database info will be shared to github when you push
 
