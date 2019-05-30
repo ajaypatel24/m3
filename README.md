@@ -61,6 +61,8 @@ if your using PHPStorm, remember there is a tab to the right that allows to view
 **Login Authentication Tutorial Used** : https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/
 
 If .env is not included :
+
+
     APP_NAME=Laravel
     APP_ENV=local
     APP_KEY=
