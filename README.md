@@ -58,4 +58,5 @@ if your using PHPStorm, remember there is a tab to the right that allows to view
 
 **Laravel helpful bookmarks** : https://github.com/chiraggude/awesome-laravel <=== tons of GREAT stuff 
 
+**Login Authentication Tutorial Used** : https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/
 
