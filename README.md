@@ -4,6 +4,7 @@
 
 **Load changes to project** : `npm run dev`
 
+* **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
 * **React Documentation** : https://reactjs.org/docs/getting-started.html 
 * **Lodash** : https://lodash.com/ => Simplify javascript with functions 
 * **React Router** : https://reacttraining.com/react-router/web/guides/quick-start => Routing for react
