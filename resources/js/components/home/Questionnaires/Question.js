@@ -2,7 +2,9 @@ import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
 
 import Select from 'react-select';
-
+const CityRegex = new RegExp("^[a-zA-Z]+$"); //
+const AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
+const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
 
@@ -117,6 +119,7 @@ export default class Question extends React.Component {
             EmployeeNumber: "",
             OfferToClient: "",
             Confirm: "",
+            SectorActivity: "",
 
             validated: false,
 
@@ -156,9 +159,7 @@ export default class Question extends React.Component {
 
         let valid = true;
 
-        const CityRegex = new RegExp("^[a-zA-Z]+$"); //
-        const AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
-        const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
+
         //const CorporateAddressRegex = new RegExp("^[0-9]+ [a-z]+$");
         //const OfferToClientRegex = new RegExp("^[a-zA-Z0-9_]+$")
 
@@ -281,75 +282,6 @@ export default class Question extends React.Component {
                 onSubmit={e => this.handleSubmit(e)} method="POST" action="/"> {/*start of form*/}
 
 
-
-
-
-                {/*
-
-                <Col sm="5">
-                    <Form.Group controlId="Name">
-                        <Form.Row>
-                            <Col lg="4">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control minlength="3" maxlength="15" name="FirstName" type="firstname"
-                                              placeholder="First Name" onChange={this.handleChange}
-                                              value={this.state.firstname}/>
-                            </Col>
-                            <Col lg="4">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control minlength="3" maxlength="15" name="LastName" type="lastname"
-                                              placeholder="Last Name" onChange={this.handleChange}
-                                              value={this.state.lastname}/>
-                            </Col>
-                        </Form.Row>
-                    </Form.Group>
-                </Col>
-
-
-                <Col sm="6">
-                    <Form.Group>
-                        <Form.Row>
-
-
-                            <Col lg="4">
-                                <Form.Label>Organization</Form.Label>
-                                <Form.Control minlength="2" maxlength="15" name="Organization" type="orgname"
-                                              placeholder="Organization Name" onChange={this.handleChange}
-                                              value={this.state.Organization}/>
-
-                                <Form.Label>Role</Form.Label>
-                                <Form.Control maxlength="15" name="Role" type="function" placeholder="Your Role"
-                                              onChange={this.handleChange} value={this.state.Role}/>
-                            </Col>
-
-                        </Form.Row>
-                    </Form.Group>
-                </Col>
-
-
-                <Col sm="5">
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email"/>
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
-                </Col>
-
-                <Form.Group controlId="formBasicPassword">
-                    <Col sm="5">
-                    <Form.Label>Password</Form.Label>
-
-                    <Form.Control name="Password" type="password" placeholder="Password" onChange={this.handleChange}
-                                  value={this.state.Password}/>
-                    <Form.Label>Verify Password</Form.Label>
-                    <Form.Control name="PasswordVerify" type="password" placeholder="Verify Password"
-                                  onChange={this.handleChange} value={this.state.PasswordVerify}/>
-                    </Col>
-                </Form.Group>
-
-                */}
                 {/*group 2*/}
 
                 <Form.Group controlId="validationCustom01">
@@ -363,28 +295,90 @@ export default class Question extends React.Component {
                             onChange={this.handleChange}
                             value={this.state.BusinessName}/>
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-
-
-                        <Form.Group controlId="BusinessAddress">
-                            <Form.Label>Quebec Address</Form.Label>
-                            <Form.Control name="QuebecAddress" type="address" placeholder="Quebec address"
-                                          onChange={this.handleChange} value={this.state.QuebecAddress}/>
-                            <Form.Label>City</Form.Label>
-                            <Form.Control name="City" type="city" placeholder="City" onChange={this.handleChange}
-                                          value={this.state.City}/>
-                            <Form.Label>Postal Code</Form.Label>
-                            <Form.Control maxLength="7" minLength="6" name="PostalCode" type="PostalCode" placeholder="Postal Code"
-                                          onChange={this.handleChange} value={this.state.PostalCode}/>
-
-
-                            <Form.Check controlId="checkCorp" type="checkbox" label="different corporate address"/>
-                            <Form.Control controlId="corpAddress" name="CorporateAddress" type="address2"
-                                          placeholder="corporate address" onChange={this.handleChange}
-                                          value={this.state.CorporateAddress}/>
-
-                        </Form.Group>
                     </Col>
                 </Form.Group>
+
+                <Form.Group controlId="validationCustom02">
+                    <Col sm="5">
+
+
+
+                            <Form.Label>Quebec Address</Form.Label>
+                            <Form.Control
+                                name="QuebecAddress"
+                                required
+                                type="text"
+                                placeholder="Quebec address"
+                                onChange={this.handleChange}
+                                value={this.state.QuebecAddress}
+                                pattern="^[0-9]+ [a-z]+$"
+
+                            />
+
+
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+                    </Col>
+                </Form.Group>
+                <Form.Group>
+                    <Col sm="5">
+
+                            <Form.Label>City</Form.Label>
+                            <Form.Control
+                                name="City"
+                                required
+                                type="text"
+                                placeholder="City"
+                                onChange={this.handleChange}
+                                value={this.state.City}
+                                pattern="^[a-zA-Z]+$"
+                            />
+
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+                    </Col>
+                </Form.Group>
+                <Form.Group>
+                    <Col sm="5">
+
+                            <Form.Label>Postal Code</Form.Label>
+                            <Form.Control
+                                maxLength="7" minLength="6"
+                                name="PostalCode"
+                                required
+                                type="text"
+                                placeholder="Postal Code"
+                                onChange={this.handleChange}
+                                value={this.state.PostalCode}
+                                pattern="^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$"
+                            />
+                            <Form.Control.Feedback type="invalid">Postal Code must contain 6 characters</Form.Control.Feedback>
+                    </Col>
+                </Form.Group>
+
+
+
+                <Form.Group>
+                    <Col sm="5">
+                            <Form.Check controlId="checkCorp" type="checkbox" label="different corporate address"/>
+                            <Form.Control
+                                controlId="corpAddress"
+                                name="CorporateAddress"
+                                required
+                                type="text"
+                                placeholder="corporate address"
+                                onChange={this.handleChange}
+                                value={this.state.CorporateAddress}
+                                pattern="^[0-9]+ [a-z]+$"
+                            />
+
+
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+
+                    </Col>
+                </Form.Group>
+
 
 
                 <Form.Group>
@@ -421,7 +415,33 @@ export default class Question extends React.Component {
                     <Col sm="5">
                         <Form.Label>Sectors of Activity</Form.Label>
 
-                        <Select options={data} onChange={this.handleChange} value={this.state.SCIAN}/>
+                        <Form.Group as={Col} controlId="formGridState">
+
+
+                                <Form.Control as="select" required name="SectorOfActivity"
+                                              onChange={this.handleChange} defaultvalue="">
+                                    <option> </option>
+                                    <option value="SCIAN 11"> Agriculture, foresterie, peche et chasse </option>
+                                    <option value = "SCIAN 21"> Extraction miniere et extracion de petrole et de gaz </option>
+                                    <option value = "SCIAN 22"> Services publics </option>
+                                    <option value = "SCIAN 23"> Construction </option>
+                                    <option value = "SCIAN 31-33"> Fabrication</option>
+                                    <option value = "SCIAN 41"> Commerce de gros</option>
+                                    <option value = "SCIAN 44-45"> Commerce de détail</option>
+                                    <option value = "SCIAN 48-49"> Transport et entreposage</option>
+                                    <option value = "SCIAN 51"> Industrie de l\'information et industrie culturelle</option>
+                                    <option value = "SCIAN 52"> Finance et assurances</option>
+                                    <option value = "SCIAN 53"> Services d\'immobiliers et services de location et de location à bail</option>
+                                    <option value = "SCIAN 54"> Services professionnels, scientifiques et techniques</option>
+                                    <option value = "SCIAN 55"> Gestion de sociétés et d\'entreprises</option>
+                                    <option value = "SCIAN 56"> Services administratifs, services de soutien, services de gestion de déchets et services d\'assainissement</option>
+                                    <option value = "SCIAN 62"> Soins de santé et assistance sociale</option>
+                                    <option value = "SCIAN 71"> Arts, spectacles et loisirs</option>
+                                    <option value = "SCIAN 72"> Hébergement et services de restauration</option>
+                                    <option value = "SCIAN 78"> Autres services – sauf les administrations publiques</option>
+                                </Form.Control>
+
+                        </Form.Group>
                     </Col>
                 </Form.Group>
 
@@ -453,8 +473,11 @@ export default class Question extends React.Component {
                             <Form.Label>Number of employees</Form.Label>
                             <Form.Control as="select" name="EmployeeNumber" placeholder="Select Range"
                                           value={this.state.EmployeeNumber}
-                                          onChange={this.handleChange}>
+                                          onChange={this.handleChange}
+                                          required
+                                          >
 
+                                <option> </option>
                                 <option> Self Employed</option>
                                 <option> 1 - 10 </option>
                                 <option> 11 - 50 </option>
@@ -565,7 +588,7 @@ export default class Question extends React.Component {
 
                     <Col lg="5">
                         <Form.Label>What do you Offer to Clients</Form.Label>
-                        <Form.Control as="textarea" rows="3" name="OfferToClient" type="text"
+                        <Form.Control as="textarea" required rows="3" name="OfferToClient" type="text"
                                       onChange={this.handleChange}
                                       value={this.state.OfferToClient}
                                       placeholder="a short description is required">
@@ -579,10 +602,10 @@ export default class Question extends React.Component {
 
                     <Col sm="5">
                         <Form.Label>Business annual total income</Form.Label>
-                        <Form.Control as="select" name="IncomeValue"
+                        <Form.Control as="select" required name="IncomeValue"
                                       value={this.state.IncomeValue}
-                                      onChange={this.handleChange}>
-                            <option>Select Range</option>
+                                      onChange={this.handleChange} defaultvalue="">
+                            <option> </option>
                             <option> {"<"} 99,999$"</option>
                             <option> 100,000$ - 449,999$</option>
                             <option> 500,000$ - 999,999$</option>

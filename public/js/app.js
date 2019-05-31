@@ -86674,6 +86674,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var CityRegex = new RegExp("^[a-zA-Z]+$"); //
+
+var AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
+
+var PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 var data = [{
   label: 'Agriculture, foresterie, peche et chasse',
   value: 'SCIAN 11'
@@ -86768,6 +86773,7 @@ function (_React$Component) {
       EmployeeNumber: "",
       OfferToClient: "",
       Confirm: "",
+      SectorActivity: "",
       validated: false,
       BusinessNameError: ""
     };
@@ -86796,12 +86802,7 @@ function (_React$Component) {
   _createClass(Question, [{
     key: "handleValidation",
     value: function handleValidation() {
-      var valid = true;
-      var CityRegex = new RegExp("^[a-zA-Z]+$"); //
-
-      var AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
-
-      var PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/"); //const CorporateAddressRegex = new RegExp("^[0-9]+ [a-z]+$");
+      var valid = true; //const CorporateAddressRegex = new RegExp("^[0-9]+ [a-z]+$");
       //const OfferToClientRegex = new RegExp("^[a-zA-Z0-9_]+$")
 
       if (!AddressRegex.test(this.state.QuebecAddress)) {
@@ -86921,40 +86922,58 @@ function (_React$Component) {
         placeholder: "Business Name",
         onChange: this.handleChange,
         value: this.state.BusinessName
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "BusinessAddress"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "validationCustom02"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Quebec Address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         name: "QuebecAddress",
-        type: "address",
+        required: true,
+        type: "text",
         placeholder: "Quebec address",
         onChange: this.handleChange,
-        value: this.state.QuebecAddress
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        value: this.state.QuebecAddress,
+        pattern: "^[0-9]+ [a-z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         name: "City",
-        type: "city",
+        required: true,
+        type: "text",
         placeholder: "City",
         onChange: this.handleChange,
-        value: this.state.City
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Postal Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        value: this.state.City,
+        pattern: "^[a-zA-Z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Postal Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         maxLength: "7",
         minLength: "6",
         name: "PostalCode",
-        type: "PostalCode",
+        required: true,
+        type: "text",
         placeholder: "Postal Code",
         onChange: this.handleChange,
-        value: this.state.PostalCode
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        value: this.state.PostalCode,
+        pattern: "^[a-z][0-9][a-z]\\s?[0-9][a-z][0-9]$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, {
+        type: "invalid"
+      }, "Postal Code must contain 6 characters"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         controlId: "checkCorp",
         type: "checkbox",
         label: "different corporate address"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         controlId: "corpAddress",
         name: "CorporateAddress",
-        type: "address2",
+        required: true,
+        type: "text",
         placeholder: "corporate address",
         onChange: this.handleChange,
-        value: this.state.CorporateAddress
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        value: this.state.CorporateAddress,
+        pattern: "^[0-9]+ [a-z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Type of Business"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
@@ -86983,11 +87002,52 @@ function (_React$Component) {
         id: "formHorizontalRadios5"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Sectors of Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        options: data,
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Sectors of Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        controlId: "formGridState"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        required: true,
+        name: "SectorOfActivity",
         onChange: this.handleChange,
-        value: this.state.SCIAN
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        defaultvalue: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 11"
+      }, " Agriculture, foresterie, peche et chasse "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 21"
+      }, " Extraction miniere et extracion de petrole et de gaz "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 22"
+      }, " Services publics "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 23"
+      }, " Construction "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 31-33"
+      }, " Fabrication"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 41"
+      }, " Commerce de gros"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 44-45"
+      }, " Commerce de d\xE9tail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 48-49"
+      }, " Transport et entreposage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 51"
+      }, " Industrie de l\\'information et industrie culturelle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 52"
+      }, " Finance et assurances"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 53"
+      }, " Services d\\'immobiliers et services de location et de location \xE0 bail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 54"
+      }, " Services professionnels, scientifiques et techniques"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 55"
+      }, " Gestion de soci\xE9t\xE9s et d\\'entreprises"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 56"
+      }, " Services administratifs, services de soutien, services de gestion de d\xE9chets et services d\\'assainissement"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 62"
+      }, " Soins de sant\xE9 et assistance sociale"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 71"
+      }, " Arts, spectacles et loisirs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 72"
+      }, " H\xE9bergement et services de restauration"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 78"
+      }, " Autres services \u2013 sauf les administrations publiques"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "How is the business classed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
@@ -87023,8 +87083,9 @@ function (_React$Component) {
         name: "EmployeeNumber",
         placeholder: "Select Range",
         value: this.state.EmployeeNumber,
-        onChange: this.handleChange
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " Self Employed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1 - 10 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 11 - 50 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 51 - 200 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 201 - 500 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 501 - 1000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,001 - 5,000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,001 - 10,000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000+ "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " Self Employed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1 - 10 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 11 - 50 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 51 - 200 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 201 - 500 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 501 - 1000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,001 - 5,000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,001 - 10,000 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000+ "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Does your business have committee working towards sustainable development"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
@@ -87106,6 +87167,7 @@ function (_React$Component) {
         lg: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What do you Offer to Clients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "textarea",
+        required: true,
         rows: "3",
         name: "OfferToClient",
         type: "text",
@@ -87119,10 +87181,12 @@ function (_React$Component) {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Business annual total income"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
+        required: true,
         name: "IncomeValue",
         value: this.state.IncomeValue,
-        onChange: this.handleChange
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Select Range"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", "<", " 99,999$\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000$ - 449,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 500,000$ - 999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,000,000$ - 4,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,000,000$ - 9,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000,000$ - 24,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 25,000,000$ - 49,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 50,000,000$ - 99,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000,000$ - 249,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", ">", " 250,000,000$")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        onChange: this.handleChange,
+        defaultvalue: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", "<", " 99,999$\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000$ - 449,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 500,000$ - 999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,000,000$ - 4,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,000,000$ - 9,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000,000$ - 24,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 25,000,000$ - 49,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 50,000,000$ - 99,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000,000$ - 249,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", ">", " 250,000,000$")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary",
