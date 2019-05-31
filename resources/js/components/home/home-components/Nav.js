@@ -1,6 +1,9 @@
 import React from 'react';
 import {Navbar, Form, Button} from "react-bootstrap";
 import Login from "../forms/Login";
+import {Route} from "react-router";
+import { BrowserRouter as Router } from 'react-router-dom'
+
 
 export default class Nav extends React.Component
 {
@@ -39,6 +42,10 @@ export default class Nav extends React.Component
                         alt="Cadet Logo"
                     />
                 </Navbar.Brand>
+
+
+                <a href="/Qu">test route</a>
+
                 <Form className="mr-3" inline>
                     <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
                     <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>

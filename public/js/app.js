@@ -78928,11 +78928,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _home_components_Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
-/* harmony import */ var _home_components_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
-/* harmony import */ var _forms_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./forms/Login */ "./resources/js/components/home/forms/Login.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./questionnaires/Question */ "./resources/js/components/home/questionnaires/Question.js");
+/* harmony import */ var _home_components_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
+/* harmony import */ var _home_components_Dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
+/* harmony import */ var _forms_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/Login */ "./resources/js/components/home/forms/Login.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _questionnaires_Question__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./questionnaires/Question */ "./resources/js/components/home/questionnaires/Question.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78958,6 +78959,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main =
 /*#__PURE__*/
 function (_React$Component) {
@@ -78972,7 +78974,11 @@ function (_React$Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_components_Nav__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_components_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+        path: "/Qu",
+        exact: true,
+        component: _questionnaires_Question__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }))));
     }
   }]);
 
@@ -79500,6 +79506,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _forms_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/Login */ "./resources/js/components/home/forms/Login.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -79517,6 +79525,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -79570,7 +79580,9 @@ function (_React$Component) {
         height: "100",
         className: "d-inline-block align-top",
         alt: "Cadet Logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/Qu"
+      }, "test route"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         className: "mr-3",
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -79601,9 +79613,492 @@ function (_React$Component) {
   !*** ./resources/js/components/home/questionnaires/Question.js ***!
   \*****************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\ajayp\\Documents\\GitHub\\m3\\resources\\js\\components\\home\\questionnaires\\Question.js: Unexpected token (434:0)\n\n\u001b[0m \u001b[90m 432 | \u001b[39m                            name\u001b[33m=\u001b[39m\u001b[32m\"ClientBase\"\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 433 | \u001b[39m                            id\u001b[33m=\u001b[39m\u001b[32m\"individuals\"\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 434 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[33m:\u001b[39mresources\u001b[33m/\u001b[39mjs\u001b[33m/\u001b[39mcomponents\u001b[33m/\u001b[39mhome\u001b[33m/\u001b[39m\u001b[33mQuestionnaires\u001b[39m\u001b[33m/\u001b[39m\u001b[33mQuestion\u001b[39m\u001b[33m.\u001b[39mjs\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 435 | \u001b[39m                            value\u001b[33m=\u001b[39m\u001b[32m\"Individuals\"\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 436 | \u001b[39m                            onChange\u001b[33m=\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mhandleChange}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 437 | \u001b[39m\u001b[0m\n    at Object.raise (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:6344:17)\n    at Object.unexpected (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:7659:16)\n    at Object.jsxParseIdentifier (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3377:12)\n    at Object.jsxParseNamespacedName (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3387:23)\n    at Object.jsxParseAttribute (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3467:22)\n    at Object.jsxParseOpeningElementAfterName (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3488:28)\n    at Object.jsxParseOpeningElementAt (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3481:17)\n    at Object.jsxParseElementAt (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3513:33)\n    at Object.jsxParseElementAt (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElementAt (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElementAt (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElement (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3587:17)\n    at Object.parseExprAtom (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3594:19)\n    at Object.parseExprSubscripts (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8413:23)\n    at Object.parseMaybeUnary (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8393:21)\n    at Object.parseExprOps (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8280:23)\n    at Object.parseMaybeConditional (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8253:23)\n    at Object.parseMaybeAssign (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8200:21)\n    at Object.parseParenAndDistinguishExpression (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8963:28)\n    at Object.parseExprAtom (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8760:21)\n    at Object.parseExprAtom (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:3599:20)\n    at Object.parseExprSubscripts (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8413:23)\n    at Object.parseMaybeUnary (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8393:21)\n    at Object.parseExprOps (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8280:23)\n    at Object.parseMaybeConditional (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8253:23)\n    at Object.parseMaybeAssign (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8200:21)\n    at Object.parseExpression (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:8148:23)\n    at Object.parseReturnStatement (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:10157:28)\n    at Object.parseStatementContent (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:9836:21)\n    at Object.parseStatement (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:9788:17)\n    at Object.parseBlockOrModuleBlockBody (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:10364:25)\n    at Object.parseBlockBody (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:10351:10)\n    at Object.parseBlock (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:10335:10)\n    at Object.parseFunctionBody (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:9408:24)\n    at Object.parseFunctionBodyAndFinish (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:9378:10)\n    at Object.parseMethod (C:\\Users\\ajayp\\Documents\\GitHub\\m3\\node_modules\\@babel\\parser\\lib\\index.js:9332:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Question; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var CityRegex = new RegExp("^[a-zA-Z]+$"); //
+
+var AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
+
+var PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
+
+var Question =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Question, _React$Component);
+
+  function Question(props) {
+    var _this;
+
+    _classCallCheck(this, Question);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Question).call(this, props)); //required
+
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this)); //handle change function
+
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); //handle submit function
+
+    _this.state = {
+      BusinessName: "",
+      QuebecAddress: "",
+      City: "",
+      PostalCode: "",
+      CorporateAddress: "",
+      IncomeValue: "",
+      EmployeeNumber: "",
+      OfferToClient: "",
+      SectorActivity: "",
+      ClientBase: "",
+      DiffCorpAddress: "",
+      validated: false,
+      BusinessNameError: ""
+    };
+    return _this;
+  }
+
+  _createClass(Question, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var data = this.state; //VERY IMPORTANT
+      //checks all forms
+
+      var form = e.currentTarget;
+
+      if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        fetch('/', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            "Content-type": "application/json"
+          }
+        }).then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+        })["catch"](function (error) {
+          console.log('Request failed', error);
+        });
+      }
+
+      this.setState({
+        validated: true
+      });
+      console.log(data);
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      {
+        /* = e => */
+      }
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log("Name: ", e.target.name);
+      console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleOptionChange",
+    value: function handleOptionChange(changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
+  }, {
+    key: "showHideDiv",
+    value: function showHideDiv(corpAddress) {
+      var box = document.getElementById("corpAddress");
+      box.style.display = checkCorp.checked ? "block" : "none";
+    }
+  }, {
+    key: "handleCheck",
+    value: function handleCheck() {
+      if (this.state.DiffCorpAddress != "") {
+        console.log(this.state.DiffCorpAddress);
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "formValid",
+    value: function formValid() {
+      var _this$state = this.state,
+          BusinessName = _this$state.BusinessName,
+          QuebecAddress = _this$state.QuebecAddress,
+          City = _this$state.City,
+          PostalCode = _this$state.PostalCode,
+          CorporateAddress = _this$state.CorporateAddress;
+      var g = BusinessName && QuebecAddress && City && PostalCode && CorporateAddress;
+      console.log(g);
+      return g; //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var validated = this.state.validated;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        validated: validated,
+        onSubmit: function onSubmit(e) {
+          return _this2.handleSubmit(e);
+        },
+        method: "POST",
+        action: "/"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "validationCustom01"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Business Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "BusinessName",
+        required: true,
+        type: "text",
+        placeholder: "Business Name",
+        onChange: this.handleChange,
+        value: this.state.BusinessName
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "validationCustom02"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Quebec Address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "QuebecAddress",
+        required: true,
+        type: "text",
+        placeholder: "Quebec address",
+        onChange: this.handleChange,
+        value: this.state.QuebecAddress,
+        pattern: "^[0-9]+ [a-z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "City",
+        required: true,
+        type: "text",
+        placeholder: "City",
+        onChange: this.handleChange,
+        value: this.state.City,
+        pattern: "^[a-zA-Z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Postal Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        maxLength: "7",
+        minLength: "6",
+        name: "PostalCode",
+        required: true,
+        type: "text",
+        placeholder: "Postal Code",
+        onChange: this.handleChange,
+        value: this.state.PostalCode,
+        pattern: "^[a-z][0-9][a-z]\\s?[0-9][a-z][0-9]$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, {
+        type: "invalid"
+      }, "Postal Code must contain 6 characters"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        controlId: "CheckCorp",
+        type: "checkbox",
+        label: "different corporate address",
+        value: "DiffCorpAddress"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        disabled: true,
+        controlId: "corpAddress",
+        name: "CorporateAddress",
+        required: true,
+        type: "text",
+        placeholder: "corporate address",
+        onChange: this.handleChange,
+        value: this.state.CorporateAddress,
+        pattern: "^[0-9]+ [a-z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Type of Business"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
+        type: "radio",
+        "class": "text-dark",
+        label: "PME Manufacturiere",
+        name: "TypeOfBusiness",
+        id: "formHorizontalRadios1",
+        value: "PME",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: 'TPE Manufacturiere',
+        name: "TypeOfBusiness",
+        id: "formHorizontalRadios2",
+        value: "TPE",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: 'Entreprise en Distribution',
+        name: "TypeOfBusiness",
+        id: "formHorizontalRadios3",
+        value: "EntrePriseDistribution",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: 'Entreprise de Services',
+        name: "TypeOfBusiness",
+        id: "formHorizontalRadios4",
+        value: "EntrepriseServices",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Autre",
+        name: "TypeOfBusiness",
+        id: "formHorizontalRadios5",
+        value: "Autre",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Sectors of Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        controlId: "formGridState"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 11"
+      }, " Agriculture, foresterie, peche et chasse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 21"
+      }, " Extraction miniere et extracion de petrole et de gaz"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 22"
+      }, " Services publics"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 23"
+      }, " Construction"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 31-33"
+      }, " Fabrication"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 41"
+      }, " Commerce de gros"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 44-45"
+      }, " Commerce de d\xE9tail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 48-49"
+      }, " Transport et entreposage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 51"
+      }, " Industrie de l\\'information et industrie culturelle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 52"
+      }, " Finance et assurances"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 53"
+      }, " Services d\\'immobiliers et services de location et de location \xE0 bail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 54"
+      }, " Services professionnels, scientifiques et techniques"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 55"
+      }, " Gestion de soci\xE9t\xE9s et d\\'entreprises"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 56"
+      }, " Services administratifs, services de soutien, services de gestion de d\xE9chets et services d\\'assainissement"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 62"
+      }, " Soins de sant\xE9 et assistance sociale"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 71"
+      }, " Arts, spectacles et loisirs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 72"
+      }, " H\xE9bergement et services de restauration"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "SCIAN 78"
+      }, " Autres services \u2013 sauf les administrations publiques"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "How is the business classed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Soci\xE9t\xE9 par actions",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "SocieteActions",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Entreprise individuelle",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "EntrepriseIndividuelle",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Soci\xE9t\xE9 en nom collectif",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "SocieteCollectif",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Coop\xE9rative",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "Cooperative",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Organisme sans but lucratif",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "OrganismeSansLucratif",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Autre",
+        name: "BusinessClass",
+        id: "formHorizontalRadios7",
+        value: "Autre",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        controlId: "formGridState"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Number of employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "EmployeeNumber",
+        placeholder: "Select Range",
+        value: this.state.EmployeeNumber,
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " Self Employed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1 - 10"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 11 - 50"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 51 - 200"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 201 - 500"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 501 - 1000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,001 - 5,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,001 - 10,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000+"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Does your business have committee working towards sustainable development"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
+        type: "radio",
+        label: "Yes",
+        name: "ExistCommittee",
+        id: "formHorizontalRadios1",
+        value: "Yes",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "No",
+        name: "ExistCommittee",
+        id: "formHorizontalRadios2",
+        value: "No",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "On what level does your business operate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
+        type: "radio",
+        label: "Regional",
+        name: "BusinessLevel",
+        id: "formHorizontalRadios1",
+        value: "Regional",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Provincial",
+        name: "BusinessLevel",
+        id: "formHorizontalRadios2",
+        value: "Provincial",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "National",
+        name: "BusinessLevel",
+        id: "formHorizontalRadios3",
+        value: "National",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "International",
+        name: "BusinessLevel",
+        id: "formHorizontalRadios4",
+        value: "International",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What is your general client base"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
+        type: "radio",
+        label: "Individuals",
+        name: "ClientBase",
+        id: "individuals",
+        value: "Individuals",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Businesses",
+        name: "ClientBase",
+        id: "Businesses",
+        value: "Businesses",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Buying Groups",
+        name: "ClientBase",
+        id: "Buyinggroups",
+        value: "BuyingGroups",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "radio",
+        label: "Resellers or Distributors",
+        name: "ClientBase",
+        id: "Resellers",
+        value: "ResellersDistributors",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"]
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What do you Offer to Clients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "textarea",
+        required: true,
+        rows: "3",
+        name: "OfferToClient",
+        type: "text",
+        onChange: this.handleChange,
+        value: this.state.OfferToClient,
+        placeholder: "a short description is required"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        controlId: "formGridState"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Business annual total income"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        required: true,
+        name: "IncomeValue",
+        value: this.state.IncomeValue,
+        onChange: this.handleChange,
+        defaultvalue: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", "<", " 99,999$\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000$ - 449,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 500,000$ - 999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 1,000,000$ - 4,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 5,000,000$ - 9,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 10,000,000$ - 24,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 25,000,000$ - 49,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 50,000,000$ - 99,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " 100,000,000$ - 249,999,999$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " ", ">", " 250,000,000$")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary",
+        type: "submit"
+        /*onClick={this.handleSubmit} disabled={!this.formValid()} */
+
+      }, "Submit")));
+    }
+  }]);
+
+  return Question;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
 
 /***/ }),
 

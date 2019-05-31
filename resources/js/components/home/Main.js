@@ -4,6 +4,7 @@ import Dashboard from './home-components/Dashboard';
 import Login from "./forms/Login";
 import {Route} from "react-router";
 import Question from './questionnaires/Question';
+import { BrowserRouter as Router, Switch } from "react-router-dom"
 
 
 export default class Main extends React.Component
@@ -11,10 +12,16 @@ export default class Main extends React.Component
     render()
     {
         return (
+            <Router>
             <div>
                 <Nav />
+
                 <Dashboard />
+                <Switch>
+                <Route path="/Qu" exact component={Question}/>
+                </Switch>
             </div>
+            </Router>
         );
     }
 }

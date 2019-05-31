@@ -319,10 +319,66 @@ export default class Question extends React.Component {
                     </Col>
                 </Form.Group>
 
+                <Form.Group>
 
-              ///////////////////////
-                //////////////////////////////
-                //////////////////////////////
+                    <Col sm="5">
+                        <Form.Label>How is the business classed</Form.Label>
+                        <Form.Check type="radio"
+                                    label="Société par actions"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="SocieteActions"
+                                    onChange={this.handleChange}
+                        />
+
+                        <Form.Check type="radio"
+                                    label="Entreprise individuelle"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="EntrepriseIndividuelle"
+                                    onChange={this.handleChange}
+                        />
+
+                        <Form.Check type="radio"
+                                    label="Société en nom collectif"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="SocieteCollectif"
+                                    onChange={this.handleChange}
+                        />
+
+                        <Form.Check type="radio"
+                                    label="Coopérative"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="Cooperative"
+                                    onChange={this.handleChange}
+                        />
+
+
+                        <Form.Check type="radio"
+                                    label="Organisme sans but lucratif"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="OrganismeSansLucratif"
+                                    onChange={this.handleChange}
+                        />
+
+                        <Form.Check
+                                    type="radio"
+                                    label="Autre"
+                                    name="BusinessClass"
+                                    id="formHorizontalRadios7"
+                                    value="Autre"
+                                    onChange={this.handleChange}
+                        />
+
+
+                    </Col>
+
+
+                </Form.Group>
+
 
                 <Form.Group>
 
@@ -431,7 +487,6 @@ export default class Question extends React.Component {
                             label="Individuals"
                             name="ClientBase"
                             id="individuals"
-<<<<<<< HEAD:resources/js/components/home/Questionnaires/Question.js
                             value="Individuals"
                             onChange={this.handleChange}/>
 
@@ -456,9 +511,6 @@ export default class Question extends React.Component {
                             name="ClientBase"
                             id="Resellers"
                             value="ResellersDistributors"
-=======
-                            value=""
->>>>>>> ee81fa84af03a311420d5cc89a449f8d1d6286de:resources/js/components/home/questionnaires/Question.js
                             onChange={this.handleChange}/>
                     </Col>
                 </Form.Group>
