@@ -430,7 +430,7 @@ export default class Question extends React.Component {
                             label="Individuals"
                             name="formHorizontalRadios3"
                             id="individuals"
-                            value=
+                            value=""
                             onChange={this.handleChange}/>
                         <Form.Check type="radio" label="Businesses" name="formHorizontalRadios3"
                                     id="Businesses" value={this.state.Confirm} onChange={this.handleChange}/>

@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from './Nav';
-import Dashboard from './Dashboard';
-import Login from "../nav-forms/Login";
+import Nav from './home-components/Nav';
+import Dashboard from './home-components/Dashboard';
+import Login from "./forms/Login";
 import {Route} from "react-router";
-import Question from './Questionnaires/Question';
+import Question from './questionnaires/Question';
 
 
 export default class Main extends React.Component
@@ -14,7 +14,6 @@ export default class Main extends React.Component
             <div>
                 <Nav />
                 <Dashboard />
-                <Question />
             </div>
         );
     }

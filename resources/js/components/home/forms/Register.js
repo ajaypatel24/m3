@@ -1,25 +1,7 @@
+import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
-import {Button, Card, Col, Container, Form, FormGroup, Row} from 'react-bootstrap';
 
-export default class Dashboard extends React.Component
-{
-    render()
-    {
-        return (
-            <Container className="mt-4">
-                <Row>
-                    <Col sm>info for website</Col>
-                    <Col sm>
-                        <SignUpForm/>
-                    </Col>
-                </Row>
-            </Container>
-        );
-    }
-}
-
-
-class SignUpForm extends React.Component
+export default class SignUpForm extends React.Component
 {
     constructor(props)
     {
