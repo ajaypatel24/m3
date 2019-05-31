@@ -1,3 +1,12 @@
+## Styling
+
+**Responsiveness**:
+CSS media query (applies certain props at certain width/height): https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+Inner.width property (JS) : can be used with conditional statement to render two different pages in react (pass it down as a prop from componenent to component, or use redux)
+Bootstrap: integrated with tons of reponsive features
+
+**Bootstrap React Doc** : https://react-bootstrap.github.io/
+
 ## Resources React (Front End)
 
 **Load changes to project automatically** : `npm run watch`
