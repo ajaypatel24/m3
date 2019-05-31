@@ -14,7 +14,7 @@ export default class Main extends React.Component
             <div>
                 <Nav />
                 <Dashboard />
-                
+                <Question />
             </div>
         );
     }
