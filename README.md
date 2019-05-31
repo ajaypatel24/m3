@@ -14,6 +14,7 @@
 * **Prettier** : https://github.com/prettier/prettier => code formatter
 * **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Gpogle and Facebook Authentication
 * **Moment** : https://momentjs.com/ => Time and date library
+* **js-cookie** : https://github.com/js-cookie/js-cookie => Allows to create cookies with javascript
 * **ReCaptcha** : https://www.google.com/recaptcha/intro/v3.html
             => setting up local server : https://stackoverflow.com/questions/3232904/using-recaptcha-on-localhost
 
@@ -108,5 +109,3 @@ If .env is not included :
 
     MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
-    
-Why we need an SSL certificate => https://security.stackexchange.com/questions/113393/how-to-securely-transfer-password-from-a-registration-page-to-the-database
