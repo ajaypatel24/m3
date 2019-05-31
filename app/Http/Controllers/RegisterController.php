@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Register;
 
+use JavaScript;
+
 class RegisterController extends Controller
 {
     function register()
@@ -16,5 +18,9 @@ class RegisterController extends Controller
         $register->email = request('email');
 
         $register->save();
+
+        JavaScript::put([
+            'name' => $register->name
+        ]);
     }
 }

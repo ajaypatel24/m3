@@ -21,7 +21,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after forms.
+     * Where to redirect users after auth.
      *
      * @var string
      */

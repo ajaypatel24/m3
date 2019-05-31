@@ -7,8 +7,6 @@ const AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street nam
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
-
-
 export default class Question extends React.Component {
 
 
@@ -48,7 +46,7 @@ export default class Question extends React.Component {
 
         const data = this.state //VERY IMPORTANT
 
-        //checks all forms
+        //checks all auth
         const form = e.currentTarget;
 
         if(form.checkValidity() === false) {

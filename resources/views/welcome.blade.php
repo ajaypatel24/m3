@@ -22,7 +22,7 @@
 <!-- Appends for PHPtoJSTransformer => see documentation on README.md -->
 @include('footer')
 
-<script>var csrf_field = '<?php echo csrf_field(); ?>';</script>
+
 <!-- React entry point -->
 <div id="root"></div>
 <script src="../js/app.js"></script>

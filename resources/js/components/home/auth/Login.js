@@ -28,7 +28,6 @@ export default class Login extends React.Component
 
     handleLoginRequest = () => {
 
-
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(function () {
                 let uid = firebase.auth().currentUser.uid;
@@ -51,10 +50,11 @@ export default class Login extends React.Component
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
+            return;
             // ...
         });
 
-
+        this.props.loginSuccess();
 
     };
 

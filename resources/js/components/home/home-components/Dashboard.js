@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, Col, Container, Form, FormGroup, Row} from 'react-bootstrap';
-import SignUpForm from '../forms/Register';
+import SignUpForm from '../auth/Register';
 
 export default class Dashboard extends React.Component
 {
