@@ -24,9 +24,7 @@ class SignUpForm extends React.Component
     constructor(props)
     {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
         this.state = {
             name: '',
             organization: '',
@@ -35,7 +33,11 @@ class SignUpForm extends React.Component
             passwordConfirm: '',
             passwordStrength: 'd-none',
             passwordMatch: "d-none"
-        }
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e)
@@ -63,10 +65,11 @@ class SignUpForm extends React.Component
         }
     }
 
-    handleSubmit(e)
+    handleSubmit = (e) =>
     {
         e.preventDefault();
 
+        // Checks passwords match
         if (this.state.password !== this.state.passwordConfirm) {
             this.setState({
                 passwordMatch: "d-flex"
@@ -74,30 +77,47 @@ class SignUpForm extends React.Component
             return;
         }
 
-        let data = {
-            name: this.state.name,
-            organization: this.state.organization,
-            email: this.state.email,
-            password: this.state.password,
-        };
+        let uid = null;
+        let name = this.state.name;
+        let organization = this.state.organization;
+        let email = this.state.email;
 
-        fetch('/SignUp', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
+
+        // Signs user up and send data to custom backend
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(function () {
+            // SECURITY PROBLEM ?
+            let data = {
+                uid: firebase.auth().currentUser.uid,
+                name: name,
+                organization: organization,
+                email: email
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-            });
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                });
 
+        }).catch(function (error) {
+            // Sign Up errors
+            console.log(error.code);
+            console.log(error.message);
+
+            if (error.code === 'auth/email-already-in-use') {
+                alert("this email is already in use");
+            }
+        });
     };
-
 
     render()
     {
