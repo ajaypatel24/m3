@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Button, InputGroup, FormControl} from 'react-bootstrap';
+import {Button, FormControl, InputGroup, Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 export default class Login extends React.Component
@@ -27,25 +27,35 @@ export default class Login extends React.Component
     };
 
     handleLoginRequest = () => {
-        let data = {
-            email: this.state.email,
-            password: this.state.password
-        };
 
-        fetch('/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
-            })
-            .catch(function (error) {
-                console.log('Request failed', error);
-            });
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(function () {
+                let uid = firebase.auth().currentUser.uid;
+                console.log(uid);
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+                        console.log('Request succeeded with JSON response', data);
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
+            }).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
+
+
+
     };
 
     handleEmailChange = (e) => {

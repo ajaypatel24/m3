@@ -21,7 +21,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after nav-forms.
+     * Where to redirect users after forms.
      *
      * @var string
      */

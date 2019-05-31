@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many nav-forms attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Too many forms attempts. Please try again in :seconds seconds.',
 
 ];

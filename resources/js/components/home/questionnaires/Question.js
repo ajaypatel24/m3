@@ -431,6 +431,7 @@ export default class Question extends React.Component {
                             label="Individuals"
                             name="ClientBase"
                             id="individuals"
+<<<<<<< HEAD:resources/js/components/home/Questionnaires/Question.js
                             value="Individuals"
                             onChange={this.handleChange}/>
 
@@ -455,6 +456,9 @@ export default class Question extends React.Component {
                             name="ClientBase"
                             id="Resellers"
                             value="ResellersDistributors"
+=======
+                            value=""
+>>>>>>> ee81fa84af03a311420d5cc89a449f8d1d6286de:resources/js/components/home/questionnaires/Question.js
                             onChange={this.handleChange}/>
                     </Col>
                 </Form.Group>

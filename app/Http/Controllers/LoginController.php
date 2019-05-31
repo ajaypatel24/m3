@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class LoginController extends Controller
 {
@@ -13,12 +14,9 @@ class LoginController extends Controller
 
     function login()
     {
-        $email = request('email');
-        $pass = request('password');
+        $uid = request('uid');
+        $user = DB::table('register')->where('uid', $uid)->get();
 
-        echo('email :' . $email);
-        echo('password :' . $pass);
-
-        return null;
+        // return information needed for front page display etc...
     }
 }

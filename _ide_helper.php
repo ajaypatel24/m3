@@ -1871,7 +1871,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Perform a stateless HTTP Basic nav-forms attempt.
+         * Perform a stateless HTTP Basic forms attempt.
          *
          * @param string $field
          * @param array $extraConditions

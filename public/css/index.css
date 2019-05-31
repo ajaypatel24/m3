@@ -1,13 +1,18 @@
-.login-btn-color{
-    background-color:red !important;
-    border-color: red !important;
-}
-
-.signup-btn-color{
+.login-btn-color {
     background-color: #284B63 !important;
     border-color: #284B63 !important;
 }
 
-.red-text{
-    color:red;
+.login-btn-color-font {
+    background-color: #284B63 !important;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.icon-transform {
+    transform: translate(-20%, 17.5%);
+}
+
+.red-text {
+    color: red;
 }

@@ -13,6 +13,7 @@
 
 Route::get('/', 'LoginController@index');
 
-Route::post('/', 'LoginController@login');
+Route::post('/login', 'LoginController@login');
 
+Route::post('/register', 'RegisterController@register');
 Route::post('/','PrestartController@store');
