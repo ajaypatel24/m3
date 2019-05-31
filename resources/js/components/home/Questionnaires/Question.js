@@ -8,102 +8,15 @@ const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
 
-const data = [{
-    label: 'Agriculture, foresterie, peche et chasse',
-    value: 'SCIAN 11'
-},
-    {
-        label: 'Extraction miniere et extracion de petrole et de gaz',
-        value: 'SCIAN 21'
-    },
-    {
-        label: 'Services publics',
-        value: 'SCIAN 22'
-    },
-    {
-        label: 'Construction',
-        value: 'SCIAN 23'
-    },
-    {
-        label: 'Fabrication',
-        value: 'SCIAN 31-33'
-    },
-    {
-        label: 'Commerce de gros',
-        value: 'SCIAN 41'
-    },
-    {
-        label: 'Commerce de détail',
-        value: 'SCIAN 44-45'
-    },
-    {
-        label: 'Transport et entreposage',
-        value: 'SCIAN 48-49'
-    },
-    {
-        label: 'Industrie de l\'information et industrie culturelle',
-        value: 'SCIAN 51'
-    },
-    {
-        label: 'Finance et assurances',
-        value: 'SCIAN 52'
-    },
-    {
-        label: 'Services d\'immobiliers et services de location et de location à bail',
-        value: 'SCIAN 53'
-    },
-    {
-        label: 'Services professionnels, scientifiques et techniques',
-        value: 'SCIAN 54'
-    },
-    {
-        label: 'Gestion de sociétés et d\'entreprises',
-        value: 'SCIAN 55'
-    },
-    {
-        label: 'Services administratifs, services de soutien, services de gestion de déchets et services d\'assainissement',
-        value: 'SCIAN 56'
-    },
-    {
-        label: 'Soins de santé et assistance sociale',
-        value: 'SCIAN 62'
-    },
-    {
-        label: 'Arts, spectacles et loisirs',
-        value: 'SCIAN 71'
-    },
-    {
-        label: 'Hébergement et services de restauration',
-        value: 'SCIAN 72'
-    },
-    {
-        label: 'Autres services – sauf les administrations publiques',
-        value: 'SCIAN 81'
-    },];
-
 
 export default class Question extends React.Component {
 
 
     constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        super(props); //required
 
-
-        {/*handles submit */
-        }
-
-        {/*
-
-            FirstName: "",
-            LastName: "",
-            Organization: "",
-            Role: "",
-            Email: "",
-            Password: "",
-            PasswordVerify: "",
-            */}
+        this.handleChange = this.handleChange.bind(this); //handle change function
+        this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
 
         this.state = {
 
@@ -129,99 +42,38 @@ export default class Question extends React.Component {
         };
     }
 
-    /*
-        handleLoginRequest = () => {
-            let data = {
-                BusinessName: this.state.BusinessName,
-                QuebecAddress: this.state.QuebecAddress,
-                City: this.state.City,
-                PostalCode: this.state.PostalCode,
-                CorporateAddress: this.state.CorporateAddress,
-                IncomeValue: this.state.IncomeValue,
-                SCIAN: this.state.SCIAN,
-                EmployeeNumber: this.state.EmployeeNumber,
-                OfferToClient: this.state.OfferToClient,
-                Confirm: this.state.Confirm,
-
-
-
-
-
-            };
-
-
-
-        };
-        */
-
-
-    handleValidation() {
-
-        let valid = true;
-
-
-        //const CorporateAddressRegex = new RegExp("^[0-9]+ [a-z]+$");
-        //const OfferToClientRegex = new RegExp("^[a-zA-Z0-9_]+$")
-
-        if (!AddressRegex.test(this.state.QuebecAddress)) {
-            //alert("invalid, Address must be a number followed by a street name");
-
-            valid = false;
-        }
-
-        if (!CityRegex.test(this.state.City)) {
-            valid = false;
-        }
-
-        if (!PostalRegex.test(this.state.PostalCode)) {
-            //alert("invalid, must be lnl nln");
-            valid = false;
-        }
-
-        if (!AddressRegex.test(this.state.CorporateAddress)) {
-            valid = false;
-        }
-        /*
-        if (!OfferToClientRegex.test(this.state.OfferToClient)) {
-            valid = false;
-        }
-        */
-        alert("this valid: ", result)
-        return valid;
-
-    }
 
     handleSubmit(e) {
         e.preventDefault();
 
+        const data = this.state //VERY IMPORTANT
 
-        //this.handleValidation();
-
+        //checks all forms
         const form = e.currentTarget;
 
         if(form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
         }
-        this.setState(({validated: true}));
+        else {
+            fetch('/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
-
-        fetch('/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-            });
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                });
 
+        }
+        this.setState(({validated: true}));
         console.log(data);
 
 
@@ -397,7 +249,8 @@ export default class Question extends React.Component {
                         <Form.Check type="radio"
                                     label={'Entreprise en Distribution'}
                                     name="formHorizontalRadios4"
-                                    id="formHorizontalRadios3"/>
+                                    id="formHorizontalRadios3"
+                                    value="EntrePrise en Distribution"/>
                         <Form.Check type="radio"
                                     label={'Entreprise de Services'}
                                     name="formHorizontalRadios4"
@@ -526,6 +379,7 @@ export default class Question extends React.Component {
                             label="Yes"
                             name="formHorizontalRadios1"
                             id="formHorizontalRadios1"
+                            value="YES"
                         />
                         <Form.Check
                             type="radio"
@@ -571,8 +425,13 @@ export default class Question extends React.Component {
                     <Col sm="5">
                         <Form.Label>What is your general client base
                         </Form.Label>
-                        <Form.Check type="radio" label="Individuals" name="formHorizontalRadios3"
-                                    id="individuals"  value={this.check} onChange={this.handleChange}/>
+                        <Form.Check
+                            type="radio"
+                            label="Individuals"
+                            name="formHorizontalRadios3"
+                            id="individuals"
+                            value=
+                            onChange={this.handleChange}/>
                         <Form.Check type="radio" label="Businesses" name="formHorizontalRadios3"
                                     id="Businesses" value={this.state.Confirm} onChange={this.handleChange}/>
                         <Form.Check type="radio" label="Buying groups" name="formHorizontalRadios3"
