@@ -14,6 +14,7 @@
 * **Prettier** : https://github.com/prettier/prettier => code formatter
 * **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Gpogle and Facebook Authentication
 * **Moment** : https://momentjs.com/ => Time and date library
+* **js-cookie** : https://github.com/js-cookie/js-cookie => Allows to create cookies with javascript
 * **ReCaptcha** : https://www.google.com/recaptcha/intro/v3.html
             => setting up local server : https://stackoverflow.com/questions/3232904/using-recaptcha-on-localhost
 
