@@ -44,7 +44,7 @@ export default class Question extends React.Component {
 
         const data = this.state; //VERY IMPORTANT
 
-        //checks all forms
+        //checks all auth
         const form = e.currentTarget;
 
         if (form.checkValidity() === false) {

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
-import Main from './home/Main';
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import Question from './home/questionnaires/Question';
+import Nav from "./home/home-components/Nav";
+import Dashboard from "./home/home-components/Dashboard";
 
 export default class App extends React.Component
 {
@@ -17,7 +19,12 @@ export default class App extends React.Component
     {
         return (
             <BrowserRouter>
-                <Main width={this.state.width}/>
+                <Nav/>
+                <Link to="/prestart_questions/" replace>Prestart Question</Link>
+                <Switch>
+                    <Route exact path="/" component={Dashboard}/>
+                    <Route path="/prestart_questions/" component={Question}/>
+                </Switch>
             </BrowserRouter>
         );
     }
