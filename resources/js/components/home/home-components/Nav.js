@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar, Form, Button} from "react-bootstrap";
 
-import Login from "../forms/Login";
+//import Login from "../forms/Login";
 import {Route} from "react-router";
 import { BrowserRouter as Router } from 'react-router-dom'
 
