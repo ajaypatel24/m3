@@ -79244,6 +79244,7 @@ function (_React$Component) {
         })["catch"](function (error) {
           console.log('Request failed', error);
         });
+        console.log(data);
       })["catch"](function (error) {
         // Sign Up errors
         console.log(error.code);
@@ -79252,6 +79253,9 @@ function (_React$Component) {
         if (error.code === 'auth/email-already-in-use') {
           alert("this email is already in use");
         }
+
+        console.log(error.code);
+        console.log(error.message);
       });
     };
 
@@ -79422,6 +79426,224 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/home/home-components/LoggedIn.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/home/home-components/LoggedIn.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoggedIn; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var CityRegex = new RegExp("^[a-zA-Z]+$"); //
+
+var AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
+
+var PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
+
+var LoggedIn =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(LoggedIn, _React$Component);
+
+  function LoggedIn(props) {
+    var _this;
+
+    _classCallCheck(this, LoggedIn);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoggedIn).call(this, props)); //required
+
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this)); //handle change function
+
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); //handle submit function
+
+    _this.state = {
+      BusinessName: "",
+      QuebecAddress: "",
+      City: "",
+      PostalCode: "",
+      CorporateAddress: "",
+      IncomeValue: "",
+      EmployeeNumber: "",
+      OfferToClient: "",
+      SectorActivity: "",
+      ClientBase: "",
+      DiffCorpAddress: "",
+      validated: false,
+      BusinessNameError: ""
+    };
+    return _this;
+  }
+
+  _createClass(LoggedIn, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var data = this.state; //VERY IMPORTANT
+      //checks all auth
+
+      var form = e.currentTarget;
+
+      if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        fetch('/', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            "Content-type": "application/json"
+          }
+        }).then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+        })["catch"](function (error) {
+          console.log('Request failed', error);
+        });
+      }
+
+      this.setState({
+        validated: true
+      });
+      console.log(data);
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      {
+        /* = e => */
+      }
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log("Name: ", e.target.name);
+      console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleOptionChange",
+    value: function handleOptionChange(changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
+  }, {
+    key: "showHideDiv",
+    value: function showHideDiv(corpAddress) {
+      var box = document.getElementById("corpAddress");
+      box.style.display = checkCorp.checked ? "block" : "none";
+    }
+  }, {
+    key: "handleCheck",
+    value: function handleCheck() {
+      if (this.state.DiffCorpAddress != "") {
+        console.log(this.state.DiffCorpAddress);
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "formValid",
+    value: function formValid() {
+      var _this$state = this.state,
+          BusinessName = _this$state.BusinessName,
+          QuebecAddress = _this$state.QuebecAddress,
+          City = _this$state.City,
+          PostalCode = _this$state.PostalCode,
+          CorporateAddress = _this$state.CorporateAddress;
+      var g = BusinessName && QuebecAddress && City && PostalCode && CorporateAddress;
+      console.log(g);
+      return g; //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Container, {
+        id: "left-tabs-example",
+        defaultActiveKey: "first"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: 2
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
+        variant: "pills",
+        className: "flex-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "first"
+      }, "Tab 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "second"
+      }, "Tab 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "third"
+      }, "Tab 3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+        eventKey: "fourth"
+      }, "Tab 4")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: 10
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "first"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "{4}"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        as: "h5"
+      }, "Featured"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary"
+      }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "second"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "{4}"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        as: "h5"
+      }, "Tab 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary"
+      }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "third"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "{4}"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        as: "h5"
+      }, "Tab 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary"
+      }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
+        eventKey: "fourth"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        sm: "{4}"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
+        as: "h5"
+      }, "Tab 3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary"
+      }, "Go somewhere"))))))))));
+    }
+  }]);
+
+  return LoggedIn;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/home/home-components/Nav.js":
 /*!*************************************************************!*\
   !*** ./resources/js/components/home/home-components/Nav.js ***!
@@ -79511,16 +79733,14 @@ function (_React$Component) {
         expand: "lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
         className: "ml-3",
-        href: "#home"
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + "/img/cadet_logo.svg",
         width: "100",
         height: "100",
         className: "d-inline-block align-top",
         alt: "Cadet Logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/Qu"
-      }, "test route"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         className: "mr-3",
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -79544,7 +79764,7 @@ function (_React$Component) {
           expand: "lg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
           className: "ml-3",
-          href: "#home"
+          href: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + "/img/cadet_logo.svg",
           width: "100",
@@ -79575,7 +79795,7 @@ function (_React$Component) {
           expand: "lg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
           className: "ml-3",
-          href: "#home"
+          href: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + "/img/cadet_logo.svg",
           width: "100",
@@ -79633,7 +79853,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var CityRegex = new RegExp("^[a-zA-Z]+$"); //
 
-var AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
+var AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 
 var PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
@@ -79664,9 +79884,10 @@ function (_React$Component) {
       OfferToClient: "",
       SectorActivity: "",
       ClientBase: "",
+      BusinessLevel: "",
+      BusinessClass: "",
       DiffCorpAddress: "",
-      validated: false,
-      BusinessNameError: ""
+      validated: false
     };
     return _this;
   }
@@ -79695,6 +79916,7 @@ function (_React$Component) {
           console.log('Request succeeded with JSON response', data);
         })["catch"](function (error) {
           console.log('Request failed', error);
+          console.log("why");
         });
       }
 
@@ -79721,12 +79943,6 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "showHideDiv",
-    value: function showHideDiv(corpAddress) {
-      var box = document.getElementById("corpAddress");
-      box.style.display = checkCorp.checked ? "block" : "none";
-    }
-  }, {
     key: "handleCheck",
     value: function handleCheck() {
       if (this.state.DiffCorpAddress != "") {
@@ -79735,19 +79951,6 @@ function (_React$Component) {
       }
 
       return false;
-    }
-  }, {
-    key: "formValid",
-    value: function formValid() {
-      var _this$state = this.state,
-          BusinessName = _this$state.BusinessName,
-          QuebecAddress = _this$state.QuebecAddress,
-          City = _this$state.City,
-          PostalCode = _this$state.PostalCode,
-          CorporateAddress = _this$state.CorporateAddress;
-      var g = BusinessName && QuebecAddress && City && PostalCode && CorporateAddress;
-      console.log(g);
-      return g; //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
     }
   }, {
     key: "render",
@@ -79785,7 +79988,7 @@ function (_React$Component) {
         placeholder: "Quebec address",
         onChange: this.handleChange,
         value: this.state.QuebecAddress,
-        pattern: "^[0-9]+ [a-z]+$"
+        pattern: "^[0-9]+ [A-z]+$"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
@@ -79915,6 +80118,7 @@ function (_React$Component) {
       }, " Autres services \u2013 sauf les administrations publiques"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "How is the business classed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
         type: "radio",
         label: "Soci\xE9t\xE9 par actions",
         name: "BusinessClass",
@@ -80106,8 +80310,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/questionnaires/Question */ "./resources/js/components/home/questionnaires/Question.js");
-/* harmony import */ var _home_home_components_Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
-/* harmony import */ var _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
+/* harmony import */ var _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home-components/LoggedIn */ "./resources/js/components/home/home-components/LoggedIn.js");
+/* harmony import */ var _home_home_components_Nav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
+/* harmony import */ var _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -80125,6 +80330,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -80153,17 +80359,26 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_home_components_Nav__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/prestart_questions/",
-        replace: true
-      }, "Prestart Question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/",
-        component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/prestart_questions/",
-        component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
-      })));
+      return (
+        /*full routing found here*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_home_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/prestart_questions/",
+          replace: true
+        }, "Prestart Question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/test_login/",
+          replace: true
+        }, "test login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+          exact: true,
+          path: "/",
+          component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+          path: "/prestart_questions/",
+          component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+          path: "/test_login/",
+          component: _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__["default"]
+        })))
+      );
     }
   }]);
 

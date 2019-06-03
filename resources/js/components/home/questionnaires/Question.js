@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
-const AddressRegex = new RegExp("^[0-9]+ [a-z]+$"); //"civic number" "street name"
+const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
@@ -16,8 +16,6 @@ export default class Question extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
 
         this.state = {
-
-
             BusinessName: "",
             QuebecAddress: "",
             City: "",
@@ -28,12 +26,10 @@ export default class Question extends React.Component {
             OfferToClient: "",
             SectorActivity: "",
             ClientBase: "",
-
+            BusinessLevel: "",
+            BusinessClass: "",
             DiffCorpAddress: "",
             validated: false,
-
-
-            BusinessNameError: ""
 
         };
     }
@@ -50,7 +46,8 @@ export default class Question extends React.Component {
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
-        } else {
+        }
+        else {
             fetch('/', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -65,6 +62,7 @@ export default class Question extends React.Component {
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
+                    console.log("why");
                 });
 
         }
@@ -94,11 +92,7 @@ export default class Question extends React.Component {
         });
     }
 
-    showHideDiv(corpAddress) {
-        var box = document.getElementById("corpAddress");
-        box.style.display = checkCorp.checked ? "block" : "none";
 
-    }
 
     handleCheck() {
         if (this.state.DiffCorpAddress != "") {
@@ -107,22 +101,6 @@ export default class Question extends React.Component {
         }
         return false;
     }
-
-
-    formValid() {
-        const {
-            BusinessName, QuebecAddress,
-            City, PostalCode, CorporateAddress
-        } = this.state;
-
-        let g = BusinessName && QuebecAddress &&
-            City && PostalCode && CorporateAddress;
-
-
-        console.log(g);
-        return g
-        //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
-    };
 
 
     render() {
@@ -163,7 +141,7 @@ export default class Question extends React.Component {
                             placeholder="Quebec address"
                             onChange={this.handleChange}
                             value={this.state.QuebecAddress}
-                            pattern="^[0-9]+ [a-z]+$"
+                            pattern="^[0-9]+ [A-z]+$"
 
                         />
 
@@ -323,7 +301,9 @@ export default class Question extends React.Component {
 
                     <Col sm="5">
                         <Form.Label>How is the business classed</Form.Label>
-                        <Form.Check type="radio"
+                        <Form.Check
+                                    required
+                                    type="radio"
                                     label="Société par actions"
                                     name="BusinessClass"
                                     id="formHorizontalRadios7"

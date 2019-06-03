@@ -19,13 +19,15 @@ class Prestart extends Migration
             $table->string("City", 50);
             $table->string("PostalCode", 50);
             $table->string("CorporateAddress", 50);
-            $table->string("IncomeValue", 50);
-            $table->string("SCIAN", 50);
-            $table->string("EmployeeNumber", 50);
-            $table->string("OfferToClient", 50);
-            $table->string("Confirm", 50);
-            $table->timestamp();
-
+            $table->string("BusinessType", 50);
+            $table->string("SectorActivity", 50);
+            $table->string("BusinessClass", 50);
+            $table->string("NumberEmployee", 50);
+            $table->string("SustainableCommittee", 50);
+            $table->string("BusinessOperation", 50);
+            $table->string("BusinessClientBase", 50);
+            $table->string("OfferToClients", 300);
+            $table->string("BusinessAnnualIncome", 50);
         });
     }
 

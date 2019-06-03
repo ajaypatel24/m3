@@ -44,7 +44,7 @@ export default class Nav extends React.Component
 
         return (
             <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
-                <Navbar.Brand className="ml-3" href="#home">
+                <Navbar.Brand className="ml-3" href="/">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
                         width="100"
@@ -55,7 +55,7 @@ export default class Nav extends React.Component
                 </Navbar.Brand>
 
 
-                <a href="/Qu">test route</a>
+
 
                 <Form className="mr-3" inline>
                     <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
@@ -67,7 +67,7 @@ export default class Nav extends React.Component
         if(!this.state.loggedIn) {
             return (
                 <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
-                    <Navbar.Brand className="ml-3" href="#home">
+                    <Navbar.Brand className="ml-3" href="/">
                         <img
                             src={window.location.origin + "/img/cadet_logo.svg"}
                             width="100"
@@ -87,7 +87,7 @@ export default class Nav extends React.Component
         }else{
             return(
                 <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
-                    <Navbar.Brand className="ml-3" href="#home">
+                    <Navbar.Brand className="ml-3" href="/">
                         <img
                             src={window.location.origin + "/img/cadet_logo.svg"}
                             width="100"

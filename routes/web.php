@@ -11,9 +11,19 @@
 |
 */
 
+
+/* Route::(method)('/path/', ControllerFileName@methodToExecute'); */
+
+
 Route::get('/', 'LoginController@index');
 
 Route::post('/login', 'LoginController@login');
 
 Route::post('/register', 'RegisterController@register');
-Route::post('/','PrestartController@store');
+
+
+Route::post('/','PrestartController@store'); /*method from php controller */
+
+
+
+

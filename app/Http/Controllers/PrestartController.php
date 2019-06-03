@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PrestartController extends Controller
@@ -23,11 +24,22 @@ class PrestartController extends Controller
             $SCIAN = request('SCIAN');
             $EmployeeNumber = request('EmployeeNumber');
             $OfferToClient = request('OfferToClient');
-            $Confirm = request('Confirm');
+            $SectorActivity = request('SectorActivity');
+            $ClientBase = request('ClientBase');
 
-            echo('BusinessName :' . $BusinessName);
-            echo('Confirm :' . $Confirm);
-            echo('QuebecAddress: ' . $QuebecAddress);
+            echo ('BusinessName: ' + $BusinessName);
+            echo ('QuebecAddress: ' + $QuebecAddress);
+            echo ('BusinessName: ' + $City);
+            echo ('BusinessName: ' + $PostalCode);
+            echo ('BusinessName: ' + $CorporateAddress);
+            echo ('BusinessName: ' + $IncomeValue);
+            echo ('BusinessName: ' + $SCIAN);
+            echo ('BusinessName: ' + $EmployeeNumber);
+            echo ('BusinessName: ' + $OfferToClient);
+            echo ('BusinessName: ' + $SectorActivity);
+            echo ('BusinessName: ' + $ClientBase);
+
+
 
             return null;
         }

@@ -17,9 +17,6 @@ export default class Main extends React.Component
                 <Nav />
 
                 <Dashboard />
-                <Switch>
-                <Route path="/Qu" exact component={Question}/>
-                </Switch>
             </div>
             </Router>
         );

@@ -90,6 +90,9 @@ export default class SignUpForm extends React.Component
                     console.log('Request failed', error);
                 });
 
+
+            console.log(data);
+
         }).catch(function (error) {
             // Sign Up errors
             console.log(error.code);
@@ -98,6 +101,8 @@ export default class SignUpForm extends React.Component
             if (error.code === 'auth/email-already-in-use') {
                 alert("this email is already in use");
             }
+            console.log(error.code);
+            console.log(error.message);
         });
     };
 
