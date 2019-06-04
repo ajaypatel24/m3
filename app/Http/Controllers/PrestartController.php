@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\prestart;
 use Illuminate\Http\Request;
+
 
 class PrestartController extends Controller
 {
@@ -13,35 +14,39 @@ class PrestartController extends Controller
         return view('welcome');
     }
 
-    function store () {
+    function store(request $request)
+    {
 
-            $BusinessName = request('BusinessName');
-            $QuebecAddress = request('QuebecAddress');
-            $City = request('City');
-            $PostalCode = request('PostalCode');
-            $CorporateAddress = request('CorporateAddress');
-            $IncomeValue = request('IncomeValue');
-            $SCIAN = request('SCIAN');
-            $EmployeeNumber = request('EmployeeNumber');
-            $OfferToClient = request('OfferToClient');
-            $SectorActivity = request('SectorActivity');
-            $ClientBase = request('ClientBase');
+        $prestart = new prestart();
 
-            echo ('BusinessName: ' + $BusinessName);
-            echo ('QuebecAddress: ' + $QuebecAddress);
-            echo ('BusinessName: ' + $City);
-            echo ('BusinessName: ' + $PostalCode);
-            echo ('BusinessName: ' + $CorporateAddress);
-            echo ('BusinessName: ' + $IncomeValue);
-            echo ('BusinessName: ' + $SCIAN);
-            echo ('BusinessName: ' + $EmployeeNumber);
-            echo ('BusinessName: ' + $OfferToClient);
-            echo ('BusinessName: ' + $SectorActivity);
-            echo ('BusinessName: ' + $ClientBase);
+        $prestart->BusinessName = request('BusinessName');
+        $prestart->QuebecAddress = request('QuebecAddress');
+        $prestart->City = request('City');
+        $prestart->PostalCode = request('PostalCode');
+        $prestart->CorporateAddress = request('CorporateAddress');
+        $prestart->IncomeValue = request('IncomeValue');
+        $prestart->BusinessType = request('BusinessType');
+        $prestart->SectorActivity = request('SectorActivity');
+        $prestart->BusinessClass = request('BusinessClass');
+        $prestart->ExistCommittee = request('ExistCommittee');
+        $prestart->BusinessLevel = request('BusinessLevel');
+        $prestart->BusinessClientBase = request('BusinessClientBase');
+        $prestart->IncomeValue = request('IncomeValue');
+        $prestart->EmployeeNumber = request('EmployeeNumber');
+        $prestart->OfferToClient = request('OfferToClient');
 
 
+        $prestart->save();
 
-            return null;
-        }
+
     }
+
+    function p() { //test method to see if data is retrieved from database
+        $prestart = Prestart::all()->toArray();
+
+        return $prestart;
+
+
+    }
+}
 

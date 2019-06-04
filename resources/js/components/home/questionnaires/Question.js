@@ -23,11 +23,13 @@ export default class Question extends React.Component {
             CorporateAddress: "",
             IncomeValue: "",
             EmployeeNumber: "",
+            ExistCommittee: "",
             OfferToClient: "",
             SectorActivity: "",
-            ClientBase: "",
+            BusinessClientBase: "",
             BusinessLevel: "",
             BusinessClass: "",
+            BusinessType: "",
             DiffCorpAddress: "",
             validated: false,
 
@@ -73,9 +75,6 @@ export default class Question extends React.Component {
     };
 
     handleChange(e) {
-        { /* = e => */
-        }
-
 
         this.setState({
             [e.target.name]: e.target.value
@@ -110,7 +109,7 @@ export default class Question extends React.Component {
 
             < Form noValidate
                    validated={validated}
-                   onSubmit={e => this.handleSubmit(e)} method="POST" action="/"> {/*start of form*/}
+                   onSubmit={e => this.handleSubmit(e)} method="POST" action="/" enctype="multipart/form-data"> {/*start of form*/}
 
 
                 {/*group 2*/}
@@ -192,7 +191,7 @@ export default class Question extends React.Component {
                     <Col sm="5">
                         <Form.Check controlId="CheckCorp" type="checkbox" label="different corporate address" value="DiffCorpAddress"/>
                         <Form.Control
-                            disabled 
+
                             controlId="corpAddress"
                             name="CorporateAddress"
                             required
@@ -221,35 +220,35 @@ export default class Question extends React.Component {
                                     type="radio"
                                     class="text-dark"
                                     label="PME Manufacturiere"
-                                    name="TypeOfBusiness"
+                                    name="BusinessType"
                                     id="formHorizontalRadios1"
                                     value="PME"
                                     onChange={this.handleChange}
                         />
                         <Form.Check type="radio"
                                     label={'TPE Manufacturiere'}
-                                    name="TypeOfBusiness"
+                                    name="BusinessType"
                                     id="formHorizontalRadios2"
                                     value="TPE"
                                     onChange={this.handleChange}
                         />
                         <Form.Check type="radio"
                                     label={'Entreprise en Distribution'}
-                                    name="TypeOfBusiness"
+                                    name="BusinessType"
                                     id="formHorizontalRadios3"
                                     value="EntrePriseDistribution"
                                     onChange={this.handleChange}
                         />
                         <Form.Check type="radio"
                                     label={'Entreprise de Services'}
-                                    name="TypeOfBusiness"
+                                    name="BusinessType"
                                     id="formHorizontalRadios4"
                                     value="EntrepriseServices"
                                     onChange={this.handleChange}
                         />
                         <Form.Check type="radio"
                                     label="Autre"
-                                    name="TypeOfBusiness"
+                                    name="BusinessType"
                                     id="formHorizontalRadios5"
                                     value="Autre"
                                     onChange={this.handleChange}
@@ -465,7 +464,7 @@ export default class Question extends React.Component {
                             required
                             type="radio"
                             label="Individuals"
-                            name="ClientBase"
+                            name="BusinessClientBase"
                             id="individuals"
                             value="Individuals"
                             onChange={this.handleChange}/>
@@ -474,21 +473,21 @@ export default class Question extends React.Component {
 
                             type="radio"
                             label="Businesses"
-                            name="ClientBase"
+                            name="BusinessClientBase"
                             id="Businesses"
                             value="Businesses"
                             onChange={this.handleChange}/>
                         <Form.Check
                             type="radio"
                             label="Buying Groups"
-                            name="ClientBase"
+                            name="BusinessClientBase"
                             id="Buyinggroups"
                             value="BuyingGroups"
                             onChange={this.handleChange}/>
                         <Form.Check
                             type="radio"
                             label="Resellers or Distributors"
-                            name="ClientBase"
+                            name="BusinessClientBase"
                             id="Resellers"
                             value="ResellersDistributors"
                             onChange={this.handleChange}/>

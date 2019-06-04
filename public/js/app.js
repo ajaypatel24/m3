@@ -79881,11 +79881,13 @@ function (_React$Component) {
       CorporateAddress: "",
       IncomeValue: "",
       EmployeeNumber: "",
+      ExistCommittee: "",
       OfferToClient: "",
       SectorActivity: "",
-      ClientBase: "",
+      BusinessClientBase: "",
       BusinessLevel: "",
       BusinessClass: "",
+      BusinessType: "",
       DiffCorpAddress: "",
       validated: false
     };
@@ -79928,9 +79930,6 @@ function (_React$Component) {
   }, {
     key: "handleChange",
     value: function handleChange(e) {
-      {
-        /* = e => */
-      }
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
@@ -79965,7 +79964,8 @@ function (_React$Component) {
           return _this2.handleSubmit(e);
         },
         method: "POST",
-        action: "/"
+        action: "/",
+        enctype: "multipart/form-data"
       }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "validationCustom01"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -80021,7 +80021,6 @@ function (_React$Component) {
         label: "different corporate address",
         value: "DiffCorpAddress"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        disabled: true,
         controlId: "corpAddress",
         name: "CorporateAddress",
         required: true,
@@ -80037,35 +80036,35 @@ function (_React$Component) {
         type: "radio",
         "class": "text-dark",
         label: "PME Manufacturiere",
-        name: "TypeOfBusiness",
+        name: "BusinessType",
         id: "formHorizontalRadios1",
         value: "PME",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: 'TPE Manufacturiere',
-        name: "TypeOfBusiness",
+        name: "BusinessType",
         id: "formHorizontalRadios2",
         value: "TPE",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: 'Entreprise en Distribution',
-        name: "TypeOfBusiness",
+        name: "BusinessType",
         id: "formHorizontalRadios3",
         value: "EntrePriseDistribution",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: 'Entreprise de Services',
-        name: "TypeOfBusiness",
+        name: "BusinessType",
         id: "formHorizontalRadios4",
         value: "EntrepriseServices",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: "Autre",
-        name: "TypeOfBusiness",
+        name: "BusinessType",
         id: "formHorizontalRadios5",
         value: "Autre",
         onChange: this.handleChange
@@ -80226,28 +80225,28 @@ function (_React$Component) {
         required: true,
         type: "radio",
         label: "Individuals",
-        name: "ClientBase",
+        name: "BusinessClientBase",
         id: "individuals",
         value: "Individuals",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: "Businesses",
-        name: "ClientBase",
+        name: "BusinessClientBase",
         id: "Businesses",
         value: "Businesses",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: "Buying Groups",
-        name: "ClientBase",
+        name: "BusinessClientBase",
         id: "Buyinggroups",
         value: "BuyingGroups",
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "radio",
         label: "Resellers or Distributors",
-        name: "ClientBase",
+        name: "BusinessClientBase",
         id: "Resellers",
         value: "ResellersDistributors",
         onChange: this.handleChange

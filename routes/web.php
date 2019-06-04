@@ -24,6 +24,8 @@ Route::post('/register', 'RegisterController@register');
 
 Route::post('/','PrestartController@store'); /*method from php controller */
 
+Route::get('/data', 'PrestartController@p');
+
 
 
 
