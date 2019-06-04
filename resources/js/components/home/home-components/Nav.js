@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, Form, Button} from "react-bootstrap";
+import {Navbar, Form, Button, NavDropdown } from "react-bootstrap";
 
 //import Login from "../forms/Login";
 import {Route} from "react-router";
@@ -43,7 +43,8 @@ export default class Nav extends React.Component
     {
 
         return (
-            <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
+
+            <Navbar className="d-flex justify-content-between" bg="light" variant="light" expand="lg">
                 <Navbar.Brand className="ml-3" href="/">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
@@ -56,12 +57,19 @@ export default class Nav extends React.Component
 
 
 
+                <a href="#">External Links</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+
+
 
                 <Form className="mr-3" inline>
                     <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
                     <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
                 </Form>
             </Navbar>
+
+
         );
 
         if(!this.state.loggedIn) {

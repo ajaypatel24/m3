@@ -4,6 +4,7 @@ import Dashboard from './home-components/Dashboard';
 import Login from "./forms/Login";
 import {Route} from "react-router";
 import Question from './questionnaires/Question';
+import AboutUs from './home-components/AboutUs'
 import { BrowserRouter as Router, Switch } from "react-router-dom"
 
 
@@ -17,6 +18,7 @@ export default class Main extends React.Component
                 <Nav />
 
                 <Dashboard />
+
             </div>
             </Router>
         );
