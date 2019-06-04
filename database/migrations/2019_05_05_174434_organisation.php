@@ -17,8 +17,12 @@ class Organisation extends Migration
 
 
 
+            $table->integer("ZoneGeographique_idZoneGeographique");
 
-
+            $table->
+            foreign("ZoneGeographique_idZoneGeographique")->
+            references("idZoneGeographique")->
+            on("zone_geographique");
 
 
             $table->integer("Scian_idScian");
@@ -28,12 +32,8 @@ class Organisation extends Migration
             references("idScian")->
             on("scian");
 
-            $table->integer("ZoneGeographique_idZoneGeographique");
 
-            $table->
-            foreign("ZoneGeographique_idZoneGeographique")->
-            references("idZoneGeographique")->
-            on("zone_geographique");
+
 
 
             $table->increments("idOrganisation");

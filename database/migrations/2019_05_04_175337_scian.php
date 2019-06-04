@@ -16,7 +16,7 @@ class Scian extends Migration
         Schema::create("scian", function(Blueprint $table)
         {
 
-            $table->integer("idScian");
+            $table->integer("idScian")->primary();
             $table->decimal("Code_2", 2);
             $table->decimal("Code_6", 6);
             $table->string("Secteur_EN", 45);

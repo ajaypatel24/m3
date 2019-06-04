@@ -13,9 +13,9 @@ class ZoneGeographique extends Migration
      */
     public function up()
     {
-        Schema::create('zonegeographique', function (Blueprint $table) {
+        Schema::create('zone_geographique', function (Blueprint $table) {
 
-            $table->integer("idZoneGeographique");
+            $table->integer("idZoneGeographique")->primary();
            $table->string("Municipalite", 20);
            $table->string("MRC", 20);
            $table->string("Region_adm", 20);
