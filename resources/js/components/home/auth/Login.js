@@ -2,10 +2,6 @@ import React from 'react';
 import {Button, FormControl, InputGroup, Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-import Auth from '../auth/Auth';
-
-const auth = new Auth();
-
 export default class Login extends React.Component
 {
     constructor(props)
@@ -14,8 +10,7 @@ export default class Login extends React.Component
         this.state = {
             email: '',
             password: '',
-            emailAndPasswordShow: 'd-none',
-            auth: '',
+            emailAndPasswordShow: 'd-none'
         }
     }
 
@@ -32,7 +27,6 @@ export default class Login extends React.Component
     };
 
     handleLoginRequest = () => {
-        auth.login();
 
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(function () {

@@ -29,12 +29,3 @@ Route::get('/data', 'PrestartController@p');
 
 
 
-
-Auth::routes(); /* part of laravel authentication */
-
-Route::get('/home', 'AdminController@index');
-
-Route::get('/home', 'HomeController@index');
-
-
-

@@ -1,7 +1,5 @@
 <?php
 
-use App\User;
-
 return [
 
     /*
@@ -16,12 +14,9 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web', //way to log people in, different types exist
+        'guard' => 'web',
         'passwords' => 'users',
     ],
-
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -46,19 +41,10 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ],
-        'admin-api' => [
-            'driver' => 'token',
-            'provider' => 'admins',
         ],
     ],
 
@@ -79,14 +65,10 @@ return [
     |
     */
 
-    'providers' => [ //how to communicate with database
+    'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-        ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -115,11 +97,6 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
-        'admins' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60, //time stayed logged in
         ],
     ],
 

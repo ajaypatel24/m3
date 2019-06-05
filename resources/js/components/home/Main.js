@@ -13,23 +13,14 @@ export default class Main extends React.Component
     render()
     {
         return (
-
+            <Router>
             <div>
                 <Nav />
 
                 <Dashboard />
 
-
-                <div>
-                    Login
-                    <button onClick={this.props.auth.login}>Button</button>
-                </div>
-
             </div>
-
-
-
-
+            </Router>
         );
     }
 }

@@ -49,7 +49,7 @@
     };
 
     // Initialize Firebase
-    //firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 </script>
 </body>
 </html>
