@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.18 on 2019-05-27 20:37:13.
+ * Generated for Laravel 5.8.18 on 2019-06-05 19:33:40.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1871,7 +1871,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Perform a stateless HTTP Basic auth attempt.
+         * Perform a stateless HTTP Basic login attempt.
          *
          * @param string $field
          * @param array $extraConditions
