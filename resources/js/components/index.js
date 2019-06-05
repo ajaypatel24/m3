@@ -5,6 +5,7 @@ import Question from './home/questionnaires/Question';
 import LoggedIn from './home/home-components/LoggedIn';
 import Nav from "./home/home-components/Nav";
 import Dashboard from "./home/home-components/Dashboard";
+import Callback from "./home/home-components/Callback";
 
 export default class App extends React.Component
 {
@@ -23,12 +24,15 @@ export default class App extends React.Component
             <BrowserRouter>
                 <Nav/>
                 <Link to="/prestart_questions/" replace>Prestart Question</Link>
-                <Link to="/test_login/" replace>test login</Link>
+                <Link to="/test_login" replace>test login</Link>
+                <Link to="/callback/" replace>callback</Link>
+
+
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route path="/prestart_questions/" component={Question}/>
-                    <Route path="/test_login/" component={LoggedIn}/>
-
+                    <Route exact path="/test_login" component={LoggedIn}/>
+                    <Route exact path="/callback/" component={Callback} />
                 </Switch>
             </BrowserRouter>
         );
