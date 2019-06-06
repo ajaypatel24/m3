@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 
 import Login from "../auth/Login";
+import {login} from "../auth/UserFunctions";
 
 
 export default class Nav extends React.Component
@@ -38,6 +39,25 @@ export default class Nav extends React.Component
             loggedIn: true
         });
     };
+
+    toSubmit(e) {
+        e.preventDefault();
+
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+
+
+        login(newUser).then(res => {
+            window.location.href = '/profile/';
+            console.log("registration");
+        })
+
+
+    }
 
     render()
     {
@@ -88,7 +108,7 @@ export default class Nav extends React.Component
                         <Button className="login-btn-color" onClick={() => {
                             this.handleOpenLogin()
                         }}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
-                        <Login handleClose={this.handleCloseLogin} show={this.state.showLogin} loginSuccess={this.loginSuccess}/>
+                        <Login handleClose={this.handleCloseLogin} show={this.state.showLogin} loginSuccess={this.handleSubmit}/>
                     </Form>
                 </Navbar>
             );

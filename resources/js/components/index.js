@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
 import Question from './home/questionnaires/Question';
 import LoggedIn from './home/home-components/LoggedIn';
 import Nav from "./home/home-components/Nav";
 import Dashboard from "./home/home-components/Dashboard";
+
 
 export default class App extends React.Component
 {
@@ -23,11 +24,11 @@ export default class App extends React.Component
             <BrowserRouter>
                 <Nav/>
                 <Link to="/prestart_questions/" replace>Prestart Question</Link>
-                <Link to="/test_login/" replace>test login</Link>
+                <Link to="/profile" replace>test login</Link>
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route path="/prestart_questions/" component={Question}/>
-                    <Route path="/test_login/" component={LoggedIn}/>
+                    <Route path="/profile" component={LoggedIn}/>
 
                 </Switch>
             </BrowserRouter>

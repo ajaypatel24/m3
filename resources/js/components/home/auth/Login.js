@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button, FormControl, InputGroup, Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import {login} from "./UserFunctions";
+import { PropTypes } from "react";
 
 export default class Login extends React.Component
 {
@@ -10,8 +12,13 @@ export default class Login extends React.Component
         this.state = {
             email: '',
             password: '',
-            emailAndPasswordShow: 'd-none'
+            emailAndPasswordShow: 'd-none',
+            errors: {}
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLoginRequest = this.handleLoginRequest.bind(this);
     }
 
     handleError = () => {
@@ -25,6 +32,8 @@ export default class Login extends React.Component
             emailAndPasswordShow: 'd-none'
         })
     };
+
+    /*
 
     handleLoginRequest = () => {
 
@@ -58,6 +67,40 @@ export default class Login extends React.Component
 
     };
 
+
+     */
+
+    handleLoginRequest = () => {
+
+        console.log("hi");
+    }
+
+
+
+    handleChange(e) {
+        this.setState({[e.target.name]: e.target.value});
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        console.log("success")
+        login(user).then(res => {
+            if (res) {
+                this.props.history.push('/profile')
+
+            }
+        })
+
+
+
+    }
+
     handleEmailChange = (e) => {
         this.setState({email: e.target.value});
     };
@@ -72,7 +115,7 @@ export default class Login extends React.Component
             <Modal show={this.props.show} onHide={this.props.handleClose}>
                 <ModalHeader />
                 <ModalBody handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange}/>
-                <ModalFooter handleLoginRequest={this.handleLoginRequest} emailAndPasswordShow={this.state.emailAndPasswordShow} handleClose={this.props.handleClose}/>
+                <ModalFooter handleLoginRequest={this.props.handleLoginRequest} emailAndPasswordShow={this.state.emailAndPasswordShow} handleClose={this.props.handleClose}/>
             </Modal>
         );
     }
@@ -101,7 +144,7 @@ class ModalBody extends React.Component{
                     </InputGroup.Prepend>
                     <FormControl
                         value={this.props.email}
-                        onChange={this.props.handleEmailChange}
+                        onChange={this.props.handleChange}
                         placeholder="Username"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
@@ -115,7 +158,7 @@ class ModalBody extends React.Component{
                     </InputGroup.Prepend>
                     <FormControl
                         value={this.props.password}
-                        onChange={this.props.handlePasswordChange}
+                        onChange={this.props.handleChange}
                         type="password"
                         placeholder="Password"
                         aria-label="Password"
@@ -144,7 +187,8 @@ class ModalFooter extends React.Component{
                 }}>Close</Button>
                 <Button variant='success' onClick={() => {
                     this.props.handleLoginRequest();
-                }}>Login</Button>
+                }}
+                >Login</Button>
             </Modal.Footer>
         );
     }

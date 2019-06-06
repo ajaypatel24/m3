@@ -1,10 +1,9 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
+import {register} from "../auth/UserFunctions";
 
-export default class SignUpForm extends React.Component
-{
-    constructor(props)
-    {
+export default class SignUpForm extends React.Component {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -14,23 +13,22 @@ export default class SignUpForm extends React.Component
             password: '',
             passwordConfirm: '',
             passwordStrength: 'd-none',
-            passwordMatch: "d-none"
+            passwordMatch: "d-none",
+            errors: {}
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.toSubmit = this.toSubmit.bind(this);
     }
 
-    handleChange(e)
-    {
+    handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
 
-    handleChangePasswordStrength(e)
-    {
+    handleChangePasswordStrength(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -46,6 +44,28 @@ export default class SignUpForm extends React.Component
             });
         }
     }
+
+    toSubmit(e) {
+        e.preventDefault();
+
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+
+
+        register(newUser).then(res => {
+            window.location.href = '/login/';
+            console.log("registration");
+        })
+
+
+    }
+
+
+
 
     handleSubmit = (e) =>
     {
@@ -113,7 +133,7 @@ export default class SignUpForm extends React.Component
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><i
                     className="fas fa-user-plus icon-transform"/>Sign Up</Card.Header>
                 <Card.Body>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.toSubmit}>
                         <FormGroup role="form">
                             <Form.Group controlId="signUpFormName">
                                 <Form.Label>Name</Form.Label>
@@ -151,7 +171,7 @@ export default class SignUpForm extends React.Component
                                               placeholder="Retype Password"/>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" onClick={this.toSubmit}>
                                 Submit
                             </Button>
 
