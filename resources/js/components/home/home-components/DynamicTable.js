@@ -46,22 +46,34 @@ export class DynamicTable extends React.Component {
                             >
                                 <thead>
                                 <tr>
-                                    <th className="text-center"> # </th>
-                                    <th className="text-center"> Name </th>
-                                    <th className="text-center"> Mobile </th>
-                                    <th className="text-center"> Mobile </th>
-                                    <th className="text-center"> Mobile </th>
+                                    <th colSpan="5"> Hors Energie </th>
+                                </tr>
+                                <tr>
+                                    <th colSpan="3"> Compatibilisation des procedes </th>
 
+                                </tr>
+                                <tr>
+                                    <th> Combustibles fossiles, sources fixes </th>
+                                    <th> Consommation </th>
+                                    <th> Unite </th>
+                                    <th> Facteur sur Site </th>
+                                    <th> Total GES </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {this.state.rows.map((item, idx) => (
                                     <tr id="addr0" key={idx}>
-                                        <td>{idx}</td>
+                                        <td><input
+                                            type="text"
+                                            name="name0"
+                                            value={this.state.rows[idx].name}
+                                            onChange={this.handleChange(idx)}
+                                            className="form-control"
+                                        /></td>
                                         <td>
                                             <input
                                                 type="text"
-                                                name="name"
+                                                name="name1"
                                                 value={this.state.rows[idx].name}
                                                 onChange={this.handleChange(idx)}
                                                 className="form-control"
@@ -70,7 +82,25 @@ export class DynamicTable extends React.Component {
                                         <td>
                                             <input
                                                 type="text"
-                                                name="mobile"
+                                                name="mobile1"
+                                                value={this.state.rows[idx].mobile}
+                                                onChange={this.handleChange(idx)}
+                                                className="form-control"
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                name="mobile2"
+                                                value={this.state.rows[idx].mobile}
+                                                onChange={this.handleChange(idx)}
+                                                className="form-control"
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                name="mobile3"
                                                 value={this.state.rows[idx].mobile}
                                                 onChange={this.handleChange(idx)}
                                                 className="form-control"

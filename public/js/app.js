@@ -79838,28 +79838,40 @@ function (_React$Component) {
         className: "table table-bordered table-hover",
         id: "tab_logic"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "text-center"
-      }, " # "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "text-center"
-      }, " Name "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "text-center"
-      }, " Mobile "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "text-center"
-      }, " Mobile "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "text-center"
-      }, " Mobile "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.rows.map(function (item, idx) {
+        colSpan: "5"
+      }, " Hors Energie ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "3"
+      }, " Compatibilisation des procedes ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Combustibles fossiles, sources fixes "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Consommation "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Unite "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Facteur sur Site "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Total GES "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.rows.map(function (item, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           id: "addr0",
           key: idx
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, idx), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "name",
+          name: "name0",
           value: _this2.state.rows[idx].name,
           onChange: _this2.handleChange(idx),
           className: "form-control"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "mobile",
+          name: "name1",
+          value: _this2.state.rows[idx].name,
+          onChange: _this2.handleChange(idx),
+          className: "form-control"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "mobile1",
+          value: _this2.state.rows[idx].mobile,
+          onChange: _this2.handleChange(idx),
+          className: "form-control"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "mobile2",
+          value: _this2.state.rows[idx].mobile,
+          onChange: _this2.handleChange(idx),
+          className: "form-control"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "mobile3",
           value: _this2.state.rows[idx].mobile,
           onChange: _this2.handleChange(idx),
           className: "form-control"
