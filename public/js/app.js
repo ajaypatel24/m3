@@ -79078,6 +79078,8 @@ function (_React$Component) {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log(e.target.name);
+      console.log(e.target.value);
     }
   }, {
     key: "handleSubmit",
@@ -79105,10 +79107,6 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalHeader, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalBody, {
         handleEmailChange: this.handleEmailChange,
         handlePasswordChange: this.handlePasswordChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalFooter, {
-        handleLoginRequest: this.props.handleLoginRequest,
-        emailAndPasswordShow: this.state.emailAndPasswordShow,
-        handleClose: this.props.handleClose
       }));
     }
   }]);
@@ -79155,6 +79153,8 @@ function (_React$Component3) {
   _createClass(ModalBody, [{
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Prepend, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Text, {
@@ -79190,32 +79190,7 @@ function (_React$Component3) {
         to: "/forgot_password"
       }, " Forgot your password? ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "red-text ".concat(this.props.emailAndPasswordShow)
-      }, "Your email and password don't match"));
-    }
-  }]);
-
-  return ModalBody;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var ModalFooter =
-/*#__PURE__*/
-function (_React$Component4) {
-  _inherits(ModalFooter, _React$Component4);
-
-  function ModalFooter() {
-    _classCallCheck(this, ModalFooter);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ModalFooter).apply(this, arguments));
-  }
-
-  _createClass(ModalFooter, [{
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Footer, {
-        className: "d-flex justify-content-between"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Your email and password don't match"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "danger",
         onClick: function onClick() {
           _this3.props.handleClose();
@@ -79229,8 +79204,111 @@ function (_React$Component4) {
     }
   }]);
 
-  return ModalFooter;
+  return ModalBody;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/***/ }),
+
+/***/ "./resources/js/components/home/auth/LoginTest.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/home/auth/LoginTest.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Login; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Login =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login(props) {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
+    _this.state = {
+      email: '',
+      password: ''
+    };
+    _this.change = _this.change.bind(_assertThisInitialized(_this));
+    _this.submit = _this.submit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "change",
+    value: function change(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "submit",
+    value: function submit(e) {
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/getToken', {
+        email: this.state.email,
+        password: this.state.password
+      }).then(function (res) {
+        return localStorage.setItem('cool-jwt', res.data);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSumbit: function onSumbit(e) {
+          return _this2.submit(e);
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "email",
+        onChange: this.change
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        name: "password",
+        onChange: this.change
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }, "button")));
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
 
 /***/ }),
 
@@ -79382,9 +79460,10 @@ function (_React$Component) {
         password: this.state.password
       };
       Object(_auth_UserFunctions__WEBPACK_IMPORTED_MODULE_2__["register"])(newUser).then(function (res) {
-        window.location.href = '/login/';
-        console.log("registration");
+        //window.location.href = '/login/';
+        console.log(localStorage.getItem('usertoken'));
       });
+      document.getElementById("registerForm").reset();
     }
   }, {
     key: "render",
@@ -79394,7 +79473,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fas fa-user-plus icon-transform"
       }), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.toSubmit
+        onSubmit: this.toSubmit,
+        id: "registerForm"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["FormGroup"], {
         role: "form"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
@@ -79455,13 +79535,15 @@ function (_React$Component) {
 /*!************************************************************!*\
   !*** ./resources/js/components/home/auth/UserFunctions.js ***!
   \************************************************************/
-/*! exports provided: register, login */
+/*! exports provided: register, login, login2, checkToken */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login2", function() { return login2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkToken", function() { return checkToken; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -79472,23 +79554,33 @@ var register = function register(newUser) {
     }
   }).then(function (res) {
     console.log(res);
+    localStorage.setItem('usertoken', res.data.token);
   })["catch"](function (err) {
     console.log(err);
   });
 };
+/*
+email: user.email,
+            password: user.password
+        },
+ */
+
 var login = function login(user) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/login', {
-    email: user.email,
-    password: user.password
-  }, {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/login', user, {
     headers: {
       'Content-Type': 'application/json'
     }
   }).then(function (response) {
-    localStorage.setItem('usertoken', response.data.token);
     console.log(response);
+    localStorage.setItem('usertoken', response.data.token);
   })["catch"](function (err) {
     console.log(err);
+  });
+};
+var login2 = function login2(user) {
+  fetch('/api/login', {
+    method: 'POST',
+    body: JSON.stringify(data)
   });
 };
 /*
@@ -79507,6 +79599,19 @@ export const getProfile = () => {
 }
 
  */
+
+var checkToken = function checkToken(req, res, next) {
+  var header = req.headers['authorization'];
+
+  if (typeof header != 'undefined') {
+    var bearer = header.split(' ');
+    var token = bearer[1];
+    req.token = token;
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+};
 
 /***/ }),
 
@@ -79579,6 +79684,178 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/home/home-components/DynamicTable.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/home/home-components/DynamicTable.js ***!
+  \**********************************************************************/
+/*! exports provided: DynamicTable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DynamicTable", function() { return DynamicTable; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var DynamicTable =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DynamicTable, _React$Component);
+
+  function DynamicTable() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DynamicTable);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DynamicTable)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      rows: [{}]
+    };
+
+    _this.handleChange = function (idx) {
+      return function (e) {
+        var _e$target = e.target,
+            name = _e$target.name,
+            value = _e$target.value;
+
+        var rows = _toConsumableArray(_this.state.rows);
+
+        rows[idx] = _defineProperty({}, name, value);
+
+        _this.setState({
+          rows: rows
+        });
+      };
+    };
+
+    _this.handleAddRow = function () {
+      var item = {
+        name: "",
+        mobile: ""
+      };
+
+      _this.setState({
+        rows: [].concat(_toConsumableArray(_this.state.rows), [item])
+      });
+    };
+
+    _this.handleRemoveRow = function () {
+      _this.setState({
+        rows: _this.state.rows.slice(0, -1)
+      });
+    };
+
+    _this.handleRemoveSpecificRow = function (idx) {
+      return function () {
+        var rows = _toConsumableArray(_this.state.rows);
+
+        rows.splice(idx, 1);
+
+        _this.setState({
+          rows: rows
+        });
+      };
+    };
+
+    return _this;
+  }
+
+  _createClass(DynamicTable, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row clearfix"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12 column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-bordered table-hover",
+        id: "tab_logic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, " # "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, " Name "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, " Mobile "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, " Mobile "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, " Mobile "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.rows.map(function (item, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          id: "addr0",
+          key: idx
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, idx), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "name",
+          value: _this2.state.rows[idx].name,
+          onChange: _this2.handleChange(idx),
+          className: "form-control"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "mobile",
+          value: _this2.state.rows[idx].mobile,
+          onChange: _this2.handleChange(idx),
+          className: "form-control"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-outline-danger btn-sm",
+          onClick: _this2.handleRemoveSpecificRow(idx)
+        }, "Remove")));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleAddRow,
+        className: "btn btn-primary"
+      }, "Add Row"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleRemoveRow,
+        className: "btn btn-danger float-right"
+      }, "Delete Last Row")))));
+    }
+  }]);
+
+  return DynamicTable;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/***/ }),
+
 /***/ "./resources/js/components/home/home-components/LoggedIn.js":
 /*!******************************************************************!*\
   !*** ./resources/js/components/home/home-components/LoggedIn.js ***!
@@ -79592,6 +79869,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _DynamicTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DynamicTable */ "./resources/js/components/home/home-components/DynamicTable.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -79611,6 +79889,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -79746,7 +80025,7 @@ function (_React$Component) {
         className: "flex-column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "first"
-      }, "Tab 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+      }, "Inventaire")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "second"
       }, "Tab 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "third"
@@ -79760,7 +80039,211 @@ function (_React$Component) {
         sm: "{4}"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         as: "h5"
-      }, "Featured"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Inventaire"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Realiser votre inventaire de vos depenses energetiques, procedes, intrants, etc. et calculer les emissions annuelles de votre activite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        responsive: true,
+        striped: true,
+        bordered: true,
+        hover: true,
+        variant: "dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "5"
+      }, "Energie")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "3"
+      }, "Compatiblisation direct des combustibles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Facteur Combustion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Total GES")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Combustibles fossiles, sources fixes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Consommation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Unite"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Gaz natural"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Propane"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Essence a la pompe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Gazole a la pompe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Fioul domestique"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Mazout leger, num 4 a 6"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Charbon, coke... (kg)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "4"
+      }, "Combustibles d'origine organique, sources fixes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Biodiesel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Bois buche, sciures...(KG)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Chauffage fossible a partier des m^2 chauffes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "4"
+      }, "Electricite achetee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Total Electricite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Achats de vapeur et de froid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        responsive: true,
+        striped: true,
+        bordered: true,
+        hover: true,
+        variant: "dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "5"
+      }, "Hors Energie")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: "3"
+      }, "Compatiblisation direct des procedes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Facteur sur site"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Total GES")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Combustibles fossiles, sources fixes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Consommation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Unite"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "x",
+        placeholder: "valeur"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "SectorActivity",
+        onChange: this.handleChange,
+        required: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Unite1"
+      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DynamicTable__WEBPACK_IMPORTED_MODULE_2__["DynamicTable"], null, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary"
       }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
         eventKey: "second"
@@ -79768,7 +80251,7 @@ function (_React$Component) {
         sm: "{4}"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         as: "h5"
-      }, "Tab 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Featured"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary"
       }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
         eventKey: "third"
@@ -79816,6 +80299,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_UserFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth/UserFunctions */ "./resources/js/components/home/auth/UserFunctions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -79824,9 +80309,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -79872,23 +80357,35 @@ function (_React$Component) {
 
     _this.state = {
       showLogin: false,
-      loggedIn: false
+      loggedIn: false,
+      email: '',
+      password: ''
     };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Nav, [{
-    key: "toSubmit",
-    value: function toSubmit(e) {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log("Name: ", e.target.name);
+      console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var data = this.state;
       e.preventDefault();
+      console.log(data);
       var newUser = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
+        "email": this.state.email,
+        "password": this.state.password
       };
       Object(_auth_UserFunctions__WEBPACK_IMPORTED_MODULE_5__["login"])(newUser).then(function (res) {
-        window.location.href = '/profile/';
-        console.log("registration");
+        window.location.href = '/';
+        console.log(localStorage.getItem('usertoken'));
       });
     }
   }, {
@@ -79916,7 +80413,24 @@ function (_React$Component) {
         href: "#"
       }, "About Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      }, "Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "email",
+        required: true,
+        type: "text",
+        placeholder: "Login",
+        onChange: this.handleChange,
+        value: this.state.email
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "password",
+        required: true,
+        type: "text",
+        placeholder: "Password",
+        onChange: this.handleChange,
+        value: this.state.password
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        type: "submit",
+        onClick: this.handleSubmit
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         className: "mr-3",
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -80486,8 +81000,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/questionnaires/Question */ "./resources/js/components/home/questionnaires/Question.js");
 /* harmony import */ var _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home-components/LoggedIn */ "./resources/js/components/home/home-components/LoggedIn.js");
-/* harmony import */ var _home_home_components_Nav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
-/* harmony import */ var _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
+/* harmony import */ var _home_auth_LoginTest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/auth/LoginTest */ "./resources/js/components/home/auth/LoginTest.js");
+/* harmony import */ var _home_home_components_Nav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home-components/Nav */ "./resources/js/components/home/home-components/Nav.js");
+/* harmony import */ var _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home-components/Dashboard */ "./resources/js/components/home/home-components/Dashboard.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -80505,6 +81020,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -80536,22 +81052,28 @@ function (_React$Component) {
     value: function render() {
       return (
         /*full routing found here*/
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_home_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_home_components_Nav__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/prestart_questions/",
           replace: true
         }, "Prestart Question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/profile",
           replace: true
+        }, "test login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/login",
+          replace: true
         }, "test login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/",
-          component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
+          component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_7__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           path: "/prestart_questions/",
           component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           path: "/profile",
           component: _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+          path: "/login",
+          component: _home_auth_LoginTest__WEBPACK_IMPORTED_MODULE_5__["default"]
         })))
       );
     }

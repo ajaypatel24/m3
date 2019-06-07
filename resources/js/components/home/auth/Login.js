@@ -79,6 +79,8 @@ export default class Login extends React.Component
 
     handleChange(e) {
         this.setState({[e.target.name]: e.target.value});
+        console.log(e.target.name);
+        console.log(e.target.value)
     }
 
     handleSubmit(e) {
@@ -115,7 +117,7 @@ export default class Login extends React.Component
             <Modal show={this.props.show} onHide={this.props.handleClose}>
                 <ModalHeader />
                 <ModalBody handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange}/>
-                <ModalFooter handleLoginRequest={this.props.handleLoginRequest} emailAndPasswordShow={this.state.emailAndPasswordShow} handleClose={this.props.handleClose}/>
+
             </Modal>
         );
     }
@@ -173,24 +175,19 @@ class ModalBody extends React.Component{
                         <Link to='/forgot_password'> Forgot your password? </Link>
                     </span>
                 <span className={"red-text ".concat(this.props.emailAndPasswordShow)}>Your email and password don't match</span>
+
+
+                    <Button variant='danger' onClick={() => {
+                        this.props.handleClose();
+                    }}>Close</Button>
+                    <Button variant='success' onClick={() => {
+                        this.props.handleLoginRequest();
+                    }}
+                    >Login</Button>
+
             </Modal.Body>
+
+
         );
     }
 }
-
-class ModalFooter extends React.Component{
-    render(){
-        return(
-            <Modal.Footer className="d-flex justify-content-between">
-                <Button variant='danger' onClick={() => {
-                    this.props.handleClose();
-                }}>Close</Button>
-                <Button variant='success' onClick={() => {
-                    this.props.handleLoginRequest();
-                }}
-                >Login</Button>
-            </Modal.Footer>
-        );
-    }
-}
-

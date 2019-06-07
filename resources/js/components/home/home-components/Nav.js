@@ -18,9 +18,24 @@ export default class Nav extends React.Component
 
         this.state = {
             showLogin: false,
-            loggedIn: false
+            loggedIn: false,
+            email: '',
+            password: ''
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    handleChange(e) {
+
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+
+        console.log("Name: ", e.target.name);
+        console.log("Value: ", e.target.value);
+    };
 
     handleOpenLogin = () => {
         this.setState({
@@ -40,20 +55,22 @@ export default class Nav extends React.Component
         });
     };
 
-    toSubmit(e) {
+    handleSubmit(e) {
+
+        const data = this.state;
         e.preventDefault();
 
+        console.log(data);
         const newUser = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
+            "email": this.state.email,
+            "password": this.state.password
         }
 
 
 
         login(newUser).then(res => {
-            window.location.href = '/profile/';
-            console.log("registration");
+            window.location.href = '/';
+            console.log(localStorage.getItem('usertoken'));
         })
 
 
@@ -83,6 +100,26 @@ export default class Nav extends React.Component
 
 
 
+                <Form.Group>
+                    <Form.Control
+                        name="email"
+                        required
+                        type="text"
+                        placeholder="Login"
+                        onChange={this.handleChange}
+                        value={this.state.email}/>
+                    <Form.Control
+                        name="password"
+                        required
+                        type="text"
+                        placeholder="Password"
+                        onChange={this.handleChange}
+                        value={this.state.password}/>
+                        <Button type="submit" onClick={this.handleSubmit}/>
+
+
+
+                </Form.Group>
                 <Form className="mr-3" inline>
                     <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
                     <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
@@ -91,6 +128,7 @@ export default class Nav extends React.Component
 
 
         );
+
 
         if(!this.state.loggedIn) {
             return (

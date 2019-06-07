@@ -54,12 +54,12 @@ export default class SignUpForm extends React.Component {
             password: this.state.password
         }
 
-
-
         register(newUser).then(res => {
-            window.location.href = '/login/';
-            console.log("registration");
+            //window.location.href = '/login/';
+            console.log(localStorage.getItem('usertoken'));
         })
+
+        document.getElementById("registerForm").reset();
 
 
     }
@@ -133,7 +133,7 @@ export default class SignUpForm extends React.Component {
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><i
                     className="fas fa-user-plus icon-transform"/>Sign Up</Card.Header>
                 <Card.Body>
-                    <form onSubmit={this.toSubmit}>
+                    <form onSubmit={this.toSubmit} id="registerForm">
                         <FormGroup role="form">
                             <Form.Group controlId="signUpFormName">
                                 <Form.Label>Name</Form.Label>

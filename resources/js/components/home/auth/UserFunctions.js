@@ -8,28 +8,40 @@ export const register = newUser => {
         })
         .then(res => {
             console.log(res)
+            localStorage.setItem('usertoken', res.data.token)
         })
         .catch(err => {
             console.log(err)
         })
-}
-
+};
+/*
+email: user.email,
+            password: user.password
+        },
+ */
 export const login = user => {
     return axios
-        .post('api/login', {
-            email: user.email,
-            password: user.password
-        }, {
+        .post('api/login', user,{
+
             headers: {'Content-Type': 'application/json'}
         })
         .then(response => {
-            localStorage.setItem('usertoken', response.data.token)
             console.log(response)
+            localStorage.setItem('usertoken', response.data.token)
         })
         .catch(err => {
             console.log(err)
         })
+};
+
+export const login2 = user => {
+    fetch('/api/login', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
 }
+
+
 
 /*
 export const getProfile = () => {
@@ -47,5 +59,21 @@ export const getProfile = () => {
 }
 
  */
+
+export const checkToken = (req, res, next) => {
+    const header = req.headers['authorization'];
+
+
+    if(typeof header != 'undefined') {
+        const bearer = header.split(' ');
+        const token = bearer[1];
+
+        req.token = token;
+        next();
+    }
+    else {
+        res.sendStatus(403);
+    }
+};
 
 
