@@ -79021,7 +79021,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var Login =
 /*#__PURE__*/
 function (_React$Component) {
@@ -79107,6 +79106,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalHeader, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalBody, {
         handleEmailChange: this.handleEmailChange,
         handlePasswordChange: this.handlePasswordChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalFooter, {
+        handleLoginRequest: this.props.handleLoginRequest,
+        emailAndPasswordShow: this.state.emailAndPasswordShow,
+        handleClose: this.props.handleClose
       }));
     }
   }]);
@@ -79153,8 +79156,6 @@ function (_React$Component3) {
   _createClass(ModalBody, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Prepend, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Text, {
@@ -79190,7 +79191,32 @@ function (_React$Component3) {
         to: "/forgot_password"
       }, " Forgot your password? ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "red-text ".concat(this.props.emailAndPasswordShow)
-      }, "Your email and password don't match"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Your email and password don't match"));
+    }
+  }]);
+
+  return ModalBody;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var ModalFooter =
+/*#__PURE__*/
+function (_React$Component4) {
+  _inherits(ModalFooter, _React$Component4);
+
+  function ModalFooter() {
+    _classCallCheck(this, ModalFooter);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModalFooter).apply(this, arguments));
+  }
+
+  _createClass(ModalFooter, [{
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Footer, {
+        className: "d-flex justify-content-between"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "danger",
         onClick: function onClick() {
           _this3.props.handleClose();
@@ -79204,7 +79230,7 @@ function (_React$Component3) {
     }
   }]);
 
-  return ModalBody;
+  return ModalFooter;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /***/ }),

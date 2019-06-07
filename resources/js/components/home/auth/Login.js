@@ -1,20 +1,17 @@
 import React from 'react';
-import {Button, FormControl, InputGroup, Modal} from 'react-bootstrap';
+import {FormControl, InputGroup, Modal, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {login} from "./UserFunctions";
-import { PropTypes } from "react";
 
-export default class Login extends React.Component
-{
-    constructor(props)
-    {
+export default class Login extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             email: '',
             password: '',
             emailAndPasswordShow: 'd-none',
             errors: {}
-        }
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -73,8 +70,7 @@ export default class Login extends React.Component
     handleLoginRequest = () => {
 
         console.log("hi");
-    }
-
+    };
 
 
     handleChange(e) {
@@ -89,16 +85,15 @@ export default class Login extends React.Component
         const user = {
             email: this.state.email,
             password: this.state.password
-        }
+        };
 
-        console.log("success")
+        console.log("success");
         login(user).then(res => {
             if (res) {
                 this.props.history.push('/profile')
 
             }
         })
-
 
 
     }
@@ -111,21 +106,22 @@ export default class Login extends React.Component
         this.setState({password: e.target.value});
     };
 
-    render()
-    {
+    render() {
         return (
             <Modal show={this.props.show} onHide={this.props.handleClose}>
-                <ModalHeader />
+                <ModalHeader/>
                 <ModalBody handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange}/>
-
+                <ModalFooter handleLoginRequest={this.props.handleLoginRequest}
+                             emailAndPasswordShow={this.state.emailAndPasswordShow}
+                             handleClose={this.props.handleClose}/>
             </Modal>
         );
     }
 }
 
-class ModalHeader extends React.Component{
-    render(){
-        return(
+class ModalHeader extends React.Component {
+    render() {
+        return (
             <Modal.Header className="d-flex justify-content-center">
                 <h3>Login</h3>
             </Modal.Header>
@@ -134,9 +130,9 @@ class ModalHeader extends React.Component{
 }
 
 
-class ModalBody extends React.Component{
-    render(){
-        return(
+class ModalBody extends React.Component {
+    render() {
+        return (
             <Modal.Body>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
@@ -176,18 +172,25 @@ class ModalBody extends React.Component{
                     </span>
                 <span className={"red-text ".concat(this.props.emailAndPasswordShow)}>Your email and password don't match</span>
 
-
-                    <Button variant='danger' onClick={() => {
-                        this.props.handleClose();
-                    }}>Close</Button>
-                    <Button variant='success' onClick={() => {
-                        this.props.handleLoginRequest();
-                    }}
-                    >Login</Button>
-
             </Modal.Body>
-
 
         );
     }
+}
+
+class ModalFooter extends React.Component {
+    render() {
+        return (
+            <Modal.Footer className="d-flex justify-content-between">
+                <Button variant='danger' onClick={() => {
+                    this.props.handleClose();
+                }}>Close</Button>
+                <Button variant='success' onClick={() => {
+                    this.props.handleLoginRequest();
+                }}
+                >Login</Button>
+            </Modal.Footer>
+        )
+}
+
 }
