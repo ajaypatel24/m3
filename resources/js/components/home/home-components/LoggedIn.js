@@ -1,11 +1,7 @@
 import React from 'react';
-import {Button, Col, Form} from 'react-bootstrap';
-import { Tab, Row, Nav, Carousel, Card, Table, Dropdown} from 'react-bootstrap';
+import {Button, Card, Col, Nav, Row, Tab} from 'react-bootstrap';
 
-import { DynamicTable } from './DynamicTable'
-
-
-
+import {EnergyTable} from '../questionnaires/EnergyTable';
 
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
@@ -35,6 +31,8 @@ export default class LoggedIn extends React.Component {
             OfferToClient: "",
             SectorActivity: "",
             ClientBase: "",
+
+            SCIAN22: false,
 
             DiffCorpAddress: "",
             validated: false,
@@ -134,6 +132,7 @@ export default class LoggedIn extends React.Component {
 
     render() {
 
+
         return (
 
             <div>
@@ -170,267 +169,8 @@ export default class LoggedIn extends React.Component {
                                                     Realiser votre inventaire de vos depenses energetiques, procedes,
                                                     intrants, etc. et calculer les emissions annuelles de votre activite
                                                 </Card.Text>
-                                                <Table responsive striped bordered hover variant="dark">
-                                                    <thead>
-                                                    <tr>
-                                                        <th colSpan="5">Energie</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colSpan="3">Compatiblisation direct des combustibles</th>
-                                                        <th>Facteur Combustion</th>
-                                                        <th>Total GES</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Combustibles fossiles, sources fixes</th>
-                                                        <th>Consommation</th>
-                                                        <th>Unite</th>
 
-
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>Gaz natural</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Propane</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Essence a la pompe</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>0</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Gazole a la pompe</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Fioul domestique</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mazout leger, num 4 a 6</td>
-                                                        <td ><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>0</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Charbon, coke... (kg)</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                    <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
-                                                    <tr>
-                                                        <td>Biodiesel</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bois buche, sciures...(KG)</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td ><Form.Control as="select"  name="SectorActivity"
-                                                                           onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>place</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Chauffage fossible a partier des m^2 chauffes</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                        <th colSpan="4">Electricite achetee</th>
-
-
-
-                                                    <tr>
-                                                        <td>Total Electricite</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Achats de vapeur et de froid</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.23</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                        </tbody>
-
-                                                    </Table>
-
-                                                <Table responsive striped bordered hover variant="dark">
-                                                    <thead>
-
-                                                    <tr>
-                                                        <th colSpan="5">Hors Energie</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colSpan="3">Compatiblisation direct des procedes</th>
-                                                        <th>Facteur sur site</th>
-                                                        <th>Total GES</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Combustibles fossiles, sources fixes</th>
-                                                        <th>Consommation</th>
-                                                        <th>Unite</th>
-
-
-                                                    </tr>
-
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td ><Form.Control as="select"  name="SectorActivity"
-                                                                           onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.23</td>
-                                                        <td>0</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>2.3</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td><Form.Control as="select"  name="SectorActivity"
-                                                                          onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.2</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Emissions de CO2 hors energie</td>
-                                                        <td><Form.Control name="x" placeholder="valeur"></Form.Control></td>
-                                                        <td ><Form.Control as="select"  name="SectorActivity"
-                                                                           onChange={this.handleChange} required>
-                                                            <option></option>
-                                                            <option value="Unite1"> Unite1</option>
-                                                        </Form.Control></td>
-                                                        <td>1.23</td>
-                                                        <td>0</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </Table>
-
-                                                <Table>
-                                                    <tbody>
-                                                <DynamicTable > </DynamicTable>
-                                                    </tbody>
-                                                </Table>
+                                                <EnergyTable></EnergyTable>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -443,7 +183,8 @@ export default class LoggedIn extends React.Component {
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional content.
+                                                    With supporting text below as a natural lead-in to additional
+                                                    content.
                                                 </Card.Text>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
@@ -457,7 +198,8 @@ export default class LoggedIn extends React.Component {
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional content.
+                                                    With supporting text below as a natural lead-in to additional
+                                                    content.
                                                 </Card.Text>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
@@ -471,7 +213,8 @@ export default class LoggedIn extends React.Component {
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional content.
+                                                    With supporting text below as a natural lead-in to additional
+                                                    content.
                                                 </Card.Text>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
@@ -484,12 +227,7 @@ export default class LoggedIn extends React.Component {
                 </Tab.Container>
 
 
-
-
             </div>
-
-
-
 
 
         );

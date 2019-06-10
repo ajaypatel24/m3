@@ -9,12 +9,7 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
-
     "proxy": "http://localhost:8000",
-
-
-
-
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
         "axios": "^0.18",
@@ -32,13 +27,18 @@
     },
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@material-ui/core": "^4.1.0",
         "js-cookie": "^2.2.0",
         "multiselect-dropdown-react": "^1.0.5",
         "npm": "^6.9.0",
         "react-bootstrap": "^1.0.0-beta.8",
+        "react-redux": "^7.0.3",
         "react-router": "^5.0.0",
         "react-router-dom": "^5.0.0",
         "react-select": "^3.0.3",
-        "reactjs-input-validator": "^0.16.4"
+        "react-table": "^6.10.0",
+        "reactjs-input-validator": "^0.16.4",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0"
     }
 }

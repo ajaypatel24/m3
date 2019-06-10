@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Link, Switch, browserHistory } from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch, browserHistory, HashRouter } from 'react-router-dom';
 import Question from './home/questionnaires/Question';
 import LoggedIn from './home/home-components/LoggedIn';
 import login from './home/auth/LoginTest';
@@ -22,7 +22,7 @@ export default class App extends React.Component
     {
         return (
             /*full routing found here*/
-            <BrowserRouter>
+            <HashRouter>
                 <Nav/>
                 <Link to="/prestart_questions/" replace>Prestart Question</Link>
                 <Link to="/profile" replace>test login</Link>
@@ -35,7 +35,7 @@ export default class App extends React.Component
                     <Route path="/login" component={login}/>
 
                 </Switch>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }

@@ -69,8 +69,11 @@ export default class Nav extends React.Component
 
 
         login(newUser).then(res => {
-            window.location.href = '/';
-            console.log(localStorage.getItem('usertoken'));
+
+
+              
+                console.log(localStorage.getItem('usertoken'));
+
         })
 
 
@@ -130,7 +133,7 @@ export default class Nav extends React.Component
         );
 
 
-        if(!this.state.loggedIn) {
+        if(localStorage.getItem('usertoken') != null) {
             return (
                 <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
                     <Navbar.Brand className="ml-3" href="/">
@@ -142,6 +145,8 @@ export default class Nav extends React.Component
                             alt="Cadet Logo"
                         />
                     </Navbar.Brand>
+
+                    <a href="#">test</a>
                     <Form className="mr-3" inline>
                         <Button className="login-btn-color" onClick={() => {
                             this.handleOpenLogin()

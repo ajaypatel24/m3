@@ -23,7 +23,8 @@ Route::post('/register', 'RegisterController@register');
 
 
 Route::post('/','PrestartController@store'); /*method from php controller */
-
+Route::post('/intrants', 'InventaireController@store');
+Route::post('/categorie', 'CategorieController@store');
 Route::get('/data', 'PrestartController@p');
 
 

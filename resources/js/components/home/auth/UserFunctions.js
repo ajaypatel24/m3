@@ -27,7 +27,12 @@ export const login = user => {
         })
         .then(response => {
             console.log(response)
-            localStorage.setItem('usertoken', response.data.token)
+            if (response.status === 200) {
+                localStorage.setItem('usertoken', response.data.token)
+            }
+            else {
+                console.log("bad login")
+            }
         })
         .catch(err => {
             console.log(err)

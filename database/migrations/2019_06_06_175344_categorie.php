@@ -16,9 +16,9 @@ class Categorie extends Migration
         Schema::create('categorie', function (Blueprint $table) {
             $table->increments("idCategorie");
             $table->string("Nom_Categorie", 20);
-            $table->string("Unite", 20);
-            $table->float("Coefficient_GES");
-            $table->string("Partie_Inventaire", 20);
+            $table->string("Unite", 20)->nullable();
+            $table->float("Coefficient_GES")->nullable();
+            $table->string("Partie_Inventaire", 20)->nullable();
             $table->integer("Num_Affich");
             $table->timestamps();
 

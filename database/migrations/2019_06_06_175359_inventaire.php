@@ -15,10 +15,10 @@ class Inventaire extends Migration
     {
         Schema::create('inventaire', function (Blueprint $table) {
             $table->increments("idInventaire");
-            $table->integer("Annee_Inventaire");
-            $table->string("Activite", 40);
-            $table->string("Commentaire", 255);
-            $table->integer("Complete");
+            $table->string("Annee_Inventaire")->nullable();
+            $table->string("Activite", 40)->nullable();
+            $table->string("Commentaire", 255)->nullable();
+            $table->integer("Complete")->nullable();
             $table->timestamps();
 
 
