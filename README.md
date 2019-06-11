@@ -10,6 +10,7 @@
 * **React Router** : https://reacttraining.com/react-router/web/guides/quick-start => Routing for react
 * **Redux** : https://redux.js.org/ => State management tool
 * **React Formik** : https://github.com/jaredpalmer/formik => Form tool
+* **Yup**: https://www.npmjs.com/package/yup 
 * **PropType** : https://reactjs.org/docs/typechecking-with-proptypes.html => Type checking for properties
 * **Prettier** : https://github.com/prettier/prettier => code formatter
 * **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Gpogle and Facebook Authentication
