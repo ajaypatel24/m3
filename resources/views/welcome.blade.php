@@ -36,20 +36,25 @@
 <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
 
-<script>
-    // TODO: Replace the following with your app's Firebase project configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyD_xohMcXSJccx8WcAWXX15jjD0Ds4wRRk",
-        authDomain: "m3coop-7943c.firebaseapp.com",
-        databaseURL: "https://m3coop-7943c.firebaseio.com",
-        projectId: "m3coop-7943c",
-        storageBucket: "m3coop-7943c.appspot.com",
-        messagingSenderId: "85673074593",
-        appId: "1:85673074593:web:c675f25f37729aae"
-    };
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAVYcWHS5zwPM1FEvZ23D0ZvvolAGWgM98",
+        authDomain: "m3-cadet.firebaseapp.com",
+        databaseURL: "https://m3-cadet.firebaseio.com",
+        projectId: "m3-cadet",
+        storageBucket: "m3-cadet.appspot.com",
+        messagingSenderId: "797390348180",
+        appId: "1:797390348180:web:420eda4cf823d7e6"
+    };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+
 </script>
 </body>
 </html>

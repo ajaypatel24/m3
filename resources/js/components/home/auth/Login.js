@@ -2,6 +2,7 @@ import React from 'react';
 import {FormControl, InputGroup, Modal, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {login} from "./UserFunctions";
+import  {app} from "../app";
 
 export default class Login extends React.Component {
     constructor(props) {
