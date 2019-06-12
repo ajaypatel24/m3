@@ -2,7 +2,7 @@ import React from 'react';
 import {FormControl, InputGroup, Modal, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {login} from "./UserFunctions";
-import  {app} from "../app";
+
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -16,6 +16,7 @@ export default class Login extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.login = this.login.bind(this);
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
     }
 
@@ -31,14 +32,34 @@ export default class Login extends React.Component {
         })
     };
 
-    /*
+    login(e) {
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+
+        }).catch((error) => {
+            console.log(error);
+        });
+
+    }
+
 
     handleLoginRequest = () => {
 
+
+
+        console.table([
+            this.state.email,
+            this.state.password
+        ]);
+
+
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then(function () {
+            .then(function (user) {
+
+
                 let uid = firebase.auth().currentUser.uid;
-                console.log(uid);
+
+
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -48,30 +69,33 @@ export default class Login extends React.Component {
                     }
                 })
                     .then(function (data) {
+                        window.location.href = '#/profile/';
                         console.log('Request succeeded with JSON response', data);
+
                     })
                     .catch(function (error) {
                         console.log('Request failed', error);
                     });
             }).catch(function (error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            return;
+            if (error.code === 400) {
+                console.log("either email or password is incorrect");
+            }
+            //console.log("dr yeet");
+            //var errorCode = error.code;
+            ///var errorMessage = error.message;
+            //return;
             // ...
         });
 
-        this.props.loginSuccess();
+
+
+
+
 
     };
 
 
-     */
-
-    handleLoginRequest = () => {
-
-        console.log("hi");
-    };
 
 
     handleChange(e) {
@@ -186,9 +210,9 @@ class ModalFooter extends React.Component {
                 <Button variant='danger' onClick={() => {
                     this.props.handleClose();
                 }}>Close</Button>
-                <Button variant='success' onClick={() => {
-                    this.props.handleLoginRequest();
-                }}
+                <Button variant='success' onClick={
+                    this.handleLoginRequest
+                }
                 >Login</Button>
             </Modal.Footer>
         )

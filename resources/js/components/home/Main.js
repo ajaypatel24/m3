@@ -14,30 +14,39 @@ export default class Main extends React.Component
         super(props);
 
         this.state = {
-            isLoggedIn: false,
             user: {}
         }
     }
 
     componentDidMount() {
-        let state = localStorage["appState"];
-        if (state) {
-            let AppState = JSON.parse(state);
-            console.log(AppState);
-            this.setState({ isLoggedIn: AppState.isLoggedIn, user: AppState });
-        }
+        this.authListener();
     }
+    authListener() {
+        fire.auth().onAuthStateChanged((user) => {
+            if(user) {
+                this.setState({user});
+            }
+            else {
+                this.setState({user: null});
+            }
+        });
+    }
+
+
 
     render() {
         return (
-            <Router>
+
             <div>
+
+                {this.state.user ? (<Dashboard/>) : (<Nav/>)}
+                {/*
                 <Nav />
                 <Dashboard />
-
+*/}
 
             </div>
-            </Router>
+
         );
     }
 }

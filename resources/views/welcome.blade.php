@@ -29,13 +29,15 @@
 
 <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
 <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
 
 <!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+</body>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->

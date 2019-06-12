@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Container, Jumbotron, Row} from 'react-bootstrap';
 import SignUpForm from '../auth/Register';
-import authenticationService from '../auth/AuthenticationService';
+
 
 export default class Dashboard extends React.Component {
     render() {
