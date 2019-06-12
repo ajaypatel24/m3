@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'auth_token'
     ];
 
     /**
@@ -31,10 +32,16 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
-
+    /**
+     * @return mixed
+     */
     public function getJWTIdentifier() {
         return $this->getKey();
     }
+
+    /**
+     * @return array
+     */
     public function getJWTCustomClaims() {
         return [];
     }

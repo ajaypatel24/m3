@@ -7,9 +7,11 @@ export const register = newUser => {
             headers: {'Content-Type': 'application/json'}
         })
         .then(res => {
-            console.log(res)
-            localStorage.setItem('usertoken', res.data.token)
-        })
+                console.log(res);
+                if (res.status === 200) {
+                    localStorage.setItem('usertoken', res.data.token)
+                }
+            })
         .catch(err => {
             console.log(err)
         })
@@ -80,5 +82,11 @@ export const checkToken = (req, res, next) => {
         res.sendStatus(403);
     }
 };
+
+
+export function logout() {
+    localStorage.removeItem('usertoken');
+    currentUserSubject.next(null);
+}
 
 

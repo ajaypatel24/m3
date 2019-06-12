@@ -32,6 +32,4 @@ Route::get('/data', 'PrestartController@p');
 
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

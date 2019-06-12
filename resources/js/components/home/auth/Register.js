@@ -55,8 +55,11 @@ export default class SignUpForm extends React.Component {
         }
 
         register(newUser).then(res => {
+            if(res === 201) {
+                console.log("success");
+            }
             //window.location.href = '/login/';
-            console.log(localStorage.getItem('usertoken'));
+            //console.log(localStorage.getItem('usertoken'));
         })
 
         document.getElementById("registerForm").reset();

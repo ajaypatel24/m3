@@ -18,6 +18,7 @@ class Users extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("password");
+            $table->string("auth_token", 1000);
             $table->timestamps();
         });
     }

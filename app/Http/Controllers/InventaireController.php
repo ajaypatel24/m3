@@ -51,5 +51,6 @@ class InventaireController extends Controller
 
 
     }
+
 }
 

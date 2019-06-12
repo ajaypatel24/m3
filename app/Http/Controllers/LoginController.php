@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
+
+
     function index()
     {
         return view('welcome');
@@ -19,4 +21,6 @@ class LoginController extends Controller
 
         // return information needed for front page display etc...
     }
+
+
 }

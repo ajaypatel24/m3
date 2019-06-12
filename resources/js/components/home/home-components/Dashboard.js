@@ -1,11 +1,10 @@
 import React from 'react';
-import {Button, Card, Col, Container, Form, FormGroup, Row, Jumbotron } from 'react-bootstrap';
+import {Button, Col, Container, Jumbotron, Row} from 'react-bootstrap';
 import SignUpForm from '../auth/Register';
+import authenticationService from '../auth/AuthenticationService';
 
-export default class Dashboard extends React.Component
-{
-    render()
-    {
+export default class Dashboard extends React.Component {
+    render() {
         return (
             <Container className="mt-4">
                 <Row>
@@ -25,10 +24,10 @@ export default class Dashboard extends React.Component
                             <p>
                                 <Button variant="primary">Learn more</Button>
                             </p>
+
                         </Jumbotron>
 
 
-                        
                     </Col>
                     <Col sm="4">
                         <SignUpForm/>

@@ -66,13 +66,14 @@ export default class Nav extends React.Component
             "password": this.state.password
         }
 
-
-
-        login(newUser).then(res => {
-
-
-              
+        login(newUser).then(response => {
+            if (response.status === 200) {
                 console.log(localStorage.getItem('usertoken'));
+            }
+            else {
+                console.log(response.status);
+                console.log("bad login");
+            }
 
         })
 

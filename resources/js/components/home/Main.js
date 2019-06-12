@@ -10,13 +10,31 @@ import { BrowserRouter as Router, Switch } from "react-router-dom"
 
 export default class Main extends React.Component
 {
-    render()
-    {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoggedIn: false,
+            user: {}
+        }
+    }
+
+    componentDidMount() {
+        let state = localStorage["appState"];
+        if (state) {
+            let AppState = JSON.parse(state);
+            console.log(AppState);
+            this.setState({ isLoggedIn: AppState.isLoggedIn, user: AppState });
+        }
+    }
+
+    render() {
         return (
             <Router>
             <div>
                 <Nav />
                 <Dashboard />
+
 
             </div>
             </Router>
