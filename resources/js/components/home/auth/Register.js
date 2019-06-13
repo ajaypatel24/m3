@@ -128,7 +128,7 @@ export default class SignUpForm extends React.Component {
             console.log(error.message);
         });
 
-        setTimeout(function(){window.location.reload();},10)
+        //setTimeout(function(){window.location.reload();},10)
     };
 
     render()

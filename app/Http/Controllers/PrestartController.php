@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\prestart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class PrestartController extends Controller
 {
 
-    function index()
-    {
-        return view('welcome');
-    }
 
     function store(request $request)
     {
@@ -47,6 +44,18 @@ class PrestartController extends Controller
         return $prestart;
 
 
+    }
+
+    public function index() {
+        $users = DB::table('prestart')->get();
+
+        echo $users;
+    }
+
+    public function search($id) {
+        $users = DB::table('register')->where('uid', $id)->value('email', 'name');
+
+        echo $users;
     }
 }
 

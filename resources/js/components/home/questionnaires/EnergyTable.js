@@ -1,8 +1,8 @@
 import {Form, Table} from "react-bootstrap";
 import {DynamicTable} from "../home-components/DynamicTable";
 import React from "react";
+import axios from 'axios';
 
-import { Provider } from 'react-redux';
 export class EnergyTable extends React.Component {
 
 
@@ -22,12 +22,22 @@ export class EnergyTable extends React.Component {
             FioulDomestique: "",
             MazoutLeger: "",
             Charbon: "",
-            SCIAN22: false,
+            SCIAN22: true, //retrieve this information from the database using the UID
+            categories: []
 
 
         }
 
 
+    }
+
+
+    componentDidMount() {
+        axios.get('/prestart')
+            .then(response => {
+                this.setState({categories: response.data});
+
+            });
     }
 
     handleChange(e) {
@@ -82,7 +92,6 @@ export class EnergyTable extends React.Component {
     };
 
 
-
     render() {
         let charbon;
 
@@ -105,11 +114,7 @@ export class EnergyTable extends React.Component {
         }
 
 
-
-
         return (
-
-
 
 
             <div>
@@ -135,6 +140,7 @@ export class EnergyTable extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
+
                         <tr>
                             <td>Gaz natural</td>
                             <td><Form.Control name="GazNaturel" placeholder="valeur" value={this.state.GazNaturel}
@@ -211,7 +217,7 @@ export class EnergyTable extends React.Component {
                         </tr>
 
 
-                            {charbon}
+                        {charbon}
 
 
                         <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
@@ -383,10 +389,7 @@ export class EnergyTable extends React.Component {
                 </Table>
 
 
-
             </div>
-
-
 
 
         )

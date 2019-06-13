@@ -13,7 +13,10 @@ class Registration extends Migration
      */
     public function up()
     {
+
+
         Schema::create('register', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('uid')->index();
             $table->string('name');
             $table->string('organization');

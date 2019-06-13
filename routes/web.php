@@ -21,6 +21,10 @@ Route::get('/', 'LoginController@index');
 
 Route::post('/register', 'RegisterController@register');
 
+Route::get('/prestart', 'PrestartController@index');
+
+Route::get('/user/{Id}', 'PrestartController@search');
+
 
 Route::post('/','PrestartController@store'); /*method from php controller */
 Route::post('/intrants', 'InventaireController@store');

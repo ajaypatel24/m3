@@ -12,6 +12,7 @@ class RegisterController extends Controller
     {
         $register = new Register();
 
+
         $register->uid = request('uid');
         $register->name = request('name');
         $register->organization = request('organization');

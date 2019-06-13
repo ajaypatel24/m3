@@ -26,7 +26,6 @@ export default class Nav extends React.Component
             email: '',
             password: '',
             authenticated: localStorage.getItem('authenticated'),
-            users: {},
             redirect: false,
         };
 
@@ -80,6 +79,7 @@ export default class Nav extends React.Component
         */
         console.table([
             (localStorage.getItem('authenticated')),
+            (localStorage.getItem('UID')),
             (this.state.authenticated)]
         )
     }
@@ -117,6 +117,7 @@ export default class Nav extends React.Component
                     .then(function (data) {
 
                         localStorage.setItem('authenticated', 'true');
+                        localStorage.setItem('UID', uid);
                         currentComponent.setState({authenticated: true});
 
                         setTimeout(function() {window.location.href = '#/profile/';}, 20)
@@ -159,9 +160,20 @@ export default class Nav extends React.Component
         console.log(this.state.authenticated);
         window.location.href = '#/';
         localStorage.setItem('authenticated', 'false');
+        localStorage.removeItem('UID');
         this.setState({authenticated: false});
 
     }
+
+    componentWillUnmount = () => {
+        window.onbeforeunload = function () {
+            localStorage.removeItem('UID');
+            localStorage.removeItem('authenticated');
+        };
+
+
+}
+
 
 
 
@@ -287,6 +299,7 @@ export default class Nav extends React.Component
                         <div>
                         <form id="registerform">
                             <Form.Control
+
                                 name="email"
                                 required
                                 type="text"

@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card, Col, Nav, Row, Tab} from 'react-bootstrap';
 
 import {EnergyTable} from '../questionnaires/EnergyTable';
-
+import axios from 'axios';
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -31,17 +31,15 @@ export default class LoggedIn extends React.Component {
             OfferToClient: "",
             SectorActivity: "",
             ClientBase: "",
-
             SCIAN22: false,
-
             DiffCorpAddress: "",
             validated: false,
-
-
-            BusinessNameError: ""
+            BusinessNameError: "",
+            categories: []
 
         };
     }
+
 
 
     handleSubmit(e) {
