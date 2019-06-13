@@ -81383,6 +81383,9 @@ function (_React$Component) {
         console.log(error.code);
         console.log(error.message);
       });
+      setTimeout(function () {
+        window.location.reload();
+      }, 10);
     };
 
     _this.state = {
@@ -81492,7 +81495,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Button"], {
         variant: "primary",
         type: "submit",
-        onClick: this.toSubmit
+        onClick: this.handleSubmit
       }, "Submit"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "mt-3 red-text ".concat(this.state.passwordMatch)
       }, "These passwords don't match")))));
@@ -82192,16 +82195,25 @@ function (_React$Component) {
 
     _this.VerifyUser = function () {
       //retrieves unique UID
-      firebase.auth().currentUser.getIdToken(
-      /* forceRefresh */
-      true).then(function (user) {})["catch"](function (error) {
-        console.log("no one logged in");
+      //firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(user) {
+
+      /*
+      }).catch(function(error) {
+         console.log("no one logged in");
       });
-      var uid = firebase.auth().currentUser.uid;
+       let uid = firebase.auth().currentUser.uid;
+      let user = firebase.auth().currentUser.email;
+      this.setState({authenticated: true});
       console.log(uid);
+      console.log(user);
+      */
+      console.table([localStorage.getItem('authenticated'), _this.state.authenticated]);
     };
 
     _this.handleLoginRequest = function () {
+      var currentComponent = _assertThisInitialized(_this);
+
+      document.getElementById("registerform").reset();
       console.table([_this.state.email, _this.state.password]);
       firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).then(function (user) {
         var uid = firebase.auth().currentUser.uid;
@@ -82215,7 +82227,13 @@ function (_React$Component) {
             "Content-type": "application/json"
           }
         }).then(function (data) {
-          window.location.href = '#/profile/';
+          localStorage.setItem('authenticated', 'true');
+          currentComponent.setState({
+            authenticated: true
+          });
+          setTimeout(function () {
+            window.location.href = '#/profile/';
+          }, 20);
           console.log('Request succeeded with JSON response', data);
         })["catch"](function (error) {
           console.log('Request failed', error);
@@ -82231,11 +82249,20 @@ function (_React$Component) {
         // ...
 
       });
+      console.log("from login");
+      console.log(currentComponent.state.authenticated);
     };
 
     _this.handleLogout = function () {
       firebase.auth().signOut().then(function () {
         console.log(firebase.auth().currentUser);
+      });
+      console.log(_this.state.authenticated);
+      window.location.href = '#/';
+      localStorage.setItem('authenticated', 'false');
+
+      _this.setState({
+        authenticated: false
       });
     };
 
@@ -82288,10 +82315,11 @@ function (_React$Component) {
       loggedIn: false,
       email: '',
       password: '',
-      authenticated: false,
+      authenticated: localStorage.getItem('authenticated'),
       users: {},
       redirect: false
     };
+    console.log(localStorage.getItem('authenticated'));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.logout = _this.logout.bind(_assertThisInitialized(_this));
     _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
@@ -82365,7 +82393,13 @@ function (_React$Component) {
       }, "Main Page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/l",
         replace: true
-      }, "Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.VerifyUser
+      }, "Verify"), this.state.authenticated === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Welcome back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleLogout
+      }, "Logout")) :
+      /* start not logged in section */
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "registerform"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         name: "email",
@@ -82377,52 +82411,14 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         name: "password",
         required: true,
-        type: "text",
+        type: "password",
         placeholder: "Password",
         onChange: this.handleChange,
         value: this.state.password
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleLogout
-      }, "Logout"), this.state.authenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-        className: "d-flex justify-content-between",
-        bg: "light",
-        expand: "lg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
-        className: "ml-3",
-        href: "/"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + "/img/cadet_logo.svg",
-        width: "100",
-        height: "100",
-        className: "d-inline-block align-top",
-        alt: "Cadet Logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "test"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-        className: "mr-3",
-        inline: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "login-btn-color",
-        onClick: function onClick() {
-          _this2.handleOpenLogin();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-sign-in-alt"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "ml-1"
-      }, "Log In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_Login__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        handleClose: this.handleCloseLogin,
-        show: this.state.showLogin,
-        loginSuccess: this.handleSubmit
-      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.VerifyUser
-      }, "Verify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         type: "submit",
         onClick: this.handleLoginRequest
       }, "login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        type: "submit",
-        onClick: this.handleSignUpRequest
-      }, "signup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "pt-button pt-intent-primary"
       }, "Login with Google")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         className: "mr-3",
@@ -82440,41 +82436,6 @@ function (_React$Component) {
         handleClose: this.handleCloseLogin,
         show: this.state.showLogin
       })));
-
-      if (firebase.auth().currentUser.uid) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-          className: "d-flex justify-content-between",
-          bg: "light",
-          expand: "lg"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
-          className: "ml-3",
-          href: "/"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.location.origin + "/img/cadet_logo.svg",
-          width: "100",
-          height: "100",
-          className: "d-inline-block align-top",
-          alt: "Cadet Logo"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#"
-        }, "test"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-          className: "mr-3",
-          inline: true
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          className: "login-btn-color",
-          onClick: function onClick() {
-            _this2.handleOpenLogin();
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-sign-in-alt"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "ml-1"
-        }, "Log In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_Login__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          handleClose: this.handleCloseLogin,
-          show: this.state.showLogin,
-          loginSuccess: this.handleSubmit
-        })));
-      }
     }
   }]);
 
@@ -83321,11 +83282,12 @@ function (_React$Component) {
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
   \******************************************/
-/*! exports provided: default */
+/*! exports provided: ProtectedRoute, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -83354,6 +83316,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -83363,8 +83331,41 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /**
  *
- * @param email
- * @param password
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The const below created a ProtectedRoute Tag
+ * which allows for the blocking of specific
+ * routes contingent on whether the user is
+ * logged in or not. This is done using a
+ * localStorage parameter authenticated 
+ */
+
+var ProtectedRoute = function ProtectedRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ["component"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
+    render: function render(props) {
+      if (localStorage.getItem('authenticated') === 'true') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+          to: {
+            pathname: "/",
+            state: {
+              from: props.location
+            }
+          }
+        });
+      }
+    }
+  }));
+};
+/**
+ *
  */
 
 var App =
@@ -83398,10 +83399,10 @@ function (_React$Component) {
           exact: true,
           path: "/home",
           component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/prestart_questions/",
           component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/profile",
           component: _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__["default"]
         })))

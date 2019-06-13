@@ -25,11 +25,13 @@ export default class Nav extends React.Component
             loggedIn: false,
             email: '',
             password: '',
-            authenticated: false,
+            authenticated: localStorage.getItem('authenticated'),
             users: {},
             redirect: false,
         };
 
+
+        console.log(localStorage.getItem('authenticated'));
         this.handleChange = this.handleChange.bind(this);
         this.logout = this.logout.bind(this);
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
@@ -62,22 +64,33 @@ export default class Nav extends React.Component
 
 
     VerifyUser = () => { //retrieves unique UID
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(user) {
 
-            
+        //firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(user) {
+
+         /*
         }).catch(function(error) {
             console.log("no one logged in");
         });
 
         let uid = firebase.auth().currentUser.uid;
+        let user = firebase.auth().currentUser.email;
+        this.setState({authenticated: true});
         console.log(uid);
+        console.log(user);
+        */
+        console.table([
+            (localStorage.getItem('authenticated')),
+            (this.state.authenticated)]
+        )
     }
 
 
     handleLoginRequest = () => {
 
 
+        let currentComponent = this
 
+        document.getElementById("registerform").reset();
         console.table([
             this.state.email,
             this.state.password
@@ -102,8 +115,14 @@ export default class Nav extends React.Component
                     }
                 })
                     .then(function (data) {
-                        window.location.href = '#/profile/';
+
+                        localStorage.setItem('authenticated', 'true');
+                        currentComponent.setState({authenticated: true});
+
+                        setTimeout(function() {window.location.href = '#/profile/';}, 20)
                         console.log('Request succeeded with JSON response', data);
+
+
 
                     })
                     .catch(function (error) {
@@ -123,6 +142,10 @@ export default class Nav extends React.Component
 
 
 
+        console.log("from login");
+        console.log(currentComponent.state.authenticated);
+
+
 
 
 
@@ -132,6 +155,11 @@ export default class Nav extends React.Component
         firebase.auth().signOut().then(function () {
             console.log(firebase.auth().currentUser);
         }) ;
+
+        console.log(this.state.authenticated);
+        window.location.href = '#/';
+        localStorage.setItem('authenticated', 'false');
+        this.setState({authenticated: false});
 
     }
 
@@ -236,52 +264,47 @@ export default class Nav extends React.Component
                 <Link to="/l" replace>Contact Us</Link>
 
 
-                <form id="registerform">
-                <Form.Control
-                    name="email"
-                    required
-                    type="text"
-                    placeholder="Login"
-                    onChange={this.handleChange}
-                    value={this.state.email}/>
-                <Form.Control
-                    name="password"
-                    required
-                    type="text"
-                    placeholder="Password"
-                    onChange={this.handleChange}
-                    value={this.state.password}/>
 
 
-                </form>
-                <button onClick={this.handleLogout}>Logout</button>
-
-                    {this.state.authenticated ? <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
-                            <Navbar.Brand className="ml-3" href="/">
-                                <img
-                                    src={window.location.origin + "/img/cadet_logo.svg"}
-                                    width="100"
-                                    height="100"
-                                    className="d-inline-block align-top"
-                                    alt="Cadet Logo"
-                                />
-                            </Navbar.Brand>
+                <button onClick={this.VerifyUser}>Verify</button>
 
 
+                    {this.state.authenticated === 'true' ?
 
-                            <a href="#">test</a>
-                            <Form className="mr-3" inline>
-                                <Button className="login-btn-color" onClick={() => {
-                                    this.handleOpenLogin()
-                                }}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
-                                <Login handleClose={this.handleCloseLogin} show={this.state.showLogin} loginSuccess={this.handleSubmit}/>
-                            </Form>
-                        </Navbar> :
 
                         <div>
-                            <button onClick={this.VerifyUser}>Verify</button>
-                            <Button type="submit" onClick={this.handleLoginRequest}>login</Button>
-                            <Button type="submit" onClick={this.handleSignUpRequest}>signup</Button>
+                        <span>Welcome back</span>
+                            <button onClick={this.handleLogout}>Logout</button>
+
+
+
+                        </div>
+
+
+                        :
+                        /* start not logged in section */
+
+                        <div>
+                        <form id="registerform">
+                            <Form.Control
+                                name="email"
+                                required
+                                type="text"
+                                placeholder="Login"
+                                onChange={this.handleChange}
+                                value={this.state.email}/>
+                            <Form.Control
+                                name="password"
+                                required
+                                type="password"
+                                placeholder="Password"
+                                onChange={this.handleChange}
+                                value={this.state.password}/>
+
+
+                        </form>
+
+                            <Button type="submit" onClick={this.handleLoginRequest} >login</Button>
                             <Button className="pt-button pt-intent-primary">Login with Google</Button>
                         </div>
                     }
@@ -300,31 +323,6 @@ export default class Nav extends React.Component
 
         );
 
-
-        if(firebase.auth().currentUser.uid ) {
-            return (
-                <Navbar className="d-flex justify-content-between" bg="light" expand="lg">
-                    <Navbar.Brand className="ml-3" href="/">
-                        <img
-                            src={window.location.origin + "/img/cadet_logo.svg"}
-                            width="100"
-                            height="100"
-                            className="d-inline-block align-top"
-                            alt="Cadet Logo"
-                        />
-                    </Navbar.Brand>
-
-
-                    <a href="#">test</a>
-                    <Form className="mr-3" inline>
-                        <Button className="login-btn-color" onClick={() => {
-                            this.handleOpenLogin()
-                        }}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
-                        <Login handleClose={this.handleCloseLogin} show={this.state.showLogin} loginSuccess={this.handleSubmit}/>
-                    </Form>
-                </Navbar>
-            );
-        }
 
     }
 }

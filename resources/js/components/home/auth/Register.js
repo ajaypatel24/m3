@@ -127,6 +127,8 @@ export default class SignUpForm extends React.Component {
             console.log(error.code);
             console.log(error.message);
         });
+
+        setTimeout(function(){window.location.reload();},10)
     };
 
     render()
@@ -174,7 +176,7 @@ export default class SignUpForm extends React.Component {
                                               placeholder="Retype Password"/>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" onClick={this.toSubmit}>
+                            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                                 Submit
                             </Button>
 
