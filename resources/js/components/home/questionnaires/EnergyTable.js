@@ -34,26 +34,25 @@ export class EnergyTable extends React.Component {
     componentDidMount() {
         let uid = localStorage.getItem('UID');
         console.log(uid);
-        axios.get('/scian/'+uid)
+        axios.get('/scian/' + uid)
             .then(response => {
                 console.log(response.data);
-                this.setState( {SCIAN: response.data} );
+                this.setState({SCIAN: response.data});
             });
-
 
 
         console.log(this.state.SCIAN);
     }
 
-/*
-    componentDidMount() {
-        axios.get('/prestart')
-            .then(response => {
-                this.setState({categories: response.data});
+    /*
+        componentDidMount() {
+            axios.get('/prestart')
+                .then(response => {
+                    this.setState({categories: response.data});
 
-            });
-    }
-    */
+                });
+        }
+        */
 
 
     handleChange(e) {
@@ -108,36 +107,49 @@ export class EnergyTable extends React.Component {
     };
 
 
+    /**
+     * Restrictions (2019-06-14)
+     *
+     * CHARBON                  21; 32; 33
+     * COKE                     21; 32; 33
+     * BOIS                     11; 21; 32; 33
+     * ACHATS VAPEUR/FROID      21; 32; 33
+     * FERMENTATION VIN         31
+     * GAZIFICATION BIERRE      31
+     * EMISSION N2O ENGRAIS SOL 11; 31
+     * EMISSION N2O ANIMAUX     11
+     * AUTRES EMISSIONS METHANE 11
+     * EMISSIONS HALOCARBURES   21; 32; 33
+     * USINAGE ET TOURNAGE      21; 32; 33
+     * SOUDURE                  21; 32; 33
+     *
+     *
+     */
     render() {
         let charbon;
+        let coke;
+        let bois;
+
+        let achatvapeurfroid;
+        let vin;
+        let biere;
+
+        let n2osol;
+        let n2oanimaux;
+
+        let autremethane;
+        let halocarbures;
+        let usinage;
+        let soudure;
 
 
+        switch (this.state.SCIAN) {
+            case 'SCIAN 21':
+            case 'SCIAN 31-33':
 
-
-        switch(this.state.SCIAN) {
-            case 'SCIAN 21' || 'SCIAN 31-33':
-            charbon =
-
-                <tr>
-                    <td>Charbon, coke... (kg)</td>
-                    <td><Form.Control name="Charbon" placeholder="valeur" value={this.state.Charbon}
-                                      onChange={this.handleChange}></Form.Control></td>
-                    <td><Form.Control as="select" name="SectorActivity"
-                                      onChange={this.handleChange} required>
-                        <option></option>
-                        <option value="Unite1"> Unite1</option>
-                    </Form.Control></td>
-                    <td>2.3</td>
-                    <td>0</td>
-                </tr>
-
-                break;
-
-            case 'SCIAN 11':
                 charbon =
-
                     <tr>
-                        <td>Charbon, coke... (kg)</td>
+                        <td>Charbon</td>
                         <td><Form.Control name="Charbon" placeholder="valeur" value={this.state.Charbon}
                                           onChange={this.handleChange}></Form.Control></td>
                         <td><Form.Control as="select" name="SectorActivity"
@@ -148,7 +160,164 @@ export class EnergyTable extends React.Component {
                         <td>2.3</td>
                         <td>0</td>
                     </tr>
+                coke =
+                    <tr>
+                        <td>Coke</td>
+                        <td><Form.Control name="Coke" placeholder="valeur" value={this.state.Charbon}
+                                          onChange={this.handleChange}></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>2.3</td>
+                        <td>0</td>
+                    </tr>
+                bois =
+                    <tr>
+                        <td>Bois buche, sciures</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>place</td>
+                        <td>0</td>
+                    </tr>
 
+
+                achatvapeurfroid =
+                    <tr>
+                        <td>Achats de vapeur et de froid</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                vin =
+                    <tr>
+                        <td>Fermentation du vin</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                biere =
+                    <tr>
+                        <td>Gazification de la biere</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                halocarbures =
+                    <tr>
+                        <td>Emissions d'halocarbunes et autres</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+                usinage =
+                    <tr>
+                        <td>Usinage et tournage CNC (acier)</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                soudure =
+                    <tr>
+                        <td>Soudure (acier)</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                break;
+
+            case 'SCIAN 11':
+                bois =
+                    <tr>
+                        <td>Bois buche, sciures</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>place</td>
+                        <td>0</td>
+                    </tr>
+
+                n2osol =
+                    <tr>
+                        <td>Emissions de N2O engrais au sol</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                n2oanimaux =
+                    <tr>
+                        <td>Emissions de N2O des animaux</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
+
+                autremethane =
+                    <tr>
+                        <td>Autres emissions de methane</td>
+                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>1.23</td>
+                        <td>0</td>
+                    </tr>
                 break;
 
 
@@ -260,6 +429,8 @@ export class EnergyTable extends React.Component {
 
                         {charbon}
 
+                        {coke}
+
 
                         <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
                         <tr>
@@ -273,17 +444,10 @@ export class EnergyTable extends React.Component {
                             <td>1.2</td>
                             <td>0</td>
                         </tr>
-                        <tr>
-                            <td>Bois buche, sciures...(KG)</td>
-                            <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                            <td><Form.Control as="select" name="SectorActivity"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                                <option value="Unite1"> Unite1</option>
-                            </Form.Control></td>
-                            <td>place</td>
-                            <td>0</td>
-                        </tr>
+
+
+                        {bois}
+
 
                         <tr>
                             <td>Chauffage fossible a partier des m^2 chauffes</td>
@@ -311,8 +475,19 @@ export class EnergyTable extends React.Component {
                             <td>1.2</td>
                             <td>0</td>
                         </tr>
+
+                        {achatvapeurfroid}
+
+                        {vin}
+
+                        {biere}
+
+                        {n2osol}
+
+                        {n2oanimaux}
+
                         <tr>
-                            <td>Achats de vapeur et de froid</td>
+                            <td>Emissions de methane des animaux</td>
                             <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
                             <td><Form.Control as="select" name="SectorActivity"
                                               onChange={this.handleChange} required>
@@ -322,11 +497,39 @@ export class EnergyTable extends React.Component {
                             <td>1.23</td>
                             <td>0</td>
                         </tr>
+
+                        {autremethane}
+
+                        {halocarbures}
+
+                        {usinage}
+
+                        {soudure}
+
+                        <tr>
+                            <td>Cammionage</td>
+                            <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
+                            <td><Form.Control as="select" name="SectorActivity"
+                                              onChange={this.handleChange} required>
+                                <option></option>
+                                <option value="Unite1"> Unite1</option>
+                            </Form.Control></td>
+                            <td>1.23</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>Employee Transportation, Use, End of Life</tr>
+
+
                         </tbody>
 
                     </Table>
                     <button type="submit" onClick={this.handleSubmit}>test</button>
                 </Form>
+
+
+                {/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
+
 
                 <Table responsive striped bordered hover variant="dark">
                     <thead>
