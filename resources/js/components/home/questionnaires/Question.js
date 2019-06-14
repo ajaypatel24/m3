@@ -31,6 +31,7 @@ export default class Question extends React.Component {
             BusinessClass: "",
             BusinessType: "",
             DiffCorpAddress: "",
+            UID: localStorage.getItem('UID'),
             validated: false,
 
         };
@@ -39,6 +40,8 @@ export default class Question extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+
 
         const data = this.state; //VERY IMPORTANT
 
@@ -70,6 +73,8 @@ export default class Question extends React.Component {
         }
         this.setState(({validated: true}));
         console.log(data);
+
+
 
 
     };

@@ -30,6 +30,7 @@ class Prestart extends Migration
             $table->string("OfferToClient", 300)->nullable();
             $table->string("IncomeValue", 50)->nullable();
             $table->string("EmployeeNumber", 50)->nullable();
+            $table->string("UID", 60)->index();
 
             $table->timestamps();
 

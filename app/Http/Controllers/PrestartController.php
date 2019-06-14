@@ -31,6 +31,7 @@ class PrestartController extends Controller
         $prestart->IncomeValue = request('IncomeValue');
         $prestart->EmployeeNumber = request('EmployeeNumber');
         $prestart->OfferToClient = request('OfferToClient');
+        $prestart->UID = request('UID');
 
 
         $prestart->save();
@@ -56,6 +57,31 @@ class PrestartController extends Controller
         $users = DB::table('register')->where('uid', $id)->value('email', 'name');
 
         echo $users;
+    }
+
+    public function searchSCIAN($id) {
+        $users = DB::table('prestart')->where('uid', $id)->value('SectorActivity');
+
+        echo $users;
+    }
+
+    public function testQuery() {
+
+        $data = DB::table('register')
+            ->join('prestart', 'register.UID', '=', 'prestart.UID') //link tables using primary key
+            ->select('register.email','prestart.SectorActivity', 'register.uid') //create a table with the linked values of the two
+            ->get(); //return
+            /*
+            ->join('prestart', 'prestart.id', '=','register.id')
+            ->select('register.id', 'register.email', 'register.name')
+            ->get();
+            */
+
+        //echo "<pre>";
+        //print_r($data);
+
+        return $data;
+
     }
 }
 

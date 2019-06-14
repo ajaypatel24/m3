@@ -22,7 +22,7 @@ export class EnergyTable extends React.Component {
             FioulDomestique: "",
             MazoutLeger: "",
             Charbon: "",
-            SCIAN22: true, //retrieve this information from the database using the UID
+            SCIAN: "",
             categories: []
 
 
@@ -31,7 +31,21 @@ export class EnergyTable extends React.Component {
 
     }
 
+    componentDidMount() {
+        let uid = localStorage.getItem('UID');
+        console.log(uid);
+        axios.get('/scian/'+uid)
+            .then(response => {
+                console.log(response.data);
+                this.setState( {SCIAN: response.data} );
+            });
 
+
+
+        console.log(this.state.SCIAN);
+    }
+
+/*
     componentDidMount() {
         axios.get('/prestart')
             .then(response => {
@@ -39,6 +53,8 @@ export class EnergyTable extends React.Component {
 
             });
     }
+    */
+
 
     handleChange(e) {
 
@@ -95,7 +111,11 @@ export class EnergyTable extends React.Component {
     render() {
         let charbon;
 
-        if (this.state.SCIAN22) {
+
+
+
+        switch(this.state.SCIAN) {
+            case 'SCIAN 21' || 'SCIAN 31-33':
             charbon =
 
                 <tr>
@@ -110,6 +130,27 @@ export class EnergyTable extends React.Component {
                     <td>2.3</td>
                     <td>0</td>
                 </tr>
+
+                break;
+
+            case 'SCIAN 11':
+                charbon =
+
+                    <tr>
+                        <td>Charbon, coke... (kg)</td>
+                        <td><Form.Control name="Charbon" placeholder="valeur" value={this.state.Charbon}
+                                          onChange={this.handleChange}></Form.Control></td>
+                        <td><Form.Control as="select" name="SectorActivity"
+                                          onChange={this.handleChange} required>
+                            <option></option>
+                            <option value="Unite1"> Unite1</option>
+                        </Form.Control></td>
+                        <td>2.3</td>
+                        <td>0</td>
+                    </tr>
+
+                break;
+
 
         }
 

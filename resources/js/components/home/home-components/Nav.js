@@ -31,6 +31,7 @@ export default class Nav extends React.Component
 
 
         console.log(localStorage.getItem('authenticated'));
+
         this.handleChange = this.handleChange.bind(this);
         this.logout = this.logout.bind(this);
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
@@ -82,6 +83,8 @@ export default class Nav extends React.Component
             (localStorage.getItem('UID')),
             (this.state.authenticated)]
         )
+
+
     }
 
 

@@ -24,12 +24,15 @@ Route::post('/register', 'RegisterController@register');
 Route::get('/prestart', 'PrestartController@index');
 
 Route::get('/user/{Id}', 'PrestartController@search');
+Route::get('/scian/{Id}', 'PrestartController@searchSCIAN');
 
 
 Route::post('/','PrestartController@store'); /*method from php controller */
 Route::post('/intrants', 'InventaireController@store');
 Route::post('/categorie', 'CategorieController@store');
 Route::get('/data', 'PrestartController@p');
+
+Route::get('/querytest', 'PrestartController@testQuery');
 
 
 

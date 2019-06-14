@@ -80598,8 +80598,7 @@ function (_React$Component) {
       FioulDomestique: "",
       MazoutLeger: "",
       Charbon: "",
-      SCIAN22: true,
-      //retrieve this information from the database using the UID
+      SCIAN: "",
       categories: []
     };
     return _this;
@@ -80610,12 +80609,27 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/prestart').then(function (response) {
+      var uid = localStorage.getItem('UID');
+      console.log(uid);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/scian/' + uid).then(function (response) {
+        console.log(response.data);
+
         _this2.setState({
-          categories: response.data
+          SCIAN: response.data
         });
       });
+      console.log(this.state.SCIAN);
     }
+    /*
+        componentDidMount() {
+            axios.get('/prestart')
+                .then(response => {
+                    this.setState({categories: response.data});
+    
+                });
+        }
+        */
+
   }, {
     key: "handleChange",
     value: function handleChange(e) {
@@ -80663,20 +80677,38 @@ function (_React$Component) {
 
       var charbon;
 
-      if (this.state.SCIAN22) {
-        charbon = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Charbon, coke... (kg)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-          name: "Charbon",
-          placeholder: "valeur",
-          value: this.state.Charbon,
-          onChange: this.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-          as: "select",
-          name: "SectorActivity",
-          onChange: this.handleChange,
-          required: true
-        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
-          value: "Unite1"
-        }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+      switch (this.state.SCIAN) {
+        case 'SCIAN 21' || false:
+          charbon = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Charbon, coke... (kg)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+            name: "Charbon",
+            placeholder: "valeur",
+            value: this.state.Charbon,
+            onChange: this.handleChange
+          })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+            as: "select",
+            name: "SectorActivity",
+            onChange: this.handleChange,
+            required: true
+          }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite1"
+          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          break;
+
+        case 'SCIAN 11':
+          charbon = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Charbon, coke... (kg)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+            name: "Charbon",
+            placeholder: "valeur",
+            value: this.state.Charbon,
+            onChange: this.handleChange
+          })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+            as: "select",
+            name: "SectorActivity",
+            onChange: this.handleChange,
+            required: true
+          }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite1"
+          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          break;
       }
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"], {
@@ -80976,6 +81008,7 @@ function (_React$Component) {
       BusinessClass: "",
       BusinessType: "",
       DiffCorpAddress: "",
+      UID: localStorage.getItem('UID'),
       validated: false
     };
     return _this;
