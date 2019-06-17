@@ -65,6 +65,12 @@ class PrestartController extends Controller
         echo $users;
     }
 
+    public function getName($id) {
+        $name = DB::table('register')->where('uid', $id)->value('name');
+
+        return $name;
+    }
+
     public function testQuery() {
 
         $data = DB::table('register')

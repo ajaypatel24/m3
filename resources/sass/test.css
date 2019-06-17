@@ -1,0 +1,27 @@
+.jumbo-text {
+    font-family: "Arial";
+}
+
+
+.hello {
+    text-align: center;
+    color: #3490dc;
+}
+
+.links{
+    font-family: Arial;
+    color: #000000;
+}
+
+.links:hover {
+    color: #000000;
+}
+
+.NotFound404 {
+    font-size: 3em;
+}
+
+.DNE {
+    font-size: 1.2em;
+}
+

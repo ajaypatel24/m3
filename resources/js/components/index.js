@@ -6,6 +6,8 @@ import LoggedIn from './home/home-components/LoggedIn';
 import Nav from "./home/home-components/Nav";
 import Dashboard from "./home/home-components/Dashboard";
 import PrestartData from "./home/home-components/PrestartData";
+import Footer2 from "./home/home-components/Footer2";
+import NoMatch from "./home/custom-components/NoMatch";
 
 
 /**
@@ -74,7 +76,11 @@ export default class App extends React.Component {
                     <Route exact path="/predata" component={PrestartData}/>
                     <ProtectedRoute path="/prestart_questions/" component={Question}/>
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
+
+                    <Route component={NoMatch}/>
                 </Switch>
+
+                <Footer2/>
 
 
             </HashRouter>

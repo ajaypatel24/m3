@@ -108,6 +108,7 @@ export default class SignUpForm extends React.Component {
             })
                 .then(function (data) {
                     console.log('Request succeeded with JSON response', data);
+
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
@@ -128,7 +129,7 @@ export default class SignUpForm extends React.Component {
             console.log(error.message);
         });
 
-        //setTimeout(function(){window.location.reload();},10)
+
     };
 
     render()

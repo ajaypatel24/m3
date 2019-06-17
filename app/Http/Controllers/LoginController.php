@@ -23,4 +23,12 @@ class LoginController extends Controller
     }
 
 
+    function getName() {
+
+
+
+
+    }
+
+
 }

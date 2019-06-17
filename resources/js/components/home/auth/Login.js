@@ -44,6 +44,8 @@ export default class Login extends React.Component {
 
 
     handleLoginRequest = () => {
+        console.log("hello");
+        /*
 
 
 
@@ -92,6 +94,8 @@ export default class Login extends React.Component {
 
 
 
+
+        */
 
     };
 
@@ -210,9 +214,9 @@ class ModalFooter extends React.Component {
                 <Button variant='danger' onClick={() => {
                     this.props.handleClose();
                 }}>Close</Button>
-                <Button variant='success' onClick={
-                    this.handleLoginRequest
-                }
+                <Button  onClick={() => {
+                    this.handleLoginRequest()
+                }}
                 >Login</Button>
             </Modal.Footer>
         )

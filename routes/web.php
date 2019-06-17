@@ -25,7 +25,7 @@ Route::get('/prestart', 'PrestartController@index');
 
 Route::get('/user/{Id}', 'PrestartController@search');
 Route::get('/scian/{Id}', 'PrestartController@searchSCIAN');
-
+Route::get('/name/{Id}', 'PrestartController@getName' );
 
 Route::post('/','PrestartController@store'); /*method from php controller */
 Route::post('/intrants', 'InventaireController@store');

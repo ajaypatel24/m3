@@ -17,7 +17,6 @@ class RegisterController extends Controller
         $register->name = request('name');
         $register->organization = request('organization');
         $register->email = request('email');
-
         $register->save();
 
         JavaScript::put([

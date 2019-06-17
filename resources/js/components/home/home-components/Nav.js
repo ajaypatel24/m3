@@ -1,23 +1,16 @@
 import React from 'react';
-import {Navbar, Form, Button, NavDropdown } from "react-bootstrap";
-import {HashRouter, Link, Redirect} from "react-router-dom"
+import {Button, Dropdown, Form, Navbar, DropdownButton} from "react-bootstrap";
+import {Link, Redirect} from "react-router-dom"
+import axios from 'axios';
 
-import {Route} from "react-router";
-import { BrowserRouter as Router } from 'react-router-dom'
-
-
+import '../../../../sass/test.css'
 
 
 import Login from "../auth/Login";
-import {login} from "../auth/UserFunctions";
 
 
-
-
-export default class Nav extends React.Component
-{
-    constructor(props, context)
-    {
+export default class Nav extends React.Component {
+    constructor(props, context) {
         super(props, context);
 
         this.state = {
@@ -27,6 +20,7 @@ export default class Nav extends React.Component
             password: '',
             authenticated: localStorage.getItem('authenticated'),
             redirect: false,
+            name: localStorage.getItem('name'),
         };
 
 
@@ -39,23 +33,23 @@ export default class Nav extends React.Component
     }
 
 
-/*
-    componentWillMount = () => {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                this.setState({
-                    authenticated: true
-                })
-            } else {
-                this.setState({
-                    authenticated: false
-                })
-            }
+    /*
+        componentWillMount = () => {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    this.setState({
+                        authenticated: true
+                    })
+                } else {
+                    this.setState({
+                        authenticated: false
+                    })
+                }
 
-        })
-    }
+            })
+        }
 
- */
+     */
 
 
     authListener = () => {
@@ -67,17 +61,17 @@ export default class Nav extends React.Component
 
         //firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(user) {
 
-         /*
-        }).catch(function(error) {
-            console.log("no one logged in");
-        });
+        /*
+       }).catch(function(error) {
+           console.log("no one logged in");
+       });
 
-        let uid = firebase.auth().currentUser.uid;
-        let user = firebase.auth().currentUser.email;
-        this.setState({authenticated: true});
-        console.log(uid);
-        console.log(user);
-        */
+       let uid = firebase.auth().currentUser.uid;
+       let user = firebase.auth().currentUser.email;
+       this.setState({authenticated: true});
+       console.log(uid);
+       console.log(user);
+       */
         console.table([
             (localStorage.getItem('authenticated')),
             (localStorage.getItem('UID')),
@@ -121,11 +115,13 @@ export default class Nav extends React.Component
 
                         localStorage.setItem('authenticated', 'true');
                         localStorage.setItem('UID', uid);
-                        currentComponent.setState({authenticated: true});
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
 
-                        setTimeout(function() {window.location.href = '#/profile/';}, 20)
+                        setTimeout(function () {
+                            window.location.href = '#/profile/';
+                        }, 20)
                         console.log('Request succeeded with JSON response', data);
-
 
 
                     })
@@ -145,12 +141,8 @@ export default class Nav extends React.Component
         });
 
 
-
         console.log("from login");
         console.log(currentComponent.state.authenticated);
-
-
-
 
 
     };
@@ -158,13 +150,14 @@ export default class Nav extends React.Component
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
             console.log(firebase.auth().currentUser);
-        }) ;
+        });
 
         console.log(this.state.authenticated);
         window.location.href = '#/';
+        setTimeout(function(){window.location.reload();},10)
         localStorage.setItem('authenticated', 'false');
         localStorage.removeItem('UID');
-        this.setState({authenticated: false});
+        this.setState({authenticated: localStorage.getItem('authenticated')});
 
     }
 
@@ -175,9 +168,19 @@ export default class Nav extends React.Component
         };
 
 
-}
+    }
 
+    getName = () => {
 
+        let id = localStorage.getItem('UID');
+        axios.get('/name/' + id)
+            .then(response => {
+                console.log(response.data);
+                localStorage.setItem('name', response.data);
+                this.setState({name: response.data});
+            });
+
+    }
 
 
     handleSignUpRequest = () => {
@@ -215,10 +218,8 @@ export default class Nav extends React.Component
         document.getElementById("registerform").reset();
 
 
-
-
-
     };
+
     handleChange(e) {
 
         this.setState({
@@ -237,9 +238,9 @@ export default class Nav extends React.Component
     };
 
     handleCloseLogin = () => {
-      this.setState({
-          showLogin:false
-      });
+        this.setState({
+            showLogin: false
+        });
     };
 
     loginSuccess = () => {
@@ -253,53 +254,66 @@ export default class Nav extends React.Component
     }
 
 
-    render()
-    {
+    render() {
 
-        if(this.state.redirect === true) {
+        if (this.state.redirect === true) {
             return <Redirect to='/prestart_questions/'/>
         }
 
-
         return (
 
-            <Navbar className="d-flex justify-content-between" bg="light" variant="light" expand="lg">
+            <Navbar collapseOnSelect className="d-flex justify-content-between" bg="light" variant="light" expand="lg">
                 <Navbar.Brand className="ml-3" href="/">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
-                        width="100"
-                        height="100"
+                        width="90"
+                        height="90"
                         className="d-inline-block align-top"
                         alt="Cadet Logo"
                     />
                 </Navbar.Brand>
 
+
                 <Link to="/prestart_questions/" replace>Prestart Question</Link>
+
                 <Link to="/profile" replace>Main Page</Link>
+
                 <Link to="/l" replace>Contact Us</Link>
 
 
+                {/* <button onClick= {this.VerifyUser} >Verify</button> */}
 
 
-                <button onClick={this.VerifyUser}>Verify</button>
-
-
-                    {this.state.authenticated === 'true' ?
-
-
-                        <div>
-                        <span>Welcome back</span>
-                            <button onClick={this.handleLogout}>Logout</button>
+                {this.state.authenticated === 'true' ?
 
 
 
-                        </div>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {this.state.name}
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item onClick={this.handleLogout}>logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
 
-                        :
-                        /* start not logged in section */
 
-                        <div>
+
+
+
+
+
+
+
+
+                    :
+                    /* start not logged in section */
+
+                    <div>
                         <form id="registerform">
                             <Form.Control
 
@@ -320,19 +334,20 @@ export default class Nav extends React.Component
 
                         </form>
 
-                            <Button type="submit" onClick={this.handleLoginRequest} >login</Button>
-                            <Button className="pt-button pt-intent-primary">Login with Google</Button>
-                        </div>
-                    }
+                        <Button type="submit" onClick={this.handleLoginRequest}>login</Button>
+                        <Button className="pt-button pt-intent-primary">Login with Google</Button>
+                    </div>
+                }
 
-
-
-
-
+                {/*
                 <Form className="mr-3" inline>
-                    <Button className="login-btn-color" onClick={()=>{this.handleOpenLogin()}}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
+                    <Button className="login-btn-color" onClick={() => {
+                        this.handleOpenLogin()
+                    }}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
                     <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
                 </Form>
+
+                */}
 
             </Navbar>
 
