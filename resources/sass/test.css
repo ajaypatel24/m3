@@ -30,3 +30,18 @@
 
 }
 
+.IntroPage {
+    font-family: 'Arial';
+
+}
+
+.WebsiteHeader {
+    font-family: 'Arial';
+    font-weight: bold;
+    backgroundColor: Yellow;
+}
+
+.hello {
+     width: 100%;
+     height: 50%;
+}

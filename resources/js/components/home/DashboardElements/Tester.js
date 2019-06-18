@@ -280,6 +280,7 @@ export default class tester extends React.Component {
                     <Nav.Link href="#/">Home</Nav.Link>
                     <Nav.Link href="#/profile">Features</Nav.Link>
                     <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
+                    <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
                     <Nav.Link href="#/predata">Contact Us</Nav.Link>
                 </Nav>
 
@@ -308,7 +309,7 @@ export default class tester extends React.Component {
 
                     <Navbar.Collapse className="justify-content-end" inline>
                         <Navbar.Text>
-                                <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
+                            <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
                             <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
