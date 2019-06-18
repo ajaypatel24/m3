@@ -1,59 +1,18 @@
 import React from 'react';
-import {Button, Dropdown, Form, Navbar, DropdownButton} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom"
-import axios from 'axios';
+import {Button, Form, FormControl, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+
+import '../../../../sass/navstyle.css'
+import axios from "axios";
 
 
-import '../../../../sass/test.css'
+const CityRegex = new RegExp("^[a-zA-Z]+$"); //
+const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
+const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
-/****
- * THIS FILE IS DEPRECATED AND IS ONLY GOING TO BE USED FOR REFERENCE
- * NAV IS NOW CONTAINED UNDER DASHBOARD ELEMENTS
- *
- *
- *
- *
- *
- *
- * DO NOT EDIT, DO NOT ROUTE TO, DO NOT USE
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
-
-import Login from "../auth/Login";
+export default class tester extends React.Component {
 
 
-export default class Nav extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -137,7 +96,7 @@ export default class Nav extends React.Component {
 
         let currentComponent = this
 
-        document.getElementById("registerform").reset();
+
         console.table([
             this.state.email,
             this.state.password
@@ -170,6 +129,7 @@ export default class Nav extends React.Component {
 
                         setTimeout(function () {
                             window.location.href = '#/profile/';
+                            window.location.reload();
                         }, 20)
                         console.log('Request succeeded with JSON response', data);
 
@@ -204,10 +164,9 @@ export default class Nav extends React.Component {
 
         console.log(this.state.authenticated);
         window.location.href = '#/';
-        setTimeout(function(){window.location.reload();},10)
         localStorage.setItem('authenticated', 'false');
         localStorage.removeItem('UID');
-        this.setState({authenticated: localStorage.getItem('authenticated')});
+        this.setState({authenticated: false});
 
     }
 
@@ -303,113 +262,70 @@ export default class Nav extends React.Component {
         this.setState({authenticated: false})
     }
 
-
     render() {
-
-        if (this.state.redirect === true) {
-            return <Redirect to='/prestart_questions/'/>
-        }
 
         return (
 
-
-
-
-
-            <Navbar collapseOnSelect className="d-flex justify-content-between" bg="light" variant="light" expand="lg" >
-                <Navbar.Brand className="ml-3" href="/">
+            <Navbar bg="light" variant="light" /*sticky="top"*/ className="navigation">
+                <Navbar.Brand href="#home">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
-                        width="75"
-                        height="75"
+                        width="65"
+                        height="65"
                         className="d-inline-block align-top"
                         alt="Cadet Logo"
                     />
                 </Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link href="#/">Home</Nav.Link>
+                    <Nav.Link href="#/profile">Features</Nav.Link>
+                    <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
+                    <Nav.Link href="#/predata">Contact Us</Nav.Link>
+                </Nav>
 
-
-                <Link to="/prestart_questions/" replace>Prestart Question</Link>
-
-                <Link to="/profile" replace>Main Page</Link>
-
-                <Link to="/l" replace>Contact Us</Link>
-
-
-                {/* <button onClick= {this.VerifyUser} >Verify</button> */}
-
-
-                {this.state.authenticated === 'true' ?
-
-
-
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {this.state.name}
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item onClick={this.handleLogout}>logout</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-
-
-
-
-
-
-
-
-
-
+                {this.state.authenticated !='true' ?
+                    <Form inline>
+                        <Form.Control
+                            required
+                            name="email"
+                            type="text"
+                            placeholder="Username"
+                            className="mr-sm-2"
+                            onChange={this.handleChange}
+                            value={this.state.email}/>
+                        <Form.Control
+                            required
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            className="mr-sm-2"
+                            onChange={this.handleChange}
+                            value={this.state.password}/>
+                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                    </Form>
 
                     :
-                    /* start not logged in section */
 
-                    <div>
-                        <form id="registerform">
-                            <Form.Control
+                    <Navbar.Collapse className="justify-content-end" inline>
+                        <Navbar.Text>
+                                <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
+                            <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        </NavDropdown>
+                        </Navbar.Text>
+                    </Navbar.Collapse>
 
-                                name="email"
-                                required
-                                type="text"
-                                placeholder="Login"
-                                onChange={this.handleChange}
-                                value={this.state.email}/>
-
-                            <Form.Control
-                                name="password"
-                                required
-                                type="password"
-                                placeholder="Password"
-                                onChange={this.handleChange}
-                                value={this.state.password}/>
-
-
-
-                        </form>
-
-                        <Button type="submit" onClick={this.handleLoginRequest}>login</Button>
-                        <Button className="pt-button pt-intent-primary">Login with Google</Button>
-                    </div>
                 }
-
-                {/*
-                <Form className="mr-3" inline>
-                    <Button className="login-btn-color" onClick={() => {
-                        this.handleOpenLogin()
-                    }}><i className="fas fa-sign-in-alt"/><span className="ml-1">Log In</span></Button>
-                    <Login handleClose={this.handleCloseLogin} show={this.state.showLogin}/>
-                </Form>
-
-                */}
-
             </Navbar>
 
 
         );
 
-
     }
 }
+
+
+

@@ -3,6 +3,7 @@ import {Button, Card, Col, Nav, Row, Tab} from 'react-bootstrap';
 
 import {EnergyTable} from '../questionnaires/EnergyTable';
 import axios from 'axios';
+import '../../../../sass/TabStyle.css'
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -142,10 +143,10 @@ export default class LoggedIn extends React.Component {
                         <Col sm={2}>
                             <Nav variant="pills" className="flex-column">
                                 <Nav.Item>
-                                    <Nav.Link eventKey="first">Inventaire</Nav.Link>
+                                    <Nav.Link eventKey="first" className="test">Inventaire</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                                    <Nav.Link eventKey="second" className="test">Tab 2</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link eventKey="third">Tab 3</Nav.Link>

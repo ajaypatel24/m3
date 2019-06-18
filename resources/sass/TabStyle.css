@@ -1,0 +1,16 @@
+.flex-columns {
+    color: #2d995b;
+}
+
+.test {
+    font-family: 'Arial';
+    color: grey;
+}
+
+.test:hover {
+    color: black;
+}
+
+.but {
+    color: orange;
+}

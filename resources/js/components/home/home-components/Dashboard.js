@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Col, Container, Jumbotron, Row} from 'react-bootstrap';
 import SignUpForm from '../auth/Register';
+import LoginScreen from '../custom-components/LoginScreen'
 import '../../../../sass/test.css'
 
 
@@ -9,7 +10,7 @@ export default class Dashboard extends React.Component {
         return (
             <Container className="mt-4">
                 <Row>
-                    <Col sm="8">
+                    <Col lg="8">
                         <Jumbotron>
                             <h1>Projet M3</h1>
                             <p id="jumbo-text">
@@ -30,7 +31,7 @@ export default class Dashboard extends React.Component {
 
 
                     </Col>
-                    <Col sm="4">
+                    <Col lg="4">
                         <SignUpForm/>
                     </Col>
                 </Row>

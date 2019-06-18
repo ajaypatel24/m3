@@ -7,6 +7,37 @@ import '../../../../sass/footer.css'
 export default class Footer2 extends Component{
     render(){
         return (
+            <footer className="footer section-wrapper">
+
+                <p className="copyright">
+                    © Project M3 2019
+                </p>
+                <nav className="footer-nav" role="navigation">
+                    <ul>
+                        <li><a href="https://mcgilleus.ca"></a></li>
+                        <li></li>
+                        <li><Link to="/About Us" className="grey-text text-lighten-3">About Us</Link></li>
+                        <li><Link to="/Terms & Conditions" className="grey-text text-lighten-3">Terms & Conditions</Link></li>
+                        <li><Link to="/Help" className="grey-text text-lighten-3">Help</Link></li>
+                        <li><Link to="/Contact Us" className="grey-text text-lighten-3">Contact Us</Link></li>
+
+
+
+                    </ul>
+
+                    <ul>
+
+                    </ul>
+                </nav>
+
+
+
+
+
+
+                <div className="spacer small"></div>
+            </footer>
+            /*
             <div>
                 {this.props.children}
                 <Footer className="footer" copyrights="&copy; 2015 Copyright Text"
@@ -27,6 +58,8 @@ export default class Footer2 extends Component{
                     <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                 </Footer>
             </div>
+            */
+
         );
     }
 }

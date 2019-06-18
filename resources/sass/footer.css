@@ -1,6 +1,24 @@
-.footer {
-    position: absolute;
+.footer22 {
+    position: static  ;
+    left: 0;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
+    background-color: navajowhite;
+    color: white;
+    text-align: center;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    background-color: #9CAFC4;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
 }

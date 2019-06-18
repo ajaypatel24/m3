@@ -8,6 +8,8 @@ import Dashboard from "./home/home-components/Dashboard";
 import PrestartData from "./home/home-components/PrestartData";
 import Footer2 from "./home/home-components/Footer2";
 import NoMatch from "./home/custom-components/NoMatch";
+import Loading from "./home/custom-components/Loading";
+import Tester from "./home/DashboardElements/Tester"
 
 
 /**
@@ -68,19 +70,22 @@ export default class App extends React.Component {
         return (
             /*full routing found here*/
             <HashRouter>
-                <Nav/>
+
+                <Tester/>
 
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
                     <Route exact path="/predata" component={PrestartData}/>
-                    <ProtectedRoute path="/prestart_questions/" component={Question}/>
-                    <ProtectedRoute path="/profile" component={LoggedIn}/>
-
+                    <Route path="/prestart_questions/" component={Question}/>
+                    <Route path="/profile" component={LoggedIn}/>
+                    <Route path="/tester" component={Tester}/>
+                    <Route exact path="/loading" component={Loading}/>
                     <Route component={NoMatch}/>
+                    <Route exact path="/nav" component={Nav}/>
                 </Switch>
 
-                <Footer2/>
+                {/* <Footer2/> */}
 
 
             </HashRouter>
