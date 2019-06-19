@@ -80725,7 +80725,7 @@ module.exports = exports['default'];
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89592,46 +89592,79 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); //handle submit function
 
     _this.state = {
-      Unite: "",
       GazNaturel: "",
+      GazUnite: "",
       Propane: "",
+      PropaneUnite: "",
       EssencePompe: "",
+      EssenceUnite: "",
       GazolePomp: "",
+      GazoleUnite: "",
       FioulDomestique: "",
+      FioulUnite: "",
       MazoutLeger: "",
+      MazoutUnite: "",
       Charbon: "",
-      SCIAN: "",
-      categories: []
+      CharbonUnite: "",
+      Cammionage: "",
+      CammionageUnite: "",
+      TotalElectricite: "",
+      ElectriciteUnite: "",
+      Fossil: "",
+      FossileUnite: "",
+      Biodiesel: "",
+      BiodieselUnite: "",
+      Bois: "",
+      BoisUnite: "",
+      soudure: "",
+      SoudureUnite: "",
+      CNC: "",
+      UsinageUnite: "",
+      VapeurFroid: "",
+      VapeurUnite: "",
+      Vin: "",
+      VinUnite: "",
+      Biere: "",
+      BiereUnite: "",
+      Halocarbunes: "",
+      HaloUnite: "",
+      AutreMethane: "",
+      AutreMethaneUnite: "",
+      n2osol: "",
+      n2osolUnite: "",
+      n2oanimaux: "",
+      n2oanimauxUnite: "",
+      MethaneAnimaux: "",
+      MethanAnimauxUnite: "",
+      Coke: "",
+      CokeUnite: ""
     };
     return _this;
   }
+  /*
+  componentDidMount() {
+      let uid = localStorage.getItem('UID');
+      console.log(uid);
+      axios.get('/scian/' + uid)
+          .then(response => {
+              console.log(response.data);
+              this.setState({SCIAN: response.data});
+          });
+          console.log(this.state.SCIAN);
+  }
+  */
+
+  /*
+      componentDidMount() {
+          axios.get('/prestart')
+              .then(response => {
+                  this.setState({categories: response.data});
+                });
+      }
+      */
+
 
   _createClass(EnergyTable, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      var uid = localStorage.getItem('UID');
-      console.log(uid);
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/scian/' + uid).then(function (response) {
-        console.log(response.data);
-
-        _this2.setState({
-          SCIAN: response.data
-        });
-      });
-      console.log(this.state.SCIAN);
-    }
-    /*
-        componentDidMount() {
-            axios.get('/prestart')
-                .then(response => {
-                    this.setState({categories: response.data});
-                  });
-        }
-        */
-
-  }, {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -89693,7 +89726,7 @@ function (_React$Component) {
      *
      */
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var charbon;
       var coke;
@@ -89718,155 +89751,229 @@ function (_React$Component) {
             onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "CharbonUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           coke = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Coke"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Coke",
             placeholder: "valeur",
-            value: this.state.Charbon,
+            value: this.state.Coke,
             onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "CokeUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           bois = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Bois buche, sciures"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "Bois",
+            placeholder: "valeur",
+            value: this.state.Bois,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "BoisUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           achatvapeurfroid = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Achats de vapeur et de froid"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "VapeurFroid",
+            placeholder: "valeur",
+            value: this.state.VapeurFroid,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "VapeurUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           vin = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Fermentation du vin"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "Vin",
+            placeholder: "valeur",
+            value: this.state.Vin,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "VinUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           biere = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Gazification de la biere"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "Biere",
+            placeholder: "valeur",
+            value: this.state.Biere,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "BiereUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           halocarbures = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions d'halocarbunes et autres"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "Halocarbunes",
+            placeholder: "valeur",
+            value: this.state.Halocarbunes,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "HaloUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           usinage = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Usinage et tournage CNC (acier)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "CNC",
+            placeholder: "valeur",
+            value: this.state.CNC,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "UsinageUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           soudure = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Soudure (acier)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "soudure",
+            placeholder: "valeur",
+            value: this.state.soudure,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "SoudureUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           break;
 
         case 'SCIAN 11':
           bois = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Bois buche, sciures"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "Bois",
+            placeholder: "valeur",
+            value: this.state.Bois,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "BoisUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           n2osol = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de N2O engrais au sol"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "n2osol",
+            placeholder: "valeur",
+            value: this.state.n2osol,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "n2osolUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           n2oanimaux = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de N2O des animaux"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "n2oanimaux",
+            placeholder: "valeur",
+            value: this.state.n2oanimaux,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "n2oanimauxUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           autremethane = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Autres emissions de methane"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "x[]",
-            placeholder: "valeur"
+            name: "AutreMethane",
+            placeholder: "valeur",
+            value: this.state.AutreMethane,
+            onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
-            name: "SectorActivity",
+            name: "AutreMethaneUnite",
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite1"
-          }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
+          }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite2"
+          }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+            value: "Unite3"
+          }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
           break;
       }
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"], {
         onSubmit: function onSubmit(e) {
-          return _this3.handleSubmit(e);
+          return _this2.handleSubmit(e);
         },
         method: "POST",
         action: "/"
@@ -89887,126 +89994,180 @@ function (_React$Component) {
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "Unite",
+        name: "GazUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Propane"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Propane"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "Propane",
         placeholder: "valeur",
         value: this.state.Propane,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "PropaneUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Essence a la pompe"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Essence a la pompe"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "EssencePompe",
         placeholder: "valeur",
         value: this.state.EssencePompe,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "EssenceUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Gazole a la pompe"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Gazole a la pompe"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "GazolePompe",
         placeholder: "valeur",
         value: this.state.GazolePompe,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "GazoleUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Fioul domestique"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Fioul domestique"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "FioulDomestique",
         placeholder: "valeur",
         value: this.state.FioulDomestique,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "FioulUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Mazout leger, num 4 a 6"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Mazout leger, num 4 a 6"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "MazoutLeger",
         placeholder: "valeur",
         value: this.state.MazoutLeger,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "MazoutUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), charbon, coke, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), charbon, coke, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
         colSpan: "4"
       }, "Combustibles d'origine organique, sources fixes"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Biodiesel"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        name: "x[]",
-        placeholder: "valeur"
+        name: "Biodiesel",
+        placeholder: "valeur",
+        value: this.state.Biodiesel,
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "BiodieselUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), bois, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Chauffage fossible a partier des m^2 chauffes"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        name: "x[]",
-        placeholder: "valeur"
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), bois, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Chauffage fossible a partier des m^2 chauffes"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+        name: "Fossil",
+        placeholder: "valeur",
+        value: this.state.Fossil,
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "FossileUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
         colSpan: "4"
       }, "Electricite achetee"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Total Electricite"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        name: "x[]",
-        placeholder: "valeur"
+        name: "TotalElectricite",
+        placeholder: "valeur",
+        value: this.state.TotalElectricite,
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "ElectriciteUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), achatvapeurfroid, vin, biere, n2osol, n2oanimaux, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de methane des animaux"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        name: "x[]",
-        placeholder: "valeur"
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), achatvapeurfroid, vin, biere, n2osol, n2oanimaux, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de methane des animaux"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+        name: "MethaneAnimaux",
+        placeholder: "valeur",
+        value: this.state.MethaneAnimaux,
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "MethanAnimauxUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), autremethane, halocarbures, usinage, soudure, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Cammionage"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        name: "x[]",
-        placeholder: "valeur"
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), autremethane, halocarbures, usinage, soudure, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Cammionage"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+        name: "Cammionage",
+        placeholder: "valeur",
+        value: this.state.Cammionage,
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "SectorActivity",
+        name: "CammionageUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, "Employee Transportation, Use, End of Life"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, "Employee Transportation, Use, End of Life"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleSubmit
       }, "test")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], {
@@ -90029,7 +90190,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -90039,7 +90204,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -90049,7 +90218,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -90059,7 +90232,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -90069,7 +90246,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -90079,7 +90260,11 @@ function (_React$Component) {
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite1"
-      }, " Unite1"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_home_components_DynamicTable__WEBPACK_IMPORTED_MODULE_1__["DynamicTable"], null, " "))));
+      }, "Litre"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite2"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
+        value: "Unite3"
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_home_components_DynamicTable__WEBPACK_IMPORTED_MODULE_1__["DynamicTable"], null, " "))));
     }
   }]);
 

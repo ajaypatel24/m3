@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\categorie;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class CategorieController extends Controller
@@ -21,10 +22,35 @@ class CategorieController extends Controller
         $categorie = new categorie();
 
 
-        $categorie->Unite = request('Unite');
-        $categorie->Nom_Categorie = request('GazNaturel');
-        $categorie->Num_Affich = (1);
+        /**
+         * this query inserts multiple rows into
+         * the table, find a way to pass variables
+         */
 
+        $data = array(
+            array('Num_affiche'=>202, 'Nom_procede'=> "hiii"),
+            array('Num_affiche'=>100, 'Nom_procede'=> "boooo"),
+        );
+        DB::table('procede')->insert($data);
+
+
+
+
+
+        $rows = $request->getContent();
+        $rows = str_replace("{", '', $rows);
+        $rows = str_replace("}", '', $rows);
+        $rows = str_replace('""', '', $rows);
+        $rows = str_replace('"', '', $rows);
+        $rows2 = explode(',',$rows);
+
+
+        $g = 0;
+
+        foreach ($rows2 as $t) {
+            print_r($t);
+            print_r("\n");
+        }
 
         /*
         $categorie->Annee_Inventaire = request('rows');
@@ -46,14 +72,13 @@ class CategorieController extends Controller
         */
 
 
-        $categorie->save();
+
 
 
     }
 
     function p() { //test method to see if data is retrieved from database
         $categorie = intrants::all()->toArray();
-
         return $categorie;
 
 
