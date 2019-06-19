@@ -20,13 +20,14 @@ class ResumeOrganisation extends Migration
             foreign("Organisation_idOrganisation")->
             references("idOrganisation")->
             on("organisation");
-           $table->string("NombreEmployes", 30);
-           $table->integer("ChiffreDaffaires");
-           $table->boolean("ComiteDD");
-           $table->integer("AnneeComiteDD");
-           $table->integer("ACV");
-           $table->integer("IdInventaire");
-           $table->integer("PlanAction");
+           $table->string("Nb_employes", 30);
+           $table->integer("Chiffre_affaires");
+           $table->boolean("Comite_DD");
+           $table->integer("Annee_ComDD");
+           $table->integer("Nb_ACV");
+           $table->integer("Nb_Scenario_ACV");
+           $table->integer("Id_Inventaire");
+           $table->integer("Plan_Action");
 
            $table->timestamps();
 
