@@ -30,6 +30,7 @@ Route::get('/name/{Id}', 'PrestartController@getName' );
 Route::post('/','PrestartController@store'); /*method from php controller */
 Route::post('/intrants', 'InventaireController@store');
 Route::post('/categorie', 'CategorieController@store');
+Route::get('/info', 'CategorieController@p');
 Route::get('/data', 'PrestartController@p');
 
 Route::get('/querytest', 'PrestartController@testQuery');

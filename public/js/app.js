@@ -87381,6 +87381,7 @@ function (_React$Component) {
       window.location.href = '#/';
       localStorage.setItem('authenticated', 'false');
       localStorage.removeItem('UID');
+      localStorage.removeItem('name');
 
       _this.setState({
         authenticated: false
@@ -87469,7 +87470,7 @@ function (_React$Component) {
   }
   /*
       componentWillMount = () => {
-          firebase.auth().onAuthStateChanged((user) => {
+          firebase.auth().onAuthStateChanged((user) =>
               if (user) {
                   this.setState({
                       authenticated: true
@@ -89637,34 +89638,41 @@ function (_React$Component) {
       MethaneAnimaux: "",
       MethanAnimauxUnite: "",
       Coke: "",
-      CokeUnite: ""
+      CokeUnite: "",
+      SCIAN: "",
+      UID: "",
+      TableSubmit: localStorage.getItem('TableSubmit')
     };
     return _this;
   }
-  /*
-  componentDidMount() {
-      let uid = localStorage.getItem('UID');
-      console.log(uid);
-      axios.get('/scian/' + uid)
-          .then(response => {
-              console.log(response.data);
-              this.setState({SCIAN: response.data});
-          });
-          console.log(this.state.SCIAN);
-  }
-  */
-
-  /*
-      componentDidMount() {
-          axios.get('/prestart')
-              .then(response => {
-                  this.setState({categories: response.data});
-                });
-      }
-      */
-
 
   _createClass(EnergyTable, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var uid = localStorage.getItem('UID');
+      console.log(uid);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/scian/' + uid).then(function (response) {
+        console.log(response.data);
+
+        _this2.setState({
+          SCIAN: response.data,
+          UID: uid
+        });
+      });
+      console.log(this.state.SCIAN);
+    }
+    /*
+        componentDidMount() {
+            axios.get('/prestart')
+                .then(response => {
+                    this.setState({categories: response.data});
+                  });
+        }
+        */
+
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -89726,7 +89734,7 @@ function (_React$Component) {
      *
      */
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var charbon;
       var coke;
@@ -89973,7 +89981,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"], {
         onSubmit: function onSubmit(e) {
-          return _this2.handleSubmit(e);
+          return _this3.handleSubmit(e);
         },
         method: "POST",
         action: "/"

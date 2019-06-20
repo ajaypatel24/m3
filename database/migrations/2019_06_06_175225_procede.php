@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class Procede extends Migration
 {
     /**
@@ -15,18 +16,20 @@ class Procede extends Migration
     {
         Schema::create('procede', function (Blueprint $table) {
             $table->increments("idProcede");
-            $table->string('UID',30)->nullable();
 
-            $table->integer('Num_affiche');
-            $table->string('Nom_procede',45);
-            $table->integer('Quantite_an')->nullable();
-            $table->string('Unite_an', 10)->nullable();
+
+            $table->integer('Num_affiche')->default(12)->nullable();
+            $table->string('Nom_procede',45)->nullable();
+            $table->integer('Quantite_an')->default(-1)->nullable();
+            $table->string('Unite_an', 10)->default('N/A')->nullable();
             $table->float('Emission_GES')->nullable();
             $table->boolean('TransportEmp')->nullable();
             $table->string('Indentifie_BD',10)->nullable();
             $table->string('Nom_BD', 60)->nullable();
 
-            $table->timestamps();
+            $table->string('UID',60);
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

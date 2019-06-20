@@ -42,7 +42,7 @@ export default class tester extends React.Component {
 
     /*
         componentWillMount = () => {
-            firebase.auth().onAuthStateChanged((user) => {
+            firebase.auth().onAuthStateChanged((user) =>
                 if (user) {
                     this.setState({
                         authenticated: true
@@ -166,6 +166,7 @@ export default class tester extends React.Component {
         window.location.href = '#/';
         localStorage.setItem('authenticated', 'false');
         localStorage.removeItem('UID');
+        localStorage.removeItem('name');
         this.setState({authenticated: false});
 
     }
