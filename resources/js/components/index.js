@@ -10,6 +10,7 @@ import Footer2 from "./home/home-components/Footer2";
 import NoMatch from "./home/custom-components/NoMatch";
 import Loading from "./home/custom-components/Loading";
 import Tester from "./home/DashboardElements/Tester"
+import ContactInfo from "./home/custom-components/ContactInfo";
 
 
 /**
@@ -76,13 +77,14 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <ProtectedRoute exact path="/predata" component={PrestartData}/>
+                    <Route exact path="/predata" component={ContactInfo}/>
                     <ProtectedRoute path="/prestart_questions/" component={Question}/>
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
                     <ProtectedRoute path="/tester" component={Tester}/>
                     <Route exact path="/loading" component={Loading}/>
                     <Route component={NoMatch}/>
                     <Route exact path="/nav" component={Nav}/>
+                    <Route exact path="/see" component={ContactInfo}/>
                 </Switch>
 
                 {/* <Footer2/> */}

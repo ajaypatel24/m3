@@ -11,7 +11,6 @@ class CategorieController extends Controller
 {
 
 
-
     function index()
     {
         return view('welcome');
@@ -95,11 +94,11 @@ class CategorieController extends Controller
         */
 
         $category = [
-            0 => "Gaz Naturel",
+            0 => "GazNaturel",
             1 => "Propane",
-            2 => "Essence Pompe",
-            3 => "Gazole Pompe",
-            4 => "Fioul Domestique",
+            2 => "EssencePompe",
+            3 => "GazolePompe",
+            4 => "FioulDomestique",
             5 => "Mazout",
             6 => "Charbon",
             7 => "Cammionage",
@@ -110,20 +109,20 @@ class CategorieController extends Controller
             12 => "Bois",
             13 => "Soudure",
             14 => "CNC",
-            15 => "Vapeur Froid",
+            15 => "VapeurFroid",
             16 => "Vin",
             17 => "Biere",
             18 => "Halocarbunes",
-            19 => "Autre Methane",
-            20 => "N2O Sol",
-            21 => "N2O Animaux",
-            22 => "Methane Animaux",
+            19 => "AutreMethane",
+            20 => "N2OSol",
+            21 => "N2OAnimaux",
+            22 => "MethaneAnimaux",
             23 => "Coke",
 
         ];
 
         $categoryUnit = [
-            0 => "Gaz Unite",
+            0 => "GazUnite",
             1 => "PropaneUnite",
             2 => "EssenceUnite",
             3 => "GazoleUnite",
@@ -149,7 +148,6 @@ class CategorieController extends Controller
             23 => "MethaneAnimauxUnite",
             24 => "CokeUnite",
         ];
-
 
 
         /*
@@ -316,37 +314,32 @@ class CategorieController extends Controller
 
             DB::table('procede')->insert($data);
 
-        }
-        else { //update fields
+        } else { //update fields
             echo "it be like that $category[0]";
 
             foreach ($category as $cat) {
                 DB::table('procede')//updates fields based on UID and category name
-                    ->where('UID', $id)
+                ->where('UID', $id)
                     ->where('Nom_procede', $cat)
-                    ->update(['Num_affiche' => 1]);
+                    ->update(['Quantite_an' => $categorie->$cat = request($cat)]);
             }
 
 
-
-
-
+            $f = 0;
+            foreach ($categoryUnit as $unit) {
+                DB::table('procede')
+                    ->where('UID',$id)
+                    ->where('Nom_procede', $category[$f])
+                    ->update(['Unite_an' => $categorie->$unit = request($unit)]);
+                $f++;
+            }
 
 
 
         }
 
 
-
-
-
-    }
-
-    function p()
-    { //test method to see if data is retrieved from database
-        $categorie = DB::table('procede')->get();
-        return $categorie;
-
     }
 }
+
 

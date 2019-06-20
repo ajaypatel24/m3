@@ -2,8 +2,8 @@ import React from 'react';
 import {Button, Card, Col, Nav, Row, Tab} from 'react-bootstrap';
 
 import {EnergyTable} from '../questionnaires/EnergyTable';
-import axios from 'axios';
 import '../../../../sass/TabStyle.css'
+import ContactInfo from "../custom-components/ContactInfo";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -40,7 +40,6 @@ export default class LoggedIn extends React.Component {
 
         };
     }
-
 
 
     handleSubmit(e) {
@@ -134,6 +133,12 @@ export default class LoggedIn extends React.Component {
 
         return (
 
+
+
+
+
+
+            
             <div>
 
 
@@ -178,13 +183,16 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="second">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Featured</Card.Header>
+                                            <Card.Header as="h5">Contact Information</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional
-                                                    content.
+                                                    Please fill in all required information before accessing
+                                                    our services
                                                 </Card.Text>
+
+
+                                                <ContactInfo/>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
