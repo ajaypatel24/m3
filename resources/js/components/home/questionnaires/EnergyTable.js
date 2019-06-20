@@ -24,7 +24,7 @@ export class EnergyTable extends React.Component {
             EssencePompe: "",
             EssenceUnite: "",
 
-            GazolePomp: "",
+            GazolePompe: "",
             GazoleUnite: "",
 
             FioulDomestique: "",
@@ -79,7 +79,7 @@ export class EnergyTable extends React.Component {
             n2oanimauxUnite: "",
 
             MethaneAnimaux: "",
-            MethanAnimauxUnite: "",
+            MethaneAnimauxUnite: "",
 
             Coke: "",
             CokeUnite: "",
@@ -686,7 +686,7 @@ export class EnergyTable extends React.Component {
                                               value={this.state.MethaneAnimaux}
                                               onChange={this.handleChange}
                             ></Form.Control></td>
-                            <td><Form.Control as="select" name="MethanAnimauxUnite"
+                            <td><Form.Control as="select" name="MethaneAnimauxUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
                             <option value="Unite1">Litre</option>

@@ -89599,7 +89599,7 @@ function (_React$Component) {
       PropaneUnite: "",
       EssencePompe: "",
       EssenceUnite: "",
-      GazolePomp: "",
+      GazolePompe: "",
       GazoleUnite: "",
       FioulDomestique: "",
       FioulUnite: "",
@@ -89636,7 +89636,7 @@ function (_React$Component) {
       n2oanimaux: "",
       n2oanimauxUnite: "",
       MethaneAnimaux: "",
-      MethanAnimauxUnite: "",
+      MethaneAnimauxUnite: "",
       Coke: "",
       CokeUnite: "",
       SCIAN: "",
@@ -90150,7 +90150,7 @@ function (_React$Component) {
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         as: "select",
-        name: "MethanAnimauxUnite",
+        name: "MethaneAnimauxUnite",
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {

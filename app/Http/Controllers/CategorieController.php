@@ -20,18 +20,8 @@ class CategorieController extends Controller
     function store(request $request)
     {
 
-        $cat = [
-            0 => "GazNaturel",
-            1 => "GazUnite",
-            2 => "Propane",
-            3 => "PropaneUnite",
-            4 => "EssencePompe",
-            5 => "EssenceUnite",
 
-
-        ];
         $categorie = new categorie();
-
 
         /*
         $categorie->GazNaturel = request('GazNaturel');
@@ -104,6 +94,71 @@ class CategorieController extends Controller
         $categorie->CokeUnite = request('CokeUnite');
         */
 
+        $category = [
+            0 => "Gaz Naturel",
+            1 => "Propane",
+            2 => "Essence Pompe",
+            3 => "Gazole Pompe",
+            4 => "Fioul Domestique",
+            5 => "Mazout",
+            6 => "Charbon",
+            7 => "Cammionage",
+            8 => "Electricite",
+            9 => "Cammionage",
+            10 => "Fossil",
+            11 => "Biodiesel",
+            12 => "Bois",
+            13 => "Soudure",
+            14 => "CNC",
+            15 => "Vapeur Froid",
+            16 => "Vin",
+            17 => "Biere",
+            18 => "Halocarbunes",
+            19 => "Autre Methane",
+            20 => "N2O Sol",
+            21 => "N2O Animaux",
+            22 => "Methane Animaux",
+            23 => "Coke",
+
+        ];
+
+        $categoryUnit = [
+            0 => "Gaz Unite",
+            1 => "PropaneUnite",
+            2 => "EssenceUnite",
+            3 => "GazoleUnite",
+            4 => "FioulUnite",
+            5 => "MazoutUnite",
+            6 => "CharbonUnite",
+            7 => "CammionageUnite",
+            8 => "ElectriciteUnite",
+            9 => "CammionageUnite",
+            10 => "FossileUnite",
+            11 => "CammionageUnite",
+            12 => "BiodieselUnite",
+            13 => "BoisUnite",
+            14 => "SoudureUnite",
+            15 => "UsinageUnite",
+            16 => "VapeurUnite",
+            17 => "VinUnite",
+            18 => "BiereUnite",
+            19 => "HaloUnite",
+            20 => "AutreMethaneUnite",
+            21 => "n2osolUnite",
+            22 => "n2oanimauxUnite",
+            23 => "MethaneAnimauxUnite",
+            24 => "CokeUnite",
+        ];
+
+
+
+        /*
+
+
+
+
+        */
+
 
         /**
          * this query inserts multiple rows into
@@ -139,7 +194,7 @@ class CategorieController extends Controller
                 ),
                 array(
                     'Nom_procede' => 'Gazole Pompe',
-                    'Quantite_an' => $categorie->GazolePomp = request('GazolePomp'),
+                    'Quantite_an' => $categorie->GazolePompe = request('GazolePompe'),
                     'Unite_an' => $categorie->GazoleUnite = request('GazoleUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
@@ -263,12 +318,22 @@ class CategorieController extends Controller
 
         }
         else { //update fields
-            echo "it be like that $cat[0]";
+            echo "it be like that $category[0]";
 
-            DB::table('procede') //updates fields based on UID and category name
-                ->where('UID', $id)
-                ->where('Nom_procede', $cat[2])
-                ->update(['Num_affiche' => 58]);
+            foreach ($category as $cat) {
+                DB::table('procede')//updates fields based on UID and category name
+                    ->where('UID', $id)
+                    ->where('Nom_procede', $cat)
+                    ->update(['Num_affiche' => 1]);
+            }
+
+
+
+
+
+
+
+
         }
 
 
