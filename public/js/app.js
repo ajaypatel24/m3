@@ -90890,17 +90890,17 @@ function (_React$Component) {
           exact: true,
           path: "/home",
           component: _home_home_components_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           exact: true,
           path: "/predata",
           component: _home_home_components_PrestartData__WEBPACK_IMPORTED_MODULE_7__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/prestart_questions/",
           component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/profile",
           component: _home_home_components_LoggedIn__WEBPACK_IMPORTED_MODULE_4__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/tester",
           component: _home_DashboardElements_Tester__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {

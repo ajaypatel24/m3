@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 class CategorieController extends Controller
 {
 
+
+
     function index()
     {
         return view('welcome');
@@ -18,6 +20,16 @@ class CategorieController extends Controller
     function store(request $request)
     {
 
+        $cat = [
+            0 => "GazNaturel",
+            1 => "GazUnite",
+            2 => "Propane",
+            3 => "PropaneUnite",
+            4 => "EssencePompe",
+            5 => "EssenceUnite",
+
+
+        ];
         $categorie = new categorie();
 
 
@@ -100,150 +112,167 @@ class CategorieController extends Controller
          * Unite_an
          */
 
-        $data = array(
-            array(
-                'Nom_procede' => 'Gaz Naturel',
-                'Quantite_an' => $categorie->GazNaturel = request('GazNaturel'),
-                'Unite_an' => $categorie->GazUnite = request('GazUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
+        $id = $categorie->UID = request('UID');
 
-            array(
-                'Nom_procede' => 'Propane',
-                'Quantite_an' => $categorie->Propane = request('Propane'),
-                'Unite_an' => $categorie->PropaneUnite = request('PropaneUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Essence Pompe',
-                'Quantite_an' => $categorie->EssencePompe = request('EssencePompe'),
-                'Unite_an' => $categorie->EssenceUnite = request('EssenceUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Gazole Pompe',
-                'Quantite_an' => $categorie->GazolePomp = request('GazolePomp'),
-                'Unite_an' => $categorie->GazoleUnite = request('GazoleUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Fioul Domestique',
-                'Quantite_an' => $categorie->FioulDomestique = request('FioulDomestique'),
-                'Unite_an' => $categorie->FioulUnite = request('FioulUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Mazout',
-                'Quantite_an' => $categorie->MazoutLeger = request('MazoutLeger'),
-                'Unite_an' => $categorie->MazoutUnite = request('MazoutUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Charbon',
-                'Quantite_an' => $categorie->Charbon = request('Charbon'),
-                'Unite_an' => $categorie->CharbonUnite = request('CharbonUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Cammionage',
-                'Quantite_an' => $categorie->Cammionage = request('Cammionage'),
-                'Unite_an' => $categorie->CammionageUnite = request('CammionageUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Electricite',
-                'Quantite_an' => $categorie->TotalElectricite = request('TotalElectricite'),
-                'Unite_an' => $categorie->ElectriciteUnite = request('ElectriciteUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Fossile',
-                'Quantite_an' => $categorie->Fossil = request('Fossil'),
-                'Unite_an' => $categorie->FossileUnite = request('FossileUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Biodiesel',
-                'Quantite_an' => $categorie->Biodiesel = request('Biodiesel'),
-                'Unite_an' => $categorie->BiodieselUnite = request('BiodieselUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Bois',
-                'Quantite_an' => $categorie->Bois = request('Bois'),
-                'Unite_an' => $categorie->BoisUnite = request('BoisUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Soudure',
-                'Quantite_an' => $categorie->soudure = request('soudure'),
-                'Unite_an' => $categorie->SoudureUnite = request('SoudureUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'CNC',
-                'Quantite_an' => $categorie->CNC = request('CNC'),
-                'Unite_an' => $categorie->UsinageUnite = request('UsinageUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Vapeur Froid',
-                'Quantite_an' => $categorie->VapeurFroid = request('VapeurFroid'),
-                'Unite_an' => $categorie->VapeurUnite = request('VapeurUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Vin',
-                'Quantite_an' => $categorie->Vin = request('Vin'),
-                'Unite_an' => $categorie->Vin = request('VinUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Biere',
-                'Quantite_an' => $categorie->Biere = request('Biere'),
-                'Unite_an' => $categorie->BiereUnite = request('BiereUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Halocarbunes',
-                'Quantite_an' => $categorie->Halocarbunes = request('Halocarbunes'),
-                'Unite_an' => $categorie->HaloUnite = request('HaloUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Autre Methane',
-                'Quantite_an' => $categorie->AutreMethane = request('AutreMethane'),
-                'Unite_an' => $categorie->AutreMethaneUnite = request('AutreMethaneUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'N2O Sol',
-                'Quantite_an' => $categorie->n2osol = request('n2osol'),
-                'Unite_an' => $categorie->n2osolUnite = request('n2osolUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'N2O Animaux',
-                'Quantite_an' => $categorie->n2oanimaux = request('n2oanimaux'),
-                'Unite_an' => $categorie->n2oanimauxUnite = request('n2oanimauxUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Methane Animaux',
-                'Quantite_an' => $categorie->MethaneAnimaux = request('MethaneAnimaux'),
-                'Unite_an' => $categorie->MethaneAnimauxUnite = request('MethaneAnimauxUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            ),
-            array(
-                'Nom_procede' => 'Coke',
-                'Quantite_an' => $categorie->Coke = request('Coke'),
-                'Unite_an' => $categorie->CokeUnite = request('CokeUnite'),
-                'UID' => $categorie->UID = request('UID'),
-            )
-        );
+        $user = DB::table('procede')->where('UID', $id)->value('UID');
+        if ($user === null) {
+
+            $data = array(
+                array(
+                    'Nom_procede' => 'GazNaturel',
+                    'Quantite_an' => $categorie->GazNaturel = request('GazNaturel'),
+                    'Unite_an' => $categorie->GazUnite = request('GazUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+
+                array(
+                    'Nom_procede' => 'Propane',
+                    'Quantite_an' => $categorie->Propane = request('Propane'),
+                    'Unite_an' => $categorie->PropaneUnite = request('PropaneUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Essence Pompe',
+                    'Quantite_an' => $categorie->EssencePompe = request('EssencePompe'),
+                    'Unite_an' => $categorie->EssenceUnite = request('EssenceUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Gazole Pompe',
+                    'Quantite_an' => $categorie->GazolePomp = request('GazolePomp'),
+                    'Unite_an' => $categorie->GazoleUnite = request('GazoleUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Fioul Domestique',
+                    'Quantite_an' => $categorie->FioulDomestique = request('FioulDomestique'),
+                    'Unite_an' => $categorie->FioulUnite = request('FioulUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Mazout',
+                    'Quantite_an' => $categorie->MazoutLeger = request('MazoutLeger'),
+                    'Unite_an' => $categorie->MazoutUnite = request('MazoutUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Charbon',
+                    'Quantite_an' => $categorie->Charbon = request('Charbon'),
+                    'Unite_an' => $categorie->CharbonUnite = request('CharbonUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Cammionage',
+                    'Quantite_an' => $categorie->Cammionage = request('Cammionage'),
+                    'Unite_an' => $categorie->CammionageUnite = request('CammionageUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Electricite',
+                    'Quantite_an' => $categorie->TotalElectricite = request('TotalElectricite'),
+                    'Unite_an' => $categorie->ElectriciteUnite = request('ElectriciteUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Fossile',
+                    'Quantite_an' => $categorie->Fossil = request('Fossil'),
+                    'Unite_an' => $categorie->FossileUnite = request('FossileUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Biodiesel',
+                    'Quantite_an' => $categorie->Biodiesel = request('Biodiesel'),
+                    'Unite_an' => $categorie->BiodieselUnite = request('BiodieselUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Bois',
+                    'Quantite_an' => $categorie->Bois = request('Bois'),
+                    'Unite_an' => $categorie->BoisUnite = request('BoisUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Soudure',
+                    'Quantite_an' => $categorie->soudure = request('soudure'),
+                    'Unite_an' => $categorie->SoudureUnite = request('SoudureUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'CNC',
+                    'Quantite_an' => $categorie->CNC = request('CNC'),
+                    'Unite_an' => $categorie->UsinageUnite = request('UsinageUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Vapeur Froid',
+                    'Quantite_an' => $categorie->VapeurFroid = request('VapeurFroid'),
+                    'Unite_an' => $categorie->VapeurUnite = request('VapeurUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Vin',
+                    'Quantite_an' => $categorie->Vin = request('Vin'),
+                    'Unite_an' => $categorie->Vin = request('VinUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Biere',
+                    'Quantite_an' => $categorie->Biere = request('Biere'),
+                    'Unite_an' => $categorie->BiereUnite = request('BiereUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Halocarbunes',
+                    'Quantite_an' => $categorie->Halocarbunes = request('Halocarbunes'),
+                    'Unite_an' => $categorie->HaloUnite = request('HaloUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Autre Methane',
+                    'Quantite_an' => $categorie->AutreMethane = request('AutreMethane'),
+                    'Unite_an' => $categorie->AutreMethaneUnite = request('AutreMethaneUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'N2O Sol',
+                    'Quantite_an' => $categorie->n2osol = request('n2osol'),
+                    'Unite_an' => $categorie->n2osolUnite = request('n2osolUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'N2O Animaux',
+                    'Quantite_an' => $categorie->n2oanimaux = request('n2oanimaux'),
+                    'Unite_an' => $categorie->n2oanimauxUnite = request('n2oanimauxUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Methane Animaux',
+                    'Quantite_an' => $categorie->MethaneAnimaux = request('MethaneAnimaux'),
+                    'Unite_an' => $categorie->MethaneAnimauxUnite = request('MethaneAnimauxUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                ),
+                array(
+                    'Nom_procede' => 'Coke',
+                    'Quantite_an' => $categorie->Coke = request('Coke'),
+                    'Unite_an' => $categorie->CokeUnite = request('CokeUnite'),
+                    'UID' => $categorie->UID = request('UID'),
+                )
+            );
+
+            DB::table('procede')->insert($data);
+
+        }
+        else { //update fields
+            echo "it be like that $cat[0]";
+
+            DB::table('procede') //updates fields based on UID and category name
+                ->where('UID', $id)
+                ->where('Nom_procede', $cat[2])
+                ->update(['Num_affiche' => 58]);
+        }
 
 
-        DB::table('procede')->insert($data);
+
 
 
     }
