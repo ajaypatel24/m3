@@ -37,7 +37,9 @@ Route::get('/querytest', 'PrestartController@testQuery');
 
 
 
+Route::post('/contact/{Id}', 'RegisterController@contactInfo');
 
+Route::get('/contact/{Id}', 'RegisterController@profileInfo');
 
 
 

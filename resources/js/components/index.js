@@ -11,6 +11,7 @@ import NoMatch from "./home/custom-components/NoMatch";
 import Loading from "./home/custom-components/Loading";
 import Tester from "./home/DashboardElements/Tester"
 import ContactInfo from "./home/custom-components/ContactInfo";
+import Profile from "./home/auth/Profile";
 
 
 /**
@@ -77,14 +78,14 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <Route exact path="/predata" component={ContactInfo}/>
+                    <Route exact path="/predata" component={Profile}/>
                     <ProtectedRoute path="/prestart_questions/" component={Question}/>
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
                     <ProtectedRoute path="/tester" component={Tester}/>
                     <Route exact path="/loading" component={Loading}/>
                     <Route component={NoMatch}/>
                     <Route exact path="/nav" component={Nav}/>
-                    <Route exact path="/see" component={ContactInfo}/>
+                    <Route exact path="/cinfo" component={Profile}/>
                 </Switch>
 
                 {/* <Footer2/> */}

@@ -327,6 +327,7 @@ class CategorieController extends Controller
 
             $f = 0;
             foreach ($categoryUnit as $unit) {
+
                 DB::table('procede')
                     ->where('UID',$id)
                     ->where('Nom_procede', $category[$f])
