@@ -1,4 +1,4 @@
-import {Form, Table} from "react-bootstrap";
+import {Form, Table, Row, Col} from "react-bootstrap";
 import {DynamicTable} from "../home-components/DynamicTable";
 import React from "react";
 import axios from 'axios';
@@ -22,8 +22,10 @@ export default class PrestartData extends React.Component {
     componentDidMount() {
         let uid = localStorage.getItem('UID');
         console.log(uid);
-        axios.get('/user/'+uid)
+        axios.get('/contact/'+uid)
             .then(response => {
+                console.log('/contact/'+uid);
+                console.log(response.data);
                 this.setState( {prestart: response.data} );
 
             });
@@ -40,46 +42,45 @@ export default class PrestartData extends React.Component {
         return (
 
             <div>
-                <Table responsive striped bordered hover variant="dark">
-                    <thead>
-                    <tr>
-                        <th colSpan="5">Energie</th>
-                    </tr>
-                    <tr>
-                        <th colSpan="3">Compatiblisation direct des combustibles</th>
-                        <th>Facteur Combustion</th>
-                        <th>Total GES</th>
-                    </tr>
-                    <tr>
-                        <th>Combustibles fossiles, sources fixes</th>
-                        <th>Consommation</th>
-                        <th>Unite</th>
 
 
-                    </tr>
-                    </thead>
-
-                    {/*} {this.state.prestart.map(category => {
-
-                        return (  })} */}
+                    {this.state.prestart.map(attribute => {
+                        return (
 
 
+                            <Row>
 
-                            <tr>
+                                <Col lg="5">
+                                    <h1>Profile</h1>
+                                </Col>
+
+                            <Col lg="7">
+                            <div>
+
+                                <p>{attribute.name}</p>
+                                <p>{attribute.email}</p>
+                                <p>{attribute.organization}</p>
+                                <p>{attribute.fonction}</p>
+                                <p>{attribute.telephone}</p>
+                                <p>{attribute.telephone2}</p>
+                                <p>{attribute.Poste_telephone}</p>
+                                <p>{attribute.langue}</p>
+                                <p></p>
+                            </div>
+                            </Col>
 
 
-                                <td>{this.state.prestart}</td>
+                            </Row>
+                        )
 
-
-
-
-                            </tr>
-
-
+                    })
+                    }
 
 
 
-                </Table>
+
+
+
 
 
 

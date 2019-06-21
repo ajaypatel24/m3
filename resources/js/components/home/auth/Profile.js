@@ -12,7 +12,6 @@ export default class Profile extends React.Component {
     constructor(props) {
         super(props);
 
-        this.dataRetrieve = this.dataRetrieve.bind(this);
 
         this.state = {
             person: [],
@@ -24,7 +23,8 @@ export default class Profile extends React.Component {
 
     }
 
-    dataRetrieve = () => {
+    /*
+    dataRetrieve () {
 
 
         let id = localStorage.getItem('UID');
@@ -34,6 +34,7 @@ export default class Profile extends React.Component {
             .then(function (response) {
                 console.log(response.data)
                 this.setState( {person: response.data} )
+                console.log(this.state.person)
 
             })
             .catch(function (error) {
@@ -44,11 +45,21 @@ export default class Profile extends React.Component {
 
     }
 
+     */
+
 
 
 
     componentWillMount() {
-        this.dataRetrieve();
+        let id = localStorage.getItem('UID');
+        axios.get('/contact/' + id )
+            .then(function (response) {
+                this.setState( {person: response.data} )
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 

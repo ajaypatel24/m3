@@ -78,7 +78,7 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <Route exact path="/predata" component={Profile}/>
+                    <Route exact path="/predata" component={PrestartData}/>
                     <ProtectedRoute path="/prestart_questions/" component={Question}/>
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
                     <ProtectedRoute path="/tester" component={Tester}/>

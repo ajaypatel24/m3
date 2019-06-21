@@ -87556,7 +87556,7 @@ function (_React$Component) {
         title: this.state.name,
         id: "collasible-nav-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.1"
+        href: "#/predata"
       }, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
         href: "#action/3.2"
       }, "Logou"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
@@ -87901,9 +87901,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -87931,19 +87931,6 @@ function (_React$Component) {
       location.href = '/#/profile';
     };
 
-    _this.dataRetrieve = function () {
-      var id = localStorage.getItem('UID');
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/contact/' + id, {}).then(function (response) {
-        console.log(response.data);
-        this.setState({
-          person: response.data
-        });
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    };
-
-    _this.dataRetrieve = _this.dataRetrieve.bind(_assertThisInitialized(_this));
     _this.state = {
       person: []
     };
@@ -87952,8 +87939,32 @@ function (_React$Component) {
 
   _createClass(Profile, [{
     key: "componentWillMount",
+
+    /*
+    dataRetrieve () {
+            let id = localStorage.getItem('UID');
+        axios.get('/contact/' + id, {
+          })
+            .then(function (response) {
+                console.log(response.data)
+                this.setState( {person: response.data} )
+                console.log(this.state.person)
+              })
+            .catch(function (error) {
+                console.log(error);
+            });
+    
+    }
+       */
     value: function componentWillMount() {
-      this.dataRetrieve();
+      var id = localStorage.getItem('UID');
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/contact/' + id).then(function (response) {
+        this.setState({
+          person: response.data
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }, {
     key: "render",
@@ -89815,7 +89826,10 @@ function (_React$Component) {
 
       var uid = localStorage.getItem('UID');
       console.log(uid);
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/user/' + uid).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/contact/' + uid).then(function (response) {
+        console.log('/contact/' + uid);
+        console.log(response.data);
+
         _this2.setState({
           prestart: response.data
         });
@@ -89825,17 +89839,13 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], {
-        responsive: true,
-        striped: true,
-        bordered: true,
-        hover: true,
-        variant: "dark"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
-        colSpan: "5"
-      }, "Energie")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", {
-        colSpan: "3"
-      }, "Compatiblisation direct des combustibles"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", null, "Facteur Combustion"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", null, "Total GES")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", null, "Combustibles fossiles, sources fixes"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", null, "Consommation"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("th", null, "Unite"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, this.state.prestart))));
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, this.state.prestart.map(function (attribute) {
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          lg: "5"
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h1", null, "Profile")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          lg: "7"
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.name), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.email), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.organization), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.fonction), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.telephone), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.telephone2), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.Poste_telephone), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.langue), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null))));
+      }));
     }
   }]);
 
@@ -91206,7 +91216,7 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/predata",
-          component: _home_auth_Profile__WEBPACK_IMPORTED_MODULE_13__["default"]
+          component: _home_home_components_PrestartData__WEBPACK_IMPORTED_MODULE_7__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
           path: "/prestart_questions/",
           component: _home_questionnaires_Question__WEBPACK_IMPORTED_MODULE_3__["default"]
