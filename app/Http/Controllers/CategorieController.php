@@ -246,7 +246,7 @@ class CategorieController extends Controller
                 ),
                 array(
                     'Nom_procede' => 'Soudure',
-                    'Quantite_an' => $categorie->soudure = request('soudure'),
+                    'Quantite_an' => $categorie->Soudure = request('Soudure'),
                     'Unite_an' => $categorie->SoudureUnite = request('SoudureUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
@@ -314,8 +314,12 @@ class CategorieController extends Controller
 
             DB::table('procede')->insert($data);
 
+
+            //DB::table('procede')->where('Quantite_an', '=', null)->delete();
+
         } else { //update fields
             echo "it be like that $category[0]";
+            //DB::table('procede')->where('Quantite_an', '=', null)->delete();
 
             foreach ($category as $cat) {
                 DB::table('procede')//updates fields based on UID and category name
@@ -334,6 +338,7 @@ class CategorieController extends Controller
                     ->update(['Unite_an' => $categorie->$unit = request($unit)]);
                 $f++;
             }
+
 
 
 

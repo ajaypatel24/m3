@@ -51,7 +51,7 @@ export class EnergyTable extends React.Component {
             Bois: "",
             BoisUnite: "",
 
-            soudure: "",
+            Soudure: "",
             SoudureUnite: "",
 
             CNC: "",
@@ -210,7 +210,7 @@ export class EnergyTable extends React.Component {
         let autremethane;
         let halocarbures;
         let usinage;
-        let soudure;
+        let Soudure;
 
 
         switch (this.state.SCIAN) {
@@ -378,13 +378,13 @@ export class EnergyTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-                soudure =
+                Soudure =
                     <tr>
                         <td>Soudure (acier)</td>
                         <td><Form.Control
-                            name="soudure"
+                            name="Soudure"
                             placeholder="valeur"
-                            value={this.state.soudure}
+                            value={this.state.Soudure}
                             onChange={this.handleChange}>
                         </Form.Control></td>
                         <td><Form.Control as="select" name="SoudureUnite"
@@ -703,7 +703,7 @@ export class EnergyTable extends React.Component {
 
                         {usinage}
 
-                        {soudure}
+                        {Soudure}
 
                         <tr>
                             <td>Cammionage</td>

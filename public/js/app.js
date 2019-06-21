@@ -89773,11 +89773,10 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PrestartData; });
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _home_components_DynamicTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../home-components/DynamicTable */ "./resources/js/components/home/home-components/DynamicTable.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -89800,7 +89799,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var PrestartData =
 /*#__PURE__*/
 function (_React$Component) {
@@ -89814,7 +89812,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PrestartData).call(this, props)); //required
 
     _this.state = {
-      prestart: []
+      prestart: [],
+      TableData: []
     };
     return _this;
   }
@@ -89826,31 +89825,136 @@ function (_React$Component) {
 
       var uid = localStorage.getItem('UID');
       console.log(uid);
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/contact/' + uid).then(function (response) {
-        console.log('/contact/' + uid);
-        console.log(response.data);
-
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/contact/' + uid).then(function (response) {
         _this2.setState({
           prestart: response.data
         });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
+        _this2.setState({
+          TableData: response.data
+        });
+
+        console.log("hello");
+        console.log(_this2.state.TableData);
       });
       console.log(this.state.prestart);
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, this.state.prestart.map(function (attribute) {
-        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
-          lg: "5"
-        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h1", null, "Profile")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (data) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, "g"));
+      }), ";", this.state.prestart.map(function (attribute) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          lg: "1"
+        }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          lg: "4"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Profile")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
           lg: "7"
-        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.name), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.email), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.organization), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.fonction), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.telephone), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.telephone2), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.Poste_telephone), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, attribute.langue), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null))));
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.name
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Organization"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.organization
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Fonction"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.fonction
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.email
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Telephone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.telephone
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Telephone 2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.telephone2
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Organization"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.Poste_telephone
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"],
+          controlId: "formPlaintextEmail"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+          column: true,
+          sm: "2"
+        }, "Langue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
+          sm: "10"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+          plaintext: true,
+          readOnly: true,
+          value: attribute.langue
+        }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null))));
       }));
     }
   }]);
 
   return PrestartData;
-}(react__WEBPACK_IMPORTED_MODULE_2___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
 
 
@@ -89936,7 +90040,7 @@ function (_React$Component) {
       BiodieselUnite: "",
       Bois: "",
       BoisUnite: "",
-      soudure: "",
+      Soudure: "",
       SoudureUnite: "",
       CNC: "",
       UsinageUnite: "",
@@ -90066,7 +90170,7 @@ function (_React$Component) {
       var autremethane;
       var halocarbures;
       var usinage;
-      var soudure;
+      var Soudure;
 
       switch (this.state.SCIAN) {
         case 'SCIAN 21':
@@ -90207,10 +90311,10 @@ function (_React$Component) {
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
             value: "Unite3"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0"));
-          soudure = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Soudure (acier)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-            name: "soudure",
+          Soudure = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Soudure (acier)"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+            name: "Soudure",
             placeholder: "valeur",
-            value: this.state.soudure,
+            value: this.state.Soudure,
             onChange: this.handleChange
           })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             as: "select",
@@ -90478,7 +90582,7 @@ function (_React$Component) {
         value: "Unite2"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("option", {
         value: "Unite3"
-      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), autremethane, halocarbures, usinage, soudure, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Cammionage"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+      }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "0")), autremethane, halocarbures, usinage, Soudure, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, "Cammionage"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "Cammionage",
         placeholder: "valeur",
         value: this.state.Cammionage,
