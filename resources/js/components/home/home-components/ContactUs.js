@@ -46,8 +46,6 @@ export default class PrestartData extends React.Component {
                             <th>
                                 <tr>{row.Num_affiche}</tr>
                                 <tr>{row.Quantite_an}</tr>
-
-
                             </th>
 
                         )
