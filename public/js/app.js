@@ -88699,9 +88699,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -88725,14 +88725,16 @@ function (_React$Component) {
 
     _this.state = {
       prestart: [],
-      TableData: []
+      TableData: [],
+      g: 'heelo'
     };
+    _this.test = _this.test.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(PrestartData, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentWillMount",
+    value: function componentWillMount() {
       var _this2 = this;
 
       var uid = localStorage.getItem('UID');
@@ -88745,15 +88747,37 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "test",
+    value: function test() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (data) {
-        _this3.data.map(function (row) {
-          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, row.Num_affiche), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, row.Quantite_an));
+      var tableData = new Array();
+      var l = 1;
+      var uid = localStorage.getItem('UID');
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
+        _this3.setState({
+          TableData: response.data
         });
-      }), ";");
+
+        l = response.data.length;
+        var i;
+
+        for (i = 0; i < l; i++) {
+          tableData[i] = _this3.state.TableData[i][0];
+        }
+
+        console.log("defined");
+        console.log(tableData[0]);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (rowdata, i) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, _typeof(rowdata == 'object') ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, rowdata.map(function (subRowData, k) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, " ", "Nom Procede: " + subRowData.Nom_procede + "  ", "Quantite an: " + subRowData.Quantite_an + "  ", "Unite an: " + subRowData.Unite_an + "  ", "Num affiche: " + subRowData.Num_affiche + "  ");
+        })) : null);
+      }));
     }
   }]);
 
