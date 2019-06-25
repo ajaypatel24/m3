@@ -332,11 +332,15 @@ class CategorieController extends Controller
             $f = 0;
             foreach ($categoryUnit as $unit) {
 
+                if ($f == 24) {
+                    break;
+                }
                 DB::table('procede')
                     ->where('UID',$id)
                     ->where('Nom_procede', $category[$f])
                     ->update(['Unite_an' => $categorie->$unit = request($unit)]);
                 $f++;
+
             }
 
 

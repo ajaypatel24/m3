@@ -88674,6 +88674,96 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/home/home-components/ContactUs.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/home/home-components/ContactUs.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PrestartData; });
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var PrestartData =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PrestartData, _React$Component);
+
+  function PrestartData(props) {
+    var _this;
+
+    _classCallCheck(this, PrestartData);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PrestartData).call(this, props)); //required
+
+    _this.state = {
+      prestart: [],
+      TableData: []
+    };
+    return _this;
+  }
+
+  _createClass(PrestartData, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var uid = localStorage.getItem('UID');
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
+        _this2.setState({
+          TableData: response.data
+        });
+
+        console.log(_this2.state.TableData);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (data) {
+        _this3.data.map(function (row) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, row.Num_affiche), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, row.Quantite_an));
+        });
+      }), ";");
+    }
+  }]);
+
+  return PrestartData;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/home/home-components/Dashboard.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/home/home-components/Dashboard.js ***!
@@ -89812,7 +89902,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PrestartData).call(this, props)); //required
 
     _this.state = {
-      prestart: [],
+      profile: [],
       TableData: []
     };
     return _this;
@@ -89827,26 +89917,14 @@ function (_React$Component) {
       console.log(uid);
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/contact/' + uid).then(function (response) {
         _this2.setState({
-          prestart: response.data
+          profile: response.data
         });
       });
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
-        _this2.setState({
-          TableData: response.data
-        });
-
-        console.log("hello");
-        console.log(_this2.state.TableData);
-        console.log(_this2.state.TableData[1]);
-      });
-      console.log(this.state.prestart);
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, "g"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Num_affiche), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Nom_procede), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Quantite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Unite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.idProcede));
-      }), ";", this.state.prestart.map(function (attribute) {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.profile.map(function (attribute) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
           lg: "1"
         }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
@@ -91210,6 +91288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_DashboardElements_Tester__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/DashboardElements/Tester */ "./resources/js/components/home/DashboardElements/Tester.js");
 /* harmony import */ var _home_custom_components_ContactInfo__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/custom-components/ContactInfo */ "./resources/js/components/home/custom-components/ContactInfo.js");
 /* harmony import */ var _home_auth_Profile__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./home/auth/Profile */ "./resources/js/components/home/auth/Profile.js");
+/* harmony import */ var _home_home_components_ContactUs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/home-components/ContactUs */ "./resources/js/components/home/home-components/ContactUs.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -91233,6 +91312,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -91336,8 +91416,6 @@ function (_React$Component) {
           path: "/loading",
           component: _home_custom_components_Loading__WEBPACK_IMPORTED_MODULE_10__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-          component: _home_custom_components_NoMatch__WEBPACK_IMPORTED_MODULE_9__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/nav",
           component: _home_home_components_Nav__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -91345,6 +91423,9 @@ function (_React$Component) {
           exact: true,
           path: "/cinfo",
           component: _home_auth_Profile__WEBPACK_IMPORTED_MODULE_13__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+          path: "/contactus",
+          component: _home_home_components_ContactUs__WEBPACK_IMPORTED_MODULE_14__["default"]
         })))
       );
     }

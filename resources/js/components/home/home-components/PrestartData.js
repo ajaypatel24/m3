@@ -11,7 +11,7 @@ export default class PrestartData extends React.Component {
 
         this.state = {
 
-            prestart: [],
+            profile: [],
             TableData: [],
 
         };
@@ -23,19 +23,10 @@ export default class PrestartData extends React.Component {
         console.log(uid);
         axios.get('/contact/' + uid)
             .then(response => {
-                this.setState({prestart: response.data});
+                this.setState({profile: response.data});
 
             });
 
-        axios.get('/inventaire/'+uid)
-            .then(response => {
-                this.setState({TableData: response.data})
-                console.log("hello");
-                console.log(this.state.TableData);
-                console.log(this.state.TableData[1]);
-            });
-
-        console.log(this.state.prestart);
     }
 
 
@@ -46,27 +37,8 @@ export default class PrestartData extends React.Component {
 
             <div>
 
-                {this.state.TableData.map(data => {
-                    return (
 
-                        <th>
-
-                            <tr>g</tr>
-                            <tr>{data.Num_affiche}</tr>
-
-                            <tr>{data.Nom_procede}</tr>
-                            <tr>{data.Quantite_an}</tr>
-                            <tr>{data.Unite_an}</tr>
-                            <tr>{data.idProcede}</tr>
-
-
-
-                        </th>
-
-                    )
-                })};
-
-                {this.state.prestart.map(attribute => {
+                {this.state.profile.map(attribute => {
                     return (
 
 

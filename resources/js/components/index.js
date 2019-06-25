@@ -12,6 +12,7 @@ import Loading from "./home/custom-components/Loading";
 import Tester from "./home/DashboardElements/Tester"
 import ContactInfo from "./home/custom-components/ContactInfo";
 import Profile from "./home/auth/Profile";
+import ContactUs from "./home/home-components/ContactUs";
 
 
 /**
@@ -83,9 +84,10 @@ export default class App extends React.Component {
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
                     <ProtectedRoute path="/tester" component={Tester}/>
                     <Route exact path="/loading" component={Loading}/>
-                    <Route component={NoMatch}/>
+                    {/*<Route component={NoMatch}/>*/}
                     <Route exact path="/nav" component={Nav}/>
                     <Route exact path="/cinfo" component={Profile}/>
+                    <Route path="/contactus" component={ContactUs}/>
                 </Switch>
 
                 {/* <Footer2/> */}
