@@ -89837,6 +89837,7 @@ function (_React$Component) {
 
         console.log("hello");
         console.log(_this2.state.TableData);
+        console.log(_this2.state.TableData[1]);
       });
       console.log(this.state.prestart);
     }
@@ -89844,7 +89845,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (data) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, "g"));
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, "g"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Num_affiche), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Nom_procede), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Quantite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.Unite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, data.idProcede));
       }), ";", this.state.prestart.map(function (attribute) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Col"], {
           lg: "1"

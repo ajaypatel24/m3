@@ -32,6 +32,7 @@ export default class PrestartData extends React.Component {
                 this.setState({TableData: response.data})
                 console.log("hello");
                 console.log(this.state.TableData);
+                console.log(this.state.TableData[1]);
             });
 
         console.log(this.state.prestart);
@@ -49,14 +50,15 @@ export default class PrestartData extends React.Component {
                     return (
 
                         <th>
+
                             <tr>g</tr>
-                            {/*
                             <tr>{data.Num_affiche}</tr>
+
                             <tr>{data.Nom_procede}</tr>
                             <tr>{data.Quantite_an}</tr>
                             <tr>{data.Unite_an}</tr>
                             <tr>{data.idProcede}</tr>
-                            */}
+
 
 
                         </th>
