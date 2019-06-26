@@ -42,7 +42,10 @@ Route::post('/contact/{Id}', 'RegisterController@contactInfo');
 Route::get('/contact/{Id}', 'RegisterController@profileInfo');
 Route::get('/inventaire/{Id}', 'InventaireController@inventaireData');
 
-Route::post('/intrants/', 'InventaireController@addIntrant');
+Route::post('/intrants/{Id}', 'InventaireController@addIntrant');
+
+Route::get('intrants/{Id}', 'InventaireController@getIntrant');
+Route::post('delIntrants/{name}/{id}', 'InventaireController@deleteIntrant');
 
 
 

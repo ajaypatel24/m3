@@ -79,15 +79,16 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <Route exact path="/predata" component={PrestartData}/>
+                    <Route exact path="/predata" component={ContactUs}/>
                     <ProtectedRoute path="/prestart_questions/" component={Question}/>
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
                     <ProtectedRoute path="/tester" component={Tester}/>
                     <Route exact path="/loading" component={Loading}/>
-                    {/*<Route component={NoMatch}/>*/}
+                    <Route exact path="/Contact" component={PrestartData}/>
                     <Route exact path="/nav" component={Nav}/>
                     <Route exact path="/cinfo" component={Profile}/>
                     <Route path="/contactus" component={ContactUs}/>
+                    <Route component={NoMatch}/>
                 </Switch>
 
                 {/* <Footer2/> */}

@@ -17,14 +17,17 @@ class Intrant extends Migration
             $table->bigIncrements('id');
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
-            $table->integer('quantite_an')->nullable();;
-            $table->boolean('ressource')->nullable();;
-            $table->boolean('immobilisation')->nullable();;
-            $table->integer('duree_vie_immo')->nullable();;
-            $table->integer('NbTransport')->nullable();;
-            $table->integer('provenance')->nullable();;
-            $table->integer('GES_annuel')->nullable();;
-            $table->string('Identifie_BD', 10)->nullable();;
+            $table->integer('quantite_an')->nullable();
+            $table->string("frequence")->nullable();
+            $table->boolean('ressource')->nullable();
+            $table->boolean('immobilisation')->default(false);
+            $table->boolean('nouvel_intrant')->default(true);
+            $table->integer('duree_vie_immo')->nullable();
+            $table->integer('NbTransport')->nullable();
+            $table->integer('provenance')->nullable();
+            $table->integer('GES_annuel')->nullable();
+            $table->string('Identifie_BD', 10)->nullable();
+            $table->string('UID',60)->index();
             $table->timestamps();
 
         });
