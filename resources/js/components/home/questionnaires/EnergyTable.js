@@ -839,16 +839,6 @@ export class EnergyTable extends React.Component {
                     </tbody>
                 </Table>
 
-                <Table>
-
-
-                    <tbody>
-                    <DynamicTable> </DynamicTable>
-                    </tbody>
-
-
-                </Table>
-
 
             </div>
 

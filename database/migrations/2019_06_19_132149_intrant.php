@@ -15,16 +15,16 @@ class Intrant extends Migration
     {
         Schema::create('intrants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('num_affiche');
+            $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
-            $table->integer('quantite_an');
-            $table->boolean('ressource');
-            $table->boolean('immobilisation');
-            $table->integer('duree_vie_immo');
-            $table->integer('NbTransport');
-            $table->integer('provenance');
-            $table->integer('GES_annuel');
-            $table->string('Identifie_BD', 10);
+            $table->integer('quantite_an')->nullable();;
+            $table->boolean('ressource')->nullable();;
+            $table->boolean('immobilisation')->nullable();;
+            $table->integer('duree_vie_immo')->nullable();;
+            $table->integer('NbTransport')->nullable();;
+            $table->integer('provenance')->nullable();;
+            $table->integer('GES_annuel')->nullable();;
+            $table->string('Identifie_BD', 10)->nullable();;
             $table->timestamps();
 
         });

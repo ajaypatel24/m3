@@ -42,5 +42,7 @@ Route::post('/contact/{Id}', 'RegisterController@contactInfo');
 Route::get('/contact/{Id}', 'RegisterController@profileInfo');
 Route::get('/inventaire/{Id}', 'InventaireController@inventaireData');
 
+Route::post('/intrants/', 'InventaireController@addIntrant');
+
 
 

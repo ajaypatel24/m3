@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\intrants;
+use App\Intrant;
 
 use App\TableInventaire;
 use Illuminate\Http\Request;
@@ -82,6 +83,18 @@ class InventaireController extends Controller
         return $intrants;
 
 
+    }
+
+
+    function addIntrant() {
+        $Intrant = new Intrant();
+        $Intrant->nom_intrant = request('NomIntrant');
+
+
+
+
+
+        $Intrant->save();
     }
 
 }

@@ -1,4 +1,4 @@
-import {Col, Row, Form, InputGroup} from "react-bootstrap";
+import {Col, Row, Form, InputGroup, Table } from "react-bootstrap";
 import React from "react";
 import axios from 'axios';
 
@@ -69,11 +69,27 @@ export default class PrestartData extends React.Component {
                                 <div>
                                     {rowdata.map((subRowData, k) =>
                                         <div> {/*prints out the table parameters according to column name */}
-                                            {"Nom Procede: " + subRowData.Nom_procede + "  "}
-                                            {"Quantite an: " + subRowData.Quantite_an + "  "}
-                                            {"Unite an: " + subRowData.Unite_an + "  "}
-                                            {"Num affiche: " + subRowData.Num_affiche + "  "}
 
+                                        <Table>
+                                            <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Quantite</th>
+                                                <th>Unite</th>
+                                                <th>Num Affiche</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr>
+                                                <td>{subRowData.Nom_procede}</td>
+                                                <td>{subRowData.Quantite_an}</td>
+                                                <td>{subRowData.Unite_an }</td>
+                                                <td>{subRowData.Num_affiche}</td>
+                                            </tr>
+                                            </tbody>
+
+                                        </Table>
                                         </div>
                                     )
                                     }

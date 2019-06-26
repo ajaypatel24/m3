@@ -1,9 +1,10 @@
 import React from 'react';
-import {Button, Card, Col, Nav, Row, Tab} from 'react-bootstrap';
+import {Button, Card, Col, Nav, Row, Tab, Table} from 'react-bootstrap';
 
 import {EnergyTable} from '../questionnaires/EnergyTable';
 import '../../../../sass/TabStyle.css'
 import ContactInfo from "../custom-components/ContactInfo";
+import DynamicTable from "./DynamicTable";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -201,13 +202,22 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="third">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Tab 2</Card.Header>
+                                            <Card.Header as="h5">Intrants</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional
-                                                    content.
+                                                    Fill in the required information
                                                 </Card.Text>
+
+                                                <Table>
+
+
+                                                    <tbody>
+                                                    <DynamicTable> </DynamicTable>
+                                                    </tbody>
+
+
+                                                </Table>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -216,12 +226,11 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="fourth">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Tab 3</Card.Header>
+                                            <Card.Header as="h5">Intrants</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    With supporting text below as a natural lead-in to additional
-                                                    content.
+                                                    Fill in the required information
                                                 </Card.Text>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
