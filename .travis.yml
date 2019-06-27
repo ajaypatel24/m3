@@ -11,9 +11,10 @@ before_script:
   - nvm install 7.7.1
   - npm install npm@latest -g
   - npm install
-  - php artisan key:generate
+
 
 script:
   - vendor/bin/phpunit --coverage-text
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
   - npm run production
+  - php artisan key:generate
