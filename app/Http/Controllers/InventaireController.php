@@ -106,6 +106,9 @@ class InventaireController extends Controller
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');
                 $Intrant->frequence = request('Frequency');
+                $Intrant->provenance = request('Provenance');
+                $Intrant->NbTransport = request('NbTransport');
+                $Intrant->unite = request('Unite');
                 $Intrant->UID = $id;
                 $Intrant->save();
             }

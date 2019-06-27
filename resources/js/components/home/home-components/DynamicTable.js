@@ -16,8 +16,10 @@ export default class DynamicTable extends React.Component {
             Immobilisation: "",
             DureeVie: "",
             NbTransport: "",
+            Unite: "",
             Provenance: "",
             Frequency: "",
+            Yearly: false,
             Delete: true,
             UID: localStorage.getItem('UID'),
             rows: [],
@@ -36,6 +38,17 @@ export default class DynamicTable extends React.Component {
     componentWillMount = () => {
         this.getTableRows();
     }
+
+
+    /*
+    fixQuantity = () => {
+        console.table([this.state.Yearly, this.state.Frequency]);
+
+
+        }
+    }
+
+*/
 
 
     formChange = idx => e => {
@@ -94,10 +107,6 @@ export default class DynamicTable extends React.Component {
                 console.log(response.data);
                 this.setState({rows: response.data});
             });
-
-
-        console.log("tello");
-        console.log(this.state.rows);
     }
 
     changeDelete = () => {
@@ -106,33 +115,98 @@ export default class DynamicTable extends React.Component {
     }
 
     handleSubmit(e) {
+        e.preventDefault();
+        if (this.state.Yearly === 'true') {
+            console.table([this.state.Yearly], [this.state.Frequency])
 
-        const data = this.state;
-        let id = localStorage.getItem('UID');
-        fetch('/intrants/' + id, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
+            var g = this.state.QuantiteAn;
+            switch (this.state.Frequency) {
+                case '1xY':
+                    break;
+                case '2xY':
+                    this.setState({QuantiteAn: 4})
+                    break;
+                case '3xY':
+                    this.setState({QuantiteAn: 2})
+                    break;
+                case '4xY':
+                    this.setState({QuantiteAn: 0})
+                    break;
+                case '2xM':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '6M':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '1xM':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '3W':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '2W':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '1W':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '3BD':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '2BD':
+                    this.setState({QuantiteAn: this.state.QuantiteAn * 2})
+                    break;
+                case '1BD':
+                    g = this.state.QuantiteAn + 22;
+                    break;
             }
 
-        })
-            .then(function (response) {
-                console.log(response.data)
-                console.log('Request succeeded with JSON response', data);
 
+            console.log("test: " + this.state.QuantiteAn);
+
+             //VERY IMPORTANT
+
+
+            console.log(this.state.QuantiteAn);
+
+            //checks all auth
+            const form = e.currentTarget;
+
+            if (form.checkValidity() === false) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+
+            let id = localStorage.getItem('UID');
+
+            const data = this.state;
+            console.table([data]);
+            fetch('/intrants/' + id, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
-
-        this.getTableRows();
-        console.log("hi");
+                .then(function (response) {
+                    console.log(response.data)
+                    console.log('Request succeeded with JSON response', data);
 
 
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+
+            this.getTableRows();
+            console.log("hi");
+
+
+        }
     }
 
 
@@ -152,6 +226,7 @@ export default class DynamicTable extends React.Component {
     };
 
     render() {
+        const {validated} = this.state;
         return (
             <div>
                 <div className="container">
@@ -171,9 +246,13 @@ export default class DynamicTable extends React.Component {
                                 <Col lg="3">
 
                                     <p>{this.state.Delete}</p>
-                                    <Form
-                                        onSubmit={e => this.handleSubmit(e)} method="POST"
-                                        enctype="multipart/form-data">
+                                    <Form noValidate
+                                          validated={validated}
+                                          onSubmit={e => this.handleSubmit(e)}
+                                          method="POST" action="/"
+                                          enctype="multipart/form-data">
+
+                                        <Form.Group>
                                         <Form.Label>Nom Intrant</Form.Label>
                                         <Form.Control
                                             name="NomIntrant"
@@ -182,19 +261,108 @@ export default class DynamicTable extends React.Component {
                                             placeholder="Intrant"
                                             onChange={this.handleChange}
                                             value={this.state.NomIntrant}
-                                            pattern="^[a-zA-Z]+$"
+
                                         />
-                                        <Form.Label>Quantite Par Achat</Form.Label>
+                                        </Form.Group>
+
+
+
+                                        <Form.Group>
+                                        <Row>
+                                            <Col lg="7">
+                                        <Form.Label>Quantite</Form.Label>
                                         <Form.Control
                                             name="QuantiteAn"
                                             required
                                             type="text"
-                                            placeholder="Quantite"
+                                            placeholder=""
                                             onChange={this.handleChange}
                                             value={this.state.QuantiteAn}
                                             pattern="^[a-zA-Z]+$"
-                                        />
 
+                                        />
+                                            </Col>
+                                        <Col lg="5">
+
+                                        <Form.Label>Unite</Form.Label>
+                                        <Form.Control as ='select'
+                                                      name="Unite"
+                                                      required
+                                                      type="text"
+                                                      placeholder="Quantite"
+                                                      onChange={this.handleChange}
+                                                      value={this.state.Unite}
+                                                     >
+
+                                            <option></option>
+                                            <option value="GJ">GJ</option>
+                                            <option value="kWh">kWh</option>
+                                            <option value="MWh">MWh</option>
+                                            <option value="kg">Kg</option>
+                                            <option value="t">Ton</option>
+                                            <option value="L">L</option>
+                                            <option value="m3">m3</option>
+                                            <option value="lbs">lbs</option>
+                                            <option value="tm">Ton (metric)</option>
+                                            <option value="gal">Gal</option>
+                                            <option value="bac240L">Dumpster (240L)</option>
+                                            <option value="bac360L">Dumpster (360L)</option>
+                                            <option value="VC">Cubic Yards</option>
+                                            <option value="teqCO2">GHG (Ton)</option>
+                                            <option value="kgeqCO2">GHG (Kg)</option>
+                                        </Form.Control>
+                                        </Col>
+                                        </Row>
+
+                                        <Form.Check
+                                            required
+                                            name="Yearly"
+                                            inline label="Per Delivery"
+                                            type='radio'
+                                            id={`inline-radio-1`}
+                                            onChange={this.handleChange}
+                                            value={true}
+                                            pattern="^[a-zA-Z]+$"/>
+                                        <Form.Check
+                                            name="Yearly"
+                                            inline label="Yearly"
+                                            onChange={this.handleChange}
+                                            type='radio'
+                                            id={`inline-radio-2`}
+                                            value={false}/>
+
+
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                        </Form.Group>
+
+
+                                        <Form.Group>
+                                        <Form.Label>Provenance</Form.Label>
+                                        <Form.Control
+                                            name="Provenance"
+                                            required
+                                            type="text"
+                                            placeholder="Pays/Province"
+                                            onChange={this.handleChange}
+                                            value={this.state.Provenance}
+
+                                        />
+                                        </Form.Group>
+
+                                        <Form.Group>
+                                        <Form.Label>Nombre de Transports</Form.Label>
+                                        <Form.Control
+                                            name="NbTransport"
+                                            required
+                                            type="text"
+                                            placeholder="# de Transports"
+                                            onChange={this.handleChange}
+                                            value={this.state.NbTransport}
+
+                                        />
+                                        </Form.Group>
+
+                                        <Form.Group>
                                         <Form.Label>Frequence D'Achat</Form.Label>
                                         <Form.Control as="select" name="Frequency" placeholder="Select Range"
                                                       value={this.state.Frequency}
@@ -218,7 +386,7 @@ export default class DynamicTable extends React.Component {
                                             <option value="1BD"> Each business day</option>
 
                                         </Form.Control>
-
+                                        </Form.Group>
 
 
 
@@ -287,9 +455,11 @@ export default class DynamicTable extends React.Component {
                                     :
 
                                     <Col lg="3">
-                                    <Form
-                                        onSubmit={e => this.handleDelete(e)} method="POST"
-                                        enctype="multipart/form-data">
+                                        <Form noValidate
+                                              validated={validated}
+                                              onSubmit={e => this.handleSubmit(e)}
+                                              method="POST" action="/"
+                                              enctype="multipart/form-data">
 
 
 
@@ -301,7 +471,7 @@ export default class DynamicTable extends React.Component {
                                     placeholder="Intrant"
                                     onChange={this.handleChange}
                                     value={this.state.NomIntrant}
-                                    pattern="^[a-zA-Z]+$"
+
                                     />
 
                                         <button type="submit" onClick={this.handleDelete}>Delete</button>
@@ -326,14 +496,21 @@ export default class DynamicTable extends React.Component {
                                                 <tr>
                                                     <th>Nom Intrant</th>
                                                     <th>Quantite</th>
+                                                    <th>Unite</th>
                                                     <th>Frequency</th>
+                                                    <th>Transports</th>
+                                                    <th>Provenance</th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
                                                     <td>{attribute.nom_intrant}</td>
                                                     <td>{attribute.quantite_an}</td>
+                                                    <td>{attribute.unite}</td>
                                                     <td>{attribute.frequence}</td>
+                                                    <td>{attribute.NbTransport}</td>
+                                                    <td>{attribute.provenance}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>

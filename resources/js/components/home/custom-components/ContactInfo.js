@@ -30,6 +30,10 @@ export default class ContactInfo extends React.Component
         console.log("Value: ", e.target.value);
     };
 
+
+
+
+
     handleSubmit(e) {
         e.preventDefault();
 
