@@ -160,7 +160,9 @@ export default class DynamicTable extends React.Component {
 
                             <Row>
 
+                                <Col lg="1">
                                 <button onClick={this.changeDelete}>Switch</button>
+                                </Col>
 
                                 {this.state.Delete ?
 

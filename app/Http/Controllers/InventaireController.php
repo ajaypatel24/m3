@@ -89,15 +89,26 @@ class InventaireController extends Controller
     function addIntrant($id) {
 
 
-            $Intrant = new Intrant();
-            $Intrant->nom_intrant = request('NomIntrant');
-            $Intrant->quantite_an = request('QuantiteAn');
-            $Intrant->ressource = request('Ressource');
-            $Intrant->duree_vie_immo = request('DureeVie');
-            $Intrant->frequence = request('Frequency');
-            $Intrant->UID = $id;
-            $Intrant->save();
+            if (DB::table('intrants')
+            ->where('nom_intrant', '=', request('NomIntrant'))
+            ->where('UID', '=', $id)
+            ->count() > 0) {
 
+                echo "exists";
+
+
+            }
+
+            else {
+                $Intrant = new Intrant();
+                $Intrant->nom_intrant = request('NomIntrant');
+                $Intrant->quantite_an = request('QuantiteAn');
+                $Intrant->ressource = request('Ressource');
+                $Intrant->duree_vie_immo = request('DureeVie');
+                $Intrant->frequence = request('Frequency');
+                $Intrant->UID = $id;
+                $Intrant->save();
+            }
     }
 
     function getIntrant($id) {
