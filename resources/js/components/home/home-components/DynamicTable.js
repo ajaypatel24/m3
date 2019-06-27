@@ -18,7 +18,7 @@ export default class DynamicTable extends React.Component {
             NbTransport: "",
             Provenance: "",
             Frequency: "",
-            Delete: false,
+            Delete: true,
             UID: localStorage.getItem('UID'),
             rows: [],
 
@@ -28,6 +28,8 @@ export default class DynamicTable extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTableRows = this.getTableRows.bind(this);
+        this.changeDelete = this.changeDelete.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
     }
 
@@ -48,6 +50,32 @@ export default class DynamicTable extends React.Component {
     };
 
 
+    handleDelete(e) {
+        e.preventDefault();
+        let uid = this.state.UID;
+        let intrant = this.state.NomIntrant;
+        fetch('/delIntrants/' + intrant + '/' + uid, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (response) {
+                console.log(response.data)
+
+
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+
+        this.getTableRows();
+    }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -72,6 +100,10 @@ export default class DynamicTable extends React.Component {
         console.log(this.state.rows);
     }
 
+    changeDelete = () => {
+        this.setState({Delete: !this.state.Delete})
+        console.log(this.state.Delete);
+    }
 
     handleSubmit(e) {
 
@@ -128,12 +160,15 @@ export default class DynamicTable extends React.Component {
 
                             <Row>
 
+                                <button onClick={this.changeDelete}>Switch</button>
 
-                                {this.state.delete ?
+                                {this.state.Delete ?
+
+
 
                                 <Col lg="3">
 
-
+                                    <p>{this.state.Delete}</p>
                                     <Form
                                         onSubmit={e => this.handleSubmit(e)} method="POST"
                                         enctype="multipart/form-data">
@@ -251,7 +286,7 @@ export default class DynamicTable extends React.Component {
 
                                     <Col lg="3">
                                     <Form
-                                        onSubmit={e => this.handleSubmit(e)} method="POST"
+                                        onSubmit={e => this.handleDelete(e)} method="POST"
                                         enctype="multipart/form-data">
 
 
@@ -267,7 +302,7 @@ export default class DynamicTable extends React.Component {
                                     pattern="^[a-zA-Z]+$"
                                     />
 
-                                        <button type="submit" onClick={this.handleSubmit}>submit</button>
+                                        <button type="submit" onClick={this.handleDelete}>Delete</button>
 
                                     </Form>
                                     </Col>

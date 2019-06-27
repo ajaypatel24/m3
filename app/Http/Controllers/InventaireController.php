@@ -116,7 +116,7 @@ class InventaireController extends Controller
 
 
         $intrants
-            ->where('name',$name)
+            ->where('nom_intrant',$name)
             ->where('UID', $id)
             ->delete();
     }
