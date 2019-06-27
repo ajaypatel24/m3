@@ -11,6 +11,7 @@ before_script:
   - nvm install 7.7.1
   - npm install npm@latest -g
   - npm install
+  - php artisan key:generate
 
 script:
   - vendor/bin/phpunit --coverage-text
