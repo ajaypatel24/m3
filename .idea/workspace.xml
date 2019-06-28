@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4bd43288-d00f-47d5-b26d-35072cda3376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+              <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -383,31 +382,7 @@
             <path>
               <item name="m3" type="b2602c69:ProjectViewProjectNode" />
               <item name="m3" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="m3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="m3" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="m3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="m3" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="m3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="m3" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="m3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="m3" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="m3" type="b2602c69:ProjectViewProjectNode" />
@@ -494,12 +469,12 @@
       <workItem from="1561477310683" duration="11131000" />
       <workItem from="1561552554204" duration="22233000" />
       <workItem from="1561639251410" duration="19220000" />
-      <workItem from="1561725906578" duration="10512000" />
+      <workItem from="1561725906578" duration="10752000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414193000" />
+    <option name="totallyTimeSpent" value="414433000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,9 +491,9 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.17651822" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17651822" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.23978686" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.23978686" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50121456" side_tool="true" weight="0.61989343" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.3268206" />
@@ -947,7 +922,7 @@
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+          <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
         </state>
       </provider>
     </entry>
