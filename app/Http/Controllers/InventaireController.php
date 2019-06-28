@@ -149,6 +149,7 @@ class InventaireController extends Controller
                             break;
                     }
                     $Intrant->quantite_an = $Quantite;
+                    $Intrant->frequence = request('Frequency');
                 }
                 else {
                     $Intrant->quantite_an = request('QuantiteAn');
@@ -158,7 +159,7 @@ class InventaireController extends Controller
                 $Intrant->nom_intrant = request('NomIntrant');
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');
-                $Intrant->frequence = request('Frequency');
+
                 $Intrant->provenance = request('Provenance');
                 $Intrant->NbTransport = request('NbTransport');
                 $Intrant->unite = request('Unite');

@@ -15,23 +15,27 @@ class Ressource extends Migration
     {
         Schema::create('ressource', function (Blueprint $table) {
             $table->bigIncrements('id'); //change
+            $table->string('idRessource'); //change
 
-            $table->integer('Num_affiche');
-            $table->string('Nom_RessourceEN', 45);
-            $table->string('Nom_RessourceFR', 45);
-            $table->string('Type_ressource',10);
-            $table->string('Scian_Code2',20);
+            $table->string('Num_affiche', 100);
+            $table->string('Nom_RessourceEN', 100);
+            $table->string('Nom_RessourceFR', 100);
+            $table->string('Type_ressource',100);
+            $table->string("Immobilisation", 100);
+            $table->string("Duree_de_vie", 100);
+            $table->string("Unite_duree_vie", 100);
+            $table->string('Scian_Code2',100);
             $table->string('Scian_Code6',100);
-            $table->string('Identifie_BD',10);
-            $table->string('Categorie_1',20);
-            $table->string('SCategorie_2',20);
-            $table->string('SCategorie_3',20);
-            $table->string('Nom_BD',100);
-            $table->string('Unite_BD', 10);
-            $table->float('Score_CC_uni');
-            $table->float('Score_SH_uni');
-            $table->float('Score_EcoS_uni');
-            $table->float('Score_Res_uni');
+            $table->string('Identifie_BD',100);
+            $table->string('Categorie_1',100);
+            $table->string('SCategorie_2',100);
+            $table->string('SCategorie_3',100);
+            $table->string('Nom_BD',200);
+            $table->string('Unite_BD', 100);
+            $table->decimal('Score_CC_uni', 10,5);
+            $table->decimal('Score_SH_uni', 20,19);
+            $table->decimal('Score_EcoS_uni',20,19);
+            $table->decimal('Score_Res_uni' ,10,5);
             $table->string('Informations_Add',255);
 
             $table->timestamps();
