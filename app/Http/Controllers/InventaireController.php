@@ -88,6 +88,7 @@ class InventaireController extends Controller
 
     function addIntrant($id) {
 
+        $Intrant = new Intrant();
 
             if (DB::table('intrants')
             ->where('nom_intrant', '=', request('NomIntrant'))
@@ -100,9 +101,61 @@ class InventaireController extends Controller
             }
 
             else {
-                $Intrant = new Intrant();
+
+                $Mod = request('Yearly');
+                $Quantite = request('QuantiteAn');
+                $freq = request('Frequency');
+
+                if ($Mod == 'true') {
+
+                    switch ($freq) {
+                        case '1xY':
+                            break;
+                        case '2xY':
+                            $Quantite = $Quantite * 2;
+                            break;
+                        case '3xY':
+                            $Quantite = $Quantite * 3;
+                            break;
+                        case '4xY':
+                            $Quantite = $Quantite * 4;
+                            break;
+                        case '2xM':
+                            $Quantite = $Quantite * 6;
+                            break;
+                        case '6M':
+                            $Quantite = $Quantite * 9;
+                            break;
+                        case '1xM':
+                            $Quantite = $Quantite * 12;
+                            break;
+                        case '3W':
+                            $Quantite = $Quantite * 16;
+                            break;
+                        case '2W':
+                            $Quantite = $Quantite * 24;
+                            break;
+                        case '1W':
+                            $Quantite = $Quantite * 48;
+                            break;
+                        case '3BD':
+                            $Quantite = $Quantite * 82;
+                            break;
+                        case '2BD':
+                            $Quantite = $Quantite * 125;
+                            break;
+                        case '1BD':
+                            $Quantite = $Quantite * 250;
+                            break;
+                    }
+                    $Intrant->quantite_an = $Quantite;
+                }
+                else {
+                    $Intrant->quantite_an = request('QuantiteAn');
+                }
+
+
                 $Intrant->nom_intrant = request('NomIntrant');
-                $Intrant->quantite_an = request('QuantiteAn');
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');
                 $Intrant->frequence = request('Frequency');
