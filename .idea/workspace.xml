@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/js/components/index.js" line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bd43288-d00f-47d5-b26d-35072cda3376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/.htaccess4" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-    </list>
+    <list default="true" id="4bd43288-d00f-47d5-b26d-35072cda3376" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -78,8 +76,8 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/.htaccess">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/.htaccess4">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-102" />
           </provider>
@@ -353,9 +351,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+    <option name="x" value="949" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -465,12 +463,12 @@
       <workItem from="1561477310683" duration="11131000" />
       <workItem from="1561552554204" duration="22233000" />
       <workItem from="1561639251410" duration="19220000" />
-      <workItem from="1561725906578" duration="12584000" />
+      <workItem from="1561725906578" duration="11765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416265000" />
+    <option name="totallyTimeSpent" value="415446000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -486,9 +484,9 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17651822" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.17651822" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.23978686" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.23978686" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50121456" side_tool="true" weight="0.61989343" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.3268206" />
@@ -896,16 +894,16 @@
         <state relative-caret-position="-402" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/.htaccess4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
       </provider>
     </entry>
   </component>
