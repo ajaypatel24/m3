@@ -28,7 +28,7 @@
 <div id="root"></div>
 <script src="../js/app.js"></script>
 
-<script type="application/javascript" src="https://server/cookies.js"></script>
+<!-- script type="application/javascript" src="https://server/cookies.js"></script -->
 <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
 <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
