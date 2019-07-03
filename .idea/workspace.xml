@@ -5,38 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd43288-d00f-47d5-b26d-35072cda3376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/DashboardElements/Tester.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/Main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/auth/Login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/auth/Profile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/auth/Register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/auth/UserFunctions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/CompleteTable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/ContactInfo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/CustomDropdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/DynamicTable2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/Loading.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/LoginScreen.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/NoMatch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/OrganisationInfo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/TableIntrants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/Transport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/custom-components/tabletest.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/AboutUs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/ContactUs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/Dashboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/DynamicTable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/Footer2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/LoggedIn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/Nav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/home-components/PrestartData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/questionnaires/EnergyTable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/home/questionnaires/Question.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="42" selection-start-column="42" selection-end-column="42" />
+              <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -394,9 +367,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+    <option name="x" value="949" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -575,12 +548,12 @@
       <workItem from="1562071693058" duration="15519000" />
       <workItem from="1562096473289" duration="593000" />
       <workItem from="1562157686203" duration="3677000" />
-      <workItem from="1562178881098" duration="824000" />
+      <workItem from="1562178881098" duration="1291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440298000" />
+    <option name="totallyTimeSpent" value="440765000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -597,9 +570,9 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.26153848" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.26153848" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.40319717" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49878544" visible="true" weight="0.15275311" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50121456" side_tool="true" weight="0.61989343" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.3268206" />
@@ -991,7 +964,7 @@
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="42" selection-start-column="42" selection-end-column="42" />
+          <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
         </state>
       </provider>
     </entry>
