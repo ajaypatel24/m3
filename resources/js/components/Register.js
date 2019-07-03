@@ -1,6 +1,6 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
-import {register} from "../auth/UserFunctions";
+import {register} from "./UserFunctions";
 
 export default class SignUpForm extends React.Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Form, FormControl, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 
-import '../../../../sass/navstyle.css'
+import '../../sass/navstyle.css'
 import axios from "axios";
 
 

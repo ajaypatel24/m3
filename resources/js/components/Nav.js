@@ -4,7 +4,7 @@ import {Link, Redirect} from "react-router-dom"
 import axios from 'axios';
 
 
-import '../../../../sass/test.css'
+import '../../sass/test.css'
 
 
 /****
@@ -50,7 +50,7 @@ import '../../../../sass/test.css'
  *
  */
 
-import Login from "../auth/Login";
+import Login from "./Login";
 
 
 export default class Nav extends React.Component {

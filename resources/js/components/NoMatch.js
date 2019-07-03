@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import {Carousel, Form, Jumbotron, Button, Card} from "react-bootstrap"
-import '../../../../sass/test.css'
+import '../../sass/test.css'
 
 
 

@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
-import Question from './home/questionnaires/Question';
-import LoggedIn from './home/home-components/LoggedIn';
-import Nav from "./home/home-components/Nav";
-import Dashboard from "./home/home-components/Dashboard";
-import PrestartData from "./home/home-components/PrestartData";
-import Footer2 from "./home/home-components/Footer2";
-import NoMatch from "./home/custom-components/NoMatch";
-import Loading from "./home/custom-components/Loading";
-import Tester from "./home/DashboardElements/Tester"
-import ContactInfo from "./home/custom-components/ContactInfo";
-import Profile from "./home/auth/Profile";
-import ContactUs from "./home/home-components/ContactUs";
+import Question from './Question';
+import LoggedIn from './LoggedIn';
+import Nav from "./Nav";
+import Dashboard from "./Dashboard";
+import PrestartData from "./PrestartData";
+
+import NoMatch from "./NoMatch";
+import Loading from "./Loading";
+import Tester from "./Tester"
+
+import Profile from "./Profile";
+import ContactUs from "./ContactUs";
 
 
 /**

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button, Card, Col, Nav, Row, Tab, Table} from 'react-bootstrap';
 
-import {EnergyTable} from '../questionnaires/EnergyTable';
-import '../../../../sass/TabStyle.css'
-import ContactInfo from "../custom-components/ContactInfo";
+import {EnergyTable} from './EnergyTable';
+import '../../sass/TabStyle.css'
+import ContactInfo from "./ContactInfo";
 import DynamicTable from "./DynamicTable";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //

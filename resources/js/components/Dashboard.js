@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem  } from 'react-bootstrap';
-import SignUpForm from '../auth/Register';
-import '../../../../sass/test.css'
+import SignUpForm from './Register';
+import '../../sass/test.css'
 
 const width = '22rem';
 
