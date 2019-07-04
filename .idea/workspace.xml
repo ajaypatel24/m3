@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a93ec38-aaee-4d67-ada7-11dfcb4d4e70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/LoggedIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/LoggedIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Transport.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/LoggedIn.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="237" column="59" selection-start-line="237" selection-start-column="59" selection-end-line="237" selection-end-column="59" />
+            <state relative-caret-position="255">
+              <caret line="240" column="56" selection-start-line="240" selection-start-column="56" selection-end-line="240" selection-end-column="56" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -61,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/resources/js/components/DynamicTable.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="105" lean-forward="true" selection-end-line="557" />
+              <caret line="105" selection-end-line="557" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -345,12 +342,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1562248001290</updated>
-      <workItem from="1562248007463" duration="7739000" />
+      <workItem from="1562248007463" duration="7843000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7739000" />
+    <option name="totallyTimeSpent" value="7843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -358,12 +355,12 @@
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3068826" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3068826" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.330373" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.330373" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -569,7 +566,7 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/DynamicTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="105" lean-forward="true" selection-end-line="557" />
+          <caret line="105" selection-end-line="557" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -588,8 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/LoggedIn.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="237" column="59" selection-start-line="237" selection-start-column="59" selection-end-line="237" selection-end-column="59" />
+        <state relative-caret-position="255">
+          <caret line="240" column="56" selection-start-line="240" selection-start-column="56" selection-end-line="240" selection-end-column="56" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
