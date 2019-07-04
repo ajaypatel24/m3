@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, FormControl, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {Button, Form, FormControl, Nav, Navbar, NavDropdown, Row, Col} from 'react-bootstrap';
 
 import '../../sass/navstyle.css'
 import axios from "axios";
@@ -39,8 +39,6 @@ export default class Navigation extends React.Component {
 
 
 
-
-
     /*
         componentWillMount = () => {
             firebase.auth().onAuthStateChanged((user) =>
@@ -61,7 +59,6 @@ export default class Navigation extends React.Component {
 */
 
 
-
     VerifyUser = () => {
 
 
@@ -73,9 +70,6 @@ export default class Navigation extends React.Component {
 
 
     }
-
-
-
 
 
     handleLoginRequest = () => {
@@ -143,6 +137,16 @@ export default class Navigation extends React.Component {
 
 
     };
+
+    handleKeyPress(e) {
+        let currentComponent = this
+        if (e.key === 'Enter') {
+            console.log('test');
+            currentComponent.handleLoginRequest;
+        }
+
+    }
+
 
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
@@ -251,12 +255,11 @@ export default class Navigation extends React.Component {
     }
 
 
-
     render() {
 
         return (
 
-            <Navbar bg="light" variant="light" /*sticky="top"*/ className="navigation">
+            <Navbar bg="light" variant="light" expand="lg"/*sticky="top"*/ className="navigation">
                 <Navbar.Brand href="#home">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
@@ -266,50 +269,64 @@ export default class Navigation extends React.Component {
                         alt="Cadet Logo"
                     />
                 </Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#/">Home</Nav.Link>
-                    <Nav.Link href="#/profile">Features</Nav.Link>
-                    <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
-                    <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
-                    <Nav.Link href="#/predata">Contact Us</Nav.Link>
-                </Nav>
 
-                {this.state.authenticated !='true' ?
-                    <Form inline>
-                        <Form.Control
-                            required
-                            name="email"
-                            type="text"
-                            placeholder="Username"
-                            className="mr-sm-2"
-                            onChange={this.handleChange}
-                            value={this.state.email}/>
-                        <Form.Control
-                            required
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            className="mr-sm-2"
-                            onChange={this.handleChange}
-                            value={this.state.password}/>
-                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                    </Form>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#/">Home</Nav.Link>
+                        <Nav.Link href="#/profile">Features</Nav.Link>
+                        <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
+                        <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
+                        <Nav.Link href="#/predata">Contact Us</Nav.Link>
+                    </Nav>
 
-                    :
+                    {this.state.authenticated != 'true' ?
+                        <Form inline>
+                            <br/>
+                            <br/>
 
-                    <Navbar.Collapse className="justify-content-end" inline>
-                        <Navbar.Text>
-                            <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
-                                <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
+                            <Form.Label className="mr-sm-2">Sign In</Form.Label>
 
-                }
+                            <Form.Control
+                                required
+                                name="email"
+                                type="text"
+                                placeholder="Username"
+                                className="mr-sm-2"
+                                onChange={this.handleChange}
+                                value={this.state.email}
+                                onKeyPress={this.handleKeyPress}/>
+
+                            <Form.Control
+                                required
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                className="mr-sm-2"
+                                onChange={this.handleChange}
+                                value={this.state.password}
+                                onKeyPress={this.handleKeyPress}/>
+
+                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+
+                        </Form>
+
+                        :
+
+                        <Navbar.Collapse className="justify-content-end" inline>
+                            <Navbar.Text>
+                                <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
+                                    <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
+                                    <NavDropdown.Divider/>
+                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                </NavDropdown>
+                            </Navbar.Text>
+                        </Navbar.Collapse>
+
+                    }
+                </Navbar.Collapse>
             </Navbar>
 
 

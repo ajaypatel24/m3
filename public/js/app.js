@@ -81926,6 +81926,16 @@ function (_React$Component) {
 
 
   _createClass(Navigation, [{
+    key: "handleKeyPress",
+    value: function handleKeyPress(e) {
+      var currentComponent = this;
+
+      if (e.key === 'Enter') {
+        console.log('test');
+        currentComponent.handleLoginRequest;
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -81944,7 +81954,8 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
         bg: "light",
-        variant: "light"
+        variant: "light",
+        expand: "lg"
         /*sticky="top"*/
         ,
         className: "navigation"
@@ -81956,7 +81967,11 @@ function (_React$Component) {
         height: "65",
         className: "d-inline-block align-top",
         alt: "Cadet Logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
+        "aria-controls": "basic-navbar-nav"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
+        id: "basic-navbar-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
         className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         href: "#/"
@@ -81970,14 +81985,17 @@ function (_React$Component) {
         href: "#/predata"
       }, "Contact Us")), this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         inline: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        className: "mr-sm-2"
+      }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         required: true,
         name: "email",
         type: "text",
         placeholder: "Username",
         className: "mr-sm-2",
         onChange: this.handleChange,
-        value: this.state.email
+        value: this.state.email,
+        onKeyPress: this.handleKeyPress
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         required: true,
         name: "password",
@@ -81985,7 +82003,8 @@ function (_React$Component) {
         placeholder: "Password",
         className: "mr-sm-2",
         onChange: this.handleChange,
-        value: this.state.password
+        value: this.state.password,
+        onKeyPress: this.handleKeyPress
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "outline-info",
         onClick: this.handleLoginRequest
@@ -82003,7 +82022,7 @@ function (_React$Component) {
         onClick: this.handleLogout
       }, "Logout"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
         href: "#action/3.4"
-      }, "Separated link")))));
+      }, "Separated link"))))));
     }
   }]);
 
