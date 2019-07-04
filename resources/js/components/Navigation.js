@@ -10,7 +10,7 @@ const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street nam
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
-export default class tester extends React.Component {
+export default class Navigation extends React.Component {
 
 
     constructor(props, context) {
@@ -40,6 +40,7 @@ export default class tester extends React.Component {
 
 
 
+
     /*
         componentWillMount = () => {
             firebase.auth().onAuthStateChanged((user) =>
@@ -56,31 +57,14 @@ export default class tester extends React.Component {
             })
         }
 
-     */
 
+*/
 
-    authListener = () => {
-
-    }
 
 
     VerifyUser = () => {
 
-        //retrieves unique UID
 
-        //firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(user) {
-
-        /*
-       }).catch(function(error) {
-           console.log("no one logged in");
-       });
-
-       let uid = firebase.auth().currentUser.uid;
-       let user = firebase.auth().currentUser.email;
-       this.setState({authenticated: true});
-       console.log(uid);
-       console.log(user);
-       */
         console.table([
             (localStorage.getItem('authenticated')),
             (localStorage.getItem('UID')),
@@ -89,6 +73,9 @@ export default class tester extends React.Component {
 
 
     }
+
+
+
 
 
     handleLoginRequest = () => {
@@ -263,6 +250,8 @@ export default class tester extends React.Component {
         this.setState({authenticated: false})
     }
 
+
+
     render() {
 
         return (
@@ -311,12 +300,12 @@ export default class tester extends React.Component {
                     <Navbar.Collapse className="justify-content-end" inline>
                         <Navbar.Text>
                             <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
-                            <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                                <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
+                                <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            </NavDropdown>
                         </Navbar.Text>
                     </Navbar.Collapse>
 

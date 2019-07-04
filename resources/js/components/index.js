@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
-import Question from './Question';
-import LoggedIn from './LoggedIn';
-import Nav from "./Nav";
-import Dashboard from "./Dashboard";
-import PrestartData from "./PrestartData";
-
-import NoMatch from "./NoMatch";
-import Loading from "./Loading";
-import Tester from "./Tester"
-
-import Profile from "./Profile";
+import Example from "./Example";
+import Navbar from "./Navigation";
+import Question from "./Question";
 import ContactUs from "./ContactUs";
+import LoggedIn from "./LoggedIn";
+import Loading from "./Loading";
+import PrestartData from "./PrestartData";
+import NoMatch from "./NoMatch";
+import Dashboard from "./Dashboard";
 
 
 /**
@@ -74,20 +71,24 @@ export default class App extends React.Component {
             /*full routing found here*/
             <HashRouter>
 
-                <Tester/>
+
+
+                <Navbar />
+
 
                 <Switch>
+
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
                     <Route exact path="/predata" component={ContactUs}/>
-                    <ProtectedRoute path="/prestart_questions/" component={Question}/>
-                    <ProtectedRoute path="/profile" component={LoggedIn}/>
-                    <ProtectedRoute path="/tester" component={Tester}/>
+                    <Route path="/prestart_questions/" component={Question}/>
+                    <Route path="/profile" component={LoggedIn}/>
+
                     <Route exact path="/loading" component={Loading}/>
                     <Route exact path="/Contact" component={PrestartData}/>
-                    <Route exact path="/nav" component={Nav}/>
-                    <Route exact path="/cinfo" component={Profile}/>
-                    <Route path="/contactus" component={ContactUs}/>
+
+
+
                     <Route component={NoMatch}/>
                 </Switch>
 

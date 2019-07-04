@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<!-- Appends for PHPtoJSTransformer => see documentation on README.md (at)include('footer') -->
+<!-- Appends for PHPtoJSTransformer => see documentation on README.md -->
 
 
 

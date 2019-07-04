@@ -73,7 +73,7 @@ export default class PrestartData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail" >
                                         <Form.Label column sm="2">
-                                            Fonction
+                                            Fonction/Role
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.fonction} />

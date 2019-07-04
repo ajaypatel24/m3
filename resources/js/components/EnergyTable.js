@@ -1,5 +1,5 @@
 import {Form, Table} from "react-bootstrap";
-import {DynamicTable} from "./DynamicTable";
+
 import React from "react";
 import axios from 'axios';
 

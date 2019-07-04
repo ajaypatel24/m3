@@ -2,24 +2,14 @@
 
 ## Resources React (Front End)
 
+This repository was made to deploy the app and will constantly be updated
+to reflect changes
+
 **Load changes to project automatically** : `npm run watch`
 
 **Load changes to project** : `npm run dev`
 
-* **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
-* **React Documentation** : https://reactjs.org/docs/getting-started.html 
-* **Lodash** : https://lodash.com/ => Simplify javascript with functions 
-* **React Router** : https://reacttraining.com/react-router/web/guides/quick-start => Routing for react
-* **Redux** : https://redux.js.org/ => State management tool
-* **React Formik** : https://github.com/jaredpalmer/formik => Form tool
-* **Yup**: https://www.npmjs.com/package/yup 
-* **PropType** : https://reactjs.org/docs/typechecking-with-proptypes.html => Type checking for properties
-* **Prettier** : https://github.com/prettier/prettier => code formatter
-* **Firebase** : https://firebase.google.com/docs/auth/web/firebaseui => Gpogle and Facebook Authentication
-* **Moment** : https://momentjs.com/ => Time and date library
-* **js-cookie** : https://github.com/js-cookie/js-cookie => Allows to create cookies with javascript
-* **ReCaptcha** : https://www.google.com/recaptcha/intro/v3.html
-            => setting up local server : https://stackoverflow.com/questions/3232904/using-recaptcha-on-localhost
+* **Heroku** : https://dashboard.heroku.com/apps
 
 **Asynchronous Server-Side Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 https://developers.google.com/web/updates/2015/03/introduction-to-fetch <= Good resource
