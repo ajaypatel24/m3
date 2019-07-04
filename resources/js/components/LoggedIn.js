@@ -5,6 +5,7 @@ import {EnergyTable} from './EnergyTable';
 import '../../sass/TabStyle.css'
 import ContactInfo from "./ContactInfo";
 import DynamicTable from "./DynamicTable";
+import Transport from "./Transport";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -232,6 +233,12 @@ export default class LoggedIn extends React.Component {
                                                 <Card.Text>
                                                     Fill in the required information
                                                 </Card.Text>
+
+                                                <tbody>
+                                                <Transport></Transport>
+                                                </tbody>
+
+
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>

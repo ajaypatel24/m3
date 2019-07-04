@@ -81491,6 +81491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_TabStyle_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_sass_TabStyle_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _ContactInfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ContactInfo */ "./resources/js/components/ContactInfo.js");
 /* harmony import */ var _DynamicTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DynamicTable */ "./resources/js/components/DynamicTable.js");
+/* harmony import */ var _Transport__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Transport */ "./resources/js/components/Transport.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -81510,6 +81511,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -81690,7 +81692,7 @@ function (_React$Component) {
         sm: "{4}"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         as: "h5"
-      }, "Intrants"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Fill in the required information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Intrants"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Fill in the required information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Transport__WEBPACK_IMPORTED_MODULE_6__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary"
       }, "Go somewhere"))))))))));
     }
@@ -81964,7 +81966,7 @@ function (_React$Component) {
         href: "#/prestart_questions"
       }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         onClick: "document.getElementById('signup').scrollIntoView();"
-      }, "louuuu Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         href: "#/predata"
       }, "Contact Us")), this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         inline: true
@@ -82978,6 +82980,410 @@ function (_React$Component) {
 
   return SignUpForm;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Transport.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Transport.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Transport; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Transport =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Transport, _React$Component);
+
+  function Transport(props) {
+    var _this;
+
+    _classCallCheck(this, Transport);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Transport).call(this, props));
+
+    _this.componentWillMount = function () {
+      _this.getTableRows();
+    };
+
+    _this.clearState = function () {
+      _this.setState({
+        NumAffiche: "",
+        NomIntrant: "",
+        QuantiteAn: "",
+        Ressource: "",
+        Immobilisation: "",
+        DureeVie: "",
+        NbTransport: "",
+        Unite: "",
+        Provenance: "",
+        Frequency: ""
+      });
+    };
+
+    _this.formChange = function (idx) {
+      return function (e) {
+        var _e$target = e.target,
+            name = _e$target.name,
+            value = _e$target.value;
+
+        var rows = _toConsumableArray(_this.state.rows);
+
+        rows[idx] = _defineProperty({}, name, value);
+
+        _this.setState({
+          rows: rows
+        });
+      };
+    };
+
+    _this.getTableRows = function () {
+      //let uid = localStorage.getItem('UID');
+      var uid = _this.state.UID;
+      axios.get('/intrants/' + uid).then(function (response) {
+        console.log(response.data);
+
+        _this.setState({
+          rows: response.data
+        });
+      });
+    };
+
+    _this.changeDelete = function () {
+      _this.setState({
+        Delete: !_this.state.Delete
+      });
+
+      console.log(_this.state.Delete);
+    };
+
+    _this.handleAddRow = function () {
+      var item = {
+        name: "",
+        mobile: ""
+      };
+
+      _this.setState({
+        rows: [].concat(_toConsumableArray(_this.state.rows), [item])
+      });
+    };
+
+    _this.handleRemoveRow = function () {
+      _this.setState({
+        rows: _this.state.rows.slice(0, -1)
+      });
+    };
+
+    _this.state = {
+      NumAffiche: "",
+      NomIntrant: "",
+      QuantiteAn: "",
+      Ressource: "",
+      Immobilisation: "",
+      DureeVie: "",
+      NbTransport: "",
+      Unite: "",
+      Provenance: "",
+      Frequency: "",
+      Yearly: "",
+      Delete: true,
+      UID: localStorage.getItem('UID'),
+      rows: []
+    };
+    _this.formChange = _this.formChange.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.getTableRows = _this.getTableRows.bind(_assertThisInitialized(_this));
+    _this.changeDelete = _this.changeDelete.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Transport, [{
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault();
+      var uid = this.state.UID;
+      var intrant = this.state.NomIntrant;
+      fetch('/delIntrants/' + intrant + '/' + uid, {
+        method: 'POST',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+          "Content-type": "application/json"
+        }
+      }).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log('Request failed', error);
+        console.log("why");
+      });
+      this.getTableRows();
+      this.clearState();
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log("Name: ", e.target.name);
+      console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault(); //VERY IMPORTANT
+
+      var data = this.state; //checks all auth
+
+      var form = e.currentTarget;
+
+      if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      var id = localStorage.getItem('UID');
+      console.table([data]);
+      fetch('/intrants/' + id, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+          "Content-type": "application/json"
+        }
+      }).then(function (response) {
+        console.log(response.data);
+        console.log('Request succeeded with JSON response', data);
+      })["catch"](function (error) {
+        console.log('Request failed', error);
+        console.log("why");
+      });
+      this.getTableRows();
+      this.clearState();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var validated = this.state.validated;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row clearfix"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12 column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.changeDelete
+      }, "Switch")), this.state.Delete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.Delete), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        validated: validated,
+        onSubmit: function onSubmit(e) {
+          return _this2.handleSubmit(e);
+        },
+        method: "POST",
+        action: "/",
+        enctype: "multipart/form-data"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "NomIntrant",
+        required: true,
+        type: "text",
+        placeholder: "Intrant",
+        onChange: this.handleChange,
+        value: this.state.NomIntrant
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "7"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Quantite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "QuantiteAn",
+        required: true,
+        type: "text",
+        placeholder: "",
+        onChange: this.handleChange,
+        value: this.state.QuantiteAn,
+        pattern: "^[a-zA-Z]+$"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Unite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "Unite",
+        required: true,
+        type: "text",
+        placeholder: "Quantite",
+        onChange: this.handleChange,
+        value: this.state.Unite
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "GJ"
+      }, "GJ"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "kWh"
+      }, "kWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "MWh"
+      }, "MWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "kg"
+      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "t"
+      }, "Ton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "L"
+      }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "m3"
+      }, "m3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "lbs"
+      }, "lbs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "tm"
+      }, "Ton (metric)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "gal"
+      }, "Gal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "bac240L"
+      }, "Dumpster (240L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "bac360L"
+      }, "Dumpster (360L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "VC"
+      }, "Cubic Yards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "teqCO2"
+      }, "GHG (Ton)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "kgeqCO2"
+      }, "GHG (Kg)")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        required: true,
+        name: "Yearly",
+        inline: true,
+        label: "Per Delivery",
+        type: "radio",
+        id: "inline-radio-1",
+        onChange: this.handleChange,
+        value: true,
+        pattern: "^[a-zA-Z]+$"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        name: "Yearly",
+        inline: true,
+        label: "Yearly",
+        onChange: this.handleChange,
+        type: "radio",
+        id: "inline-radio-2",
+        value: false
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Provenance",
+        required: true,
+        type: "text",
+        placeholder: "Pays/Province",
+        onChange: this.handleChange,
+        value: this.state.Provenance
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nombre de Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "NbTransport",
+        required: true,
+        type: "text",
+        placeholder: "# de Transports",
+        onChange: this.handleChange,
+        value: this.state.NbTransport
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "Frequency",
+        placeholder: "Select Range",
+        required: true,
+        value: this.state.Frequency,
+        onChange: this.handleChange,
+        disabled: this.state.Yearly === 'false',
+        enabled: this.state.Yearly === 'true'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1xY"
+      }, " Once per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2xY"
+      }, " Twice per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3xY"
+      }, " Three times per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "4xY"
+      }, " Four times per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2xM"
+      }, " Every two Months"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "6W"
+      }, " Every six weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1xM"
+      }, " Every month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3W"
+      }, " Every three weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2W"
+      }, " Every two weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1W"
+      }, " Every week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3BD"
+      }, " Every Three business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2BD"
+      }, " Every Two business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1BD"
+      }, " Each business day"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.handleSubmit
+      }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        validated: validated,
+        onSubmit: function onSubmit(e) {
+          return _this2.handleSubmit(e);
+        },
+        method: "POST",
+        action: "/",
+        enctype: "multipart/form-data"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "NomIntrant",
+        required: true,
+        type: "text",
+        placeholder: "Intrant",
+        onChange: this.handleChange,
+        value: this.state.NomIntrant
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.handleDelete
+      }, "Delete"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "5"
+      }, this.state.rows.map(function (attribute) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantite/An"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Frequency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.nom_intrant), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.quantite_an, " ", attribute.unite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.frequence), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.NbTransport), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.provenance)))));
+      })))))));
+    }
+  }]);
+
+  return Transport;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
 
