@@ -80,12 +80,12 @@ export default class App extends React.Component {
 
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <Route exact path="/predata" component={ContactUs}/>
-                    <Route path="/prestart_questions/" component={Question}/>
-                    <Route path="/profile" component={LoggedIn}/>
+                    <ProtectedRoute exact path="/predata" component={ContactUs}/>
+                    <ProtectedRoute path="/prestart_questions/" component={Question}/>
+                    <ProtectedRoute path="/profile" component={LoggedIn}/>
 
-                    <Route exact path="/loading" component={Loading}/>
-                    <Route exact path="/Contact" component={PrestartData}/>
+                    <ProtectedRoute exact path="/loading" component={Loading}/>
+                    <ProtectedRoute exact path="/Contact" component={PrestartData}/>
 
 
 

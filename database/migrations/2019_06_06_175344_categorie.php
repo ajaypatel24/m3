@@ -14,16 +14,18 @@ class Categorie extends Migration
     public function up()
     {
         Schema::create('categorie', function (Blueprint $table) {
-            $table->increments("idCategorie");
-            $table->integer("Num_Affich");
-            $table->string("Partie_InventaireEN", 20)->nullable();
-            $table->string("Partie_InventaireFR", 20)->nullable();
-            $table->string("Sub_CategorieEN", 20);
-            $table->string("Sub_CategorieFR", 20);
-            $table->string("Nom_CategorieEN", 20);
-            $table->string("Nom_CategorieFR", 20);
-            $table->integer('Scope');
-            $table->float("Coefficient_GES")->nullable();
+            $table->increments("id");
+            $table->string("idCategorie");
+            $table->string("Num_Affich");
+            $table->string("Partie_InventaireFR", 100)->nullable();
+            $table->string("Sub_CategorieFR", 100);
+            $table->string("Nom_CategorieFR", 100);
+            $table->string("Partie_InventaireEN", 100)->nullable();
+            $table->string("Sub_CategorieEN", 100);
+            $table->string("Nom_CategorieEN", 100);
+            $table->integer('Scope')->default(-1);
+            $table->string('Unite')->nullable();
+            $table->decimal("Coefficient_GES", 10,4)->default(-1);
             $table->string('Scian_Code2', 20);
             $table->string('Scian_Code6', 100);
 

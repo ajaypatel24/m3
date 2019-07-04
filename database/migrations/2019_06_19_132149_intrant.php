@@ -18,6 +18,7 @@ class Intrant extends Migration
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
             $table->integer('quantite_an')->nullable();
+            $table->integer('quantite_unitaire')->nullable();
             $table->string('unite')->nullable();
             $table->string("frequence")->default("1xY");
             $table->boolean('ressource')->nullable();

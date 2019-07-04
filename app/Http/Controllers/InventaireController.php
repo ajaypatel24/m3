@@ -108,6 +108,8 @@ class InventaireController extends Controller
 
                 if ($Mod == 'true') {
 
+                    $Intrant->quantite_unitaire = $Quantite;
+
                     switch ($freq) {
                         case '1xY':
                             break;
