@@ -270,7 +270,7 @@ export default class Navigation extends React.Component {
                     <Nav.Link href="#/">Home</Nav.Link>
                     <Nav.Link href="#/profile">Features</Nav.Link>
                     <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
-                    <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
+                    <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">louuuu Up</Nav.Link>
                     <Nav.Link href="#/predata">Contact Us</Nav.Link>
                 </Nav>
 
