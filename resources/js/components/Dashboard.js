@@ -117,7 +117,7 @@ export default class Dashboard extends React.Component {
                 <Row>
                     <Col lg="4">
                         <Card style={{width: width}}>
-                            <Card.Img variant="top" src={window.location.origin + "/img/pie.png"}/>
+                            <Card.Img responsive variant="top" src={window.location.origin + "/img/pie.png"}/>
                             <Card.Body>
                                 <Card.Title>Card Title</Card.Title>
                                 <Card.Text>

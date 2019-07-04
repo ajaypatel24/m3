@@ -19,9 +19,11 @@ class RegisterController extends Controller
         $register->email = request('email');
         $register->save();
 
+        /*
         JavaScript::put([
             'name' => $register->name
         ]);
+        */
     }
 
 

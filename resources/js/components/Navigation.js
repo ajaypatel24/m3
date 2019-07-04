@@ -39,8 +39,6 @@ export default class Navigation extends React.Component {
 
 
 
-
-
     /*
         componentWillMount = () => {
             firebase.auth().onAuthStateChanged((user) =>
@@ -61,7 +59,6 @@ export default class Navigation extends React.Component {
 */
 
 
-
     VerifyUser = () => {
 
 
@@ -73,9 +70,6 @@ export default class Navigation extends React.Component {
 
 
     }
-
-
-
 
 
     handleLoginRequest = () => {
@@ -143,6 +137,16 @@ export default class Navigation extends React.Component {
 
 
     };
+
+    handleKeyPress(e) {
+        let currentComponent = this
+        if (e.key === 'Enter') {
+            console.log('test');
+            currentComponent.handleLoginRequest;
+        }
+
+    }
+
 
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
@@ -251,7 +255,6 @@ export default class Navigation extends React.Component {
     }
 
 
-
     render() {
 
         return (
@@ -274,7 +277,7 @@ export default class Navigation extends React.Component {
                     <Nav.Link href="#/predata">Contact Us</Nav.Link>
                 </Nav>
 
-                {this.state.authenticated !='true' ?
+                {this.state.authenticated != 'true' ?
                     <Form inline>
                         <Form.Control
                             required
@@ -283,7 +286,8 @@ export default class Navigation extends React.Component {
                             placeholder="Username"
                             className="mr-sm-2"
                             onChange={this.handleChange}
-                            value={this.state.email}/>
+                            value={this.state.email}
+                            onKeyPress={this.handleKeyPress}/>
                         <Form.Control
                             required
                             name="password"
@@ -291,7 +295,8 @@ export default class Navigation extends React.Component {
                             placeholder="Password"
                             className="mr-sm-2"
                             onChange={this.handleChange}
-                            value={this.state.password}/>
+                            value={this.state.password}
+                            onKeyPress={this.handleKeyPress}/>
                         <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
                     </Form>
 
@@ -303,7 +308,7 @@ export default class Navigation extends React.Component {
                                 <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
                                 <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
-                                <NavDropdown.Divider />
+                                <NavDropdown.Divider/>
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
                         </Navbar.Text>

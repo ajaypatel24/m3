@@ -234,11 +234,9 @@ export default class LoggedIn extends React.Component {
                                                     Fill in the required information
                                                 </Card.Text>
 
-                                                <Table>
-                                                <tbody>
+
                                                 <Transport></Transport>
-                                                </tbody>
-                                                </Table>
+
 
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>

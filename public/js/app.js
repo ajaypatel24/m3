@@ -80116,6 +80116,7 @@ function (_React$Component) {
           width: width
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
+        responsive: true,
         variant: "top",
         src: window.location.origin + "/img/pie.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Card Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Some quick example text to build on the card title and make up the bulk of the card's content.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"], {
@@ -81692,7 +81693,7 @@ function (_React$Component) {
         sm: "{4}"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         as: "h5"
-      }, "Intrants"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Fill in the required information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Transport__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Intrants"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Fill in the required information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Transport__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary"
       }, "Go somewhere"))))))))));
     }
@@ -81926,6 +81927,16 @@ function (_React$Component) {
 
 
   _createClass(Navigation, [{
+    key: "handleKeyPress",
+    value: function handleKeyPress(e) {
+      var currentComponent = this;
+
+      if (e.key === 'Enter') {
+        console.log('test');
+        currentComponent.handleLoginRequest;
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -81977,7 +81988,8 @@ function (_React$Component) {
         placeholder: "Username",
         className: "mr-sm-2",
         onChange: this.handleChange,
-        value: this.state.email
+        value: this.state.email,
+        onKeyPress: this.handleKeyPress
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         required: true,
         name: "password",
@@ -81985,7 +81997,8 @@ function (_React$Component) {
         placeholder: "Password",
         className: "mr-sm-2",
         onChange: this.handleChange,
-        value: this.state.password
+        value: this.state.password,
+        onKeyPress: this.handleKeyPress
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "outline-info",
         onClick: this.handleLoginRequest
@@ -83202,183 +83215,42 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var validated = this.state.validated;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row clearfix"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-12 column"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.changeDelete
-      }, "Switch")), this.state.Delete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.Delete), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-        noValidate: true,
-        validated: validated,
-        onSubmit: function onSubmit(e) {
-          return _this2.handleSubmit(e);
-        },
-        method: "POST",
-        action: "/",
-        enctype: "multipart/form-data"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "NomIntrant",
-        required: true,
-        type: "text",
-        placeholder: "Intrant",
-        onChange: this.handleChange,
-        value: this.state.NomIntrant
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "7"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Quantite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "QuantiteAn",
-        required: true,
-        type: "text",
-        placeholder: "",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Transport"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Transport",
         onChange: this.handleChange,
-        value: this.state.QuantiteAn,
-        pattern: "^[a-zA-Z]+$"
+        placeholder: "tester"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "7"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Transport",
+        onChange: this.handleChange,
+        placeholder: "tester"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Transport",
+        onChange: this.handleChange,
+        placeholder: "tester"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Transport",
+        onChange: this.handleChange,
+        placeholder: "tester"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Unite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        as: "select",
-        name: "Unite",
-        required: true,
-        type: "text",
-        placeholder: "Quantite",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Transport",
         onChange: this.handleChange,
-        value: this.state.Unite
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "GJ"
-      }, "GJ"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kWh"
-      }, "kWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "MWh"
-      }, "MWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kg"
-      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "t"
-      }, "Ton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "L"
-      }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "m3"
-      }, "m3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "lbs"
-      }, "lbs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "tm"
-      }, "Ton (metric)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "gal"
-      }, "Gal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "bac240L"
-      }, "Dumpster (240L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "bac360L"
-      }, "Dumpster (360L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "VC"
-      }, "Cubic Yards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "teqCO2"
-      }, "GHG (Ton)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kgeqCO2"
-      }, "GHG (Kg)")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-        required: true,
-        name: "Yearly",
-        inline: true,
-        label: "Per Delivery",
-        type: "radio",
-        id: "inline-radio-1",
-        onChange: this.handleChange,
-        value: true,
-        pattern: "^[a-zA-Z]+$"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-        name: "Yearly",
-        inline: true,
-        label: "Yearly",
-        onChange: this.handleChange,
-        type: "radio",
-        id: "inline-radio-2",
-        value: false
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "Provenance",
-        required: true,
-        type: "text",
-        placeholder: "Pays/Province",
-        onChange: this.handleChange,
-        value: this.state.Provenance
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nombre de Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "NbTransport",
-        required: true,
-        type: "text",
-        placeholder: "# de Transports",
-        onChange: this.handleChange,
-        value: this.state.NbTransport
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        as: "select",
-        name: "Frequency",
-        placeholder: "Select Range",
-        required: true,
-        value: this.state.Frequency,
-        onChange: this.handleChange,
-        disabled: this.state.Yearly === 'false',
-        enabled: this.state.Yearly === 'true'
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1xY"
-      }, " Once per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2xY"
-      }, " Twice per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3xY"
-      }, " Three times per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "4xY"
-      }, " Four times per year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2xM"
-      }, " Every two Months"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "6W"
-      }, " Every six weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1xM"
-      }, " Every month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3W"
-      }, " Every three weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2W"
-      }, " Every two weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1W"
-      }, " Every week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3BD"
-      }, " Every Three business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2BD"
-      }, " Every Two business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1BD"
-      }, " Each business day"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        onClick: this.handleSubmit
-      }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-        noValidate: true,
-        validated: validated,
-        onSubmit: function onSubmit(e) {
-          return _this2.handleSubmit(e);
-        },
-        method: "POST",
-        action: "/",
-        enctype: "multipart/form-data"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "NomIntrant",
-        required: true,
-        type: "text",
-        placeholder: "Intrant",
-        onChange: this.handleChange,
-        value: this.state.NomIntrant
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        onClick: this.handleDelete
-      }, "Delete"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        placeholder: "tester"
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
-      }, this.state.rows.map(function (attribute) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantite/An"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Frequency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.nom_intrant), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.quantite_an, " ", attribute.unite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.frequence), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.NbTransport), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.provenance)))));
-      })))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Jumbotron"], null, "text gooes here")));
     }
   }]);
 

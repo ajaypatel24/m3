@@ -322,7 +322,13 @@ class CategorieController extends Controller
             //DB::table('procede')->where('Quantite_an', '=', null)->delete();
 
             foreach ($category as $cat) {
-                DB::table('procede')//updates fields based on UID and category name
+                echo request($cat);
+
+                if (!request($cat)) {
+                    echo (request($cat));
+                    continue;
+                }
+                DB::table('procede') //updates fields based on UID and category name
                 ->where('UID', $id)
                     ->where('Nom_procede', $cat)
                     ->update(['Quantite_an' => $categorie->$cat = request($cat)]);
@@ -334,6 +340,11 @@ class CategorieController extends Controller
 
                 if ($f == 24) {
                     break;
+                }
+                if (!request($unit)) {
+                    echo (request($unit));
+                    continue;
+
                 }
                 DB::table('procede')
                     ->where('UID',$id)
