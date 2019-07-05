@@ -41,28 +41,6 @@ export default class Navigation extends React.Component {
     }
 
 
-
-
-    /*
-        componentWillMount = () => {
-            firebase.auth().onAuthStateChanged((user) =>
-                if (user) {
-                    this.setState({
-                        authenticated: true
-                    })
-                } else {
-                    this.setState({
-                        authenticated: false
-                    })
-                }
-
-            })
-        }
-
-
-*/
-
-
     VerifyUser = () => {
 
 

@@ -50,6 +50,19 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
     );
 };
 
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The const below created a ProtectedRoute Tag
+ * which allows for the blocking of specific
+ * routes contingent on whether the user is
+ * logged in or not. This is done using a
+ * localStorage parameter authenticated
+ */
 
 export const BlockRoute = ({component: Component, ...rest}) => {
     return (
@@ -91,10 +104,18 @@ export default class App extends React.Component {
     }
 
 
+    /**
+     *
+     * Full routing can be found below, index.js is the ReactJS
+     * entry point of this application and has the ID root, this
+     * can be reconfigured in the app.js file in the 'js' directory
+     */
+
     render() {
         return (
             /*full routing found here*/
             <HashRouter>
+
 
 
 

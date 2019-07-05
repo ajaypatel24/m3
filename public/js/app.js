@@ -83351,22 +83351,6 @@ function (_React$Component) {
     _this.handleSignUpRequest = _this.handleSignUpRequest.bind(_assertThisInitialized(_this));
     return _this;
   }
-  /*
-      componentWillMount = () => {
-          firebase.auth().onAuthStateChanged((user) =>
-              if (user) {
-                  this.setState({
-                      authenticated: true
-                  })
-              } else {
-                  this.setState({
-                      authenticated: false
-                  })
-              }
-            })
-      }
-  */
-
 
   _createClass(Navigation, [{
     key: "handleKeyPress",
@@ -83576,6 +83560,20 @@ var ProtectedRoute = function ProtectedRoute(_ref) {
     }
   }));
 };
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The const below created a ProtectedRoute Tag
+ * which allows for the blocking of specific
+ * routes contingent on whether the user is
+ * logged in or not. This is done using a
+ * localStorage parameter authenticated
+ */
+
 var BlockRoute = function BlockRoute(_ref2) {
   var Component = _ref2.component,
       rest = _objectWithoutProperties(_ref2, ["component"]);
@@ -83618,6 +83616,13 @@ function (_React$Component) {
     };
     return _this;
   }
+  /**
+   *
+   * Full routing can be found below, index.js is the ReactJS
+   * entry point of this application and has the ID root, this
+   * can be reconfigured in the app.js file in the 'js' directory
+   */
+
 
   _createClass(App, [{
     key: "render",

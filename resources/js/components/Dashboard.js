@@ -32,6 +32,8 @@ export default class Dashboard extends React.Component {
                             </Col>
 
                             <Col lg="8">
+                                {/* Image can be replaced with anything suitable
+                                banner is the best option */}
                                 <img
                                     src={window.location.origin + "/img/1.jpg"}
                                     width="100%"
@@ -103,7 +105,10 @@ export default class Dashboard extends React.Component {
                 </Row>
                 */}
 
+                {/* Section to explain the concept of economie circulaire,
+                    include graphs or diagrams to complement the text */}
                 <Row>
+
                     <Col lg="6">
                     <h1 className="WebsiteHeader">Economie Circulaire</h1>
                     <p>m Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -119,6 +124,10 @@ export default class Dashboard extends React.Component {
 
                 </Row>
 
+
+
+
+                {/* Graphs that go with economie circulaire, uses bootstrap cards */}
                 <Row>
                     <Col lg="4">
                         <Card style={{width: width}}>
@@ -188,6 +197,8 @@ export default class Dashboard extends React.Component {
                     <br/>
                 </Row>
 
+                {/* Section with register block and some extra information, might also be a good idea
+                    to make a seperate component with just the registration form like other websites*/}
                 <Row id="Signup">
                     <Col lg="8">
                         <Jumbotron>
@@ -210,6 +221,7 @@ export default class Dashboard extends React.Component {
 
 
                     </Col>
+                    {/* Registration component */}
                     <Col lg="4">
                         <SignUpForm/>
                     </Col>
