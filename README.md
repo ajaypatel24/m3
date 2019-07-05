@@ -58,9 +58,9 @@ Bootstrap: integrated with tons of reponsive features
 
 
 **If .env is not included :**
-+
-+
-`APP_NAME=Laravel
+
+`
+APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
@@ -103,4 +103,5 @@ PUSHER_APP_SECRET=
 PUSHER_APP_CLUSTER=mt1
 
 MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"`
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+`
