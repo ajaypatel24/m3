@@ -51,6 +51,30 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
 };
 
 
+export const BlockRoute = ({component: Component, ...rest}) => {
+    return (
+        <Route
+            {...rest}
+            render={props => {
+                if (localStorage.getItem('authenticated') === 'false') {
+                    return <Component {...props} />;
+                } else {
+                    return <Redirect to={
+                        {
+                            pathname: "/profile",
+                            state: {
+                                from: props.location
+                            }
+                        }
+                    }/>
+                }
+            }}
+        />
+    );
+};
+
+
+
 /**
  *
  */
@@ -80,9 +104,9 @@ export default class App extends React.Component {
 
                 <Switch>
 
-                    <Route exact path="/table" component={EnergyTable}/>
-                    <Route exact path="/" component={Dashboard}/>
-                    <Route exact path="/home" component={Dashboard}/>
+                    <ProtectedRoute exact path="/table" component={EnergyTable}/>
+                    <BlockRoute exact path="/" component={Dashboard}/>
+                    <BlockRoute exact path="/home" component={Dashboard}/>
                     <ProtectedRoute exact path="/data" component={EnergyTableData}/>
                     <ProtectedRoute path="/prestart_questions/" component={PrestartQuestion}/>
                     <ProtectedRoute path="/profile" component={LandingPage}/>
