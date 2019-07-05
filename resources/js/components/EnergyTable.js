@@ -3,7 +3,7 @@ import {Form, Table} from "react-bootstrap";
 import React from "react";
 import axios from 'axios';
 
-export class EnergyTable extends React.Component {
+export default class EnergyTable extends React.Component {
 
 
     constructor(props) {
@@ -494,7 +494,7 @@ export class EnergyTable extends React.Component {
 
                 <Form
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
-                    <Table responsive striped bordered hover variant="dark">
+                    <Table responsive> {/**/}
                         <thead>
                         <tr>
                             <th colSpan="5">Energie</th>

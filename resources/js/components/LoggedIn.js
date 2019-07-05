@@ -176,7 +176,7 @@ export default class LoggedIn extends React.Component {
                                                     intrants, etc. et calculer les emissions annuelles de votre activite
                                                 </Card.Text>
 
-                                                <EnergyTable></EnergyTable>
+                                                {/* <EnergyTable></EnergyTable> */}
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>

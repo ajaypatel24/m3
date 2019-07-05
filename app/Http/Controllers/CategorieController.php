@@ -321,7 +321,11 @@ class CategorieController extends Controller
             echo "it be like that $category[0]";
             //DB::table('procede')->where('Quantite_an', '=', null)->delete();
 
+
             foreach ($category as $cat) {
+                if (!request($cat)) {
+                    continue;
+                }
                 DB::table('procede')//updates fields based on UID and category name
                 ->where('UID', $id)
                     ->where('Nom_procede', $cat)

@@ -60,6 +60,7 @@ class InventaireController extends Controller
 
 
         $g = array();
+        $values = array();
         foreach ($category as $cat) {
             $TableData = DB::table('procede')
                 ->where('uid', $id)
@@ -67,13 +68,24 @@ class InventaireController extends Controller
                 ->get();
 
 
+            print_r($TableData);
             array_push($g,$TableData);
 
 
-        }
+
+           foreach($g as $e) {
+               foreach ($e as $r) {
+                   if(!$r->Quantite_an == null) {
+                       array_push($values, $e);
+                   }
+               }
+           }
+           }
+
+        print_r($values);
 
 
-        return $g;
+        return $values;
 
     }
 

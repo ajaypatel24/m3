@@ -10,6 +10,7 @@ import Loading from "./Loading";
 import PrestartData from "./PrestartData";
 import NoMatch from "./NoMatch";
 import Dashboard from "./Dashboard";
+import EnergyTable from "./EnergyTable";
 
 
 /**
@@ -78,6 +79,7 @@ export default class App extends React.Component {
 
                 <Switch>
 
+                    <Route exact path="/table" component={EnergyTable}/>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
                     <ProtectedRoute exact path="/predata" component={ContactUs}/>
