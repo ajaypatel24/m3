@@ -14,6 +14,7 @@
 * **Firebase** : https://firebase.google.com/docs/auth/web/start => Authentication and database
 * **Moment** : https://momentjs.com/ => Time and date library
 * **Heroku** : https://id.heroku.com/login => Temporary deployment solution 
+* **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
 
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
@@ -40,6 +41,15 @@
 **Laravel helpful bookmarks** : https://github.com/chiraggude/awesome-laravel <=== tons of GREAT stuff 
 
 
+## Styling
+
+**Responsiveness**:
+CSS media query (applies certain props at certain width/height): https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+Inner.width property (JS) : can be used with conditional statement to render two different pages in react (pass it down as a prop from componenent to component, or use redux)
+Bootstrap: integrated with tons of reponsive features
+
+**Bootstrap React Doc** : https://react-bootstrap.github.io/
+
 ### To run project locally, no need for local server (XAMPP, WAMP...).
 1. cd to project in two terminals
 2. first terminal run `php artisan serve`
@@ -47,7 +57,9 @@
 4. open address listed under php artisan server (usually http://127.0.0.1:8000/)
 
 
-If .env is not included :
+**If .env is not included :**
++
++
 `APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=
