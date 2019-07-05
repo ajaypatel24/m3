@@ -45,7 +45,7 @@
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
 <script>
-    // Your web app's Firebase configuration
+    // Your web app's Firebase configuration - authentification avec Firebase de google
     var firebaseConfig = {
         apiKey: "AIzaSyAVYcWHS5zwPM1FEvZ23D0ZvvolAGWgM98",
         authDomain: "m3-cadet.firebaseapp.com",
