@@ -1,7 +1,13 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 
-
+/**
+ *
+ * @returns {*}
+ * @constructor
+ *
+ * Deprecated, material table not worth using
+ */
 
 export default function MaterialTableDemo() {
     const [state, setState] = React.useState({

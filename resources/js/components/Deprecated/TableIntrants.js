@@ -1,8 +1,11 @@
 import {Form, Table} from "react-bootstrap";
-import {DynamicTable} from "../home-components/DynamicTable";
+import {IntrantForm} from "../FormComponents/IntrantForm";
 import React from "react";
-import axios from 'axios';
+import axios from 'axios/index';
 
+/**
+ * Deprecated, very very similar to Energy Table
+ */
 export class TableIntrants extends React.Component {
 
 

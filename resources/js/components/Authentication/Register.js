@@ -1,7 +1,10 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
 
-
+/**
+ * Registartion form using firebase to create an account in the m3
+ * system
+ */
 export default class SignUpForm extends React.Component {
     constructor(props) {
         super(props);

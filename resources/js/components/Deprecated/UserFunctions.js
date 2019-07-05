@@ -1,6 +1,10 @@
-import axios from 'axios'
+import axios from 'axios/index'
 
-
+/**
+ * these functions are all not used, serve as reference
+ * deprecated
+ * @param newUser
+ */
 export const register = newUser => {
     return axios
         .post('api/register', newUser, {

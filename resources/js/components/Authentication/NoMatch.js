@@ -1,11 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
 import {Carousel, Form, Jumbotron, Button, Card} from "react-bootstrap"
-import '../../sass/test.css'
+import '../../../sass/test.css'
 
 
-
-
+/**
+ * 404 error page, displays whenever a non existant route
+ * is selected
+ */
 
 export default class NoMatch extends React.Component {
     constructor(props) {

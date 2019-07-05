@@ -2,8 +2,23 @@ import React from 'react';
 import {Form, Button, Col} from 'react-bootstrap';
 
 
-export default class ContactInfo extends React.Component
+/**
+ * Additonal info to provide once user signs in
+ *
+ *
+ */
+
+export default class ContactInformationForm extends React.Component
 {
+    /**
+     *
+     * @param props
+     * Fonction: role at company
+     * Telephone: Number 1
+     * Telephone2: Optional number 2
+     * PosteTelephone: Work Number
+     * Langue: FR or EN
+     */
     constructor(props) {
         super(props);
 

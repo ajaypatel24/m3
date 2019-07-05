@@ -1,8 +1,13 @@
 import {Col, Row, Form, InputGroup} from "react-bootstrap";
 import React from "react";
-import axios from 'axios';
+import axios from 'axios/index';
 
-export default class PrestartData extends React.Component {
+/**
+ * Contact information of current user displayed here before
+ * or after they fill out required contact info, access
+ * by clicking on profile dropdown item
+ */
+export default class ContactInformationData extends React.Component {
 
 
     constructor(props) {

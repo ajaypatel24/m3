@@ -1,8 +1,13 @@
 import {Col, Row, Form, InputGroup, Table } from "react-bootstrap";
 import React from "react";
-import axios from 'axios';
+import axios from 'axios/index';
 
-export default class PrestartData extends React.Component {
+
+/**
+ * Energytable data displayed here to check what happens
+ * when data is retrieved from the database
+ */
+export default class EnergyTableData extends React.Component {
 
 
     constructor(props) {

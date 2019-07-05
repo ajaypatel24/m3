@@ -5,8 +5,13 @@ const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
-
-export default class Question extends React.Component {
+/**
+ * Prestart Questions to answer about the business before filling
+ * out intrants and energy table, maybe make this impossible
+ * to access once filled and store results in a table that
+ * can be edited
+ */
+export default class PrestartQuestion extends React.Component {
 
 
     constructor(props) {

@@ -1,10 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
 import {Carousel, Form, Jumbotron, Button, Card, Spinner} from "react-bootstrap"
-import '../../sass/test.css'
+import '../../../sass/test.css'
 
 
-
+/**
+ * find a use for this because its needed
+ */
 
 
 export default class Loading extends React.Component {

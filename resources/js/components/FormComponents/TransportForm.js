@@ -1,8 +1,11 @@
 import React from 'react';
 import {Col, Form, Row} from "react-bootstrap";
 
-
-export default class Transport extends React.Component {
+/**
+ * Table de transport used to store all transportation
+ * uses by the company, will begin development soon
+ */
+export default class TransportForm extends React.Component {
     constructor(props) {
         super(props);
 

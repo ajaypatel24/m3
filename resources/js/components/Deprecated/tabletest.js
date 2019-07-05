@@ -1,8 +1,11 @@
 import react from 'react'
 
 
-
-
+/**what is this, not used
+ * deprecated
+ * @param data
+ * @param onCellChange
+ */
 const Table = ({data, onCellChange}) => {
 
     return (

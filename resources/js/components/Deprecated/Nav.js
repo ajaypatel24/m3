@@ -1,10 +1,10 @@
 import React from 'react';
 import {Button, Dropdown, Form, Navbar, DropdownButton} from "react-bootstrap";
 import {Link, Redirect} from "react-router-dom"
-import axios from 'axios';
+import axios from 'axios/index';
 
 
-import '../../../../sass/test.css'
+import '../../sass/test.css'
 
 
 /****

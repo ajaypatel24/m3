@@ -1,6 +1,10 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
-import {register} from "../auth/UserFunctions";
+import {register} from "./UserFunctions";
+
+/**
+ * Old login test, deprecated
+ */
 
 export default class LoginScreen extends React.Component {
     constructor(props) {

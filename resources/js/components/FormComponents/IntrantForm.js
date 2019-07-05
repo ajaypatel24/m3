@@ -2,7 +2,12 @@ import React from 'react';
 import {Col, Form, Row} from "react-bootstrap";
 
 
-export default class DynamicTable extends React.Component {
+/**
+ * Intrants, allow user to enter and intrant and press
+ * add which gets dynamically added to the page
+ * by querying database
+ */
+export default class IntrantForm extends React.Component {
     constructor(props) {
         super(props);
 

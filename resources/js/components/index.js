@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
-import Example from "./Example";
+import Example from "./Deprecated/Example";
 import Navbar from "./Navigation";
-import Question from "./Question";
-import ContactUs from "./ContactUs";
-import LoggedIn from "./LoggedIn";
-import Loading from "./Loading";
-import PrestartData from "./PrestartData";
-import NoMatch from "./NoMatch";
+import PrestartQuestion from "./FormComponents/PrestartQuestion";
+import EnergyTableData from "./DataComponents/EnergyTableData";
+import LandingPage from "./LandingPage";
+import Loading from "./Authentication/Loading";
+import ContactInformationData from "./DataComponents/ContactInformationData";
+import NoMatch from "./Authentication/NoMatch";
 import Dashboard from "./Dashboard";
-import EnergyTable from "./EnergyTable";
-
+import EnergyTable from "./FormComponents/EnergyTable";
+import AboutUs from "./Authentication/Loading";
 
 /**
  *
@@ -77,17 +77,19 @@ export default class App extends React.Component {
                 <Navbar />
 
 
+
                 <Switch>
 
                     <Route exact path="/table" component={EnergyTable}/>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/home" component={Dashboard}/>
-                    <ProtectedRoute exact path="/predata" component={ContactUs}/>
-                    <ProtectedRoute path="/prestart_questions/" component={Question}/>
-                    <ProtectedRoute path="/profile" component={LoggedIn}/>
+                    <ProtectedRoute exact path="/data" component={EnergyTableData}/>
+                    <ProtectedRoute path="/prestart_questions/" component={PrestartQuestion}/>
+                    <ProtectedRoute path="/profile" component={LandingPage}/>
+
 
                     <ProtectedRoute exact path="/loading" component={Loading}/>
-                    <ProtectedRoute exact path="/Contact" component={PrestartData}/>
+                    <ProtectedRoute exact path="/Contact" component={ContactInformationData}/>
 
 
 

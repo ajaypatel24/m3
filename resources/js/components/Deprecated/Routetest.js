@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * useless deprecated
+ */
 export default class Routetest extends Component {
     render() {
         return (

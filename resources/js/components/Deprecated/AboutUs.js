@@ -1,18 +1,18 @@
 import React from 'react';
-import {Button, Card, Col, Nav, Row, Tab, Table} from 'react-bootstrap';
+import {Button, Col, Form} from 'react-bootstrap';
+import { Tab, Row, Nav, Carousel, Card } from 'react-bootstrap';
 
-import {EnergyTable} from './EnergyTable';
-import '../../sass/TabStyle.css'
-import ContactInfo from "./ContactInfo";
-import DynamicTable from "./DynamicTable";
-import Transport from "./Transport";
+
+
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
-
-export default class LoggedIn extends React.Component {
+/**
+ * DEPRECATED, USED ONLY FOR TEST NOTHING ELSE
+ */
+export default class AboutUs extends React.Component {
 
 
     constructor(props) {
@@ -34,11 +34,12 @@ export default class LoggedIn extends React.Component {
             OfferToClient: "",
             SectorActivity: "",
             ClientBase: "",
-            SCIAN22: false,
+
             DiffCorpAddress: "",
             validated: false,
-            BusinessNameError: "",
-            categories: []
+
+
+            BusinessNameError: ""
 
         };
     }
@@ -132,14 +133,7 @@ export default class LoggedIn extends React.Component {
 
     render() {
 
-
         return (
-
-
-
-
-
-
 
             <div>
 
@@ -150,10 +144,10 @@ export default class LoggedIn extends React.Component {
                         <Col sm={2}>
                             <Nav variant="pills" className="flex-column">
                                 <Nav.Item>
-                                    <Nav.Link eventKey="first" className="test">Inventaire</Nav.Link>
+                                    <Nav.Link eventKey="first">Tab 1</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="second" className="test">Tab 2</Nav.Link>
+                                    <Nav.Link eventKey="second">Tab 2</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link eventKey="third">Tab 3</Nav.Link>
@@ -168,15 +162,12 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="first">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Inventaire</Card.Header>
+                                            <Card.Header as="h5">Featured</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    Realiser votre inventaire de vos depenses energetiques, procedes,
-                                                    intrants, etc. et calculer les emissions annuelles de votre activite
+                                                    With supporting text below as a natural lead-in to additional content.
                                                 </Card.Text>
-
-                                                {/* <EnergyTable></EnergyTable> */}
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -185,16 +176,12 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="second">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Contact Information</Card.Header>
+                                            <Card.Header as="h5">Tab 1</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    Please fill in all required information before accessing
-                                                    our services
+                                                    With supporting text below as a natural lead-in to additional content.
                                                 </Card.Text>
-
-
-                                                <ContactInfo/>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -203,22 +190,12 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="third">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Intrants</Card.Header>
+                                            <Card.Header as="h5">Tab 2</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    Fill in the required information
+                                                    With supporting text below as a natural lead-in to additional content.
                                                 </Card.Text>
-
-                                                <Table>
-
-
-                                                    <tbody>
-                                                    <DynamicTable> </DynamicTable>
-                                                    </tbody>
-
-
-                                                </Table>
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -227,19 +204,12 @@ export default class LoggedIn extends React.Component {
                                 <Tab.Pane eventKey="fourth">
                                     <Col sm="{4}">
                                         <Card>
-                                            <Card.Header as="h5">Intrants</Card.Header>
+                                            <Card.Header as="h5">Tab 3</Card.Header>
                                             <Card.Body>
                                                 <Card.Title>Special title treatment</Card.Title>
                                                 <Card.Text>
-                                                    Fill in the required information
+                                                    With supporting text below as a natural lead-in to additional content.
                                                 </Card.Text>
-
-                                                <Table>
-                                                <tbody>
-                                                <Transport></Transport>
-                                                </tbody>
-                                                </Table>
-
                                                 <Button variant="primary">Go somewhere</Button>
                                             </Card.Body>
                                         </Card>
@@ -251,7 +221,12 @@ export default class LoggedIn extends React.Component {
                 </Tab.Container>
 
 
+
+
             </div>
+
+
+
 
 
         );

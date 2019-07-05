@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ReactController extends Controller
 {
     public function show () {
-        return view('LoggedIn');
+        return view('LandingPage');
     }
 
 }

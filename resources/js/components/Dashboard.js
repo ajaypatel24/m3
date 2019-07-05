@@ -1,11 +1,16 @@
 import React from 'react';
 import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem  } from 'react-bootstrap';
-import SignUpForm from './Register';
+import SignUpForm from './Authentication/Register';
 import '../../sass/test.css'
 
 const width = '22rem';
 
 let element = document.getElementById("signup");
+
+
+/**
+ * Home page users see before they login, incredibly important
+ */
 export default class Dashboard extends React.Component {
 
     render() {
