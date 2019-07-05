@@ -1,4 +1,4 @@
-+## Resources React (Front End)
+## Resources React (Front End)
 
 **Load changes to project automatically** : `npm run watch`
 
@@ -25,7 +25,7 @@
 
 **Running server** : `php artisan serve`
 
-+**Setuping server locally** :
+**Setuping server locally** :
 1. `composer install`
 2. `npm install`
 3. rename .env.example to .env (it's in the root)
