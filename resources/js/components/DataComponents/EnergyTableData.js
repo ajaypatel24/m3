@@ -5,7 +5,8 @@ import axios from 'axios/index';
 
 /**
  * Energytable data displayed here to check what happens
- * when data is retrieved from the database
+ * when data is retrieved from the database, testing
+ * how it is displayed
  */
 export default class EnergyTableData extends React.Component {
 
@@ -27,6 +28,11 @@ export default class EnergyTableData extends React.Component {
     }
 
 
+    /**
+     * Here, the UID is retrieved from session storage and used to access the users information
+     * from the /inventaire route controller method call. The data retrieved in then placed in the
+     * TableData state array for access
+     */
     componentWillMount() {
 
         let uid = sessionStorage.getItem('UID');
@@ -40,6 +46,10 @@ export default class EnergyTableData extends React.Component {
 
     }
 
+
+    /**
+     * functionlity test method
+     */
     test() {
         var tableData = new Array();
         var l = 1;
@@ -67,6 +77,14 @@ export default class EnergyTableData extends React.Component {
     render() {
         return (
             <div>
+                {/**
+                 * HOF (higher order function) map called to return all elements from the energy table
+                 * part of the database, first the datatype of the row is checked to ensure everything
+                 * is correctly formatted before beginning. Next a table is set up with the headers
+                 * Nom, Quantite, Unite and, Num Affiche
+                 * using the subrowdata variable name, data is pulled from the data in the format
+                 * subrowdata.{elementName}
+                 */}
                 {
                     this.state.TableData.map((rowdata, i) =>
                         <div>

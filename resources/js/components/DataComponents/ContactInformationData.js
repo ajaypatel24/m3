@@ -7,6 +7,7 @@ import axios from 'axios/index';
  * or after they fill out required contact info, access
  * by clicking on profile dropdown item
  */
+
 export default class ContactInformationData extends React.Component {
 
 
@@ -23,6 +24,12 @@ export default class ContactInformationData extends React.Component {
     }
 
 
+    /**
+     * Contact fills out their information which much be displayed somewhere for reference
+     * Here, the UID is retrieved from session storage and used to access the users information
+     * from the /contact route controller method call. The data retrieved in then placed in the
+     * profile state array for access
+     */
     componentDidMount() {
         let uid = sessionStorage.getItem('UID');
         console.log(uid);
@@ -35,13 +42,19 @@ export default class ContactInformationData extends React.Component {
     }
 
 
-    render() {
 
+    render() {
 
         return (
 
             <div>
 
+
+                {/**
+                * HOF (higher order function) map is used to iterate over the profile state array
+                * attribute is an Object who's elements can be accessed by typing attribute.{ElementName}
+                * this call is used to display all the information of the object on the user profile page
+                */}
 
                 {this.state.profile.map(attribute => {
                     return (
@@ -57,6 +70,16 @@ export default class ContactInformationData extends React.Component {
 
                             <Col lg="7">
                                 <div>
+
+                                    {/**
+                                    * Each new entry requires
+                                    * <Form.Group as {Row}>
+                                    * <Form.Label>Label</Form.Label>
+                                    * <Col {sizing paramter for columns}>
+                                    * <Form.Control plaintext readOnly value = attribute.{elementName} />
+                                    * </Col>
+                                    * </Form.Group>
+                                    */}
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail" >
                                         <Form.Label column sm="2">
@@ -122,7 +145,7 @@ export default class ContactInformationData extends React.Component {
                                     <Col sm="10">
                                         <Form.Control plaintext readOnly value={attribute.Poste_telephone} />
                                     </Col>
-                                </Form.Group>
+                                    </Form.Group>
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                         <Form.Label column sm="2">

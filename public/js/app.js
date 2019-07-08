@@ -79656,7 +79656,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * or customize the JavaScript scaffolding to fit your unique needs.\
+ *
+ *
+ *
+ * in this case, app.js will go into the components directory and select
+ * the file which has the id root. In this case, that is the index.js file
  */
 
 
@@ -79762,7 +79767,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 /**
- * find a use for this because its needed
+ * find a use for this because its needed, it is a
+ * loading icon that should be there before the component mounts
  */
 
 var Loading =
@@ -79843,6 +79849,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 /**
  * 404 error page, displays whenever a non existant route
  * is selected
+ *
+ * Uses Bootstrap Buttons and Cards to display the error,
+ * the Button redirects to either the login dashboard page
+ * or the profile page depending on if the user is authenticated
+ * or not
  */
 
 var NoMatch =
@@ -79863,6 +79874,10 @@ function (_React$Component) {
 
     return _this;
   }
+  /**
+   * Redirect function
+   */
+
 
   _createClass(NoMatch, [{
     key: "render",
@@ -79928,7 +79943,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /**
  * Registartion form using firebase to create an account in the m3
- * system
+ * system, upon registration, the user should be stored in both the
+ * firebase authentication system as well as the 'register' table
+ * in the database
  */
 
 var SignUpForm =
@@ -80006,9 +80023,17 @@ function (_React$Component) {
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleChangePasswordStrength = _this.handleChangePasswordStrength.bind(_assertThisInitialized(_this));
-    _this.toSubmit = _this.toSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
+  /**
+   *
+   * @param e
+   *
+   * Crucial function, allows for forms (textboxes) all over the page
+   * to allow for data to be entered into them
+   */
+
 
   _createClass(SignUpForm, [{
     key: "handleChange",
@@ -80017,6 +80042,13 @@ function (_React$Component) {
     }
   }, {
     key: "handleChangePasswordStrength",
+
+    /**
+     *
+     * @param e
+     * Checks if password entered obeys the requirement set by
+     * the regex pattern strongRegex
+     */
     value: function handleChangePasswordStrength(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
@@ -80031,33 +80063,31 @@ function (_React$Component) {
         });
       }
     }
-  }, {
-    key: "toSubmit",
-    value: function toSubmit(e) {
-      e.preventDefault();
-      var newUser = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
-      };
-      register(newUser).then(function (res) {
-        if (res === 201) {
-          console.log("success");
-        } //window.location.href = '/login/';
-        //console.log(sessionStorage.getItem('usertoken'));
+    /**
+     *
+     * @param e
+     * Handles form submission, makes a call to firebase using the .createUserWithEmailAndPassword
+     * function, the parameters are taken from the state. The same data is posted to the register table
+     * using the /register RestAPI call
+     */
 
-      });
-      document.getElementById("registerForm").reset();
-    }
   }, {
     key: "render",
+
+    /**
+     *
+     * @returns {*}
+     * Card Form Group made using bootstrap Form, Card, and Button
+     * This is the register form which allows new users to create
+     * accounts, each Form has an ID and a Label to make identification
+     * easy
+     */
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Header, {
         className: "d-flex justify-content-center login-btn-color-font"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fas fa-user-plus icon-transform"
       }), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.toSubmit,
         id: "registerForm"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["FormGroup"], {
         role: "form"
@@ -80156,7 +80186,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var width = '22rem';
 var element = document.getElementById("signup");
 /**
- * Home page users see before they login, incredibly important
+ * Home page users see before they login, Introduction to the service including an explanation of
+ * some key concepts (maybe)
  */
 
 var Dashboard =
@@ -80319,6 +80350,13 @@ function (_React$Component) {
     };
     return _this;
   }
+  /**
+   * Contact fills out their information which much be displayed somewhere for reference
+   * Here, the UID is retrieved from session storage and used to access the users information
+   * from the /contact route controller method call. The data retrieved in then placed in the
+   * profile state array for access
+   */
+
 
   _createClass(ContactInformationData, [{
     key: "componentDidMount",
@@ -80489,7 +80527,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /**
  * Energytable data displayed here to check what happens
- * when data is retrieved from the database
+ * when data is retrieved from the database, testing
+ * how it is displayed
  */
 
 var EnergyTableData =
@@ -80512,6 +80551,12 @@ function (_React$Component) {
     _this.test = _this.test.bind(_assertThisInitialized(_this));
     return _this;
   }
+  /**
+   * Here, the UID is retrieved from session storage and used to access the users information
+   * from the /inventaire route controller method call. The data retrieved in then placed in the
+   * TableData state array for access
+   */
+
 
   _createClass(EnergyTableData, [{
     key: "componentWillMount",
@@ -80527,6 +80572,10 @@ function (_React$Component) {
         console.log(_this2.state.TableData);
       });
     }
+    /**
+     * functionlity test method
+     */
+
   }, {
     key: "test",
     value: function test() {
@@ -80721,6 +80770,11 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
+  /**
+   * Allows user to write into forms
+   * @param e
+   */
+
 
   _createClass(ContactInformationForm, [{
     key: "handleChange",
@@ -80731,17 +80785,24 @@ function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
+
+    /**
+     * Posts information into the database using the contact controller method
+     * checks that all forms are valid beforehand
+     * @param e
+     */
     value: function handleSubmit(e) {
       e.preventDefault();
       var data = this.state; //VERY IMPORTANT
       //checks all auth
 
-      var form = e.currentTarget;
+      var form = e.currentTarget; //checks that all forms are valid before submission
 
       if (form.checkValidity() === false) {
         e.preventDefault();
         e.stopPropagation();
       } else {
+        //post to database by using the contact/{id} route
         var id = sessionStorage.getItem('UID');
         fetch('/contact/' + id, {
           method: 'POST',
@@ -80764,6 +80825,25 @@ function (_React$Component) {
     }
   }, {
     key: "render",
+
+    /**
+     * Make use of Form, Form.Row, Form.Group to make contact information form page
+     * General form to add a form box
+     *
+     * <Form.Group as={Col} controlId="formGridEmail">
+     * <Form.Label>Fonction</Form.Label>
+     * <Form.Control
+     *      name="{name}" //include same name in state
+     *      required
+     *      value={this.state.{statename}} //
+     *      onChange={this.handleChange}
+     *      type="text"
+     *      placeholder="{name}"
+     *      pattern="^[a-zA-Z]+$" //pattern that the input MUST obey
+     *      />
+     * </Form.Group>
+     * @returns {*}
+     */
     value: function render() {
       var _this2 = this;
 
@@ -80842,12 +80922,7 @@ function (_React$Component) {
         value: "EN"
       }, "EN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "FR"
-      }, "FR")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        id: "formGridCheckbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-        type: "checkbox",
-        label: "Check me out"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "FR")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary",
         type: "submit"
       }, "Submit"));
@@ -80865,12 +80940,12 @@ function (_React$Component) {
 /*!***************************************************************!*\
   !*** ./resources/js/components/FormComponents/EnergyTable.js ***!
   \***************************************************************/
-/*! exports provided: default */
+/*! exports provided: EnergyTable */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EnergyTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnergyTable", function() { return EnergyTable; });
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
@@ -81602,8 +81677,6 @@ function (_React$Component) {
   return EnergyTable;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
-
-
 /***/ }),
 
 /***/ "./resources/js/components/FormComponents/IntrantForm.js":
@@ -81622,14 +81695,6 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -81686,22 +81751,6 @@ function (_React$Component) {
       });
     };
 
-    _this.formChange = function (idx) {
-      return function (e) {
-        var _e$target = e.target,
-            name = _e$target.name,
-            value = _e$target.value;
-
-        var rows = _toConsumableArray(_this.state.rows);
-
-        rows[idx] = _defineProperty({}, name, value);
-
-        _this.setState({
-          rows: rows
-        });
-      };
-    };
-
     _this.getTableRows = function () {
       //let uid = sessionStorage.getItem('UID');
       var uid = _this.state.UID;
@@ -81722,23 +81771,6 @@ function (_React$Component) {
       console.log(_this.state.Delete);
     };
 
-    _this.handleAddRow = function () {
-      var item = {
-        name: "",
-        mobile: ""
-      };
-
-      _this.setState({
-        rows: [].concat(_toConsumableArray(_this.state.rows), [item])
-      });
-    };
-
-    _this.handleRemoveRow = function () {
-      _this.setState({
-        rows: _this.state.rows.slice(0, -1)
-      });
-    };
-
     _this.state = {
       NumAffiche: "",
       NomIntrant: "",
@@ -81755,7 +81787,6 @@ function (_React$Component) {
       UID: sessionStorage.getItem('UID'),
       rows: []
     };
-    _this.formChange = _this.formChange.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.getTableRows = _this.getTableRows.bind(_assertThisInitialized(_this));
@@ -81766,6 +81797,13 @@ function (_React$Component) {
 
   _createClass(IntrantForm, [{
     key: "handleDelete",
+
+    /**
+     * Method used to delete intrants directly from the database, does this in real time
+     * so the user sees the intrant being deleted after they press the button
+     *
+     * Uses the /delIntrants/{intrant}/{id} route which calls a post method to delete
+     */
     value: function handleDelete(e) {
       e.preventDefault();
       var uid = this.state.UID;
@@ -81782,9 +81820,14 @@ function (_React$Component) {
         console.log('Request failed', error);
         console.log("why");
       });
-      this.getTableRows();
-      this.clearState();
+      this.getTableRows(); //get new table rows after deletion
+
+      this.clearState(); //refresh state
     }
+    /**
+     * allows writing to forms
+     */
+
   }, {
     key: "handleChange",
     value: function handleChange(e) {
@@ -81792,8 +81835,17 @@ function (_React$Component) {
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
     }
+    /**
+     * gets all table rows from backend controller method to be
+     * displayed to the user
+     */
+
   }, {
     key: "handleSubmit",
+
+    /**
+     * Submits intrant data to database with post method which packs up state to send
+     */
     value: function handleSubmit(e) {
       e.preventDefault(); //VERY IMPORTANT
 
@@ -81979,7 +82031,11 @@ function (_React$Component) {
       }, " Each business day"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleSubmit
-      }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, "submit")))
+      /**
+       * if in delete mode, render the form below
+       */
+      : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
@@ -82000,7 +82056,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleDelete
-      }, "Delete"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, "Delete"))), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
       }, this.state.rows.map(function (attribute) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantite/An"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Frequency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.nom_intrant), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.quantite_an, " ", attribute.unite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.frequence), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.NbTransport), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.provenance)))));
@@ -82099,6 +82155,11 @@ function (_React$Component) {
     };
     return _this;
   }
+  /**
+   * submit form to database using / route, subject to change
+   * @param e
+   */
+
 
   _createClass(PrestartQuestion, [{
     key: "handleSubmit",
@@ -82135,6 +82196,11 @@ function (_React$Component) {
     }
   }, {
     key: "handleChange",
+
+    /**
+     * Allows writing to forms
+     * @param e
+     */
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
@@ -82157,6 +82223,11 @@ function (_React$Component) {
 
       return false;
     }
+    /**
+     * a set of many forms defined using Form.Group as well as radio buttons
+     * when finished click on submit to submit the data
+     */
+
   }, {
     key: "render",
     value: function render() {
@@ -83034,48 +83105,9 @@ function (_React$Component) {
   }, {
     key: "handleChange",
     value: function handleChange(e) {
-      {
-        /* = e => */
-      }
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
-    }
-  }, {
-    key: "handleOptionChange",
-    value: function handleOptionChange(changeEvent) {
-      this.setState({
-        selectedOption: changeEvent.target.value
-      });
-    }
-  }, {
-    key: "showHideDiv",
-    value: function showHideDiv(corpAddress) {
-      var box = document.getElementById("corpAddress");
-      box.style.display = checkCorp.checked ? "block" : "none";
-    }
-  }, {
-    key: "handleCheck",
-    value: function handleCheck() {
-      if (this.state.DiffCorpAddress != "") {
-        console.log(this.state.DiffCorpAddress);
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "formValid",
-    value: function formValid() {
-      var _this$state = this.state,
-          BusinessName = _this$state.BusinessName,
-          QuebecAddress = _this$state.QuebecAddress,
-          City = _this$state.City,
-          PostalCode = _this$state.PostalCode,
-          CorporateAddress = _this$state.CorporateAddress;
-      var g = BusinessName && QuebecAddress && City && PostalCode && CorporateAddress;
-      console.log(g);
-      return g; //Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
     }
   }, {
     key: "render",
@@ -83094,11 +83126,11 @@ function (_React$Component) {
       }, "Inventaire")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "second",
         className: "test"
-      }, "Tab 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+      }, "Contact Information")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "third"
-      }, "Tab 3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+      }, "Intrants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Item, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
         eventKey: "fourth"
-      }, "Tab 4")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, "Transport")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         sm: 10
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Content, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
         eventKey: "first"
@@ -83106,7 +83138,7 @@ function (_React$Component) {
         sm: "{4}"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         as: "h5"
-      }, "Inventaire"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Realiser votre inventaire de vos depenses energetiques, procedes, intrants, etc. et calculer les emissions annuelles de votre activite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, "Inventaire"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, null, "Special title treatment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Text, null, "Realiser votre inventaire de vos depenses energetiques, procedes, intrants, etc. et calculer les emissions annuelles de votre activite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_2__["EnergyTable"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         variant: "primary"
       }, "Go somewhere"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Pane, {
         eventKey: "second"
@@ -83273,13 +83305,6 @@ function (_React$Component) {
       window.location.reload();
     };
 
-    _this.componentWillUnmount = function () {
-      window.onbeforeunload = function () {
-        sessionStorage.removeItem('UID');
-        sessionStorage.removeItem('authenticated');
-      };
-    };
-
     _this.getName = function () {
       var id = sessionStorage.getItem('UID');
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/name/' + id).then(function (response) {
@@ -83289,50 +83314,6 @@ function (_React$Component) {
         _this.setState({
           name: response.data
         });
-      });
-    };
-
-    _this.handleSignUpRequest = function () {
-      console.log("here");
-      firebase.auth().createUserWithEmailAndPassword(_this.state.email, _this.state.password).then(function () {
-        var uid = firebase.auth().currentUser.uid;
-        console.log(uid);
-        console.log(firebase.auth().currentUser.email);
-        fetch('/register', {
-          method: 'POST',
-          body: JSON.stringify(uid),
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            "Content-type": "application/json"
-          }
-        }).then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-        })["catch"](function (error) {
-          console.log('Request failed', error);
-        });
-      })["catch"](function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message; // ...
-      });
-      document.getElementById("registerform").reset();
-    };
-
-    _this.handleOpenLogin = function () {
-      _this.setState({
-        showLogin: true
-      });
-    };
-
-    _this.handleCloseLogin = function () {
-      _this.setState({
-        showLogin: false
-      });
-    };
-
-    _this.loginSuccess = function () {
-      _this.setState({
-        loggedIn: true
       });
     };
 
@@ -83350,12 +83331,21 @@ function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.logout = _this.logout.bind(_assertThisInitialized(_this));
     _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
-    _this.handleSignUpRequest = _this.handleSignUpRequest.bind(_assertThisInitialized(_this));
     return _this;
   }
+  /**
+   * test method to see who is logged in
+   * @constructor
+   */
+
 
   _createClass(Navigation, [{
     key: "handleKeyPress",
+
+    /**
+     * testing submit on clicking enter
+     * @param e
+     */
     value: function handleKeyPress(e) {
       var currentComponent = this;
 
@@ -83364,94 +83354,109 @@ function (_React$Component) {
         currentComponent.handleLoginRequest;
       }
     }
+    /**
+     * handles logout request with firebase, on logout
+     * the session is terminated and use can no longer
+     * access their account or any other account as they
+     * are redirected to the home page
+     */
+
   }, {
     key: "handleChange",
+
+    /**
+     * allows writing to forms
+     * @param e
+     */
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
     }
   }, {
-    key: "logout",
-    value: function logout() {
-      this.setState({
-        authenticated: false
-      });
-    }
-  }, {
     key: "render",
+
+    /**
+     * Navbar is located here, conditionally rendered based
+     * on if the user is logged in or not
+     *
+     * @returns {*}
+     */
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-        bg: "light",
-        variant: "light",
-        expand: "lg"
-        /*sticky="top"*/
-        ,
-        className: "navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
-        href: "#home"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + "/img/cadet_logo.svg",
-        width: "65",
-        height: "65",
-        className: "d-inline-block align-top",
-        alt: "Cadet Logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
-        "aria-controls": "basic-navbar-nav"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
-        id: "basic-navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        className: "mr-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#/"
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#/profile"
-      }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#/prestart_questions"
-      }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        onClick: "document.getElementById('signup').scrollIntoView();"
-      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#/data"
-      }, "Contact Us")), this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-        inline: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        className: "mr-sm-2"
-      }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        required: true,
-        name: "email",
-        type: "text",
-        placeholder: "Username",
-        className: "mr-sm-2",
-        onChange: this.handleChange,
-        value: this.state.email,
-        onKeyPress: this.handleKeyPress
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        required: true,
-        name: "password",
-        type: "password",
-        placeholder: "Password",
-        className: "mr-sm-2",
-        onChange: this.handleChange,
-        value: this.state.password,
-        onKeyPress: this.handleKeyPress
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        variant: "outline-info",
-        onClick: this.handleLoginRequest
-      }, "Login")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
-        className: "justify-content-end",
-        inline: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
-        title: this.state.name,
-        id: "collasible-nav-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#/Contact"
-      }, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.2"
-      }, "Logou"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        onClick: this.handleLogout
-      }, "Logout"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.4"
-      }, "Separated link"))))));
+      return (
+        /** Begin Navbar */
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
+          bg: "light",
+          variant: "light",
+          expand: "lg",
+          className: "navigation"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
+          href: "#home"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + "/img/cadet_logo.svg",
+          width: "65",
+          height: "65",
+          className: "d-inline-block align-top",
+          alt: "Cadet Logo"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
+          "aria-controls": "basic-navbar-nav"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
+          id: "basic-navbar-nav"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
+          className: "mr-auto"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+          href: "#/"
+        }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+          href: "#/profile"
+        }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+          href: "#/prestart_questions"
+        }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+          onClick: "document.getElementById('signup').scrollIntoView();"
+        }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
+          href: "#/data"
+        }, "Contact Us")), "/** End always rendered section */ /** Begin conditional section, condition: authenticated or not */ /** if authenticated === false */", this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+          inline: true
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+          className: "mr-sm-2"
+        }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+          required: true,
+          name: "email",
+          type: "text",
+          placeholder: "Username",
+          className: "mr-sm-2",
+          onChange: this.handleChange,
+          value: this.state.email,
+          onKeyPress: this.handleKeyPress
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+          required: true,
+          name: "password",
+          type: "password",
+          placeholder: "Password",
+          className: "mr-sm-2",
+          onChange: this.handleChange,
+          value: this.state.password,
+          onKeyPress: this.handleKeyPress
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+          variant: "outline-info",
+          onClick: this.handleLoginRequest
+        }, "Login")) :
+        /**if authenticated === true */
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
+          className: "justify-content-end",
+          inline: true
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+          title: this.state.name,
+          id: "collasible-nav-dropdown"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+          href: "#/Contact"
+        }, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+          href: "#action/3.2"
+        }, "Logou"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+          onClick: this.handleLogout
+        }, "Logout"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
+          href: "#action/3.4"
+        }, "Separated link"))))))
+      );
     }
   }]);
 
@@ -83489,7 +83494,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DataComponents_ContactInformationData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DataComponents/ContactInformationData */ "./resources/js/components/DataComponents/ContactInformationData.js");
 /* harmony import */ var _Authentication_NoMatch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Authentication/NoMatch */ "./resources/js/components/Authentication/NoMatch.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormComponents/EnergyTable */ "./resources/js/components/FormComponents/EnergyTable.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -83528,20 +83532,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-/**
- *
- * @param Component
- * @param rest
- * @returns {*}
- * @constructor
- *
- * The const below created a PrivateRoute Tag
- * which allows for the blocking of specific
- * routes contingent on whether the user is
- * logged in or not. This is done using a
- * localStorage parameter authenticated
- */
-
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -83565,11 +83555,7 @@ function (_React$Component) {
     value: function render() {
       return (
         /*full routing found here*/
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
-          exact: true,
-          path: "/table",
-          component: _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
           path: "/home",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
@@ -83606,6 +83592,19 @@ function (_React$Component) {
 
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The consts below create a PrivateRoute and BlockedRoute Tag
+ * which allows for the blocking of specific routes contingent
+ * on whether the user is logged in or not. This is done using a
+ * sessionStorage parameter authenticated
+ */
+
 
 
 var PrivateRoute = function PrivateRoute(_ref) {

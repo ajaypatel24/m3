@@ -43,6 +43,10 @@ export default class PrestartQuestion extends React.Component {
     }
 
 
+    /**
+     * submit form to database using / route, subject to change
+     * @param e
+     */
     handleSubmit(e) {
         e.preventDefault();
 
@@ -84,6 +88,10 @@ export default class PrestartQuestion extends React.Component {
 
     };
 
+    /**
+     * Allows writing to forms
+     * @param e
+     */
     handleChange(e) {
 
         this.setState({
@@ -112,6 +120,10 @@ export default class PrestartQuestion extends React.Component {
     }
 
 
+    /**
+     * a set of many forms defined using Form.Group as well as radio buttons
+     * when finished click on submit to submit the data
+     */
     render() {
         const {validated} = this.state;
         return (

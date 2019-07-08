@@ -37,10 +37,13 @@ export default class Navigation extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.logout = this.logout.bind(this);
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
-        this.handleSignUpRequest = this.handleSignUpRequest.bind(this);
     }
 
 
+    /**
+     * test method to see who is logged in
+     * @constructor
+     */
     VerifyUser = () => {
 
 
@@ -54,6 +57,11 @@ export default class Navigation extends React.Component {
     }
 
 
+    /**
+     * handles login request using firebase to check credentials, if firebase
+     * approves of the login, then a UID is assigned which allows the user
+     * to access their data on the website
+     */
     handleLoginRequest = () => {
 
 
@@ -120,6 +128,10 @@ export default class Navigation extends React.Component {
 
     };
 
+    /**
+     * testing submit on clicking enter
+     * @param e
+     */
     handleKeyPress(e) {
         let currentComponent = this
         if (e.key === 'Enter') {
@@ -130,6 +142,12 @@ export default class Navigation extends React.Component {
     }
 
 
+    /**
+     * handles logout request with firebase, on logout
+     * the session is terminated and use can no longer
+     * access their account or any other account as they
+     * are redirected to the home page
+     */
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
             console.log(firebase.auth().currentUser);
@@ -145,15 +163,8 @@ export default class Navigation extends React.Component {
 
     }
 
-    componentWillUnmount = () => {
-        window.onbeforeunload = function () {
-            sessionStorage.removeItem('UID');
-            sessionStorage.removeItem('authenticated');
-        };
 
-
-    }
-
+    /** display name of person logged in */
     getName = () => {
 
         let id = sessionStorage.getItem('UID');
@@ -167,43 +178,10 @@ export default class Navigation extends React.Component {
     }
 
 
-    handleSignUpRequest = () => {
-
-        console.log("here");
-
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(function () {
-                let uid = firebase.auth().currentUser.uid;
-                console.log(uid);
-                console.log(firebase.auth().currentUser.email);
-                fetch('/register', {
-                    method: 'POST',
-                    body: JSON.stringify(uid),
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Content-type": "application/json"
-                    }
-                })
-                    .then(function (data) {
-                        console.log('Request succeeded with JSON response', data);
-                    })
-                    .catch(function (error) {
-                        console.log('Request failed', error);
-                    });
-            }).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            // ...
-        });
-
-
-        document.getElementById("registerform").reset();
-
-
-    };
-
+    /**
+     * allows writing to forms
+     * @param e
+     */
     handleChange(e) {
 
         this.setState({
@@ -214,35 +192,22 @@ export default class Navigation extends React.Component {
         console.log("Value: ", e.target.value);
     };
 
-
-    handleOpenLogin = () => {
-        this.setState({
-            showLogin: true
-        });
-    };
-
-    handleCloseLogin = () => {
-        this.setState({
-            showLogin: false
-        });
-    };
-
-    loginSuccess = () => {
-        this.setState({
-            loggedIn: true
-        });
-    };
-
-    logout() {
-        this.setState({authenticated: false})
-    }
+    ;
 
 
+    /**
+     * Navbar is located here, conditionally rendered based
+     * on if the user is logged in or not
+     *
+     * @returns {*}
+     */
     render() {
 
         return (
 
-            <Navbar bg="light" variant="light" expand="lg"/*sticky="top"*/ className="navigation">
+            /** Begin Navbar */
+
+            <Navbar bg="light" variant="light" expand="lg" className="navigation">
                 <Navbar.Brand href="#home">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
@@ -262,7 +227,10 @@ export default class Navigation extends React.Component {
                         <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
                         <Nav.Link href="#/data">Contact Us</Nav.Link>
                     </Nav>
+                    /** End always rendered section */
 
+                    /** Begin conditional section, condition: authenticated or not */
+                    /** if authenticated === false */
                     {this.state.authenticated != 'true' ?
                         <Form inline>
                             <br/>
@@ -294,7 +262,7 @@ export default class Navigation extends React.Component {
 
                         </Form>
 
-                        :
+                        : /**if authenticated === true */
 
                         <Navbar.Collapse className="justify-content-end" inline>
                             <Navbar.Text>

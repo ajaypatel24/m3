@@ -30,7 +30,7 @@ export default class IntrantForm extends React.Component {
 
         };
 
-        this.formChange = this.formChange.bind(this);
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTableRows = this.getTableRows.bind(this);
@@ -70,17 +70,12 @@ export default class IntrantForm extends React.Component {
     }
 
 
-    formChange = idx => e => {
-        const {name, value} = e.target;
-        const rows = [...this.state.rows];
-        rows[idx] = {
-            [name]: value
-        };
-        this.setState({
-            rows
-        });
-    };
-
+    /**
+     * Method used to delete intrants directly from the database, does this in real time
+     * so the user sees the intrant being deleted after they press the button
+     *
+     * Uses the /delIntrants/{intrant}/{id} route which calls a post method to delete
+     */
 
     handleDelete(e) {
         e.preventDefault();
@@ -105,9 +100,13 @@ export default class IntrantForm extends React.Component {
             });
 
 
-        this.getTableRows();
-        this.clearState();
+        this.getTableRows(); //get new table rows after deletion
+        this.clearState(); //refresh state
     }
+
+    /**
+     * allows writing to forms
+     */
 
     handleChange(e) {
         this.setState({
@@ -119,6 +118,10 @@ export default class IntrantForm extends React.Component {
         console.log("Value: ", e.target.value);
     }
 
+    /**
+     * gets all table rows from backend controller method to be
+     * displayed to the user
+     */
     getTableRows = () => {
         //let uid = sessionStorage.getItem('UID');
         let uid = this.state.UID;
@@ -129,11 +132,19 @@ export default class IntrantForm extends React.Component {
             });
     }
 
+    /**
+     * switches page to and from delete mode. The regular form has 5 options
+     * to be entered and submitted while the delete version has 1 form which is the
+     * name of the intrant to delete
+     */
     changeDelete = () => {
         this.setState({Delete: !this.state.Delete})
         console.log(this.state.Delete);
     }
 
+    /**
+     * Submits intrant data to database with post method which packs up state to send
+     */
     handleSubmit(e) {
         e.preventDefault();
 
@@ -181,22 +192,6 @@ export default class IntrantForm extends React.Component {
     }
 
 
-
-handleAddRow = () => {
-    const item = {
-        name: "",
-        mobile: ""
-    };
-    this.setState({
-        rows: [...this.state.rows, item]
-    });
-};
-handleRemoveRow = () => {
-    this.setState({
-        rows: this.state.rows.slice(0, -1)
-    });
-};
-
 render()
 {
     const {validated} = this.state;
@@ -211,6 +206,11 @@ render()
                             <Col lg="1">
                                 <button onClick={this.changeDelete}>Switch</button>
                             </Col>
+
+                            {/**
+                             * this.state.Delete checks if the form is in delete mode or not, it renders the
+                             * component accordingly and can easily be switched using the switch button above
+                             */}
 
                             {this.state.Delete ?
 
@@ -255,6 +255,7 @@ render()
                                                 </Col>
                                                 <Col lg="5">
 
+                                                    {/* simple dropdown menu */}
                                                     <Form.Label>Unite</Form.Label>
                                                     <Form.Control as='select'
                                                                   name="Unite"
@@ -335,6 +336,8 @@ render()
 
                                         <Form.Group>
                                             <Form.Label>Frequence D'Achat</Form.Label>
+
+                                            {/* dropdown menu */}
                                             <Form.Control as="select" name="Frequency" placeholder="Select Range"
                                                           required
                                                           value={this.state.Frequency}
@@ -363,59 +366,6 @@ render()
                                         </Form.Group>
 
 
-                                        {/*
-                                    <Form.Label>City</Form.Label>
-                                    <Form.Control
-                                        name="NomIntrant"
-                                        required
-                                        type="text"
-                                        placeholder="Intrant"
-                                        onChange={this.handleChange}
-                                        value={this.state.NomIntrant}
-                                        pattern="^[a-zA-Z]+$"
-                                    />
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
-                                name="Ressource"
-                                required
-                                type="text"
-                                placeholder="Ressource"
-                                onChange={this.handleChange}
-                                value={this.state.Ressource}
-                                pattern="^[a-zA-Z]+$"
-                            />
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
-                                name="Immobilisation"
-                                required
-                                type="text"
-                                placeholder="Immobilisation"
-                                onChange={this.handleChange}
-                                value={this.state.Immobilisation}
-                                pattern="^[a-zA-Z]+$"
-                            />
-                                <Form.Label>City</Form.Label>
-                                <Form.Control
-                                    name="DureeVie"
-                                    required
-                                    type="text"
-                                    placeholder="Duree Vie"
-                                    onChange={this.handleChange}
-                                    value={this.state.DureeVie}
-                                    pattern="^[a-zA-Z]+$"
-                                />
-                                <Form.Label>City</Form.Label>
-                                <Form.Control
-                                    name="Provenance"
-                                    required
-                                    type="text"
-                                    placeholder="Provenance"
-                                    onChange={this.handleChange}
-                                    value={this.state.Provenance}
-                                    pattern="^[a-zA-Z]+$"
-                                />
-
-                                */}
 
                                         <button type="submit" onClick={this.handleSubmit}>submit</button>
 
@@ -423,6 +373,11 @@ render()
 
 
                                 </Col>
+
+
+                                /**
+                                 * if in delete mode, render the form below
+                                 */
 
                                 :
 
@@ -451,9 +406,17 @@ render()
                                 </Col>
 
 
-                            }
+                            } {/** end form rendering */}
 
 
+                            {/** end form rendering
+                             * Below a table is generated which displays all the intrants as they are
+                             * created, it uses the HOF map which is used throughout this project
+                             * to print objects using a keyword and dot notation
+                             *
+                             * ex: attribute.{elementName}
+                             *
+                             * */}
                             <Col lg="5">
 
 
@@ -486,67 +449,6 @@ render()
                                 )}
 
 
-                                {/*
-                            <table
-                                className="table table-bordered table-hover"
-                                id="tab_logic"
-                            >
-                                <thead>
-                                <tr>
-                                    <th className="text-center"> # </th>
-                                    <th className="text-center"> Name </th>
-                                    <th className="text-center"> Mobile </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.rows.map((item, idx) => (
-                                    <tr id="addr0" key={idx}>
-                                        <td>{idx}</td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                value={this.state.rows[idx].name}
-                                                onChange={this.formChange(idx)}
-                                                className="form-control"
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                name="mobile"
-                                                value={this.state.rows[idx].mobile}
-                                                onChange={this.formChange(idx)}
-                                                className="form-control"
-                                            />
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                            <button
-                                onClick={this.handleAddRow}
-                                className="btn btn-default pull-left"
-                            >
-                                Add Row
-                            </button>
-                            <button
-                                onClick={this.handleRemoveRow}
-                                className="pull-right btn btn-default"
-                            >
-                                Delete Row
-                            </button>
-                            <button
-                                onClick={this.testSubmit}
-                                className="pull-right btn btn-default"
-                            >
-                                test
-
-
-                            </button>
-
-
-                                */}
 
 
                             </Col>

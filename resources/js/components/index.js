@@ -10,22 +10,8 @@ import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import NoMatch from "./Authentication/NoMatch";
 import Dashboard from "./Dashboard";
-import EnergyTable from "./FormComponents/EnergyTable";
-import AboutUs from "./Authentication/Loading";
 
-/**
- *
- * @param Component
- * @param rest
- * @returns {*}
- * @constructor
- *
- * The const below created a PrivateRoute Tag
- * which allows for the blocking of specific
- * routes contingent on whether the user is
- * logged in or not. This is done using a
- * localStorage parameter authenticated
- */
+import AboutUs from "./Authentication/Loading";
 
 
 
@@ -57,7 +43,7 @@ export default class App extends React.Component {
 
                 <Switch>
 
-                    <PrivateRoute exact path="/table" component={EnergyTable}/>
+
                     {/*<Home exact path="/" component={Dashboard}/>*/}
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/" component={Dashboard}/>
@@ -81,6 +67,19 @@ export default class App extends React.Component {
         );
     }
 }
+
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The consts below create a PrivateRoute and BlockedRoute Tag
+ * which allows for the blocking of specific routes contingent
+ * on whether the user is logged in or not. This is done using a
+ * sessionStorage parameter authenticated
+ */
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
     return (

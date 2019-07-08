@@ -5,7 +5,8 @@ import '../../../sass/test.css'
 
 
 /**
- * find a use for this because its needed
+ * find a use for this because its needed, it is a
+ * loading icon that should be there before the component mounts
  */
 
 

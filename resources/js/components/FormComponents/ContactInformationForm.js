@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button, Col} from 'react-bootstrap';
+import {Button, Col, Form} from 'react-bootstrap';
 
 
 /**
@@ -8,8 +8,7 @@ import {Form, Button, Col} from 'react-bootstrap';
  *
  */
 
-export default class ContactInformationForm extends React.Component
-{
+export default class ContactInformationForm extends React.Component {
     /**
      *
      * @param props
@@ -34,6 +33,10 @@ export default class ContactInformationForm extends React.Component
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /**
+     * Allows user to write into forms
+     * @param e
+     */
     handleChange(e) {
 
         this.setState({
@@ -46,12 +49,13 @@ export default class ContactInformationForm extends React.Component
     };
 
 
-
-
-
+    /**
+     * Posts information into the database using the contact controller method
+     * checks that all forms are valid beforehand
+     * @param e
+     */
     handleSubmit(e) {
         e.preventDefault();
-
 
 
         const data = this.state; //VERY IMPORTANT
@@ -59,11 +63,11 @@ export default class ContactInformationForm extends React.Component
         //checks all auth
         const form = e.currentTarget;
 
+        //checks that all forms are valid before submission
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
-        }
-        else {
+        } else { //post to database by using the contact/{id} route
             let id = sessionStorage.getItem('UID');
             fetch('/contact/' + id, {
                 method: 'POST',
@@ -88,20 +92,37 @@ export default class ContactInformationForm extends React.Component
         console.log(data);
 
 
-
-
     };
 
+    /**
+     * Make use of Form, Form.Row, Form.Group to make contact information form page
+     * General form to add a form box
+     *
+     * <Form.Group as={Col} controlId="formGridEmail">
+     * <Form.Label>Fonction</Form.Label>
+     * <Form.Control
+     *      name="{name}" //include same name in state
+     *      required
+     *      value={this.state.{statename}} //
+     *      onChange={this.handleChange}
+     *      type="text"
+     *      placeholder="{name}"
+     *      pattern="^[a-zA-Z]+$" //pattern that the input MUST obey
+     *      />
+     * </Form.Group>
+     * @returns {*}
+     */
     render() {
         const {validated} = this.state;
 
         return (
 
+
             <Form noValidate
-                   validated={validated}
-                   onSubmit={e => this.handleSubmit(e)}
-                   method="POST" action="/"
-                   enctype="multipart/form-data">
+                  validated={validated}
+                  onSubmit={e => this.handleSubmit(e)}
+                  method="POST" action="/"
+                  enctype="multipart/form-data">
                 <Form.Row>
 
                     <Form.Group as={Col} controlId="formGridEmail">
@@ -114,7 +135,7 @@ export default class ContactInformationForm extends React.Component
                             type="text"
                             placeholder="Fonction"
                             pattern="^[a-zA-Z]+$"
-                            />
+                        />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
@@ -187,10 +208,6 @@ export default class ContactInformationForm extends React.Component
 
 
                 </Form.Row>
-
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit

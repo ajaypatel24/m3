@@ -3,7 +3,9 @@ import React from 'react';
 
 /**
  * Registartion form using firebase to create an account in the m3
- * system
+ * system, upon registration, the user should be stored in both the
+ * firebase authentication system as well as the 'register' table
+ * in the database
  */
 export default class SignUpForm extends React.Component {
     constructor(props) {
@@ -22,15 +24,29 @@ export default class SignUpForm extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
-        this.toSubmit = this.toSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /**
+     *
+     * @param e
+     *
+     * Crucial function, allows for forms (textboxes) all over the page
+     * to allow for data to be entered into them
+     */
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
 
+
+    /**
+     *
+     * @param e
+     * Checks if password entered obeys the requirement set by
+     * the regex pattern strongRegex
+     */
     handleChangePasswordStrength(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -48,30 +64,13 @@ export default class SignUpForm extends React.Component {
         }
     }
 
-    toSubmit(e) {
-        e.preventDefault();
-
-        const newUser = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
-        }
-
-        register(newUser).then(res => {
-            if(res === 201) {
-                console.log("success");
-            }
-            //window.location.href = '/login/';
-            //console.log(sessionStorage.getItem('usertoken'));
-        })
-
-        document.getElementById("registerForm").reset();
-
-
-    }
-
-
-
+    /**
+     *
+     * @param e
+     * Handles form submission, makes a call to firebase using the .createUserWithEmailAndPassword
+     * function, the parameters are taken from the state. The same data is posted to the register table
+     * using the /register RestAPI call
+     */
 
     handleSubmit = (e) =>
     {
@@ -135,6 +134,15 @@ export default class SignUpForm extends React.Component {
 
     };
 
+
+    /**
+     *
+     * @returns {*}
+     * Card Form Group made using bootstrap Form, Card, and Button
+     * This is the register form which allows new users to create
+     * accounts, each Form has an ID and a Label to make identification
+     * easy
+     */
     render()
     {
         return (
@@ -142,8 +150,16 @@ export default class SignUpForm extends React.Component {
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><i
                     className="fas fa-user-plus icon-transform"/>Sign Up</Card.Header>
                 <Card.Body>
-                    <form onSubmit={this.toSubmit} id="registerForm">
+                    <form id="registerForm">
                         <FormGroup role="form">
+
+                            {/**
+                            * Each new entry requires
+                            * <Form.Group>
+                            * <Form.Label>Label</Form.Label>
+                            * <Form.Control />
+                            * </Form.Group>
+                            */}
                             <Form.Group controlId="signUpFormName">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control name="name" type="text" onChange={this.handleChange}
@@ -187,6 +203,8 @@ export default class SignUpForm extends React.Component {
                             <div className={"mt-3 red-text ".concat(this.state.passwordMatch)}>
                                 These passwords don't match
                             </div>
+
+
                         </FormGroup>
                     </form>
                 </Card.Body>

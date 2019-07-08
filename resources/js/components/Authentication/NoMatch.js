@@ -7,6 +7,11 @@ import '../../../sass/test.css'
 /**
  * 404 error page, displays whenever a non existant route
  * is selected
+ *
+ * Uses Bootstrap Buttons and Cards to display the error,
+ * the Button redirects to either the login dashboard page
+ * or the profile page depending on if the user is authenticated
+ * or not
  */
 
 export default class NoMatch extends React.Component {
@@ -15,15 +20,17 @@ export default class NoMatch extends React.Component {
 
     }
 
+    /**
+     * Redirect function
+     */
     goHome = () => {
             location.href = '/#/profile';
-
-
     }
 
 
     render() {
         return (
+
             <Card className="text-center">
                 <Card.Header className="DNE">Projet M3</Card.Header>
                 <Card.Body>
@@ -37,6 +44,7 @@ export default class NoMatch extends React.Component {
                 </Card.Body>
                 <Card.Footer className="text-muted"></Card.Footer>
             </Card>
+
         );
     }
 }
