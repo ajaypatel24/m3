@@ -21,7 +21,7 @@
 /*  */
 
 /* Login Controller */
-Route::get('/', 'LoginController@index');
+Route::get('/', 'LoginController@index'); //deprecated
 
 /* Register Controller */
 Route::post('/register', 'RegisterController@register'); //register new user
