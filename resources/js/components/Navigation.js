@@ -35,8 +35,8 @@ export default class Navigation extends React.Component {
         console.log(sessionStorage.getItem('authenticated'));
 
         this.handleChange = this.handleChange.bind(this);
-        this.logout = this.logout.bind(this);
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
 
@@ -227,10 +227,10 @@ export default class Navigation extends React.Component {
                         <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
                         <Nav.Link href="#/data">Contact Us</Nav.Link>
                     </Nav>
-                    /** End always rendered section */
+                    {/** End always rendered section */}
 
-                    /** Begin conditional section, condition: authenticated or not */
-                    /** if authenticated === false */
+                    {/** Begin conditional section, condition: authenticated or not
+                      if authenticated === false */}
                     {this.state.authenticated != 'true' ?
                         <Form inline>
                             <br/>

@@ -83329,8 +83329,8 @@ function (_React$Component) {
     };
     console.log(sessionStorage.getItem('authenticated'));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.logout = _this.logout.bind(_assertThisInitialized(_this));
     _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
+    _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     return _this;
   }
   /**
@@ -83414,7 +83414,7 @@ function (_React$Component) {
           onClick: "document.getElementById('signup').scrollIntoView();"
         }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
           href: "#/data"
-        }, "Contact Us")), "/** End always rendered section */ /** Begin conditional section, condition: authenticated or not */ /** if authenticated === false */", this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        }, "Contact Us")), this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
           inline: true
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           className: "mr-sm-2"
