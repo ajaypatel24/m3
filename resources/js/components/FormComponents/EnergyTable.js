@@ -91,7 +91,7 @@ export default class EnergyTable extends React.Component {
 
             SCIAN: "",
             UID: "",
-            TableSubmit: localStorage.getItem('TableSubmit'),
+            TableSubmit: sessionStorage.getItem('TableSubmit'),
 
 
         }
@@ -100,7 +100,7 @@ export default class EnergyTable extends React.Component {
     }
 
         componentDidMount() {
-        let uid = localStorage.getItem('UID');
+        let uid = sessionStorage.getItem('UID');
         console.log(uid);
         axios.get('/scian/' + uid)
             .then(response => {

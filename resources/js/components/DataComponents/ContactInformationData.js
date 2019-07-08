@@ -24,7 +24,7 @@ export default class ContactInformationData extends React.Component {
 
 
     componentDidMount() {
-        let uid = localStorage.getItem('UID');
+        let uid = sessionStorage.getItem('UID');
         console.log(uid);
         axios.get('/contact/' + uid)
             .then(response => {

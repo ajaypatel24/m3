@@ -23,7 +23,7 @@ export default class TransportForm extends React.Component {
             Frequency: "",
             Yearly: "",
             Delete: true,
-            UID: localStorage.getItem('UID'),
+            UID: sessionStorage.getItem('UID'),
             rows: [],
 
         };
@@ -118,7 +118,7 @@ export default class TransportForm extends React.Component {
     }
 
     getTableRows = () => {
-        //let uid = localStorage.getItem('UID');
+        //let uid = sessionStorage.getItem('UID');
         let uid = this.state.UID;
         axios.get('/intrants/' + uid)
             .then(response => {
@@ -147,7 +147,7 @@ export default class TransportForm extends React.Component {
         }
 
 
-        let id = localStorage.getItem('UID');
+        let id = sessionStorage.getItem('UID');
 
 
         console.table([data]);

@@ -64,7 +64,7 @@ export default class ContactInformationForm extends React.Component
             e.stopPropagation();
         }
         else {
-            let id = localStorage.getItem('UID');
+            let id = sessionStorage.getItem('UID');
             fetch('/contact/' + id, {
                 method: 'POST',
                 body: JSON.stringify(data),

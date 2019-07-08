@@ -20,88 +20,29 @@ import AboutUs from "./Authentication/Loading";
  * @returns {*}
  * @constructor
  *
- * The const below created a ProtectedRoute Tag
+ * The const below created a PrivateRoute Tag
  * which allows for the blocking of specific
  * routes contingent on whether the user is
  * logged in or not. This is done using a
  * localStorage parameter authenticated
  */
 
-
-export const ProtectedRoute = ({component: Component, ...rest}) => {
-    return (
-        <Route
-            {...rest}
-            render={props => {
-                if (localStorage.getItem('authenticated') === 'true') {
-                    return <Component {...props} />;
-                } else {
-                    return <Redirect to={
-                        {
-                            pathname: "/",
-                            state: {
-                                from: props.location
-                            }
-                        }
-                    }/>
-                }
-            }}
-        />
-    );
-};
-
-/**
- *
- * @param Component
- * @param rest
- * @returns {*}
- * @constructor
- *
- * The const below created a ProtectedRoute Tag
- * which allows for the blocking of specific
- * routes contingent on whether the user is
- * logged in or not. This is done using a
- * localStorage parameter authenticated
- */
-
-export const BlockRoute = ({component: Component, ...rest}) => {
-    return (
-        <Route
-            {...rest}
-            render={props => {
-                if (localStorage.getItem('authenticated') === 'false') {
-                    return <Component {...props} />;
-                } else {
-                    return <Redirect to={
-                        {
-                            pathname: "/profile",
-                            state: {
-                                from: props.location
-                            }
-                        }
-                    }/>
-                }
-            }}
-        />
-    );
-};
-
-
-
-/**
- *
- */
+const Auth = {
+    isAuthenticated: sessionStorage.getItem('authenticated'),
+}
 
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: window.innerWidth,
-            user: {}
-
+            auth: Auth.isAuthenticated,
         };
+
+
     }
+
+
 
 
     /**
@@ -121,20 +62,18 @@ export default class App extends React.Component {
 
                 <Navbar />
 
-
-
                 <Switch>
 
-                    <ProtectedRoute exact path="/table" component={EnergyTable}/>
+                    <PrivateRoute exact path="/table" component={EnergyTable}/>
                     <BlockRoute exact path="/" component={Dashboard}/>
                     <BlockRoute exact path="/home" component={Dashboard}/>
-                    <ProtectedRoute exact path="/data" component={EnergyTableData}/>
-                    <ProtectedRoute path="/prestart_questions/" component={PrestartQuestion}/>
-                    <ProtectedRoute path="/profile" component={LandingPage}/>
+                    <Route exact path="/data" component={EnergyTableData}/>
+                    <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
+                    <PrivateRoute exact path="/profile" component={LandingPage}/>
 
 
-                    <ProtectedRoute exact path="/loading" component={Loading}/>
-                    <ProtectedRoute exact path="/Contact" component={ContactInformationData}/>
+                    <Route exact path="/loading" component={Loading}/>
+                    <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
 
 
 
@@ -148,6 +87,70 @@ export default class App extends React.Component {
         );
     }
 }
+
+export const PrivateRoute = ({ component: Component, ...rest }) => {
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                Auth.isAuthenticated === 'true' ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/",
+                            state: { from: props.location }
+                        }}
+                    />
+                )
+            }
+        />
+    );
+}
+
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The const below created a PrivateRoute Tag
+ * which allows for the blocking of specific
+ * routes contingent on whether the user is
+ * logged in or not. This is done using a
+ * localStorage parameter authenticated
+ */
+
+
+export const BlockRoute = ({component: Component, ...rest}) => {
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                Auth.isAuthenticated === 'false' ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/profile",
+                            state: { from: props.location }
+                        }}
+                    />
+                )
+            }
+        />
+    );
+};
+
+
+
+/**
+ *
+ */
+
+
+
 
 if (document.getElementById('root')) {
     ReactDOM.render(<App/>, document.getElementById('root'));

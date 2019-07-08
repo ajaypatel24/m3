@@ -25,14 +25,14 @@ export default class Navigation extends React.Component {
             loggedIn: false,
             email: '',
             password: '',
-            authenticated: localStorage.getItem('authenticated'),
+            authenticated: sessionStorage.getItem('authenticated'),
             redirect: false,
-            name: localStorage.getItem('name'),
+            name: sessionStorage.getItem('name'),
             isLoading: true,
         };
 
 
-        console.log(localStorage.getItem('authenticated'));
+        console.log(sessionStorage.getItem('authenticated'));
 
         this.handleChange = this.handleChange.bind(this);
         this.logout = this.logout.bind(this);
@@ -45,8 +45,8 @@ export default class Navigation extends React.Component {
 
 
         console.table([
-            (localStorage.getItem('authenticated')),
-            (localStorage.getItem('UID')),
+            (sessionStorage.getItem('authenticated')),
+            (sessionStorage.getItem('UID')),
             (this.state.authenticated)]
         )
 
@@ -85,10 +85,10 @@ export default class Navigation extends React.Component {
                 })
                     .then(function (data) {
 
-                        localStorage.setItem('authenticated', 'true');
-                        localStorage.setItem('UID', uid);
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
                         currentComponent.getName();
-                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
                         setTimeout(function () {
                             window.location.href = '#/profile/';
@@ -137,17 +137,18 @@ export default class Navigation extends React.Component {
 
         console.log(this.state.authenticated);
         window.location.href = '#/';
-        localStorage.setItem('authenticated', 'false');
-        localStorage.removeItem('UID');
-        localStorage.removeItem('name');
+        sessionStorage.setItem('authenticated', 'false');
+        sessionStorage.removeItem('UID');
+        sessionStorage.removeItem('name');
         this.setState({authenticated: false});
+        window.location.reload();
 
     }
 
     componentWillUnmount = () => {
         window.onbeforeunload = function () {
-            localStorage.removeItem('UID');
-            localStorage.removeItem('authenticated');
+            sessionStorage.removeItem('UID');
+            sessionStorage.removeItem('authenticated');
         };
 
 
@@ -155,11 +156,11 @@ export default class Navigation extends React.Component {
 
     getName = () => {
 
-        let id = localStorage.getItem('UID');
+        let id = sessionStorage.getItem('UID');
         axios.get('/name/' + id)
             .then(response => {
                 console.log(response.data);
-                localStorage.setItem('name', response.data);
+                sessionStorage.setItem('name', response.data);
                 this.setState({name: response.data});
             });
 

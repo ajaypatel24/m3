@@ -80044,7 +80044,7 @@ function (_React$Component) {
         if (res === 201) {
           console.log("success");
         } //window.location.href = '/login/';
-        //console.log(localStorage.getItem('usertoken'));
+        //console.log(sessionStorage.getItem('usertoken'));
 
       });
       document.getElementById("registerForm").reset();
@@ -80325,7 +80325,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var uid = localStorage.getItem('UID');
+      var uid = sessionStorage.getItem('UID');
       console.log(uid);
       axios_index__WEBPACK_IMPORTED_MODULE_2___default.a.get('/contact/' + uid).then(function (response) {
         _this2.setState({
@@ -80518,7 +80518,7 @@ function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      var uid = localStorage.getItem('UID');
+      var uid = sessionStorage.getItem('UID');
       axios_index__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
         _this2.setState({
           TableData: response.data
@@ -80534,7 +80534,7 @@ function (_React$Component) {
 
       var tableData = new Array();
       var l = 1;
-      var uid = localStorage.getItem('UID');
+      var uid = sessionStorage.getItem('UID');
       axios_index__WEBPACK_IMPORTED_MODULE_2___default.a.get('/inventaire/' + uid).then(function (response) {
         _this3.setState({
           TableData: response.data
@@ -80742,7 +80742,7 @@ function (_React$Component) {
         e.preventDefault();
         e.stopPropagation();
       } else {
-        var id = localStorage.getItem('UID');
+        var id = sessionStorage.getItem('UID');
         fetch('/contact/' + id, {
           method: 'POST',
           body: JSON.stringify(data),
@@ -80968,7 +80968,7 @@ function (_React$Component) {
       CokeUnite: "",
       SCIAN: "",
       UID: "",
-      TableSubmit: localStorage.getItem('TableSubmit')
+      TableSubmit: sessionStorage.getItem('TableSubmit')
     };
     return _this;
   }
@@ -80978,7 +80978,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var uid = localStorage.getItem('UID');
+      var uid = sessionStorage.getItem('UID');
       console.log(uid);
       axios_index__WEBPACK_IMPORTED_MODULE_2___default.a.get('/scian/' + uid).then(function (response) {
         console.log(response.data);
@@ -81703,7 +81703,7 @@ function (_React$Component) {
     };
 
     _this.getTableRows = function () {
-      //let uid = localStorage.getItem('UID');
+      //let uid = sessionStorage.getItem('UID');
       var uid = _this.state.UID;
       axios.get('/intrants/' + uid).then(function (response) {
         console.log(response.data);
@@ -81752,7 +81752,7 @@ function (_React$Component) {
       Frequency: "",
       Yearly: "",
       Delete: true,
-      UID: localStorage.getItem('UID'),
+      UID: sessionStorage.getItem('UID'),
       rows: []
     };
     _this.formChange = _this.formChange.bind(_assertThisInitialized(_this));
@@ -81806,7 +81806,7 @@ function (_React$Component) {
         e.stopPropagation();
       }
 
-      var id = localStorage.getItem('UID');
+      var id = sessionStorage.getItem('UID');
       console.table([data]);
       fetch('/intrants/' + id, {
         method: 'POST',
@@ -82094,7 +82094,7 @@ function (_React$Component) {
       BusinessClass: "",
       BusinessType: "",
       DiffCorpAddress: "",
-      UID: localStorage.getItem('UID'),
+      UID: sessionStorage.getItem('UID'),
       validated: false
     };
     return _this;
@@ -82595,7 +82595,7 @@ function (_React$Component) {
     };
 
     _this.getTableRows = function () {
-      //let uid = localStorage.getItem('UID');
+      //let uid = sessionStorage.getItem('UID');
       var uid = _this.state.UID;
       axios.get('/intrants/' + uid).then(function (response) {
         console.log(response.data);
@@ -82644,7 +82644,7 @@ function (_React$Component) {
       Frequency: "",
       Yearly: "",
       Delete: true,
-      UID: localStorage.getItem('UID'),
+      UID: sessionStorage.getItem('UID'),
       rows: []
     };
     _this.formChange = _this.formChange.bind(_assertThisInitialized(_this));
@@ -82698,7 +82698,7 @@ function (_React$Component) {
         e.stopPropagation();
       }
 
-      var id = localStorage.getItem('UID');
+      var id = sessionStorage.getItem('UID');
       console.table([data]);
       fetch('/intrants/' + id, {
         method: 'POST',
@@ -83208,7 +83208,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navigation).call(this, props, context));
 
     _this.VerifyUser = function () {
-      console.table([localStorage.getItem('authenticated'), localStorage.getItem('UID'), _this.state.authenticated]);
+      console.table([sessionStorage.getItem('authenticated'), sessionStorage.getItem('UID'), _this.state.authenticated]);
     };
 
     _this.handleLoginRequest = function () {
@@ -83227,11 +83227,11 @@ function (_React$Component) {
             "Content-type": "application/json"
           }
         }).then(function (data) {
-          localStorage.setItem('authenticated', 'true');
-          localStorage.setItem('UID', uid);
+          sessionStorage.setItem('authenticated', 'true');
+          sessionStorage.setItem('UID', uid);
           currentComponent.getName();
           currentComponent.setState({
-            authenticated: localStorage.getItem('authenticated')
+            authenticated: sessionStorage.getItem('authenticated')
           });
           setTimeout(function () {
             window.location.href = '#/profile/';
@@ -83262,27 +83262,29 @@ function (_React$Component) {
       });
       console.log(_this.state.authenticated);
       window.location.href = '#/';
-      localStorage.setItem('authenticated', 'false');
-      localStorage.removeItem('UID');
-      localStorage.removeItem('name');
+      sessionStorage.setItem('authenticated', 'false');
+      sessionStorage.removeItem('UID');
+      sessionStorage.removeItem('name');
 
       _this.setState({
         authenticated: false
       });
+
+      window.location.reload();
     };
 
     _this.componentWillUnmount = function () {
       window.onbeforeunload = function () {
-        localStorage.removeItem('UID');
-        localStorage.removeItem('authenticated');
+        sessionStorage.removeItem('UID');
+        sessionStorage.removeItem('authenticated');
       };
     };
 
     _this.getName = function () {
-      var id = localStorage.getItem('UID');
+      var id = sessionStorage.getItem('UID');
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/name/' + id).then(function (response) {
         console.log(response.data);
-        localStorage.setItem('name', response.data);
+        sessionStorage.setItem('name', response.data);
 
         _this.setState({
           name: response.data
@@ -83339,12 +83341,12 @@ function (_React$Component) {
       loggedIn: false,
       email: '',
       password: '',
-      authenticated: localStorage.getItem('authenticated'),
+      authenticated: sessionStorage.getItem('authenticated'),
       redirect: false,
-      name: localStorage.getItem('name'),
+      name: sessionStorage.getItem('name'),
       isLoading: true
     };
-    console.log(localStorage.getItem('authenticated'));
+    console.log(sessionStorage.getItem('authenticated'));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.logout = _this.logout.bind(_assertThisInitialized(_this));
     _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
@@ -83464,14 +83466,14 @@ function (_React$Component) {
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
   \******************************************/
-/*! exports provided: ProtectedRoute, BlockRoute, default */
+/*! exports provided: default, PrivateRoute, BlockRoute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlockRoute", function() { return BlockRoute; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrivateRoute", function() { return PrivateRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlockRoute", function() { return BlockRoute; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -83487,6 +83489,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Authentication_NoMatch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Authentication/NoMatch */ "./resources/js/components/Authentication/NoMatch.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
 /* harmony import */ var _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormComponents/EnergyTable */ "./resources/js/components/FormComponents/EnergyTable.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83505,12 +83513,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -83532,72 +83534,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @returns {*}
  * @constructor
  *
- * The const below created a ProtectedRoute Tag
+ * The const below created a PrivateRoute Tag
  * which allows for the blocking of specific
  * routes contingent on whether the user is
  * logged in or not. This is done using a
  * localStorage parameter authenticated
  */
 
-var ProtectedRoute = function ProtectedRoute(_ref) {
-  var Component = _ref.component,
-      rest = _objectWithoutProperties(_ref, ["component"]);
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
-    render: function render(props) {
-      if (localStorage.getItem('authenticated') === 'true') {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: {
-            pathname: "/",
-            state: {
-              from: props.location
-            }
-          }
-        });
-      }
-    }
-  }));
+var Auth = {
+  isAuthenticated: sessionStorage.getItem('authenticated')
 };
-/**
- *
- * @param Component
- * @param rest
- * @returns {*}
- * @constructor
- *
- * The const below created a ProtectedRoute Tag
- * which allows for the blocking of specific
- * routes contingent on whether the user is
- * logged in or not. This is done using a
- * localStorage parameter authenticated
- */
-
-var BlockRoute = function BlockRoute(_ref2) {
-  var Component = _ref2.component,
-      rest = _objectWithoutProperties(_ref2, ["component"]);
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
-    render: function render(props) {
-      if (localStorage.getItem('authenticated') === 'false') {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: {
-            pathname: "/profile",
-            state: {
-              from: props.location
-            }
-          }
-        });
-      }
-    }
-  }));
-};
-/**
- *
- */
 
 var App =
 /*#__PURE__*/
@@ -83611,8 +83557,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      width: window.innerWidth,
-      user: {}
+      auth: Auth.isAuthenticated
     };
     return _this;
   }
@@ -83629,7 +83574,7 @@ function (_React$Component) {
     value: function render() {
       return (
         /*full routing found here*/
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/table",
           component: _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -83641,21 +83586,23 @@ function (_React$Component) {
           exact: true,
           path: "/home",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/data",
           component: _DataComponents_EnergyTableData__WEBPACK_IMPORTED_MODULE_6__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
+          exact: true,
           path: "/prestart_questions/",
           component: _FormComponents_PrestartQuestion__WEBPACK_IMPORTED_MODULE_5__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
+          exact: true,
           path: "/profile",
           component: _LandingPage__WEBPACK_IMPORTED_MODULE_7__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/loading",
           component: _Authentication_Loading__WEBPACK_IMPORTED_MODULE_8__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/Contact",
           component: _DataComponents_ContactInformationData__WEBPACK_IMPORTED_MODULE_9__["default"]
@@ -83670,6 +83617,57 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+var PrivateRoute = function PrivateRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ["component"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
+    render: function render(props) {
+      return Auth.isAuthenticated === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: {
+          pathname: "/",
+          state: {
+            from: props.location
+          }
+        }
+      });
+    }
+  }));
+};
+/**
+ *
+ * @param Component
+ * @param rest
+ * @returns {*}
+ * @constructor
+ *
+ * The const below created a PrivateRoute Tag
+ * which allows for the blocking of specific
+ * routes contingent on whether the user is
+ * logged in or not. This is done using a
+ * localStorage parameter authenticated
+ */
+
+var BlockRoute = function BlockRoute(_ref2) {
+  var Component = _ref2.component,
+      rest = _objectWithoutProperties(_ref2, ["component"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
+    render: function render(props) {
+      return Auth.isAuthenticated === 'false' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: {
+          pathname: "/profile",
+          state: {
+            from: props.location
+          }
+        }
+      });
+    }
+  }));
+};
+/**
+ *
+ */
 
 if (document.getElementById('root')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('root'));

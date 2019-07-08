@@ -29,7 +29,7 @@ export default class EnergyTableData extends React.Component {
 
     componentWillMount() {
 
-        let uid = localStorage.getItem('UID');
+        let uid = sessionStorage.getItem('UID');
         axios.get('/inventaire/' + uid)
             .then(response => {
                 this.setState({TableData: response.data})
@@ -43,7 +43,7 @@ export default class EnergyTableData extends React.Component {
     test() {
         var tableData = new Array();
         var l = 1;
-        let uid = localStorage.getItem('UID');
+        let uid = sessionStorage.getItem('UID');
         axios.get('/inventaire/' + uid)
             .then(response => {
                 this.setState({TableData: response.data})

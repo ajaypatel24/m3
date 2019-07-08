@@ -36,7 +36,7 @@ export default class PrestartQuestion extends React.Component {
             BusinessClass: "",
             BusinessType: "",
             DiffCorpAddress: "",
-            UID: localStorage.getItem('UID'),
+            UID: sessionStorage.getItem('UID'),
             validated: false,
 
         };

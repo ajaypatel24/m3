@@ -62,7 +62,7 @@ export default class SignUpForm extends React.Component {
                 console.log("success");
             }
             //window.location.href = '/login/';
-            //console.log(localStorage.getItem('usertoken'));
+            //console.log(sessionStorage.getItem('usertoken'));
         })
 
         document.getElementById("registerForm").reset();
