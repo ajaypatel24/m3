@@ -83466,13 +83466,14 @@ function (_React$Component) {
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
   \******************************************/
-/*! exports provided: default, PrivateRoute, BlockRoute */
+/*! exports provided: default, PrivateRoute, Home, BlockRoute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrivateRoute", function() { return PrivateRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return Home; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlockRoute", function() { return BlockRoute; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -83541,25 +83542,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * localStorage parameter authenticated
  */
 
-var Auth = {
-  isAuthenticated: sessionStorage.getItem('authenticated')
-};
-
 var App =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App(props) {
-    var _this;
-
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.state = {
-      auth: Auth.isAuthenticated
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
   }
   /**
    *
@@ -83580,11 +83571,11 @@ function (_React$Component) {
           component: _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
-          path: "/",
+          path: "/home",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
-          path: "/home",
+          path: "/",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
@@ -83623,7 +83614,7 @@ var PrivateRoute = function PrivateRoute(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
     render: function render(props) {
-      return Auth.isAuthenticated === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+      return sessionStorage.getItem('authenticated') === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
         to: {
           pathname: "/",
           state: {
@@ -83631,6 +83622,16 @@ var PrivateRoute = function PrivateRoute(_ref) {
           }
         }
       });
+    }
+  }));
+};
+var Home = function Home(_ref2) {
+  var Component = _ref2.component,
+      rest = _objectWithoutProperties(_ref2, ["component"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
+    render: function render(props) {
+      return sessionStorage.getItem('authenticated') === null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "hihi") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null);
     }
   }));
 };
@@ -83648,13 +83649,13 @@ var PrivateRoute = function PrivateRoute(_ref) {
  * localStorage parameter authenticated
  */
 
-var BlockRoute = function BlockRoute(_ref2) {
-  var Component = _ref2.component,
-      rest = _objectWithoutProperties(_ref2, ["component"]);
+var BlockRoute = function BlockRoute(_ref3) {
+  var Component = _ref3.component,
+      rest = _objectWithoutProperties(_ref3, ["component"]);
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({}, rest, {
     render: function render(props) {
-      return Auth.isAuthenticated === 'false' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+      return sessionStorage.getItem('authenticated') === 'false' || sessionStorage.getItem('authenticated') === null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
         to: {
           pathname: "/profile",
           state: {

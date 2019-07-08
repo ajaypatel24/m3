@@ -27,18 +27,11 @@ import AboutUs from "./Authentication/Loading";
  * localStorage parameter authenticated
  */
 
-const Auth = {
-    isAuthenticated: sessionStorage.getItem('authenticated'),
-}
 
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            auth: Auth.isAuthenticated,
-        };
-
 
     }
 
@@ -65,8 +58,9 @@ export default class App extends React.Component {
                 <Switch>
 
                     <PrivateRoute exact path="/table" component={EnergyTable}/>
-                    <BlockRoute exact path="/" component={Dashboard}/>
+                    {/*<Home exact path="/" component={Dashboard}/>*/}
                     <BlockRoute exact path="/home" component={Dashboard}/>
+                    <BlockRoute exact path="/" component={Dashboard}/>
                     <Route exact path="/data" component={EnergyTableData}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/profile" component={LandingPage}/>
@@ -93,7 +87,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         <Route
             {...rest}
             render={props =>
-                Auth.isAuthenticated === 'true' ? (
+                sessionStorage.getItem('authenticated') === 'true' ? (
                     <Component {...props} />
                 ) : (
                     <Redirect
@@ -103,6 +97,20 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
                         }}
                     />
                 )
+            }
+        />
+    );
+}
+
+export const Home = ({ component: Component, ...rest }) => {
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                sessionStorage.getItem('authenticated') === null ? (
+                    <p>hihi</p>
+                ) : <p/>
+
             }
         />
     );
@@ -128,7 +136,7 @@ export const BlockRoute = ({component: Component, ...rest}) => {
         <Route
             {...rest}
             render={props =>
-                Auth.isAuthenticated === 'false' ? (
+                sessionStorage.getItem('authenticated') === 'false' || sessionStorage.getItem('authenticated') === null ? (
                     <Component {...props} />
                 ) : (
                     <Redirect
