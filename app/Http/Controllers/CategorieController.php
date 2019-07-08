@@ -16,82 +16,16 @@ class CategorieController extends Controller
         return view('welcome');
     }
 
-    function store(request $request)
+    /**
+     * @param Request $request
+     */
+    function tableEnergySave(request $request)
     {
 
 
         $categorie = new categorie();
 
-        /*
-        $categorie->GazNaturel = request('GazNaturel');
-        $categorie->GazUnite = request('GazUnite');
 
-        $categorie->Propane = request('Propane');
-        $categorie->PropaneUnite = request('PropaneUnite');
-
-        $categorie->EssencePompe = request('EssencePompe');
-        $categorie->EssenceUnite = request('EssenceUnite');
-
-        $categorie->GazolePomp = request('GazolePomp');
-        $categorie->GazoleUnite = request('GazoleUnite');
-
-        $categorie->FioulDomestique = request('FioulDomestique');
-        $categorie->FioulUnite = request('FioulUnite');
-
-        $categorie->MazoutLeger = request('MazoutLeger');
-        $categorie->MazoutUnite = request('MazoutUnite');
-
-        $categorie->Charbon = request('Charbon');
-        $categorie->CharbonUnite = request('CharbonUnite');
-
-        $categorie->Cammionage = request('Cammionage');
-        $categorie->CammionageUnite = request('CammionageUnite');
-
-        $categorie->TotalElectricite = request('TotalElectricite');
-        $categorie->ElectriciteUnite = request('ElectriciteUnite');
-
-        $categorie->Fossil = request('Fossil');
-        $categorie->FossileUnite = request('FossileUnite');
-
-        $categorie->Biodiesel = request('Biodiesel');
-        $categorie->BiodieselUnite = request('BiodieselUnite');
-
-        $categorie->Bois = request('Bois');
-        $categorie->BoisUnite = request('BoisUnite');
-
-        $categorie->soudure = request('soudure');
-        $categorie->SoudureUnite = request('SoudureUnite');
-
-        $categorie->CNC = request('CNC');
-        $categorie->UsinageUnite = request('UsinageUnite');
-
-        $categorie->VapeurFroid = request('VapeurFroid');
-        $categorie->VapeurUnite = request('VapeurUnite');
-
-        $categorie->Vin = request('Vin');
-        $categorie->VinUnite = request('VinUnite');
-
-        $categorie->Biere = request('Biere');
-        $categorie->BiereUnite = request('BiereUnite');
-
-        $categorie->Halocarbunes = request('Halocarbunes');
-        $categorie->HaloUnite = request('HaloUnite');
-
-        $categorie->AutreMethane = request('AutreMethane');
-        $categorie->AutreMethaneUnite = request('AutreMethaneUnite');
-
-        $categorie->n2osol = request('n2osol');
-        $categorie->n2osolUnite = request('n2osolUnite');
-
-        $categorie->n2oanimaux = request('n2oanimaux');
-        $categorie->n2oanimauxUnite = request('n2oanimauxUnite');
-
-        $categorie->MethaneAnimaux = request('MethaneAnimaux');
-        $categorie->MethaneAnimauxUnite = request('MethaneAnimauxUnite');
-
-        $categorie->Coke = request('Coke');
-        $categorie->CokeUnite = request('CokeUnite');
-        */
 
         $category = [
             0 => "GazNaturel",
@@ -160,9 +94,16 @@ class CategorieController extends Controller
 
         /**
          * this query inserts multiple rows into
-         * the table, find a way to pass variables
+         * the table by creating a very large
+         * multidimensional array, entries
+         * are easy to add
          *
-         * Unite_an
+         * array(
+         * 'Nom_procede' => 'GazNaturel',
+         * 'Quantite_an' => $categorie->GazNaturel = request('GazNaturel'),
+         * 'Unite_an' => $categorie->GazUnite = request('GazUnite'),
+         * 'UID' => $categorie->UID = request('UID'),
+        ),
          */
 
         $id = $categorie->UID = request('UID');
@@ -184,6 +125,7 @@ class CategorieController extends Controller
                     'Unite_an' => $categorie->PropaneUnite = request('PropaneUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
+
                 array(
                     'Nom_procede' => 'Essence Pompe',
                     'Quantite_an' => $categorie->EssencePompe = request('EssencePompe'),
@@ -317,22 +259,28 @@ class CategorieController extends Controller
 
             //DB::table('procede')->where('Quantite_an', '=', null)->delete();
 
-        } else { //update fields
-            echo "it be like that $category[0]";
-            //DB::table('procede')->where('Quantite_an', '=', null)->delete();
+        } else { //if fields exist, update fields instead of replacing them all
+            echo $category[0];
 
 
-            foreach ($category as $cat) {
+            /**
+             * iterates over all categories, if any are null, they are given a value if one was entered
+             * if the value isn't null, the loop continues
+             */
+            foreach ($category as $cat) { //loop continues since element is not null
                 if (!request($cat)) {
                     continue;
                 }
-                DB::table('procede')//updates fields based on UID and category name
+                DB::table('procede') //updates fields based on UID and category name
                 ->where('UID', $id)
                     ->where('Nom_procede', $cat)
                     ->update(['Quantite_an' => $categorie->$cat = request($cat)]);
             }
 
 
+            /**
+             * same concept as loop above, except with the unites associated with each value
+             */
             $f = 0;
             foreach ($categoryUnit as $unit) {
 
@@ -357,3 +305,74 @@ class CategorieController extends Controller
 }
 
 
+
+/*
+        $categorie->GazNaturel = request('GazNaturel');
+        $categorie->GazUnite = request('GazUnite');
+
+        $categorie->Propane = request('Propane');
+        $categorie->PropaneUnite = request('PropaneUnite');
+
+        $categorie->EssencePompe = request('EssencePompe');
+        $categorie->EssenceUnite = request('EssenceUnite');
+
+        $categorie->GazolePomp = request('GazolePomp');
+        $categorie->GazoleUnite = request('GazoleUnite');
+
+        $categorie->FioulDomestique = request('FioulDomestique');
+        $categorie->FioulUnite = request('FioulUnite');
+
+        $categorie->MazoutLeger = request('MazoutLeger');
+        $categorie->MazoutUnite = request('MazoutUnite');
+
+        $categorie->Charbon = request('Charbon');
+        $categorie->CharbonUnite = request('CharbonUnite');
+
+        $categorie->Cammionage = request('Cammionage');
+        $categorie->CammionageUnite = request('CammionageUnite');
+
+        $categorie->TotalElectricite = request('TotalElectricite');
+        $categorie->ElectriciteUnite = request('ElectriciteUnite');
+
+        $categorie->Fossil = request('Fossil');
+        $categorie->FossileUnite = request('FossileUnite');
+
+        $categorie->Biodiesel = request('Biodiesel');
+        $categorie->BiodieselUnite = request('BiodieselUnite');
+
+        $categorie->Bois = request('Bois');
+        $categorie->BoisUnite = request('BoisUnite');
+
+        $categorie->soudure = request('soudure');
+        $categorie->SoudureUnite = request('SoudureUnite');
+
+        $categorie->CNC = request('CNC');
+        $categorie->UsinageUnite = request('UsinageUnite');
+
+        $categorie->VapeurFroid = request('VapeurFroid');
+        $categorie->VapeurUnite = request('VapeurUnite');
+
+        $categorie->Vin = request('Vin');
+        $categorie->VinUnite = request('VinUnite');
+
+        $categorie->Biere = request('Biere');
+        $categorie->BiereUnite = request('BiereUnite');
+
+        $categorie->Halocarbunes = request('Halocarbunes');
+        $categorie->HaloUnite = request('HaloUnite');
+
+        $categorie->AutreMethane = request('AutreMethane');
+        $categorie->AutreMethaneUnite = request('AutreMethaneUnite');
+
+        $categorie->n2osol = request('n2osol');
+        $categorie->n2osolUnite = request('n2osolUnite');
+
+        $categorie->n2oanimaux = request('n2oanimaux');
+        $categorie->n2oanimauxUnite = request('n2oanimauxUnite');
+
+        $categorie->MethaneAnimaux = request('MethaneAnimaux');
+        $categorie->MethaneAnimauxUnite = request('MethaneAnimauxUnite');
+
+        $categorie->Coke = request('Coke');
+        $categorie->CokeUnite = request('CokeUnite');
+        */

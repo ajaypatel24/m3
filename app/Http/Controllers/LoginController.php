@@ -14,6 +14,10 @@ class LoginController extends Controller
         return view('welcome');
     }
 
+    /**
+     * login function simply requests the UID and returns the entire row
+     * the user is contains on based on their UID
+     */
     function login()
     {
         $uid = request('uid');

@@ -8,6 +8,10 @@ use JavaScript;
 
 class RegisterController extends Controller
 {
+
+    /**
+     * Registration function which stores all parameters in the register table
+     */
     function register()
     {
         $register = new Register();
@@ -22,7 +26,11 @@ class RegisterController extends Controller
     }
 
 
-
+    /**
+     * @param $id
+     * Stores all additional information in the register table based on the
+     * signed up users UID
+     */
     function contactInfo($id) {
 
         $register = new Register();
@@ -47,6 +55,12 @@ class RegisterController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Support\Collection
+     *
+     * retrieves UID, Test method
+     */
     function profileInfo($id) {
         $information = DB::table('register')->where('uid', $id)->get();
 

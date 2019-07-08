@@ -11,8 +11,14 @@
 |
 */
 
-
-/* Route::(method)('/path/', ControllerFileName@methodToExecute'); */
+/**
+ * General form for adding a route specified below
+ *
+ * Route::(method)('/path/', ControllerFileName@methodToExecute');
+ * method: GET or POST
+ *
+ */
+/*  */
 
 
 Route::get('/', 'LoginController@index');
@@ -25,11 +31,11 @@ Route::get('/prestart', 'PrestartController@index');
 
 Route::get('/user/{Id}', 'PrestartController@search');
 Route::get('/scian/{Id}', 'PrestartController@searchSCIAN');
-Route::get('/name/{Id}', 'PrestartController@getName' );
+Route::get('/name/{Id}', 'PrestartController@getName' );it
 
-Route::post('/','PrestartController@store'); /*method from php controller */
+Route::post('/','PrestartController@prestartSave'); /*method from php controller */
 Route::post('/intrants', 'InventaireController@store');
-Route::post('/categorie', 'CategorieController@store');
+Route::post('/categorie', 'CategorieController@tableEnergySave');
 Route::get('/info', 'CategorieController@p');
 Route::get('/data', 'PrestartController@p');
 

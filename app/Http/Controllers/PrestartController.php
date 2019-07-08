@@ -11,7 +11,13 @@ class PrestartController extends Controller
 {
 
 
-    function store(request $request)
+    /**
+     * @param Request $request
+     *
+     * takes in request and breaks it down into all parameters
+     * which are stored in the database under the prestart table
+     */
+    function prestartSave(request $request)
     {
 
         $prestart = new prestart();
@@ -39,6 +45,11 @@ class PrestartController extends Controller
 
     }
 
+    /**
+     * @return array
+     *
+     * test method
+     */
     function p() { //test method to see if data is retrieved from database
         $prestart = Prestart::all()->toArray();
 
@@ -47,30 +58,56 @@ class PrestartController extends Controller
 
     }
 
+    /**
+     * another test method to get all users from database
+     */
     public function index() {
         $users = DB::table('prestart')->get();
 
         echo $users;
     }
 
+    /**
+     * @param $id
+     *
+     * searches for user based on their unique ID
+     */
     public function search($id) {
         $users = DB::table('register')->where('uid', $id)->value('email', 'name');
 
         echo $users;
     }
 
+    /**
+     * @param $id
+     *
+     * returns SCIAN code of specific user based on their ID
+     */
     public function searchSCIAN($id) {
         $users = DB::table('prestart')->where('uid', $id)->value('SectorActivity');
 
         echo $users;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     *
+     * returns users name based on their UID
+     */
     public function getName($id) {
         $name = DB::table('register')->where('uid', $id)->value('name');
 
         return $name;
     }
 
+
+    /**
+     * @return \Illuminate\Support\Collection
+     *
+     * experimental query, joins 2 tables together and saves only parameters specified
+     * of both into new accessible table
+     */
     public function testQuery() {
 
         $data = DB::table('register')
