@@ -131,9 +131,9 @@ export default class EnergyTableData extends React.Component {
                             <th>Num Affiche</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                    <tr>
-                        <td>
+
                 {
 
                     this.state.TableData.map((rowdata, i) =>
@@ -141,22 +141,21 @@ export default class EnergyTableData extends React.Component {
                                     {rowdata.map((subRowData, k) =>
 
 
-                                        <div>
+                                        <tr>
 
-                                            <td colSpan="1">{subRowData.Nom_procede}</td>
-                                            <td colSpan="1">{subRowData.Quantite_an}</td>
-                                            <td colSpan="1">{subRowData.Unite_an}</td>
-                                            <td colSpan="1">{subRowData.Num_affiche}</td>
+                                            <td >{subRowData.Nom_procede}</td>
+                                            <td >{subRowData.Quantite_an}</td>
+                                            <td >{subRowData.Unite_an}</td>
+                                            <td >{subRowData.Num_affiche}</td>
 
-                                        </div>
+                                        </tr>
 
                                     )
                                     }
                                 </div>
                     )
                 }
-                        </td>
-                    </tr>
+
                     </tbody>
                 </Table>
 

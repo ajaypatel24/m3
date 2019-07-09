@@ -3,11 +3,13 @@ import {Button, Form, FormControl, Nav, Navbar, NavDropdown, Row, Col} from 'rea
 
 import '../../sass/navstyle.css'
 import axios from "axios";
-
-
+import { deepOrange, deepPurple } from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
+
 
 /**
  * Main navbar placed at top of page, conditional rendering
@@ -203,6 +205,7 @@ export default class Navigation extends React.Component {
      */
     render() {
 
+
         return (
 
             /** Begin Navbar */
@@ -264,9 +267,11 @@ export default class Navigation extends React.Component {
 
                         : /**if authenticated === true */
 
+
                         <Navbar.Collapse className="justify-content-end" inline>
+                            <Avatar>{this.state.name}</Avatar>
                             <Navbar.Text>
-                                <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
+                                <NavDropdown id="collasible-nav-dropdown">
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
                                     <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
@@ -274,6 +279,7 @@ export default class Navigation extends React.Component {
                                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                                 </NavDropdown>
                             </Navbar.Text>
+
                         </Navbar.Collapse>
 
                     }
