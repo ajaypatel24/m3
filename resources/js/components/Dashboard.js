@@ -5,7 +5,6 @@ import '../../sass/test.css'
 
 const width = '22rem';
 
-let element = document.getElementById("signup");
 export default class Dashboard extends React.Component {
 
     render() {
