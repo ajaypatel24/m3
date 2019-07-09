@@ -12,6 +12,11 @@ import NoMatch from "./NoMatch";
 import Dashboard from "./Dashboard";
 
 
+import ContactInfo from "./ContactInfo";
+import DynamicTable from "./DynamicTable";
+import Transport from "./Transport";
+
+
 /**
  *
  * @param Component
@@ -85,7 +90,10 @@ export default class App extends React.Component {
                     <ProtectedRoute path="/profile" component={LoggedIn}/>
 
                     <ProtectedRoute exact path="/loading" component={Loading}/>
-                    <ProtectedRoute exact path="/Contact" component={PrestartData}/>
+                    <ProtectedRoute exact path="/Transport" component={Transport}/>
+                    <ProtectedRoute exact path="/ContactInfo" component={ContactInfo}/>
+                    <ProtectedRoute exact path="/DynamicTable" component={DynamicTable}/>
+
 
 
 

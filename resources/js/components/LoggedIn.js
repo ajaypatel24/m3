@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, Col, Nav, Row, Tab, Table} from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 import {EnergyTable} from './EnergyTable';
 import '../../sass/TabStyle.css'
 import ContactInfo from "./ContactInfo";
@@ -140,14 +140,49 @@ export default function PersistentDrawerLeft() {
                 <Divider />
                 <List>
 
-                    <Link to="#/prestart">
+                    <Link to="/DynamicTable">
                         <ListItem button key="Hello">
                             <ListItemIcon><InboxIcon /></ListItemIcon>
                             <ListItemText primary="Boi" />
                         </ListItem>
                     </Link>
-                    ))}
+
                 </List>
+
+                <List>
+
+                    <Link to="/ContactInfo">
+                        <ListItem button key="Hello">
+                            <ListItemIcon><InboxIcon /></ListItemIcon>
+                            <ListItemText primary="Boi" />
+                        </ListItem>
+                    </Link>
+
+                </List>
+
+                <List>
+
+                    <Link to="/EnergyTable">
+                        <ListItem button key="Hello">
+                            <ListItemIcon><InboxIcon /></ListItemIcon>
+                            <ListItemText primary="Boi" />
+                        </ListItem>
+                    </Link>
+
+                </List>
+
+                <List>
+
+                    <Link to="/Transport">
+                        <ListItem button key="Hello">
+                            <ListItemIcon><InboxIcon /></ListItemIcon>
+                            <ListItemText primary="Boi" />
+                        </ListItem>
+                    </Link>
+
+                </List>
+
+
                 <Divider />
                 <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -164,115 +199,7 @@ export default function PersistentDrawerLeft() {
                 })}
             >
 
-                <div>
-
-
-                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                        <Row>
-
-                            <Col sm={2}>
-                                <Nav variant="pills" className="flex-column">
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="first" className="test">Inventaire</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="second" className="test">Tab 2</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="third">Tab 3</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="fourth">Tab 4</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
-                            </Col>
-                            <Col sm={10}>
-                                <Tab.Content>
-                                    <Tab.Pane eventKey="first">
-                                        <Col sm="{4}">
-                                            <Card>
-                                                <Card.Header as="h5">Inventaire</Card.Header>
-                                                <Card.Body>
-                                                    <Card.Title>Special title treatment</Card.Title>
-                                                    <Card.Text>
-                                                        Realiser votre inventaire de vos depenses energetiques, procedes,
-                                                        intrants, etc. et calculer les emissions annuelles de votre activite
-                                                    </Card.Text>
-
-                                                    <EnergyTable></EnergyTable>
-                                                    <Button variant="primary">Go somewhere</Button>
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="second">
-                                        <Col sm="{4}">
-                                            <Card>
-                                                <Card.Header as="h5">Contact Information</Card.Header>
-                                                <Card.Body>
-                                                    <Card.Title>Special title treatment</Card.Title>
-                                                    <Card.Text>
-                                                        Please fill in all required information before accessing
-                                                        our services
-                                                    </Card.Text>
-
-
-                                                    <ContactInfo/>
-                                                    <Button variant="primary">Go somewhere</Button>
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="third">
-                                        <Col sm="{4}">
-                                            <Card>
-                                                <Card.Header as="h5">Intrants</Card.Header>
-                                                <Card.Body>
-                                                    <Card.Title>Special title treatment</Card.Title>
-                                                    <Card.Text>
-                                                        Fill in the required information
-                                                    </Card.Text>
-
-                                                    <Table>
-
-
-                                                        <tbody>
-                                                        <DynamicTable> </DynamicTable>
-                                                        </tbody>
-
-
-                                                    </Table>
-                                                    <Button variant="primary">Go somewhere</Button>
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="fourth">
-                                        <Col sm="{4}">
-                                            <Card>
-                                                <Card.Header as="h5">Intrants</Card.Header>
-                                                <Card.Body>
-                                                    <Card.Title>Special title treatment</Card.Title>
-                                                    <Card.Text>
-                                                        Fill in the required information
-                                                    </Card.Text>
-
-
-                                                    <Transport></Transport>
-
-
-                                                    <Button variant="primary">Go somewhere</Button>
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Tab.Pane>
-                                </Tab.Content>
-                            </Col>
-                        </Row>
-                    </Tab.Container>
-
-
-                </div>
+                
 
 
             </main>
