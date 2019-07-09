@@ -1,6 +1,7 @@
 import {Col, Row, Form, InputGroup, Table } from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
+import Loading from "../Authentication/Loading";
 
 
 /**
@@ -20,6 +21,7 @@ export default class EnergyTableData extends React.Component {
             prestart: [],
             TableData: [],
             g: 'heelo',
+            isLoading: true,
 
         };
 
@@ -44,6 +46,11 @@ export default class EnergyTableData extends React.Component {
 
             });
 
+    }
+
+    componentDidMount() {
+
+        this.setState({isLoading: false});
     }
 
 
@@ -75,6 +82,12 @@ export default class EnergyTableData extends React.Component {
 
 
     render() {
+
+
+        if (this.state.isLoading) {
+            return (<Loading />);
+        }
+
         return (
             <div>
                 {/**
@@ -84,45 +97,69 @@ export default class EnergyTableData extends React.Component {
                  * Nom, Quantite, Unite and, Num Affiche
                  * using the subrowdata variable name, data is pulled from the data in the format
                  * subrowdata.{elementName}
+                 *
+                 *
+                 *
+                 *
+                 *
+                 *
+                 *
+                 *
+                 * <div>
+
+                <tr>
+                    <td colspan="1">{subRowData.Nom_procede}</td>
+                    <td colspan="1">{subRowData.Quantite_an}</td>
+                    <td colspan="1">{subRowData.Unite_an}</td>
+                    <td colspan="1">{subRowData.Num_affiche}</td>
+                </tr>
+
+            </div>
+                 *
+                 *
+                 *
+                 *
                  */}
+
+
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>Procede</th>
+                            <th>Quantite an</th>
+                            <th>Unite</th>
+                            <th>Num Affiche</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
                 {
+
                     this.state.TableData.map((rowdata, i) =>
-                        <div>
-                            {typeof (rowdata == 'object') ?
                                 <div>
                                     {rowdata.map((subRowData, k) =>
-                                        <div> {/*prints out the table parameters according to column name */}
 
-                                        <Table>
-                                            <thead>
-                                            <tr>
-                                                <th>Nom</th>
-                                                <th>Quantite</th>
-                                                <th>Unite</th>
-                                                <th>Num Affiche</th>
-                                            </tr>
-                                            </thead>
 
-                                            <tbody>
-                                            <tr>
-                                                <td>{subRowData.Nom_procede}</td>
-                                                <td>{subRowData.Quantite_an}</td>
-                                                <td>{subRowData.Unite_an }</td>
-                                                <td>{subRowData.Num_affiche}</td>
-                                            </tr>
-                                            </tbody>
+                                        <div>
 
-                                        </Table>
+                                            <td colSpan="1">{subRowData.Nom_procede}</td>
+                                            <td colSpan="1">{subRowData.Quantite_an}</td>
+                                            <td colSpan="1">{subRowData.Unite_an}</td>
+                                            <td colSpan="1">{subRowData.Num_affiche}</td>
+
                                         </div>
+
                                     )
                                     }
                                 </div>
-                                :
-                                null
-                            }
-                        </div>
                     )
                 }
+                        </td>
+                    </tr>
+                    </tbody>
+                </Table>
+
             </div>
         )};
 }

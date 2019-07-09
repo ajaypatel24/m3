@@ -77,28 +77,36 @@ class InventaireController extends Controller
         $g = array();
         $values = array();
         foreach ($category as $cat) {
-            $TableData = DB::table('procede')
+            $g = DB::table('procede')
                 ->where('uid', $id)
                 ->where('Nom_procede', $cat)
                 ->get();
 
+            array_push($values, $g );
+        }
 
-            print_r($TableData);
-            array_push($g,$TableData);
+
+
+
 
 
             //attempt at returning only values that are pertinent to the user (non null)
-           foreach($g as $e) {
+
+
+        $ArrayReturn = array();
+           foreach($values as $e) {
                foreach ($e as $r) {
                    if(!$r->Quantite_an == null) {
-                       array_push($values, $e);
+                       array_push($ArrayReturn, $e);
                    }
                }
            }
-           }
 
-        print_r($values);
-        return $values;
+
+
+
+        return $ArrayReturn;
+
 
     }
 

@@ -19,6 +19,18 @@ class CategorieController extends Controller
     /**
      * @param Request $request
      */
+
+    function isTableComplete($id) {
+
+
+
+
+
+
+
+
+    }
+
     function tableEnergySave(request $request)
     {
 
@@ -33,25 +45,24 @@ class CategorieController extends Controller
             2 => "EssencePompe",
             3 => "GazolePompe",
             4 => "FioulDomestique",
-            5 => "Mazout",
+            5 => "MazoutLeger",
             6 => "Charbon",
             7 => "Cammionage",
-            8 => "Electricite",
-            9 => "Cammionage",
-            10 => "Fossil",
-            11 => "Biodiesel",
-            12 => "Bois",
-            13 => "Soudure",
-            14 => "CNC",
-            15 => "VapeurFroid",
-            16 => "Vin",
-            17 => "Biere",
-            18 => "Halocarbunes",
-            19 => "AutreMethane",
-            20 => "N2OSol",
-            21 => "N2OAnimaux",
-            22 => "MethaneAnimaux",
-            23 => "Coke",
+            8 => "TotalElectricite",
+            9 => "Fossil",
+            10 => "Biodiesel",
+            11 => "Bois",
+            12 => "Soudure",
+            13 => "CNC",
+            14 => "VapeurFroid",
+            15 => "Vin",
+            16 => "Biere",
+            17 => "Halocarbunes",
+            18 => "AutreMethane",
+            19 => "N2OSol",
+            20 => "N2OAnimaux",
+            21 => "MethaneAnimaux",
+            22 => "Coke",
 
         ];
 
@@ -63,24 +74,22 @@ class CategorieController extends Controller
             4 => "FioulUnite",
             5 => "MazoutUnite",
             6 => "CharbonUnite",
-            7 => "CammionageUnite",
+            7 => "CammionageUnite", //echo "\n"
             8 => "ElectriciteUnite",
-            9 => "CammionageUnite",
-            10 => "FossileUnite",
-            11 => "CammionageUnite",
-            12 => "BiodieselUnite",
-            13 => "BoisUnite",
-            14 => "SoudureUnite",
-            15 => "UsinageUnite",
-            16 => "VapeurUnite",
-            17 => "VinUnite",
-            18 => "BiereUnite",
-            19 => "HaloUnite",
-            20 => "AutreMethaneUnite",
-            21 => "n2osolUnite",
-            22 => "n2oanimauxUnite",
-            23 => "MethaneAnimauxUnite",
-            24 => "CokeUnite",
+            9 => "FossileUnite",
+            10 => "BiodieselUnite",
+            11 => "BoisUnite",
+            12 => "SoudureUnite",
+            13 => "UsinageUnite",
+            14 => "VapeurUnite",
+            15 => "VinUnite",
+            16 => "BiereUnite",
+            17 => "HaloUnite",
+            18 => "AutreMethaneUnite",
+            19 => "n2osolUnite",
+            20 => "n2oanimauxUnite",
+            21 => "MethaneAnimauxUnite",
+            22 => "CokeUnite",
         ];
 
 
@@ -127,25 +136,25 @@ class CategorieController extends Controller
                 ),
 
                 array(
-                    'Nom_procede' => 'Essence Pompe',
+                    'Nom_procede' => 'EssencePompe',
                     'Quantite_an' => $categorie->EssencePompe = request('EssencePompe'),
                     'Unite_an' => $categorie->EssenceUnite = request('EssenceUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Gazole Pompe',
+                    'Nom_procede' => 'GazolePompe',
                     'Quantite_an' => $categorie->GazolePompe = request('GazolePompe'),
                     'Unite_an' => $categorie->GazoleUnite = request('GazoleUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Fioul Domestique',
+                    'Nom_procede' => 'FioulDomestique',
                     'Quantite_an' => $categorie->FioulDomestique = request('FioulDomestique'),
                     'Unite_an' => $categorie->FioulUnite = request('FioulUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Mazout',
+                    'Nom_procede' => 'MazoutLeger',
                     'Quantite_an' => $categorie->MazoutLeger = request('MazoutLeger'),
                     'Unite_an' => $categorie->MazoutUnite = request('MazoutUnite'),
                     'UID' => $categorie->UID = request('UID'),
@@ -163,13 +172,13 @@ class CategorieController extends Controller
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Electricite',
+                    'Nom_procede' => 'TotalElectricite',
                     'Quantite_an' => $categorie->TotalElectricite = request('TotalElectricite'),
                     'Unite_an' => $categorie->ElectriciteUnite = request('ElectriciteUnite'),
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Fossile',
+                    'Nom_procede' => 'Fossil',
                     'Quantite_an' => $categorie->Fossil = request('Fossil'),
                     'Unite_an' => $categorie->FossileUnite = request('FossileUnite'),
                     'UID' => $categorie->UID = request('UID'),
@@ -199,7 +208,7 @@ class CategorieController extends Controller
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Vapeur Froid',
+                    'Nom_procede' => 'VapeurFroid',
                     'Quantite_an' => $categorie->VapeurFroid = request('VapeurFroid'),
                     'Unite_an' => $categorie->VapeurUnite = request('VapeurUnite'),
                     'UID' => $categorie->UID = request('UID'),
@@ -223,7 +232,7 @@ class CategorieController extends Controller
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Autre Methane',
+                    'Nom_procede' => 'AutreMethane',
                     'Quantite_an' => $categorie->AutreMethane = request('AutreMethane'),
                     'Unite_an' => $categorie->AutreMethaneUnite = request('AutreMethaneUnite'),
                     'UID' => $categorie->UID = request('UID'),
@@ -241,7 +250,7 @@ class CategorieController extends Controller
                     'UID' => $categorie->UID = request('UID'),
                 ),
                 array(
-                    'Nom_procede' => 'Methane Animaux',
+                    'Nom_procede' => 'MethaneAnimaux',
                     'Quantite_an' => $categorie->MethaneAnimaux = request('MethaneAnimaux'),
                     'Unite_an' => $categorie->MethaneAnimauxUnite = request('MethaneAnimauxUnite'),
                     'UID' => $categorie->UID = request('UID'),
@@ -260,17 +269,20 @@ class CategorieController extends Controller
             //DB::table('procede')->where('Quantite_an', '=', null)->delete();
 
         } else { //if fields exist, update fields instead of replacing them all
-            echo $category[0];
-
 
             /**
              * iterates over all categories, if any are null, they are given a value if one was entered
              * if the value isn't null, the loop continues
              */
+
             foreach ($category as $cat) { //loop continues since element is not null
+                print_r($cat);
+                echo "\n";
+
                 if (!request($cat)) {
                     continue;
                 }
+
                 DB::table('procede') //updates fields based on UID and category name
                 ->where('UID', $id)
                     ->where('Nom_procede', $cat)
@@ -284,9 +296,17 @@ class CategorieController extends Controller
             $f = 0;
             foreach ($categoryUnit as $unit) {
 
-                if ($f == 24) {
+
+                if ($f == 23) {
                     break;
                 }
+                if (!request($unit)) {
+                    continue;
+                }
+                print_r($unit);
+                echo "\n";
+                print_r($category[$f]);
+                echo "\n";
                 DB::table('procede')
                     ->where('UID',$id)
                     ->where('Nom_procede', $category[$f])

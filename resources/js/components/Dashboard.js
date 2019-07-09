@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem  } from 'react-bootstrap';
+import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem, Image  } from 'react-bootstrap';
 import SignUpForm from './Authentication/Register';
 import '../../sass/test.css'
 

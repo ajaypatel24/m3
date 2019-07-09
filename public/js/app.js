@@ -80504,6 +80504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios_index__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Authentication_Loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Authentication/Loading */ "./resources/js/components/Authentication/Loading.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -80521,6 +80522,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -80546,7 +80548,8 @@ function (_React$Component) {
     _this.state = {
       prestart: [],
       TableData: [],
-      g: 'heelo'
+      g: 'heelo',
+      isLoading: true
     };
     _this.test = _this.test.bind(_assertThisInitialized(_this));
     return _this;
@@ -80570,6 +80573,13 @@ function (_React$Component) {
         });
 
         console.log(_this2.state.TableData);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        isLoading: false
       });
     }
     /**
@@ -80603,11 +80613,23 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.TableData.map(function (rowdata, i) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, _typeof(rowdata == 'object') ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, rowdata.map(function (subRowData, k) {
-          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, " ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Nom"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Quantite"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Unite"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Num Affiche"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, subRowData.Nom_procede), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, subRowData.Quantite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, subRowData.Unite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, subRowData.Num_affiche)))));
-        })) : null);
-      }));
+      if (this.state.isLoading) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Authentication_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Procede"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Quantite an"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Unite"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Num Affiche"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, this.state.TableData.map(function (rowdata, i) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, rowdata.map(function (subRowData, k) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+            colSpan: "1"
+          }, subRowData.Nom_procede), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+            colSpan: "1"
+          }, subRowData.Quantite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+            colSpan: "1"
+          }, subRowData.Unite_an), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+            colSpan: "1"
+          }, subRowData.Num_affiche));
+        }));
+      }))))));
     }
   }]);
 
@@ -81165,11 +81187,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           coke = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Coke"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Coke",
@@ -81182,11 +81204,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           bois = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Bois buche, sciures"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Bois",
@@ -81199,11 +81221,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           achatvapeurfroid = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Achats de vapeur et de froid"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "VapeurFroid",
@@ -81216,11 +81238,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           vin = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Fermentation du vin"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Vin",
@@ -81233,11 +81255,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           biere = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Gazification de la biere"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Biere",
@@ -81250,11 +81272,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           halocarbures = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions d'halocarbunes et autres"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Halocarbunes",
@@ -81267,11 +81289,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           usinage = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Usinage et tournage CNC (acier)"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "CNC",
@@ -81284,11 +81306,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           Soudure = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Soudure (acier)"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "Soudure",
@@ -81301,11 +81323,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           break;
 
@@ -81321,11 +81343,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "place"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           n2osol = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de N2O engrais au sol"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "n2osol",
@@ -81338,11 +81360,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           n2oanimaux = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de N2O des animaux"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "n2oanimaux",
@@ -81355,11 +81377,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           autremethane = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Autres emissions de methane"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
             name: "AutreMethane",
@@ -81372,11 +81394,11 @@ function (_React$Component) {
             onChange: this.handleChange,
             required: true
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite1"
+            value: "Litre"
           }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite2"
+            value: "Kg"
           }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-            value: "Unite3"
+            value: "KWH"
           }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"));
           break;
       }
@@ -81404,11 +81426,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Propane"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "Propane",
         placeholder: "valeur",
@@ -81420,11 +81442,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Essence a la pompe"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "EssencePompe",
         placeholder: "valeur",
@@ -81436,11 +81458,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Gazole a la pompe"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "GazolePompe",
         placeholder: "valeur",
@@ -81452,11 +81474,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Fioul domestique"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "FioulDomestique",
         placeholder: "valeur",
@@ -81468,11 +81490,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Mazout leger, num 4 a 6"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "MazoutLeger",
         placeholder: "valeur",
@@ -81484,11 +81506,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), charbon, coke, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         colSpan: "4"
       }, "Combustibles d'origine organique, sources fixes"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Biodiesel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -81502,11 +81524,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), bois, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Chauffage fossible a partier des m^2 chauffes"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "Fossil",
         placeholder: "valeur",
@@ -81518,11 +81540,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         colSpan: "4"
       }, "Electricite achetee"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Total Electricite"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
@@ -81536,11 +81558,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), achatvapeurfroid, vin, biere, n2osol, n2oanimaux, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de methane des animaux"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "MethaneAnimaux",
         placeholder: "valeur",
@@ -81552,11 +81574,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), autremethane, halocarbures, usinage, Soudure, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Cammionage"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "Cammionage",
         placeholder: "valeur",
@@ -81568,11 +81590,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, "Employee Transportation, Use, End of Life"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleSubmit
@@ -81595,11 +81617,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
@@ -81609,11 +81631,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
@@ -81623,11 +81645,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
@@ -81637,11 +81659,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "2.3"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
@@ -81651,11 +81673,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "Emissions de CO2 hors energie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
         name: "x[]",
         placeholder: "valeur"
@@ -81665,11 +81687,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         required: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite1"
+        value: "Litre"
       }, "Litre"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite2"
+        value: "Kg"
       }, "Kg"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-        value: "Unite3"
+        value: "KWH"
       }, "KWH"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "1.23"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "0")))));
     }
   }]);
@@ -82997,6 +83019,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormComponents_ContactInformationForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormComponents/ContactInformationForm */ "./resources/js/components/FormComponents/ContactInformationForm.js");
 /* harmony import */ var _FormComponents_IntrantForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormComponents/IntrantForm */ "./resources/js/components/FormComponents/IntrantForm.js");
 /* harmony import */ var _FormComponents_TransportForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormComponents/TransportForm */ "./resources/js/components/FormComponents/TransportForm.js");
+/* harmony import */ var _Authentication_Loading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Authentication/Loading */ "./resources/js/components/Authentication/Loading.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -83016,6 +83039,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -83065,12 +83089,20 @@ function (_React$Component) {
       DiffCorpAddress: "",
       validated: false,
       BusinessNameError: "",
+      isLoading: true,
       categories: []
     };
     return _this;
   }
 
   _createClass(LandingPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        isLoading: false
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -83112,6 +83144,10 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (this.state.isLoading) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_Loading__WEBPACK_IMPORTED_MODULE_7__["default"], null);
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tab"].Container, {
         id: "left-tabs-example",
         defaultActiveKey: "first"

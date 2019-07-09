@@ -6,6 +6,7 @@ import '../../sass/TabStyle.css'
 import ContactInformationForm from "./FormComponents/ContactInformationForm";
 import IntrantForm from "./FormComponents/IntrantForm";
 import TransportForm from "./FormComponents/TransportForm";
+import Loading from "./Authentication/Loading";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -41,11 +42,16 @@ export default class LandingPage extends React.Component {
             DiffCorpAddress: "",
             validated: false,
             BusinessNameError: "",
+            isLoading: true,
             categories: []
 
         };
     }
 
+    componentDidMount() {
+
+        this.setState({isLoading: false});
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -97,6 +103,9 @@ export default class LandingPage extends React.Component {
     render() {
 
 
+        if (this.state.isLoading) {
+            return (<Loading />);
+        }
         return (
 
             <div>
