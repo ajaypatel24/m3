@@ -37,14 +37,17 @@ export default class LoginComponent extends React.Component {
             this.handleLoginRequest = this.handleLoginRequest.bind(this);
     }
 
+
+
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
 
-    handleLoginRequest = () => {
+    handleLoginRequest(e) {
 
+        e.preventDefault;
         let currentComponent = this
 
 
@@ -54,11 +57,16 @@ export default class LoginComponent extends React.Component {
         ]);
 
 
+
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+
+
             .then(function (user) {
 
 
                 let uid = firebase.auth().currentUser.uid;
+
+
 
                 console.log("eyyo");
                 console.log(uid); //important, exclusive Uid that will be used to identify user
@@ -73,11 +81,14 @@ export default class LoginComponent extends React.Component {
 
 
 
+
+                /*
                     setTimeout(function () {
                         window.location.href = '#/profile/';
                         window.location.reload();
                     }.bind(this), 40)
 
+                 */
 
                 console.log('this happens4');
 
@@ -140,9 +151,7 @@ export default class LoginComponent extends React.Component {
                         <Card>
                             <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
                             <Card.Body>
-                                <Form  >
-
-
+                                <form method="post">
                                     { this.state.LoginOrSignup ?
                                     <Form.Group>
                                         <Form.Label className="mr-sm-2">Sign In</Form.Label>
@@ -176,7 +185,7 @@ export default class LoginComponent extends React.Component {
                                         <SignUpForm />
 
                                         }
-                                </Form>
+                                </form>
 
                                 <Button onClick={this.handleSwitch}>Switch</Button>
                             </Card.Body>

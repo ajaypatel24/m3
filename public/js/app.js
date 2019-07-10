@@ -101147,44 +101147,6 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginComponent).call(this, props));
 
-    _this.handleLoginRequest = function () {
-      var currentComponent = _assertThisInitialized(_this);
-
-      console.table([_this.state.email, _this.state.password]);
-      firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).then(function (user) {
-        var uid = firebase.auth().currentUser.uid;
-        console.log("eyyo");
-        console.log(uid); //important, exclusive Uid that will be used to identify user
-
-        console.log(user.data);
-        console.log('this happens');
-        sessionStorage.setItem('authenticated', 'true');
-        console.log('this happens2');
-        sessionStorage.setItem('UID', uid);
-        console.log('this happens3');
-        setTimeout(function () {
-          window.location.href = '#/profile/';
-          window.location.reload();
-        }.bind(this), 40);
-        console.log('this happens4'); //currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-        console.log('Request succeeded with JSON response', data);
-        console.log('Request succeeded with JSON response', user);
-        console.log(sessionStorage.getItem('authenticated'));
-      })["catch"](function (error) {
-        // Handle Errors here.
-        if (error.code === 400) {
-          console.log("either email or password is incorrect");
-        } //console.log("dr yeet");
-        //var errorCode = error.code;
-        ///var errorMessage = error.message;
-        //return;
-        // ...
-
-      });
-      console.log('from login');
-    };
-
     _this.handleSwitch = function () {
       _this.setState({
         LoginOrSignup: !_this.state.LoginOrSignup
@@ -101210,6 +101172,48 @@ function (_React$Component) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
     }
   }, {
+    key: "handleLoginRequest",
+    value: function handleLoginRequest(e) {
+      e.preventDefault;
+      var currentComponent = this;
+      console.table([this.state.email, this.state.password]);
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function (user) {
+        var uid = firebase.auth().currentUser.uid;
+        console.log("eyyo");
+        console.log(uid); //important, exclusive Uid that will be used to identify user
+
+        console.log(user.data);
+        console.log('this happens');
+        sessionStorage.setItem('authenticated', 'true');
+        console.log('this happens2');
+        sessionStorage.setItem('UID', uid);
+        console.log('this happens3');
+        /*
+            setTimeout(function () {
+                window.location.href = '#/profile/';
+                window.location.reload();
+            }.bind(this), 40)
+           */
+
+        console.log('this happens4'); //currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+        console.log('Request succeeded with JSON response', data);
+        console.log('Request succeeded with JSON response', user);
+        console.log(sessionStorage.getItem('authenticated'));
+      })["catch"](function (error) {
+        // Handle Errors here.
+        if (error.code === 400) {
+          console.log("either email or password is incorrect");
+        } //console.log("dr yeet");
+        //var errorCode = error.code;
+        ///var errorMessage = error.message;
+        //return;
+        // ...
+
+      });
+      console.log('from login');
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
@@ -101226,7 +101230,9 @@ function (_React$Component) {
         lg: "4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
         className: "d-flex justify-content-center login-btn-color-font"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_5___default.a, null), "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, this.state.LoginOrSignup ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_5___default.a, null), "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        method: "post"
+      }, this.state.LoginOrSignup ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         className: "mr-sm-2"
       }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         required: true,
