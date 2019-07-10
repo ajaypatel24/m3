@@ -15,6 +15,7 @@ import SignIn from "./Authentication/SignIn";
 
 
 
+
 import AboutUs from "./Authentication/Loading";
 
 
@@ -35,7 +36,9 @@ export default class App extends React.Component {
      * can be reconfigured in the app.js file in the 'js' directory
      */
 
+
     render() {
+        let q = sessionStorage.getItem('authenticated');
         return (
             /*full routing found here*/
             <HashRouter>
@@ -43,10 +46,11 @@ export default class App extends React.Component {
 
 
 
+
                 {
-                    !sessionStorage.getItem('authenticated' )
+                    !q
                 ||
-                sessionStorage.getItem('authenticated') === 'false' ?
+                q === 'false' ?
                         <Login />
                 :
 
@@ -57,6 +61,7 @@ export default class App extends React.Component {
 
 
                     {/*<Home exact path="/" component={Dashboard}/>*/}
+                   
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
@@ -139,7 +144,7 @@ export const Home = ({ component: Component, ...rest }) => {
  * which allows for the blocking of specific
  * routes contingent on whether the user is
  * logged in or not. This is done using a
- * localStorage parameter authenticated
+ * sessionStorage parameter authenticated
  */
 
 

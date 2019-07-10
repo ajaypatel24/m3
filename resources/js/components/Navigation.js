@@ -38,7 +38,7 @@ export default class Navigation extends React.Component {
         console.log(sessionStorage.getItem('authenticated'));
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleLoginRequest = this.handleLoginRequest.bind(this);
+        //this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -65,6 +65,8 @@ export default class Navigation extends React.Component {
      * approves of the login, then a UID is assigned which allows the user
      * to access their data on the website
      */
+
+    /*
     handleLoginRequest = () => {
 
 
@@ -86,7 +88,7 @@ export default class Navigation extends React.Component {
                 console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
-                /*
+
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -96,7 +98,7 @@ export default class Navigation extends React.Component {
                     }
                 })
                     .then(function (data) {
-                    */
+
 
 
                 sessionStorage.setItem('authenticated', 'true');
@@ -105,20 +107,20 @@ export default class Navigation extends React.Component {
                 currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
 
-                /**
+
                  setTimeout(function () {
                             window.location.href = '#/profile/';
                             window.location.reload();
                         }, 20)
                  console.log('Request succeeded with JSON response', data);
-                 */
 
-                /*
+
+
             })
             .catch(function (error) {
                 console.log('Request failed', error);
             });
-            */
+
 
             }).catch(function (error) {
             // Handle Errors here.
@@ -138,6 +140,8 @@ export default class Navigation extends React.Component {
 
 
     };
+
+*/
 
     /**
      * testing submit on clicking enter
@@ -166,7 +170,7 @@ export default class Navigation extends React.Component {
 
         console.log(this.state.authenticated);
         window.location.href = '#/';
-        sessionStorage.setItem('authenticated', 'false');
+        sessionStorage.removeItem('authenticated');
         sessionStorage.removeItem('UID');
         sessionStorage.removeItem('name');
         this.setState({authenticated: false});
@@ -251,6 +255,7 @@ export default class Navigation extends React.Component {
                      if authenticated === false */}
 
 
+                    {/*
                     {sessionStorage.getItem('authenticated') != 'true' ?
                         <Form inline>
                             <br/>

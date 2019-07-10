@@ -1,6 +1,6 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
-
+import Person from '@material-ui/icons/Person';
 /**
  * Registartion form using firebase to create an account in the m3
  * system, upon registration, the user should be stored in both the
@@ -74,8 +74,8 @@ export default class SignUpForm extends React.Component {
      * using the /register RestAPI call
      */
 
+    /*
     handleLoginRequest = () => {
-
 
         let currentComponent = this
 
@@ -95,7 +95,7 @@ export default class SignUpForm extends React.Component {
                 console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
-                /*
+
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -105,29 +105,35 @@ export default class SignUpForm extends React.Component {
                     }
                 })
                     .then(function (data) {
-                    */
 
 
-                sessionStorage.setItem('authenticated', 'true');
-                sessionStorage.setItem('UID', uid);
-                currentComponent.getName();
-                currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        //currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
 
-
-                 setTimeout(function () {
+                        setTimeout(function () {
                             window.location.href = '#/profile/';
-                            window.location.reload();
                         }, 20)
-                 console.log('Request succeeded with JSON response', data);
+                        console.log('Request succeeded with JSON response', data);
+
+                        console.log('Request succeeded with JSON response', user);
+
+                        console.log(sessionStorage.getItem('authenticated'));
+                    })
 
 
-                /*
-            })
+
+
+
+
+
+
             .catch(function (error) {
                 console.log('Request failed', error);
             });
-            */
+
 
             }).catch(function (error) {
             // Handle Errors here.
@@ -142,11 +148,11 @@ export default class SignUpForm extends React.Component {
         });
 
 
-        console.log("from login");
-        console.log(currentComponent.state.authenticated);
-
+            console.log('from login');
 
     };
+
+*/
 
 
     /**
@@ -161,51 +167,44 @@ export default class SignUpForm extends React.Component {
     {
         return (
             <Card>
-                <Card.Header className="d-flex justify-content-center login-btn-color-font"><i
-                    className="fas fa-user-plus icon-transform"/>Sign Up</Card.Header>
+                <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
                 <Card.Body>
-                    <form id="registerForm">
-                        <FormGroup role="form">
+                    <Form  >
 
-                            {/**
-                             * Each new entry requires
-                             * <Form.Group>
-                             * <Form.Label>Label</Form.Label>
-                             * <Form.Control />
-                             * </Form.Group>
-                             */}
-                             <Form.Group>
-                                 <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                required
-                                name="email"
-                                type="text"
-                                placeholder="Username"
-                                className="mr-sm-2"
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                                />
-                             </Form.Group>
 
-                            <Form.Group>
-                                <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                required
-                                name="password"
-                                type="password"
-                                placeholder="Password"
-                                className="mr-sm-2"
-                                onChange={this.handleChange}
-                                value={this.state.password}
-                                />
-                            </Form.Group>
+                        <Form.Group>
+                        <Form.Label className="mr-sm-2">Sign In</Form.Label>
 
-                            <Button variant="primary" type="submit" onClick={this.handleLoginRequest}>
-                                Login
-                            </Button>
+                        <Form.Group>
+                        <Form.Control
+                            required
+                            name="email"
+                            type="text"
+                            placeholder="Username"
+                            className="mr-sm-2"
+                            onChange={this.handleChange}
+                            value={this.state.email}
+                            onKeyPress={this.handleKeyPress}/>
+                        </Form.Group>
+                        <Form.Group>
 
-                        </FormGroup>
-                    </form>
+                        <Form.Control
+                            required
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            className="mr-sm-2"
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            onKeyPress={this.handleKeyPress}/>
+                        </Form.Group>
+
+                        </Form.Group>
+
+
+                        <Button variant="outline-info" type="submit" onClick={this.handleChange}>Login</Button>
+
+                    </Form>
                 </Card.Body>
             </Card>
         );
