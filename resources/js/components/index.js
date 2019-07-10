@@ -61,7 +61,7 @@ export default class App extends React.Component {
 
 
                     {/*<Home exact path="/" component={Dashboard}/>*/}
-                   
+
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
