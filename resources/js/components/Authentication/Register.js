@@ -1,7 +1,6 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
-import MailIcon from '@material-ui/icons/Mail';
-import Person from '@material-ui/icons/Person';
+
 /**
  * Registartion form using firebase to create an account in the m3
  * system, upon registration, the user should be stored in both the
@@ -148,7 +147,8 @@ export default class SignUpForm extends React.Component {
     {
         return (
             <Card>
-                <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+                <Card.Header className="d-flex justify-content-center login-btn-color-font"><i
+                    className="fas fa-user-plus icon-transform"/>Sign Up</Card.Header>
                 <Card.Body>
                     <form id="registerForm">
                         <FormGroup role="form">

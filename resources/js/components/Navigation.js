@@ -1,12 +1,11 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown} from 'react-bootstrap';
-import SideNavigation from './NavComponents/SideNavigation';
-
+import {Button, Form, FormControl, Nav, Navbar, NavDropdown, Row, Col} from 'react-bootstrap';
 
 import '../../sass/navstyle.css'
 import axios from "axios";
+import { deepOrange, deepPurple } from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
@@ -30,7 +29,7 @@ export default class Navigation extends React.Component {
             password: '',
             authenticated: sessionStorage.getItem('authenticated'),
             redirect: false,
-            name: this.getName(),
+            name: sessionStorage.getItem('name'),
             isLoading: true,
         };
 
@@ -86,7 +85,6 @@ export default class Navigation extends React.Component {
                 console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
-                /*
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -96,30 +94,23 @@ export default class Navigation extends React.Component {
                     }
                 })
                     .then(function (data) {
-                    */
 
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
-                sessionStorage.setItem('authenticated', 'true');
-                sessionStorage.setItem('UID', uid);
-                currentComponent.getName();
-                currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-
-                /**
-                 setTimeout(function () {
+                        setTimeout(function () {
                             window.location.href = '#/profile/';
                             window.location.reload();
                         }, 20)
-                 console.log('Request succeeded with JSON response', data);
-                 */
+                        console.log('Request succeeded with JSON response', data);
 
-                /*
-            })
-            .catch(function (error) {
-                console.log('Request failed', error);
-            });
-            */
 
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
             }).catch(function (error) {
             // Handle Errors here.
             if (error.code === 400) {
@@ -220,12 +211,6 @@ export default class Navigation extends React.Component {
             /** Begin Navbar */
 
             <Navbar bg="light" variant="light" expand="lg" className="navigation">
-                {this.state.authenticated === 'true' ?
-                    <SideNavigation/>
-                    :
-                    null
-                }
-
                 <Navbar.Brand href="#home">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
@@ -236,7 +221,7 @@ export default class Navigation extends React.Component {
                     />
                 </Navbar.Brand>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="#/">Home</Nav.Link>
@@ -248,10 +233,8 @@ export default class Navigation extends React.Component {
                     {/** End always rendered section */}
 
                     {/** Begin conditional section, condition: authenticated or not
-                     if authenticated === false */}
-
-
-                    {sessionStorage.getItem('authenticated') != 'true' ?
+                      if authenticated === false */}
+                    {this.state.authenticated != 'true' ?
                         <Form inline>
                             <br/>
                             <br/>
@@ -283,7 +266,6 @@ export default class Navigation extends React.Component {
                         </Form>
 
                         : /**if authenticated === true */
-
 
 
                         <Navbar.Collapse className="justify-content-end" inline>

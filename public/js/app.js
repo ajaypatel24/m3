@@ -5736,628 +5736,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeArea.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeArea.js ***!
-  \*************************************************************************/
-/*! exports provided: styles, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
-/* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/helpers */ "./node_modules/@material-ui/core/esm/utils/helpers.js");
-/* harmony import */ var _Drawer_Drawer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Drawer/Drawer */ "./node_modules/@material-ui/core/esm/Drawer/Drawer.js");
-
-
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      zIndex: theme.zIndex.drawer - 1
-    },
-    anchorLeft: {
-      right: 'auto'
-    },
-    anchorRight: {
-      left: 'auto',
-      right: 0
-    },
-    anchorTop: {
-      bottom: 'auto',
-      right: 0
-    },
-    anchorBottom: {
-      top: 'auto',
-      bottom: 0,
-      right: 0
-    }
-  };
-};
-/**
- * @ignore - internal component.
- */
-
-var SwipeArea = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function SwipeArea(props, ref) {
-  var anchor = props.anchor,
-      classes = props.classes,
-      className = props.className,
-      width = props.width,
-      other = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default()(props, ["anchor", "classes", "className", "width"]);
-
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-    className: Object(clsx__WEBPACK_IMPORTED_MODULE_5__["default"])(classes.root, classes["anchor".concat(Object(_utils_helpers__WEBPACK_IMPORTED_MODULE_7__["capitalize"])(anchor))], className),
-    ref: ref,
-    style: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default()({}, Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_8__["isHorizontal"])(anchor) ? 'width' : 'height', width)
-  }, other));
-});
- true ? SwipeArea.propTypes = {
-  /**
-   * Side on which to attach the discovery area.
-   */
-  anchor: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOf(['left', 'top', 'right', 'bottom']).isRequired,
-
-  /**
-   * @ignore
-   */
-  classes: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
-
-  /**
-   * The width of the left most (or right most) area in pixels where the
-   * drawer can be swiped open from.
-   */
-  width: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number.isRequired
-} : undefined;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__["default"])(styles, {
-  name: 'PrivateSwipeArea'
-})(SwipeArea));
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeableDrawer.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeableDrawer.js ***!
-  \*******************************************************************************/
-/*! exports provided: reset, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reset", function() { return reset; });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/index.js");
-/* harmony import */ var _Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Drawer/Drawer */ "./node_modules/@material-ui/core/esm/Drawer/Drawer.js");
-/* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/transitions */ "./node_modules/@material-ui/core/esm/styles/transitions.js");
-/* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/useTheme */ "./node_modules/@material-ui/core/esm/styles/useTheme.js");
-/* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@material-ui/core/esm/transitions/utils.js");
-/* harmony import */ var _NoSsr__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../NoSsr */ "./node_modules/@material-ui/core/esm/NoSsr/index.js");
-/* harmony import */ var _SwipeArea__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./SwipeArea */ "./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeArea.js");
-
-
-
-
-
-
-
-
-
-
-
-
- // This value is closed to what browsers are using internally to
-// trigger a native scroll.
-
-var UNCERTAINTY_THRESHOLD = 3; // px
-// We can only have one node at the time claiming ownership for handling the swipe.
-// Otherwise, the UX would be confusing.
-// That's why we use a singleton here.
-
-var nodeThatClaimedTheSwipe = null; // Exported for test purposes.
-
-function reset() {
-  nodeThatClaimedTheSwipe = null;
-}
-
-function calculateCurrentX(anchor, touches) {
-  return anchor === 'right' ? document.body.offsetWidth - touches[0].pageX : touches[0].pageX;
-}
-
-function calculateCurrentY(anchor, touches) {
-  return anchor === 'bottom' ? window.innerHeight - touches[0].clientY : touches[0].clientY;
-}
-
-function getMaxTranslate(horizontalSwipe, paperInstance) {
-  return horizontalSwipe ? paperInstance.clientWidth : paperInstance.clientHeight;
-}
-
-function getTranslate(currentTranslate, startLocation, open, maxTranslate) {
-  return Math.min(Math.max(open ? startLocation - currentTranslate : maxTranslate + startLocation - currentTranslate, 0), maxTranslate);
-}
-
-var disableSwipeToOpenDefault = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
-var transitionDurationDefault = {
-  enter: _styles_transitions__WEBPACK_IMPORTED_MODULE_8__["duration"].enteringScreen,
-  exit: _styles_transitions__WEBPACK_IMPORTED_MODULE_8__["duration"].leavingScreen
-};
-var useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_3___default.a.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_3___default.a.useEffect;
-var SwipeableDrawer = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function SwipeableDrawer(props, ref) {
-  var _props$anchor = props.anchor,
-      anchor = _props$anchor === void 0 ? 'left' : _props$anchor,
-      _props$disableBackdro = props.disableBackdropTransition,
-      disableBackdropTransition = _props$disableBackdro === void 0 ? false : _props$disableBackdro,
-      _props$disableDiscove = props.disableDiscovery,
-      disableDiscovery = _props$disableDiscove === void 0 ? false : _props$disableDiscove,
-      _props$disableSwipeTo = props.disableSwipeToOpen,
-      disableSwipeToOpen = _props$disableSwipeTo === void 0 ? disableSwipeToOpenDefault : _props$disableSwipeTo,
-      hideBackdrop = props.hideBackdrop,
-      _props$hysteresis = props.hysteresis,
-      hysteresis = _props$hysteresis === void 0 ? 0.55 : _props$hysteresis,
-      _props$minFlingVeloci = props.minFlingVelocity,
-      minFlingVelocity = _props$minFlingVeloci === void 0 ? 400 : _props$minFlingVeloci,
-      _props$ModalProps = props.ModalProps;
-  _props$ModalProps = _props$ModalProps === void 0 ? {} : _props$ModalProps;
-
-  var BackdropProps = _props$ModalProps.BackdropProps,
-      ModalPropsProp = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default()(_props$ModalProps, ["BackdropProps"]),
-      onClose = props.onClose,
-      onOpen = props.onOpen,
-      open = props.open,
-      _props$PaperProps = props.PaperProps,
-      PaperProps = _props$PaperProps === void 0 ? {} : _props$PaperProps,
-      SwipeAreaProps = props.SwipeAreaProps,
-      _props$swipeAreaWidth = props.swipeAreaWidth,
-      swipeAreaWidth = _props$swipeAreaWidth === void 0 ? 20 : _props$swipeAreaWidth,
-      _props$transitionDura = props.transitionDuration,
-      transitionDuration = _props$transitionDura === void 0 ? transitionDurationDefault : _props$transitionDura,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'temporary' : _props$variant,
-      other = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default()(props, ["anchor", "disableBackdropTransition", "disableDiscovery", "disableSwipeToOpen", "hideBackdrop", "hysteresis", "minFlingVelocity", "ModalProps", "onClose", "onOpen", "open", "PaperProps", "SwipeAreaProps", "swipeAreaWidth", "transitionDuration", "variant"]);
-
-  var theme = Object(_styles_useTheme__WEBPACK_IMPORTED_MODULE_9__["default"])();
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState(false),
-      _React$useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_React$useState, 2),
-      maybeSwiping = _React$useState2[0],
-      setMaybeSwiping = _React$useState2[1];
-
-  var swipeInstance = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef({
-    isSwiping: null
-  });
-  var swipeAreaRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef();
-  var backdropRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef();
-  var paperRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef();
-  var touchDetected = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef(false);
-  var openRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef(open); // Use a ref so the open value used is always up to date inside useCallback.
-
-  useEnhancedEffect(function () {
-    openRef.current = open;
-  }, [open]);
-  var setPosition = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (translate) {
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var _options$mode = options.mode,
-        mode = _options$mode === void 0 ? null : _options$mode,
-        _options$changeTransi = options.changeTransition,
-        changeTransition = _options$changeTransi === void 0 ? true : _options$changeTransi;
-    var anchorRtl = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["getAnchor"])(theme, anchor);
-    var rtlTranslateMultiplier = ['right', 'bottom'].indexOf(anchorRtl) !== -1 ? 1 : -1;
-    var horizontalSwipe = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["isHorizontal"])(anchor);
-    var transform = horizontalSwipe ? "translate(".concat(rtlTranslateMultiplier * translate, "px, 0)") : "translate(0, ".concat(rtlTranslateMultiplier * translate, "px)");
-    var drawerStyle = paperRef.current.style;
-    drawerStyle.webkitTransform = transform;
-    drawerStyle.transform = transform;
-    var transition = '';
-
-    if (mode) {
-      transition = theme.transitions.create('all', Object(_transitions_utils__WEBPACK_IMPORTED_MODULE_10__["getTransitionProps"])({
-        timeout: transitionDuration
-      }, {
-        mode: mode
-      }));
-    }
-
-    if (changeTransition) {
-      drawerStyle.webkitTransition = transition;
-      drawerStyle.transition = transition;
-    }
-
-    if (!disableBackdropTransition && !hideBackdrop) {
-      var backdropStyle = backdropRef.current.style;
-      backdropStyle.opacity = 1 - translate / getMaxTranslate(horizontalSwipe, paperRef.current);
-
-      if (changeTransition) {
-        backdropStyle.webkitTransition = transition;
-        backdropStyle.transition = transition;
-      }
-    }
-  }, [anchor, disableBackdropTransition, hideBackdrop, theme, transitionDuration]);
-  var handleBodyTouchEnd = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (event) {
-    if (!touchDetected.current) {
-      return;
-    }
-
-    nodeThatClaimedTheSwipe = null;
-    touchDetected.current = false;
-    setMaybeSwiping(false); // The swipe wasn't started.
-
-    if (!swipeInstance.current.isSwiping) {
-      swipeInstance.current.isSwiping = null;
-      return;
-    }
-
-    swipeInstance.current.isSwiping = null;
-    var anchorRtl = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["getAnchor"])(theme, anchor);
-    var horizontal = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["isHorizontal"])(anchor);
-    var current;
-
-    if (horizontal) {
-      current = calculateCurrentX(anchorRtl, event.changedTouches);
-    } else {
-      current = calculateCurrentY(anchorRtl, event.changedTouches);
-    }
-
-    var startLocation = horizontal ? swipeInstance.current.startX : swipeInstance.current.startY;
-    var maxTranslate = getMaxTranslate(horizontal, paperRef.current);
-    var currentTranslate = getTranslate(current, startLocation, openRef.current, maxTranslate);
-    var translateRatio = currentTranslate / maxTranslate;
-
-    if (openRef.current) {
-      if (swipeInstance.current.velocity > minFlingVelocity || translateRatio > hysteresis) {
-        onClose();
-      } else {
-        // Reset the position, the swipe was aborted.
-        setPosition(0, {
-          mode: 'exit'
-        });
-      }
-
-      return;
-    }
-
-    if (swipeInstance.current.velocity < -minFlingVelocity || 1 - translateRatio > hysteresis) {
-      onOpen();
-    } else {
-      // Reset the position, the swipe was aborted.
-      setPosition(getMaxTranslate(horizontal, paperRef.current), {
-        mode: 'enter'
-      });
-    }
-  }, [anchor, hysteresis, minFlingVelocity, onClose, onOpen, setPosition, theme]);
-  var handleBodyTouchMove = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (event) {
-    // the ref may be null when a parent component updates while swiping
-    if (!paperRef.current || !touchDetected.current) {
-      return;
-    }
-
-    var anchorRtl = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["getAnchor"])(theme, anchor);
-    var horizontalSwipe = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["isHorizontal"])(anchor);
-    var currentX = calculateCurrentX(anchorRtl, event.touches);
-    var currentY = calculateCurrentY(anchorRtl, event.touches); // We don't know yet.
-
-    if (swipeInstance.current.isSwiping == null) {
-      var dx = Math.abs(currentX - swipeInstance.current.startX);
-      var dy = Math.abs(currentY - swipeInstance.current.startY); // We are likely to be swiping, let's prevent the scroll event on iOS.
-
-      if (dx > dy) {
-        if (event.cancelable) {
-          event.preventDefault();
-        }
-      }
-
-      var definitelySwiping = horizontalSwipe ? dx > dy && dx > UNCERTAINTY_THRESHOLD : dy > dx && dy > UNCERTAINTY_THRESHOLD;
-
-      if (definitelySwiping === true || (horizontalSwipe ? dy > UNCERTAINTY_THRESHOLD : dx > UNCERTAINTY_THRESHOLD)) {
-        swipeInstance.current.isSwiping = definitelySwiping;
-
-        if (!definitelySwiping) {
-          handleBodyTouchEnd(event);
-          return;
-        } // Shift the starting point.
-
-
-        swipeInstance.current.startX = currentX;
-        swipeInstance.current.startY = currentY; // Compensate for the part of the drawer displayed on touch start.
-
-        if (!disableDiscovery && !openRef.current) {
-          if (horizontalSwipe) {
-            swipeInstance.current.startX -= swipeAreaWidth;
-          } else {
-            swipeInstance.current.startY -= swipeAreaWidth;
-          }
-        }
-      }
-    }
-
-    if (!swipeInstance.current.isSwiping) {
-      return;
-    }
-
-    var startLocation = horizontalSwipe ? swipeInstance.current.startX : swipeInstance.current.startY;
-    var maxTranslate = getMaxTranslate(horizontalSwipe, paperRef.current);
-    var translate = getTranslate(horizontalSwipe ? currentX : currentY, startLocation, openRef.current, maxTranslate);
-
-    if (swipeInstance.current.lastTranslate === null) {
-      swipeInstance.current.lastTranslate = translate;
-      swipeInstance.current.lastTime = performance.now() + 1;
-    }
-
-    var velocity = (translate - swipeInstance.current.lastTranslate) / (performance.now() - swipeInstance.current.lastTime) * 1e3; // Low Pass filter.
-
-    swipeInstance.current.velocity = swipeInstance.current.velocity * 0.4 + velocity * 0.6;
-    swipeInstance.current.lastTranslate = translate;
-    swipeInstance.current.lastTime = performance.now(); // We are swiping, let's prevent the scroll event on iOS.
-
-    if (event.cancelable) {
-      event.preventDefault();
-    }
-
-    setPosition(translate);
-  }, [setPosition, handleBodyTouchEnd, anchor, disableDiscovery, swipeAreaWidth, theme]);
-  var handleBodyTouchStart = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (event) {
-    // We are not supposed to handle this touch move.
-    if (nodeThatClaimedTheSwipe !== null && nodeThatClaimedTheSwipe !== swipeInstance.current) {
-      return;
-    }
-
-    var anchorRtl = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["getAnchor"])(theme, anchor);
-    var horizontalSwipe = Object(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["isHorizontal"])(anchor);
-    var currentX = calculateCurrentX(anchorRtl, event.touches);
-    var currentY = calculateCurrentY(anchorRtl, event.touches);
-
-    if (!openRef.current) {
-      if (disableSwipeToOpen || event.target !== swipeAreaRef.current) {
-        return;
-      }
-
-      if (horizontalSwipe) {
-        if (currentX > swipeAreaWidth) {
-          return;
-        }
-      } else if (currentY > swipeAreaWidth) {
-        return;
-      }
-    }
-
-    nodeThatClaimedTheSwipe = swipeInstance.current;
-    swipeInstance.current.startX = currentX;
-    swipeInstance.current.startY = currentY;
-    setMaybeSwiping(true);
-
-    if (!openRef.current && paperRef.current) {
-      // The ref may be null when a parent component updates while swiping.
-      setPosition(getMaxTranslate(horizontalSwipe, paperRef.current) + (disableDiscovery ? 20 : -swipeAreaWidth), {
-        changeTransition: false
-      });
-    }
-
-    swipeInstance.current.velocity = 0;
-    swipeInstance.current.lastTime = null;
-    swipeInstance.current.lastTranslate = null;
-    touchDetected.current = true;
-  }, [setPosition, anchor, disableDiscovery, disableSwipeToOpen, swipeAreaWidth, theme]);
-  react__WEBPACK_IMPORTED_MODULE_3___default.a.useEffect(function () {
-    if (variant === 'temporary') {
-      document.body.addEventListener('touchstart', handleBodyTouchStart);
-      document.body.addEventListener('touchmove', handleBodyTouchMove, {
-        passive: false
-      });
-      document.body.addEventListener('touchend', handleBodyTouchEnd);
-      return function () {
-        document.body.removeEventListener('touchstart', handleBodyTouchStart);
-        document.body.removeEventListener('touchmove', handleBodyTouchMove, {
-          passive: false
-        });
-        document.body.removeEventListener('touchend', handleBodyTouchEnd);
-      };
-    }
-
-    return undefined;
-  }, [variant, handleBodyTouchStart, handleBodyTouchMove, handleBodyTouchEnd]);
-  react__WEBPACK_IMPORTED_MODULE_3___default.a.useEffect(function () {
-    return function () {
-      // We need to release the lock.
-      if (nodeThatClaimedTheSwipe === swipeInstance.current) {
-        nodeThatClaimedTheSwipe = null;
-      }
-    };
-  }, []);
-  react__WEBPACK_IMPORTED_MODULE_3___default.a.useEffect(function () {
-    if (!open) {
-      setMaybeSwiping(false);
-    }
-  }, [open]);
-  var handleBackdropRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (instance) {
-    // #StrictMode ready
-    backdropRef.current = react_dom__WEBPACK_IMPORTED_MODULE_5___default.a.findDOMNode(instance);
-  }, []);
-  var handlePaperRef = react__WEBPACK_IMPORTED_MODULE_3___default.a.useCallback(function (instance) {
-    // #StrictMode ready
-    paperRef.current = react_dom__WEBPACK_IMPORTED_MODULE_5___default.a.findDOMNode(instance);
-  }, []);
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_Drawer_Drawer__WEBPACK_IMPORTED_MODULE_7__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-    open: variant === 'temporary' && maybeSwiping ? true : open,
-    variant: variant,
-    ModalProps: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-      BackdropProps: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, BackdropProps, {
-        ref: handleBackdropRef
-      })
-    }, ModalPropsProp),
-    PaperProps: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, PaperProps, {
-      style: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-        pointerEvents: variant === 'temporary' && !open ? 'none' : ''
-      }, PaperProps.style),
-      ref: handlePaperRef
-    }),
-    anchor: anchor,
-    transitionDuration: transitionDuration,
-    onClose: onClose,
-    ref: ref
-  }, other)), !disableSwipeToOpen && variant === 'temporary' && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_NoSsr__WEBPACK_IMPORTED_MODULE_11__["default"], null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_SwipeArea__WEBPACK_IMPORTED_MODULE_12__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-    anchor: anchor,
-    ref: swipeAreaRef,
-    width: swipeAreaWidth
-  }, SwipeAreaProps))));
-});
- true ? SwipeableDrawer.propTypes = {
-  /**
-   * @ignore
-   */
-  anchor: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOf(['left', 'top', 'right', 'bottom']),
-
-  /**
-   * Disable the backdrop transition.
-   * This can improve the FPS on low-end devices.
-   */
-  disableBackdropTransition: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * If `true`, touching the screen near the edge of the drawer will not slide in the drawer a bit
-   * to promote accidental discovery of the swipe gesture.
-   */
-  disableDiscovery: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * If `true`, swipe to open is disabled. This is useful in browsers where swiping triggers
-   * navigation actions. Swipe to open is disabled on iOS browsers by default.
-   */
-  disableSwipeToOpen: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * @ignore
-   */
-  hideBackdrop: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * Affects how far the drawer must be opened/closed to change his state.
-   * Specified as percent (0-1) of the width of the drawer
-   */
-  hysteresis: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-
-  /**
-   * Defines, from which (average) velocity on, the swipe is
-   * defined as complete although hysteresis isn't reached.
-   * Good threshold is between 250 - 1000 px/s
-   */
-  minFlingVelocity: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-
-  /**
-   * @ignore
-   */
-  ModalProps: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-    BackdropProps: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-      component: _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__["elementTypeAcceptingRef"]
-    })
-  }),
-
-  /**
-   * Callback fired when the component requests to be closed.
-   *
-   * @param {object} event The event source of the callback
-   */
-  onClose: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func.isRequired,
-
-  /**
-   * Callback fired when the component requests to be opened.
-   *
-   * @param {object} event The event source of the callback
-   */
-  onOpen: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func.isRequired,
-
-  /**
-   * If `true`, the drawer is open.
-   */
-  open: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool.isRequired,
-
-  /**
-   * @ignore
-   */
-  PaperProps: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-    component: _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__["elementTypeAcceptingRef"]
-  }),
-
-  /**
-   * Properties applied to the swipe area element.
-   */
-  SwipeAreaProps: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.object,
-
-  /**
-   * The width of the left most (or right most) area in pixels where the
-   * drawer can be swiped open from.
-   */
-  swipeAreaWidth: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-
-  /**
-   * The duration for the transition, in milliseconds.
-   * You may specify a single timeout for all transitions, or individually with an object.
-   */
-  transitionDuration: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-    enter: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-    exit: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number
-  })]),
-
-  /**
-   * @ignore
-   */
-  variant: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOf(['permanent', 'persistent', 'temporary'])
-} : undefined;
-/* harmony default export */ __webpack_exports__["default"] = (SwipeableDrawer);
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/core/esm/SwipeableDrawer/index.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/SwipeableDrawer/index.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SwipeableDrawer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SwipeableDrawer */ "./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeableDrawer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _SwipeableDrawer__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-
-
-/***/ }),
-
 /***/ "./node_modules/@material-ui/core/esm/Typography/Typography.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/Typography/Typography.js ***!
@@ -6654,6 +6032,122 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/colors/amber.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/amber.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var amber = {
+  50: '#fff8e1',
+  100: '#ffecb3',
+  200: '#ffe082',
+  300: '#ffd54f',
+  400: '#ffca28',
+  500: '#ffc107',
+  600: '#ffb300',
+  700: '#ffa000',
+  800: '#ff8f00',
+  900: '#ff6f00',
+  A100: '#ffe57f',
+  A200: '#ffd740',
+  A400: '#ffc400',
+  A700: '#ffab00'
+};
+/* harmony default export */ __webpack_exports__["default"] = (amber);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/blue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/blue.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var blue = {
+  50: '#e3f2fd',
+  100: '#bbdefb',
+  200: '#90caf9',
+  300: '#64b5f6',
+  400: '#42a5f5',
+  500: '#2196f3',
+  600: '#1e88e5',
+  700: '#1976d2',
+  800: '#1565c0',
+  900: '#0d47a1',
+  A100: '#82b1ff',
+  A200: '#448aff',
+  A400: '#2979ff',
+  A700: '#2962ff'
+};
+/* harmony default export */ __webpack_exports__["default"] = (blue);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/blueGrey.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/blueGrey.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var blueGrey = {
+  50: '#eceff1',
+  100: '#cfd8dc',
+  200: '#b0bec5',
+  300: '#90a4ae',
+  400: '#78909c',
+  500: '#607d8b',
+  600: '#546e7a',
+  700: '#455a64',
+  800: '#37474f',
+  900: '#263238',
+  A100: '#cfd8dc',
+  A200: '#b0bec5',
+  A400: '#78909c',
+  A700: '#455a64'
+};
+/* harmony default export */ __webpack_exports__["default"] = (blueGrey);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/brown.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/brown.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var brown = {
+  50: '#efebe9',
+  100: '#d7ccc8',
+  200: '#bcaaa4',
+  300: '#a1887f',
+  400: '#8d6e63',
+  500: '#795548',
+  600: '#6d4c41',
+  700: '#5d4037',
+  800: '#4e342e',
+  900: '#3e2723',
+  A100: '#d7ccc8',
+  A200: '#bcaaa4',
+  A400: '#8d6e63',
+  A700: '#5d4037'
+};
+/* harmony default export */ __webpack_exports__["default"] = (brown);
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/colors/common.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/colors/common.js ***!
@@ -6668,6 +6162,122 @@ var common = {
   white: '#fff'
 };
 /* harmony default export */ __webpack_exports__["default"] = (common);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/cyan.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/cyan.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var cyan = {
+  50: '#e0f7fa',
+  100: '#b2ebf2',
+  200: '#80deea',
+  300: '#4dd0e1',
+  400: '#26c6da',
+  500: '#00bcd4',
+  600: '#00acc1',
+  700: '#0097a7',
+  800: '#00838f',
+  900: '#006064',
+  A100: '#84ffff',
+  A200: '#18ffff',
+  A400: '#00e5ff',
+  A700: '#00b8d4'
+};
+/* harmony default export */ __webpack_exports__["default"] = (cyan);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/deepOrange.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/deepOrange.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var deepOrange = {
+  50: '#fbe9e7',
+  100: '#ffccbc',
+  200: '#ffab91',
+  300: '#ff8a65',
+  400: '#ff7043',
+  500: '#ff5722',
+  600: '#f4511e',
+  700: '#e64a19',
+  800: '#d84315',
+  900: '#bf360c',
+  A100: '#ff9e80',
+  A200: '#ff6e40',
+  A400: '#ff3d00',
+  A700: '#dd2c00'
+};
+/* harmony default export */ __webpack_exports__["default"] = (deepOrange);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/deepPurple.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/deepPurple.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var deepPurple = {
+  50: '#ede7f6',
+  100: '#d1c4e9',
+  200: '#b39ddb',
+  300: '#9575cd',
+  400: '#7e57c2',
+  500: '#673ab7',
+  600: '#5e35b1',
+  700: '#512da8',
+  800: '#4527a0',
+  900: '#311b92',
+  A100: '#b388ff',
+  A200: '#7c4dff',
+  A400: '#651fff',
+  A700: '#6200ea'
+};
+/* harmony default export */ __webpack_exports__["default"] = (deepPurple);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/green.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/green.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var green = {
+  50: '#e8f5e9',
+  100: '#c8e6c9',
+  200: '#a5d6a7',
+  300: '#81c784',
+  400: '#66bb6a',
+  500: '#4caf50',
+  600: '#43a047',
+  700: '#388e3c',
+  800: '#2e7d32',
+  900: '#1b5e20',
+  A100: '#b9f6ca',
+  A200: '#69f0ae',
+  A400: '#00e676',
+  A700: '#00c853'
+};
+/* harmony default export */ __webpack_exports__["default"] = (green);
 
 /***/ }),
 
@@ -6700,6 +6310,98 @@ var grey = {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/colors/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/index.js ***!
+  \************************************************************/
+/*! exports provided: common, red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, grey, blueGrey */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./node_modules/@material-ui/core/esm/colors/common.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "common", function() { return _common__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _red__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./red */ "./node_modules/@material-ui/core/esm/colors/red.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "red", function() { return _red__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _pink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pink */ "./node_modules/@material-ui/core/esm/colors/pink.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pink", function() { return _pink__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _purple__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./purple */ "./node_modules/@material-ui/core/esm/colors/purple.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "purple", function() { return _purple__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _deepPurple__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deepPurple */ "./node_modules/@material-ui/core/esm/colors/deepPurple.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deepPurple", function() { return _deepPurple__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _indigo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./indigo */ "./node_modules/@material-ui/core/esm/colors/indigo.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "indigo", function() { return _indigo__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _blue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blue */ "./node_modules/@material-ui/core/esm/colors/blue.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "blue", function() { return _blue__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _lightBlue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lightBlue */ "./node_modules/@material-ui/core/esm/colors/lightBlue.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lightBlue", function() { return _lightBlue__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _cyan__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cyan */ "./node_modules/@material-ui/core/esm/colors/cyan.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cyan", function() { return _cyan__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _teal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./teal */ "./node_modules/@material-ui/core/esm/colors/teal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "teal", function() { return _teal__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _green__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./green */ "./node_modules/@material-ui/core/esm/colors/green.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "green", function() { return _green__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _lightGreen__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lightGreen */ "./node_modules/@material-ui/core/esm/colors/lightGreen.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lightGreen", function() { return _lightGreen__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _lime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./lime */ "./node_modules/@material-ui/core/esm/colors/lime.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lime", function() { return _lime__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _yellow__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./yellow */ "./node_modules/@material-ui/core/esm/colors/yellow.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "yellow", function() { return _yellow__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _amber__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./amber */ "./node_modules/@material-ui/core/esm/colors/amber.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "amber", function() { return _amber__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _orange__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./orange */ "./node_modules/@material-ui/core/esm/colors/orange.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "orange", function() { return _orange__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/* harmony import */ var _deepOrange__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./deepOrange */ "./node_modules/@material-ui/core/esm/colors/deepOrange.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deepOrange", function() { return _deepOrange__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+
+/* harmony import */ var _brown__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./brown */ "./node_modules/@material-ui/core/esm/colors/brown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "brown", function() { return _brown__WEBPACK_IMPORTED_MODULE_17__["default"]; });
+
+/* harmony import */ var _grey__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./grey */ "./node_modules/@material-ui/core/esm/colors/grey.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "grey", function() { return _grey__WEBPACK_IMPORTED_MODULE_18__["default"]; });
+
+/* harmony import */ var _blueGrey__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./blueGrey */ "./node_modules/@material-ui/core/esm/colors/blueGrey.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "blueGrey", function() { return _blueGrey__WEBPACK_IMPORTED_MODULE_19__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/colors/indigo.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/colors/indigo.js ***!
@@ -6726,6 +6428,122 @@ var indigo = {
   A700: '#304ffe'
 };
 /* harmony default export */ __webpack_exports__["default"] = (indigo);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/lightBlue.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/lightBlue.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var lightBlue = {
+  50: '#e1f5fe',
+  100: '#b3e5fc',
+  200: '#81d4fa',
+  300: '#4fc3f7',
+  400: '#29b6f6',
+  500: '#03a9f4',
+  600: '#039be5',
+  700: '#0288d1',
+  800: '#0277bd',
+  900: '#01579b',
+  A100: '#80d8ff',
+  A200: '#40c4ff',
+  A400: '#00b0ff',
+  A700: '#0091ea'
+};
+/* harmony default export */ __webpack_exports__["default"] = (lightBlue);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/lightGreen.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/lightGreen.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var lightGreen = {
+  50: '#f1f8e9',
+  100: '#dcedc8',
+  200: '#c5e1a5',
+  300: '#aed581',
+  400: '#9ccc65',
+  500: '#8bc34a',
+  600: '#7cb342',
+  700: '#689f38',
+  800: '#558b2f',
+  900: '#33691e',
+  A100: '#ccff90',
+  A200: '#b2ff59',
+  A400: '#76ff03',
+  A700: '#64dd17'
+};
+/* harmony default export */ __webpack_exports__["default"] = (lightGreen);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/lime.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/lime.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var lime = {
+  50: '#f9fbe7',
+  100: '#f0f4c3',
+  200: '#e6ee9c',
+  300: '#dce775',
+  400: '#d4e157',
+  500: '#cddc39',
+  600: '#c0ca33',
+  700: '#afb42b',
+  800: '#9e9d24',
+  900: '#827717',
+  A100: '#f4ff81',
+  A200: '#eeff41',
+  A400: '#c6ff00',
+  A700: '#aeea00'
+};
+/* harmony default export */ __webpack_exports__["default"] = (lime);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/orange.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/orange.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var orange = {
+  50: '#fff3e0',
+  100: '#ffe0b2',
+  200: '#ffcc80',
+  300: '#ffb74d',
+  400: '#ffa726',
+  500: '#ff9800',
+  600: '#fb8c00',
+  700: '#f57c00',
+  800: '#ef6c00',
+  900: '#e65100',
+  A100: '#ffd180',
+  A200: '#ffab40',
+  A400: '#ff9100',
+  A700: '#ff6d00'
+};
+/* harmony default export */ __webpack_exports__["default"] = (orange);
 
 /***/ }),
 
@@ -6758,6 +6576,35 @@ var pink = {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/colors/purple.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/purple.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var purple = {
+  50: '#f3e5f5',
+  100: '#e1bee7',
+  200: '#ce93d8',
+  300: '#ba68c8',
+  400: '#ab47bc',
+  500: '#9c27b0',
+  600: '#8e24aa',
+  700: '#7b1fa2',
+  800: '#6a1b9a',
+  900: '#4a148c',
+  A100: '#ea80fc',
+  A200: '#e040fb',
+  A400: '#d500f9',
+  A700: '#aa00ff'
+};
+/* harmony default export */ __webpack_exports__["default"] = (purple);
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/colors/red.js":
 /*!**********************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/colors/red.js ***!
@@ -6784,6 +6631,64 @@ var red = {
   A700: '#d50000'
 };
 /* harmony default export */ __webpack_exports__["default"] = (red);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/teal.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/teal.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var teal = {
+  50: '#e0f2f1',
+  100: '#b2dfdb',
+  200: '#80cbc4',
+  300: '#4db6ac',
+  400: '#26a69a',
+  500: '#009688',
+  600: '#00897b',
+  700: '#00796b',
+  800: '#00695c',
+  900: '#004d40',
+  A100: '#a7ffeb',
+  A200: '#64ffda',
+  A400: '#1de9b6',
+  A700: '#00bfa5'
+};
+/* harmony default export */ __webpack_exports__["default"] = (teal);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/colors/yellow.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/colors/yellow.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var yellow = {
+  50: '#fffde7',
+  100: '#fff9c4',
+  200: '#fff59d',
+  300: '#fff176',
+  400: '#ffee58',
+  500: '#ffeb3b',
+  600: '#fdd835',
+  700: '#fbc02d',
+  800: '#f9a825',
+  900: '#f57f17',
+  A100: '#ffff8d',
+  A200: '#ffff00',
+  A400: '#ffea00',
+  A700: '#ffd600'
+};
+/* harmony default export */ __webpack_exports__["default"] = (yellow);
 
 /***/ }),
 
@@ -7913,7 +7818,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/styles/index.js ***!
   \************************************************************/
-/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme */
+/*! exports provided: createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, useTheme, withStyles, withTheme, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9080,35 +8985,6 @@ module.exports = warning;
 
 /***/ }),
 
-/***/ "./node_modules/@material-ui/icons/List.js":
-/*!*************************************************!*\
-  !*** ./node_modules/@material-ui/icons/List.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"
-}), 'List');
-
-exports.default = _default;
-
-/***/ }),
-
 /***/ "./node_modules/@material-ui/icons/Mail.js":
 /*!*************************************************!*\
   !*** ./node_modules/@material-ui/icons/Mail.js ***!
@@ -9165,35 +9041,6 @@ var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.d
   fill: "none",
   d: "M0 0h24v24H0V0z"
 })), 'MoveToInbox');
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/Person.js":
-/*!***************************************************!*\
-  !*** ./node_modules/@material-ui/icons/Person.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-}), 'Person');
 
 exports.default = _default;
 
@@ -95800,10 +95647,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Mail */ "./node_modules/@material-ui/icons/Mail.js");
-/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/Person */ "./node_modules/@material-ui/icons/Person.js");
-/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -95823,8 +95666,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -95972,7 +95813,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Header, {
         className: "d-flex justify-content-center login-btn-color-font"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_3___default.a, null), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+        className: "fas fa-user-plus icon-transform"
+      }), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
         id: "registerForm"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["FormGroup"], {
         role: "form"
@@ -96020,223 +95863,6 @@ function (_React$Component) {
       }, "Submit"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "mt-3 red-text ".concat(this.state.passwordMatch)
       }, "These passwords don't match")))));
-    }
-  }]);
-
-  return SignUpForm;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Authentication/SignIn.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/Authentication/SignIn.js ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SignUpForm; });
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-/**
- * Registartion form using firebase to create an account in the m3
- * system, upon registration, the user should be stored in both the
- * firebase authentication system as well as the 'register' table
- * in the database
- */
-
-var SignUpForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(SignUpForm, _React$Component);
-
-  function SignUpForm(props) {
-    var _this;
-
-    _classCallCheck(this, SignUpForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SignUpForm).call(this, props));
-
-    _this.handleLoginRequest = function () {
-      var currentComponent = _assertThisInitialized(_this);
-
-      console.table([_this.state.email, _this.state.password]);
-      firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).then(function (user) {
-        var uid = firebase.auth().currentUser.uid;
-        console.log(uid); //important, exclusive Uid that will be used to identify user
-
-        /*
-        fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify(uid),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-        })
-            .then(function (data) {
-            */
-
-        sessionStorage.setItem('authenticated', 'true');
-        sessionStorage.setItem('UID', uid);
-        currentComponent.getName();
-        currentComponent.setState({
-          authenticated: sessionStorage.getItem('authenticated')
-        });
-        setTimeout(function () {
-          window.location.href = '#/profile/';
-          window.location.reload();
-        }, 20);
-        console.log('Request succeeded with JSON response', data);
-        /*
-        })
-        .catch(function (error) {
-        console.log('Request failed', error);
-        });
-        */
-      })["catch"](function (error) {
-        // Handle Errors here.
-        if (error.code === 400) {
-          console.log("either email or password is incorrect");
-        } //console.log("dr yeet");
-        //var errorCode = error.code;
-        ///var errorMessage = error.message;
-        //return;
-        // ...
-
-      });
-      console.log("from login");
-      console.log(currentComponent.state.authenticated);
-    };
-
-    _this.state = {
-      name: '',
-      organization: '',
-      email: '',
-      password: '',
-      passwordConfirm: '',
-      passwordStrength: 'd-none',
-      passwordMatch: "d-none",
-      errors: {}
-    };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleChangePasswordStrength = _this.handleChangePasswordStrength.bind(_assertThisInitialized(_this));
-    _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-  /**
-   *
-   * @param e
-   *
-   * Crucial function, allows for forms (textboxes) all over the page
-   * to allow for data to be entered into them
-   */
-
-
-  _createClass(SignUpForm, [{
-    key: "handleChange",
-    value: function handleChange(e) {
-      this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
-  }, {
-    key: "handleChangePasswordStrength",
-
-    /**
-     *
-     * @param e
-     * Checks if password entered obeys the requirement set by
-     * the regex pattern strongRegex
-     */
-    value: function handleChangePasswordStrength(e) {
-      this.setState(_defineProperty({}, e.target.name, e.target.value));
-      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
-
-      if (!this.state.password.match(strongRegex)) {
-        this.setState({
-          passwordStrength: "d-flex"
-        });
-      } else {
-        this.setState({
-          passwordStrength: "d-none"
-        });
-      }
-    }
-    /**
-     *
-     * @param e
-     * Handles form submission, makes a call to firebase using the .createUserWithEmailAndPassword
-     * function, the parameters are taken from the state. The same data is posted to the register table
-     * using the /register RestAPI call
-     */
-
-  }, {
-    key: "render",
-
-    /**
-     *
-     * @returns {*}
-     * Card Form Group made using bootstrap Form, Card, and Button
-     * This is the register form which allows new users to create
-     * accounts, each Form has an ID and a Label to make identification
-     * easy
-     */
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Header, {
-        className: "d-flex justify-content-center login-btn-color-font"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
-        className: "fas fa-user-plus icon-transform"
-      }), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        id: "registerForm"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["FormGroup"], {
-        role: "form"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        required: true,
-        name: "email",
-        type: "text",
-        placeholder: "Username",
-        className: "mr-sm-2",
-        onChange: this.handleChange,
-        value: this.state.email
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, null, "Password"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
-        required: true,
-        name: "password",
-        type: "password",
-        placeholder: "Password",
-        className: "mr-sm-2",
-        onChange: this.handleChange,
-        value: this.state.password
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Button"], {
-        variant: "primary",
-        type: "submit",
-        onClick: this.handleLoginRequest
-      }, "Login")))));
     }
   }]);
 
@@ -99408,223 +99034,6 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/LoginComponent.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/LoginComponent.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoginComponent; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Authentication_Register__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Authentication/Register */ "./resources/js/components/Authentication/Register.js");
-/* harmony import */ var _Authentication_SignIn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Authentication/SignIn */ "./resources/js/components/Authentication/SignIn.js");
-/* harmony import */ var _sass_test_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../sass/test.css */ "./resources/sass/test.css");
-/* harmony import */ var _sass_test_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sass_test_css__WEBPACK_IMPORTED_MODULE_4__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var width = '22rem';
-var element = document.getElementById("signup");
-/**
- * Home page users see before they login, Introduction to the service including an explanation of
- * some key concepts (maybe)
- */
-
-var LoginComponent =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(LoginComponent, _React$Component);
-
-  function LoginComponent() {
-    _classCallCheck(this, LoginComponent);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(LoginComponent).apply(this, arguments));
-  }
-
-  _createClass(LoginComponent, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-        className: "mt-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Jumbotron"], null, "hllohsfjkahfasjhfjkhaksdfhjksdjfkhjkdshjkfhkjsdhfkjdshfkjds")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_Register__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Jumbotron"], null, "hllohsfjkahfasjhfjkhaksdfhjksdjfkhjkdshjkfhkjsdhfkjdshfkjds")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_SignIn__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
-    }
-  }]);
-
-  return LoginComponent;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/NavComponents/SideNavigation.js":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/NavComponents/SideNavigation.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SideNavigation; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var _material_ui_core_SwipeableDrawer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/SwipeableDrawer */ "./node_modules/@material-ui/core/esm/SwipeableDrawer/index.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
-/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/List */ "./node_modules/@material-ui/core/esm/List/index.js");
-/* harmony import */ var _material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Divider */ "./node_modules/@material-ui/core/esm/Divider/index.js");
-/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/ListItem */ "./node_modules/@material-ui/core/esm/ListItem/index.js");
-/* harmony import */ var _material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/ListItemIcon */ "./node_modules/@material-ui/core/esm/ListItemIcon/index.js");
-/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/ListItemText */ "./node_modules/@material-ui/core/esm/ListItemText/index.js");
-/* harmony import */ var _material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/icons/MoveToInbox */ "./node_modules/@material-ui/icons/MoveToInbox.js");
-/* harmony import */ var _material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/Mail */ "./node_modules/@material-ui/icons/Mail.js");
-/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _material_ui_icons_List__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/icons/List */ "./node_modules/@material-ui/icons/List.js");
-/* harmony import */ var _material_ui_icons_List__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_List__WEBPACK_IMPORTED_MODULE_11__);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])({
-  list: {
-    width: 250
-  },
-  fullList: {
-    width: 'auto'
-  }
-});
-function SideNavigation() {
-  var classes = useStyles();
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
-    left: false
-  }),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      state = _React$useState2[0],
-      setState = _React$useState2[1];
-
-  var toggleDrawer = function toggleDrawer(side, open) {
-    return function (event) {
-      if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-      }
-
-      setState(_objectSpread({}, state, _defineProperty({}, side, open)));
-    };
-  };
-
-  var sideList = function sideList(side) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: classes.list,
-      role: "presentation",
-      onClick: toggleDrawer(side, false),
-      onKeyDown: toggleDrawer(side, false)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_4__["default"], null, ['Inbox', 'Starred', 'Send email', 'Drafts'].map(function (text, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        button: true,
-        key: text
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_7__["default"], null, index % 2 === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9___default.a, null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        primary: text
-      }));
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_4__["default"], null, ['All mail', 'Trash', 'Spam'].map(function (text, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        button: true,
-        key: text
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_7__["default"], null, index % 2 === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9___default.a, null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        primary: text
-      }));
-    })));
-  };
-
-  var fullList = function fullList(side) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: classes.fullList,
-      role: "presentation",
-      onClick: toggleDrawer(side, false),
-      onKeyDown: toggleDrawer(side, false)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_4__["default"], null, ['Inbox', 'Starred', 'Send email', 'Drafts'].map(function (text, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        button: true,
-        key: text
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_7__["default"], null, index % 2 === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9___default.a, null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        primary: text
-      }));
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_4__["default"], null, ['All mail', 'Trash', 'Spam'].map(function (text, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        button: true,
-        key: text
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_7__["default"], null, index % 2 === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoveToInbox__WEBPACK_IMPORTED_MODULE_9___default.a, null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        primary: text
-      }));
-    })));
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onClick: toggleDrawer('left', true)
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_List__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_SwipeableDrawer__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    open: state.left,
-    onClose: toggleDrawer('left', false),
-    onOpen: toggleDrawer('left', true)
-  }, sideList('left')));
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/Navigation.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/Navigation.js ***!
@@ -99638,12 +99047,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _NavComponents_SideNavigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavComponents/SideNavigation */ "./resources/js/components/NavComponents/SideNavigation.js");
-/* harmony import */ var _sass_navstyle_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../sass/navstyle.css */ "./resources/sass/navstyle.css");
-/* harmony import */ var _sass_navstyle_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_sass_navstyle_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Avatar */ "./node_modules/@material-ui/core/esm/Avatar/index.js");
+/* harmony import */ var _sass_navstyle_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../sass/navstyle.css */ "./resources/sass/navstyle.css");
+/* harmony import */ var _sass_navstyle_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_sass_navstyle_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/colors */ "./node_modules/@material-ui/core/esm/colors/index.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Avatar */ "./node_modules/@material-ui/core/esm/Avatar/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -99663,6 +99073,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -99705,38 +99116,28 @@ function (_React$Component) {
         var uid = firebase.auth().currentUser.uid;
         console.log(uid); //important, exclusive Uid that will be used to identify user
 
-        /*
         fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify(uid),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-        })
-            .then(function (data) {
-            */
-
-        sessionStorage.setItem('authenticated', 'true');
-        sessionStorage.setItem('UID', uid);
-        currentComponent.getName();
-        currentComponent.setState({
-          authenticated: sessionStorage.getItem('authenticated')
+          method: 'POST',
+          body: JSON.stringify(uid),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            "Content-type": "application/json"
+          }
+        }).then(function (data) {
+          sessionStorage.setItem('authenticated', 'true');
+          sessionStorage.setItem('UID', uid);
+          currentComponent.getName();
+          currentComponent.setState({
+            authenticated: sessionStorage.getItem('authenticated')
+          });
+          setTimeout(function () {
+            window.location.href = '#/profile/';
+            window.location.reload();
+          }, 20);
+          console.log('Request succeeded with JSON response', data);
+        })["catch"](function (error) {
+          console.log('Request failed', error);
         });
-        /**
-         setTimeout(function () {
-                    window.location.href = '#/profile/';
-                    window.location.reload();
-                }, 20)
-         console.log('Request succeeded with JSON response', data);
-         */
-
-        /*
-        })
-        .catch(function (error) {
-        console.log('Request failed', error);
-        });
-        */
       })["catch"](function (error) {
         // Handle Errors here.
         if (error.code === 400) {
@@ -99771,7 +99172,7 @@ function (_React$Component) {
 
     _this.getName = function () {
       var id = sessionStorage.getItem('UID');
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/name/' + id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/name/' + id).then(function (response) {
         console.log(response.data);
         sessionStorage.setItem('name', response.data);
 
@@ -99788,7 +99189,7 @@ function (_React$Component) {
       password: '',
       authenticated: sessionStorage.getItem('authenticated'),
       redirect: false,
-      name: _this.getName(),
+      name: sessionStorage.getItem('name'),
       isLoading: true
     };
     console.log(sessionStorage.getItem('authenticated'));
@@ -99854,7 +99255,7 @@ function (_React$Component) {
           variant: "light",
           expand: "lg",
           className: "navigation"
-        }, this.state.authenticated === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavComponents_SideNavigation__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
           href: "#home"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + "/img/cadet_logo.svg",
@@ -99878,7 +99279,7 @@ function (_React$Component) {
           onClick: "document.getElementById('signup').scrollIntoView();"
         }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
           href: "#/data"
-        }, "Contact Us")), sessionStorage.getItem('authenticated') != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        }, "Contact Us")), this.state.authenticated != 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
           inline: true
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           className: "mr-sm-2"
@@ -99908,7 +99309,7 @@ function (_React$Component) {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
           className: "justify-content-end",
           inline: true
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_5__["default"], null, this.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_6__["default"], null, this.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
           id: "collasible-nav-dropdown"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
           href: "#/Contact"
@@ -99957,8 +99358,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DataComponents_ContactInformationData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DataComponents/ContactInformationData */ "./resources/js/components/DataComponents/ContactInformationData.js");
 /* harmony import */ var _Authentication_NoMatch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Authentication/NoMatch */ "./resources/js/components/Authentication/NoMatch.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _LoginComponent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./LoginComponent */ "./resources/js/components/LoginComponent.js");
-/* harmony import */ var _Authentication_SignIn__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Authentication/SignIn */ "./resources/js/components/Authentication/SignIn.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -99997,8 +99396,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -100022,14 +99419,14 @@ function (_React$Component) {
     value: function render() {
       return (
         /*full routing found here*/
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, !sessionStorage.getItem('authenticated') || sessionStorage.getItem('authenticated') === 'false' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginComponent__WEBPACK_IMPORTED_MODULE_12__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
           path: "/home",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
-          path: "/login",
-          component: _LoginComponent__WEBPACK_IMPORTED_MODULE_12__["default"]
+          path: "/",
+          component: _Dashboard__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/data",

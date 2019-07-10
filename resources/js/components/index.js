@@ -10,8 +10,6 @@ import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import NoMatch from "./Authentication/NoMatch";
 import Dashboard from "./Dashboard";
-import Login from "./LoginComponent";
-import SignIn from "./Authentication/SignIn";
 
 
 
@@ -43,22 +41,14 @@ export default class App extends React.Component {
 
 
 
-                {
-                    !sessionStorage.getItem('authenticated' )
-                ||
-                sessionStorage.getItem('authenticated') === 'false' ?
-                        <Login />
-                :
-
-                        <Navbar />
-                    }
+                <Navbar />
 
                 <Switch>
 
 
                     {/*<Home exact path="/" component={Dashboard}/>*/}
                     <BlockRoute exact path="/home" component={Dashboard}/>
-                    <BlockRoute exact path="/login" component={Login}/>
+                    <BlockRoute exact path="/" component={Dashboard}/>
                     <Route exact path="/data" component={EnergyTableData}/>
                     <Route exact path="/route" component={Example}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
