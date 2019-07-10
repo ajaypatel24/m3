@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Form, FormControl, Nav, Navbar, NavDropdown} from 'react-bootstrap';
-
+import LoggedIn from "./LoggedIn";
 import '../../sass/navstyle.css'
 import axios from "axios";
 
@@ -259,6 +259,7 @@ export default class Navigation extends React.Component {
 
         return (
 
+
             <Navbar bg="light" variant="light" /*sticky="top"*/ className="navigation">
                 <Navbar.Brand href="#home">
                     <img
@@ -276,6 +277,7 @@ export default class Navigation extends React.Component {
                     <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
                     <Nav.Link href="#/predata">Contact Us</Nav.Link>
                 </Nav>
+
 
                 {this.state.authenticated != 'true' ?
                     <Form inline>
@@ -302,7 +304,9 @@ export default class Navigation extends React.Component {
 
                     :
 
+
                     <Navbar.Collapse className="justify-content-end" inline>
+                        <LoggedIn />
                         <Navbar.Text>
                             <NavDropdown title={this.state.name} id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
@@ -313,6 +317,7 @@ export default class Navigation extends React.Component {
                             </NavDropdown>
                         </Navbar.Text>
                     </Navbar.Collapse>
+
 
                 }
             </Navbar>

@@ -18,7 +18,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -143,7 +142,7 @@ export default function PersistentDrawerLeft() {
                     <Link to="/DynamicTable">
                         <ListItem button key="Hello">
                             <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="Boi" />
+                            <ListItemText primary="SideTest" />
                         </ListItem>
                     </Link>
 
@@ -154,7 +153,7 @@ export default function PersistentDrawerLeft() {
                     <Link to="/ContactInfo">
                         <ListItem button key="Hello">
                             <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="Boi" />
+                            <ListItemText primary="SideTest" />
                         </ListItem>
                     </Link>
 
@@ -165,7 +164,7 @@ export default function PersistentDrawerLeft() {
                     <Link to="/EnergyTable">
                         <ListItem button key="Hello">
                             <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="Boi" />
+                            <ListItemText primary="SideTest" />
                         </ListItem>
                     </Link>
 
@@ -176,7 +175,7 @@ export default function PersistentDrawerLeft() {
                     <Link to="/Transport">
                         <ListItem button key="Hello">
                             <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="Boi" />
+                            <ListItemText primary="SideTest" />
                         </ListItem>
                     </Link>
 
