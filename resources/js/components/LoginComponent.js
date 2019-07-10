@@ -45,6 +45,72 @@ export default class LoginComponent extends React.Component {
         });
     };
 
+    st = () => {
+
+
+        let currentComponent = this
+
+
+        console.table([
+            this.state.email,
+            this.state.password
+        ]);
+
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(function (user) {
+
+
+                let uid = firebase.auth().currentUser.uid;
+
+                console.log(uid); //important, exclusive Uid that will be used to identify user
+
+
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+
+                        localStorage.setItem('authenticated', 'true');
+                        localStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
+
+                        setTimeout(function () {
+                            window.location.href = '#/profile/';
+                            window.location.reload();
+                        }, 20)
+                        console.log('Request succeeded with JSON response', data);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
+            }).catch(function (error) {
+            // Handle Errors here.
+            if (error.code === 400) {
+                console.log("either email or password is incorrect");
+            }
+            //console.log("dr yeet");
+            //var errorCode = error.code;
+            ///var errorMessage = error.message;
+            //return;
+            // ...
+        });
+
+
+        console.log("from login");
+        console.log(currentComponent.state.authenticated);
+
+
+    };
+
     handleLoginRequest(e) {
 
         e.preventDefault;
@@ -77,6 +143,32 @@ export default class LoginComponent extends React.Component {
                 console.log('this happens2');
                 sessionStorage.setItem('UID', uid);
                 console.log('this happens3');
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+
+                        localStorage.setItem('authenticated', 'true');
+                        localStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
+
+                        setTimeout(function () {
+                            window.location.href = '#/profile/';
+                            window.location.reload();
+                        }, 20)
+                        console.log('Request succeeded with JSON response', data);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
 
 
 
@@ -151,7 +243,7 @@ export default class LoginComponent extends React.Component {
                         <Card>
                             <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
                             <Card.Body>
-                                <form method="post">
+                                <Form method="POST" action="/login">
                                     { this.state.LoginOrSignup ?
                                     <Form.Group>
                                         <Form.Label className="mr-sm-2">Sign In</Form.Label>
@@ -185,7 +277,7 @@ export default class LoginComponent extends React.Component {
                                         <SignUpForm />
 
                                         }
-                                </form>
+                                </Form>
 
                                 <Button onClick={this.handleSwitch}>Switch</Button>
                             </Card.Body>

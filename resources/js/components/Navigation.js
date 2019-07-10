@@ -66,7 +66,7 @@ export default class Navigation extends React.Component {
      * to access their data on the website
      */
 
-    /*
+
     handleLoginRequest = () => {
 
 
@@ -141,7 +141,7 @@ export default class Navigation extends React.Component {
 
     };
 
-*/
+
 
     /**
      * testing submit on clicking enter
@@ -255,7 +255,7 @@ export default class Navigation extends React.Component {
                      if authenticated === false */}
 
 
-                    {/*
+
                     {sessionStorage.getItem('authenticated') != 'true' ?
                         <Form inline>
                             <br/>

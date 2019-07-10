@@ -7,7 +7,7 @@ import axios from 'axios/index';
  * Energy table with conditional rendering allowing users
  * to add their energy expenditures to the database
  */
-export class EnergyTable extends React.Component {
+export default class EnergyTable extends React.Component {
 
 
     constructor(props) {

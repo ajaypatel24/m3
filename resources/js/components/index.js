@@ -5,19 +5,16 @@ import Example from "./Deprecated/Example";
 import Navbar from "./Navigation";
 import PrestartQuestion from "./FormComponents/PrestartQuestion";
 import EnergyTableData from "./DataComponents/EnergyTableData";
-import LandingPage from "./LandingPage";
 import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import NoMatch from "./Authentication/NoMatch";
 import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
-import SignIn from "./Authentication/SignIn";
 
-
-
-
-import AboutUs from "./Authentication/Loading";
-
+import EnergyTable from "./FormComponents/EnergyTable"
+import IntrantForm from "./FormComponents/IntrantForm"
+import TransportForm from "./FormComponents/TransportForm"
+import ContactInformationForm from "./FormComponents/ContactInformationForm"
 
 
 export default class App extends React.Component {
@@ -25,8 +22,6 @@ export default class App extends React.Component {
         super(props);
 
     }
-
-
 
 
     /**
@@ -44,38 +39,29 @@ export default class App extends React.Component {
             <HashRouter>
 
 
+                <Navbar/>
 
-
-
-                {
-                    !q
-                ||
-                q === 'false' ?
-                        <Login />
-                :
-
-                        <Navbar />
-                    }
 
                 <Switch>
 
 
-                    {/*<Home exact path="/" component={Dashboard}/>*/}
-
+                    <BlockRoute exact path="/" component={Dashboard}/>
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
                     <Route exact path="/route" component={Example}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
-                    <PrivateRoute exact path="/profile" component={LandingPage}/>
+                    <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
+                    <PrivateRoute exact path="/intrant" component={IntrantForm}/>
+                    <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
+                    <PrivateRoute exact path="/transport" component={TransportForm}/>
 
 
                     <Route exact path="/loading" component={Loading}/>
                     <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
-
-
-
                     <Route component={NoMatch}/>
+
+
                 </Switch>
 
                 {/* <Footer2/> */}
@@ -99,7 +85,7 @@ export default class App extends React.Component {
  * sessionStorage parameter authenticated
  */
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
+export const PrivateRoute = ({component: Component, ...rest}) => {
     return (
         <Route
             {...rest}
@@ -110,7 +96,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
                     <Redirect
                         to={{
                             pathname: "/",
-                            state: { from: props.location }
+                            state: {from: props.location}
                         }}
                     />
                 )
@@ -119,7 +105,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     );
 }
 
-export const Home = ({ component: Component, ...rest }) => {
+export const Home = ({component: Component, ...rest}) => {
     return (
         <Route
             {...rest}
@@ -159,7 +145,7 @@ export const BlockRoute = ({component: Component, ...rest}) => {
                     <Redirect
                         to={{
                             pathname: "/profile",
-                            state: { from: props.location }
+                            state: {from: props.location}
                         }}
                     />
                 )
@@ -169,12 +155,9 @@ export const BlockRoute = ({component: Component, ...rest}) => {
 };
 
 
-
 /**
  *
  */
-
-
 
 
 if (document.getElementById('root')) {

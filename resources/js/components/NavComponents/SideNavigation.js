@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
@@ -42,22 +43,52 @@ export default function SideNavigation() {
             onKeyDown={toggleDrawer(side, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+                <Link to="/profile">
+                    <ListItem button key="Home">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Home" />
                     </ListItem>
-                ))}
+                </Link>
+
+                <Link to="/prestart_questions">
+                    <ListItem button key="Prestart Questions">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Prestart Questions" />
+                    </ListItem>
+                </Link>
+
+                <Link to="/EnergyTable">
+                    <ListItem button key="Energy Table">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Energy Table" />
+                    </ListItem>
+                </Link>
+
+                <Link to="/intrant">
+                    <ListItem button key="Intrants">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Intrants" />
+                    </ListItem>
+                </Link>
+
+                <Link to="/transport">
+                    <ListItem button key="Transportation">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Transportation" />
+                    </ListItem>
+                </Link>
+
+
             </List>
+
+
             <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
+            <Link to="/contactinfo">
+                <ListItem button key="Contact Information">
+                    <ListItemIcon><MailIcon /></ListItemIcon>
+                    <ListItemText primary="Contact Information" />
+                </ListItem>
+            </Link>
         </div>
     );
 
