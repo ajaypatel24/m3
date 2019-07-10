@@ -1,51 +1,73 @@
 import React from 'react';
-import {Col, Container, Jumbotron, Row, Button, Card, Form} from 'react-bootstrap';
-import SignUpForm from './Authentication/Register';
-import SignIn from './Authentication/SignIn';
+import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col} from 'react-bootstrap';
+import SideNavigation from './NavComponents/SideNavigation';
 
 
-import '../../sass/test.css'
-import Person from "@material-ui/core/SvgIcon/SvgIcon";
+import '../../sass/navstyle.css'
+import axios from "axios";
+import Avatar from '@material-ui/core/Avatar';
 
-const width = '22rem';
-
-let element = document.getElementById("signup");
+const CityRegex = new RegExp("^[a-zA-Z]+$"); //
+const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
+const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
 /**
- * Home page users see before they login, Introduction to the service including an explanation of
- * some key concepts (maybe)
+ * Main navbar placed at top of page, conditional rendering
+ * has clickable name to log in and out
+ *
  */
-
-
-
 export default class LoginComponent extends React.Component {
-    constructor(props) {
-        super(props);
+
+
+    constructor(props, context) {
+        super(props, context);
 
         this.state = {
-
-            LoginOrSignup: true,
+            showLogin: false,
+            loggedIn: false,
             email: '',
             password: '',
-
+            authenticated: sessionStorage.getItem('authenticated'),
+            redirect: false,
+            name: this.getName(),
+            isLoading: true,
         };
 
 
-            this.handleSwitch = this.handleSwitch.bind(this);
-            this.handleChange = this.handleChange.bind(this);
-            this.handleLoginRequest = this.handleLoginRequest.bind(this);
+        console.log(sessionStorage.getItem('authenticated'));
+
+        this.handleChange = this.handleChange.bind(this);
+        //this.handleLoginRequest = this.handleLoginRequest.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
 
+    /**
+     * test method to see who is logged in
+     * @constructor
+     */
+    VerifyUser = () => {
 
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    };
 
-    st = () => {
+        console.table([
+            (sessionStorage.getItem('authenticated')),
+            (sessionStorage.getItem('UID')),
+            (this.state.authenticated)]
+        )
+
+
+    }
+
+
+    /**
+     * handles login request using firebase to check credentials, if firebase
+     * approves of the login, then a UID is assigned which allows the user
+     * to access their data on the website
+     */
+
+
+    handleLoginRequest = () => {
 
 
         let currentComponent = this
@@ -66,6 +88,7 @@ export default class LoginComponent extends React.Component {
                 console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
+
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -76,10 +99,14 @@ export default class LoginComponent extends React.Component {
                 })
                     .then(function (data) {
 
-                        localStorage.setItem('authenticated', 'true');
-                        localStorage.setItem('UID', uid);
+
+
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
                         currentComponent.getName();
-                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+
 
                         setTimeout(function () {
                             window.location.href = '#/profile/';
@@ -88,10 +115,13 @@ export default class LoginComponent extends React.Component {
                         console.log('Request succeeded with JSON response', data);
 
 
+
                     })
                     .catch(function (error) {
                         console.log('Request failed', error);
                     });
+
+
             }).catch(function (error) {
             // Handle Errors here.
             if (error.code === 400) {
@@ -111,193 +141,147 @@ export default class LoginComponent extends React.Component {
 
     };
 
-    handleLoginRequest(e) {
 
-        e.preventDefault;
+
+    /**
+     * testing submit on clicking enter
+     * @param e
+     */
+    handleKeyPress(e) {
         let currentComponent = this
+        if (e.key === 'Enter') {
+            console.log('test');
+            currentComponent.handleLoginRequest;
+        }
+
+    }
 
 
-        console.table([
-            this.state.email,
-            this.state.password
-        ]);
-
-
-
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-
-
-            .then(function (user) {
-
-
-                let uid = firebase.auth().currentUser.uid;
-
-
-
-                console.log("eyyo");
-                console.log(uid); //important, exclusive Uid that will be used to identify user
-                console.log(user.data);
-
-                console.log('this happens');
-                sessionStorage.setItem('authenticated', 'true');
-                console.log('this happens2');
-                sessionStorage.setItem('UID', uid);
-                console.log('this happens3');
-                fetch('/login', {
-                    method: 'POST',
-                    body: JSON.stringify(uid),
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Content-type": "application/json"
-                    }
-                })
-                    .then(function (data) {
-
-                        localStorage.setItem('authenticated', 'true');
-                        localStorage.setItem('UID', uid);
-                        currentComponent.getName();
-                        currentComponent.setState({authenticated: localStorage.getItem('authenticated')});
-
-                        setTimeout(function () {
-                            window.location.href = '#/profile/';
-                            window.location.reload();
-                        }, 20)
-                        console.log('Request succeeded with JSON response', data);
-
-
-                    })
-                    .catch(function (error) {
-                        console.log('Request failed', error);
-                    });
-
-
-
-
-
-                /*
-                    setTimeout(function () {
-                        window.location.href = '#/profile/';
-                        window.location.reload();
-                    }.bind(this), 40)
-
-                 */
-
-                console.log('this happens4');
-
-                //currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-
-                console.log('Request succeeded with JSON response', data);
-
-                console.log('Request succeeded with JSON response', user);
-
-                console.log(sessionStorage.getItem('authenticated'));
-
-
-
-
-
-
-            }).catch(function (error) {
-            // Handle Errors here.
-            if (error.code === 400) {
-                console.log("either email or password is incorrect");
-            }
-            //console.log("dr yeet");
-            //var errorCode = error.code;
-            ///var errorMessage = error.message;
-            //return;
-            // ...
+    /**
+     * handles logout request with firebase, on logout
+     * the session is terminated and use can no longer
+     * access their account or any other account as they
+     * are redirected to the home page
+     */
+    handleLogout = () => {
+        firebase.auth().signOut().then(function () {
+            console.log(firebase.auth().currentUser);
         });
 
+        console.log(this.state.authenticated);
+        window.location.href = '#/';
+        sessionStorage.removeItem('authenticated');
+        sessionStorage.removeItem('UID');
+        sessionStorage.removeItem('name');
+        this.setState({authenticated: false});
+        window.location.reload();
 
-        console.log('from login');
+    }
 
+
+    /** display name of person logged in */
+    getName = () => {
+
+        let id = sessionStorage.getItem('UID');
+        axios.get('/name/' + id)
+            .then(response => {
+                console.log(response.data);
+                sessionStorage.setItem('name', response.data);
+                this.setState({name: response.data});
+            });
+
+    }
+
+
+    /**
+     * allows writing to forms
+     * @param e
+     */
+    handleChange(e) {
+
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+
+        console.log("Name: ", e.target.name);
+        console.log("Value: ", e.target.value);
     };
 
-
-    handleSwitch = () => {
-        this.setState({LoginOrSignup: !this.state.LoginOrSignup})
-        console.log(this.state.Delete);
-    }
+    ;
 
 
-
+    /**
+     * Navbar is located here, conditionally rendered based
+     * on if the user is logged in or not
+     *
+     * @returns {*}
+     */
     render() {
+
+
         return (
-            <Container className="mt-4">
+
+            /** Begin Navbar */
 
 
-                <Row>
-                    <Col lg="8">
-                        <img
-                            src={window.location.origin + "/img/IE_logo.svg"}
-                            width="700"
-                            height="500"
-                            className="d-inline-block align-top"
-                            alt="EcoSystemIE Logo"
-                        />
-                    </Col>
-                    <Col lg="4">
+            <Row>
 
-                        <Card>
-                            <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
-                            <Card.Body>
-                                <Form method="POST" action="/login">
-                                    { this.state.LoginOrSignup ?
-                                    <Form.Group>
-                                        <Form.Label className="mr-sm-2">Sign In</Form.Label>
+            <Col lg="4">
+            <Card>
+                        <Form>
+                            <br/>
+                            <br/>
 
-                                        <Form.Group>
-                                            <Form.Control
-                                                required
-                                                name="email"
-                                                type="text"
-                                                placeholder="Username"
-                                                className="mr-sm-2"
-                                                onChange={this.handleChange}
-                                                value={this.state.email}
-                                                onKeyPress={this.handleKeyPress}/>
-                                        </Form.Group>
-                                        <Form.Group>
+                            <Form.Label className="mr-sm-2">Sign In</Form.Label>
 
-                                            <Form.Control
-                                                required
-                                                name="password"
-                                                type="password"
-                                                placeholder="Password"
-                                                className="mr-sm-2"
-                                                onChange={this.handleChange}
-                                                value={this.state.password}
-                                                onKeyPress={this.handleKeyPress}/>
-                                        </Form.Group>
-                                        <Button variant="outline-info" type="submit" onClick={this.handleLoginRequest}>Login</Button>
-                                    </Form.Group>
-                                        :
-                                        <SignUpForm />
+                            <Form.Control
+                                required
+                                name="email"
+                                type="text"
+                                placeholder="Username"
+                                className="mr-sm-2"
+                                onChange={this.handleChange}
+                                value={this.state.email}
+                                onKeyPress={this.handleKeyPress}/>
 
-                                        }
-                                </Form>
+                            <Form.Control
+                                required
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                className="mr-sm-2"
+                                onChange={this.handleChange}
+                                value={this.state.password}
+                                onKeyPress={this.handleKeyPress}/>
 
-                                <Button onClick={this.handleSwitch}>Switch</Button>
-                            </Card.Body>
-                        </Card>
+                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+
+                        </Form>
+
+
+            </Card>
+            </Col>
+                <Col lg="8">
+                    <img
+                        src={window.location.origin + "/img/IE_logo.svg"}
+                        width="65"
+                        height="65"
+                        className="d-inline-block align-top"
+                        alt="Cadet Logo"
+                    />
+
+                </Col>
+
+            </Row>
 
 
 
 
-                    </Col>
 
-
-
-                </Row>
-
-
-
-
-            </Container>
         );
+
     }
 }
+
 
 

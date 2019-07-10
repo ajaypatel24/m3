@@ -39,13 +39,19 @@ export default class App extends React.Component {
             <HashRouter>
 
 
-                <Navbar/>
+                {q ?
 
+                    <Navbar/>
+
+                    :
+
+                    <Login/>
+                }
 
                 <Switch>
 
 
-                    <BlockRoute exact path="/" component={Dashboard}/>
+
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
