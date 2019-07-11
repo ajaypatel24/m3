@@ -1,10 +1,20 @@
 import React from 'react';
-import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem  } from 'react-bootstrap';
-import SignUpForm from './Register';
+import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem, Image  } from 'react-bootstrap';
+import SignUpForm from './Authentication/Register';
 import '../../sass/test.css'
 
 const width = '22rem';
 
+<<<<<<< HEAD
+=======
+let element = document.getElementById("signup");
+
+
+/**
+ * Home page users see before they login, Introduction to the service including an explanation of
+ * some key concepts (maybe)
+ */
+>>>>>>> master
 export default class Dashboard extends React.Component {
 
     render() {
@@ -26,6 +36,10 @@ export default class Dashboard extends React.Component {
                             </Col>
 
                             <Col lg="8">
+                                {
+                                    /** Image can be replaced with anything suitable
+                                banner that spans page is the best option */
+                                }
                                 <img
                                     src={window.location.origin + "/img/1.jpg"}
                                     width="100%"
@@ -41,6 +55,9 @@ export default class Dashboard extends React.Component {
 
                 </Row>
 
+                {/**
+                 * breakpoints for spacing to ensure elements are not too close together
+                 */}
                 <Row>
                     <br/>
                     <br/>
@@ -49,55 +66,15 @@ export default class Dashboard extends React.Component {
                     <br/>
                 </Row>
 
-                {/*
-                <Row id="Circulaire">
-                    <Carousel className="hello">
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={window.location.origin + "/img/pie.png"}
-                                alt="First slide"
-                                width="100"
-                                height="100"
-                            />
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={window.location.origin + "/img/pie.png"}
-                                alt="Third slide"
-                                width="100"
-                                height="100"
-                            />
 
-                            <Carousel.Caption>
-                                <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={window.location.origin + "/img/pie.png"}
-                                alt="Third slide"
-                                width="100"
-                                height="100"
-                            />
 
-                            <Carousel.Caption>
-                                <h3>Third slide label</h3>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
-                </Row>
-                */}
+                {/** Section to explain the concept of economie circulaire,
+                     include graphs or diagrams to complement the text
 
+
+                 */}
                 <Row>
+
                     <Col lg="6">
                     <h1 className="WebsiteHeader">Economie Circulaire</h1>
                     <p>m Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -110,10 +87,44 @@ export default class Dashboard extends React.Component {
                 <Row>
                     <br/>
                     <br/>
-
                 </Row>
 
+
+
+
+                {/** Graphs that go with economie circulaire, uses bootstrap Card
+                 * and ListGroupItem to create small image + text cards which
+                 * convey information in a modern way
+                 *
+                 *
+
+
+
+                 */}
                 <Row>
+
+                    {/**
+                     General Form to add Cards
+
+                     <Col>
+                        <Card>
+                        <Card.Img />
+                        <Card.Body>
+                            <Card.Title>Title</Card.Title>
+                            <Card.Text>text</Card.Text>
+                        </Card.Body>
+                        <ListGroup>
+                            <ListGroupItem>Item</ListGroupItem>
+                        </ListGroup>
+                        <Card.Body>
+                            <Card.Link>Link</Card.Link>
+                            <Card.Link>Link</Card.Link>
+                        </Card.Body>
+                        </Card>
+                     </Col>
+                     */}
+
+
                     <Col lg="4">
                         <Card style={{width: width}}>
                             <Card.Img responsive variant="top" src={window.location.origin + "/img/pie.png"}/>
@@ -182,6 +193,9 @@ export default class Dashboard extends React.Component {
                     <br/>
                 </Row>
 
+                {/** Section with register block and some extra information,
+                   * might also be a good idea to make a seperate component
+                   * with just the registration form like other websites **/}
                 <Row id="Signup">
                     <Col lg="8">
                         <Jumbotron>
@@ -204,6 +218,9 @@ export default class Dashboard extends React.Component {
 
 
                     </Col>
+                    {/**
+                     Registration component
+                     */}
                     <Col lg="4">
                         <SignUpForm/>
                     </Col>

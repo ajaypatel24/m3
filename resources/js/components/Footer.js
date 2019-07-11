@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import {Footer} from 'react-materialize';
-import '../../../../sass/footer.css'
+import '../../sass/footer.css'
 
+/**
+ * Will be useful once its formatted and css is done properly
+ * save it
+ */
 
-export default class Footer2 extends Component{
+export default class Footer extends Component{
     render(){
         return (
             <footer className="footer section-wrapper">

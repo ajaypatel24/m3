@@ -1,0 +1,17 @@
+The files in this directory are simply
+a formal way to declare table variables
+to be able to access them within the controller
+methods. Additionally, new models can be created
+within controller methods and can be used to specify
+where data goes when handling requests
+
+To create models simply type
+
+php artisan make:model ModelName
+
+accompany this with a controller
+
+php artisan make:controller ControllerName
+
+these two files are used to query the database to get
+and post information

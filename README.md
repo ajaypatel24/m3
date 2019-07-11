@@ -1,50 +1,37 @@
-[![Build Status](https://travis-ci.org/your/repo.svg?branch=master)](https://travis-ci.org/your/repo)
-
 ## Resources React (Front End)
-
-This repository was made to deploy the app and will constantly be updated
-to reflect changes
 
 **Load changes to project automatically** : `npm run watch`
 
 **Load changes to project** : `npm run dev`
 
-* **Heroku** : https://dashboard.heroku.com/apps
+* **React Documentation** : https://reactjs.org/docs/getting-started.html 
+* **Lodash** : https://lodash.com/ => Simplify javascript with functions 
+* **React Router** : https://reacttraining.com/react-router/web/guides/quick-start => Routing for react
+* **Redux** : https://redux.js.org/ => State management tool
+* **React Formik** : https://github.com/jaredpalmer/formik => Form tool
+* **PropType** : https://reactjs.org/docs/typechecking-with-proptypes.html => Type checking for properties
+* **Prettier** : https://github.com/prettier/prettier => code formatter
+* **Firebase** : https://firebase.google.com/docs/auth/web/start => Authentication and database
+* **Moment** : https://momentjs.com/ => Time and date library
+* **Heroku** : https://id.heroku.com/login => Temporary deployment solution 
+* **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
 
-**Asynchronous Server-Side Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-https://developers.google.com/web/updates/2015/03/introduction-to-fetch <= Good resource
+**Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 **Testing** : Mocha (test runner), Chai (assertion), Enzyme (component tests) and Jest (snapshot tests)
 
-Error : class-property not supported
-https://babeljs.io/docs/en/babel-plugin-proposal-class-properties
-
-## Resources Laravel (Back End)
+## Resources Laravel (Front End)
 
 **Laravel and dependencies** (COMPOSER) : https://laravel.com/docs/5.8/installation
 
 **Running server** : `php artisan serve`
 
-## Resources MySQL (Database)
-
-**MySQL Doc**: https://dev.mysql.com/doc/
-
-**HeidiSQL**: https://www.heidisql.com/ (GUI MySQL management)
-
-**SQL tutorial**: https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about
-
-if your using PHPStorm, remember there is a tab to the right that allows to view databases with tables inside
-
-**Setuping server locally (no need for xampp, wamp, mamp, etc...)** :
+**Setuping server locally** :
 1. `composer install`
 2. `npm install`
 3. rename .env.example to .env (it's in the root)
 4. `php artisan key:generate`
-5. In .env set DB CONFIG settings to your database, user and name
-6. `php artisan migrate` (potentially run seeding command, if you have test data loaded, or predefined data)
-7. `php artisan server` && `npm run watch`
-
-=> Make sure .env is in .gitignore, otherwise your database info will be shared to github when you push
+5. `php artisan server` && `npm run watch`
 
 **Best tutorial** : https://laracasts.com/series/laravel-from-scratch-2018
 
@@ -53,52 +40,68 @@ if your using PHPStorm, remember there is a tab to the right that allows to view
 
 **Laravel helpful bookmarks** : https://github.com/chiraggude/awesome-laravel <=== tons of GREAT stuff 
 
-**Login Authentication Tutorial Used** : https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/
 
-If .env is not included :
+## Styling
+
+**Responsiveness**:
+CSS media query (applies certain props at certain width/height): https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+Inner.width property (JS) : can be used with conditional statement to render two different pages in react (pass it down as a prop from componenent to component, or use redux)
+Bootstrap: integrated with tons of reponsive features
+
+**Bootstrap React Doc** : https://react-bootstrap.github.io/
+
+### To run project locally, no need for local server (XAMPP, WAMP...).
+1. cd to project in two terminals
+2. first terminal run `php artisan serve`
+3. second terminal run `npm run watch` (if you want to make changes to the React Components)
+4. open address listed under php artisan server (usually http://127.0.0.1:8000/)
 
 
-    APP_NAME=Laravel
-    APP_ENV=local
-    APP_KEY=
-    APP_DEBUG=true
-    APP_URL=http://localhost
+**If .env is not included :**
 
-    LOG_CHANNEL=stack
+```
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
 
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=homestead
-    DB_USERNAME=homestead
-    DB_PASSWORD=secret
+LOG_CHANNEL=stack
 
-    BROADCAST_DRIVER=log
-    CACHE_DRIVER=file
-    QUEUE_CONNECTION=sync
-    SESSION_DRIVER=file
-    SESSION_LIFETIME=120
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
 
-    REDIS_HOST=127.0.0.1
-    REDIS_PASSWORD=null
-    REDIS_PORT=6379
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 
-    MAIL_DRIVER=smtp
-    MAIL_HOST=smtp.mailtrap.io
-    MAIL_PORT=2525
-    MAIL_USERNAME=null
-    MAIL_PASSWORD=null
-    MAIL_ENCRYPTION=null
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-    AWS_ACCESS_KEY_ID=
-    AWS_SECRET_ACCESS_KEY=
-    AWS_DEFAULT_REGION=us-east-1
-    AWS_BUCKET=
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
 
-    PUSHER_APP_ID=
-    PUSHER_APP_KEY=
-    PUSHER_APP_SECRET=
-    PUSHER_APP_CLUSTER=mt1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
 
-    MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-    MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```

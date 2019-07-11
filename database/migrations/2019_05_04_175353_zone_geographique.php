@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class ZoneGeographique extends Migration
 {
     /**
-     * Run the migrations.
+     * Zone Geographique table
      *
      * @return void
      */

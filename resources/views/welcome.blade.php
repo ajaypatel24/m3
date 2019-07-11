@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
     <title>M3</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
           integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href={{ URL::asset('css/index.css') }} rel="stylesheet">
+    <!-- link href={{ secure_asset(URL::asset('css/index.css')) }} rel="stylesheet" -->
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="animate.min.css">
+    <!-- link rel="stylesheet" href="animate.min.css" -->
 </head>
 <body>
 
@@ -45,7 +47,7 @@
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
 <script>
-    // Your web app's Firebase configuration
+    // Your web app's Firebase configuration - authentification avec Firebase de google
     var firebaseConfig = {
         apiKey: "AIzaSyAVYcWHS5zwPM1FEvZ23D0ZvvolAGWgM98",
         authDomain: "m3-cadet.firebaseapp.com",

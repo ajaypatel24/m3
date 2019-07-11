@@ -9,7 +9,12 @@ use App\TableInventaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
+/**
+ * Class InventaireController
+ * @package App\Http\Controllers
+ *
+ * Everything related to inventaire is handled in this controller
+ */
 class InventaireController extends Controller
 {
 
@@ -28,8 +33,16 @@ class InventaireController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return array
+     *
+     * returns an array of all the inventaire Data based on
+     * the UID provided in the method header
+     */
     function inventaireData($id) {
 
+        // all categories
         $category = [
             0 => "GazNaturel",
             1 => "Propane",
@@ -59,37 +72,62 @@ class InventaireController extends Controller
         ];
 
 
+        /*returns an array of every category with their values and unites associated
+         with a specified user */
         $g = array();
+        $values = array();
         foreach ($category as $cat) {
-            $TableData = DB::table('procede')
+            $g = DB::table('procede')
                 ->where('uid', $id)
                 ->where('Nom_procede', $cat)
                 ->get();
 
-
-            array_push($g,$TableData);
-
-
+            array_push($values, $g );
         }
 
 
-        return $g;
+
+
+
+
+            //attempt at returning only values that are pertinent to the user (non null)
+
+
+        $ArrayReturn = array();
+           foreach($values as $e) {
+               foreach ($e as $r) {
+                   if(!$r->Quantite_an == null) {
+                       array_push($ArrayReturn, $e);
+                   }
+               }
+           }
+
+
+
+
+        return $ArrayReturn;
+
 
     }
 
     function p() { //test method to see if data is retrieved from database
         $intrants = intrants::all()->toArray();
-
         return $intrants;
 
 
     }
 
 
+    /**
+     * @param $id
+     * add an intrant to the database based on user id
+     *
+     */
     function addIntrant($id) {
 
         $Intrant = new Intrant();
 
+        //returns exists if intrant with the same name
             if (DB::table('intrants')
             ->where('nom_intrant', '=', request('NomIntrant'))
             ->where('UID', '=', $id)
@@ -102,11 +140,12 @@ class InventaireController extends Controller
 
             else {
 
-                $Mod = request('Yearly');
+
+                $Mod = request('Yearly'); //per delivery or yearly
                 $Quantite = request('QuantiteAn');
                 $freq = request('Frequency');
 
-                if ($Mod == 'true') {
+                if ($Mod == 'true') { //per delivery specified
 
                     $Intrant->quantite_unitaire = $Quantite;
 
@@ -153,11 +192,12 @@ class InventaireController extends Controller
                     $Intrant->quantite_an = $Quantite;
                     $Intrant->frequence = request('Frequency');
                 }
-                else {
+                else { //yearly specified
                     $Intrant->quantite_an = request('QuantiteAn');
                 }
 
 
+                //adding rest of values to database
                 $Intrant->nom_intrant = request('NomIntrant');
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');
@@ -170,6 +210,14 @@ class InventaireController extends Controller
             }
     }
 
+
+    /**
+     * @param $id
+     * @return \Illuminate\Support\Collection
+     *
+     * function takes uid and returns list of users
+     * intrants stored
+     */
     function getIntrant($id) {
         $intrants = DB::table('intrants')
             ->where('UID', $id)
@@ -181,6 +229,14 @@ class InventaireController extends Controller
     }
 
 
+    /**
+     * @param $name
+     * @param $id
+     *
+     * deletes specific intrant from the database associated
+     * with a specific user ID
+     *
+     */
     function deleteIntrant($name, $id) {
         $intrants = DB::table('intrants');
 

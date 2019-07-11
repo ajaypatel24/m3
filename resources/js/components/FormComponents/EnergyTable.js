@@ -1,9 +1,13 @@
 import {Form, Table} from "react-bootstrap";
-import {DynamicTable} from "../home-components/DynamicTable";
-import React from "react";
-import axios from 'axios';
 
-export class TableIntrants extends React.Component {
+import React from "react";
+import axios from 'axios/index';
+
+/**
+ * Energy table with conditional rendering allowing users
+ * to add their energy expenditures to the database
+ */
+export default class EnergyTable extends React.Component {
 
 
     constructor(props) {
@@ -87,7 +91,7 @@ export class TableIntrants extends React.Component {
 
             SCIAN: "",
             UID: "",
-            TableSubmit: localStorage.getItem('TableSubmit'),
+            TableSubmit: sessionStorage.getItem('TableSubmit'),
 
 
         }
@@ -95,8 +99,8 @@ export class TableIntrants extends React.Component {
 
     }
 
-    componentDidMount() {
-        let uid = localStorage.getItem('UID');
+        componentDidMount() {
+        let uid = sessionStorage.getItem('UID');
         console.log(uid);
         axios.get('/scian/' + uid)
             .then(response => {
@@ -229,9 +233,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="CharbonUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>2.3</td>
                         <td>0</td>
@@ -241,18 +245,18 @@ export class TableIntrants extends React.Component {
                         <td>Coke</td>
                         <td>
                             <Form.Control
-                                name="Coke"
-                                placeholder="valeur"
-                                value={this.state.Coke}
-                                onChange={this.handleChange}>
-                            </Form.Control>
+                            name="Coke"
+                            placeholder="valeur"
+                            value={this.state.Coke}
+                            onChange={this.handleChange}>
+                        </Form.Control>
                         </td>
                         <td><Form.Control as="select" name="CokeUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>2.3</td>
                         <td>0</td>
@@ -269,9 +273,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="BoisUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>place</td>
                         <td>0</td>
@@ -290,9 +294,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="VapeurUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -311,9 +315,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="VinUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -331,9 +335,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="BiereUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -351,9 +355,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="HaloUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -370,9 +374,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="UsinageUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -390,9 +394,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SoudureUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -413,9 +417,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="BoisUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>place</td>
                         <td>0</td>
@@ -433,9 +437,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="n2osolUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -453,9 +457,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="n2oanimauxUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -473,9 +477,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="AutreMethaneUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -494,7 +498,7 @@ export class TableIntrants extends React.Component {
 
                 <Form
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
-                    <Table responsive striped bordered hover variant="dark">
+                    <Table responsive> {/**/}
                         <thead>
                         <tr>
                             <th colSpan="5">Energie</th>
@@ -521,9 +525,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="GazUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>2.3</td>
                             <td>0</td>
@@ -535,9 +539,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="PropaneUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.2</td>
                             <td>0</td>
@@ -549,9 +553,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="EssenceUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>0</td>
                             <td>0</td>
@@ -564,9 +568,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="GazoleUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>2.3</td>
                             <td>0</td>
@@ -579,9 +583,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="FioulUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.2</td>
                             <td>0</td>
@@ -593,9 +597,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="MazoutUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>0</td>
                             <td>0</td>
@@ -618,9 +622,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="BiodieselUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.2</td>
                             <td>0</td>
@@ -640,9 +644,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="FossileUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>2.3</td>
                             <td>0</td>
@@ -661,9 +665,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="ElectriciteUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.2</td>
                             <td>0</td>
@@ -689,9 +693,9 @@ export class TableIntrants extends React.Component {
                             <td><Form.Control as="select" name="MethaneAnimauxUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.23</td>
                             <td>0</td>
@@ -711,13 +715,13 @@ export class TableIntrants extends React.Component {
                                               placeholder="valeur"
                                               value={this.state.Cammionage}
                                               onChange={this.handleChange}
-                            ></Form.Control></td>
+                             ></Form.Control></td>
                             <td><Form.Control as="select" name="CammionageUnite"
                                               onChange={this.handleChange} required>
                                 <option></option>
-                                <option value="Unite1">Litre</option>
-                                <option value="Unite2">Kg</option>
-                                <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                             </Form.Control></td>
                             <td>1.23</td>
                             <td>0</td>
@@ -763,9 +767,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>2.3</td>
                         <td>0</td>
@@ -776,9 +780,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.2</td>
                         <td>0</td>
@@ -789,9 +793,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
@@ -803,9 +807,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>2.3</td>
                         <td>0</td>
@@ -816,9 +820,9 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.2</td>
                         <td>0</td>
@@ -829,24 +833,14 @@ export class TableIntrants extends React.Component {
                         <td><Form.Control as="select" name="SectorActivity"
                                           onChange={this.handleChange} required>
                             <option></option>
-                            <option value="Unite1">Litre</option>
-                            <option value="Unite2">Kg</option>
-                            <option value="Unite3">KWH</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Kg">Kg</option>
+                            <option value="KWH">KWH</option>
                         </Form.Control></td>
                         <td>1.23</td>
                         <td>0</td>
                     </tr>
                     </tbody>
-                </Table>
-
-                <Table>
-
-
-                    <tbody>
-                    <DynamicTable> </DynamicTable>
-                    </tbody>
-
-
                 </Table>
 
 

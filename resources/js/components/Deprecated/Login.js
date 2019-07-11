@@ -4,6 +4,12 @@ import {Link} from 'react-router-dom';
 import {login} from "./UserFunctions";
 
 
+/**
+ * Deprecated, no need to use modal anymore,
+ * maybe if its better in the future, but its
+ * useless now
+ */
+
 export default class Login extends React.Component {
     constructor(props) {
         super(props);

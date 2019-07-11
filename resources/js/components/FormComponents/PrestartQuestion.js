@@ -5,8 +5,13 @@ const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
-
-export default class Question extends React.Component {
+/**
+ * Prestart Questions to answer about the business before filling
+ * out intrants and energy table, maybe make this impossible
+ * to access once filled and store results in a table that
+ * can be edited
+ */
+export default class PrestartQuestion extends React.Component {
 
 
     constructor(props) {
@@ -31,13 +36,17 @@ export default class Question extends React.Component {
             BusinessClass: "",
             BusinessType: "",
             DiffCorpAddress: "",
-            UID: localStorage.getItem('UID'),
+            UID: sessionStorage.getItem('UID'),
             validated: false,
 
         };
     }
 
 
+    /**
+     * submit form to database using / route, subject to change
+     * @param e
+     */
     handleSubmit(e) {
         e.preventDefault();
 
@@ -79,6 +88,10 @@ export default class Question extends React.Component {
 
     };
 
+    /**
+     * Allows writing to forms
+     * @param e
+     */
     handleChange(e) {
 
         this.setState({
@@ -107,6 +120,10 @@ export default class Question extends React.Component {
     }
 
 
+    /**
+     * a set of many forms defined using Form.Group as well as radio buttons
+     * when finished click on submit to submit the data
+     */
     render() {
         const {validated} = this.state;
         return (

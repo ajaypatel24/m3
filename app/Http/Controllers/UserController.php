@@ -4,6 +4,13 @@ use Illuminate\Http\Request;
 use App\User;
 use JWTAuth;
 use JWTAuthException;
+
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ *
+ * Not used, laravel auth controller
+ */
 class UserController extends Controller
 {
     private function getToken($email, $password)

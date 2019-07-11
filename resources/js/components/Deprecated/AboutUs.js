@@ -9,7 +9,9 @@ const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
-
+/**
+ * DEPRECATED, USED ONLY FOR TEST NOTHING ELSE
+ */
 export default class AboutUs extends React.Component {
 
 

@@ -1,3 +1,8 @@
+/**
+ * Deprecated, better dropdown alternative already found
+ *
+ */
+
 class CustomDropdown extends React.Component {
     constructor(props, context) {
         super(props, context);
