@@ -7,7 +7,7 @@ import Particles from 'react-particles-js';
 import '../../sass/navstyle.css'
 import axios from "axios";
 import Avatar from '@material-ui/core/Avatar';
-import Person from "@material-ui/core/SvgIcon/SvgIcon";
+import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
 import SignIn from "./Authentication/SignIn"
 
@@ -336,10 +336,16 @@ export default class LoginComponent extends React.Component {
                                     </Form.Group>
 
 
-
+                                    <Form.Group>
+                                        <Row>
+                                            <Col lg="6">
                                         <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                                        <Button variant="outline-info" onClick={this.handleSwitch}>Login</Button>
-
+                                            </Col>
+                                            <Col lg="4">
+                                        <Button variant="outline-info" onClick={this.handleSwitch}>Sign Up</Button>
+                                            </Col>
+                                        </Row>
+                                    </Form.Group>
 
 
                                 </Form>

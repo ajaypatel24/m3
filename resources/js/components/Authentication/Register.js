@@ -1,4 +1,4 @@
-import {Button, Card, Form, FormGroup} from "react-bootstrap";
+import {Button, Card, Form, FormGroup, Row, Col} from "react-bootstrap";
 import React from 'react';
 import MailIcon from '@material-ui/icons/Mail';
 import Person from '@material-ui/icons/Person';
@@ -208,13 +208,22 @@ export default class SignUpForm extends React.Component {
                                               placeholder="Retype Password"/>
                             </Form.Group>
 
+                            <Form.Group>
+                                <Row>
+                                    <Col lg="6">
                             <Button variant="outline-info" type="submit" onClick={this.handleSubmit}>
                                 Register
                             </Button>
+                                    </Col>
+
+                                    <Col lg="6">
 
                             <Button variant="outline-info"  onClick={this.sendData}>
                                 Sign In
                             </Button>
+                                    </Col>
+                                </Row>
+                            </Form.Group>
 
                             <div className={"mt-3 red-text ".concat(this.state.passwordMatch)}>
                                 These passwords don't match
