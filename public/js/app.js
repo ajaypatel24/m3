@@ -101526,8 +101526,6 @@ function (_React$Component) {
           exact: true,
           path: "/Contact",
           component: _DataComponents_ContactInformationData__WEBPACK_IMPORTED_MODULE_8__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-          component: _Authentication_NoMatch__WEBPACK_IMPORTED_MODULE_9__["default"]
         })))
       );
     }

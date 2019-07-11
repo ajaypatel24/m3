@@ -65,7 +65,7 @@ export default class App extends React.Component {
 
                     <Route exact path="/loading" component={Loading}/>
                     <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
-                    <Route component={NoMatch}/>
+                    {/* <Route component={NoMatch}/> */}
 
 
                 </Switch>
