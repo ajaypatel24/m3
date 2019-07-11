@@ -196,8 +196,8 @@ export default class SignUpForm extends React.Component {
                                               placeholder="Retype Password"/>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
-                                Submit
+                            <Button variant="outline-info" type="submit" onClick={this.handleSubmit}>
+                                Register
                             </Button>
 
                             <div className={"mt-3 red-text ".concat(this.state.passwordMatch)}>

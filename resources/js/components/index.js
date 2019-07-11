@@ -7,7 +7,6 @@ import PrestartQuestion from "./FormComponents/PrestartQuestion";
 import EnergyTableData from "./DataComponents/EnergyTableData";
 import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
-import NoMatch from "./Authentication/NoMatch";
 import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
 
@@ -15,6 +14,7 @@ import EnergyTable from "./FormComponents/EnergyTable"
 import IntrantForm from "./FormComponents/IntrantForm"
 import TransportForm from "./FormComponents/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
+import Team from "./ProfileComponents/Team"
 
 
 export default class App extends React.Component {
@@ -51,7 +51,6 @@ export default class App extends React.Component {
                 <Switch>
 
 
-
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
@@ -61,6 +60,7 @@ export default class App extends React.Component {
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
                     <PrivateRoute exact path="/transport" component={TransportForm}/>
+                    <PrivateRoute exact path="/team" component={Team}/>
 
 
                     <Route exact path="/loading" component={Loading}/>

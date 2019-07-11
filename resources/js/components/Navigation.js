@@ -256,6 +256,7 @@ export default class Navigation extends React.Component {
 
 
 
+                    {/*
                     {sessionStorage.getItem('authenticated') != 'true' ?
                         <Form inline>
                             <br/>
@@ -296,10 +297,11 @@ export default class Navigation extends React.Component {
                             <Navbar.Text>
                                 <NavDropdown id="collasible-nav-dropdown">
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">Logou</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
+                                    <NavDropdown.Item href="#/Team">Team</NavDropdown.Item>
+                                    <NavDropdown.Item href="#/action3.2">hihi</NavDropdown.Item>
+
                                     <NavDropdown.Divider/>
-                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             </Navbar.Text>
 

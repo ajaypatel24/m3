@@ -1,7 +1,7 @@
 import {Col, Row, Form, InputGroup} from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
-
+import Avatar from '@material-ui/core/Avatar';
 /**
  * Contact information of current user displayed here before
  * or after they fill out required contact info, access
@@ -18,7 +18,7 @@ export default class ContactInformationData extends React.Component {
         this.state = {
 
             profile: [],
-            TableData: [],
+            name: '',
 
         };
     }
@@ -38,6 +38,15 @@ export default class ContactInformationData extends React.Component {
                 this.setState({profile: response.data});
 
             });
+
+
+        axios.get('/name/' + uid)
+            .then(response => {
+                console.log(response.data);
+                sessionStorage.setItem('name', response.data);
+                this.setState({name: response.data});
+            });
+
 
     }
 
@@ -66,6 +75,7 @@ export default class ContactInformationData extends React.Component {
                             </Col>
                             <Col lg="4">
                                 <h1>Profile</h1>
+                                <Avatar>{this.state.name}</Avatar>
                             </Col>
 
                             <Col lg="7">

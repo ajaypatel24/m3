@@ -234,7 +234,7 @@ export default class LoginComponent extends React.Component {
 
             <Row>
 
-                <Col lg="8">
+                <Col lg="8" sm="4">
                     <img
                         src={window.location.origin + "/img/IE_logo.svg"}
                         width="600"
@@ -245,20 +245,22 @@ export default class LoginComponent extends React.Component {
 
                 </Col>
 
-            <Col lg="4">
+            <Col lg="4" sm="8">
+                {this.state.LoginOrSignUp ?
                 <Card>
                     <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+                    <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} />
                     <Card.Body>
                         <Form>
                             <br/>
                             <br/>
 
                             <Form.Group>
-                            <Form.Label className="mr-sm-2">Sign In</Form.Label>
-                            <Form.Group>
+                                <Form.Label className="mr-sm-2">Sign In</Form.Label>
+                                <Form.Group>
 
 
-                            <Form.Control
+                                <Form.Control
                                 required
                                 name="email"
                                 type="text"
@@ -267,10 +269,10 @@ export default class LoginComponent extends React.Component {
                                 value={this.state.email}
                                 onKeyPress={this.handleKeyPress}/>
 
-                            </Form.Group>
+                                 </Form.Group>
 
-                            <Form.Group>
-                            <Form.Control
+                                <Form.Group>
+                                <Form.Control
                                 required
                                 name="password"
                                 type="password"
@@ -278,19 +280,13 @@ export default class LoginComponent extends React.Component {
                                 onChange={this.handleChange}
                                 value={this.state.password}
                                 onKeyPress={this.handleKeyPress}/>
-
+                                </Form.Group>
                             </Form.Group>
-                                {this.state.LoginOrSignUp ?
-                                    <container>
-                                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                                        <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
-                                    </container>
 
-                                    :
-
-                                    <Register/>
-                                }
+                            <Form.Group>
+                                <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
                             </Form.Group>
+
 
                         </Form>
 
@@ -298,7 +294,32 @@ export default class LoginComponent extends React.Component {
                     </Card.Body>
                 </Card>
 
-            </Col>
+                :
+
+
+                <Register/>
+                }
+
+                <Form>
+                    <Form.Group>
+                    {this.state.LoginOrSignUp ?
+                        <container>
+                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+                        </container>
+
+                        :
+
+                        <container>
+                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+                        </container>
+
+                    }
+                    </Form.Group>
+
+                </Form>
+                    </Col>
 
 
             </Row>
