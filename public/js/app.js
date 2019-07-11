@@ -97833,8 +97833,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2___default.a, null), "Sign In"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Img, {
         variant: "top",
         src: window.location.origin + "/img/IE_logo.svg",
-        width: "70",
-        height: "70"
+        width: "147",
+        height: "147"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Text, {
         className: "d-flex justify-content-center"
       }, " Welcome back, please sign in "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Text, {

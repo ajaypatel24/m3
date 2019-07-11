@@ -254,7 +254,7 @@ export default class SignUpForm extends React.Component {
         return (
             <Card>
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
-                <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="70" height="70"/>
+                <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
                 <Card.Body>
                     <Card.Text className="d-flex justify-content-center"> Welcome back, please sign in </Card.Text>
                     <Card.Text className="d-flex justify-content-center"> </Card.Text>
