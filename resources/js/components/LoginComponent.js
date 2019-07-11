@@ -6,6 +6,10 @@ import SideNavigation from './NavComponents/SideNavigation';
 import '../../sass/navstyle.css'
 import axios from "axios";
 import Avatar from '@material-ui/core/Avatar';
+import Person from "@material-ui/core/SvgIcon/SvgIcon";
+import Register from "./Authentication/Register";
+
+
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -32,6 +36,7 @@ export default class LoginComponent extends React.Component {
             redirect: false,
             name: this.getName(),
             isLoading: true,
+            LoginOrSignUp: true,
         };
 
 
@@ -67,6 +72,9 @@ export default class LoginComponent extends React.Component {
      */
 
 
+    handleSwitch = () => {
+        this.setState({LoginOrSignUp: !this.state.LoginOrSignUp})
+    }
     handleLoginRequest = () => {
 
 
@@ -226,51 +234,72 @@ export default class LoginComponent extends React.Component {
 
             <Row>
 
+                <Col lg="8">
+                    <img
+                        src={window.location.origin + "/img/IE_logo.svg"}
+                        width="600"
+                        height="400"
+                        className="d-inline-block align-top"
+                        alt="Cadet Logo"
+                    />
+
+                </Col>
+
             <Col lg="4">
-            <Card>
+                <Card>
+                    <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+                    <Card.Body>
                         <Form>
                             <br/>
                             <br/>
 
+                            <Form.Group>
                             <Form.Label className="mr-sm-2">Sign In</Form.Label>
+                            <Form.Group>
+
 
                             <Form.Control
                                 required
                                 name="email"
                                 type="text"
                                 placeholder="Username"
-                                className="mr-sm-2"
                                 onChange={this.handleChange}
                                 value={this.state.email}
                                 onKeyPress={this.handleKeyPress}/>
 
+                            </Form.Group>
+
+                            <Form.Group>
                             <Form.Control
                                 required
                                 name="password"
                                 type="password"
                                 placeholder="Password"
-                                className="mr-sm-2"
                                 onChange={this.handleChange}
                                 value={this.state.password}
                                 onKeyPress={this.handleKeyPress}/>
 
-                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                            </Form.Group>
+                                {this.state.LoginOrSignUp ?
+                                    <container>
+                                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                                        <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+                                    </container>
+
+                                    :
+
+                                    <Register/>
+                                }
+                            </Form.Group>
 
                         </Form>
 
 
-            </Card>
-            </Col>
-                <Col lg="8">
-                    <img
-                        src={window.location.origin + "/img/IE_logo.svg"}
-                        width="65"
-                        height="65"
-                        className="d-inline-block align-top"
-                        alt="Cadet Logo"
-                    />
+                    </Card.Body>
+                </Card>
 
-                </Col>
+            </Col>
+
 
             </Row>
 
