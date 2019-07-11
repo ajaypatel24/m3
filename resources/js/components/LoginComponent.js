@@ -8,6 +8,7 @@ import axios from "axios";
 import Avatar from '@material-ui/core/Avatar';
 import Person from "@material-ui/core/SvgIcon/SvgIcon";
 import Register from "./Authentication/Register";
+import SignIn from "./Authentication/SignIn"
 
 
 
@@ -232,9 +233,11 @@ export default class LoginComponent extends React.Component {
             /** Begin Navbar */
 
 
+            <div>
             <Row>
 
-                <Col lg="8" sm="4">
+                {/*
+                <Col lg="6" sm="4">
                     <img
                         src={window.location.origin + "/img/IE_logo.svg"}
                         width="600"
@@ -244,85 +247,97 @@ export default class LoginComponent extends React.Component {
                     />
 
                 </Col>
+                */}
 
-            <Col lg="4" sm="8">
+            <Col lg="12" sm="8">
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                 {this.state.LoginOrSignUp ?
-                <Card>
-                    <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
-                    <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} />
-                    <Card.Body>
-                        <Form>
-                            <br/>
-                            <br/>
-
-                            <Form.Group>
-                                <Form.Label className="mr-sm-2">Sign In</Form.Label>
-                                <Form.Group>
+                    <SignIn />
 
 
-                                <Form.Control
-                                required
-                                name="email"
-                                type="text"
-                                placeholder="Username"
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                                onKeyPress={this.handleKeyPress}/>
+                /**
+                 <Card>
+                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+                 <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} />
+                 <Card.Body>
+                 <Form>
+                 <br/>
+                 <br/>
 
-                                 </Form.Group>
-
-                                <Form.Group>
-                                <Form.Control
-                                required
-                                name="password"
-                                type="password"
-                                placeholder="Password"
-                                onChange={this.handleChange}
-                                value={this.state.password}
-                                onKeyPress={this.handleKeyPress}/>
-                                </Form.Group>
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                            </Form.Group>
+                 <Form.Group>
+                 <Form.Label className="mr-sm-2">Sign In</Form.Label>
+                 <Form.Group>
 
 
-                        </Form>
+                 <Form.Control
+                 required
+                 name="email"
+                 type="text"
+                 placeholder="Username"
+                 onChange={this.handleChange}
+                 value={this.state.email}
+                 onKeyPress={this.handleKeyPress}/>
+
+                 </Form.Group>
+
+                 <Form.Group>
+                 <Form.Control
+                 required
+                 name="password"
+                 type="password"
+                 placeholder="Password"
+                 onChange={this.handleChange}
+                 value={this.state.password}
+                 onKeyPress={this.handleKeyPress}/>
+                 </Form.Group>
+                 </Form.Group>
+
+                 <Form.Group>
+                 <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                 <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+                 </Form.Group>
 
 
-                    </Card.Body>
-                </Card>
+                 </Form>
 
+
+                 </Card.Body>
+                 </Card>
+
+                 */
                 :
 
+                    <Register />
 
-                <Register/>
+
                 }
 
-                <Form>
-                    <Form.Group>
+
+                    <div>
+                        {/*
                     {this.state.LoginOrSignUp ?
                         <container>
-                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+                            <Button variant="outline-info" onClick={this.handleSwitch}>Login</Button>
                         </container>
 
                         :
-
                         <container>
-                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
                             <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
                         </container>
 
                     }
-                    </Form.Group>
-
-                </Form>
+                    */}
+                    </div>
+                </div>
                     </Col>
 
 
+
+
             </Row>
+
+
+            </div>
 
 
 

@@ -1,6 +1,7 @@
 import {Button, Card, Form, FormGroup} from "react-bootstrap";
 import React from 'react';
 import Person from '@material-ui/icons/Person';
+import axios from "axios";
 /**
  * Registartion form using firebase to create an account in the m3
  * system, upon registration, the user should be stored in both the
@@ -42,6 +43,18 @@ export default class SignUpForm extends React.Component {
         });
     };
 
+    /** display name of person logged in */
+    getName = () => {
+
+        let id = sessionStorage.getItem('UID');
+        axios.get('/name/' + id)
+            .then(response => {
+                console.log(response.data);
+                sessionStorage.setItem('name', response.data);
+                this.setState({name: response.data});
+            });
+
+    }
 
     /**
      *
@@ -74,6 +87,79 @@ export default class SignUpForm extends React.Component {
      * using the /register RestAPI call
      */
 
+    handleLoginRequest = () => {
+
+
+        let currentComponent = this
+
+
+        console.table([
+            this.state.email,
+            this.state.password
+        ]);
+
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(function (user) {
+
+
+                let uid = firebase.auth().currentUser.uid;
+
+                console.log(uid); //important, exclusive Uid that will be used to identify user
+
+
+
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+
+
+
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+
+
+                        setTimeout(function () {
+                            window.location.href = '#/profile/';
+                            window.location.reload();
+                        }, 20)
+                        console.log('Request succeeded with JSON response', data);
+
+
+
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
+
+
+            }).catch(function (error) {
+            // Handle Errors here.
+            if (error.code === 400) {
+                console.log("either email or password is incorrect");
+            }
+            //console.log("dr yeet");
+            //var errorCode = error.code;
+            ///var errorMessage = error.message;
+            //return;
+            // ...
+        });
+
+
+        console.log("from login");
+        console.log(currentComponent.state.authenticated);
+
+
+    };
     /*
     handleLoginRequest = () => {
 
@@ -168,43 +254,54 @@ export default class SignUpForm extends React.Component {
         return (
             <Card>
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
+                <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="70" height="70"/>
                 <Card.Body>
-                    <Form  >
+                    <Card.Text className="d-flex justify-content-center"> Welcome back, please sign in </Card.Text>
+                    <Card.Text className="d-flex justify-content-center"> </Card.Text>
+                    <Form>
+                        <br/>
+                        <br/>
+
+                        <Form.Group>
+
+                            <Form.Group>
+
+
+                                <Form.Label className="mr-sm-2">Email</Form.Label>
+                                <Form.Control
+                                    required
+                                    name="email"
+                                    type="text"
+                                    placeholder="Username"
+                                    onChange={this.handleChange}
+                                    value={this.state.email}
+                                    onKeyPress={this.handleKeyPress}/>
+
+                            </Form.Group>
+
+                            <Form.Label className="mr-sm-2">Password</Form.Label>
+                            <Form.Group>
+                                <Form.Control
+                                    required
+                                    name="password"
+                                    type="password"
+                                    placeholder="Password"
+                                    onChange={this.handleChange}
+                                    value={this.state.password}
+                                    onKeyPress={this.handleKeyPress}/>
+                            </Form.Group>
+                        </Form.Group>
 
 
                         <Form.Group>
-                        <Form.Label className="mr-sm-2">Sign In</Form.Label>
-
-                        <Form.Group>
-                        <Form.Control
-                            required
-                            name="email"
-                            type="text"
-                            placeholder="Username"
-                            className="mr-sm-2"
-                            onChange={this.handleChange}
-                            value={this.state.email}
-                            onKeyPress={this.handleKeyPress}/>
-                        </Form.Group>
-                        <Form.Group>
-
-                        <Form.Control
-                            required
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            className="mr-sm-2"
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            onKeyPress={this.handleKeyPress}/>
+                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
                         </Form.Group>
 
-                        </Form.Group>
-
-
-                        <Button variant="outline-info" type="submit" onClick={this.handleChange}>Login</Button>
 
                     </Form>
+
+
                 </Card.Body>
             </Card>
         );

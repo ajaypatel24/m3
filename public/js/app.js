@@ -97587,6 +97587,295 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Authentication/SignIn.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/Authentication/SignIn.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SignUpForm; });
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Person */ "./node_modules/@material-ui/icons/Person.js");
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * Registartion form using firebase to create an account in the m3
+ * system, upon registration, the user should be stored in both the
+ * firebase authentication system as well as the 'register' table
+ * in the database
+ */
+
+var SignUpForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SignUpForm, _React$Component);
+
+  function SignUpForm(props) {
+    var _this;
+
+    _classCallCheck(this, SignUpForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SignUpForm).call(this, props));
+
+    _this.getName = function () {
+      var id = sessionStorage.getItem('UID');
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/name/' + id).then(function (response) {
+        console.log(response.data);
+        sessionStorage.setItem('name', response.data);
+
+        _this.setState({
+          name: response.data
+        });
+      });
+    };
+
+    _this.handleLoginRequest = function () {
+      var currentComponent = _assertThisInitialized(_this);
+
+      console.table([_this.state.email, _this.state.password]);
+      firebase.auth().signInWithEmailAndPassword(_this.state.email, _this.state.password).then(function (user) {
+        var uid = firebase.auth().currentUser.uid;
+        console.log(uid); //important, exclusive Uid that will be used to identify user
+
+        fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify(uid),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            "Content-type": "application/json"
+          }
+        }).then(function (data) {
+          sessionStorage.setItem('authenticated', 'true');
+          sessionStorage.setItem('UID', uid);
+          currentComponent.getName();
+          currentComponent.setState({
+            authenticated: sessionStorage.getItem('authenticated')
+          });
+          setTimeout(function () {
+            window.location.href = '#/profile/';
+            window.location.reload();
+          }, 20);
+          console.log('Request succeeded with JSON response', data);
+        })["catch"](function (error) {
+          console.log('Request failed', error);
+        });
+      })["catch"](function (error) {
+        // Handle Errors here.
+        if (error.code === 400) {
+          console.log("either email or password is incorrect");
+        } //console.log("dr yeet");
+        //var errorCode = error.code;
+        ///var errorMessage = error.message;
+        //return;
+        // ...
+
+      });
+      console.log("from login");
+      console.log(currentComponent.state.authenticated);
+    };
+
+    _this.state = {
+      name: '',
+      organization: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      passwordStrength: 'd-none',
+      passwordMatch: "d-none",
+      errors: {}
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleChangePasswordStrength = _this.handleChangePasswordStrength.bind(_assertThisInitialized(_this));
+    _this.handleLoginRequest = _this.handleLoginRequest.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+  /**
+   *
+   * @param e
+   *
+   * Crucial function, allows for forms (textboxes) all over the page
+   * to allow for data to be entered into them
+   */
+
+
+  _createClass(SignUpForm, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "handleChangePasswordStrength",
+
+    /**
+     *
+     * @param e
+     * Checks if password entered obeys the requirement set by
+     * the regex pattern strongRegex
+     */
+    value: function handleChangePasswordStrength(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
+
+      if (!this.state.password.match(strongRegex)) {
+        this.setState({
+          passwordStrength: "d-flex"
+        });
+      } else {
+        this.setState({
+          passwordStrength: "d-none"
+        });
+      }
+    }
+    /**
+     *
+     * @param e
+     * Handles form submission, makes a call to firebase using the .createUserWithEmailAndPassword
+     * function, the parameters are taken from the state. The same data is posted to the register table
+     * using the /register RestAPI call
+     */
+
+  }, {
+    key: "render",
+
+    /*
+    handleLoginRequest = () => {
+          let currentComponent = this
+            console.table([
+            this.state.email,
+            this.state.password
+        ]);
+            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(function (user) {
+                    let uid = firebase.auth().currentUser.uid;
+                  console.log(uid); //important, exclusive Uid that will be used to identify user
+    
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+                            sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        //currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+                            setTimeout(function () {
+                            window.location.href = '#/profile/';
+                        }, 20)
+                        console.log('Request succeeded with JSON response', data);
+                          console.log('Request succeeded with JSON response', user);
+                          console.log(sessionStorage.getItem('authenticated'));
+                    })
+    
+    
+                .catch(function (error) {
+                console.log('Request failed', error);
+            });
+                }).catch(function (error) {
+            // Handle Errors here.
+            if (error.code === 400) {
+                console.log("either email or password is incorrect");
+            }
+            //console.log("dr yeet");
+            //var errorCode = error.code;
+            ///var errorMessage = error.message;
+            //return;
+            // ...
+        });
+                console.log('from login');
+      };
+    */
+
+    /**
+     *
+     * @returns {*}
+     * Card Form Group made using bootstrap Form, Card, and Button
+     * This is the register form which allows new users to create
+     * accounts, each Form has an ID and a Label to make identification
+     * easy
+     */
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Header, {
+        className: "d-flex justify-content-center login-btn-color-font"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2___default.a, null), "Sign In"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Img, {
+        variant: "top",
+        src: window.location.origin + "/img/IE_logo.svg",
+        width: "70",
+        height: "70"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Text, {
+        className: "d-flex justify-content-center"
+      }, " Welcome back, please sign in "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Card"].Text, {
+        className: "d-flex justify-content-center"
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+        className: "mr-sm-2"
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+        required: true,
+        name: "email",
+        type: "text",
+        placeholder: "Username",
+        onChange: this.handleChange,
+        value: this.state.email,
+        onKeyPress: this.handleKeyPress
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Label, {
+        className: "mr-sm-2"
+      }, "Password"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Control, {
+        required: true,
+        name: "password",
+        type: "password",
+        placeholder: "Password",
+        onChange: this.handleChange,
+        value: this.state.password,
+        onKeyPress: this.handleKeyPress
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Button"], {
+        variant: "outline-info",
+        onClick: this.handleLoginRequest
+      }, "Login"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Button"], {
+        variant: "outline-primary",
+        onClick: this.handleSwitch
+      }, "Sign Up")))));
+    }
+  }]);
+
+  return SignUpForm;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Dashboard.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/Dashboard.js ***!
@@ -100587,6 +100876,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/SvgIcon/SvgIcon */ "./node_modules/@material-ui/core/SvgIcon/SvgIcon.js");
 /* harmony import */ var _material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _Authentication_Register__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Authentication/Register */ "./resources/js/components/Authentication/Register.js");
+/* harmony import */ var _Authentication_SignIn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Authentication/SignIn */ "./resources/js/components/Authentication/SignIn.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -100606,6 +100896,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -100791,57 +101082,57 @@ function (_React$Component) {
     value: function render() {
       return (
         /** Begin Navbar */
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-          lg: "8",
-          sm: "4"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.location.origin + "/img/IE_logo.svg",
-          width: "600",
-          height: "400",
-          className: "d-inline-block align-top",
-          alt: "Cadet Logo"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-          lg: "4",
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+          lg: "12",
           sm: "8"
-        }, this.state.LoginOrSignUp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, {
-          className: "d-flex justify-content-center login-btn-color-font"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_SvgIcon_SvgIcon__WEBPACK_IMPORTED_MODULE_6___default.a, null), "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Img, {
-          variant: "top",
-          src: window.location.origin + "/img/IE_logo.svg"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-          className: "mr-sm-2"
-        }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-          required: true,
-          name: "email",
-          type: "text",
-          placeholder: "Username",
-          onChange: this.handleChange,
-          value: this.state.email,
-          onKeyPress: this.handleKeyPress
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-          required: true,
-          name: "password",
-          type: "password",
-          placeholder: "Password",
-          onChange: this.handleChange,
-          value: this.state.password,
-          onKeyPress: this.handleKeyPress
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-info",
-          onClick: this.handleLoginRequest
-        }, "Login"))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_Register__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, this.state.LoginOrSignUp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("container", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-info",
-          onClick: this.handleLoginRequest
-        }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-primary",
-          onClick: this.handleSwitch
-        }, "Sign Up")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("container", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-info",
-          onClick: this.handleLoginRequest
-        }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-primary",
-          onClick: this.handleSwitch
-        }, "Sign Up"))))))
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh'
+          }
+        }, this.state.LoginOrSignUp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_SignIn__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+        /**
+         <Card>
+         <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+         <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} />
+         <Card.Body>
+         <Form>
+         <br/>
+         <br/>
+           <Form.Group>
+         <Form.Label className="mr-sm-2">Sign In</Form.Label>
+         <Form.Group>
+             <Form.Control
+         required
+         name="email"
+         type="text"
+         placeholder="Username"
+         onChange={this.handleChange}
+         value={this.state.email}
+         onKeyPress={this.handleKeyPress}/>
+           </Form.Group>
+           <Form.Group>
+         <Form.Control
+         required
+         name="password"
+         type="password"
+         placeholder="Password"
+         onChange={this.handleChange}
+         value={this.state.password}
+         onKeyPress={this.handleKeyPress}/>
+         </Form.Group>
+         </Form.Group>
+           <Form.Group>
+         <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+         <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
+         </Form.Group>
+             </Form>
+             </Card.Body>
+         </Card>
+           */
+        : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Authentication_Register__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)))))
       );
     }
   }]);
