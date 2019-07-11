@@ -1,26 +1,13 @@
-/**
- * Most likely deprecated, not really useful other than for reference,
- * creates a side nav with a persistent top bar (NOT GOOD/10)
- *
- */
-
-
 import React from 'react';
-import {Button, Card, Col, Nav, Row, Tab, Table} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-
-const CityRegex = new RegExp("^[a-zA-Z]+$"); //
-const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
-const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
-
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -39,21 +26,22 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
     },
     appBar: {
-        transition: theme.transitions.create(['margin', 'width'], {
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
     appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
         }),
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: 36,
     },
     hide: {
         display: 'none',
@@ -61,32 +49,36 @@ const useStyles = makeStyles(theme => ({
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
+        whiteSpace: 'nowrap',
     },
-    drawerPaper: {
+    drawerOpen: {
         width: drawerWidth,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
     },
-    drawerHeader: {
+    drawerClose: {
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        overflowX: 'hidden',
+        width: theme.spacing(7) + 1,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing(9) + 1,
+        },
+    },
+    toolbar: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'flex-end',
         padding: '0 8px',
         ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
     },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
     },
 }));
 
@@ -112,79 +104,39 @@ export default function Sidenav() {
                     [classes.appBarShift]: open,
                 })}
             >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
 
-                </Toolbar>
+
+
+
             </AppBar>
             <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="left"
-                open={open}
+                variant="permanent"
+                className={clsx(classes.drawer, {
+                    [classes.drawerOpen]: open,
+                    [classes.drawerClose]: !open,
+                })}
                 classes={{
-                    paper: classes.drawerPaper,
+                    paper: clsx({
+                        [classes.drawerOpen]: open,
+                        [classes.drawerClose]: !open,
+                    }),
                 }}
+                open={open}
             >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                <div className={classes.toolbar}>
+                    <IconButton onClick={handleDrawerOpen}>
+                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </div>
                 <Divider />
                 <List>
-
-                    <Link to="/DynamicTable">
-                        <ListItem button key="Hello">
-                            <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="SideTest" />
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
                         </ListItem>
-                    </Link>
-
+                    ))}
                 </List>
-
-                <List>
-
-                    <Link to="/ContactInfo">
-                        <ListItem button key="Hello">
-                            <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="SideTest" />
-                        </ListItem>
-                    </Link>
-
-                </List>
-
-                <List>
-
-                    <Link to="/EnergyTable">
-                        <ListItem button key="Hello">
-                            <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="SideTest" />
-                        </ListItem>
-                    </Link>
-
-                </List>
-
-                <List>
-
-                    <Link to="/Transport">
-                        <ListItem button key="Hello">
-                            <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary="SideTest" />
-                        </ListItem>
-                    </Link>
-
-                </List>
-
-
                 <Divider />
                 <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -195,17 +147,10 @@ export default function Sidenav() {
                     ))}
                 </List>
             </Drawer>
-            <main
-                className={clsx(classes.content, {
-                    [classes.contentShift]: open,
-                })}
-            >
-
-
+            <main className={classes.content}>
 
 
             </main>
         </div>
     );
 }
-

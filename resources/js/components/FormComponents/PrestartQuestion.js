@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
+import SideNav from "../NavComponents/Sidenav";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -127,6 +128,7 @@ export default class PrestartQuestion extends React.Component {
     render() {
         const {validated} = this.state;
         return (
+
 
 
             < Form noValidate
@@ -563,6 +565,7 @@ export default class PrestartQuestion extends React.Component {
 
 
             </Form>
+
 
 
         );

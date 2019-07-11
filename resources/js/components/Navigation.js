@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Form, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
+import SideNav from './NavComponents/Sidenav';
 
 
 import '../../sass/navstyle.css'
@@ -295,7 +296,7 @@ export default class Navigation extends React.Component {
                         <Navbar.Collapse className="justify-content-end" inline>
                             <Avatar>{this.state.name}</Avatar>
                             <Navbar.Text>
-                                <NavDropdown id="collasible-nav-dropdown">
+                                <NavDropdown id="collasible-nav-dropdown" >
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
                                     <NavDropdown.Item href="#/Team">Team</NavDropdown.Item>
                                     <NavDropdown.Item href="#/action3.2">hihi</NavDropdown.Item>

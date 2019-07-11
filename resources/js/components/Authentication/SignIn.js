@@ -295,7 +295,6 @@ export default class SignUpForm extends React.Component {
 
                         <Form.Group>
                             <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
                         </Form.Group>
 
 

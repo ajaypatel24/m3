@@ -20,7 +20,8 @@ export default class SignUpForm extends React.Component {
             passwordConfirm: '',
             passwordStrength: 'd-none',
             passwordMatch: "d-none",
-            errors: {}
+            errors: {},
+            LoginOrRegister: this.props.select
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -40,6 +41,17 @@ export default class SignUpForm extends React.Component {
             [e.target.name]: e.target.value
         });
     };
+
+    sendData = () => {
+        this.props.parentCallback(false);
+    }
+    componentDidMount = () => {
+        console.log(this.state.LoginOrRegister);
+    }
+
+    handleSwitch = () => {
+
+    }
 
 
     /**
@@ -147,7 +159,7 @@ export default class SignUpForm extends React.Component {
     render()
     {
         return (
-            <Card>
+            <div>
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
                 <Card.Body>
                     <form id="registerForm">
@@ -200,6 +212,10 @@ export default class SignUpForm extends React.Component {
                                 Register
                             </Button>
 
+                            <Button variant="outline-info"  onClick={this.sendData}>
+                                Sign In
+                            </Button>
+
                             <div className={"mt-3 red-text ".concat(this.state.passwordMatch)}>
                                 These passwords don't match
                             </div>
@@ -208,7 +224,7 @@ export default class SignUpForm extends React.Component {
                         </FormGroup>
                     </form>
                 </Card.Body>
-            </Card>
+            </div>
         );
     }
 }

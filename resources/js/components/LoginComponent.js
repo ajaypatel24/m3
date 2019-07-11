@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col} from 'react-bootstrap';
+import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col, FormGroup} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
+import Particles from 'react-particles-js';
 
 
 import '../../sass/navstyle.css'
@@ -37,7 +38,7 @@ export default class LoginComponent extends React.Component {
             redirect: false,
             name: this.getName(),
             isLoading: true,
-            LoginOrSignUp: true,
+            LoginOrSignUp: false,
         };
 
 
@@ -46,6 +47,7 @@ export default class LoginComponent extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         //this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
     }
 
 
@@ -65,6 +67,11 @@ export default class LoginComponent extends React.Component {
 
     }
 
+
+    callbackFunction = (childata) => {
+        this.setState ({LoginOrSignUp: childata})
+        return childata;
+    }
 
     /**
      * handles login request using firebase to check credentials, if firebase
@@ -187,6 +194,23 @@ export default class LoginComponent extends React.Component {
 
     }
 
+    handleChangePasswordStrength(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
+        if (!this.state.password.match(strongRegex)) {
+            this.setState({
+                passwordStrength: "d-flex"
+            });
+
+        } else {
+            this.setState({
+                passwordStrength: "d-none"
+            });
+        }
+    }
+
 
     /** display name of person logged in */
     getName = () => {
@@ -233,101 +257,109 @@ export default class LoginComponent extends React.Component {
             /** Begin Navbar */
 
 
-            <div>
-            <Row>
+            <div style={{overflowX: 'hidden'}}> {/*disables very unappealing shaking when state changes */}
 
                 {/*
-                <Col lg="6" sm="4">
+                <Particles
+                    params={{
+                        particles: {
+                            color: {
+                                value: "#000000"
+                            }
+                        }
+                    }}
+                />
+                */}
+            <Row>
+
+                <Col lg="1">
+
+                </Col>
+
+
+
+                <Col lg="3" sm="4">
                     <img
-                        src={window.location.origin + "/img/IE_logo.svg"}
-                        width="600"
-                        height="400"
+                        style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}
+                        src={window.location.origin + "/img/ecosystem.svg"}
+                        width="300"
+                        height="100"
                         className="d-inline-block align-top"
                         alt="Cadet Logo"
                     />
 
                 </Col>
-                */}
 
-            <Col lg="12" sm="8">
+
+            <Col lg="8" sm="8">
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-                {this.state.LoginOrSignUp ?
-                    <SignIn />
+                {!this.state.LoginOrSignUp ?
+                    <Card>
+
+                            <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
+                            <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
+                            <Card.Body>
+                                <Card.Text className="d-flex justify-content-center"> Welcome back, please sign in </Card.Text>
+                                <Card.Text className="d-flex justify-content-center"> </Card.Text>
+                                <Form>
+                                    <br/>
+                                    <br/>
+
+                                    <Form.Group>
+
+                                        <Form.Group>
 
 
-                /**
-                 <Card>
-                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
-                 <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} />
-                 <Card.Body>
-                 <Form>
-                 <br/>
-                 <br/>
+                                            <Form.Label className="mr-sm-2">Email</Form.Label>
+                                            <Form.Control
+                                                required
+                                                name="email"
+                                                type="text"
+                                                placeholder="Username"
+                                                onChange={this.handleChange}
+                                                value={this.state.email}
+                                               />
 
-                 <Form.Group>
-                 <Form.Label className="mr-sm-2">Sign In</Form.Label>
-                 <Form.Group>
+                                        </Form.Group>
 
-
-                 <Form.Control
-                 required
-                 name="email"
-                 type="text"
-                 placeholder="Username"
-                 onChange={this.handleChange}
-                 value={this.state.email}
-                 onKeyPress={this.handleKeyPress}/>
-
-                 </Form.Group>
-
-                 <Form.Group>
-                 <Form.Control
-                 required
-                 name="password"
-                 type="password"
-                 placeholder="Password"
-                 onChange={this.handleChange}
-                 value={this.state.password}
-                 onKeyPress={this.handleKeyPress}/>
-                 </Form.Group>
-                 </Form.Group>
-
-                 <Form.Group>
-                 <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-                 <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
-                 </Form.Group>
+                                        <Form.Label className="mr-sm-2">Password</Form.Label>
+                                        <Form.Group>
+                                            <Form.Control
+                                                required
+                                                name="password"
+                                                type="password"
+                                                placeholder="Password"
+                                                onChange={this.handleChange}
+                                                value={this.state.password}
+                                               />
+                                        </Form.Group>
+                                    </Form.Group>
 
 
-                 </Form>
+
+                                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                                        <Button variant="outline-info" onClick={this.handleSwitch}>Login</Button>
 
 
-                 </Card.Body>
-                 </Card>
 
-                 */
+                                </Form>
+
+
+                            </Card.Body>
+
+                    </Card>
+
                 :
 
-                    <Register />
-
-
+                    <Card>
+                        <Register parentCallback={this.callbackFunction}/>
+                    </Card>
                 }
 
 
-                    <div>
-                        {/*
-                    {this.state.LoginOrSignUp ?
-                        <container>
-                            <Button variant="outline-info" onClick={this.handleSwitch}>Login</Button>
-                        </container>
 
-                        :
-                        <container>
-                            <Button variant="outline-primary" onClick={this.handleSwitch}>Sign Up</Button>
-                        </container>
 
-                    }
-                    */}
-                    </div>
+
                 </div>
                     </Col>
 
@@ -335,6 +367,7 @@ export default class LoginComponent extends React.Component {
 
 
             </Row>
+
 
 
             </div>
