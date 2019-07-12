@@ -21,6 +21,20 @@ const useStyles = makeStyles({
     },
 });
 
+function handleLogout () {
+    firebase.auth().signOut().then(function () {
+        console.log(firebase.auth().currentUser);
+    });
+
+
+    window.location.href = '#/';
+    sessionStorage.removeItem('authenticated');
+    sessionStorage.removeItem('UID');
+    sessionStorage.removeItem('name');
+    window.location.reload();
+
+}
+
 export default function SideNavigation() {
     const classes = useStyles();
     const [state, setState] = React.useState({
@@ -51,30 +65,60 @@ export default function SideNavigation() {
                 </Link>
 
                 <Link to="/prestart_questions">
-                    <ListItem button key="Prestart Questions">
+                    <ListItem button key="EcoDo">
                         <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Prestart Questions" />
+                        <ListItemText primary="EcoDo" />
                     </ListItem>
                 </Link>
 
-                <Link to="/EnergyTable">
-                    <ListItem button key="Energy Table">
+                <Link to="/route">
+                    <ListItem button key="Ecometrics">
                         <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Energy Table" />
+                        <ListItemText primary="Ecometrics" />
                     </ListItem>
                 </Link>
 
                 <Link to="/intrant">
-                    <ListItem button key="Intrants">
+                    <ListItem button key="EcoAct">
                         <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Intrants" />
+                        <ListItemText primary="EcoAct" />
                     </ListItem>
                 </Link>
 
                 <Link to="/transport">
-                    <ListItem button key="Transportation">
+                    <ListItem button key="EcoTest">
                         <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Transportation" />
+                        <ListItemText primary="EcoTest" />
+                    </ListItem>
+                </Link>
+                <Link to="/transport">
+                    <ListItem button key="EcoReport">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="EcoReport" />
+                    </ListItem>
+                </Link>
+                <Link to="/transport">
+                    <ListItem button key="EcoComm">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="EcoComm" />
+                    </ListItem>
+                </Link>
+                <Link to="/transport">
+                    <ListItem button key="Chat Room">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Chat Room" />
+                    </ListItem>
+                </Link>
+                <Link to="/transport">
+                    <ListItem button key="Calendar">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Calendar" />
+                    </ListItem>
+                </Link>
+                <Link to="/transport">
+                    <ListItem button key="Documents">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Documents" />
                     </ListItem>
                 </Link>
 
@@ -84,11 +128,17 @@ export default function SideNavigation() {
 
             <Divider />
             <Link to="/contactinfo">
-                <ListItem button key="Contact Information">
+                <ListItem button key="Settings">
                     <ListItemIcon><MailIcon /></ListItemIcon>
-                    <ListItemText primary="Contact Information" />
+                    <ListItemText primary="Settings" />
                 </ListItem>
             </Link>
+
+                <ListItem button key="Logout" onClick={handleLogout}>
+                    <ListItemIcon><MailIcon /></ListItemIcon>
+                    <ListItemText primary="Logout" />
+                </ListItem>
+
         </div>
     );
 

@@ -100463,6 +100463,13 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
           lg: "3",
           sm: "4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh'
+          }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           style: {
             display: 'flex',
@@ -100475,7 +100482,7 @@ function (_React$Component) {
           height: "100",
           className: "d-inline-block align-top",
           alt: "Cadet Logo"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
           lg: "8",
           sm: "8"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -100598,6 +100605,18 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ma
     width: 'auto'
   }
 });
+
+function handleLogout() {
+  firebase.auth().signOut().then(function () {
+    console.log(firebase.auth().currentUser);
+  });
+  window.location.href = '#/';
+  sessionStorage.removeItem('authenticated');
+  sessionStorage.removeItem('UID');
+  sessionStorage.removeItem('name');
+  window.location.reload();
+}
+
 function SideNavigation() {
   var classes = useStyles();
 
@@ -100635,38 +100654,79 @@ function SideNavigation() {
       to: "/prestart_questions"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
-      key: "Prestart Questions"
+      key: "EcoDo"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      primary: "Prestart Questions"
+      primary: "EcoDo"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/EnergyTable"
+      to: "/route"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
-      key: "Energy Table"
+      key: "Ecometrics"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      primary: "Energy Table"
+      primary: "Ecometrics"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/intrant"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
-      key: "Intrants"
+      key: "EcoAct"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      primary: "Intrants"
+      primary: "EcoAct"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/transport"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
-      key: "Transportation"
+      key: "EcoTest"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      primary: "Transportation"
+      primary: "EcoTest"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/transport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "EcoReport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "EcoReport"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/transport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "EcoComm"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "EcoComm"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/transport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "Chat Room"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "Chat Room"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/transport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "Calendar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "Calendar"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/transport"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "Documents"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "Documents"
     })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/contactinfo"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
-      key: "Contact Information"
+      key: "Settings"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      primary: "Contact Information"
-    }))));
+      primary: "Settings"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      button: true,
+      key: "Logout",
+      onClick: handleLogout
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_11___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      primary: "Logout"
+    })));
   };
 
   var fullList = function fullList(side) {
@@ -100885,6 +100945,110 @@ function Sidenav() {
     className: classes.content
   }));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/NavComponents/TopTabs.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/NavComponents/TopTabs.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TopTabs; });
+/* harmony import */ var _DataComponents_EnergyTableData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DataComponents/EnergyTableData */ "./resources/js/components/DataComponents/EnergyTableData.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var TopTabs =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TopTabs, _React$Component);
+
+  function TopTabs(props, context) {
+    var _this;
+
+    _classCallCheck(this, TopTabs);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TopTabs).call(this, props, context));
+    _this.state = {
+      key: 'home'
+    };
+    return _this;
+  }
+
+  _createClass(TopTabs, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tabs"], {
+        id: "controlled-tab-example",
+        activeKey: this.state.key,
+        onSelect: function onSelect(key) {
+          return _this2.setState({
+            key: key
+          });
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Compagnie",
+        title: "Compagnie"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Revenus",
+        title: "Revenus"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Energie",
+        title: "Energie"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_DataComponents_EnergyTableData__WEBPACK_IMPORTED_MODULE_0__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "D\xE9chets",
+        title: "D\xE9chets"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Mati\xE8res",
+        title: "Mati\xE8res"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Productivit\xE9",
+        title: "Productivit\xE9"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "RH",
+        title: "RH"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Risques",
+        title: "Risques"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "Bilan",
+        title: "Bilan"
+      }));
+    }
+  }]);
+
+  return TopTabs;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+
 
 /***/ }),
 
@@ -101307,11 +101471,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DataComponents_ContactInformationData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DataComponents/ContactInformationData */ "./resources/js/components/DataComponents/ContactInformationData.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
 /* harmony import */ var _LoginComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./LoginComponent */ "./resources/js/components/LoginComponent.js");
-/* harmony import */ var _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./FormComponents/EnergyTable */ "./resources/js/components/FormComponents/EnergyTable.js");
-/* harmony import */ var _FormComponents_IntrantForm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormComponents/IntrantForm */ "./resources/js/components/FormComponents/IntrantForm.js");
-/* harmony import */ var _FormComponents_TransportForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./FormComponents/TransportForm */ "./resources/js/components/FormComponents/TransportForm.js");
-/* harmony import */ var _FormComponents_ContactInformationForm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./FormComponents/ContactInformationForm */ "./resources/js/components/FormComponents/ContactInformationForm.js");
-/* harmony import */ var _ProfileComponents_Team__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ProfileComponents/Team */ "./resources/js/components/ProfileComponents/Team.js");
+/* harmony import */ var _NavComponents_TopTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./NavComponents/TopTabs */ "./resources/js/components/NavComponents/TopTabs.js");
+/* harmony import */ var _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FormComponents/EnergyTable */ "./resources/js/components/FormComponents/EnergyTable.js");
+/* harmony import */ var _FormComponents_IntrantForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./FormComponents/IntrantForm */ "./resources/js/components/FormComponents/IntrantForm.js");
+/* harmony import */ var _FormComponents_TransportForm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./FormComponents/TransportForm */ "./resources/js/components/FormComponents/TransportForm.js");
+/* harmony import */ var _FormComponents_ContactInformationForm__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./FormComponents/ContactInformationForm */ "./resources/js/components/FormComponents/ContactInformationForm.js");
+/* harmony import */ var _ProfileComponents_Team__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./ProfileComponents/Team */ "./resources/js/components/ProfileComponents/Team.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -101335,6 +101500,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -101392,7 +101558,7 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/route",
-          component: _Deprecated_Example__WEBPACK_IMPORTED_MODULE_3__["default"]
+          component: _NavComponents_TopTabs__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/prestart_questions/",
@@ -101400,23 +101566,23 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/EnergyTable",
-          component: _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_11__["default"]
+          component: _FormComponents_EnergyTable__WEBPACK_IMPORTED_MODULE_12__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/intrant",
-          component: _FormComponents_IntrantForm__WEBPACK_IMPORTED_MODULE_12__["default"]
+          component: _FormComponents_IntrantForm__WEBPACK_IMPORTED_MODULE_13__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/contactinfo",
-          component: _FormComponents_ContactInformationForm__WEBPACK_IMPORTED_MODULE_14__["default"]
+          component: _FormComponents_ContactInformationForm__WEBPACK_IMPORTED_MODULE_15__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/transport",
-          component: _FormComponents_TransportForm__WEBPACK_IMPORTED_MODULE_13__["default"]
+          component: _FormComponents_TransportForm__WEBPACK_IMPORTED_MODULE_14__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
           path: "/team",
-          component: _ProfileComponents_Team__WEBPACK_IMPORTED_MODULE_15__["default"]
+          component: _ProfileComponents_Team__WEBPACK_IMPORTED_MODULE_16__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
           exact: true,
           path: "/loading",

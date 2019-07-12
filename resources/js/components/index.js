@@ -9,7 +9,7 @@ import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
-
+import TopTabs from "./NavComponents/TopTabs";
 import EnergyTable from "./FormComponents/EnergyTable"
 import IntrantForm from "./FormComponents/IntrantForm"
 import TransportForm from "./FormComponents/TransportForm"
@@ -54,7 +54,7 @@ export default class App extends React.Component {
                     <BlockRoute exact path="/home" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
-                    <Route exact path="/route" component={Example}/>
+                    <Route exact path="/route" component={TopTabs}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>

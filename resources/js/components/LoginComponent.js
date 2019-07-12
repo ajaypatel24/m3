@@ -279,6 +279,7 @@ export default class LoginComponent extends React.Component {
 
 
                 <Col lg="3" sm="4">
+                    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
                     <img
                         style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}
                         src={window.location.origin + "/img/ecosystem.svg"}
@@ -287,6 +288,7 @@ export default class LoginComponent extends React.Component {
                         className="d-inline-block align-top"
                         alt="Cadet Logo"
                     />
+                    </div>
 
                 </Col>
 
