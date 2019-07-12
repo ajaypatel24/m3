@@ -361,59 +361,6 @@ export default class TransportForm extends React.Component {
                                             </Form.Group>
 
 
-                                            {/*
-                                    <Form.Label>City</Form.Label>
-                                    <Form.Control
-                                        name="NomIntrant"
-                                        required
-                                        type="text"
-                                        placeholder="Intrant"
-                                        onChange={this.handleChange}
-                                        value={this.state.NomIntrant}
-                                        pattern="^[a-zA-Z]+$"
-                                    />
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
-                                name="Ressource"
-                                required
-                                type="text"
-                                placeholder="Ressource"
-                                onChange={this.handleChange}
-                                value={this.state.Ressource}
-                                pattern="^[a-zA-Z]+$"
-                            />
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
-                                name="Immobilisation"
-                                required
-                                type="text"
-                                placeholder="Immobilisation"
-                                onChange={this.handleChange}
-                                value={this.state.Immobilisation}
-                                pattern="^[a-zA-Z]+$"
-                            />
-                                <Form.Label>City</Form.Label>
-                                <Form.Control
-                                    name="DureeVie"
-                                    required
-                                    type="text"
-                                    placeholder="Duree Vie"
-                                    onChange={this.handleChange}
-                                    value={this.state.DureeVie}
-                                    pattern="^[a-zA-Z]+$"
-                                />
-                                <Form.Label>City</Form.Label>
-                                <Form.Control
-                                    name="Provenance"
-                                    required
-                                    type="text"
-                                    placeholder="Provenance"
-                                    onChange={this.handleChange}
-                                    value={this.state.Provenance}
-                                    pattern="^[a-zA-Z]+$"
-                                />
-
-                                */}
 
                                             <button type="submit" onClick={this.handleSubmit}>submit</button>
 
@@ -482,69 +429,6 @@ export default class TransportForm extends React.Component {
                                             </table>
                                         </div>
                                     )}
-
-
-                                    {/*
-                            <table
-                                className="table table-bordered table-hover"
-                                id="tab_logic"
-                            >
-                                <thead>
-                                <tr>
-                                    <th className="text-center"> # </th>
-                                    <th className="text-center"> Name </th>
-                                    <th className="text-center"> Mobile </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.rows.map((item, idx) => (
-                                    <tr id="addr0" key={idx}>
-                                        <td>{idx}</td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                value={this.state.rows[idx].name}
-                                                onChange={this.formChange(idx)}
-                                                className="form-control"
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                name="mobile"
-                                                value={this.state.rows[idx].mobile}
-                                                onChange={this.formChange(idx)}
-                                                className="form-control"
-                                            />
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                            <button
-                                onClick={this.handleAddRow}
-                                className="btn btn-default pull-left"
-                            >
-                                Add Row
-                            </button>
-                            <button
-                                onClick={this.handleRemoveRow}
-                                className="pull-right btn btn-default"
-                            >
-                                Delete Row
-                            </button>
-                            <button
-                                onClick={this.testSubmit}
-                                className="pull-right btn btn-default"
-                            >
-                                test
-
-
-                            </button>
-
-
-                                */}
 
 
                                 </Col>
