@@ -25,10 +25,11 @@ export default class TransportForm extends React.Component {
             Delete: true,
             UID: sessionStorage.getItem('UID'),
             rows: [],
+            Libelle: [],
 
         };
 
-        this.formChange = this.formChange.bind(this);
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTableRows = this.getTableRows.bind(this);
@@ -67,17 +68,6 @@ export default class TransportForm extends React.Component {
         })
     }
 
-
-    formChange = idx => e => {
-        const {name, value} = e.target;
-        const rows = [...this.state.rows];
-        rows[idx] = {
-            [name]: value
-        };
-        this.setState({
-            rows
-        });
-    };
 
 
     handleDelete(e) {
@@ -125,10 +115,19 @@ export default class TransportForm extends React.Component {
             .then(response => {
                 console.log(response.data);
                 this.setState({rows: response.data});
+                console.log(this.state.rows);
+            });
+
+        axios.get('/libelledata/')
+            .then(response => {
+                console.log(response.data);
+                this.setState({Libelle: response.data});
+                console.log(this.state.Libelle);
             });
 
 
-        console.log(this.state.rows[0]);
+
+
     }
 
     changeDelete = () => {
@@ -256,30 +255,6 @@ export default class TransportForm extends React.Component {
                                                         />
                                                     </Col>
 
-
-                                                    <Col lg="5">
-
-                                                        <Form.Label>Unite</Form.Label>
-                                                        <Form.Control as='select'
-                                                                      name="Unite"
-                                                                      required
-                                                                      type="text"
-                                                                      placeholder="Quantite"
-                                                                      onChange={this.handleChange}
-                                                                      value={this.state.Unite}
-                                                        >
-
-                                                            {this.state.rows.map(vehicule => (
-                                                                <option >
-                                                                    {vehicule}
-                                                                </option>
-                                                            ))}
-                                                        </Form.Control>
-                                                    </Col>
-
-
-
-
                                                 </Row>
 
                                                 <Form.Check
@@ -330,34 +305,6 @@ export default class TransportForm extends React.Component {
                                                 />
                                             </Form.Group>
 
-                                            <Form.Group>
-                                                <Form.Label>Frequence D'Achat</Form.Label>
-                                                <Form.Control as="select" name="Frequency" placeholder="Select Range"
-                                                              required
-                                                              value={this.state.Frequency}
-                                                              onChange={this.handleChange}
-                                                              disabled={this.state.Yearly ==='false'}
-                                                              enabled={this.state.Yearly ==='true'}
-
-                                                >
-
-                                                    <option></option>
-                                                    <option value="1xY"> Once per year</option>
-                                                    <option value="2xY"> Twice per year</option>
-                                                    <option value="3xY"> Three times per year</option>
-                                                    <option value="4xY"> Four times per year</option>
-                                                    <option value="2xM"> Every two Months</option>
-                                                    <option value="6W"> Every six weeks</option>
-                                                    <option value="1xM"> Every month</option>
-                                                    <option value="3W"> Every three weeks</option>
-                                                    <option value="2W"> Every two weeks</option>
-                                                    <option value="1W"> Every week</option>
-                                                    <option value="3BD"> Every Three business days</option>
-                                                    <option value="2BD"> Every Two business days</option>
-                                                    <option value="1BD"> Each business day</option>
-
-                                                </Form.Control>
-                                            </Form.Group>
 
 
 
@@ -371,7 +318,7 @@ export default class TransportForm extends React.Component {
                                     :
 
 
-                                    <Col lg="3">
+                                    <div>
                                         <p>par type de vehicue kilometrage et nombre d'employes</p>
                                         <Form noValidate
                                               validated={validated}
@@ -391,7 +338,7 @@ export default class TransportForm extends React.Component {
 
                                             />
 
-                                            <button type="submit" onClick={this.handleDelete}>Delete</button>
+                                            <button onClick={this.handleDelete}>Delete</button>
 
                                             <Form.Group>
                                                 <Form.Label>Frequence D'Achat</Form.Label>
@@ -420,9 +367,51 @@ export default class TransportForm extends React.Component {
                                                 </Form.Control>
                                             </Form.Group>
 
-                                        </Form>
-                                    </Col>
+                                            <Row>
+                                            <Col lg="5">
 
+                                                <Form.Label>Unite</Form.Label>
+                                                <Form.Control as='select'
+                                                              name="Unite"
+                                                              required
+                                                              type="text"
+                                                              placeholder="Quantite"
+                                                              onChange={this.handleChange}
+                                                              value={this.state.Unite}
+                                                >
+
+                                                    {this.state.rows.map(vehicule => (
+                                                        <option >
+                                                            {vehicule}
+                                                        </option>
+                                                    ))}
+                                                </Form.Control>
+                                            </Col>
+
+                                            <Col lg="5">
+
+                                                <Form.Label>Unite</Form.Label>
+                                                <Form.Control as='select'
+                                                              name="Unite"
+                                                              required
+                                                              type="text"
+                                                              placeholder="Quantite"
+                                                              onChange={this.handleChange}
+                                                              value={this.state.Unite}
+                                                >
+
+                                                    {this.state.Libelle.map(vehicule => (
+                                                        <option >
+                                                            {vehicule}
+                                                        </option>
+                                                    ))}
+                                                </Form.Control>
+                                            </Col>
+                                            </Row>
+
+
+                                        </Form>
+                                    </div>
 
 
                                 }
