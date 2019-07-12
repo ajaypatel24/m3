@@ -15,7 +15,7 @@
 * **Moment** : https://momentjs.com/ => Time and date library
 * **Heroku** : https://id.heroku.com/login => Temporary deployment solution 
 * **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
-
+* **Material UI** : https://material-ui.com/ => Google style components for pages 
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 **Testing** : Mocha (test runner), Chai (assertion), Enzyme (component tests) and Jest (snapshot tests)
