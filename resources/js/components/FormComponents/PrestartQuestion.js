@@ -20,6 +20,7 @@ export default class PrestartQuestion extends React.Component {
 
         this.handleChange = this.handleChange.bind(this); //handle change function
         this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
+        this.changeSubmission = this.changeSubmission.bind(this);
 
         this.state = {
             BusinessName: "",
@@ -52,6 +53,7 @@ export default class PrestartQuestion extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        let q = this;
 
 
         const data = this.state; //VERY IMPORTANT
@@ -75,7 +77,7 @@ export default class PrestartQuestion extends React.Component {
             })
                 .then(function (data) {
                     console.log('Request succeeded with JSON response', data);
-                    this.setState({formComplete: true})
+                    q.setState({formComplete: true})
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
@@ -122,6 +124,11 @@ export default class PrestartQuestion extends React.Component {
         return false;
     }
 
+    changeSubmission = () => {
+        this.setState({formComplete: false});
+        console.log(this.state.formComplete);
+    }
+
 
     /**
      * a set of many forms defined using Form.Group as well as radio buttons
@@ -135,7 +142,7 @@ export default class PrestartQuestion extends React.Component {
 
 
             <div>
-                {this.state.formComplete ?
+                {!this.state.formComplete ?
 
 
                     < Form noValidate
@@ -582,8 +589,12 @@ export default class PrestartQuestion extends React.Component {
 
                     :
 
+                    <div>
                     <p>Ayy P</p>
-
+                    <Button variant="primary" onClick={this.changeSubmission}>
+                        Edit Data
+                    </Button>
+                    </div>
             }
 
             </div>

@@ -22,10 +22,7 @@ class TypeVehicule extends Migration
             $table->string('Identifie_BD', 10);
             $table->string('Nom_BD', 60);
             $table->string('Categorie1', 20);
-            $table->string('SCategorie_2', 20);
-            $table->string('SCategorie_3', 20);
-            $table->string('Commentaire', 255);
-            $table->integer('Qualite_Data');
+
             $table->float('Score_CC');
             $table->float('Score_SH');
             $table->float('Score_EcoS');

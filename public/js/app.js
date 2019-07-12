@@ -99348,10 +99348,19 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PrestartQuestion).call(this, props)); //required
 
+    _this.changeSubmission = function () {
+      _this.setState({
+        formComplete: false
+      });
+
+      console.log(_this.state.formComplete);
+    };
+
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this)); //handle change function
 
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); //handle submit function
 
+    _this.changeSubmission = _this.changeSubmission.bind(_assertThisInitialized(_this));
     _this.state = {
       BusinessName: "",
       QuebecAddress: "",
@@ -99384,6 +99393,7 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+      var q = this;
       var data = this.state; //VERY IMPORTANT
       //checks all auth
 
@@ -99402,7 +99412,7 @@ function (_React$Component) {
           }
         }).then(function (data) {
           console.log('Request succeeded with JSON response', data);
-          this.setState({
+          q.setState({
             formComplete: true
           });
         })["catch"](function (error) {
@@ -99445,18 +99455,18 @@ function (_React$Component) {
 
       return false;
     }
+  }, {
+    key: "render",
+
     /**
      * a set of many forms defined using Form.Group as well as radio buttons
      * when finished click on submit to submit the data
      */
-
-  }, {
-    key: "render",
     value: function render() {
       var _this2 = this;
 
       var validated = this.state.validated;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.formComplete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, !this.state.formComplete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -99781,7 +99791,10 @@ function (_React$Component) {
         type: "submit"
         /*onClick={this.handleSubmit} disabled={!this.formValid()} */
 
-      }, "Submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ayy P"));
+      }, "Submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ayy P"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary",
+        onClick: this.changeSubmission
+      }, "Edit Data")));
     }
   }]);
 
