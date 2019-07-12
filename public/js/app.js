@@ -99369,7 +99369,8 @@ function (_React$Component) {
       BusinessType: "",
       DiffCorpAddress: "",
       UID: sessionStorage.getItem('UID'),
-      validated: false
+      validated: false,
+      formComplete: false
     };
     return _this;
   }
@@ -99401,6 +99402,9 @@ function (_React$Component) {
           }
         }).then(function (data) {
           console.log('Request succeeded with JSON response', data);
+          this.setState({
+            formComplete: true
+          });
         })["catch"](function (error) {
           console.log('Request failed', error);
           console.log("why");
@@ -99452,7 +99456,7 @@ function (_React$Component) {
       var _this2 = this;
 
       var validated = this.state.validated;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.formComplete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -99777,7 +99781,7 @@ function (_React$Component) {
         type: "submit"
         /*onClick={this.handleSubmit} disabled={!this.formValid()} */
 
-      }, "Submit")));
+      }, "Submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ayy P"));
     }
   }]);
 
