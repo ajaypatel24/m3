@@ -99903,13 +99903,14 @@ function (_React$Component) {
     _this.getTableRows = function () {
       //let uid = sessionStorage.getItem('UID');
       var uid = _this.state.UID;
-      axios.get('/intrants/' + uid).then(function (response) {
+      axios.get('/transportdata/').then(function (response) {
         console.log(response.data);
 
         _this.setState({
           rows: response.data
         });
       });
+      console.log(_this.state.rows[0]);
     };
 
     _this.changeDelete = function () {
@@ -100041,7 +100042,7 @@ function (_React$Component) {
         onClick: this.changeDelete
       }, "Switch")), this.state.Delete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.Delete), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "par employe, origine destination"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.Delete), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -100077,37 +100078,9 @@ function (_React$Component) {
         placeholder: "Quantite",
         onChange: this.handleChange,
         value: this.state.Unite
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "GJ"
-      }, "GJ"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kWh"
-      }, "kWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "MWh"
-      }, "MWh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kg"
-      }, "Kg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "t"
-      }, "Ton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "L"
-      }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "m3"
-      }, "m3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "lbs"
-      }, "lbs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "tm"
-      }, "Ton (metric)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "gal"
-      }, "Gal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "bac240L"
-      }, "Dumpster (240L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "bac360L"
-      }, "Dumpster (360L)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "VC"
-      }, "Cubic Yards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "teqCO2"
-      }, "GHG (Ton)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "kgeqCO2"
-      }, "GHG (Kg)")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+      }, this.state.rows.map(function (vehicule) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, vehicule);
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         required: true,
         name: "Yearly",
         inline: true,
@@ -100179,7 +100152,7 @@ function (_React$Component) {
         onClick: this.handleSubmit
       }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "par type de vehicue kilometrage et nombre d'employes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -100198,11 +100171,34 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleDelete
-      }, "Delete"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        as: "select",
+        name: "Frequency",
+        placeholder: "Select Range",
+        required: true,
+        value: this.state.Frequency,
+        onChange: this.handleChange,
+        disabled: this.state.Yearly === 'false',
+        enabled: this.state.Yearly === 'true'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "6W"
+      }, " ", this.state.rows[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1xM"
+      }, " Every month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3W"
+      }, " Every three weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2W"
+      }, " Every two weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1W"
+      }, " Every week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3BD"
+      }, " Every Three business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2BD"
+      }, " Every Two business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1BD"
+      }, " Each business day"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
-      }, this.state.rows.map(function (attribute) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantite/An"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Frequency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.nom_intrant), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.quantite_an, " ", attribute.unite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.frequence), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.NbTransport), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, attribute.provenance)))));
-      })))))));
+      }))))));
     }
   }]);
 

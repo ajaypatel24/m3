@@ -26,6 +26,8 @@ Route::get('/', 'LoginController@index'); //deprecated
 /* Register Controller */
 Route::post('/register', 'RegisterController@register'); //register new user
 
+
+Route::get('/transportdata', 'TransportController@getDropDown');
 /* Prestart Controller */
 Route::get('/prestart', 'PrestartController@index');
 Route::get('/user/{Id}', 'PrestartController@search'); //gets email address

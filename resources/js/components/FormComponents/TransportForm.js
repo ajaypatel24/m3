@@ -117,14 +117,18 @@ export default class TransportForm extends React.Component {
         console.log("Value: ", e.target.value);
     }
 
+
     getTableRows = () => {
         //let uid = sessionStorage.getItem('UID');
         let uid = this.state.UID;
-        axios.get('/intrants/' + uid)
+        axios.get('/transportdata/')
             .then(response => {
                 console.log(response.data);
                 this.setState({rows: response.data});
             });
+
+
+        console.log(this.state.rows[0]);
     }
 
     changeDelete = () => {
@@ -214,7 +218,7 @@ export default class TransportForm extends React.Component {
 
 
                                     <Col lg="3">
-
+                                        <p>par employe, origine destination</p>
                                         <p>{this.state.Delete}</p>
                                         <Form noValidate
                                               validated={validated}
@@ -251,6 +255,8 @@ export default class TransportForm extends React.Component {
 
                                                         />
                                                     </Col>
+
+
                                                     <Col lg="5">
 
                                                         <Form.Label>Unite</Form.Label>
@@ -263,24 +269,17 @@ export default class TransportForm extends React.Component {
                                                                       value={this.state.Unite}
                                                         >
 
-                                                            <option></option>
-                                                            <option value="GJ">GJ</option>
-                                                            <option value="kWh">kWh</option>
-                                                            <option value="MWh">MWh</option>
-                                                            <option value="kg">Kg</option>
-                                                            <option value="t">Ton</option>
-                                                            <option value="L">L</option>
-                                                            <option value="m3">m3</option>
-                                                            <option value="lbs">lbs</option>
-                                                            <option value="tm">Ton (metric)</option>
-                                                            <option value="gal">Gal</option>
-                                                            <option value="bac240L">Dumpster (240L)</option>
-                                                            <option value="bac360L">Dumpster (360L)</option>
-                                                            <option value="VC">Cubic Yards</option>
-                                                            <option value="teqCO2">GHG (Ton)</option>
-                                                            <option value="kgeqCO2">GHG (Kg)</option>
+                                                            {this.state.rows.map(vehicule => (
+                                                                <option >
+                                                                    {vehicule}
+                                                                </option>
+                                                            ))}
                                                         </Form.Control>
                                                     </Col>
+
+
+
+
                                                 </Row>
 
                                                 <Form.Check
@@ -371,7 +370,9 @@ export default class TransportForm extends React.Component {
 
                                     :
 
+
                                     <Col lg="3">
+                                        <p>par type de vehicue kilometrage et nombre d'employes</p>
                                         <Form noValidate
                                               validated={validated}
                                               onSubmit={e => this.handleSubmit(e)}
@@ -392,8 +393,36 @@ export default class TransportForm extends React.Component {
 
                                             <button type="submit" onClick={this.handleDelete}>Delete</button>
 
+                                            <Form.Group>
+                                                <Form.Label>Frequence D'Achat</Form.Label>
+                                                <Form.Control as="select" name="Frequency" placeholder="Select Range"
+                                                              required
+                                                              value={this.state.Frequency}
+                                                              onChange={this.handleChange}
+                                                              disabled={this.state.Yearly ==='false'}
+                                                              enabled={this.state.Yearly ==='true'}
+
+                                                >
+
+
+                                                    <option></option>
+
+                                                    <option value="6W"> {this.state.rows[0]}</option>
+                                                    <option value="1xM"> Every month</option>
+                                                    <option value="3W"> Every three weeks</option>
+                                                    <option value="2W"> Every two weeks</option>
+                                                    <option value="1W"> Every week</option>
+                                                    <option value="3BD"> Every Three business days</option>
+                                                    <option value="2BD"> Every Two business days</option>
+                                                    <option value="1BD"> Each business day</option>
+
+
+                                                </Form.Control>
+                                            </Form.Group>
+
                                         </Form>
                                     </Col>
+
 
 
                                 }
@@ -402,33 +431,6 @@ export default class TransportForm extends React.Component {
                                 <Col lg="5">
 
 
-                                    {this.state.rows.map(attribute =>
-                                        <div>
-
-                                            <table>
-
-                                                <thead>
-                                                <tr>
-                                                    <th>Nom Intrant</th>
-                                                    <th>Quantite/An</th>
-                                                    <th>Frequency</th>
-                                                    <th>Transports</th>
-                                                    <th>Provenance</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>{attribute.nom_intrant}</td>
-                                                    <td>{attribute.quantite_an} {attribute.unite}</td>
-                                                    <td>{attribute.frequence}</td>
-                                                    <td>{attribute.NbTransport}</td>
-                                                    <td>{attribute.provenance}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    )}
 
 
                                 </Col>
