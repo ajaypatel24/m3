@@ -25,11 +25,12 @@ class TransportController extends Controller
 
 
     }
-    public function getLibelle ()
+    public function getLibelle ($category)
     { //returns all distinct transportation methods
         $array = [];
         $TransportMethods = DB::table('typevehicule')
             ->select('Lib_VehiculeEN')
+            ->where('Type_transport', '=', $category)
             ->distinct()
             ->get();
 

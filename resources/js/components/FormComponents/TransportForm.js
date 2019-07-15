@@ -27,10 +27,14 @@ export default class TransportForm extends React.Component {
             rows: [],
             Libelle: [],
 
+            VehiculeCat: '',
+            Vehicule: '',
+
         };
 
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleChange2 = this.handleChange2.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTableRows = this.getTableRows.bind(this);
         this.changeDelete = this.changeDelete.bind(this);
@@ -40,6 +44,10 @@ export default class TransportForm extends React.Component {
 
     componentWillMount = () => {
         this.getTableRows();
+
+        console.log(this.state.VehiculeCat);
+
+
     }
 
 
@@ -107,6 +115,23 @@ export default class TransportForm extends React.Component {
         console.log("Value: ", e.target.value);
     }
 
+    handleChange2(e) {
+
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+
+        console.log("Name: ", e.target.name);
+        console.log("Value: ", e.target.value);
+
+        console.log('executes');
+        axios.get('/libelledata/' + e.target.value)
+            .then(response => {
+                console.log(response.data);
+                this.setState({Libelle: response.data});
+            });
+    }
+
 
     getTableRows = () => {
         //let uid = sessionStorage.getItem('UID');
@@ -118,17 +143,14 @@ export default class TransportForm extends React.Component {
                 console.log(this.state.rows);
             });
 
-        axios.get('/libelledata/')
-            .then(response => {
-                console.log(response.data);
-                this.setState({Libelle: response.data});
-                console.log(this.state.Libelle);
-            });
-
-
-
 
     }
+
+    getItem = () => {
+        return localStorage.getItem('cat');
+    }
+
+
 
     changeDelete = () => {
         this.setState({Delete: !this.state.Delete})
@@ -338,7 +360,6 @@ export default class TransportForm extends React.Component {
 
                                             />
 
-                                            <button onClick={this.handleDelete}>Delete</button>
 
                                             <Form.Group>
                                                 <Form.Label>Frequence D'Achat</Form.Label>
@@ -370,16 +391,19 @@ export default class TransportForm extends React.Component {
                                             <Row>
                                             <Col lg="5">
 
-                                                <Form.Label>Unite</Form.Label>
+                                                <Form.Label>Vehicule Category</Form.Label>
                                                 <Form.Control as='select'
-                                                              name="Unite"
+                                                              name="VehiculeCat"
                                                               required
                                                               type="text"
                                                               placeholder="Quantite"
-                                                              onChange={this.handleChange}
-                                                              value={this.state.Unite}
+                                                              onChange={this.handleChange2}
+                                                              value={this.state.VehiculeCat}
+
                                                 >
 
+
+                                                    <option> </option>
                                                     {this.state.rows.map(vehicule => (
                                                         <option >
                                                             {vehicule}
@@ -390,16 +414,18 @@ export default class TransportForm extends React.Component {
 
                                             <Col lg="5">
 
-                                                <Form.Label>Unite</Form.Label>
+                                                <Form.Label>Vehicule</Form.Label>
                                                 <Form.Control as='select'
-                                                              name="Unite"
+                                                              name="Vehicule"
                                                               required
                                                               type="text"
                                                               placeholder="Quantite"
                                                               onChange={this.handleChange}
-                                                              value={this.state.Unite}
+                                                              value={this.state.Vehicule}
+                                                              disabled={this.state.VehiculeCat === null}
                                                 >
-
+\
+                                                    <option> </option>
                                                     {this.state.Libelle.map(vehicule => (
                                                         <option >
                                                             {vehicule}

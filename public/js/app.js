@@ -99867,6 +99867,8 @@ function (_React$Component) {
 
     _this.componentWillMount = function () {
       _this.getTableRows();
+
+      console.log(_this.state.VehiculeCat);
     };
 
     _this.clearState = function () {
@@ -99896,15 +99898,10 @@ function (_React$Component) {
 
         console.log(_this.state.rows);
       });
-      axios.get('/libelledata/').then(function (response) {
-        console.log(response.data);
+    };
 
-        _this.setState({
-          Libelle: response.data
-        });
-
-        console.log(_this.state.Libelle);
-      });
+    _this.getItem = function () {
+      return localStorage.getItem('cat');
     };
 
     _this.changeDelete = function () {
@@ -99947,9 +99944,12 @@ function (_React$Component) {
       Delete: true,
       UID: sessionStorage.getItem('UID'),
       rows: [],
-      Libelle: []
+      Libelle: [],
+      VehiculeCat: '',
+      Vehicule: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleChange2 = _this.handleChange2.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.getTableRows = _this.getTableRows.bind(_assertThisInitialized(_this));
     _this.changeDelete = _this.changeDelete.bind(_assertThisInitialized(_this));
@@ -99984,6 +99984,23 @@ function (_React$Component) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
       console.log("Name: ", e.target.name);
       console.log("Value: ", e.target.value);
+    }
+  }, {
+    key: "handleChange2",
+    value: function handleChange2(e) {
+      var _this2 = this;
+
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      console.log("Name: ", e.target.name);
+      console.log("Value: ", e.target.value);
+      console.log('executes');
+      axios.get('/libelledata/' + e.target.value).then(function (response) {
+        console.log(response.data);
+
+        _this2.setState({
+          Libelle: response.data
+        });
+      });
     }
   }, {
     key: "handleSubmit",
@@ -100021,7 +100038,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var validated = this.state.validated;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -100040,7 +100057,7 @@ function (_React$Component) {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
-          return _this2.handleSubmit(e);
+          return _this3.handleSubmit(e);
         },
         method: "POST",
         action: "/",
@@ -100101,7 +100118,7 @@ function (_React$Component) {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
-          return _this2.handleSubmit(e);
+          return _this3.handleSubmit(e);
         },
         method: "POST",
         action: "/",
@@ -100113,9 +100130,7 @@ function (_React$Component) {
         placeholder: "Intrant",
         onChange: this.handleChange,
         value: this.state.NomIntrant
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDelete
-      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
         name: "Frequency",
         placeholder: "Select Range",
@@ -100142,27 +100157,28 @@ function (_React$Component) {
         value: "1BD"
       }, " Each business day"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Unite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Vehicule Category"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
-        name: "Unite",
+        name: "VehiculeCat",
         required: true,
         type: "text",
         placeholder: "Quantite",
-        onChange: this.handleChange,
-        value: this.state.Unite
-      }, this.state.rows.map(function (vehicule) {
+        onChange: this.handleChange2,
+        value: this.state.VehiculeCat
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), this.state.rows.map(function (vehicule) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, vehicule);
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Unite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Vehicule"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
-        name: "Unite",
+        name: "Vehicule",
         required: true,
         type: "text",
         placeholder: "Quantite",
         onChange: this.handleChange,
-        value: this.state.Unite
-      }, this.state.Libelle.map(function (vehicule) {
+        value: this.state.Vehicule,
+        disabled: this.state.VehiculeCat === null
+      }, "\\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), this.state.Libelle.map(function (vehicule) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, vehicule);
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
