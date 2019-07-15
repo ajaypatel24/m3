@@ -101533,7 +101533,7 @@ function (_React$Component) {
           component: _DataComponents_EnergyTableData__WEBPACK_IMPORTED_MODULE_6__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
-          path: "/home",
+          path: "/profile",
           component: _NavComponents_TopTabs__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
