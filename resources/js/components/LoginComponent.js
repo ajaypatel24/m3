@@ -108,13 +108,13 @@ export default class LoginComponent extends React.Component {
 
                     switch(error.code) {
                         case 'auth/wrong-password':
-                            this.setState({error: 'Error: Invalid Password'})
+                            this.setState({error: 'Invalid Password'})
                             break;
                         case 'auth/invalid-email':
-                            this.setState({error: 'Error: Please enter a valid Email Address'})
+                            this.setState({error: 'Please enter a valid Email Address'})
                             break;
                         case 'auth/user-not-found':
-                            this.setState({error: 'Error: User does not exist'})
+                            this.setState({error: 'User: ' +this.state.email +' does not exist'})
                             break;
 
                     }

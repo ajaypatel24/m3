@@ -112,13 +112,23 @@ export default class SignUpForm extends React.Component {
 
                 switch(error.code) {
                     case 'auth/invalid-email':
-                        this.setState({error: 'Error: Invalid Email'})
+                        this.setState({error: 'Error: Invalid Email',
+                                            email: '',
+                                            password: '',})
+                        
                         break;
                     case 'auth/weak-password':
-                        this.setState({error: 'Error: Password too weak'})
+                        this.setState({error: 'Error: Password too weak',
+                                            password: '',
+                                            passwordConfirm: '',})
+
                         break;
                     case 'auth/email-already-in-use':
-                        this.setState({error: 'Error: This email is in use'})
+                        this.setState({error: 'Error: This email is in use',
+                                            email: '',
+                                            password: '',
+                                            passwordConfirm: '',})
+
                         break;
 
                 }
@@ -191,10 +201,12 @@ export default class SignUpForm extends React.Component {
     {
         return (
             <div>
+                <br/>
+                <br/>
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
                 <Card.Body>
                     {this.state.error === '' ?
-                        <Card.Text className="d-flex justify-content-center"> Credentials below </Card.Text>
+                        null
                         :
                         <Alert variant="danger"
                                className="d-flex justify-content-center">{this.state.error}</Alert>
@@ -238,10 +250,12 @@ export default class SignUpForm extends React.Component {
                                 </Form.Text>
                             </Form.Group>
 
+                            {/*
                             <div className={"mt-3 red-text ".concat(this.state.passwordStrength)}>
                                 Password must contain at least 8 characters, and at least one lowercase character,
                                 uppercase character and number.
                             </div>
+                            */}
 
                             <Form.Group controlId="signUpFormPasswordCheck">
                                 <Form.Label>Retype password</Form.Label>
