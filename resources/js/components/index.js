@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { IntlProvider } from "react-intl";
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Example from "./Deprecated/Example";
 import Navbar from "./Navigation";
@@ -15,7 +16,9 @@ import IntrantForm from "./FormComponents/IntrantForm"
 import TransportForm from "./FormComponents/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
-
+import { addLocaleData } from "react-intl"
+import en from "react-intl/locale-data/en"
+import fr from "react-intl/locale-data/fr"
 
 export default class App extends React.Component {
     constructor(props) {

@@ -1,4 +1,4 @@
-import {Button, Card, Form, FormGroup, Row, Col} from "react-bootstrap";
+import {Button, Card, Form, FormGroup, Row, Col, Alert} from "react-bootstrap";
 import React from 'react';
 import MailIcon from '@material-ui/icons/Mail';
 import Person from '@material-ui/icons/Person';
@@ -21,7 +21,8 @@ export default class SignUpForm extends React.Component {
             passwordStrength: 'd-none',
             passwordMatch: "d-none",
             errors: {},
-            LoginOrRegister: this.props.select
+            LoginOrRegister: this.props.select,
+            error: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -104,7 +105,37 @@ export default class SignUpForm extends React.Component {
 
 
         // Signs user up and send data to custom backend
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(function () {
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .catch(error => { //catches login errors
+
+            console.log(error.code);
+
+                switch(error.code) {
+                    case 'auth/invalid-email':
+                        this.setState({error: 'Error: Invalid Email'})
+                        break;
+                    case 'auth/weak-password':
+                        this.setState({error: 'Error: Password too weak'})
+                        break;
+                    case 'auth/email-already-in-use':
+                        this.setState({error: 'Error: This email is in use'})
+                        break;
+
+                }
+
+
+                /*
+                    console.log(error.code);
+                    this.setState({error: error.code})
+                    */
+
+                this.setState({
+                    email: '',
+                    password: '',
+                })
+
+            })
+            .then(function () {
             // SECURITY PROBLEM ?
             let data = {
                 uid: firebase.auth().currentUser.uid,
@@ -162,6 +193,12 @@ export default class SignUpForm extends React.Component {
             <div>
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
                 <Card.Body>
+                    {this.state.error === '' ?
+                        <Card.Text className="d-flex justify-content-center"> Credentials below </Card.Text>
+                        :
+                        <Alert variant="danger"
+                               className="d-flex justify-content-center">{this.state.error}</Alert>
+                    }
                     <form id="registerForm">
                         <FormGroup role="form">
 
@@ -195,6 +232,10 @@ export default class SignUpForm extends React.Component {
                                 <Form.Control name="password" type="password"
                                               onChange={this.handleChangePasswordStrength}
                                               placeholder="Password"/>
+                                <Form.Text className="text-muted">
+                                    Password must contain at least 8 characters, and at least one lowercase character,
+                                    uppercase character and number.
+                                </Form.Text>
                             </Form.Group>
 
                             <div className={"mt-3 red-text ".concat(this.state.passwordStrength)}>

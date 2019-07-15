@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Form, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
 import SideNav from './NavComponents/Sidenav';
-
+import { IntlProvider } from "react-intl";
 
 import '../../sass/navstyle.css'
 import axios from "axios";
@@ -232,6 +232,7 @@ export default class Navigation extends React.Component {
 
 
         return (
+
 
             /** Begin Navbar */
 

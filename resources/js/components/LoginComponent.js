@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col, FormGroup} from 'react-bootstrap';
+import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col, FormGroup, Alert} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
 import Particles from 'react-particles-js';
 
@@ -9,7 +9,11 @@ import axios from "axios";
 import Avatar from '@material-ui/core/Avatar';
 import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
+import Snackbar from '@material-ui/core/Snackbar'
+import Chip from '@material-ui/core/Chip'
 import SignIn from "./Authentication/SignIn"
+import DoneIcon from '@material-ui/icons/Done';
+import {SnackbarContent} from "@material-ui/core";
 
 
 
@@ -39,6 +43,7 @@ export default class LoginComponent extends React.Component {
             name: this.getName(),
             isLoading: true,
             LoginOrSignUp: false,
+            error: '',
         };
 
 
@@ -48,6 +53,7 @@ export default class LoginComponent extends React.Component {
         //this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
         this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
+
     }
 
 
@@ -95,60 +101,86 @@ export default class LoginComponent extends React.Component {
         ]);
 
 
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then(function (user) {
 
+            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 
-                let uid = firebase.auth().currentUser.uid;
+                .catch(error => { //catches login errors
 
-                console.log(uid); //important, exclusive Uid that will be used to identify user
+                    switch(error.code) {
+                        case 'auth/wrong-password':
+                            this.setState({error: 'Error: Invalid Password'})
+                            break;
+                        case 'auth/invalid-email':
+                            this.setState({error: 'Error: Please enter a valid Email Address'})
+                            break;
+                        case 'auth/user-not-found':
+                            this.setState({error: 'Error: User does not exist'})
+                            break;
 
-
-
-                fetch('/login', {
-                    method: 'POST',
-                    body: JSON.stringify(uid),
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Content-type": "application/json"
                     }
-                })
-                    .then(function (data) {
+                    /*
+                        console.log(error.code);
+                        this.setState({error: error.code})
+                        */
 
-
-
-                        sessionStorage.setItem('authenticated', 'true');
-                        sessionStorage.setItem('UID', uid);
-                        currentComponent.getName();
-                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-
-
-                        setTimeout(function () {
-                            window.location.href = '#/profile/';
-                            window.location.reload();
-                        }, 20)
-                        console.log('Request succeeded with JSON response', data);
-
-
-
+                    this.setState({
+                        email: '',
+                        password: '',
                     })
-                    .catch(function (error) {
-                        console.log('Request failed', error);
-                    });
+
+                })
+                .then(function (user) {
 
 
-            }).catch(function (error) {
-            // Handle Errors here.
-            if (error.code === 400) {
-                console.log("either email or password is incorrect");
-            }
-            //console.log("dr yeet");
-            //var errorCode = error.code;
-            ///var errorMessage = error.message;
-            //return;
-            // ...
-        });
+                    let uid = firebase.auth().currentUser.uid;
+
+                    console.log(uid); //important, exclusive Uid that will be used to identify user
+
+
+                    fetch('/login', {
+                        method: 'POST',
+                        body: JSON.stringify(uid),
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            "Content-type": "application/json"
+                        }
+                    })
+                        .then(function (data) {
+
+
+                            sessionStorage.setItem('authenticated', 'true');
+                            sessionStorage.setItem('UID', uid);
+                            currentComponent.getName();
+                            currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+
+                            setTimeout(function () {
+                                window.location.href = '#/profile/';
+                                window.location.reload();
+                            }, 20)
+                            console.log('Request succeeded with JSON response', data);
+
+
+                        })
+                        .catch(function (error) {
+                            console.log('Request failed', error);
+                        });
+
+
+                }).catch(function (error) {
+                // Handle Errors here.
+
+
+                if (error.code === 400) {
+                    console.log("either email or password is incorrect");
+                }
+                //console.log("dr yeet");
+                //var errorCode = error.code;
+                ///var errorMessage = error.message;
+                //return;
+                // ...
+            });
+
 
 
         console.log("from login");
@@ -302,15 +334,32 @@ export default class LoginComponent extends React.Component {
                             <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
                             <Card.Body>
                                 <Card.Text className="d-flex justify-content-center"> Welcome back, please sign in </Card.Text>
+
+
+                                {this.state.error === '' ?
+                                    <Card.Text className="d-flex justify-content-center"> Credentials below </Card.Text>
+                                    :
+                                    <Alert variant="danger"
+                                           className="d-flex justify-content-center">{this.state.error}</Alert>
+                                }
+                                {/*
+                                        <Chip className="d-flex justify-content-center"
+                                              label={this.state.error}
+                                              color="secondary"
+                                              variant="outlined"
+                                              deleteIcon={<DoneIcon/>}
+                                        />
+                                        */}
+
+                                {/* <Button onClick={this.error}>press</Button> */}
                                 <Card.Text className="d-flex justify-content-center"> </Card.Text>
                                 <Form>
-                                    <br/>
-                                    <br/>
 
                                     <Form.Group>
 
                                         <Form.Group>
 
+                                            <p>{this.error}</p>
 
                                             <Form.Label className="mr-sm-2">Email</Form.Label>
                                             <Form.Control
@@ -359,9 +408,13 @@ export default class LoginComponent extends React.Component {
 
                 :
 
+
+                    <Col lg="6">
                     <Card>
                         <Register parentCallback={this.callbackFunction}/>
                     </Card>
+                    </Col>
+
                 }
 
 
