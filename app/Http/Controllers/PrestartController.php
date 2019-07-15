@@ -100,6 +100,12 @@ class PrestartController extends Controller
 
         return $name;
     }
+    public function getInitial($id) {
+        $name = DB::table('register')->where('uid', $id)->value('name');
+
+        return $name[0];
+    }
+
 
 
     /**

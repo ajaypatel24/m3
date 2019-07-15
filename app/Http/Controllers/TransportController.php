@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +46,17 @@ class TransportController extends Controller
 
 
         return array_filter($array);
+
+
+    }
+
+    public function transportKilometrage(request $request) {
+        $Transport = new Transport();
+
+
+        $Transport->Type_Deplacement = request('Vehicule');
+
+
 
 
     }

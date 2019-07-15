@@ -34,6 +34,7 @@ Route::get('/prestart', 'PrestartController@index');
 Route::get('/user/{Id}', 'PrestartController@search'); //gets email address
 Route::get('/scian/{Id}', 'PrestartController@searchSCIAN'); //gets Scian from prestart questions
 Route::get('/name/{Id}', 'PrestartController@getName' ); //gets name of user
+Route::get('/initial/{Id}', 'PrestartController@getInitial' ); //gets name of user
 Route::get('/data', 'PrestartController@p');
 Route::post('/prestart','PrestartController@prestartSave'); /*method from php controller */
 Route::get('/querytest', 'PrestartController@testQuery');

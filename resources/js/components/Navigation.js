@@ -32,6 +32,7 @@ export default class Navigation extends React.Component {
             authenticated: sessionStorage.getItem('authenticated'),
             redirect: false,
             name: this.getName(),
+            initial: this.getInitial(),
             isLoading: true,
         };
 
@@ -191,6 +192,16 @@ export default class Navigation extends React.Component {
                 this.setState({name: response.data});
             });
 
+
+
+    }
+
+    getInitial = () => {
+        let id = sessionStorage.getItem('UID');
+        axios.get('/initial/' + id)
+            .then(response => {
+                this.setState({initial: response.data})
+            });
     }
 
 
@@ -248,7 +259,7 @@ export default class Navigation extends React.Component {
                         <Nav.Link href="#/profile">Features</Nav.Link>
                         <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
                         <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
-                        <Nav.Link href="#/data">Contact Us</Nav.Link>
+                        <Nav.Link href="#/aboutus">About Us</Nav.Link>
                     </Nav>
                     {/** End always rendered section */}
 
@@ -294,7 +305,7 @@ export default class Navigation extends React.Component {
 
 
                         <Navbar.Collapse className="justify-content-end" inline>
-                            <Avatar>{this.state.name}</Avatar>
+                            <Avatar>{this.state.initial}</Avatar>
                             <Navbar.Text>
                                 <NavDropdown id="collasible-nav-dropdown" >
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>

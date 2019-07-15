@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, Row} from "react-bootstrap";
+import {Col, Form, Row, Button  } from "react-bootstrap";
 
 /**
  * Table de transport used to store all transportation
@@ -26,9 +26,12 @@ export default class TransportForm extends React.Component {
             UID: sessionStorage.getItem('UID'),
             rows: [],
             Libelle: [],
+            NombreVoiture: '',
+            JoursOuvrables: '',
 
             VehiculeCat: '',
             Vehicule: '',
+            Kilometres: '',
 
         };
 
@@ -151,6 +154,11 @@ export default class TransportForm extends React.Component {
     }
 
 
+    store = () => {
+        let data = this.state;
+
+        console.log(data);
+    }
 
     changeDelete = () => {
         this.setState({Delete: !this.state.Delete})
@@ -240,79 +248,14 @@ export default class TransportForm extends React.Component {
 
                                     <Col lg="3">
                                         <p>par employe, origine destination</p>
-                                        <p>{this.state.Delete}</p>
+
                                         <Form noValidate
                                               validated={validated}
                                               onSubmit={e => this.handleSubmit(e)}
                                               method="POST" action="/"
                                               enctype="multipart/form-data">
 
-                                            <Form.Group>
-                                                <Form.Label>Nom Intrant</Form.Label>
-                                                <Form.Control
-                                                    name="NomIntrant"
-                                                    required
-                                                    type="text"
-                                                    placeholder="Intrant"
-                                                    onChange={this.handleChange}
-                                                    value={this.state.NomIntrant}
 
-                                                />
-                                            </Form.Group>
-
-
-                                            <Form.Group>
-                                                <Row>
-                                                    <Col lg="7">
-                                                        <Form.Label>Quantite</Form.Label>
-                                                        <Form.Control
-                                                            name="QuantiteAn"
-                                                            required
-                                                            type="text"
-                                                            placeholder=""
-                                                            onChange={this.handleChange}
-                                                            value={this.state.QuantiteAn}
-                                                            pattern="^[a-zA-Z]+$"
-
-                                                        />
-                                                    </Col>
-
-                                                </Row>
-
-                                                <Form.Check
-                                                    required
-                                                    name="Yearly"
-                                                    inline label="Per Delivery"
-                                                    type='radio'
-                                                    id={`inline-radio-1`}
-                                                    onChange={this.handleChange}
-                                                    value={true}
-                                                    pattern="^[a-zA-Z]+$"/>
-                                                <Form.Check
-                                                    name="Yearly"
-                                                    inline label="Yearly"
-                                                    onChange={this.handleChange}
-                                                    type='radio'
-                                                    id={`inline-radio-2`}
-                                                    value={false}/>
-
-
-                                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            </Form.Group>
-
-
-                                            <Form.Group>
-                                                <Form.Label>Provenance</Form.Label>
-                                                <Form.Control
-                                                    name="Provenance"
-                                                    required
-                                                    type="text"
-                                                    placeholder="Pays/Province"
-                                                    onChange={this.handleChange}
-                                                    value={this.state.Provenance}
-
-                                                />
-                                            </Form.Group>
 
                                             <Form.Group>
                                                 <Form.Label>Nombre de Transports</Form.Label>
@@ -341,7 +284,7 @@ export default class TransportForm extends React.Component {
 
 
                                     <div>
-                                        <p>par type de vehicue kilometrage et nombre d'employes</p>
+                                        <p>Type vehicule, kilometrage et nombre d'employes</p>
                                         <Form noValidate
                                               validated={validated}
                                               onSubmit={e => this.handleSubmit(e)}
@@ -349,44 +292,6 @@ export default class TransportForm extends React.Component {
                                               enctype="multipart/form-data">
 
 
-                                            <Form.Label>Nom Intrant</Form.Label>
-                                            <Form.Control
-                                                name="NomIntrant"
-                                                required
-                                                type="text"
-                                                placeholder="Intrant"
-                                                onChange={this.handleChange}
-                                                value={this.state.NomIntrant}
-
-                                            />
-
-
-                                            <Form.Group>
-                                                <Form.Label>Frequence D'Achat</Form.Label>
-                                                <Form.Control as="select" name="Frequency" placeholder="Select Range"
-                                                              required
-                                                              value={this.state.Frequency}
-                                                              onChange={this.handleChange}
-                                                              disabled={this.state.Yearly ==='false'}
-                                                              enabled={this.state.Yearly ==='true'}
-
-                                                >
-
-
-                                                    <option></option>
-
-                                                    <option value="6W"> {this.state.rows[0]}</option>
-                                                    <option value="1xM"> Every month</option>
-                                                    <option value="3W"> Every three weeks</option>
-                                                    <option value="2W"> Every two weeks</option>
-                                                    <option value="1W"> Every week</option>
-                                                    <option value="3BD"> Every Three business days</option>
-                                                    <option value="2BD"> Every Two business days</option>
-                                                    <option value="1BD"> Each business day</option>
-
-
-                                                </Form.Control>
-                                            </Form.Group>
 
                                             <Row>
                                             <Col lg="5">
@@ -412,7 +317,7 @@ export default class TransportForm extends React.Component {
                                                 </Form.Control>
                                             </Col>
 
-                                            <Col lg="5">
+                                            <Col lg="7">
 
                                                 <Form.Label>Vehicule</Form.Label>
                                                 <Form.Control as='select'
@@ -435,8 +340,64 @@ export default class TransportForm extends React.Component {
                                             </Col>
                                             </Row>
 
+                                           <br/>
+
+                                            <Row>
+                                                <Col lg="4">
+                                                    <Form.Label>Nombre de Voitures</Form.Label>
+                                                <Form.Control
+                                                    name="NombreVoitures"
+                                                    required
+                                                    type="text"
+                                                    placeholder="Intrant"
+                                                    onChange={this.handleChange}
+                                                    value={this.state.NombreVoitures}
+                                                    pattern="^[0-9]$"
+
+                                                />
+                                                </Col>
+
+                                                <Col lg="4">
+                                                    <Form.Label>Jours Ouvrables</Form.Label>
+                                                    <Form.Control
+                                                        name="JoursOuvrables"
+                                                        required
+                                                        type="text"
+                                                        placeholder="220"
+                                                        onChange={this.handleChange}
+                                                        value={this.state.JoursOuvrables}
+                                                        pattern="^[0-9]$"
+                                                    />
+                                                </Col>
+
+                                                <Col lg="4">
+                                                    <Form.Label>Kilometres Parcourus</Form.Label>
+                                                    <Form.Control
+                                                        name="Kilometres"
+                                                        required
+                                                        type="text"
+                                                        placeholder="Intrant"
+                                                        onChange={this.handleChange}
+                                                        value={this.state.Kilometres}
+                                                        pattern="^[0-9]$"
+                                                    />
+                                                </Col>
+
+
+                                            </Row>
+
+
 
                                         </Form>
+
+                                        <br/>
+                                        <Row>
+                                            <Col lg="4">
+                                            <Button type="submit" onClick={this.store}>Submit</Button>
+                                            </Col>
+                                        </Row>
+
+
                                     </div>
 
 

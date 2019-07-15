@@ -99904,6 +99904,11 @@ function (_React$Component) {
       return localStorage.getItem('cat');
     };
 
+    _this.store = function () {
+      var data = _this.state;
+      console.log(data);
+    };
+
     _this.changeDelete = function () {
       _this.setState({
         Delete: !_this.state.Delete
@@ -99945,8 +99950,11 @@ function (_React$Component) {
       UID: sessionStorage.getItem('UID'),
       rows: [],
       Libelle: [],
+      NombreVoiture: '',
+      JoursOuvrables: '',
       VehiculeCat: '',
-      Vehicule: ''
+      Vehicule: '',
+      Kilometres: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleChange2 = _this.handleChange2.bind(_assertThisInitialized(_this));
@@ -100053,7 +100061,7 @@ function (_React$Component) {
         onClick: this.changeDelete
       }, "Switch")), this.state.Delete ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "par employe, origine destination"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.Delete), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "par employe, origine destination"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -100062,49 +100070,7 @@ function (_React$Component) {
         method: "POST",
         action: "/",
         enctype: "multipart/form-data"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "NomIntrant",
-        required: true,
-        type: "text",
-        placeholder: "Intrant",
-        onChange: this.handleChange,
-        value: this.state.NomIntrant
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "7"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Quantite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "QuantiteAn",
-        required: true,
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        value: this.state.QuantiteAn,
-        pattern: "^[a-zA-Z]+$"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-        required: true,
-        name: "Yearly",
-        inline: true,
-        label: "Per Delivery",
-        type: "radio",
-        id: "inline-radio-1",
-        onChange: this.handleChange,
-        value: true,
-        pattern: "^[a-zA-Z]+$"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-        name: "Yearly",
-        inline: true,
-        label: "Yearly",
-        onChange: this.handleChange,
-        type: "radio",
-        id: "inline-radio-2",
-        value: false
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, null, "Looks good!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Provenance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "Provenance",
-        required: true,
-        type: "text",
-        placeholder: "Pays/Province",
-        onChange: this.handleChange,
-        value: this.state.Provenance
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nombre de Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nombre de Transports"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         name: "NbTransport",
         required: true,
         type: "text",
@@ -100114,7 +100080,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.handleSubmit
-      }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "par type de vehicue kilometrage et nombre d'employes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+      }, "submit"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Type vehicule, kilometrage et nombre d'employes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         noValidate: true,
         validated: validated,
         onSubmit: function onSubmit(e) {
@@ -100123,39 +100089,7 @@ function (_React$Component) {
         method: "POST",
         action: "/",
         enctype: "multipart/form-data"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nom Intrant"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        name: "NomIntrant",
-        required: true,
-        type: "text",
-        placeholder: "Intrant",
-        onChange: this.handleChange,
-        value: this.state.NomIntrant
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Frequence D'Achat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        as: "select",
-        name: "Frequency",
-        placeholder: "Select Range",
-        required: true,
-        value: this.state.Frequency,
-        onChange: this.handleChange,
-        disabled: this.state.Yearly === 'false',
-        enabled: this.state.Yearly === 'true'
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "6W"
-      }, " ", this.state.rows[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1xM"
-      }, " Every month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3W"
-      }, " Every three weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2W"
-      }, " Every two weeks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1W"
-      }, " Every week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3BD"
-      }, " Every Three business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2BD"
-      }, " Every Two business days"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1BD"
-      }, " Each business day"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Vehicule Category"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
@@ -100168,7 +100102,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), this.state.rows.map(function (vehicule) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, vehicule);
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: "5"
+        lg: "7"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Vehicule"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         as: "select",
         name: "Vehicule",
@@ -100180,7 +100114,42 @@ function (_React$Component) {
         disabled: this.state.VehiculeCat === null
       }, "\\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), this.state.Libelle.map(function (vehicule) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, vehicule);
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Nombre de Voitures"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "NombreVoitures",
+        required: true,
+        type: "text",
+        placeholder: "Intrant",
+        onChange: this.handleChange,
+        value: this.state.NombreVoitures,
+        pattern: "^[0-9]$"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Jours Ouvrables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "JoursOuvrables",
+        required: true,
+        type: "text",
+        placeholder: "220",
+        onChange: this.handleChange,
+        value: this.state.JoursOuvrables,
+        pattern: "^[0-9]$"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Kilometres Parcourus"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        name: "Kilometres",
+        required: true,
+        type: "text",
+        placeholder: "Intrant",
+        onChange: this.handleChange,
+        value: this.state.Kilometres,
+        pattern: "^[0-9]$"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        lg: "4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        type: "submit",
+        onClick: this.store
+      }, "Submit")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: "5"
       }))))));
     }
@@ -100641,7 +100610,7 @@ function SideNavigation() {
       onClick: toggleDrawer(side, false),
       onKeyDown: toggleDrawer(side, false)
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_5__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/profile"
+      to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], {
       button: true,
       key: "Home"
@@ -101197,6 +101166,15 @@ function (_React$Component) {
       });
     };
 
+    _this.getInitial = function () {
+      var id = sessionStorage.getItem('UID');
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/initial/' + id).then(function (response) {
+        _this.setState({
+          initial: response.data
+        });
+      });
+    };
+
     _this.state = {
       showLogin: false,
       loggedIn: false,
@@ -101205,6 +101183,7 @@ function (_React$Component) {
       authenticated: sessionStorage.getItem('authenticated'),
       redirect: false,
       name: _this.getName(),
+      initial: _this.getInitial(),
       isLoading: true
     };
     console.log(sessionStorage.getItem('authenticated'));
@@ -101293,8 +101272,8 @@ function (_React$Component) {
         }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
           onClick: "document.getElementById('signup').scrollIntoView();"
         }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-          href: "#/data"
-        }, "Contact Us")),
+          href: "#/aboutus"
+        }, "About Us")),
         /*
         {sessionStorage.getItem('authenticated') != 'true' ?
            <Form inline>
@@ -101325,7 +101304,7 @@ function (_React$Component) {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
           className: "justify-content-end",
           inline: true
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_6__["default"], null, this.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_6__["default"], null, this.state.initial), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Text, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
           id: "collasible-nav-dropdown"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
           href: "#/Contact"
@@ -101542,7 +101521,7 @@ function (_React$Component) {
         /*full routing found here*/
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, q ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation__WEBPACK_IMPORTED_MODULE_4__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginComponent__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
-          path: "/home",
+          path: "/aboutus",
           component: _Dashboard__WEBPACK_IMPORTED_MODULE_9__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BlockRoute, {
           exact: true,
@@ -101552,9 +101531,9 @@ function (_React$Component) {
           exact: true,
           path: "/data",
           component: _DataComponents_EnergyTableData__WEBPACK_IMPORTED_MODULE_6__["default"]
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
-          path: "/route",
+          path: "/home",
           component: _NavComponents_TopTabs__WEBPACK_IMPORTED_MODULE_11__["default"]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
           exact: true,
@@ -101659,7 +101638,7 @@ var BlockRoute = function BlockRoute(_ref3) {
     render: function render(props) {
       return sessionStorage.getItem('authenticated') === 'false' || sessionStorage.getItem('authenticated') === null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
         to: {
-          pathname: "/profile",
+          pathname: "/home",
           state: {
             from: props.location
           }

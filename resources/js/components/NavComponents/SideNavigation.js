@@ -57,7 +57,7 @@ export default function SideNavigation() {
             onKeyDown={toggleDrawer(side, false)}
         >
             <List>
-                <Link to="/profile">
+                <Link to="/">
                     <ListItem button key="Home">
                         <ListItemIcon><MailIcon /></ListItemIcon>
                         <ListItemText primary="Home" />

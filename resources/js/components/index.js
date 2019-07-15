@@ -51,10 +51,10 @@ export default class App extends React.Component {
                 <Switch>
 
 
-                    <BlockRoute exact path="/home" component={Dashboard}/>
+                    <BlockRoute exact path="/aboutus" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
-                    <Route exact path="/route" component={TopTabs}/>
+                    <PrivateRoute exact path="/home" component={TopTabs}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
@@ -150,7 +150,7 @@ export const BlockRoute = ({component: Component, ...rest}) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/profile",
+                            pathname: "/home",
                             state: {from: props.location}
                         }}
                     />
