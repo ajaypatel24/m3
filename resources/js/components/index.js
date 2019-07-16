@@ -29,7 +29,7 @@ import messages_de from "./fr.json";
 import messages_en from "./en.json";
 
 
-let lang = 'fr';
+let lang = 'en';
 addLocaleData(en);
 addLocaleData(fr);
 

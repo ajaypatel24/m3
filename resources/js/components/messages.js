@@ -7,7 +7,9 @@ export default {
         'nav.dashboard': "bonjour",
         'login.password' : "Mot de passe"
 
-    }
+    },
+
+
 };
 
 
