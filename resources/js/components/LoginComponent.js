@@ -14,7 +14,7 @@ import Chip from '@material-ui/core/Chip'
 import SignIn from "./Authentication/SignIn"
 import DoneIcon from '@material-ui/icons/Done';
 import {SnackbarContent} from "@material-ui/core";
-
+import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
@@ -373,7 +373,10 @@ export default class LoginComponent extends React.Component {
 
                                         </Form.Group>
 
-                                        <Form.Label className="mr-sm-2">Password</Form.Label>
+                                        <Form.Label className="mr-sm-2"> <FormattedHTMLMessage id="app.text"
+                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                               description="Welcome header on app main page"
+                                                                                               values={{ what: 'react-intl' }}/></Form.Label>
                                         <Form.Group>
                                             <Form.Control
                                                 required

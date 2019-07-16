@@ -1,0 +1,2 @@
+these translations only work if you're using a PHP frontend
+react cannot process php syntax

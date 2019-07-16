@@ -16,9 +16,20 @@ import IntrantForm from "./FormComponents/IntrantForm"
 import TransportForm from "./FormComponents/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
+import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
+
+import messages_de from "./fr.json";
+import messages_en from "./en.json";
+
+addLocaleData([...en, ...fr]);
+const messages = {
+    'de': messages_de,
+    'en': messages_en
+};
+const language = navigator.language.split(/[-_]/)[0];
 
 export default class App extends React.Component {
     constructor(props) {
@@ -39,6 +50,7 @@ export default class App extends React.Component {
         let q = sessionStorage.getItem('authenticated');
         return (
             /*full routing found here*/
+            <IntlProvider locale={language} messages={messages[language]}>
             <HashRouter>
 
 
@@ -77,6 +89,7 @@ export default class App extends React.Component {
 
 
             </HashRouter>
+            </IntlProvider>
         );
     }
 }
