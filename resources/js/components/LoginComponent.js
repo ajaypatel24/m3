@@ -16,6 +16,8 @@ import DoneIcon from '@material-ui/icons/Done';
 import {SnackbarContent} from "@material-ui/core";
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 
+import messages from './messages'
+
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -44,6 +46,7 @@ export default class LoginComponent extends React.Component {
             isLoading: true,
             LoginOrSignUp: false,
             error: '',
+            lang: localStorage.getItem('lang')
         };
 
 
@@ -72,6 +75,20 @@ export default class LoginComponent extends React.Component {
 
 
     }
+
+    switch = () => {
+        if (localStorage.getItem('lang') === 'fr') {
+            localStorage.setItem('lang', 'en');
+        } else if (localStorage.getItem('lang') === 'en') {
+            localStorage.setItem('lang', 'fr');
+        } else {
+            localStorage.setItem('lang', 'en');
+        }
+
+        window.location.reload();
+    }
+
+
 
 
     callbackFunction = (childata) => {
@@ -373,10 +390,10 @@ export default class LoginComponent extends React.Component {
 
                                         </Form.Group>
 
-                                        <Form.Label className="mr-sm-2"> <FormattedHTMLMessage id="app.text"
-                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                               description="Welcome header on app main page"
-                                                                                               values={{ what: 'react-intl' }}/></Form.Label>
+
+                                        <Form.Label className="mr-sm-2"> Password </Form.Label>
+
+
                                         <Form.Group>
                                             <Form.Control
                                                 required

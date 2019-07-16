@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem, Image  } from 'react-bootstrap';
 import SignUpForm from './Authentication/Register';
 import '../../sass/test.css'
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 const width = '22rem';
 
@@ -12,8 +13,35 @@ let element = document.getElementById("signup");
  * Home page users see before they login, Introduction to the service including an explanation of
  * some key concepts (maybe)
  */
+
+
 export default class Dashboard extends React.Component {
 
+    constructor(props) {
+        super(props); //required
+
+        this.state = {
+
+
+            lang: '',
+
+        };
+    }
+
+    switch = () => {
+        if (localStorage.getItem('lang') === 'fr') {
+            localStorage.setItem('lang', 'en');
+        }
+        else if (localStorage.getItem('lang') === 'en') {
+            localStorage.setItem('lang','fr');
+        }
+        else {
+            localStorage.setItem('lang','en');
+        }
+
+        window.location.reload();
+
+    }
     render() {
         return (
             <Container className="mt-4">
@@ -70,21 +98,23 @@ export default class Dashboard extends React.Component {
 
 
                  */}
-                <Row>
+                <div className="App">
+                    <header className="App-header">
 
-                    <Col lg="6">
-                    <h1 className="WebsiteHeader">Economie Circulaire</h1>
-                    <p>m Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged. It was popularised in
-                        the 1960s with the rele</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <br/>
-                    <br/>
-                </Row>
+                        <p>
+                            <FormattedHTMLMessage id="nav.dashboard"
+                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                  description="Welcome header on app main page"
+                                                  values={{what: 'react-intl'}}/>
+                        </p>
+                        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+                            <FormattedMessage id="app.learn-react-link"
+                                              defaultMessage="Learn React"
+                                              description="Link on react page"/>
+                        </a>
+                    </header>
+                    <Button type="switch" onClick={this.switch}>EN/FR</Button>
+                </div>
 
 
 
