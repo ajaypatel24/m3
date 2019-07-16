@@ -30,7 +30,7 @@ Route::post('/register', 'RegisterController@register'); //register new user
 Route::get('/transportdata', 'TransportController@getDropDown');
 Route::get('/libelledata/{category}', 'TransportController@getLibelle');
 /* Prestart Controller */
-Route::get('/prestart', 'PrestartController@index');
+Route::get('/prestart2', 'PrestartController@index');
 Route::get('/user/{Id}', 'PrestartController@search'); //gets email address
 Route::get('/scian/{Id}', 'PrestartController@searchSCIAN'); //gets Scian from prestart questions
 Route::get('/name/{Id}', 'PrestartController@getName' ); //gets name of user

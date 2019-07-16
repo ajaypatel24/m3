@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
+import { FormattedHTMLMessage } from 'react-intl';
 import SideNav from "../NavComponents/Sidenav";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
@@ -66,7 +67,7 @@ export default class PrestartQuestion extends React.Component {
             e.stopPropagation();
         }
         else {
-            fetch('/', {
+            fetch('/prestart', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -155,7 +156,10 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group controlId="validationCustom01">
                             <Col sm="5">
-                                <Form.Label>Business Name</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.BusinessName"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control
                                     name="BusinessName"
                                     required
@@ -171,7 +175,10 @@ export default class PrestartQuestion extends React.Component {
                             <Col sm="5">
 
 
-                                <Form.Label>Quebec Address</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.QuebecAddress"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control
                                     name="QuebecAddress"
                                     required
@@ -191,7 +198,10 @@ export default class PrestartQuestion extends React.Component {
                         <Form.Group>
                             <Col sm="5">
 
-                                <Form.Label>City</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.City"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control
                                     name="City"
                                     required
@@ -209,7 +219,10 @@ export default class PrestartQuestion extends React.Component {
                         <Form.Group>
                             <Col sm="5">
 
-                                <Form.Label>Postal Code</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.PostalCode"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control
                                     maxLength="7" minLength="6"
                                     name="PostalCode"
@@ -252,14 +265,20 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group>
                             <Col sm="5">
-                                <Form.Label>Type of Business</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.TypeBusiness"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
 
 
                                 <Form.Check
                                     required
                                     type="radio"
                                     class="text-dark"
-                                    label="PME Manufacturiere"
+                                    label=<FormattedHTMLMessage id="Prestart.PME"
+                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                    description="Welcome header on app main page"
+                                    values={{what: 'react-intl'}}/>
                                     name="BusinessType"
                                     id="formHorizontalRadios1"
                                     value="PME"
@@ -300,7 +319,10 @@ export default class PrestartQuestion extends React.Component {
                         <Form.Group> { /*SCIAN code */}
 
                             <Col sm="5">
-                                <Form.Label>Sectors of Activity</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.Sector"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
 
                                 <Form.Group as={Col} controlId="formGridState">
 
@@ -345,7 +367,10 @@ export default class PrestartQuestion extends React.Component {
                         <Form.Group>
 
                             <Col sm="5">
-                                <Form.Label>How is the business classed</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.BusinessClass"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Check
                                     required
                                     type="radio"
@@ -411,7 +436,10 @@ export default class PrestartQuestion extends React.Component {
                             <Form.Group as={Col} controlId="formGridState">
 
                                 <Col sm="5">
-                                    <Form.Label>Number of employees</Form.Label>
+                                    <Form.Label><FormattedHTMLMessage id="Prestart.Employees"
+                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                      description="Welcome header on app main page"
+                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                     <Form.Control as="select" name="EmployeeNumber" placeholder="Select Range"
                                                   value={this.state.EmployeeNumber}
                                                   onChange={this.handleChange}
@@ -438,7 +466,10 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group>
                             <Col sm="5">
-                                <Form.Label>Does your business have committee working towards sustainable development
+                                <Form.Label><FormattedHTMLMessage id="Prestart.Sustainable"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                 </Form.Label>
                                 <Form.Check
                                     required
@@ -462,7 +493,10 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group>
                             <Col sm="5">
-                                <Form.Label>On what level does your business operate
+                                <Form.Label><FormattedHTMLMessage id="Prestart.Level"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                 </Form.Label>
                                 <Form.Check
                                     required
@@ -502,7 +536,10 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group>
                             <Col sm="5">
-                                <Form.Label>What is your general client base
+                                <Form.Label><FormattedHTMLMessage id="Prestart.ClientBase"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                 </Form.Label>
 
                                 <Form.Check
@@ -544,7 +581,10 @@ export default class PrestartQuestion extends React.Component {
 
 
                             <Col lg="5">
-                                <Form.Label>What do you Offer to Clients</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.Offer"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control as="textarea" required rows="3" name="OfferToClient" type="text"
                                               onChange={this.handleChange}
                                               value={this.state.OfferToClient}
@@ -558,7 +598,10 @@ export default class PrestartQuestion extends React.Component {
                         <Form.Group as={Col} controlId="formGridState">
 
                             <Col sm="5">
-                                <Form.Label>Business annual total income</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Prestart.Income"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control as="select" required name="IncomeValue"
                                               value={this.state.IncomeValue}
                                               onChange={this.handleChange} defaultvalue="">
@@ -580,7 +623,10 @@ export default class PrestartQuestion extends React.Component {
                         <Col sm="5">
                             <Button variant="primary"
                                     type="submit" /*onClick={this.handleSubmit} disabled={!this.formValid()} */  >
-                                Submit
+                                <FormattedHTMLMessage id="Prestart.Submit"
+                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                      description="Welcome header on app main page"
+                                                      values={{what: 'react-intl'}}/>
                             </Button>
                         </Col>
 

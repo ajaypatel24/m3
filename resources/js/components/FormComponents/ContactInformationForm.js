@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
+import {FormattedHTMLMessage} from "react-intl";
 
 
 /**
@@ -126,7 +127,10 @@ export default class ContactInformationForm extends React.Component {
                 <Form.Row>
 
                     <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Fonction</Form.Label>
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Role"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control
                             name="Fonction"
                             required
@@ -139,7 +143,10 @@ export default class ContactInformationForm extends React.Component {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Telephone</Form.Label>
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control
                             name="Telephone"
                             required
@@ -154,7 +161,10 @@ export default class ContactInformationForm extends React.Component {
 
 
                 <Form.Group controlId="formGridAddress1">
-                    <Form.Label>Telephone2</Form.Label>
+                    <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone2"
+                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                      description="Welcome header on app main page"
+                                                      values={{what: 'react-intl'}}/></Form.Label>
                     <Form.Control
                         name="Telephone2"
                         value={this.state.Telephone2}
@@ -167,7 +177,10 @@ export default class ContactInformationForm extends React.Component {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Poste Telephone</Form.Label>
+                    <Form.Label><FormattedHTMLMessage id="ContactInformationForm.WorkTelephone"
+                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                      description="Welcome header on app main page"
+                                                      values={{what: 'react-intl'}}/></Form.Label>
                     <Form.Control
                         name="PosteTelephone"
                         required
@@ -182,7 +195,10 @@ export default class ContactInformationForm extends React.Component {
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>City</Form.Label>
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.City"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control
                             name="City"
                             required
@@ -195,7 +211,10 @@ export default class ContactInformationForm extends React.Component {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>Language</Form.Label>
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Language"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control as="select"
                                       name="Langue"
                                       required

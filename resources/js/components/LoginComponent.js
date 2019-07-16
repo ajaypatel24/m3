@@ -347,14 +347,20 @@ export default class LoginComponent extends React.Component {
                 {!this.state.LoginOrSignUp ?
                     <Card>
 
-                            <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign In</Card.Header>
+                            <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person /><FormattedHTMLMessage id="login.SignIn"
+                                                                                                                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                                                        description="Welcome header on app main page"
+                                                                                                                                        values={{what: 'react-intl'}}/></Card.Header>
                             <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
                             <Card.Body>
-                                <Card.Text className="d-flex justify-content-center"> Welcome back, please sign in </Card.Text>
+                                <Card.Text className="d-flex justify-content-center"> <FormattedHTMLMessage id="login.Intro"
+                                                                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                            description="Welcome header on app main page"
+                                                                                                            values={{what: 'react-intl'}}/> </Card.Text>
 
 
                                 {this.state.error === '' ?
-                                    <Card.Text className="d-flex justify-content-center"> Credentials below </Card.Text>
+                                   null
                                     :
                                     <Alert variant="danger"
                                            className="d-flex justify-content-center">{this.state.error}</Alert>
@@ -378,7 +384,10 @@ export default class LoginComponent extends React.Component {
 
                                             <p>{this.error}</p>
 
-                                            <Form.Label className="mr-sm-2">Email</Form.Label>
+                                            <Form.Label className="mr-sm-2"><FormattedHTMLMessage id="login.email"
+                                                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                  description="Welcome header on app main page"
+                                                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
                                                 required
                                                 name="email"
@@ -413,10 +422,16 @@ export default class LoginComponent extends React.Component {
                                     <Form.Group>
                                         <Row>
                                             <Col lg="6">
-                                        <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
+                                        <Button variant="outline-info" onClick={this.handleLoginRequest}><FormattedHTMLMessage id="login.Login"
+                                                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                                               description="Welcome header on app main page"
+                                                                                                                               values={{what: 'react-intl'}}/></Button>
                                             </Col>
                                             <Col lg="4">
-                                        <Button variant="outline-info" onClick={this.handleSwitch}>Sign Up</Button>
+                                        <Button variant="outline-info" onClick={this.handleSwitch}><FormattedHTMLMessage id="login.SignUp"
+                                                                                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                                         description="Welcome header on app main page"
+                                                                                                                         values={{what: 'react-intl'}}/></Button>
                                             </Col>
                                         </Row>
                                     </Form.Group>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Form, Row} from "react-bootstrap";
-
+import { FormattedHTMLMessage } from "react-intl";
 
 /**
  * Intrants, allow user to enter and intrant and press
@@ -225,7 +225,10 @@ render()
                                           enctype="multipart/form-data">
 
                                         <Form.Group>
-                                            <Form.Label>Nom Intrant</Form.Label>
+                                            <Form.Label><FormattedHTMLMessage id="IntrantForm.NomIntrant"
+                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                              description="Welcome header on app main page"
+                                                                              values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
                                                 name="NomIntrant"
                                                 required
@@ -241,7 +244,10 @@ render()
                                         <Form.Group>
                                             <Row>
                                                 <Col lg="7">
-                                                    <Form.Label>Quantite</Form.Label>
+                                                    <Form.Label><FormattedHTMLMessage id="IntrantForm.Quantity"
+                                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                      description="Welcome header on app main page"
+                                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                                     <Form.Control
                                                         name="QuantiteAn"
                                                         required
@@ -256,7 +262,10 @@ render()
                                                 <Col lg="5">
 
                                                     {/* simple dropdown menu */}
-                                                    <Form.Label>Unite</Form.Label>
+                                                    <Form.Label><FormattedHTMLMessage id="IntrantForm.Unite"
+                                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                      description="Welcome header on app main page"
+                                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                                     <Form.Control as='select'
                                                                   name="Unite"
                                                                   required
@@ -289,7 +298,10 @@ render()
                                             <Form.Check
                                                 required
                                                 name="Yearly"
-                                                inline label="Per Delivery"
+                                                inline label=<FormattedHTMLMessage id="IntrantForm.PerDelivery"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/>
                                                 type='radio'
                                                 id={`inline-radio-1`}
                                                 onChange={this.handleChange}
@@ -297,7 +309,10 @@ render()
                                                 pattern="^[a-zA-Z]+$"/>
                                             <Form.Check
                                                 name="Yearly"
-                                                inline label="Yearly"
+                                                inline label=<FormattedHTMLMessage id="IntrantForm.Yearly"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/>
                                                 onChange={this.handleChange}
                                                 type='radio'
                                                 id={`inline-radio-2`}
@@ -309,7 +324,10 @@ render()
 
 
                                         <Form.Group>
-                                            <Form.Label>Provenance</Form.Label>
+                                            <Form.Label><FormattedHTMLMessage id="IntrantForm.Provenance"
+                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                              description="Welcome header on app main page"
+                                                                              values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
                                                 name="Provenance"
                                                 required
@@ -322,7 +340,10 @@ render()
                                         </Form.Group>
 
                                         <Form.Group>
-                                            <Form.Label>Nombre de Transports</Form.Label>
+                                            <Form.Label><FormattedHTMLMessage id="IntrantForm.NbTransport"
+                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                              description="Welcome header on app main page"
+                                                                              values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
                                                 name="NbTransport"
                                                 required
@@ -335,7 +356,10 @@ render()
                                         </Form.Group>
 
                                         <Form.Group>
-                                            <Form.Label>Frequence D'Achat</Form.Label>
+                                            <Form.Label><FormattedHTMLMessage id="IntrantForm.Frequency"
+                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                              description="Welcome header on app main page"
+                                                                              values={{what: 'react-intl'}}/></Form.Label>
 
                                             {/* dropdown menu */}
                                             <Form.Control as="select" name="Frequency" placeholder="Select Range"
@@ -389,7 +413,10 @@ render()
                                           enctype="multipart/form-data">
 
 
-                                        <Form.Label>Nom Intrant</Form.Label>
+                                        <Form.Label><FormattedHTMLMessage id="IntrantForm.IntrantDelete"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></Form.Label>
                                         <Form.Control
                                             name="NomIntrant"
                                             required
@@ -427,11 +454,26 @@ render()
 
                                             <thead>
                                             <tr>
-                                                <th>Nom Intrant</th>
-                                                <th>Quantite/An</th>
-                                                <th>Frequency</th>
-                                                <th>Transports</th>
-                                                <th>Provenance</th>
+                                                <th><FormattedHTMLMessage id="IntrantForm.NomIntrant"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></th>
+                                                <th><FormattedHTMLMessage id="IntrantForm.Quantity"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></th>
+                                                <th><FormattedHTMLMessage id="IntrantForm.Frequency"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></th>
+                                                <th><FormattedHTMLMessage id="IntrantForm.NbTransport"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></th>
+                                                <th><FormattedHTMLMessage id="IntrantForm.Provenance"
+                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                          description="Welcome header on app main page"
+                                                                          values={{what: 'react-intl'}}/></th>
                                                 <th></th>
                                             </tr>
                                             </thead>

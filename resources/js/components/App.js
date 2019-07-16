@@ -24,8 +24,6 @@ import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import messages from "./messages"
 
-import messages_de from "./fr.json";
-import messages_en from "./en.json";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -69,10 +67,6 @@ export default class App extends React.Component {
 
             <div>
 
-            <p> <FormattedHTMLMessage id="nav.dashboard"
-                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                      description="Welcome header on app main page"
-                                      values={{what: 'react-intl'}}/></p>
             <HashRouter>
 
 

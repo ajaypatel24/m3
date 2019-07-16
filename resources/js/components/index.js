@@ -25,8 +25,7 @@ import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import messages from "./messages"
 
-import messages_de from "./fr.json";
-import messages_en from "./en.json";
+
 
 
 let lang = 'en';

@@ -2,6 +2,7 @@ import {Col, Row, Form, InputGroup} from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
 import Avatar from '@material-ui/core/Avatar';
+import {FormattedHTMLMessage} from "react-intl";
 /**
  * Contact information of current user displayed here before
  * or after they fill out required contact info, access
@@ -74,7 +75,10 @@ export default class ContactInformationData extends React.Component {
                             <Col lg="1">
                             </Col>
                             <Col lg="4">
-                                <h1>Profile</h1>
+                                <h1><FormattedHTMLMessage id="ContactInformationData.Profile"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></h1>
                                 <Avatar>{this.state.name}</Avatar>
                             </Col>
 
@@ -93,7 +97,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail" >
                                         <Form.Label column sm="2">
-                                            Name
+                                            <FormattedHTMLMessage id="ContactInformationData.Name"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.name} />
@@ -102,7 +109,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                         <Form.Label column sm="2">
-                                            Organization
+                                            <FormattedHTMLMessage id="ContactInformationData.Organization"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.organization} />
@@ -111,7 +121,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail" >
                                         <Form.Label column sm="2">
-                                            Fonction/Role
+                                            <FormattedHTMLMessage id="ContactInformationData.Role"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.fonction} />
@@ -120,7 +133,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                         <Form.Label column sm="2">
-                                            Email
+                                            <FormattedHTMLMessage id="ContactInformationData.Email"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.email} />
@@ -129,7 +145,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                         <Form.Label column sm="2">
-                                           Telephone
+                                            <FormattedHTMLMessage id="ContactInformationData.Telephone"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.telephone} />
@@ -139,7 +158,10 @@ export default class ContactInformationData extends React.Component {
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
 
                                         <Form.Label column sm="2">
-                                            Telephone 2
+                                            <FormattedHTMLMessage id="ContactInformationData.Telephone2"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
 
@@ -150,7 +172,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                     <Form.Label column sm="2">
-                                        Organization
+                                        <FormattedHTMLMessage id="ContactInformationData.CorpTelephone"
+                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                              description="Welcome header on app main page"
+                                                              values={{what: 'react-intl'}}/>
                                     </Form.Label>
                                     <Col sm="10">
                                         <Form.Control plaintext readOnly value={attribute.Poste_telephone} />
@@ -159,7 +184,10 @@ export default class ContactInformationData extends React.Component {
 
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
                                         <Form.Label column sm="2">
-                                            Langue
+                                            <FormattedHTMLMessage id="ContactInformationData.Language"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/>
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control plaintext readOnly value={attribute.langue} />

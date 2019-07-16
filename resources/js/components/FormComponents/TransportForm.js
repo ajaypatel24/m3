@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Form, Row, Button  } from "react-bootstrap";
+import {FormattedHTMLMessage} from "react-intl";
 
 /**
  * Table de transport used to store all transportation
@@ -248,7 +249,10 @@ export default class TransportForm extends React.Component {
 
                                     <Col lg="3">
                                         <p>par employe, origine destination</p>
-
+                                        <p><FormattedHTMLMessage id="TransportForm.EmployeeOrigin"
+                                                                 defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                 description="Welcome header on app main page"
+                                                                 values={{what: 'react-intl'}}/></p>
                                         <Form noValidate
                                               validated={validated}
                                               onSubmit={e => this.handleSubmit(e)}
@@ -258,7 +262,10 @@ export default class TransportForm extends React.Component {
 
 
                                             <Form.Group>
-                                                <Form.Label>Nombre de Transports</Form.Label>
+                                                <Form.Label><FormattedHTMLMessage id="TransportForm.NumberTransports"
+                                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                  description="Welcome header on app main page"
+                                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                                 <Form.Control
                                                     name="NbTransport"
                                                     required
@@ -284,7 +291,10 @@ export default class TransportForm extends React.Component {
 
 
                                     <div>
-                                        <p>Type vehicule, kilometrage et nombre d'employes</p>
+                                        <p><FormattedHTMLMessage id="TransportForm.TypeVehicule"
+                                                                 defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                 description="Welcome header on app main page"
+                                                                 values={{what: 'react-intl'}}/></p>
                                         <Form noValidate
                                               validated={validated}
                                               onSubmit={e => this.handleSubmit(e)}
@@ -296,7 +306,10 @@ export default class TransportForm extends React.Component {
                                             <Row>
                                             <Col lg="5">
 
-                                                <Form.Label>Vehicule Category</Form.Label>
+                                                <Form.Label><FormattedHTMLMessage id="TransportForm.VehiculeCategory"
+                                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                  description="Welcome header on app main page"
+                                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                                 <Form.Control as='select'
                                                               name="VehiculeCat"
                                                               required
@@ -319,7 +332,10 @@ export default class TransportForm extends React.Component {
 
                                             <Col lg="7">
 
-                                                <Form.Label>Vehicule</Form.Label>
+                                                <Form.Label><FormattedHTMLMessage id="TransportForm.Vehicule"
+                                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                  description="Welcome header on app main page"
+                                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                                 <Form.Control as='select'
                                                               name="Vehicule"
                                                               required
@@ -344,7 +360,10 @@ export default class TransportForm extends React.Component {
 
                                             <Row>
                                                 <Col lg="4">
-                                                    <Form.Label>Nombre de Voitures</Form.Label>
+                                                    <Form.Label><FormattedHTMLMessage id="TransportForm.Number"
+                                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                      description="Welcome header on app main page"
+                                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                                 <Form.Control
                                                     name="NombreVoitures"
                                                     required
@@ -358,7 +377,10 @@ export default class TransportForm extends React.Component {
                                                 </Col>
 
                                                 <Col lg="4">
-                                                    <Form.Label>Jours Ouvrables</Form.Label>
+                                                    <Form.Label><FormattedHTMLMessage id="TransportForm.BusinessDays"
+                                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                      description="Welcome header on app main page"
+                                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                                     <Form.Control
                                                         name="JoursOuvrables"
                                                         required
@@ -371,7 +393,10 @@ export default class TransportForm extends React.Component {
                                                 </Col>
 
                                                 <Col lg="4">
-                                                    <Form.Label>Kilometres Parcourus</Form.Label>
+                                                    <Form.Label><FormattedHTMLMessage id="TransportForm.Kilometres"
+                                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                      description="Welcome header on app main page"
+                                                                                      values={{what: 'react-intl'}}/></Form.Label>
                                                     <Form.Control
                                                         name="Kilometres"
                                                         required

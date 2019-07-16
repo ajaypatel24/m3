@@ -2,6 +2,7 @@ import {Button, Card, Form, FormGroup, Row, Col, Alert} from "react-bootstrap";
 import React from 'react';
 import MailIcon from '@material-ui/icons/Mail';
 import Person from '@material-ui/icons/Person';
+import {FormattedHTMLMessage} from "react-intl";
 /**
  * Registartion form using firebase to create an account in the m3
  * system, upon registration, the user should be stored in both the
@@ -222,25 +223,37 @@ export default class SignUpForm extends React.Component {
                             * </Form.Group>
                             */}
                             <Form.Group controlId="signUpFormName">
-                                <Form.Label>Name</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Register.Name"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="name" type="text" onChange={this.handleChange}
                                               placeholder="Enter name"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormOrganization">
-                                <Form.Label>Organization</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Register.Organization"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="organization" onChange={this.handleChange} type="text"
                                               placeholder="Enter organization name"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormEmail">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Register.Email"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="email" type="email" onChange={this.handleChange}
                                               placeholder="Enter email"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Register.Password"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="password" type="password"
                                               onChange={this.handleChangePasswordStrength}
                                               placeholder="Password"/>
@@ -258,7 +271,10 @@ export default class SignUpForm extends React.Component {
                             */}
 
                             <Form.Group controlId="signUpFormPasswordCheck">
-                                <Form.Label>Retype password</Form.Label>
+                                <Form.Label><FormattedHTMLMessage id="Register.RetypePassword"
+                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                  description="Welcome header on app main page"
+                                                                  values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="passwordConfirm" type="password" onChange={this.handleChange}
                                               placeholder="Retype Password"/>
                             </Form.Group>
@@ -267,14 +283,20 @@ export default class SignUpForm extends React.Component {
                                 <Row>
                                     <Col lg="6">
                             <Button variant="outline-info" type="submit" onClick={this.handleSubmit}>
-                                Register
+                                <FormattedHTMLMessage id="Register.Register"
+                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                      description="Welcome header on app main page"
+                                                      values={{what: 'react-intl'}}/>
                             </Button>
                                     </Col>
 
                                     <Col lg="6">
 
                             <Button variant="outline-info"  onClick={this.sendData}>
-                                Sign In
+                                <FormattedHTMLMessage id="Register.SignIn"
+                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                      description="Welcome header on app main page"
+                                                      values={{what: 'react-intl'}}/>
                             </Button>
                                     </Col>
                                 </Row>
