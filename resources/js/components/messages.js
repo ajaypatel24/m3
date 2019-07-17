@@ -84,7 +84,6 @@ export default {
         'Prestart.City': "City",
         'Prestart.PostalCode': "Postal Code",
         'Prestart.TypeBusiness': "Business Type",
-        'Prestart.PME': "PME manufacturier?",
         'Prestart.Sector': "Sector of Activity",
         'Prestart.BusinessClass': "Type of Business",
         'Prestart.Employees': "Number of Employees",
@@ -94,6 +93,40 @@ export default {
         'Prestart.Offer': "What services do you offer your clients",
         'Prestart.Income': "Business annual total income",
         'Prestart.Submit': "Submit",
+
+        'Prestart.BusinessNamePlaceholder': "Business Name",
+        'Prestart.QuebecAddressPlaceholder': "Quebec Address",
+        'Prestart.CityPlaceholder': "City",
+        'Prestart.PostalCodePlaceholder': "Postal Code",
+        'Prestart.CorporateAddressPlaceholder': "Corporate Address",
+        'Prestart.ShortDescriptionPlaceholder': "Short description required",
+
+        'Prestart.TPE': "TPE Manufacturiere",
+        'Prestart.EntrepriseDistribution': "Entreprise en Distribution",
+        'Prestart.EntrepriseService': "Entreprise en Services",
+        'Prestart.Autre': "Autre",
+        'Prestart.PME': "PME Manufacturiere",
+
+        'Prestart.SocieteActions': "Société par actions",
+        'Prestart.EntrepriseIndividuelle': "Entreprise individuelle",
+        'Prestart.SocieteCollectif': "Société en nom collectif",
+        'Prestart.Cooperative': "Coopérative",
+        'Prestart.OrganismeSansLucratif': "Organisme sans but lucratif",
+
+        'Prestart.Regional': "Regional",
+        'Prestart.Provincial': "Provincial",
+        'Prestart.International': "International",
+        'Prestart.National': "National",
+
+        'Prestart.Individuals': "Individuals",
+        'Prestart.Businesses': "Businesses",
+        'Prestart.BuyingGroups': "Buying Groups",
+        'Prestart.Resellers': "Resellers or Distributors",
+
+        'Prestart.Yes': "Yes",
+        'Prestart.No': "No",
+
+
 
         /**Transport Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
@@ -141,7 +174,20 @@ export default {
     },
     fr: {
 
+        'Prestart.TPE': "TPE Manufacturiere",
+        'Prestart.EntrepriseDistribution': "Entreprise en Distribution",
+        'Prestart.EntrepriseService': "Entreprise en Services",
+        'Prestart.Autre': "Autre",
+        'Prestart.PME': "PME Manufacturiere",
 
+        'Prestart.SocieteActions': "Société par actions",
+        'Prestart.EntrepriseIndividuelle': "Entreprise individuelle",
+        'Prestart.SocieteCollectif': "Société en nom collectif",
+        'Prestart.Cooperative': "Coopérative",
+        'Prestart.OrganismeSansLucratif': "Organisme sans but lucratif",
+
+        'Prestart.Yes': "Oui",
+        'Prestart.No': "Non",
     },
 
 

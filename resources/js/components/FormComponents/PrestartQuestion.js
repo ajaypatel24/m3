@@ -7,6 +7,129 @@ const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
+
+
+
+/**Placeholders */
+const BusinessName = <FormattedHTMLMessage id="Prestart.BusinessNamePlaceholder"
+                                     defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                     description="Welcome header on app main page"
+                                     values={{what: 'react-intl'}}/>
+
+const QuebecAddress = <FormattedHTMLMessage id="Prestart.QuebecAddressPlaceholder"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+const City = <FormattedHTMLMessage id="Prestart.CityPlaceholder"
+                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                            description="Welcome header on app main page"
+                                            values={{what: 'react-intl'}}/>
+
+const PostalCode = <FormattedHTMLMessage id="Prestart.PostalCodePlaceholder"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+
+const CorporateAddress = <FormattedHTMLMessage id="Prestart.CorporateAddressPlaceholder"
+                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                         description="Welcome header on app main page"
+                                         values={{what: 'react-intl'}}/>
+
+const ShortDescription = <FormattedHTMLMessage id="Prestart.ShortDescriptionPlaceholder"
+                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                               description="Welcome header on app main page"
+                                               values={{what: 'react-intl'}}/>
+
+const PME=<FormattedHTMLMessage id="Prestart.PME"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+const TPE=<FormattedHTMLMessage id="Prestart.TPE"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+const EntrepriseDistribution=<FormattedHTMLMessage id="Prestart.EntrepriseDistribution"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+const EntrepriseService=<FormattedHTMLMessage id="Prestart.EntrepriseService"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+const Autre=<FormattedHTMLMessage id="Prestart.Autre"
+                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                              description="Welcome header on app main page"
+                                              values={{what: 'react-intl'}}/>
+
+                                              /* radio 2 */
+
+const SocieteActions=<FormattedHTMLMessage id="Prestart.SocieteActions"
+                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                  description="Welcome header on app main page"
+                                  values={{what: 'react-intl'}}/>
+
+const EntrepriseIndividuelle=<FormattedHTMLMessage id="Prestart.EntrepriseIndividuelle"
+                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                  description="Welcome header on app main page"
+                                  values={{what: 'react-intl'}}/>
+
+const SocieteCollectif=<FormattedHTMLMessage id="Prestart.SocieteCollectif"
+                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                   description="Welcome header on app main page"
+                                                   values={{what: 'react-intl'}}/>
+
+const Cooperative=<FormattedHTMLMessage id="Prestart.Cooperative"
+                                             defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                             description="Welcome header on app main page"
+                                             values={{what: 'react-intl'}}/>
+
+const OrganismeSansLucratif=<FormattedHTMLMessage id="Prestart.OrganismeSansLucratif"
+                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                        description="Welcome header on app main page"
+                                        values={{what: 'react-intl'}}/>
+
+const Regional=<FormattedHTMLMessage id="Prestart.Regional"
+                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                  description="Welcome header on app main page"
+                                                  values={{what: 'react-intl'}}/>
+
+const Provincial =<FormattedHTMLMessage id="Prestart.Provincial"
+                                     defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                     description="Welcome header on app main page"
+                                     values={{what: 'react-intl'}}/>
+
+const National =<FormattedHTMLMessage id="Prestart.Provincial"
+                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                        description="Welcome header on app main page"
+                                        values={{what: 'react-intl'}}/>
+
+const International =<FormattedHTMLMessage id="Prestart.International"
+                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                      description="Welcome header on app main page"
+                                      values={{what: 'react-intl'}}/>
+
+const Individuals =<FormattedHTMLMessage id="Prestart.Individuals"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+const Businesses =<FormattedHTMLMessage id="Prestart.Businesses"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+const BuyingGroups =<FormattedHTMLMessage id="Prestart.BuyingGroups"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+const Resellers =<FormattedHTMLMessage id="Prestart.Resellers"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+
 /**
  * Prestart Questions to answer about the business before filling
  * out intrants and energy table, maybe make this impossible
@@ -164,7 +287,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="BusinessName"
                                     required
                                     type="text"
-                                    placeholder="Business Name"
+                                    placeholder={BusinessName}
                                     onChange={this.handleChange}
                                     value={this.state.BusinessName}/>
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -183,7 +306,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="QuebecAddress"
                                     required
                                     type="text"
-                                    placeholder="Quebec address"
+                                    placeholder={QuebecAddress}
                                     onChange={this.handleChange}
                                     value={this.state.QuebecAddress}
                                     pattern="^[0-9]+ [A-z]+$"
@@ -206,7 +329,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="City"
                                     required
                                     type="text"
-                                    placeholder="City"
+                                    placeholder={City}
                                     onChange={this.handleChange}
                                     value={this.state.City}
                                     pattern="^[a-zA-Z]+$"
@@ -228,7 +351,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="PostalCode"
                                     required
                                     type="text"
-                                    placeholder="Postal Code"
+                                    placeholder={PostalCode}
                                     onChange={this.handleChange}
                                     value={this.state.PostalCode}
                                     pattern="^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$"
@@ -249,7 +372,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="CorporateAddress"
                                     required
                                     type="text"
-                                    placeholder="corporate address"
+                                    placeholder={CorporateAddress}
                                     onChange={this.handleChange}
                                     value={this.state.CorporateAddress}
                                     pattern="^[0-9]+ [a-z]+$"
@@ -275,38 +398,37 @@ export default class PrestartQuestion extends React.Component {
                                     required
                                     type="radio"
                                     class="text-dark"
-                                    label=<FormattedHTMLMessage id="Prestart.PME"
-                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                    description="Welcome header on app main page"
-                                    values={{what: 'react-intl'}}/>
+
+                                    label={PME}
+
                                     name="BusinessType"
                                     id="formHorizontalRadios1"
                                     value="PME"
                                     onChange={this.handleChange}
                                 />
                                 <Form.Check type="radio"
-                                            label={'TPE Manufacturiere'}
+                                            label={TPE}
                                             name="BusinessType"
                                             id="formHorizontalRadios2"
                                             value="TPE"
                                             onChange={this.handleChange}
                                 />
                                 <Form.Check type="radio"
-                                            label={'Entreprise en Distribution'}
+                                            label={EntrepriseDistribution}
                                             name="BusinessType"
                                             id="formHorizontalRadios3"
                                             value="EntrePriseDistribution"
                                             onChange={this.handleChange}
                                 />
                                 <Form.Check type="radio"
-                                            label={'Entreprise de Services'}
+                                            label={EntrepriseService}
                                             name="BusinessType"
                                             id="formHorizontalRadios4"
                                             value="EntrepriseServices"
                                             onChange={this.handleChange}
                                 />
                                 <Form.Check type="radio"
-                                            label="Autre"
+                                            label={Autre}
                                             name="BusinessType"
                                             id="formHorizontalRadios5"
                                             value="Autre"
@@ -374,7 +496,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check
                                     required
                                     type="radio"
-                                    label="Société par actions"
+                                    label={SocieteActions}
                                     name="BusinessClass"
                                     id="formHorizontalRadios7"
                                     value="SocieteActions"
@@ -382,7 +504,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
 
                                 <Form.Check type="radio"
-                                            label="Entreprise individuelle"
+                                            label={EntrepriseIndividuelle}
                                             name="BusinessClass"
                                             id="formHorizontalRadios7"
                                             value="EntrepriseIndividuelle"
@@ -390,7 +512,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
 
                                 <Form.Check type="radio"
-                                            label="Société en nom collectif"
+                                            label={SocieteCollectif}
                                             name="BusinessClass"
                                             id="formHorizontalRadios7"
                                             value="SocieteCollectif"
@@ -398,7 +520,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
 
                                 <Form.Check type="radio"
-                                            label="Coopérative"
+                                            label={Cooperative}
                                             name="BusinessClass"
                                             id="formHorizontalRadios7"
                                             value="Cooperative"
@@ -407,7 +529,7 @@ export default class PrestartQuestion extends React.Component {
 
 
                                 <Form.Check type="radio"
-                                            label="Organisme sans but lucratif"
+                                            label={OrganismeSansLucratif}
                                             name="BusinessClass"
                                             id="formHorizontalRadios7"
                                             value="OrganismeSansLucratif"
@@ -416,7 +538,7 @@ export default class PrestartQuestion extends React.Component {
 
                                 <Form.Check
                                     type="radio"
-                                    label="Autre"
+                                    label={Autre}
                                     name="BusinessClass"
                                     id="formHorizontalRadios7"
                                     value="Autre"
@@ -440,7 +562,7 @@ export default class PrestartQuestion extends React.Component {
                                                                       defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                       description="Welcome header on app main page"
                                                                       values={{what: 'react-intl'}}/></Form.Label>
-                                    <Form.Control as="select" name="EmployeeNumber" placeholder="Select Range"
+                                    <Form.Control as="select" name="EmployeeNumber"
                                                   value={this.state.EmployeeNumber}
                                                   onChange={this.handleChange}
                                                   required
@@ -474,7 +596,10 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check
                                     required
                                     type="radio"
-                                    label="Yes"
+                                    label=<FormattedHTMLMessage id="Prestart.Yes"
+                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                    description="Welcome header on app main page"
+                                    values={{what: 'react-intl'}}/>
                                     name="ExistCommittee"
                                     id="formHorizontalRadios1"
                                     value="Yes"
@@ -482,7 +607,10 @@ export default class PrestartQuestion extends React.Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="No"
+                                    label=<FormattedHTMLMessage id="Prestart.No"
+                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                    description="Welcome header on app main page"
+                                    values={{what: 'react-intl'}}/>
                                     name="ExistCommittee"
                                     id="formHorizontalRadios2"
                                     value="No"
@@ -501,7 +629,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check
                                     required
                                     type="radio"
-                                    label="Regional"
+                                    label={Regional}
                                     name="BusinessLevel"
                                     id="formHorizontalRadios1"
                                     value="Regional"
@@ -509,7 +637,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="Provincial"
+                                    label={Provincial}
                                     name="BusinessLevel"
                                     id="formHorizontalRadios2"
                                     value="Provincial"
@@ -517,7 +645,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="National"
+                                    label={National}
                                     name="BusinessLevel"
                                     id="formHorizontalRadios3"
                                     value="National"
@@ -525,7 +653,7 @@ export default class PrestartQuestion extends React.Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="International"
+                                    label={International}
                                     name="BusinessLevel"
                                     id="formHorizontalRadios4"
                                     value="International"
@@ -545,7 +673,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check
                                     required
                                     type="radio"
-                                    label="Individuals"
+                                    label={Individuals}
                                     name="BusinessClientBase"
                                     id="individuals"
                                     value="Individuals"
@@ -554,21 +682,21 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check
 
                                     type="radio"
-                                    label="Businesses"
+                                    label={Businesses}
                                     name="BusinessClientBase"
                                     id="Businesses"
                                     value="Businesses"
                                     onChange={this.handleChange}/>
                                 <Form.Check
                                     type="radio"
-                                    label="Buying Groups"
+                                    label={BuyingGroups}
                                     name="BusinessClientBase"
-                                    id="Buyinggroups"
+                                    id="BuyingGroups"
                                     value="BuyingGroups"
                                     onChange={this.handleChange}/>
                                 <Form.Check
                                     type="radio"
-                                    label="Resellers or Distributors"
+                                    label={Resellers}
                                     name="BusinessClientBase"
                                     id="Resellers"
                                     value="ResellersDistributors"
@@ -588,7 +716,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Control as="textarea" required rows="3" name="OfferToClient" type="text"
                                               onChange={this.handleChange}
                                               value={this.state.OfferToClient}
-                                              placeholder="a short description is required">
+                                              placeholder={ShortDescription}>
 
                                 </Form.Control>
                             </Col>
