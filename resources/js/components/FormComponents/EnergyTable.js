@@ -93,6 +93,7 @@ export default class EnergyTable extends React.Component {
             SCIAN: "",
             UID: "",
             TableSubmit: sessionStorage.getItem('TableSubmit'),
+            EnergyCategories: [],
 
 
         }
@@ -109,8 +110,14 @@ export default class EnergyTable extends React.Component {
                 this.setState({SCIAN: response.data, UID: uid});
             });
 
+            axios.get('/test/')
+                .then(response => {
+                    console.log(response.data);
+                    this.setState({EnergyCategories: response.data});
+                });
 
-        console.log(this.state.SCIAN);
+
+        console.log(this.state.EnergyCategories);
     }
 
 
@@ -536,284 +543,221 @@ export default class EnergyTable extends React.Component {
             <div>
 
 
-                <Form
-                    onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
-                    <Table responsive> {/**/}
-                        <thead>
-                        <tr>
-                            <th colSpan="5"><FormattedHTMLMessage id="EnergyTable.Energy"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></th>
-                        </tr>
-                        <tr>
-                            <th colSpan="3">Compatiblisation direct des combustibles</th>
-                            <th>Facteur Combustion</th>
-                            <th>Total GES</th>
-                        </tr>
-                        <tr>
-                            <th>Combustibles fossiles, sources fixes</th>
-                            <th>Consommation</th>
-                            <th>Unite</th>
+                {this.state.EnergyCategories.map(attribute => {
+                    <Form
+                        onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
+                        <Table responsive> {/**/}
+                            <thead>
+                            <tr>
+                                <th colSpan="5"><Form.Control plaintext readOnly value={attribute.Gaznaturel}/></th>
+                            </tr>
+                            <tr>
+                                <th colSpan="3">Compatiblisation direct des combustibles</th>
+                                <th>Facteur Combustion</th>
+                                <th>Total GES</th>
+                            </tr>
+                            <tr>
+                                <th>Combustibles fossiles, sources fixes</th>
+                                <th>Consommation</th>
+                                <th>Unite</th>
 
 
-                        </tr>
-                        </thead>
-                        <tbody>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Gaz"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="GazNaturel" placeholder="valeur" value={this.state.GazNaturel}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="GazUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>2.3</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Propane"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="Propane" placeholder="valeur" value={this.state.Propane}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="PropaneUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.2</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.PumpFuel"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="EssencePompe" placeholder="valeur" value={this.state.EssencePompe}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="EssenceUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.Gaz"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="GazNaturel" placeholder="valeur" value={this.state.GazNaturel}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="GazUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>2.3</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.Propane"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="Propane" placeholder="valeur" value={this.state.Propane}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="PropaneUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>1.2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.PumpFuel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="EssencePompe" placeholder="valeur"
+                                                  value={this.state.EssencePompe}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="EssenceUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
 
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Diesel"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="GazolePompe" placeholder="valeur" value={this.state.GazolePompe}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="GazoleUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>2.3</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.HeatingOil"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="FioulDomestique" placeholder="valeur"
-                                              value={this.state.FioulDomestique}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="FioulUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.2</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.LightOil"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="MazoutLeger" placeholder="valeur" value={this.state.MazoutLeger}
-                                              onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="MazoutUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-
-
-                        {charbon}
-
-                        {coke}
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.Diesel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="GazolePompe" placeholder="valeur" value={this.state.GazolePompe}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="GazoleUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>2.3</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.HeatingOil"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="FioulDomestique" placeholder="valeur"
+                                                  value={this.state.FioulDomestique}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="FioulUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>1.2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.LightOil"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="MazoutLeger" placeholder="valeur" value={this.state.MazoutLeger}
+                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="MazoutUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
 
 
-                        <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Biodiesel"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="Biodiesel"
-                                              placeholder="valeur"
-                                              value={this.state.Biodiesel}
-                                              onChange={this.handleChange}
-                            ></Form.Control></td>
-                            <td><Form.Control as="select" name="BiodieselUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.2</td>
-                            <td>0</td>
-                        </tr>
+                            {charbon}
+
+                            {coke}
 
 
-                        {bois}
+                            <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.Biodiesel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="Biodiesel"
+                                                  placeholder="valeur"
+                                                  value={this.state.Biodiesel}
+                                                  onChange={this.handleChange}
+                                ></Form.Control></td>
+                                <td><Form.Control as="select" name="BiodieselUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>1.2</td>
+                                <td>0</td>
+                            </tr>
 
 
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.FossilHeating"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="Fossil"
-                                              placeholder="valeur"
-                                              value={this.state.Fossil}
-                                              onChange={this.handleChange}
-                            ></Form.Control></td>
-                            <td><Form.Control as="select" name="FossileUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>2.3</td>
-                            <td>0</td>
-                        </tr>
-
-                        <th colSpan="4">Electricite achetee</th>
+                            {bois}
 
 
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Electricite"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control
-                                name="TotalElectricite"
-                                placeholder="valeur"
-                                value={this.state.TotalElectricite}
-                                onChange={this.handleChange}></Form.Control></td>
-                            <td><Form.Control as="select" name="ElectriciteUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.2</td>
-                            <td>0</td>
-                        </tr>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.FossilHeating"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control name="Fossil"
+                                                  placeholder="valeur"
+                                                  value={this.state.Fossil}
+                                                  onChange={this.handleChange}
+                                ></Form.Control></td>
+                                <td><Form.Control as="select" name="FossileUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>2.3</td>
+                                <td>0</td>
+                            </tr>
 
-                        {achatvapeurfroid}
-
-                        {vin}
-
-                        {biere}
-
-                        {n2osol}
-
-                        {n2oanimaux}
-
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.AnimalMethane"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="MethaneAnimaux"
-                                              placeholder="valeur"
-                                              value={this.state.MethaneAnimaux}
-                                              onChange={this.handleChange}
-                            ></Form.Control></td>
-                            <td><Form.Control as="select" name="MethaneAnimauxUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.23</td>
-                            <td>0</td>
-                        </tr>
-
-                        {autremethane}
-
-                        {halocarbures}
-
-                        {usinage}
-
-                        {Soudure}
-
-                        <tr>
-                            <td><FormattedHTMLMessage id="EnergyTable.Truck"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></td>
-                            <td><Form.Control name="Cammionage"
-                                              placeholder="valeur"
-                                              value={this.state.Cammionage}
-                                              onChange={this.handleChange}
-                             ></Form.Control></td>
-                            <td><Form.Control as="select" name="CammionageUnite"
-                                              onChange={this.handleChange} required>
-                                <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                            </Form.Control></td>
-                            <td>1.23</td>
-                            <td>0</td>
-                        </tr>
-
-                        <tr><FormattedHTMLMessage id="EnergyTable.EndOfLife"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></tr>
+                            <th colSpan="4">Electricite achetee</th>
 
 
-                        </tbody>
+                            <tr>
+                                <td><FormattedHTMLMessage id="EnergyTable.Electricite"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
+                                <td><Form.Control
+                                    name="TotalElectricite"
+                                    placeholder="valeur"
+                                    value={this.state.TotalElectricite}
+                                    onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control as="select" name="ElectriciteUnite"
+                                                  onChange={this.handleChange} required>
+                                    <option></option>
+                                    <option value="Litre">Litre</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="KWH">KWH</option>
+                                </Form.Control></td>
+                                <td>1.2</td>
+                                <td>0</td>
+                            </tr>
 
-                    </Table>
-                    <button type="submit" onClick={this.handleSubmit}>test</button>
-                </Form>
+                            {achatvapeurfroid}
+
+
+                            </tbody>
+                        </Table>
+                        <button type="submit" onClick={this.handleSubmit}>test</button>
+                    </Form>
+                })};
+
 
 
                 {/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}

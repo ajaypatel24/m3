@@ -17,6 +17,7 @@ import IntrantForm from "./FormComponents/IntrantForm"
 import TransportForm from "./FormComponents/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
+import ProcessTable from "./FormComponents/ProcessTable"
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 
 import { addLocaleData } from "react-intl"
@@ -88,6 +89,7 @@ export default class App extends React.Component {
                     <PrivateRoute exact path="/profile" component={TopTabs}/>
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
+                    <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
                     <PrivateRoute exact path="/transport" component={TransportForm}/>

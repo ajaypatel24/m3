@@ -59,3 +59,10 @@ Route::get('/contact/{Id}', 'RegisterController@profileInfo'); //gets all user i
 
 
 
+Route::get('/test/', 'CategorieController@getEnergyCategory');
+
+
+
+
+
+

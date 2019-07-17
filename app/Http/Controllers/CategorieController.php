@@ -31,6 +31,33 @@ class CategorieController extends Controller
 
     }
 
+    function getEnergyCategory() { //add language support (parameter passed lang from localStorage)
+        $array = [];
+        $array2 = [];
+        $category = DB::table('categorie')
+            ->select('Nom_CategorieFR')
+            ->where('Partie_InventaireEN', '=', 'Energy')
+            ->distinct()
+            ->get();
+
+
+        foreach ($category as $v) {
+            $array[str_replace(' ', '', $v->Nom_CategorieFR)] = $v->Nom_CategorieFR;
+        }
+
+
+
+        array_push($array2, $array); //to be able to apply .map in frontend
+        return $array2;
+    }
+
+
+
+
+
+
+
+
     function tableEnergySave(request $request)
     {
 
