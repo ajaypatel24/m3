@@ -258,8 +258,10 @@ export default class SignUpForm extends React.Component {
                                               onChange={this.handleChangePasswordStrength}
                                               placeholder="Password"/>
                                 <Form.Text className="text-muted">
-                                    Password must contain at least 8 characters, and at least one lowercase character,
-                                    uppercase character and number.
+                                    <FormattedHTMLMessage id="Register.PasswordRequiremenets"
+                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                    description="Welcome header on app main page"
+                                    values={{what: 'react-intl'}}/>
                                 </Form.Text>
                             </Form.Group>
 

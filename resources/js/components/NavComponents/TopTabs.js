@@ -6,6 +6,51 @@ import {FormattedHTMLMessage} from 'react-intl'
 import React from 'react'
 import {Tabs, Tab} from 'react-bootstrap'
 
+const Compagnie = <FormattedHTMLMessage id="TopTabs.Compagnie"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+
+const Revenue = <FormattedHTMLMessage id="TopTabs.Revenue"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Energie = <FormattedHTMLMessage id="TopTabs.Energie"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Dechets = <FormattedHTMLMessage id="TopTabs.Dechets"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Matieres = <FormattedHTMLMessage id="TopTabs.Matieres"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Productivite = <FormattedHTMLMessage id="TopTabs.Productivite"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const RH = <FormattedHTMLMessage id="TopTabs.RH"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Risques = <FormattedHTMLMessage id="TopTabs.Risques"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
+const Bilan = <FormattedHTMLMessage id="TopTabs.Bilan"
+                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                description="Welcome header on app main page"
+                                values={{what: 'react-intl'}}/>
+
 
 export default class TopTabs extends React.Component {
     constructor(props, context) {
@@ -15,6 +60,7 @@ export default class TopTabs extends React.Component {
         };
     }
 
+
     render() {
         return (
             <Tabs
@@ -22,81 +68,45 @@ export default class TopTabs extends React.Component {
                 activeKey={this.state.key}
                 onSelect={key => this.setState({key})}
             >
-                <Tab eventKey="Compagnie" title=<FormattedHTMLMessage id="TopTabs.Compagnie"
-                     defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                     description="Welcome header on app main page"
-                     values={{what: 'react-intl'}}/>
-                >
+                <Tab eventKey="Compagnie" title={Compagnie}>
+
+                </Tab>
+
+                <Tab eventKey="Revenus" title={Revenue}>
+
+                </Tab>
 
 
-            </Tab>
+                <Tab eventKey="Energie" title={Energie}>
+                    <EnergyTableData/>
 
-            <Tab eventKey = "Revenus" title = <FormattedHTMLMessage id="TopTabs.Revenue" defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                      description="Welcome header on app main page"
-                                      values={{what: 'react-intl'}}/> >
+                </Tab>
 
-            < /Tab>
+                <Tab eventKey="Déchets" title={Dechets}>
 
+                </Tab>
 
-        <Tab eventKey="Energie" title=<FormattedHTMLMessage id = "TopTabs.Energie" defaultMessage = "Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description = "Welcome header on app main page"
-        values = {
-        {
-            what: 'react-intl'
-        }
-    }
-        />>
-        <EnergyTableData/>
+                <Tab eventKey="Matières" title={Matieres}>
 
-        < /Tab>
+                </Tab>
 
-        <Tab eventKey="Déchets" title=<FormattedHTMLMessage id = "TopTabs.Dechets" defaultMessage = "Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description = "Welcome header on app main page"
-        values = {
-        {
-            what: 'react-intl'
-        }
-    }
-        />>
+                <Tab eventKey="Productivité" title={Productivite}>
 
-        </Tab>
+                </Tab>
 
-        <Tab eventKey="Matières" title=<FormattedHTMLMessage id="TopTabs.Matieres"
-        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description="Welcome header on app main page"
-        values={{what: 'react-intl'}}/> >
+                <Tab eventKey="RH" title={RH}>
 
-        </Tab>
+                </Tab>
 
-        <Tab eventKey="Productivité" title=<FormattedHTMLMessage id="TopTabs.Productivite"
-        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description="Welcome header on app main page"
-        values={{what: 'react-intl'}}/> >
+                <Tab eventKey="Risques" title={Risques}>
 
-        </Tab>
+                </Tab>
 
-        <Tab eventKey="RH" title=<FormattedHTMLMessage id="TopTabs.RH"
-        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description="Welcome header on app main page"
-        values={{what: 'react-intl'}}/>>
+                <Tab eventKey="Bilan" title={Bilan}>
 
-        </Tab>
+                </Tab>
 
-        <Tab eventKey="Risques" title=<FormattedHTMLMessage id="TopTabs.Risques"
-        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description="Welcome header on app main page"
-        values={{what: 'react-intl'}}/> >
-
-        </Tab>
-
-        <Tab eventKey="Bilan" title=<FormattedHTMLMessage id="TopTabs.Bilan"
-        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-        description="Welcome header on app main page"
-        values={{what: 'react-intl'}}/> >
-
-        </Tab>
-
-        </Tabs>
+            </Tabs>
         );
-        }
-        }
+    }
+}

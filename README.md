@@ -16,6 +16,7 @@
 * **Heroku** : https://id.heroku.com/login => Temporary deployment solution 
 * **React Bootstrap** : https://www.npmjs.com/package/react-bootstrap
 * **Material UI** : https://material-ui.com/ => Google style components for pages 
+* **React Intl** : https://github.com/formatjs/react-intl => Translation functionality
 
 * **Laravel Forge** : https://forge.laravel.com/ => future server management
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)

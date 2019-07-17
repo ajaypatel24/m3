@@ -17,6 +17,8 @@ export default {
         'Register.RetypePassword': "Retype Password",
         'Register.Register': "Register",
         'Register.SignIn': "Sign In",
+        'Register.PasswordRequirements' : "Password must contain at least 8 characters, and at least one lowercase character,\n" +
+            "uppercase character and number. ",
 
         /** ContactInformationData */
         'ContactInformationData.Profile': "Profile",
@@ -93,6 +95,7 @@ export default {
         'Prestart.Income': "Business annual total income",
         'Prestart.Submit': "Submit",
 
+        /**Transport Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
         'TransportForm.NumberTransports': "Number of Transports",
         'TransportForm.TypeVehicule': "Type of Vehicule, Kilometres, Number of Employees",
@@ -103,6 +106,7 @@ export default {
         'TransportForm.Kilometres': "Kilometres Traveled",
 
 
+        /** Top Tabs Component */
         'TopTabs.Compagnie': "Company",
         'TopTabs.Revenue': "Revenue",
         'TopTabs.Energie': "Energy",
@@ -114,6 +118,14 @@ export default {
         'TopTabs.Bilan': "Balance Sheet",
 
 
+        /** Navigation */
+        'Navigation.Nav1' : "Home",
+        'Navigation.Nav2' : "Features",
+        'Navigation.Nav3' : "Pricing",
+        'Navigation.Nav4' : "Sign Up",
+        'Navigation.Nav5' : "About Us",
+        'Navigation.Team' : "Team",
+        'Navigation.Logout' : "Logout",
 
 
 
@@ -124,12 +136,11 @@ export default {
 
 
 
-        'nav.dashboard': "dash",
+
 
     },
     fr: {
-        'nav.dashboard': "bonjour",
-        'login.password' : "Mot de passe"
+
 
     },
 

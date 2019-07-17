@@ -2,7 +2,9 @@ import React from 'react';
 import {Button, Form, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
 import SideNav from './NavComponents/Sidenav';
-import { IntlProvider } from "react-intl";
+import {IntlProvider, FormattedHTMLMessage} from "react-intl";
+
+
 
 import '../../sass/navstyle.css'
 import axios from "axios";
@@ -13,6 +15,36 @@ const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street nam
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
 
+const Nav1 = <FormattedHTMLMessage id="Navigation.Nav1"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+const Nav2 = <FormattedHTMLMessage id="Navigation.Nav2"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+const Nav3 = <FormattedHTMLMessage id="Navigation.Nav3"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+const Nav4 = <FormattedHTMLMessage id="Navigation.Nav4"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+const Nav5 = <FormattedHTMLMessage id="Navigation.Nav5"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+
+const Team = <FormattedHTMLMessage id="Navigation.Team"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
+
+const Logout = <FormattedHTMLMessage id="Navigation.Logout"
+                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                   description="Welcome header on app main page"
+                                   values={{what: 'react-intl'}}/>
 /**
  * Main navbar placed at top of page, conditional rendering
  * has clickable name to log in and out
@@ -90,7 +122,6 @@ export default class Navigation extends React.Component {
                 console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
-
                 fetch('/login', {
                     method: 'POST',
                     body: JSON.stringify(uid),
@@ -102,26 +133,23 @@ export default class Navigation extends React.Component {
                     .then(function (data) {
 
 
-
-                sessionStorage.setItem('authenticated', 'true');
-                sessionStorage.setItem('UID', uid);
-                currentComponent.getName();
-                currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
 
-                 setTimeout(function () {
+                        setTimeout(function () {
                             window.location.href = '#/profile/';
                             window.location.reload();
                         }, 20)
-                 console.log('Request succeeded with JSON response', data);
+                        console.log('Request succeeded with JSON response', data);
 
 
-
-            })
-            .catch(function (error) {
-                console.log('Request failed', error);
-            });
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
 
 
             }).catch(function (error) {
@@ -142,7 +170,6 @@ export default class Navigation extends React.Component {
 
 
     };
-
 
 
     /**
@@ -191,7 +218,6 @@ export default class Navigation extends React.Component {
                 sessionStorage.setItem('name', response.data);
                 this.setState({name: response.data});
             });
-
 
 
     }
@@ -256,17 +282,16 @@ export default class Navigation extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
-                        <Nav.Link href="#/profile">Features</Nav.Link>
-                        <Nav.Link href="#/prestart_questions">Pricing</Nav.Link>
-                        <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">Sign Up</Nav.Link>
-                        <Nav.Link href="#/aboutus">About Us</Nav.Link>
+                        <Nav.Link href="#/">{Nav1}</Nav.Link>
+                        <Nav.Link href="#/profile">{Nav2}</Nav.Link>
+                        <Nav.Link href="#/prestart_questions">{Nav3}</Nav.Link>
+                        <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">{Nav4}</Nav.Link>
+                        <Nav.Link href="#/aboutus">{Nav5}</Nav.Link>
                     </Nav>
                     {/** End always rendered section */}
 
                     {/** Begin conditional section, condition: authenticated or not
                      if authenticated === false */}
-
 
 
                     {/*
@@ -308,13 +333,13 @@ export default class Navigation extends React.Component {
                         <Navbar.Collapse className="justify-content-end" inline>
                             <Avatar>{this.state.initial}</Avatar>
                             <Navbar.Text>
-                                <NavDropdown id="collasible-nav-dropdown" >
+                                <NavDropdown id="collasible-nav-dropdown">
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
-                                    <NavDropdown.Item href="#/Team">Team</NavDropdown.Item>
-                                    <NavDropdown.Item href="#/action3.2">hihi</NavDropdown.Item>
+                                    <NavDropdown.Item href="#/Team">{Team}</NavDropdown.Item>
+                                    <NavDropdown.Item href="#/action3.2">h</NavDropdown.Item>
 
                                     <NavDropdown.Divider/>
-                                    <NavDropdown.Item onClick={this.handleLogout}>Logout</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={this.handleLogout}>{Logout}</NavDropdown.Item>
                                 </NavDropdown>
                             </Navbar.Text>
 
