@@ -35,14 +35,14 @@ class CategorieController extends Controller
         $array = [];
         $array2 = [];
         $category = DB::table('categorie')
-            ->select('Nom_CategorieFR')
+            ->select('Nom_CategorieEN')
             ->where('Partie_InventaireEN', '=', 'Energy')
             ->distinct()
             ->get();
 
 
         foreach ($category as $v) {
-            $array[str_replace(' ', '', $v->Nom_CategorieFR)] = $v->Nom_CategorieFR;
+            $array[str_replace(' ', '', $v->Nom_CategorieEN)] = $v->Nom_CategorieEN;
         }
 
 

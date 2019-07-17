@@ -208,6 +208,9 @@ export default class EnergyTable extends React.Component {
      *
      */
     render() {
+        return (
+            <div>
+                {this.state.EnergyCategories.map(attribute => {
         let charbon;
         let coke;
         let bois;
@@ -231,10 +234,7 @@ export default class EnergyTable extends React.Component {
 
                 charbon =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.Charbon"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
+                        <td>{attribute.Coal}</td>
                         <td><Form.Control
                             name="Charbon"
                             placeholder="valeur"
@@ -253,10 +253,7 @@ export default class EnergyTable extends React.Component {
                     </tr>
                 coke =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.Coke"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
+                        <td>{attribute.Coke}</td>
                         <td>
                             <Form.Control
                             name="Coke"
@@ -277,10 +274,7 @@ export default class EnergyTable extends React.Component {
                     </tr>
                 bois =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.Wood"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
+                        <td>{attribute.Coal}</td>
                         <td><Form.Control
                             name="Bois"
                             placeholder="valeur"
@@ -301,10 +295,7 @@ export default class EnergyTable extends React.Component {
 
                 achatvapeurfroid =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.VapFroid"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
+                        <td>{attribute.ColdVapor}</td>
                         <td><Form.Control
                             name="VapeurFroid"
                             placeholder="valeur"
@@ -537,19 +528,22 @@ export default class EnergyTable extends React.Component {
         }
 
 
+
         return (
 
 
             <div>
 
 
-                {this.state.EnergyCategories.map(attribute => {
+
+
+
                     <Form
                         onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
                         <Table responsive> {/**/}
                             <thead>
                             <tr>
-                                <th colSpan="5"><Form.Control plaintext readOnly value={attribute.Gaznaturel}/></th>
+                                <th colSpan="5">{attribute.Gaznaturel}</th>
                             </tr>
                             <tr>
                                 <th colSpan="3">Compatiblisation direct des combustibles</th>
@@ -567,10 +561,7 @@ export default class EnergyTable extends React.Component {
                             <tbody>
 
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.Gaz"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.NaturalGas}</td>
                                 <td><Form.Control name="GazNaturel" placeholder="valeur" value={this.state.GazNaturel}
                                                   onChange={this.handleChange}></Form.Control></td>
                                 <td><Form.Control as="select" name="GazUnite"
@@ -584,10 +575,7 @@ export default class EnergyTable extends React.Component {
                                 <td>0</td>
                             </tr>
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.Propane"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Propane}</td>
                                 <td><Form.Control name="Propane" placeholder="valeur" value={this.state.Propane}
                                                   onChange={this.handleChange}></Form.Control></td>
                                 <td><Form.Control as="select" name="PropaneUnite"
@@ -601,10 +589,7 @@ export default class EnergyTable extends React.Component {
                                 <td>0</td>
                             </tr>
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.PumpFuel"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Gasoline}</td>
                                 <td><Form.Control name="EssencePompe" placeholder="valeur"
                                                   value={this.state.EssencePompe}
                                                   onChange={this.handleChange}></Form.Control></td>
@@ -620,10 +605,7 @@ export default class EnergyTable extends React.Component {
                             </tr>
 
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.Diesel"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Diesel}</td>
                                 <td><Form.Control name="GazolePompe" placeholder="valeur" value={this.state.GazolePompe}
                                                   onChange={this.handleChange}></Form.Control></td>
                                 <td><Form.Control as="select" name="GazoleUnite"
@@ -637,10 +619,7 @@ export default class EnergyTable extends React.Component {
                                 <td>0</td>
                             </tr>
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.HeatingOil"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Domesticfueloil}</td>
                                 <td><Form.Control name="FioulDomestique" placeholder="valeur"
                                                   value={this.state.FioulDomestique}
                                                   onChange={this.handleChange}></Form.Control></td>
@@ -655,10 +634,7 @@ export default class EnergyTable extends React.Component {
                                 <td>0</td>
                             </tr>
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.LightOil"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Lightfueloil}</td>
                                 <td><Form.Control name="MazoutLeger" placeholder="valeur" value={this.state.MazoutLeger}
                                                   onChange={this.handleChange}></Form.Control></td>
                                 <td><Form.Control as="select" name="MazoutUnite"
@@ -680,10 +656,7 @@ export default class EnergyTable extends React.Component {
 
                             <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.Biodiesel"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Biodiesel}</td>
                                 <td><Form.Control name="Biodiesel"
                                                   placeholder="valeur"
                                                   value={this.state.Biodiesel}
@@ -705,10 +678,7 @@ export default class EnergyTable extends React.Component {
 
 
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.FossilHeating"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.GasHeating}</td>
                                 <td><Form.Control name="Fossil"
                                                   placeholder="valeur"
                                                   value={this.state.Fossil}
@@ -729,10 +699,7 @@ export default class EnergyTable extends React.Component {
 
 
                             <tr>
-                                <td><FormattedHTMLMessage id="EnergyTable.Electricite"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></td>
+                                <td>{attribute.Electricity}</td>
                                 <td><Form.Control
                                     name="TotalElectricite"
                                     placeholder="valeur"
@@ -756,120 +723,17 @@ export default class EnergyTable extends React.Component {
                         </Table>
                         <button type="submit" onClick={this.handleSubmit}>test</button>
                     </Form>
-                })};
 
 
-
-                {/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-
-
-                <Table responsive striped bordered hover variant="dark">
-                    <thead>
-
-                    <tr>
-                        <th colSpan="5">Hors Energie</th>
-                    </tr>
-                    <tr>
-                        <th colSpan="3">Compatiblisation direct des procedes</th>
-                        <th>Facteur sur site</th>
-                        <th>Total GES</th>
-                    </tr>
-                    <tr>
-                        <th>Combustibles fossiles, sources fixes</th>
-                        <th>Consommation</th>
-                        <th>Unite</th>
-
-
-                    </tr>
-
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.2</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.2</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
-                    </tr>
-                    </tbody>
-                </Table>
 
 
             </div>
 
 
         )
+        })};
+            </div>
+        )
+
     };
 }
