@@ -14,6 +14,24 @@ class Intrant extends Migration
     public function up()
     {
         Schema::create('intrants', function (Blueprint $table) {
+
+
+
+            $table->string("Ressource_idressource");
+            $table->
+            foreign("Ressource_idressource")->
+            references("idRessource")->
+            on("ressource");
+
+            $table->string("Inventaire_idInventaire");
+            $table->
+            foreign("Inventaire_idInventaire")->
+            references("idInventaire")->
+            on("inventaire");
+
+
+
+
             $table->bigIncrements('id');
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);

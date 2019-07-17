@@ -15,6 +15,22 @@ class Procede extends Migration
     public function up()
     {
         Schema::create('procede', function (Blueprint $table) {
+            $table->string("TableIntrant_idCategorie");
+
+            $table->
+            foreign("TableIntrant_idCategorie")->
+            references("idCategorie")->
+            on("categorie");
+
+            $table->string("Inventaire_idInventaire");
+
+            $table->
+            foreign("Inventaire_idInventaire")->
+            references("idInventaire")->
+            on("inventaire");
+
+
+
             $table->increments("idProcede");
 
 

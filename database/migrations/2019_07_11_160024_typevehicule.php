@@ -14,8 +14,8 @@ class TypeVehicule extends Migration
     public function up()
     {
         Schema::create('typevehicule', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('idVehicule');
+
+            $table->string('idVehicule')->primary();
             $table->string('Lib_VehiculeEN',60)->nullable();
             $table->string('Lib_VehiculeFR',60)->nullable();
             $table->string('Type_transport',10)->nullable();

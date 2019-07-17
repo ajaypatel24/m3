@@ -24,7 +24,7 @@ class Organisation extends Migration
             references("idZoneGeographique")->
             on("zone_geographique");
 
-            /*
+
 
             $table->integer("Scian_idScian");
 
@@ -32,7 +32,9 @@ class Organisation extends Migration
             foreign("Scian_idScian")->
             references("idScian")->
             on("scian");
-*/
+
+
+
 
 
 

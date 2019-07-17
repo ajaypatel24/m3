@@ -24,6 +24,7 @@ class Contact extends Migration
 
 
 
+
             $table->string("CleIdentifiant", 30);
             $table->string("Nom", 30);
             $table->string("Prenom", 30);

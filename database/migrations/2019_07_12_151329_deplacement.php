@@ -14,6 +14,16 @@ class Deplacement extends Migration
     public function up()
     {
         Schema::create('deplacement', function (Blueprint $table) {
+
+
+            $table->string("TypeVehicule_idVehicule");
+            $table->
+            foreign("TypeVehicule_idVehicule")->
+            references("idVehicule")->
+            on("typevehicule");
+
+
+
             $table->bigIncrements('idDeplacement');
             $table->string('Categorie_idCategorie', 10);
             $table->string('Type_Vehicule_idVehicule', 10);

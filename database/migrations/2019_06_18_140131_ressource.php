@@ -14,8 +14,8 @@ class Ressource extends Migration
     public function up()
     {
         Schema::create('ressource', function (Blueprint $table) {
-            $table->bigIncrements('id'); //change
-            $table->string('idRessource'); //change
+
+            $table->string('idRessource')->primary(); //change
 
             $table->string('Num_affiche', 100);
             $table->string('Nom_RessourceEN', 100);

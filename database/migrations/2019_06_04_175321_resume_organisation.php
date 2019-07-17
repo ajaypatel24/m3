@@ -20,6 +20,12 @@ class ResumeOrganisation extends Migration
             foreign("Organisation_idOrganisation")->
             references("idOrganisation")->
             on("organisation");
+
+
+
+
+
+
            $table->string("Nb_employes", 30);
            $table->integer("Chiffre_affaires");
            $table->boolean("Comite_DD");

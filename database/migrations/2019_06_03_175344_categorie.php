@@ -14,8 +14,8 @@ class Categorie extends Migration
     public function up()
     {
         Schema::create('categorie', function (Blueprint $table) {
-            $table->increments("id");
-            $table->string("idCategorie");
+
+            $table->string("idCategorie")->primary();
             $table->string("Num_Affich");
             $table->string("Partie_InventaireFR", 100)->nullable();
             $table->string("Sub_CategorieFR", 100);
