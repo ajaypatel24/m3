@@ -140,14 +140,12 @@ class InventaireController extends Controller
 
             else {
 
-
+                $Intrant->idIntrant = request('NomIntrant');
                 $Mod = request('Yearly'); //per delivery or yearly
                 $Quantite = request('QuantiteAn');
                 $freq = request('Frequency');
 
                 if ($Mod == 'true') { //per delivery specified
-
-                    $Intrant->quantite_unitaire = $Quantite;
 
                     switch ($freq) {
                         case '1xY':
@@ -190,7 +188,7 @@ class InventaireController extends Controller
                             break;
                     }
                     $Intrant->quantite_an = $Quantite;
-                    $Intrant->frequence = request('Frequency');
+
                 }
                 else { //yearly specified
                     $Intrant->quantite_an = request('QuantiteAn');

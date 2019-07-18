@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -17,13 +18,13 @@ class Intrant extends Migration
 
 
 
-            $table->string("Ressource_idressource");
+            $table->string("Ressource_idressource")->nullable();
             $table->
             foreign("Ressource_idressource")->
             references("idRessource")->
             on("ressource");
 
-            $table->string("Inventaire_idInventaire");
+            $table->string("Inventaire_idInventaire")->nullable();
             $table->
             foreign("Inventaire_idInventaire")->
             references("idInventaire")->
@@ -38,6 +39,7 @@ class Intrant extends Migration
             $table->integer('quantite_an')->nullable();
             $table->integer('GES_annuel')->nullable();
             $table->boolean('ressource')->nullable();
+            $table->string('unite',10)->nullable();
             $table->boolean('immobilisation')->default(false);
             $table->integer('duree_vie_immo')->nullable();
             $table->integer('NbTransport')->nullable();
