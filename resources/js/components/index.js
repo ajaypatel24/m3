@@ -12,7 +12,7 @@ import messages from "./messages"
 
 
 
-let lang = 'en';
+let lang = 'fr';
 addLocaleData(en);
 addLocaleData(fr);
 

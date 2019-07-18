@@ -24,7 +24,7 @@ class TypeVehicule extends Migration
             $table->decimal('VolumeChargement',6,2)->default(0);
             $table->string('Identifie_BD', 10)->nullable();
             $table->string('Nom_BD', 80)->nullable();
-            $table->string('Categorie1', 20)->nullable();
+            $table->string('Categorie1', 200)->nullable();
             $table->decimal('Score_CC', 7,5)->default(0);
             $table->decimal('Score_SH', 14,12)->default(0);
             $table->decimal('Score_EcoS', 15,14)->default(0);
