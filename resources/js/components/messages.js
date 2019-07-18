@@ -137,6 +137,8 @@ export default {
         'TransportForm.Number': "Number of Vehicules",
         'TransportForm.BusinessDays': "Business Days",
         'TransportForm.Kilometres': "Kilometres Traveled",
+        'TransportForm.Choice1': "Emissions by Vehicule Type",
+        'TransportForm.Choice2': "Emissions by Invidual Employees",
 
 
         /** Top Tabs Component */
@@ -310,6 +312,8 @@ export default {
         'TransportForm.Number': "Number of Vehicules",
         'TransportForm.BusinessDays': "Business Days",
         'TransportForm.Kilometres': "Kilometres Traveled",
+        'TransportForm.Choice1': "Emissions par type de vehicule",
+        'TransportForm.Choice2': "Emissions par individu",
 
 
         /** Top Tabs Component */

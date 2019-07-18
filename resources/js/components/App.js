@@ -18,6 +18,7 @@ import TransportForm from "./FormComponents/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
+import Test from "./NavComponents/test"
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 
 import { addLocaleData } from "react-intl"
@@ -94,6 +95,8 @@ export default class App extends React.Component {
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
                     <PrivateRoute exact path="/transport" component={TransportForm}/>
                     <PrivateRoute exact path="/team" component={Team}/>
+
+                    <Route exact path="/test" component={Test} />
 
 
                     <Route exact path="/loading" component={Loading}/>
