@@ -16,26 +16,38 @@ class Deplacement extends Migration
         Schema::create('deplacement', function (Blueprint $table) {
 
 
-            $table->string("TypeVehicule_idVehicule");
+            $table->string("TypeVehicule_idVehicule", 10);
             $table->
             foreign("TypeVehicule_idVehicule")->
             references("idVehicule")->
             on("typevehicule");
 
+            $table->string("Inventaire_idInventaire", 10);
+            $table->
+            foreign("Inventaire_idInventaire")->
+            references("idInventaire")->
+            on("inventaire");
+
+            $table->string("Categorie_idCategorie", 10);
+            $table->
+            foreign("Categorie_idCategorie")->
+            references("idCategorie")->
+            on("categorie");
 
 
-            $table->bigIncrements('idDeplacement');
-            $table->string('Categorie_idCategorie', 10);
-            $table->string('Type_Vehicule_idVehicule', 10);
-            $table->string('Type_Deplacement', 10);
-            $table->string('Libelle_Deplacement', 30);
+
+
+            $table->string('idDeplacement', 20)->primary();
+            $table->string('Libelle_Deplacement',30)->nullable();
             $table->string('Origine', 60);
             $table->string('Destination', 60);
-            $table->integer('Nb_voyageurs');
             $table->integer('Nb_km_AR');
-            $table->integer('Nb_voyages_An');
-            $table->boolean('Vehicule_Compagnie');
-            $table->boolean('Covoiturage');
+            $table->integer('Nb_voyageurs')->default(1);
+            $table->integer('Nb_voyageurs_An')->default(1);
+            $table->string('Type_Deplacement', 10);
+            $table->decimal('Emission_GES',10,7);
+            $table->boolean('Vehicule_Compagnie')->nullable();
+            $table->integer('Covoiturage')->default(1);
 
             $table->timestamps();
 

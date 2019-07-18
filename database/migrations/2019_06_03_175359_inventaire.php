@@ -14,6 +14,18 @@ class Inventaire extends Migration
     public function up()
     {
         Schema::create('inventaire', function (Blueprint $table) {
+
+            $table->string("Organisation_idOrganisation");
+            $table->
+            foreign("Organisation_idOrganisation")->
+            references("idOrganisation")->
+            on("organisation");
+
+
+
+
+
+
             $table->string("idInventaire")->primary();
             $table->string("Annee_Inventaire")->nullable();
             $table->string("Activite", 40)->nullable();

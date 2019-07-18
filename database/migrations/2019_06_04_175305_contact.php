@@ -16,7 +16,7 @@ class Contact extends Migration
         Schema::create("contact", function(Blueprint $table) {
 
 
-            $table->increments("Organisation_idOrganisation");
+            $table->string("Organisation_idOrganisation");
             $table->
             foreign("Organisation_idOrganisation")->
             references("idOrganisation")->
@@ -25,6 +25,7 @@ class Contact extends Migration
 
 
 
+            $table->string("idContact", 30)->primary();
             $table->string("CleIdentifiant", 30);
             $table->string("Nom", 30);
             $table->string("Prenom", 30);

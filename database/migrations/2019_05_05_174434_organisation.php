@@ -39,19 +39,20 @@ class Organisation extends Migration
 
 
 
-            $table->increments("idOrganisation");
+            $table->string("idOrganisation")->primary();
             $table->string("Nom_Organisation", 20);
+            $table->string("Type_organisation", 20);
+            $table->integer("Suivi");
+            $table->string("Constitution", 20);
+            $table->string("Clientele", 20);
+            $table->string("Description_offre", 150);
+            $table->string("Marche", 20);
             $table->string("Site_web", 30);
             $table->string("Addresse_rue", 30);
             $table->string("Code_postal", 7);
             $table->string("Addresse_rue_ss", 30)->nullable();
             $table->string("Code_postal_ss", 7)->nullable();
-            $table->string("Type_organisation", 20);
-            $table->string("Constitution", 20);
-            $table->string("Marche", 20);
-            $table->string("Clientele", 20);
-            $table->string("Description_offre", 150);
-            $table->string("Langue",2);
+            $table->string("Langue",2); //why?
 
             $table->timestamps();
 

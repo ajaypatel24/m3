@@ -32,22 +32,20 @@ class Intrant extends Migration
 
 
 
-            $table->bigIncrements('id');
+            $table->string('idIntrant', 10)->primary();
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
             $table->integer('quantite_an')->nullable();
-            $table->integer('quantite_unitaire')->nullable();
-            $table->string('unite')->nullable();
-            $table->string("frequence")->default("1xY");
+            $table->integer('GES_annuel')->nullable();
             $table->boolean('ressource')->nullable();
             $table->boolean('immobilisation')->default(false);
-            $table->boolean('nouvel_intrant')->default(true);
             $table->integer('duree_vie_immo')->nullable();
             $table->integer('NbTransport')->nullable();
             $table->string('provenance', 30)->nullable();
-            $table->integer('GES_annuel')->nullable();
-            $table->string('Identifie_BD', 10)->nullable();
-            $table->string('UID',60)->index();
+            $table->boolean('nouvel_intrant')->default(true);
+            $table->string('UID',60);
+
+
             $table->timestamps();
 
         });

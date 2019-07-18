@@ -15,7 +15,9 @@ class ResumeOrganisation extends Migration
     {
         Schema::create("resumeorganisation", function(Blueprint $table) {
 
-            $table->increments("Organisation_idOrganisation");
+
+
+            $table->string("Organisation_idOrganisation");
             $table->
             foreign("Organisation_idOrganisation")->
             references("idOrganisation")->
@@ -24,15 +26,13 @@ class ResumeOrganisation extends Migration
 
 
 
-
-
-           $table->string("Nb_employes", 30);
+           $table->integer("Nb_employes");
            $table->integer("Chiffre_affaires");
            $table->boolean("Comite_DD");
            $table->integer("Annee_ComDD");
-           $table->integer("Nb_ACV");
+           $table->integer("Nb_ACVProduit");
            $table->integer("Nb_Scenario_ACV");
-           $table->integer("Id_Inventaire");
+           $table->integer("Nb_Inventaire");
            $table->integer("Plan_Action");
 
            $table->timestamps();

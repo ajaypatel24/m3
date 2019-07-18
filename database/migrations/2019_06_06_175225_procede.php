@@ -15,14 +15,14 @@ class Procede extends Migration
     public function up()
     {
         Schema::create('procede', function (Blueprint $table) {
-            $table->string("TableIntrant_idCategorie");
+            $table->string("Categorie_idCategorie", 10)->nullable();
 
             $table->
-            foreign("TableIntrant_idCategorie")->
+            foreign("Categorie_idCategorie")->
             references("idCategorie")->
             on("categorie");
 
-            $table->string("Inventaire_idInventaire");
+            $table->string("Inventaire_idInventaire")->nullable();
 
             $table->
             foreign("Inventaire_idInventaire")->
@@ -31,21 +31,19 @@ class Procede extends Migration
 
 
 
-            $table->increments("idProcede");
+            $table->string("idProcede", 20)->primary();
 
 
-            $table->integer('Num_affiche')->default(12)->nullable();
+            $table->integer('Num_affiche')->default(-1)->nullable();
             $table->string('Nom_procede',45)->nullable();
             $table->integer('Quantite_an')->default(-1)->nullable();
             $table->string('Unite_an', 10)->default('N/A')->nullable();
-            $table->float('Emission_GES')->nullable();
-            $table->boolean('TransportEmp')->nullable();
-            $table->string('Indentifie_BD',10)->nullable();
-            $table->string('Nom_BD', 60)->nullable();
-
+            $table->integer('Scope')->default(-1)->nullable();
+            $table->decimal('Emission_GES', 9,4)->nullable();
+            $table->boolean('Nouveau_Procede')->nullable();
             $table->string('UID',60);
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('created_at')->nullable();
+
+            $table->timestamps();
         });
     }
 

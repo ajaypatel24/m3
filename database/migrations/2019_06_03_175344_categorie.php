@@ -24,10 +24,13 @@ class Categorie extends Migration
             $table->string("Sub_CategorieEN", 100);
             $table->string("Nom_CategorieEN", 100);
             $table->integer('Scope')->default(-1);
-            $table->string('Unite')->nullable();
+            $table->string('Poste_Emission',5)->nullable();
             $table->decimal("Coefficient_GES", 10,4)->default(-1);
+            $table->boolean("Transport_Emp")->nullable();
             $table->string('Scian_Code2', 20);
             $table->string('Scian_Code6', 100);
+            $table->string('Nom_BD', 60);
+            $table->string('Identifie_BD', 10);
 
             $table->timestamps();
 
