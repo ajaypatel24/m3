@@ -16,6 +16,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Link, HashRouter, Route } from 'react-router-dom'
+
 
 
 /** find a way to place content of entire site within the main of this component */
@@ -67,6 +69,20 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+function handleLogout () {
+    firebase.auth().signOut().then(function () {
+        console.log(firebase.auth().currentUser);
+    });
+
+
+    window.location.href = '#/';
+    sessionStorage.removeItem('authenticated');
+    sessionStorage.removeItem('UID');
+    sessionStorage.removeItem('name');
+    window.location.reload();
+
+}
+
 export default function ResponsiveDrawer(props) {
     const { container} = props;
     const { children } = props;
@@ -98,23 +114,91 @@ export default function ResponsiveDrawer(props) {
                 <h2> EcoSystem </h2 >
             </div>
             <Divider />
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+            <HashRouter>
+                <List>
+                    <Link to="/home">
+                        <ListItem button key="Home">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/prestart_questions">
+                        <ListItem button key="EcoDo">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="EcoDo" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/route">
+                        <ListItem button key="Ecometrics">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="Ecometrics" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/intrant">
+                        <ListItem button key="EcoAct">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="EcoAct" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/transport">
+                        <ListItem button key="EcoTest">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="EcoTest" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/transport">
+                        <ListItem button key="EcoReport">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="EcoReport" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/transport">
+                        <ListItem button key="EcoComm">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="EcoComm" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/transport">
+                        <ListItem button key="Chat Room">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="Chat Room" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/transport">
+                        <ListItem button key="Calendar">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="Calendar" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/transport">
+                        <ListItem button key="Documents">
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText primary="Documents" />
+                        </ListItem>
+                    </Link>
+
+
+                </List>
+
+
+                <Divider />
+                <Link to="/contactinfo">
+                    <ListItem button key="Settings">
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary="Settings" />
                     </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
+                </Link>
+
+                <ListItem button key="Logout" onClick={handleLogout}>
+                    <ListItemIcon><MailIcon /></ListItemIcon>
+                    <ListItemText primary="Logout" />
+                </ListItem>
+
+            </HashRouter>
         </div>
     );
 

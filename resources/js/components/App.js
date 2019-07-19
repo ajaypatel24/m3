@@ -80,7 +80,7 @@ export default class App extends React.Component {
 
                     :
 
-                    <TopTabs/>
+                    null
                 }
 
                 <Switch>
@@ -91,6 +91,7 @@ export default class App extends React.Component {
                     <Route exact path="/data" component={EnergyTableData}/>
                     {/*   <PrivateRoute exact path="/profile" component={TopTabs}/> */}
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
+                    <PrivateRoute exact path="/home" component={TopTabs}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                     <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
