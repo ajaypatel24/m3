@@ -276,7 +276,7 @@ export default class Navigation extends React.Component {
                 */}
 
                 <Navbar.Brand href="#home">
-                    <Button onClick={this.sendData}>test</Button>
+                    {/* <Button onClick={this.sendData}>test</Button> */}
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
                         width="27"
