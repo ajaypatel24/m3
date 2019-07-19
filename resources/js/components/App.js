@@ -76,7 +76,7 @@ export default class App extends React.Component {
 
 
 
-                    <Login/>
+                    null
 
                     :
 
