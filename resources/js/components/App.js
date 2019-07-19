@@ -72,13 +72,15 @@ export default class App extends React.Component {
             <HashRouter>
 
 
-                {q ?
+                {!q ?
 
-                    <Navbar/>
+
+
+                    <Login/>
 
                     :
 
-                    <Login/>
+                    <TopTabs/>
                 }
 
                 <Switch>
@@ -87,7 +89,7 @@ export default class App extends React.Component {
                     <BlockRoute exact path="/aboutus" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
-                    <PrivateRoute exact path="/profile" component={TopTabs}/>
+                    {/*   <PrivateRoute exact path="/profile" component={TopTabs}/> */}
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                     <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>

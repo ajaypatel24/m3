@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from "react-intl";
 import App from "./App"
-
+import Test from "./NavComponents/test"
 
 import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
@@ -24,6 +24,8 @@ addLocaleData(fr);
         <IntlProvider
             locale={lang}
             messages={messages[lang]}>
+            <Test>
         <App/>
+            </Test>
         </IntlProvider>, document.getElementById('root'));
 
