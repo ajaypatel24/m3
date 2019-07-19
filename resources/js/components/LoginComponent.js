@@ -208,7 +208,7 @@ export default class LoginComponent extends React.Component {
 
 
     /**
-     * testing submit on clicking enter
+     * testing submit on clicking ente
      * @param e
      */
     handleKeyPress(e) {
