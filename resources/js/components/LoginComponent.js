@@ -201,7 +201,6 @@ export default class LoginComponent extends React.Component {
 
 
         console.log("from login");
-        console.log(currentComponent.state.authenticated);
 
 
     };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {Button, Form, Nav, Navbar, NavDropdown, InputGroup} from 'react-bootstrap';
 import SideNavigation from './NavComponents/SideNavigation';
 import SideNav from './NavComponents/Sidenav';
 import {IntlProvider, FormattedHTMLMessage} from "react-intl";
@@ -263,17 +263,19 @@ export default class Navigation extends React.Component {
             /** Begin Navbar */
 
             <Navbar bg="light" variant="light" expand="lg" className="navigation">
+                {/*
                 {this.state.authenticated === 'true' ?
                     <SideNavigation/>
                     :
                     null
                 }
+                */}
 
                 <Navbar.Brand href="#home">
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
-                        width="65"
-                        height="65"
+                        width="27"
+                        height="27"
                         className="d-inline-block align-top"
                         alt="Cadet Logo"
                     />
@@ -281,6 +283,7 @@ export default class Navigation extends React.Component {
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
+
                     <Nav className="mr-auto">
                         <Nav.Link href="#/">{Nav1}</Nav.Link>
                         <Nav.Link href="#/profile">{Nav2}</Nav.Link>
