@@ -4,7 +4,7 @@ import SideNavigation from './NavComponents/SideNavigation';
 import SideNav from './NavComponents/Sidenav';
 import {IntlProvider, FormattedHTMLMessage} from "react-intl";
 
-
+import test from './NavComponents/test'
 
 import '../../sass/navstyle.css'
 import axios from "axios";
@@ -66,6 +66,7 @@ export default class Navigation extends React.Component {
             name: this.getName(),
             initial: this.getInitial(),
             isLoading: true,
+            ToggleNav: this.props.select,
         };
 
 
@@ -185,6 +186,9 @@ export default class Navigation extends React.Component {
 
     }
 
+    sendData = () => {
+        console.log(this.props.handleDrawerToggle);
+    }
 
     /**
      * handles logout request with firebase, on logout
@@ -272,6 +276,7 @@ export default class Navigation extends React.Component {
                 */}
 
                 <Navbar.Brand href="#home">
+                    <Button onClick={this.sendData}>test</Button>
                     <img
                         src={window.location.origin + "/img/cadet_logo.svg"}
                         width="27"

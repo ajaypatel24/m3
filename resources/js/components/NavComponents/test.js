@@ -83,8 +83,13 @@ function handleLogout () {
 
 }
 
+function callbackFunction (childata) {
+    console.log(childata);
+    return childata;
+}
+
 export default function ResponsiveDrawer(props) {
-    const { container} = props;
+    const { container } = props;
     const { children } = props;
 
     const classes = useStyles();
@@ -93,7 +98,7 @@ export default function ResponsiveDrawer(props) {
 
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
-        console.log(props);
+        console.log(mobileOpen);
     }
 
     const drawer = (
@@ -226,7 +231,7 @@ export default function ResponsiveDrawer(props) {
 
                 </Toolbar>
                 */}
-                <Navigation/>
+                <Navigation parentMethod={handleDrawerToggle}/>
                 <IconButton
                     color="inherit"
                     aria-label="Open drawer"
