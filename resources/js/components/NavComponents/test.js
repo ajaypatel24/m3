@@ -17,6 +17,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link, HashRouter, Route } from 'react-router-dom'
+import { red, amber } from "@material-ui/core/colors/red"
+
+import '../../../sass/navstyle.css'
+
 
 
 
@@ -31,7 +35,6 @@ import grey from '@material-ui/core/colors/grey'
 
 
 const primary = grey[500];
-
 
 
 
@@ -67,6 +70,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+
 }));
 
 function handleLogout () {
@@ -121,65 +125,65 @@ export default function ResponsiveDrawer(props) {
             <Divider />
             <HashRouter>
                 <List>
-                    <Link to="/home">
+                    <Link to="/home"  style={{ textDecoration: 'none' }}>
                         <ListItem button key="Home">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/prestart_questions">
-                        <ListItem button key="EcoDo">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
+                    <Link to="/prestart_questions" style={{ textDecoration: 'none' }}>
+                        <ListItem button key="EcoDo" >
+                            <ListItemIcon ><MailIcon color="secondary" /></ListItemIcon>
                             <ListItemText primary="EcoDo" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/route">
+                    <Link to="/route" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Ecometrics">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Ecometrics" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/intrant">
+                    <Link to="/intrant" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoAct">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="EcoAct" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoTest">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="EcoTest" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoReport">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="EcoReport" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoComm">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="EcoComm" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Chat Room">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Chat Room" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Calendar">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Calendar" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport">
+                    <Link to="/transport" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Documents">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Documents" />
@@ -191,16 +195,16 @@ export default function ResponsiveDrawer(props) {
 
 
                 <Divider />
-                <Link to="/contactinfo">
+                <Link to="/contactinfo" style={{ textDecoration: 'none' }}>
                     <ListItem button key="Settings">
                         <ListItemIcon><MailIcon /></ListItemIcon>
                         <ListItemText primary="Settings" />
                     </ListItem>
                 </Link>
 
-                <ListItem button key="Logout" onClick={handleLogout}>
-                    <ListItemIcon><MailIcon /></ListItemIcon>
-                    <ListItemText primary="Logout" />
+                <ListItem button key="Logout" onClick={handleLogout} color="secondary">
+                    <ListItemIcon color="secondary"><MailIcon color="secondary"/></ListItemIcon>
+                    <ListItemText primary="Logout" color="secondary" />
                 </ListItem>
 
             </HashRouter>
