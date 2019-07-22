@@ -14,7 +14,7 @@ import Login from "./LoginComponent";
 import TopTabs from "./NavComponents/TopTabs";
 import EnergyTable from "./FormComponents/EnergyTable"
 import IntrantForm from "./FormComponents/IntrantForm"
-import TransportForm from "./FormComponents/TransportForm"
+import TransportForm from "./FormComponents/Transport/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
@@ -25,6 +25,7 @@ import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import messages from "./messages"
+import TransportFormLongDistance from "./FormComponents/Transport/TransportFormLongDistance";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -98,6 +99,7 @@ export default class App extends React.Component {
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
                     <PrivateRoute exact path="/transport" component={TransportForm}/>
                     <PrivateRoute exact path="/team" component={Team}/>
+                    <PrivateRoute exact path="/transportlong" component={TransportFormLongDistance}/>
 
                     <Route exact path="/test" component={Test} />
 

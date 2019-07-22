@@ -5,7 +5,7 @@ import {EnergyTable} from './FormComponents/EnergyTable';
 import '../../sass/TabStyle.css'
 import ContactInformationForm from "./FormComponents/ContactInformationForm";
 import IntrantForm from "./FormComponents/IntrantForm";
-import TransportForm from "./FormComponents/TransportForm";
+import TransportForm from "./FormComponents/Transport/TransportForm";
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
