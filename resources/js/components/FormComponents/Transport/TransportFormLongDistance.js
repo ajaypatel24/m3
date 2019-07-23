@@ -267,152 +267,148 @@ export default class TransportFormLongDistance extends React.Component {
                 <div className="container">
                     <div className="row clearfix">
                         <div className="col-md-12 column">
-                            <Row>
-
-                                            <div>
-                                                <h1>V2</h1>
-                                                <p><FormattedHTMLMessage id="TransportForm.TypeVehicule"
-                                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                         description="Welcome header on app main page"
-                                                                         values={{what: 'react-intl'}}/></p>
-                                                <Form noValidate
-                                                      validated={validated}
-                                                      onSubmit={e => this.handleSubmit(e)}
-                                                      method="POST" action="/"
-                                                      enctype="multipart/form-data">
+                            <div>
+                                <h1>Long Distance</h1>
+                                <p><FormattedHTMLMessage id="TransportForm.TypeVehicule"
+                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                         description="Welcome header on app main page"
+                                                         values={{what: 'react-intl'}}/></p>
+                                <Form noValidate
+                                      validated={validated}
+                                      onSubmit={e => this.handleSubmit(e)}
+                                      method="POST" action="/"
+                                      enctype="multipart/form-data">
 
 
-                                                    <Row>
-                                                        <Col lg="5">
+                                    <Row>
+                                        <Col lg="5">
 
-                                                            <Form.Label><FormattedHTMLMessage
-                                                                id="TransportForm.VehiculeCategory"
-                                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                description="Welcome header on app main page"
-                                                                values={{what: 'react-intl'}}/></Form.Label>
-                                                            <Form.Control as='select'
-                                                                          name="VehiculeCat"
-                                                                          required
-                                                                          type="text"
-                                                                          placeholder="Quantite"
-                                                                          onChange={this.handleChange2}
-                                                                          value={this.state.VehiculeCat}
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.VehiculeCategory"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control as='select'
+                                                          name="VehiculeCat"
+                                                          required
+                                                          type="text"
+                                                          placeholder="Quantite"
+                                                          onChange={this.handleChange2}
+                                                          value={this.state.VehiculeCat}
 
-                                                            >
-
-
-                                                                <option></option>
-                                                                {this.state.rows.map(vehicule => (
-                                                                    <option>
-                                                                        {vehicule}
-                                                                    </option>
-                                                                ))}
-                                                            </Form.Control>
-                                                        </Col>
-
-                                                        <Col lg="7">
-
-                                                            <Form.Label><FormattedHTMLMessage
-                                                                id="TransportForm.Vehicule"
-                                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                description="Welcome header on app main page"
-                                                                values={{what: 'react-intl'}}/></Form.Label>
-                                                            <Form.Control as='select'
-                                                                          name="Vehicule"
-                                                                          required
-                                                                          type="text"
-                                                                          placeholder="Quantite"
-                                                                          onChange={this.handleChange}
-                                                                          value={this.state.Vehicule}
-                                                                          disabled={this.state.VehiculeCat === null}
-                                                            >
-                                                                \
-                                                                <option></option>
-                                                                {this.state.Libelle.map(vehicule => (
-                                                                    <option>
-                                                                        {vehicule}
-                                                                    </option>
-
-                                                                ))}
-                                                                <option></option>
-                                                            </Form.Control>
-                                                        </Col>
-                                                    </Row>
-
-                                                    <br/>
-
-                                                    <Row>
-                                                        <Col lg="4">
-                                                            <Form.Label><FormattedHTMLMessage id="TransportForm.Number"
-                                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                              description="Welcome header on app main page"
-                                                                                              values={{what: 'react-intl'}}/></Form.Label>
-                                                            <Form.Control
-                                                                name="NombreVoitures"
-                                                                required
-                                                                type="text"
-                                                                placeholder="Intrant"
-                                                                onChange={this.handleChange}
-                                                                value={this.state.NombreVoitures}
-                                                                pattern="^[0-9]$"
-
-                                                            />
-                                                        </Col>
-
-                                                        <Col lg="4">
-                                                            <Form.Label><FormattedHTMLMessage
-                                                                id="TransportForm.BusinessDays"
-                                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                description="Welcome header on app main page"
-                                                                values={{what: 'react-intl'}}/></Form.Label>
-                                                            <Form.Control
-                                                                name="JoursOuvrables"
-                                                                required
-                                                                type="text"
-                                                                placeholder="220"
-                                                                onChange={this.handleChange}
-                                                                value={this.state.JoursOuvrables}
-                                                                pattern="^[0-9]$"
-                                                            />
-                                                        </Col>
-
-                                                        <Col lg="4">
-                                                            <Form.Label><FormattedHTMLMessage
-                                                                id="TransportForm.Kilometres"
-                                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                description="Welcome header on app main page"
-                                                                values={{what: 'react-intl'}}/></Form.Label>
-                                                            <Form.Control
-                                                                name="Kilometres"
-                                                                required
-                                                                type="text"
-                                                                placeholder="Intrant"
-                                                                onChange={this.handleChange}
-                                                                value={this.state.Kilometres}
-                                                                pattern="^[0-9]$"
-                                                            />
-                                                        </Col>
+                                            >
 
 
-                                                    </Row>
+                                                <option></option>
+                                                {this.state.rows.map(vehicule => (
+                                                    <option>
+                                                        {vehicule}
+                                                    </option>
+                                                ))}
+                                            </Form.Control>
+                                        </Col>
+
+                                        <Col lg="7">
+
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Vehicule"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control as='select'
+                                                          name="Vehicule"
+                                                          required
+                                                          type="text"
+                                                          placeholder="Quantite"
+                                                          onChange={this.handleChange}
+                                                          value={this.state.Vehicule}
+                                                          disabled={this.state.VehiculeCat === null}
+                                            >
+                                                \
+                                                <option></option>
+                                                {this.state.Libelle.map(vehicule => (
+                                                    <option>
+                                                        {vehicule}
+                                                    </option>
+
+                                                ))}
+                                                <option></option>
+                                            </Form.Control>
+                                        </Col>
+                                    </Row>
+
+                                    <br/>
+
+                                    <Row>
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Number"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="NombreVoitures"
+                                                required
+                                                type="text"
+                                                placeholder="Intrant"
+                                                onChange={this.handleChange}
+                                                value={this.state.NombreVoitures}
+                                                pattern="^[0-9]$"
+
+                                            />
+                                        </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.BusinessDays"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="JoursOuvrables"
+                                                required
+                                                type="text"
+                                                placeholder="220"
+                                                onChange={this.handleChange}
+                                                value={this.state.JoursOuvrables}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Kilometres"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="Kilometres"
+                                                required
+                                                type="text"
+                                                placeholder="Intrant"
+                                                onChange={this.handleChange}
+                                                value={this.state.Kilometres}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
 
 
-                                                </Form>
-
-                                                <br/>
-                                                <Row>
-                                                    <Col lg="4">
-                                                        <Button type="submit" onClick={this.store}>Submit</Button>
-                                                    </Col>
-                                                </Row>
+                                    </Row>
 
 
-                                            </div>
+                                </Form>
 
+                                <br/>
+                                <Row>
+                                    <Col lg="4">
+                                        <Button onClick={this.distanceForm} >PrevPage</Button>
+                                    </Col>
 
-
-                            </Row>
-
+                                    <Col lg="4">
+                                        <Button onClick={this.confirm}>NextPage</Button>
+                                    </Col>
+                                </Row>
+                            </div>
                         </div>
                     </div>
                 </div>

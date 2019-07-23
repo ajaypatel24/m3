@@ -128,7 +128,7 @@ export default {
 
 
 
-        /**Transport Form */
+        /**TransportEntry Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
         'TransportForm.NumberTransports': "Number of Transports",
         'TransportForm.TypeVehicule': "Type of Vehicule, Kilometres, Number of Employees",
@@ -303,7 +303,7 @@ export default {
 
 
 
-        /**Transport Form */
+        /**TransportEntry Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
         'TransportForm.NumberTransports': "Nombre de Transports",
         'TransportForm.TypeVehicule': "Type of Vehicule, Kilometres, Number of Employees",

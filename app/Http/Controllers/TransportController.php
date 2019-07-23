@@ -63,22 +63,21 @@ class TransportController extends Controller
     public function shortDeplacement(request $request) {
         $Transport = new Deplacement();
 
-        $VehiculeId = DB::table('typevehicule')
+        $VehiculeId = DB::table('typevehicule') //ideal query to extract a single value
             ->select('idVehicule')
             ->where('Lib_VehiculeEN', '=', request('Vehicule'))
-            ->get();
+            ->first()
+            ->idVehicule;
 
 
-        $r = '';
-        foreach ($VehiculeId as $value) { //array
-            foreach ($value as $v) {
-                $r = $v;
-            }
-        }
+        $CoeffGES = DB::table('typevehicule')
+            ->select('Coeff_GES_km')
+            ->where('Lib_VehiculeEN', '=', request('Vehicule'))
+            ->first()
+            ->Coeff_GES_km;
 
-
-        $Transport->TypeVehicule_idVehicule = $r;
-        //$Transport->Inventaire_idInventaire = "-1";
+        $Transport->TypeVehicule_idVehicule = $VehiculeId;
+        //$TransportEntry->Inventaire_idInventaire = "-1";
         $Transport->Categorie_idCategorie = "cat30";
 
 
@@ -86,13 +85,13 @@ class TransportController extends Controller
         $Transport->Libelle_Deplacement = request('VehiculeCat');
         $Transport->Origine = 't';
         $Transport->Destination = 't';
-        $Transport->idDeplacement = 'D1';
+        $Transport->idDeplacement = $VehiculeId;
 
         $Transport->Nb_km_AR = 1;
         $Transport->Nb_voyageurs_An = 1;
         $Transport->Nb_voyageurs = request('NombreVoitures');
         $Transport->Type_Deplacement = request('Vehicule');
-        $Transport->Emission_GES = 123.1231232;
+        $Transport->Emission_GES = $CoeffGES;
         $Transport->Type_Deplacement = request('Vehicule');
         $Transport->Covoiturage = 1;
 

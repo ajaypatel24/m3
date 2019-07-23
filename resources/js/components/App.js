@@ -26,6 +26,9 @@ import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import messages from "./messages"
 import TransportFormLongDistance from "./FormComponents/Transport/TransportFormLongDistance";
+import TransportFormShortDistanceSpecific from "./FormComponents/Transport/TransportShortDistanceSpecific";
+import TransportFormShortDistanceGeneral from "./FormComponents/Transport/TransportShortDistanceGeneral";
+import TransportEntry from "./FormComponents/Transport/TransportEntry";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -97,9 +100,12 @@ export default class App extends React.Component {
                     <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
-                    <PrivateRoute exact path="/transport" component={TransportForm}/>
                     <PrivateRoute exact path="/team" component={Team}/>
-                    <PrivateRoute exact path="/transportlong" component={TransportFormLongDistance}/>
+                    <PrivateRoute exact path="/:transport" component={TransportEntry}/>
+                    <PrivateRoute exact path="/:transport/general/short" component={TransportFormShortDistanceGeneral}/>
+                    <PrivateRoute exact path="/:transport/specific/short" component={TransportFormShortDistanceSpecific}/>
+
+                    <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
 
                     <Route exact path="/test" component={Test} />
 

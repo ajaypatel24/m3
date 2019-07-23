@@ -203,7 +203,7 @@ export default class TransportForm extends React.Component {
             });
 
         this.getTableRows();
-        this.clearState();
+
 
     }
 
@@ -818,6 +818,12 @@ export default class TransportForm extends React.Component {
 
                                     <div>
                                         <Row>
+                                            <Col lg="12">
+                                            <h1> Transport: Employees </h1>
+                                            <h6> Choisie un des types d'analyse </h6>
+                                            </Col>
+                                        </Row>
+                                        <Row>
                                             <Col lg="7">
                                                 <Form.Control as="select" name="SpecificOrGeneral"
                                                               onChange={this.handleChange} required>
@@ -833,15 +839,28 @@ export default class TransportForm extends React.Component {
                                         </Row>
                                         <Row>
                                             <Col lg="12">
-                                                {this.state.SpecificOrGeneral === "V1" ?
-                                                    <Jumbotron><h4>choix V1</h4></Jumbotron>
+                                                {
+                                                    {
+                                                        "V1":
+                                                            <div>
+                                                            <br/>
+                                                            <Jumbotron><h4>choix V1</h4></Jumbotron>
+                                                            </div>,
 
-                                                    :
+                                                            "V2":
 
-                                                    <Jumbotron><h4>choix V2</h4></Jumbotron>
+                                                                <div>
+                                                                    <br/>
+                                                                    <Jumbotron><h4>choix V2</h4></Jumbotron>
+                                                                </div>,
+
+                                                        "":
+                                                            null,
+                                                        null:
+                                                            null,
 
 
-
+                                                    } [this.state.SpecificOrGeneral]
                                                 }
 
                                             </Col>
