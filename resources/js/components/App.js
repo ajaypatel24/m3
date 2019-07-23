@@ -20,7 +20,7 @@ import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
 import Test from "./NavComponents/test"
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
-
+import NoMatch from "./Authentication/NoMatch"
 import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
@@ -93,13 +93,19 @@ export default class App extends React.Component {
                     <BlockRoute exact path="/aboutus" component={Dashboard}/>
                     <BlockRoute exact path="/login" component={Login}/>
                     <Route exact path="/data" component={EnergyTableData}/>
-                    {/*   <PrivateRoute exact path="/profile" component={TopTabs}/> */}
+
                     <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                     <PrivateRoute exact path="/home" component={TopTabs}/>
                     <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                     <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                     <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                     <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
+
+                    <Route exact path="/test" component={Test} />
+
+
+                    <Route exact path="/loading" component={Loading}/>
+                    <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                     <PrivateRoute exact path="/team" component={Team}/>
                     <PrivateRoute exact path="/:transport" component={TransportEntry}/>
                     <PrivateRoute exact path="/:transport/general/short" component={TransportFormShortDistanceGeneral}/>
@@ -107,12 +113,7 @@ export default class App extends React.Component {
 
                     <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
 
-                    <Route exact path="/test" component={Test} />
-
-
-                    <Route exact path="/loading" component={Loading}/>
-                    <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
-                    {/* <Route component={NoMatch}/> */}
+                    <Route component={NoMatch}/>
 
 
                 </Switch>

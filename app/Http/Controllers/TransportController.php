@@ -107,13 +107,32 @@ class TransportController extends Controller
     public function getSubmissions() {
 
 
-        $t = DB::table('deplacement')
-            ->select('idDeplacement')
-            ->first()
-            ->idDeplacement;
+        $g = array();
+        $values = array();
+
+            $g = DB::table('deplacement')
+                ->get();
+
+            array_push($values, $g);
 
 
-        return $t;
+
+
+
+
+
+        //attempt at returning only values that are pertinent to the user (non null)
+
+
+        $ArrayReturn = array();
+        foreach($values as $e) {
+            array_push($ArrayReturn, $e);
+        }
+
+
+
+
+        return $ArrayReturn;
     }
 
 }

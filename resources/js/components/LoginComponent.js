@@ -23,7 +23,7 @@ const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
 
-
+const handleKeyDown = (evt) => evt.which === 13 ? this.handleLoginRequest : {}
 /**
  * Main navbar placed at top of page, conditional rendering
  * has clickable name to log in and out
@@ -421,7 +421,7 @@ export default class LoginComponent extends React.Component {
                                     <Form.Group>
                                         <Row>
                                             <Col lg="6">
-                                        <Button variant="outline-info" onClick={this.handleLoginRequest}><FormattedHTMLMessage id="login.Login"
+                                        <Button variant="outline-info" onClick={this.handleLoginRequest} onKeyDown={handleKeyDown}><FormattedHTMLMessage id="login.Login"
                                                                                                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                                                                                description="Welcome header on app main page"
                                                                                                                                values={{what: 'react-intl'}}/></Button>

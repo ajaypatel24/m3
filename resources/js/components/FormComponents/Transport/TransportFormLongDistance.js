@@ -52,6 +52,7 @@ export default class TransportFormLongDistance extends React.Component {
         this.changeSelection = this.changeSelection.bind(this);
 
 
+
     }
 
     componentWillMount = () => {
@@ -63,6 +64,11 @@ export default class TransportFormLongDistance extends React.Component {
 
 
     }
+
+    test = () => {
+        console.log('test');
+    }
+
 
 
     /*
@@ -173,8 +179,32 @@ export default class TransportFormLongDistance extends React.Component {
 
     store = () => {
         let data = this.state;
-
         console.log(data);
+
+        let id = sessionStorage.getItem('UID');
+
+        fetch('/deplacement/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (response) {
+                console.log(response.data)
+                console.log('Request succeeded with JSON response', data);
+
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+        this.getTableRows();
+
     }
 
     changeDelete = () => {
@@ -401,13 +431,11 @@ export default class TransportFormLongDistance extends React.Component {
                                 <br/>
                                 <Row>
                                     <Col lg="4">
-                                        <Button onClick={this.distanceForm} >PrevPage</Button>
-                                    </Col>
-
-                                    <Col lg="4">
-                                        <Button onClick={this.confirm}>NextPage</Button>
+                                        <Button type="submit"
+                                                onClick={this.store}>Submit</Button>
                                     </Col>
                                 </Row>
+
                             </div>
                         </div>
                     </div>
