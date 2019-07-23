@@ -178,8 +178,33 @@ export default class TransportForm extends React.Component {
 
     store = () => {
         let data = this.state;
-
         console.log(data);
+
+        let id = sessionStorage.getItem('UID');
+
+        fetch('/deplacement/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (response) {
+                console.log(response.data)
+                console.log('Request succeeded with JSON response', data);
+
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+        this.getTableRows();
+        this.clearState();
+
     }
 
     changeDelete = () => {
@@ -809,11 +834,11 @@ export default class TransportForm extends React.Component {
                                         <Row>
                                             <Col lg="12">
                                                 {this.state.SpecificOrGeneral === "V1" ?
-                                                    <Jumbotron><h4>This is an explanation of what happens with this choice V1</h4></Jumbotron>
+                                                    <Jumbotron><h4>choix V1</h4></Jumbotron>
 
                                                     :
 
-                                                    <Jumbotron><h4>This is an exaplanation of what happens with choice V2</h4></Jumbotron>
+                                                    <Jumbotron><h4>choix V2</h4></Jumbotron>
 
 
 

@@ -305,27 +305,27 @@ export default {
 
         /**Transport Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
-        'TransportForm.NumberTransports': "Number of Transports",
+        'TransportForm.NumberTransports': "Nombre de Transports",
         'TransportForm.TypeVehicule': "Type of Vehicule, Kilometres, Number of Employees",
-        'TransportForm.VehiculeCategory': "Vehicule Category",
+        'TransportForm.VehiculeCategory': "Categorie de Vehicule",
         'TransportForm.Vehicule': "Vehicule",
-        'TransportForm.Number': "Number of Vehicules",
-        'TransportForm.BusinessDays': "Business Days",
-        'TransportForm.Kilometres': "Kilometres Traveled",
+        'TransportForm.Number': "Nombre de Vehicules",
+        'TransportForm.BusinessDays': "Jours Ouvrables",
+        'TransportForm.Kilometres': "Kilometres Parcourus",
         'TransportForm.Choice1': "Emissions par type de vehicule",
         'TransportForm.Choice2': "Emissions par individu",
 
 
         /** Top Tabs Component */
-        'TopTabs.Compagnie': "Company",
+        'TopTabs.Compagnie': "Compagnie",
         'TopTabs.Revenue': "Revenue",
-        'TopTabs.Energie': "Energy",
-        'TopTabs.Dechets': "Waste",
-        'TopTabs.Matieres': "Materials",
-        'TopTabs.Productivite': "Productivity",
+        'TopTabs.Energie': "Energie",
+        'TopTabs.Dechets': "Dechets",
+        'TopTabs.Matieres': "Matieres",
+        'TopTabs.Productivite': "Productivite",
         'TopTabs.RH': "RH",
-        'TopTabs.Risques': "Risks",
-        'TopTabs.Bilan': "Balance Sheet",
+        'TopTabs.Risques': "Risques",
+        'TopTabs.Bilan': "Bilan",
 
 
         /** Navigation */
