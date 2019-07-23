@@ -1,35 +1,46 @@
 import React from 'react';
-import TransportFormShortDistance from './TransportShortDistanceSpecific'
+import TransportFormShortDistance from './TransportShortDistanceGeneral'
 import TransportFormLongDistance from './TransportFormLongDistance'
+import TransportConfirm from './TransportConfirm'
 import {Button, Col, Form, Jumbotron, Row} from "react-bootstrap";
-import {Link} from 'react-router-dom';
 
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
  */
 
-const Component = [<TransportFormShortDistance/>, <TransportFormLongDistance/>,]
+const Component = [<p></p>, <TransportFormShortDistance/>, <TransportFormLongDistance/>, <TransportConfirm/>]
 export default class TransportEntry extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
 
-            PageIndex: 1,
+            PageIndex: 0,
             SpecificOrGeneral: '',
 
         };
 
-        this.changePage = this.changePage.bind(this);
+        this.pageForward = this.pageForward.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.changeOption = this.changeOption.bind(this);
 
     }
 
-    //{Component[this.state.PageIndex]}
-    changePage = () => {
+    //
+    pageForward = () => {
+        this.setState({PageIndex: (this.state.PageIndex + 1)})
+        console.log(this.state.PageIndex);
+    }
 
+    pageBackward = () => {
+        this.setState({PageIndex: (this.state.PageIndex - 1)})
+        console.log(this.state.PageIndex);
+    }
+
+
+    test = () => {
+        console.log(this.state.PageIndex);
     }
 
     handleChange(e) {
@@ -43,11 +54,16 @@ export default class TransportEntry extends React.Component {
     }
 
     changeOption = () => {
-        if (this.state.SpecificOrGeneral === "V1") {
-            window.location.href = '#/transport/general/short';
-        } else {
-            window.location.href = '#/transport/specific/short';
-        }
+
+        /*
+                if (this.state.SpecificOrGeneral === "V1") {
+                    window.location.href = '#/transport/general/short';
+                } else {
+                    window.location.href = '#/transport/specific/short';
+                }
+        */
+        this.setState({PageIndex: (this.state.PageIndex + 1)})
+        console.log(this.state.PageIndex + "eyo");
     }
 
     render() {
@@ -61,70 +77,91 @@ export default class TransportEntry extends React.Component {
 
                             <Row>
 
+                                {
+                                    this.state.PageIndex === 0 ?
 
-                                <div>
-                                    <Row>
-                                        <Col lg="12">
-                                            <h1> Transport: Employees </h1>
-                                            <h6> Choisie un des types d'analyse </h6>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col lg="9">
-                                            <Form.Control as="select" name="SpecificOrGeneral"
-                                                          onChange={this.handleChange} required>
-                                                <option></option>
-                                                <option value="V1"> Emissions by Vehicule Type</option>
-                                                <option value="V2"> Emissions by Individual Employees</option>
+                                        <div>
 
-                                            </Form.Control>
-                                        </Col>
-                                        <Col lg="3">
-                                                <Button onClick={this.changeOption}> Confirm </Button>
-                                        </Col>
-                                    </Row>
-
-                                    <Row>
-                                        <Col lg="12">
-                                            {
-                                                {
-                                                    "V1":
-                                                        <div>
-                                                            <br/>
-                                                            <Jumbotron><h4>choix V1</h4></Jumbotron>
-                                                        </div>,
-
-                                                    "V2":
-
-                                                        <div>
-                                                            <br/>
-                                                            <Jumbotron><h4>choix V2</h4></Jumbotron>
-                                                        </div>,
-
-                                                    "":
-                                                        null,
-                                                    null:
-                                                        null,
+                                            <Row>
+                                                <Col lg="12">
+                                                    <h1> Transport: Employees </h1>
+                                                    <h6> Choisie un des types d'analyse </h6>
+                                                </Col>
+                                            </Row>
 
 
-                                                } [this.state.SpecificOrGeneral]
-                                            }
+                                            <Row>
+                                                <Col lg="9">
+                                                    <Form.Control as="select" name="SpecificOrGeneral"
+                                                                  onChange={this.handleChange} required>
+                                                        <option></option>
+                                                        <option value="V1"> Emissions by Vehicule Type</option>
+                                                        <option value="V2"> Emissions by Individual Employees
+                                                        </option>
 
-                                        </Col>
-                                    </Row>
+                                                    </Form.Control>
+                                                </Col>
+                                                <Col lg="3">
+                                                    <Button onClick={this.changeOption}> Confirm </Button>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col lg="12">
+                                                    {
+                                                        {
+                                                            "V1":
+                                                                <div>
+                                                                    <br/>
+                                                                    <Jumbotron><h4>choix V1</h4></Jumbotron>
+                                                                </div>,
+
+                                                            "V2":
+
+                                                                <div>
+                                                                    <br/>
+                                                                    <Jumbotron><h4>choix V2</h4></Jumbotron>
+                                                                </div>,
+
+                                                            "":
+                                                                null,
+                                                            null:
+                                                                null,
 
 
-                                </div>
+                                                        } [this.state.SpecificOrGeneral]
+                                                    }
+
+                                                </Col>
+                                            </Row>
+                                        </div>
+
+                                        :
+                                        null
+                                }
 
 
-                                {/*
-                                <div>
-                                    <Button variant="primary" onClick={this.changeSelection}>Change Selection</Button>
-                                </div>
-                                */}
+                                <Row>
+                                    {Component[this.state.PageIndex]}
+                                </Row>
 
+                                {
+                                    this.state.PageIndex === 0 || this.state.PageIndex === Component.length-1 ?
 
+                                        null
 
+                                        :
+
+                                        <Row>
+                                            <Col lg="4">
+                                                <Button onClick={this.pageBackward}>Prev</Button>
+                                            </Col>
+                                            <Col lg="4">
+                                                <Button onClick={this.pageForward}>Next</Button>
+                                            </Col>
+
+                                        </Row>
+                                }
                             </Row>
 
 

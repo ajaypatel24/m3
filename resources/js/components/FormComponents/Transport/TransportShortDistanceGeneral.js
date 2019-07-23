@@ -173,8 +173,33 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
 
     store = () => {
         let data = this.state;
-
         console.log(data);
+
+        let id = sessionStorage.getItem('UID');
+
+        fetch('/deplacement/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (response) {
+                console.log(response.data)
+                console.log('Request succeeded with JSON response', data);
+
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+        this.getTableRows();
+
+
     }
 
     changeDelete = () => {

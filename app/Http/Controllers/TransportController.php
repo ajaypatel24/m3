@@ -102,4 +102,18 @@ class TransportController extends Controller
 
 
     }
+
+
+    public function getSubmissions() {
+
+
+        $t = DB::table('deplacement')
+            ->select('idDeplacement')
+            ->first()
+            ->idDeplacement;
+
+
+        return $t;
+    }
+
 }
