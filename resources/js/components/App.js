@@ -1,34 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { IntlProvider } from "react-intl";
-import { Button } from "react-bootstrap"
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
-import Example from "./Deprecated/Example";
-import Navbar from "./Navigation";
 import PrestartQuestion from "./FormComponents/PrestartQuestion";
 import EnergyTableData from "./DataComponents/EnergyTableData";
-import Loading from "./Authentication/Loading";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
 import TopTabs from "./NavComponents/TopTabs";
 import EnergyTable from "./FormComponents/EnergyTable"
 import IntrantForm from "./FormComponents/IntrantForm"
-import TransportForm from "./FormComponents/Transport/TransportForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
 import Test from "./NavComponents/test"
-import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
 import NoMatch from "./Authentication/NoMatch"
-import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
-import messages from "./messages"
 import TransportFormLongDistance from "./FormComponents/Transport/TransportFormLongDistance";
 import TransportFormShortDistanceSpecific from "./FormComponents/Transport/TransportShortDistanceSpecific";
 import TransportFormShortDistanceGeneral from "./FormComponents/Transport/TransportShortDistanceGeneral";
 import TransportEntry from "./FormComponents/Transport/TransportEntry";
+
+import Dialog from "./NavComponents/Dialog"
 
 export default class App extends React.Component {
     constructor(props) {
@@ -43,20 +35,15 @@ export default class App extends React.Component {
     switch = () => {
         if (localStorage.getItem('lang') === 'fr') {
             localStorage.setItem('lang', 'en');
-        }
-        else if (localStorage.getItem('lang') === 'en') {
-            localStorage.setItem('lang','fr');
-        }
-        else {
-            localStorage.setItem('lang','en');
+        } else if (localStorage.getItem('lang') === 'en') {
+            localStorage.setItem('lang', 'fr');
+        } else {
+            localStorage.setItem('lang', 'en');
         }
 
         window.location.reload();
 
     }
-
-
-
 
 
     /**
@@ -73,57 +60,55 @@ export default class App extends React.Component {
 
             <div>
 
-            <HashRouter>
+                <HashRouter>
 
 
-                {!q ?
+                    {!q ?
 
 
+                        null
 
-                    null
+                        :
 
-                    :
+                        null
+                    }
 
-                    null
-                }
-
-                <Switch>
-
-
-                    <BlockRoute exact path="/aboutus" component={Dashboard}/>
-                    <BlockRoute exact path="/login" component={Login}/>
-                    <Route exact path="/data" component={EnergyTableData}/>
-
-                    <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
-                    <PrivateRoute exact path="/home" component={TopTabs}/>
-                    <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
-                    <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
-                    <PrivateRoute exact path="/intrant" component={IntrantForm}/>
-                    <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
-
-                    <Route exact path="/test" component={Test} />
+                    <Switch>
 
 
-                    <Route exact path="/loading" component={Loading}/>
-                    <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
-                    <PrivateRoute exact path="/team" component={Team}/>
-                    <PrivateRoute exact path="/transport" component={TransportEntry}/>
-                    <PrivateRoute exact path="/:transport/general/short" component={TransportFormShortDistanceGeneral}/>
-                    <PrivateRoute exact path="/:transport/specific/short" component={TransportFormShortDistanceSpecific}/>
+                        <BlockRoute exact path="/aboutus" component={Dashboard}/>
+                        <BlockRoute exact path="/login" component={Login}/>
+                        <Route exact path="/data" component={EnergyTableData}/>
 
-                    <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
-                    <Route component={NoMatch}/>
+                        <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
+                        <PrivateRoute exact path="/home" component={TopTabs}/>
+                        <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
+                        <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
+                        <PrivateRoute exact path="/intrant" component={IntrantForm}/>
+                        <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
 
-
-
-
-
-                </Switch>
-
-                {/* <Footer2/> */}
+                        <Route exact path="/test" component={Test}/>
 
 
-            </HashRouter>
+                        <Route exact path="/Dialog" component={Dialog}/>
+                        <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
+                        <PrivateRoute exact path="/team" component={Team}/>
+                        <PrivateRoute exact path="/transport" component={TransportEntry}/>
+                        <PrivateRoute exact path="/:transport/general/short"
+                                      component={TransportFormShortDistanceGeneral}/>
+                        <PrivateRoute exact path="/:transport/specific/short"
+                                      component={TransportFormShortDistanceSpecific}/>
+
+                        <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
+                        <Route component={NoMatch}/>
+
+
+                    </Switch>
+
+                    {/* <Footer2/> */}
+
+
+                </HashRouter>
 
             </div>
 

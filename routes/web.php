@@ -66,4 +66,4 @@ Route::post('/deplacement/{id}', 'TransportController@shortDeplacement');
 Route::get('/transport/{id}', 'TransportController@getSubmissions');
 
 
-
+Route::post('/deltransport/{transport}/{id}', 'TransportController@deleteTransport');

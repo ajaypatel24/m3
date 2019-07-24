@@ -140,4 +140,12 @@ class TransportController extends Controller
         return $ArrayReturn;
     }
 
+    function deleteTransport($transport, $id) {
+        $Deplacement =
+            DB::table('deplacement')
+            ->where('idDeplacement',$transport)
+            ->where('UID', $id)
+            ->delete();
+    }
+
 }

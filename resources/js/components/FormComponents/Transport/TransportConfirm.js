@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import Stepper from './Stepper'
 import axios from "axios";
 
+
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
@@ -18,15 +19,20 @@ export default class TransportConfirm extends React.Component {
 
             TableData: [],
             UID: sessionStorage.getItem('UID'),
+            Transport: '',
 
         };
 
 
         this.getSubmissions = this.getSubmissions.bind(this);
-        this.delete = this.delete.bind(this);
+        this.getTableRows = this.getTableRows.bind(this);
 
     }
 
+
+    componentWillMount = () => {
+        this.getTableRows();
+    }
 
     getSubmissions = () => {
         let id = sessionStorage.getItem('UID')
@@ -38,20 +44,54 @@ export default class TransportConfirm extends React.Component {
             });
     }
 
+    clearState = () => {
+        this.setState({
+            Transport: "",
+        })
+    }
+    handleInput(e) { //return value of button clicked
+        e.preventDefault();
+        let uid = this.state.UID;
+        let transport = this.state.Transport;
+        console.log('/deltransport/' + e.target.value + '/' + uid);
+        fetch('/deltransport/' + e.target.value + '/' + uid, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
 
-    componentWillMount = () => {
-        let id = sessionStorage.getItem('UID')
-        axios.get('/transport/' + id,)
+        })
+            .then(function (response) {
+                console.log(response.data)
+
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+
+
+        this.getTableRows(); //get new table rows after deletion
+
+
+    }
+
+
+
+    getTableRows = () => {
+        //let uid = sessionStorage.getItem('UID');
+        let uid = this.state.UID;
+        axios.get('/transport/' + uid)
             .then(response => {
-                this.setState({TableData: response.data})
-                console.log("defined");
-
+                console.log(response.data);
+                this.setState({TableData: response.data});
             });
     }
 
-    delete = () => {
-        console.log(subRowData.idDeplacement);
-    }
+
 
 
     render()
@@ -81,9 +121,6 @@ export default class TransportConfirm extends React.Component {
                                                     <th>Procede</th>
                                                     <th>Quantite an</th>
                                                     <th>Unite</th>
-                                                    <th>Num Affiche</th>
-                                                    <th>Procede</th>
-                                                    <th>Quantite an</th>
                                                     <th>GES</th>
                                                 </tr>
                                                 </thead>
@@ -98,14 +135,11 @@ export default class TransportConfirm extends React.Component {
                                                         <td>{subRowData.Categorie_idCategorie}</td>
                                                         <td>{subRowData.idDeplacement}</td>
                                                         <td>{subRowData.Libelle_Deplacement}</td>
-                                                        <td>{subRowData.Origine}</td>
-                                                        <td>{subRowData.Destination}</td>
-                                                        <td>{subRowData.Nb_km_AR}</td>
                                                         <td>{subRowData.Nb_voyageurs}</td>
                                                         <td>{subRowData.Nb_voyageurs_An}</td>
                                                         <td>{subRowData.Type_Deplacement}</td>
                                                         <td>{subRowData.Emission_GES}</td>
-                                                        <td><Button> {subRowData.idDeplacement} </Button></td>
+                                                        <td><Button variant="outline-danger" value={subRowData.idDeplacement} onClick={e => this.handleInput(e, "value")}> Delete </Button></td>
 
                                                     </tr>
                                                 )

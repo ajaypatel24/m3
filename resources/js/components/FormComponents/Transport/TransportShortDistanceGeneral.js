@@ -358,9 +358,8 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                                     <option>
                                                         {vehicule}
                                                     </option>
-
                                                 ))}
-                                                <option></option>
+
                                             </Form.Control>
                                         </Col>
                                     </Row>
