@@ -62,6 +62,8 @@ class TransportController extends Controller
 
     public function shortDeplacement(request $request) {
         $Transport = new Deplacement();
+        $Random = mt_rand(1,100);
+        $InttoString = intval($Random);
 
         $VehiculeId = DB::table('typevehicule') //ideal query to extract a single value
             ->select('idVehicule')
@@ -85,8 +87,8 @@ class TransportController extends Controller
         $Transport->Libelle_Deplacement = request('VehiculeCat');
         $Transport->Origine = 't';
         $Transport->Destination = 't';
-        $Transport->idDeplacement = $VehiculeId;
-
+        $Transport->idDeplacement = $VehiculeId.$InttoString;
+        $Transport->UID = request('UID');
         $Transport->Nb_km_AR = 1;
         $Transport->Nb_voyageurs_An = 1;
         $Transport->Nb_voyageurs = request('NombreVoitures');
@@ -104,14 +106,15 @@ class TransportController extends Controller
     }
 
 
-    public function getSubmissions() {
+    public function getSubmissions($id) {
+
 
 
         $g = array();
         $values = array();
 
             $g = DB::table('deplacement')
-                ->where('Libelle_Deplacement', 'Journalier')
+                ->where('UID', $id)
                 ->get();
 
             array_push($values, $g);

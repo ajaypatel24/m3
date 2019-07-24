@@ -93,6 +93,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
             Provenance: "",
             Frequency: "",
             Confirmed: "",
+            UID: sessionStorage.getItem('UID'),
         })
     }
 
@@ -177,7 +178,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
 
         let id = sessionStorage.getItem('UID');
 
-        fetch('/deplacement/', {
+        fetch('/deplacement/' + id, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

@@ -62,8 +62,8 @@ Route::get('/contact/{Id}', 'RegisterController@profileInfo'); //gets all user i
 Route::get('/test/', 'CategorieController@getEnergyCategory');
 
 
-Route::post('/deplacement/', 'TransportController@shortDeplacement');
-Route::get('/dep/', 'TransportController@getSubmissions');
+Route::post('/deplacement/{id}', 'TransportController@shortDeplacement');
+Route::get('/transport/{id}', 'TransportController@getSubmissions');
 
 
 

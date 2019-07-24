@@ -17,6 +17,7 @@ export default class TransportConfirm extends React.Component {
         this.state = {
 
             TableData: [],
+            UID: sessionStorage.getItem('UID'),
 
         };
 
@@ -28,7 +29,8 @@ export default class TransportConfirm extends React.Component {
 
 
     getSubmissions = () => {
-        axios.get('/dep/' ,)
+        let id = sessionStorage.getItem('UID')
+        axios.get('/transport/' + id,)
             .then(response => {
                 this.setState({TableData: response.data})
                 console.log("defined");
@@ -38,7 +40,8 @@ export default class TransportConfirm extends React.Component {
 
 
     componentWillMount = () => {
-        axios.get('/dep/' ,)
+        let id = sessionStorage.getItem('UID')
+        axios.get('/transport/' + id,)
             .then(response => {
                 this.setState({TableData: response.data})
                 console.log("defined");
@@ -81,7 +84,7 @@ export default class TransportConfirm extends React.Component {
                                                     <th>Num Affiche</th>
                                                     <th>Procede</th>
                                                     <th>Quantite an</th>
-                                                    <th>Unite</th>
+                                                    <th>GES</th>
                                                 </tr>
                                                 </thead>
 

@@ -48,6 +48,7 @@ class Deplacement extends Migration
             $table->integer('Nb_voyageurs_An')->default(1);
             $table->string('Type_Deplacement', 150);
             $table->decimal('Emission_GES',10,7);
+            $table->string('UID', 60);
             $table->boolean('Vehicule_Compagnie')->nullable();
             $table->integer('Covoiturage')->default(1);
 
