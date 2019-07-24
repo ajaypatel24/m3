@@ -107,13 +107,15 @@ export default class App extends React.Component {
                     <Route exact path="/loading" component={Loading}/>
                     <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                     <PrivateRoute exact path="/team" component={Team}/>
-                    <PrivateRoute exact path="/:transport" component={TransportEntry}/>
+                    <PrivateRoute exact path="/transport" component={TransportEntry}/>
                     <PrivateRoute exact path="/:transport/general/short" component={TransportFormShortDistanceGeneral}/>
                     <PrivateRoute exact path="/:transport/specific/short" component={TransportFormShortDistanceSpecific}/>
 
                     <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
-
                     <Route component={NoMatch}/>
+
+
+
 
 
                 </Switch>

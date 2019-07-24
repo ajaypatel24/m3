@@ -111,6 +111,7 @@ class TransportController extends Controller
         $values = array();
 
             $g = DB::table('deplacement')
+                ->where('Libelle_Deplacement', 'Journalier')
                 ->get();
 
             array_push($values, $g);

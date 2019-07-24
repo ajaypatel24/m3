@@ -76,14 +76,13 @@ class InventaireController extends Controller
          with a specified user */
         $g = array();
         $values = array();
-        foreach ($category as $cat) {
+
             $g = DB::table('procede')
                 ->where('uid', $id)
-                ->where('Nom_procede', $cat)
                 ->get();
 
             array_push($values, $g );
-        }
+
 
 
 
@@ -95,12 +94,10 @@ class InventaireController extends Controller
 
         $ArrayReturn = array();
            foreach($values as $e) {
-               foreach ($e as $r) {
-                   if(!$r->Quantite_an == null) {
                        array_push($ArrayReturn, $e);
                    }
-               }
-           }
+
+
 
 
 

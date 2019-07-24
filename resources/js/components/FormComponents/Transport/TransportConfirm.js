@@ -22,7 +22,7 @@ export default class TransportConfirm extends React.Component {
 
 
         this.getSubmissions = this.getSubmissions.bind(this);
-
+        this.delete = this.delete.bind(this);
 
     }
 
@@ -46,6 +46,9 @@ export default class TransportConfirm extends React.Component {
             });
     }
 
+    delete = () => {
+        console.log(subRowData.idDeplacement);
+    }
 
 
     render()
@@ -60,61 +63,66 @@ export default class TransportConfirm extends React.Component {
                             <div>
                                 <Button onClick={this.test}>TEST</Button>
 
-                                <Table>
-                                    <thead>
-                                    <tr>
-                                        <th>Procede</th>
-                                        <th>Quantite an</th>
-                                        <th>Unite</th>
-                                        <th>Num Affiche</th>
-                                        <th>Procede</th>
-                                        <th>Quantite an</th>
-                                        <th>Unite</th>
-                                        <th>Num Affiche</th>
-                                        <th>Procede</th>
-                                        <th>Quantite an</th>
-                                        <th>Unite</th>
-                                    </tr>
-                                    </thead>
 
-                                    <tbody>
                                 {
 
                                     this.state.TableData.map((rowdata, i) =>
                                         <div>
-                                            {rowdata.map((subRowData, k) =>
-
-
+                                            <Table>
+                                                <thead>
                                                 <tr>
-
-                                                    <td >{subRowData.TypeVehicule_idVehicule}</td>
-                                                    <td >{subRowData.Categorie_idCategorie}</td>
-                                                    <td >{subRowData.idDeplacement}</td>
-                                                    <td >{subRowData.Libelle_Deplacement}</td>
-                                                    <td >{subRowData.Origine}</td>
-                                                    <td >{subRowData.Destination}</td>
-                                                    <td >{subRowData.Nb_km_AR}</td>
-                                                    <td >{subRowData.Nb_voyageurs}</td>
-                                                    <td >{subRowData.Nb_voyageurs_An}</td>
-                                                    <td >{subRowData.Type_Deplacement}</td>
-                                                    <td >{subRowData.Emission_GES}</td>
-
+                                                    <th>Procede</th>
+                                                    <th>Quantite an</th>
+                                                    <th>Unite</th>
+                                                    <th>Num Affiche</th>
+                                                    <th>Procede</th>
+                                                    <th>Quantite an</th>
+                                                    <th>Unite</th>
+                                                    <th>Num Affiche</th>
+                                                    <th>Procede</th>
+                                                    <th>Quantite an</th>
+                                                    <th>Unite</th>
                                                 </tr>
+                                                </thead>
 
-                                            )
-                                            }
+                                                <tbody>
+                                                {rowdata.map((subRowData, k) =>
+
+
+                                                    <tr>
+
+                                                        <td>{subRowData.TypeVehicule_idVehicule}</td>
+                                                        <td>{subRowData.Categorie_idCategorie}</td>
+                                                        <td>{subRowData.idDeplacement}</td>
+                                                        <td>{subRowData.Libelle_Deplacement}</td>
+                                                        <td>{subRowData.Origine}</td>
+                                                        <td>{subRowData.Destination}</td>
+                                                        <td>{subRowData.Nb_km_AR}</td>
+                                                        <td>{subRowData.Nb_voyageurs}</td>
+                                                        <td>{subRowData.Nb_voyageurs_An}</td>
+                                                        <td>{subRowData.Type_Deplacement}</td>
+                                                        <td>{subRowData.Emission_GES}</td>
+                                                        <td><Button> {subRowData.idDeplacement} </Button></td>
+
+                                                    </tr>
+                                                )
+                                                }
+
+                                                </tbody>
+                                            </Table>
                                         </div>
                                     )
                                 }
-                                    </tbody>
-                                </Table>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        );
-
+        )
     }
-
 }
+
+
+
+
