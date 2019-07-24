@@ -109,7 +109,8 @@ export default function ResponsiveDrawer(props) {
         <div>
             <div className={classes.toolbar} />
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
-                {/*
+
+                {/*}
                 <img
 
                     src={window.location.origin + "/img/cadet_logo.svg"}
@@ -118,9 +119,11 @@ export default function ResponsiveDrawer(props) {
                     className="d-inline-block align-top"
                     alt="Cadet Logo"
                 />
+
                 */}
 
-                <h2> EcoSystem </h2 >
+<h2> EcoSystem</h2>
+
             </div>
             <Divider />
             <HashRouter>
