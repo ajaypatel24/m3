@@ -5,12 +5,52 @@ import Helmet from 'react-helmet';
 
 import Stepper from './Stepper'
 import axios from "axios";
+import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import {makeStyles} from "@material-ui/core";
+import {amber, green} from "@material-ui/core/colors";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import IconButton from "@material-ui/core/IconButton";
+import PropTypes from "prop-types";
+import Snackbar from "@material-ui/core/Snackbar";
 
 
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
  */
+
+
+const useStyles1 = makeStyles(theme => ({
+    success: {
+        backgroundColor: green[600],
+    },
+    error: {
+        backgroundColor: theme.palette.error.dark,
+    },
+    info: {
+        backgroundColor: theme.palette.primary.main,
+    },
+    warning: {
+        backgroundColor: amber[700],
+    },
+    icon: {
+        fontSize: 20,
+    },
+    iconVariant: {
+        opacity: 0.9,
+        marginRight: theme.spacing(1),
+    },
+    message: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+}));
+
+const useStyles2 = makeStyles(theme => ({
+    margin: {
+        margin: theme.spacing(1),
+    },
+}));
 export default class TransportConfirm extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +68,71 @@ export default class TransportConfirm extends React.Component {
         this.getTableRows = this.getTableRows.bind(this);
 
     }
+    CustomizedSnackbars() {
+        const classes = useStyles2();
+        const [open, setOpen] = React.useState(false);
+
+        function handleClick() {
+            setOpen(true);
+        }
+
+        function handleClose(event, reason) {
+            if (reason === 'clickaway') {
+                return;
+            }
+
+            setOpen(false);
+        }
+
+        return (
+            <div>
+                <Button variant="info" className={classes.margin} onClick={handleClick}>
+                    Open success snackbar
+                </Button>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                >
+                    <MySnackbarContentWrapper
+                        onClose={handleClose}
+                        variant="info"
+                        message="Entry Deleted"
+                    />
+                </Snackbar>
+
+            </div>
+        );
+    }
+    MySnackbarContentWrapper(props) {
+        const classes = useStyles1();
+        const { className, message, onClose, variant, ...other } = props;
+        const Icon = variantIcon[variant];
+
+        return (
+            <SnackbarContent
+                className={clsx(classes[variant], className)}
+                aria-describedby="client-snackbar"
+                message={
+                    <span id="client-snackbar" className={classes.message}>
+          <Icon className={clsx(classes.icon, classes.iconVariant)} />
+                        {message}
+        </span>
+                }
+                action={[
+                    <IconButton key="close" aria-label="Close" color="inherit" onClick={onClose}>
+                        <CloseIcon className={classes.icon} />
+                    </IconButton>,
+                ]}
+                {...other}
+            />
+        );
+    }
+
 
 
     componentWillMount = () => {
