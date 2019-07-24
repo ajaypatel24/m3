@@ -311,6 +311,65 @@ export default class TransportFormShortDistance extends React.Component {
 
 
                                     <Row>
+                                        <Col lg="8">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Name"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="NombreVoitures"
+                                                required
+                                                type="text"
+                                                placeholder="Intrant"
+                                                onChange={this.handleChange}
+                                                value={this.state.NombreVoitures}
+                                                pattern="^[0-9]$"
+
+                                            />
+                                        </Col>
+
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Role"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="JoursOuvrables"
+                                                required
+                                                type="text"
+                                                placeholder="220"
+                                                onChange={this.handleChange}
+                                                value={this.state.JoursOuvrables}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+
+                                        {/*
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Kilometres"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="Kilometres"
+                                                required
+                                                type="text"
+                                                placeholder="Intrant"
+                                                onChange={this.handleChange}
+                                                value={this.state.Kilometres}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+                                        */}
+
+
+                                    </Row>
+                                    <br/>
+                                    <Row>
                                         <Col lg="5">
 
                                             <Form.Label><FormattedHTMLMessage
@@ -354,7 +413,7 @@ export default class TransportFormShortDistance extends React.Component {
                                                           value={this.state.Vehicule}
                                                           disabled={this.state.VehiculeCat === null}
                                             >
-                                                \
+
                                                 <option></option>
                                                 {this.state.Libelle.map(vehicule => (
                                                     <option>
@@ -362,7 +421,6 @@ export default class TransportFormShortDistance extends React.Component {
                                                     </option>
 
                                                 ))}
-                                                <option></option>
                                             </Form.Control>
                                         </Col>
                                     </Row>

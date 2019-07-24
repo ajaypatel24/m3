@@ -1,5 +1,6 @@
 import React from 'react';
-import TransportFormShortDistance from './TransportShortDistanceGeneral'
+import TransportFormShortDistanceGeneral from './TransportShortDistanceGeneral'
+import TransportFormShortDistanceSpecific from './TransportShortDistanceSpecific'
 import TransportFormLongDistance from './TransportFormLongDistance'
 import TransportConfirm from './TransportConfirm'
 import {Button, Col, Form, Jumbotron, Row} from "react-bootstrap";
@@ -9,7 +10,13 @@ import {Button, Col, Form, Jumbotron, Row} from "react-bootstrap";
  * uses by the company, will begin development soon
  */
 
-const Component = [<p></p>, <TransportFormShortDistance/>, <TransportFormLongDistance/>, <TransportConfirm/>]
+const Component = {
+    0: <p></p>,
+    ShortGeneral: <TransportFormShortDistanceGeneral/>,
+    ShortSpecific: <TransportFormShortDistanceSpecific/>,
+    LongDistance: <TransportFormLongDistance/>,
+    Confirm: <TransportConfirm/>
+}
 export default class TransportEntry extends React.Component {
     constructor(props) {
         super(props);
@@ -27,10 +34,19 @@ export default class TransportEntry extends React.Component {
 
     }
 
+    componentWillMount = () => {
+        this.setState({SpecificOrGeneral: ''});
+    }
     //
     pageForward = () => {
-        this.setState({PageIndex: (this.state.PageIndex + 1)})
-        console.log(this.state.PageIndex);
+        if (this.state.SpecificOrGeneral === "V1") {
+            this.setState({PageIndex: this.state.PageIndex + 1})
+            console.log(this.state.PageIndex);
+        } else if (this.state.SpecificOrGeneral === "V2") {
+            this.setState({PageIndex: this.state.PageIndex + 1})
+            console.log(this.state.PageIndex);
+        }
+        this.setState({PageIndex: this.state.PageIndex + 1})
     }
 
     pageBackward = () => {
@@ -62,8 +78,10 @@ export default class TransportEntry extends React.Component {
                     window.location.href = '#/transport/specific/short';
                 }
         */
-        this.setState({PageIndex: (this.state.PageIndex + 1)})
-        console.log(this.state.PageIndex + "eyo");
+        if (this.state.SpecificOrGeneral != '') {
+            this.setState({PageIndex: (this.state.PageIndex + 1)})
+            console.log(this.state.PageIndex + "eyo");
+        }
     }
 
     render() {
@@ -142,11 +160,59 @@ export default class TransportEntry extends React.Component {
 
 
                                 <Row>
-                                    {Component[this.state.PageIndex]}
+
+                                    {
+                                        {
+
+
+                                            0:
+                                                <div>
+                                                    {Component['0']}
+                                                </div>,
+
+
+                                            1:
+
+                                                    {
+
+                                                    "V1":
+
+                                             <div>
+                                                 {Component['ShortGeneral']}
+                                             </div>,
+
+
+                                                     "V2":
+
+
+                                                  <div>
+                                                 {Component['ShortSpecific']}
+                                                 </div>,
+                                    } [this.state.SpecificOrGeneral],
+
+
+
+
+
+                                        2:
+                                        <div>
+                                        {Component['LongDistance']}
+                                        </div>,
+
+
+                                            3:
+                                                <div>
+                                                    {Component['Confirm']}
+                                                </div>,
+
+
+                                    } [this.state.PageIndex]
+                                    }
+
                                 </Row>
 
                                 {
-                                    this.state.PageIndex === 0 || this.state.PageIndex === Component.length-1 ?
+                                    this.state.PageIndex === 0 || this.state.PageIndex === Component.length - 1 ?
 
                                         null
 

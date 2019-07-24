@@ -140,6 +140,9 @@ export default {
         'TransportForm.Choice1': "Emissions by Vehicule Type",
         'TransportForm.Choice2': "Emissions by Invidual Employees",
 
+        'TransportForm.Name': "Name",
+        'TransportForm.Role': "Role",
+
 
         /** Top Tabs Component */
         'TopTabs.Compagnie': "Company",
@@ -314,6 +317,9 @@ export default {
         'TransportForm.Kilometres': "Kilometres Parcourus",
         'TransportForm.Choice1': "Emissions par type de vehicule",
         'TransportForm.Choice2': "Emissions par individu",
+
+        'TransportForm.Name': "Nom Complet",
+        'TransportForm.Role': "Role",
 
 
         /** Top Tabs Component */

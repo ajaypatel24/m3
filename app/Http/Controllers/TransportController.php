@@ -22,11 +22,12 @@ class TransportController extends Controller
         }
 
 
-
         return $array;
 
 
     }
+
+
     public function getLibelle ($category)
     { //returns all distinct transportation methods
         $array = [];
@@ -46,7 +47,7 @@ class TransportController extends Controller
 
 
 
-        return array_filter($array);
+        return $array;
 
 
     }
