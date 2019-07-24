@@ -135,7 +135,7 @@ export default class EnergyTableData extends React.Component {
                                         <tr>
                                             <th>Procede</th>
                                             <th>Quantite an</th>
-                                            <th>Unite</th>
+                                            {/* <th>Unite</th>*/}
                                             <th>Num Affiche</th>
                                         </tr>
                                         </thead>
@@ -147,8 +147,8 @@ export default class EnergyTableData extends React.Component {
                                         <tr>
 
                                             <td >{subRowData.Nom_procede}</td>
-                                            <td >{subRowData.Quantite_an}</td>
-                                            <td >{subRowData.Unite_an}</td>
+                                            <td >{subRowData.Quantite_an} {subRowData.Unite_an}</td>
+                                            {/* <td >{subRowData.Unite_an}</td> */}
                                             <td >{subRowData.Num_affiche}</td>
 
                                         </tr>

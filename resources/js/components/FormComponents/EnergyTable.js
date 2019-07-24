@@ -1,4 +1,4 @@
-import {Form, Table} from "react-bootstrap";
+import {Col, Form, Row, Table} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -534,7 +534,12 @@ export default class EnergyTable extends React.Component {
 
             <div>
 
-
+                <Row>
+                    <Col lg="12">
+                        <h1> Table d'Energie </h1>
+                        <h6> Remplire les données nécessaires </h6>
+                    </Col>
+                </Row>
 
 
 
@@ -731,7 +736,7 @@ export default class EnergyTable extends React.Component {
 
 
         )
-        })};
+        })}
             </div>
         )
 

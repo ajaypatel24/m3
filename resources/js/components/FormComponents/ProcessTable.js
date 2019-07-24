@@ -1,4 +1,4 @@
-import {Form, Table} from "react-bootstrap";
+import {Form, Table, Row, Col} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -535,17 +535,20 @@ export default class ProcessTable extends React.Component {
 
             <div>
 
+                <Row>
+                    <Col lg="12">
+                        <h1> Table de Procédés </h1>
+                        <h6> Remplire les données nécessaires </h6>
+                    </Col>
+                </Row>
+
+                <br/>
 
                 <Form
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
                     <Table responsive> {/**/}
                         <thead>
-                        <tr>
-                            <th colSpan="5"><FormattedHTMLMessage id="EnergyTable.Energy"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></th>
-                        </tr>
+
                         <tr>
                             <th colSpan="3">Compatiblisation direct des combustibles</th>
                             <th>Facteur Combustion</th>
@@ -637,6 +640,7 @@ export default class ProcessTable extends React.Component {
                 {/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
 
 
+                {/*
                 <Table responsive striped bordered hover variant="dark">
                     <thead>
 
@@ -739,6 +743,8 @@ export default class ProcessTable extends React.Component {
                     </tr>
                     </tbody>
                 </Table>
+
+                */}
 
 
             </div>

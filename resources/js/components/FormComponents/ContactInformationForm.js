@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form} from 'react-bootstrap';
+import {Button, Col, Form, Row} from 'react-bootstrap';
 import {FormattedHTMLMessage} from "react-intl";
 
 
@@ -117,122 +117,131 @@ export default class ContactInformationForm extends React.Component {
         const {validated} = this.state;
 
         return (
+            <div>
+                <Row>
+                    <Col lg="12">
+                        <h1> Contact Information </h1>
+                        <h6> Remplir les formulaires </h6>
+                    </Col>
+                </Row>
+
+                <br/>
+
+                <Form noValidate
+                      validated={validated}
+                      onSubmit={e => this.handleSubmit(e)}
+                      method="POST" action="/"
+                      enctype="multipart/form-data">
+                    <Form.Row>
+
+                        <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Role"
+                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                              description="Welcome header on app main page"
+                                                              values={{what: 'react-intl'}}/></Form.Label>
+                            <Form.Control
+                                name="Fonction"
+                                required
+                                value={this.state.Fonction}
+                                onChange={this.handleChange}
+                                type="text"
+                                placeholder="Fonction"
+                                pattern="^[a-zA-Z]+$"
+                            />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone"
+                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                              description="Welcome header on app main page"
+                                                              values={{what: 'react-intl'}}/></Form.Label>
+                            <Form.Control
+                                name="Telephone"
+                                required
+                                value={this.state.Telephone}
+                                onChange={this.handleChange}
+                                type="text"
+                                placeholder="Telephone"
+                                pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+                            />
+                        </Form.Group>
+                    </Form.Row>
 
 
-            <Form noValidate
-                  validated={validated}
-                  onSubmit={e => this.handleSubmit(e)}
-                  method="POST" action="/"
-                  enctype="multipart/form-data">
-                <Form.Row>
-
-                    <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Role"
+                    <Form.Group controlId="formGridAddress1">
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone2"
                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                           description="Welcome header on app main page"
                                                           values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control
-                            name="Fonction"
-                            required
-                            value={this.state.Fonction}
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder="Fonction"
-                            pattern="^[a-zA-Z]+$"
-                        />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></Form.Label>
-                        <Form.Control
-                            name="Telephone"
-                            required
-                            value={this.state.Telephone}
+                            name="Telephone2"
+                            value={this.state.Telephone2}
                             onChange={this.handleChange}
                             type="text"
                             placeholder="Telephone"
                             pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+
                         />
                     </Form.Group>
-                </Form.Row>
 
-
-                <Form.Group controlId="formGridAddress1">
-                    <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone2"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></Form.Label>
-                    <Form.Control
-                        name="Telephone2"
-                        value={this.state.Telephone2}
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="Telephone"
-                        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-
-                    />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label><FormattedHTMLMessage id="ContactInformationForm.WorkTelephone"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/></Form.Label>
-                    <Form.Control
-                        name="PosteTelephone"
-                        required
-                        value={this.state.PosteTelephone}
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="Poste Telephone"
-                        pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-
-                    />
-                </Form.Group>
-
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.City"
+                    <Form.Group as={Col} controlId="formGridZip">
+                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.WorkTelephone"
                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                           description="Welcome header on app main page"
                                                           values={{what: 'react-intl'}}/></Form.Label>
                         <Form.Control
-                            name="City"
+                            name="PosteTelephone"
                             required
-                            type="text"
-                            placeholder="City"
+                            value={this.state.PosteTelephone}
                             onChange={this.handleChange}
-                            value={this.state.City}
-                            pattern="^[a-zA-Z]+$"
+                            type="text"
+                            placeholder="Poste Telephone"
+                            pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+
                         />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Language"
-                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                          description="Welcome header on app main page"
-                                                          values={{what: 'react-intl'}}/></Form.Label>
-                        <Form.Control as="select"
-                                      name="Langue"
-                                      required
-                                      onChange={this.handleChange}>
-                            <option></option>
-                            <option value="EN">EN</option>
-                            <option value="FR">FR</option>
-                        </Form.Control>
-                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridCity">
+                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.City"
+                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                              description="Welcome header on app main page"
+                                                              values={{what: 'react-intl'}}/></Form.Label>
+                            <Form.Control
+                                name="City"
+                                required
+                                type="text"
+                                placeholder="City"
+                                onChange={this.handleChange}
+                                value={this.state.City}
+                                pattern="^[a-zA-Z]+$"
+                            />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridState">
+                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Language"
+                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                              description="Welcome header on app main page"
+                                                              values={{what: 'react-intl'}}/></Form.Label>
+                            <Form.Control as="select"
+                                          name="Langue"
+                                          required
+                                          onChange={this.handleChange}>
+                                <option></option>
+                                <option value="EN">EN</option>
+                                <option value="FR">FR</option>
+                            </Form.Control>
+                        </Form.Group>
 
 
-                </Form.Row>
+                    </Form.Row>
 
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         );
+
     }
 }

@@ -51,6 +51,9 @@ class CategorieController extends Controller
     {
 
 
+        $Random = mt_rand(1,100);
+        $InttoString = intval($Random);
+
         $categorie = new categorie();
 
 
@@ -93,7 +96,7 @@ class CategorieController extends Controller
             foreach ($category as $unit => $cat) {
 
                     $r = array(
-                        'idProcede' => $cat,
+                        'idProcede' => $cat.$InttoString,
                         'Nom_procede' => $cat,
                         'Quantite_an' => $categorie->cat = request($cat),
                         'Unite_an' => $categorie->unit = request($unit),
