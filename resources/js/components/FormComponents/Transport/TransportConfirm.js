@@ -61,8 +61,8 @@ export default class TransportConfirm extends React.Component {
                     <div className="row clearfix">
                         <div className="col-md-12 column">
                             <div>
-                                <Button onClick={this.test}>TEST</Button>
-
+                                <strong>Please confirm that the following information submitted is
+                                    accurate</strong>
 
                                 {
 

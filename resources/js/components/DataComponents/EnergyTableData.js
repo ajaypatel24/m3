@@ -123,6 +123,8 @@ export default class EnergyTableData extends React.Component {
 
 
 
+                 <br/>
+
 
                 {
 

@@ -79,6 +79,7 @@ class InventaireController extends Controller
 
             $g = DB::table('procede')
                 ->where('uid', $id)
+                ->whereNotNull('Quantite_an') //amazing query
                 ->get();
 
             array_push($values, $g );
