@@ -67,3 +67,5 @@ Route::get('/transport/{id}', 'TransportController@getSubmissions');
 
 
 Route::post('/deltransport/{transport}/{id}', 'TransportController@deleteTransport');
+
+Route::post('/procede/', 'ProcedeController@tableProcedeSave');
