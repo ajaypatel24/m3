@@ -180,13 +180,13 @@ export default function ResponsiveDrawer(props) {
                             <ListItemText primary="Chat Room" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport" style={{ textDecoration: 'none' }}>
+                    <Link to="/dechet" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Calendar">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Calendar" />
                         </ListItem>
                     </Link>
-                    <Link to="/transport" style={{ textDecoration: 'none' }}>
+                    <Link to="/FDV" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Documents">
                             <ListItemIcon><MailIcon /></ListItemIcon>
                             <ListItemText primary="Documents" />

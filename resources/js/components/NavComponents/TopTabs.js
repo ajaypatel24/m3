@@ -1,4 +1,5 @@
 import EnergyTableData from '../DataComponents/EnergyTableData'
+import FormBilan from '../DataComponents/Bilan'
 import {FormattedHTMLMessage} from 'react-intl'
 
 /**giving errors, but actually syntactically correct */
@@ -103,7 +104,7 @@ export default class TopTabs extends React.Component {
                 </Tab>
 
                 <Tab eventKey="Bilan" title={Bilan}>
-
+                    <FormBilan/>
                 </Tab>
 
             </Tabs>

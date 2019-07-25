@@ -51,41 +51,66 @@ class CategorieController extends Controller
     {
 
 
-        $Random = mt_rand(1,100);
+        $Random = mt_rand(1, 100);
         $InttoString = intval($Random);
 
         $categorie = new categorie();
 
 
-        $category = [
-            "GazUnite" => "GazNaturel",
+        $DatabaseCat = [
+            "GazUnite" => "Natural Gas",
             "PropaneUnite" => "Propane",
-            "EssenceUnite" => "EssencePompe",
-            "GazoleUnite" => "GazolePompe",
-            "FioulUnite" => "FioulDomestique",
-            "MazoutUnite" => "MazoutLeger",
-            "CharbonUnite" => "Charbon",
-            "CammionageUnite", //echo "\n=> "Cammionage",
-            "ElectriciteUnite" => "TotalElectricite",
-            "FossileUnite" => "Fossil",
-            "BiodieselUnite" => "Biodiesel",
-            "BoisUnite" => "Bois",
-            "SoudureUnite" => "Soudure",
-            "UsinageUnite" => "CNC",
-            "VapeurUnite" => "VapeurFroid",
-            "VinUnite" => "Vin",
-            "BiereUnite" => "Biere",
-            "HaloUnite" => "Halocarbunes",
-            "AutreMethaneUnite" => "AutreMethane",
-            "n2osolUnite" => "N2OSol",
-            "n2oanimauxUnite" => "N2OAnimaux",
-            "MethaneAnimauxUnite" => "MethaneAnimaux",
+            "EssenceUnite" => "Gasoline",
+            "GazoleUnite" => "Diesel",
+            "FioulUnite" =>"Domestic fuel oil",
+            "MazoutUnite" => "Light fuel oil",
+            "CharbonUnite" => "Coal",
+            "ElectriciteUnite" => "Electricity",
+            "BiodieselUnite" =>"Biodiesel",
+            "BoisUnite" => "Wood/Logs/Sawdust",
+            "SoudureUnite" => "Welding",
+            "UsinageUnite" => "CNC Machining Turning",
+            "VapeurUnite" => "Cold Vapor",
+            "VinUnite" =>"Fermenting Wine",
+            "BiereUnite" => "Gasification of beer",
+            "HaloUnite" => "Halocarbons/Other",
+            "AutreMethaneUnite" =>"Other Methane",
+            "n2osolUnite" => "N2O Fertilizer ",
+            "n2oanimauxUnite" => "N2O Animals",
+            "MethaneAnimauxUnite" => "Animal Methane",
             "CokeUnite" => "Coke",
 
-        ];
+            ];
+
+
+            $category = [
+                "GazUnite" => "GazNaturel",
+                "PropaneUnite" => "Propane",
+                "EssenceUnite" => "EssencePompe",
+                "GazoleUnite" => "GazolePompe",
+                "FioulUnite" => "FioulDomestique",
+                "MazoutUnite" => "MazoutLeger",
+                "CharbonUnite" => "Charbon",
+                "ElectriciteUnite" => "TotalElectricite",
+                "BiodieselUnite" => "Biodiesel",
+                "BoisUnite" => "Bois",
+                "SoudureUnite" => "Soudure",
+                "UsinageUnite" => "CNC",
+                "VapeurUnite" => "VapeurFroid",
+                "VinUnite" => "Vin",
+                "BiereUnite" => "Biere",
+                "HaloUnite" => "Halocarbunes",
+                "AutreMethaneUnite" => "AutreMethane",
+                "n2osolUnite" => "N2OSol",
+                "n2oanimauxUnite" => "N2OAnimaux",
+                "MethaneAnimauxUnite" => "MethaneAnimaux",
+                "CokeUnite" => "Coke",
+
+            ];
 
 
         $id = $categorie->UID = request('UID');
+
 
         $user = DB::table('procede')->where('UID', $id)->value('UID');
         if ($user === null) {
@@ -95,20 +120,33 @@ class CategorieController extends Controller
 
             foreach ($category as $unit => $cat) {
 
-                    $r = array(
-                        'idProcede' => $cat.$InttoString,
-                        'Nom_procede' => $cat,
-                        'Quantite_an' => $categorie->cat = request($cat),
-                        'Unite_an' => $categorie->unit = request($unit),
-                        'UID' => $categorie->UID = request('UID'),
-                    );
 
-                    array_push($data, $r);
-                    echo $unit;
-                    echo "\n";
-                    echo $cat;
+
+                    $Key = DB::table('categorie')
+                        ->select('idCategorie')
+                        ->where('Nom_CategorieEN', '=', $DatabaseCat[$unit])
+                        ->first()
+                        ->idCategorie;
+
+
+
+               print_r($Key);
+
+                $r = array(
+                    'Categorie_idCategorie' => $Key,
+                    'idProcede' => $cat . $InttoString,
+                    'Nom_procede' => $cat,
+                    'Quantite_an' => $categorie->cat = request($cat),
+                    'Unite_an' => $categorie->unit = request($unit),
+                    'UID' => $categorie->UID = request('UID'),
+                );
+
+                array_push($data, $r);
+                echo $unit;
                 echo "\n";
-                }
+                echo $cat;
+                echo "\n";
+            }
 
 
             DB::table('procede')->insert($data);
@@ -122,20 +160,29 @@ class CategorieController extends Controller
              * if the value isn't null, the loop continues
              */
 
+
+
+
+
             foreach ($category as $unit => $cat) { //loop continues since element is not null
                 print_r($cat);
                 echo "\n";
 
-                /*
-                if (!request($cat) && !request($unit)) {
-                    continue;
-                }
-                */
+                $Key = DB::table('categorie')
+                    ->select('idCategorie')
+                    ->where('Nom_CategorieEN', '=', $DatabaseCat[$unit])
+                    ->first()
+                    ->idCategorie;
+
+
+                echo $Key;
+
 
                 DB::table('procede')//updates fields based on UID and category name
                 ->where('UID', $id)
                     ->where('Nom_procede', $cat)
                     ->update([
+                        'Categorie_idCategorie' => $Key,
                         'Quantite_an' => $categorie->$cat = request($cat),
                         'Unite_an' => $categorie->$unit = request($unit)
                     ]);
