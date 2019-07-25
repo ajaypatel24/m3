@@ -77,11 +77,11 @@ export default class ProcessTable extends React.Component {
             AutreMethane: "",
             AutreMethaneUnite: "",
 
-            n2osol: "",
-            n2osolUnite: "",
+            N2OSol: "",
+            N2OSolUnite: "",
 
-            n2oanimaux: "",
-            n2oanimauxUnite: "",
+            N2OAnimaux: "",
+            N2OAnimauxUnite: "",
 
             MethaneAnimaux: "",
             MethaneAnimauxUnite: "",
@@ -209,8 +209,8 @@ export default class ProcessTable extends React.Component {
         let vin;
         let biere;
 
-        let n2osol;
-        let n2oanimaux;
+        let N2OSol;
+        let N2OAnimaux;
 
         let autremethane;
         let halocarbures;
@@ -389,19 +389,19 @@ export default class ProcessTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-                n2osol =
+                N2OSol =
                     <tr>
                         <td><FormattedHTMLMessage id="EnergyTable.n2o"
                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                   description="Welcome header on app main page"
                                                   values={{what: 'react-intl'}}/></td>
                         <td><Form.Control
-                            name="n2osol"
+                            name="N2OSol"
                             placeholder="valeur"
-                            value={this.state.n2osol}
+                            value={this.state.N2OSol}
                             onChange={this.handleChange}
                         ></Form.Control></td>
-                        <td><Form.Control as="select" name="n2osolUnite"
+                        <td><Form.Control as="select" name="N2OSolUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
                             <option value="Litre">Litre</option>
@@ -412,19 +412,19 @@ export default class ProcessTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-                n2oanimaux =
+                N2OAnimaux =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.n2oAnimaux"
+                        <td><FormattedHTMLMessage id="EnergyTable.N2OAnimaux"
                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                   description="Welcome header on app main page"
                                                   values={{what: 'react-intl'}}/></td>
                         <td><Form.Control
-                            name="n2oanimaux"
+                            name="N2OAnimaux"
                             placeholder="valeur"
-                            value={this.state.n2oanimaux}
+                            value={this.state.N2OAnimaux}
                             onChange={this.handleChange}>
                         </Form.Control></td>
-                        <td><Form.Control as="select" name="n2oanimauxUnite"
+                        <td><Form.Control as="select" name="N2OAnimauxUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
                             <option value="Litre">Litre</option>
@@ -503,9 +503,9 @@ export default class ProcessTable extends React.Component {
 
                         {biere}
 
-                        {n2osol}
+                        {N2OSol}
 
-                        {n2oanimaux}
+                        {N2OAnimaux}
 
                         <tr>
                             <td><FormattedHTMLMessage id="EnergyTable.AnimalMethane"

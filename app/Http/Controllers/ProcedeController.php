@@ -33,8 +33,8 @@ class ProcedeController extends Controller
                 "BiereUnite" => "Biere",
                 "HaloUnite" => "Halocarbunes",
                 "AutreMethaneUnite" => "AutreMethane",
-                "n2osolUnite" => "N2OSol",
-                "n2oanimauxUnite" => "N2OAnimaux",
+                "N2OSolUnite" => "N2OSol",
+                "N2OAnimauxUnite" => "N2OAnimaux",
                 "MethaneAnimauxUnite" => "MethaneAnimaux",
 
 
@@ -88,13 +88,18 @@ class ProcedeController extends Controller
                     }
                     */
 
-                    DB::table('procede')//updates fields based on UID and category name
-                    ->where('UID', $id)
-                        ->where('Nom_procede', $cat)
-                        ->update([
-                            'Quantite_an' => $categorie->$cat = request($cat),
-                            'Unite_an' => $categorie->$unit = request($unit)
-                        ]);
+                    if (request($cat) != '') {
+                        DB::table('procede')//updates fields based on UID and category name
+                        ->where('UID', $id)
+                            ->where('Nom_procede', $cat)
+                            ->update([
+                                'Quantite_an' => $categorie->$cat = request($cat),
+                                'Unite_an' => $categorie->$unit = request($unit)
+                            ]);
+                    }
+                    else {
+                        continue;
+                    }
 
                 }
 

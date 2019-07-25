@@ -75,8 +75,8 @@ class CategorieController extends Controller
             "BiereUnite" => "Gasification of beer",
             "HaloUnite" => "Halocarbons/Other",
             "AutreMethaneUnite" =>"Other Methane",
-            "n2osolUnite" => "N2O Fertilizer ",
-            "n2oanimauxUnite" => "N2O Animals",
+            "N2OSolUnite" => "N2O Fertilizer ",
+            "N2OAnimauxUnite" => "N2O Animals",
             "MethaneAnimauxUnite" => "Animal Methane",
             "CokeUnite" => "Coke",
 
@@ -101,8 +101,8 @@ class CategorieController extends Controller
                 "BiereUnite" => "Biere",
                 "HaloUnite" => "Halocarbunes",
                 "AutreMethaneUnite" => "AutreMethane",
-                "n2osolUnite" => "N2OSol",
-                "n2oanimauxUnite" => "N2OAnimaux",
+                "N2OSolUnite" => "N2OSol",
+                "N2OAnimauxUnite" => "N2OAnimaux",
                 "MethaneAnimauxUnite" => "MethaneAnimaux",
                 "CokeUnite" => "Coke",
 
@@ -130,8 +130,6 @@ class CategorieController extends Controller
 
 
 
-               print_r($Key);
-
                 $r = array(
                     'Categorie_idCategorie' => $Key,
                     'idProcede' => $cat . $InttoString,
@@ -142,10 +140,6 @@ class CategorieController extends Controller
                 );
 
                 array_push($data, $r);
-                echo $unit;
-                echo "\n";
-                echo $cat;
-                echo "\n";
             }
 
 
@@ -165,8 +159,7 @@ class CategorieController extends Controller
 
 
             foreach ($category as $unit => $cat) { //loop continues since element is not null
-                print_r($cat);
-                echo "\n";
+
 
                 $Key = DB::table('categorie')
                     ->select('idCategorie')
@@ -175,17 +168,20 @@ class CategorieController extends Controller
                     ->idCategorie;
 
 
-                echo $Key;
 
-
-                DB::table('procede')//updates fields based on UID and category name
-                ->where('UID', $id)
-                    ->where('Nom_procede', $cat)
-                    ->update([
-                        'Categorie_idCategorie' => $Key,
-                        'Quantite_an' => $categorie->$cat = request($cat),
-                        'Unite_an' => $categorie->$unit = request($unit)
-                    ]);
+                if (request($cat) != '') { //avoids wiping previous values
+                    DB::table('procede')//updates fields based on UID and category name
+                    ->where('UID', $id)
+                        ->where('Nom_procede', $cat)
+                        ->update([
+                            'Categorie_idCategorie' => $Key,
+                            'Quantite_an' => $categorie->$cat = request($cat),
+                            'Unite_an' => $categorie->$unit = request($unit)
+                        ]);
+                }
+                else {
+                    continue;
+                }
 
             }
 
