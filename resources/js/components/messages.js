@@ -79,6 +79,8 @@ export default {
         'IntrantForm.IntrantDelete': "Input Name",
 
         /**Prestart Question */
+        'Prestart.PrestartDescription': "Questions to help provide necessary forms",
+
         'Prestart.BusinessName': "Business Name",
         'Prestart.QuebecAddress': "Quebec Address",
         'Prestart.City': "City",
@@ -128,6 +130,8 @@ export default {
 
 
 
+
+
         /**TransportEntry Form */
         'TransportForm.EmployeeOrigin': "Employee by Destination",
         'TransportForm.NumberTransports': "Number of Transports",
@@ -142,6 +146,13 @@ export default {
 
         'TransportForm.Name': "Name",
         'TransportForm.Role': "Role",
+
+        'TransportForm.NomVoyage': "Trip Name",
+        "TransportForm.Origine": "Origin",
+        "TransportForm.Destination": "Destination",
+        "TransportForm.FrequenceAnnuelle": "Annual Frequency",
+        "TransportForm.NombrePassagers": "Number of Passengers",
+
 
 
         /** Top Tabs Component */
@@ -257,6 +268,8 @@ export default {
         'IntrantForm.IntrantDelete': "Input Name",
 
         /**Prestart Question */
+        'Prestart.PrestartDescription': "Questions pour aider à fournir les formulaires nécessaires",
+
         'Prestart.BusinessName': "Nom d'Entreprise",
         'Prestart.QuebecAddress': "Quebec Address",
         'Prestart.City': "Ville",
@@ -320,6 +333,12 @@ export default {
 
         'TransportForm.Name': "Nom Complet",
         'TransportForm.Role': "Role",
+
+        'TransportForm.NomVoyage': "Nom Voyage",
+        'TransportForm.Origine': "Origine",
+        'TransportForm.Destination': "Destination",
+        'TransportForm.FrequenceAnnuelle': "Frequence Annuelle",
+        'TransportForm.NombrePassagers': "Nombre Passagers",
 
 
         /** Top Tabs Component */

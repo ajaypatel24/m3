@@ -311,7 +311,63 @@ export default class TransportFormLongDistance extends React.Component {
 
 
                                     <Row>
-                                        <Col lg="5">
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.NomVoyage"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="Kilometres"
+                                                required
+                                                type="text"
+                                                placeholder="Nom Voyage"
+                                                onChange={this.handleChange}
+                                                value={this.state.Kilometres}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Origine"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="Kilometres"
+                                                required
+                                                type="text"
+                                                placeholder="Origine"
+                                                onChange={this.handleChange}
+                                                value={this.state.Kilometres}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.Destination"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="Kilometres"
+                                                required
+                                                type="text"
+                                                placeholder="Destination"
+                                                onChange={this.handleChange}
+                                                value={this.state.Kilometres}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+                                    </Row>
+
+                                    <br />
+
+                                    <Row>
+
+                                        <Col lg="4">
 
                                             <Form.Label><FormattedHTMLMessage
                                                 id="TransportForm.VehiculeCategory"
@@ -338,7 +394,7 @@ export default class TransportFormLongDistance extends React.Component {
                                             </Form.Control>
                                         </Col>
 
-                                        <Col lg="7">
+                                        <Col lg="8">
 
                                             <Form.Label><FormattedHTMLMessage
                                                 id="TransportForm.Vehicule"
@@ -354,7 +410,7 @@ export default class TransportFormLongDistance extends React.Component {
                                                           value={this.state.Vehicule}
                                                           disabled={this.state.VehiculeCat === null}
                                             >
-                                                \
+
                                                 <option></option>
                                                 {this.state.Libelle.map(vehicule => (
                                                     <option>
@@ -362,7 +418,6 @@ export default class TransportFormLongDistance extends React.Component {
                                                     </option>
 
                                                 ))}
-                                                <option></option>
                                             </Form.Control>
                                         </Col>
                                     </Row>
@@ -370,41 +425,6 @@ export default class TransportFormLongDistance extends React.Component {
                                     <br/>
 
                                     <Row>
-                                        <Col lg="4">
-                                            <Form.Label><FormattedHTMLMessage
-                                                id="TransportForm.Number"
-                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                description="Welcome header on app main page"
-                                                values={{what: 'react-intl'}}/></Form.Label>
-                                            <Form.Control
-                                                name="NombreVoitures"
-                                                required
-                                                type="text"
-                                                placeholder="Intrant"
-                                                onChange={this.handleChange}
-                                                value={this.state.NombreVoitures}
-                                                pattern="^[0-9]$"
-
-                                            />
-                                        </Col>
-
-                                        <Col lg="4">
-                                            <Form.Label><FormattedHTMLMessage
-                                                id="TransportForm.BusinessDays"
-                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                description="Welcome header on app main page"
-                                                values={{what: 'react-intl'}}/></Form.Label>
-                                            <Form.Control
-                                                name="JoursOuvrables"
-                                                required
-                                                type="text"
-                                                placeholder="220"
-                                                onChange={this.handleChange}
-                                                value={this.state.JoursOuvrables}
-                                                pattern="^[0-9]$"
-                                            />
-                                        </Col>
-
                                         <Col lg="4">
                                             <Form.Label><FormattedHTMLMessage
                                                 id="TransportForm.Kilometres"
@@ -415,12 +435,49 @@ export default class TransportFormLongDistance extends React.Component {
                                                 name="Kilometres"
                                                 required
                                                 type="text"
-                                                placeholder="Intrant"
+                                                placeholder="Kilometres"
                                                 onChange={this.handleChange}
                                                 value={this.state.Kilometres}
                                                 pattern="^[0-9]$"
                                             />
                                         </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.NombrePassagers"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="NombreVoitures"
+                                                required
+                                                type="text"
+                                                placeholder="Nombre de Passagers"
+                                                onChange={this.handleChange}
+                                                value={this.state.NombreVoitures}
+                                                pattern="^[0-9]$"
+
+                                            />
+                                        </Col>
+
+                                        <Col lg="4">
+                                            <Form.Label><FormattedHTMLMessage
+                                                id="TransportForm.FrequenceAnnuelle"
+                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                description="Welcome header on app main page"
+                                                values={{what: 'react-intl'}}/></Form.Label>
+                                            <Form.Control
+                                                name="JoursOuvrables"
+                                                required
+                                                type="text"
+                                                placeholder="Frequence Annuelle"
+                                                onChange={this.handleChange}
+                                                value={this.state.JoursOuvrables}
+                                                pattern="^[0-9]$"
+                                            />
+                                        </Col>
+
+
 
 
                                     </Row>

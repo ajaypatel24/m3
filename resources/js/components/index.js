@@ -9,6 +9,7 @@ import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import messages from "./messages"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { SnackbarProvider } from "notistack";
 import { red, amber, blue } from "@material-ui/core/colors/red"
 const theme = createMuiTheme({
     palette: {
@@ -45,9 +46,11 @@ addLocaleData(fr);
 
 
                     <MuiThemeProvider theme={theme}>
+                        <SnackbarProvider maxSnack={1}>
                     <Test>
                         <App/>
                     </Test>
+                        </SnackbarProvider>
                     </MuiThemeProvider>
             }
         </IntlProvider>, document.getElementById('root'));

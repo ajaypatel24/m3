@@ -90,7 +90,7 @@ class TransportController extends Controller
         $Transport->Destination = 't';
         $Transport->idDeplacement = $VehiculeId.$InttoString;
         $Transport->UID = request('UID');
-        $Transport->Nb_km_AR = 1;
+        $Transport->Nb_km_AR = request('Kilometres');
         $Transport->Nb_voyageurs_An = 1;
         $Transport->Nb_voyageurs = request('NombreVoitures');
         $Transport->Type_Deplacement = request('Vehicule');

@@ -444,7 +444,7 @@ render()
                              * ex: attribute.{elementName}
                              *
                              * */}
-                            <Col lg="5">
+                            <Col lg="7">
 
 
                                 {this.state.rows.map(attribute =>
@@ -454,27 +454,26 @@ render()
 
                                             <thead>
                                             <tr>
-                                                <th><FormattedHTMLMessage id="IntrantForm.NomIntrant"
+                                                <th> <FormattedHTMLMessage id="IntrantForm.NomIntrant"
                                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                           description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></th>
-                                                <th><FormattedHTMLMessage id="IntrantForm.Quantity"
+                                                                          values={{what: 'react-intl'}}/> </th>
+                                                <th> <FormattedHTMLMessage id="IntrantForm.Quantity"
                                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                           description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></th>
-                                                <th><FormattedHTMLMessage id="IntrantForm.Frequency"
+                                                                          values={{what: 'react-intl'}}/> </th>
+                                                <th> <FormattedHTMLMessage id="IntrantForm.Frequency"
                                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                           description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></th>
-                                                <th><FormattedHTMLMessage id="IntrantForm.NbTransport"
+                                                                          values={{what: 'react-intl'}}/> </th>
+                                                <th> <FormattedHTMLMessage id="IntrantForm.NbTransport"
                                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                           description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></th>
-                                                <th><FormattedHTMLMessage id="IntrantForm.Provenance"
+                                                                          values={{what: 'react-intl'}}/> </th>
+                                                <th> <FormattedHTMLMessage id="IntrantForm.Provenance"
                                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                           description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></th>
-                                                <th></th>
+                                                                          values={{what: 'react-intl'}}/> </th>
                                             </tr>
                                             </thead>
                                             <tbody>
