@@ -37,6 +37,7 @@ class Intrant extends Migration
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
             $table->integer('quantite_an')->nullable();
+            $table->integer('besoin-offre')->nullable();
             $table->integer('GES_annuel')->nullable();
             $table->boolean('ressource')->nullable();
             $table->string('unite',10)->nullable();

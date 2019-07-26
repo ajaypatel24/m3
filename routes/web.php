@@ -70,4 +70,5 @@ Route::post('/deltransport/{transport}/{id}', 'TransportController@deleteTranspo
 
 Route::post('/procede/', 'ProcedeController@tableProcedeSave');
 
-Route::get('/bilan/', 'BilanController@sumProcede');
+Route::get('/bilan/{id}', 'BilanController@sumProcede');
+Route::get('/bilanX13/', 'BilanController@sumX13');

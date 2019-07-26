@@ -22,6 +22,7 @@ export default class Bilan extends React.Component {
             TableData: [],
             g: 'heelo',
             isLoading: true,
+            h: [],
 
         };
 
@@ -46,6 +47,8 @@ export default class Bilan extends React.Component {
 
             });
 
+        this.sum();
+
     }
 
     componentDidMount() {
@@ -53,6 +56,16 @@ export default class Bilan extends React.Component {
         this.setState({isLoading: false});
     }
 
+
+    sum() {
+        let id = sessionStorage.getItem('UID')
+        axios.get('/bilan/' + id,)
+            .then(response => {
+                this.setState({h: response.data})
+
+                console.log(this.state.h);
+            });
+    }
 
     /**
      * functionlity test method
@@ -121,7 +134,7 @@ export default class Bilan extends React.Component {
                                         <td >{subRowData.Nom_procede}</td>
                                         <td >{subRowData.Quantite_an} {subRowData.Unite_an}</td>
                                         <td >{subRowData.Num_affiche}</td>
-                                        <td >{subRowData.Emission_GES}</td>
+                                        <td >{subRowData.Emission_GES}  </td>
 
                                     </tr>
 
@@ -132,6 +145,12 @@ export default class Bilan extends React.Component {
                         </div>
                     )
                 }
+                <tr>
+                    <td>Total Scope 1: {this.state.h[0]} kg</td>
+                </tr>
+                <tr>
+
+                </tr>
 
 
 
