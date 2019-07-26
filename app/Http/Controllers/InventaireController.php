@@ -138,6 +138,19 @@ class InventaireController extends Controller
 
             else {
 
+                $r = DB::table('ressource')
+                    ->select('idRessource')
+                    ->where('Nom_RessourceFR', '=', 'Fertilisant 1')
+                    ->first()
+                    ->idRessource;
+
+                $CoeffCC = DB::table('ressource')
+                    ->select('Score_CC_uni')
+                    ->where('idRessource', '=', $r)
+                    ->first()
+                    ->Score_CC_uni;
+
+
                 $Intrant->idIntrant = request('NomIntrant');
                 $Mod = request('Yearly'); //per delivery or yearly
                 $Quantite = request('QuantiteAn');
@@ -186,14 +199,20 @@ class InventaireController extends Controller
                             break;
                     }
                     $Intrant->quantite_an = $Quantite;
+                    $Intrant->GES_annuel = $CoeffCC * $Quantite;
 
                 }
                 else { //yearly specified
                     $Intrant->quantite_an = request('QuantiteAn');
+                    $Intrant->GES_annuel = $CoeffCC * request('QuantiteAn');
                 }
 
 
+
+
                 //adding rest of values to database
+
+                    $Intrant->Ressource_idressource = $r;
                 $Intrant->nom_intrant = request('NomIntrant');
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');

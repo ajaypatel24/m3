@@ -13,7 +13,6 @@ class BilanController extends Controller
             $values = array();
             $q = DB::table('categorie')
                 ->select('idCategorie')
-
                 ->where('Sub_CategorieFR', '=', 'Combustibles fossiles, sources fixes')
                 ->get();
 
@@ -130,16 +129,41 @@ class BilanController extends Controller
         return array_sum($values);
     }
 
-        function sumProcede($id) {
+    function sumX31($id) {
+
+        $t = DB::table('intrants')
+            ->select('GES_annuel')
+            ->where('immobilisation', '=', 0)
+            ->where('UID','=',$id)
+            ->sum('GES_annuel');
+
+        return (float) $t;
+    }
+
+    function sumX32($id) {
+
+        $t = DB::table('intrants')
+            ->select('GES_annuel')
+            ->where('immobilisation', '=', 1)
+            ->where('UID','=',$id)
+            ->sum('GES_annuel');
+
+        return (float) $t;
+    }
+
+
+    function sumProcede($id) {
             $data = array();
 
             $X11 = $this->sumX11($id);
             $X13 = $this->sumX13($id);
             $X21 = $this->sumX21($id);
             $X22 = $this->sumX22($id);
+            $X31 = $this->sumX31($id);
+            $X32 = $this->sumX32($id);
 
 
-            array_push($data, $X11, $X13, $X21, $X22);
+            array_push($data, $X11, $X13, $X21, $X22, $X31, $X32);
             return $data;
 
 

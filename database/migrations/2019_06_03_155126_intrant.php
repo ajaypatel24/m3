@@ -33,7 +33,7 @@ class Intrant extends Migration
 
 
 
-            $table->string('idIntrant', 10)->primary();
+            $table->string('idIntrant', 200)->primary();
             $table->integer('num_affiche')->nullable();
             $table->string('nom_intrant',45);
             $table->integer('quantite_an')->nullable();
