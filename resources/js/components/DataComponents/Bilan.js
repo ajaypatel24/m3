@@ -101,7 +101,7 @@ export default class Bilan extends React.Component {
                             <Table>
                                 <thead>
                                 <tr>
-                                    <th>Nom Organisation - Annee - Date </th>
+                                    <th colSpan="4">Nom Organisation - Annee - Date </th>
                                 </tr>
                                 <tr>
                                     <th>Categorie d'Emissions</th>
@@ -120,8 +120,8 @@ export default class Bilan extends React.Component {
 
                                         <td >{subRowData.Nom_procede}</td>
                                         <td >{subRowData.Quantite_an} {subRowData.Unite_an}</td>
-                                        {/* <td >{subRowData.Unite_an}</td> */}
                                         <td >{subRowData.Num_affiche}</td>
+                                        <td >{subRowData.Emission_GES}</td>
 
                                     </tr>
 

@@ -129,13 +129,22 @@ class CategorieController extends Controller
                         ->idCategorie;
 
 
+                    $CoeffGES = DB::table('categorie')
+                        ->select('Coefficient_GES')
+                        ->where('idCategorie','=', $Key)
+                        ->first()
+                        ->Coefficient_GES;
+
+
+                    $Quantite_an = $categorie->cat = request($cat);
 
                 $r = array(
                     'Categorie_idCategorie' => $Key,
                     'idProcede' => $cat . $InttoString,
                     'Nom_procede' => $cat,
-                    'Quantite_an' => $categorie->cat = request($cat),
+                    'Quantite_an' => $Quantite_an,
                     'Unite_an' => $categorie->unit = request($unit),
+                    'Emission_GES' => $CoeffGES * $Quantite_an,
                     'UID' => $categorie->UID = request('UID'),
                 );
 

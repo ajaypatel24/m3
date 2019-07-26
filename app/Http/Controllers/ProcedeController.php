@@ -51,11 +51,28 @@ class ProcedeController extends Controller
 
                 foreach ($category as $unit => $cat) {
 
+                    $Key = DB::table('categorie')
+                        ->select('idCategorie')
+                        ->where('Nom_CategorieEN', '=', $category[$unit])
+                        ->first()
+                        ->idCategorie;
+
+
+                    $CoeffGES = DB::table('categorie')
+                        ->select('Coefficient_GES')
+                        ->where('idCategorie','=', $Key)
+                        ->first()
+                        ->Coefficient_GES;
+
+
+                    $Quantite_an = $categorie->cat = request($cat);
+
                     $r = array(
                         'idProcede' => $cat.$InttoString,
                         'Nom_procede' => $cat,
                         'Quantite_an' => $categorie->cat = request($cat),
                         'Unite_an' => $categorie->unit = request($unit),
+                        'Emission_GES' => $CoeffGES * $Quantite_an,
                         'UID' => $categorie->UID = request('UID'),
                     );
 
