@@ -6,6 +6,16 @@ use App\categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+ * Class BilanController
+ * @package App\Http\Controllers
+ *
+ * All methods are referencing calculations in the word document provided
+ * every function is one of the calculations for easy debugging
+ * All functions are executed at the bottom in a general function which
+ * generates an array holding all the calculated values
+ */
 class BilanController extends Controller
 {
         function sumX11($id) {
