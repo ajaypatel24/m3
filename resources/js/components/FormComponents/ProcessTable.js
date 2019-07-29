@@ -93,6 +93,7 @@ export default class ProcessTable extends React.Component {
             SCIAN: "",
             UID: sessionStorage.getItem('UID'),
             TableSubmit: sessionStorage.getItem('TableSubmit'),
+            validated: false
 
 
         }
@@ -154,27 +155,32 @@ export default class ProcessTable extends React.Component {
         */
 
 
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
 
 
+            fetch('/procede/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
-        fetch('/procede/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
-
-
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+        }
+        this.setState(({validated: true}));
         /* this.setState(({validated: true})); */
         console.log((data));
 
@@ -201,11 +207,11 @@ export default class ProcessTable extends React.Component {
      *
      */
     render() {
-        let charbon;
-        let coke;
+        const {validated} = this.state;
+
         let bois;
 
-        let achatvapeurfroid;
+
         let vin;
         let biere;
 
@@ -477,7 +483,8 @@ export default class ProcessTable extends React.Component {
 
                 <br/>
 
-                <Form
+                <Form noValidate
+                      validated={validated}
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
                     <Table responsive> {/**/}
                         <thead>

@@ -350,7 +350,7 @@ export default class LoginComponent extends React.Component {
                                                                                                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                                                                                         description="Welcome header on app main page"
                                                                                                                                         values={{what: 'react-intl'}}/></Card.Header>
-                            <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
+                            <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="140" height="147"/>
                             <Card.Body>
                                 <Card.Text className="d-flex justify-content-center"> <FormattedHTMLMessage id="login.Intro"
                                                                                                             defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
@@ -415,25 +415,27 @@ export default class LoginComponent extends React.Component {
                                                 value={this.state.password}
                                                />
                                         </Form.Group>
-                                    </Form.Group>
 
-
-                                    <Form.Group>
                                         <Row>
-                                            <Col lg="6">
-                                        <Button variant="outline-info" onClick={this.handleLoginRequest} onKeyDown={handleKeyDown}><FormattedHTMLMessage id="login.Login"
-                                                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                                               description="Welcome header on app main page"
-                                                                                                                               values={{what: 'react-intl'}}/></Button>
+
+                                            <Col>
+                                                <Button variant="secondary" onClick={this.handleLoginRequest} onKeyDown={handleKeyDown}><FormattedHTMLMessage id="login.Login"
+                                                                                                                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                                                                              description="Welcome header on app main page"/></Button>
                                             </Col>
-                                            <Col lg="4">
-                                        <Button variant="outline-info" onClick={this.handleSwitch}><FormattedHTMLMessage id="login.SignUp"
-                                                                                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                                         description="Welcome header on app main page"
-                                                                                                                         values={{what: 'react-intl'}}/></Button>
-                                            </Col>
+<Col>
+                                                <Button variant="outline-info" onClick={this.handleSwitch}><FormattedHTMLMessage id="login.SignUp"
+                                                                                                                                 defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                                                                 description="Welcome header on app main page"/></Button>
+</Col>
+
                                         </Row>
                                     </Form.Group>
+
+
+
+
+
 
 
                                 </Form>
