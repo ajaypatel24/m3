@@ -138,6 +138,7 @@ class CategorieController extends Controller
 
                     $Quantite_an = $categorie->cat = request($cat);
 
+
                 $r = array(
                     'Categorie_idCategorie' => $Key,
                     'idProcede' => $cat . $InttoString,

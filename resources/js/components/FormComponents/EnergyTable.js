@@ -17,6 +17,7 @@ export default class EnergyTable extends React.Component {
 
         this.handleChange = this.handleChange.bind(this); //handle change function
         this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
+        this.checkNull = this.checkNull.bind(this);
 
         this.state = {
 
@@ -96,6 +97,8 @@ export default class EnergyTable extends React.Component {
             EnergyCategories: [],
             validated: false,
             error: '',
+            TableData: [],
+            DisplayData: '',
 
         }
 
@@ -103,7 +106,9 @@ export default class EnergyTable extends React.Component {
     }
 
         componentDidMount() {
-        let uid = sessionStorage.getItem('UID');
+
+
+            let uid = sessionStorage.getItem('UID');
         console.log(uid);
         axios.get('/scian/' + uid)
             .then(response => {
@@ -119,9 +124,52 @@ export default class EnergyTable extends React.Component {
 
 
         console.log(this.state.EnergyCategories);
+
+            axios.get('/inventaire/' + uid)
+                .then(response => {
+                    this.setState({TableData: response.data})
+
+                    console.log(this.state.TableData)
+                    console.log('yes');
+
+                });
+
+            if (this.state.TableData[0] == "") {
+                this.setState({DisplayData: false})
+            }
+            else {
+                console.log(this.state.TableData[0])
+                this.setState({DisplayData: true})
+            }
+    }
+
+    componentWillMount = () => {
+        if (this.state.TableData[0] == "") {
+            this.setState({DisplayData: false})
+        }
+        else {
+            console.log(this.state.TableData[0])
+            this.setState({DisplayData: true})
+        }
     }
 
 
+    checkNull = () => {
+        console.log('hello2');
+
+
+
+            if (this.state.TableData[0] == "") {
+                this.setState({DisplayData: false})
+            }
+            else {
+                console.log(this.state.TableData[0])
+                this.setState({DisplayData: true})
+            }
+
+
+        console.log(this.state.DisplayData);
+    }
 
     /*
         componentDidMount() {
@@ -144,6 +192,10 @@ export default class EnergyTable extends React.Component {
         console.log("Name: ", e.target.name);
         console.log("Value: ", e.target.value);
     };
+
+
+
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -575,8 +627,20 @@ export default class EnergyTable extends React.Component {
                     <Col lg="4">
                         <h1> Table d'Energie </h1>
                     </Col>
-                    <Col lg="7">
-                        <Alert variant="success">Data Submitted, Click to Edit</Alert>
+                    <Col lg="4">
+                        <Button onClick={this.checkNull}>test</Button>
+                        {
+
+
+                            this.state.DisplayData ?
+                            <Alert variant="info" content>{this.checkNull} Data Submitted, Click to Edit</Alert>
+
+                            :
+
+                            null
+                        }
+                    </Col>
+                    <Col lg="5">
                     </Col>
                 </Row>
                 <Row>
