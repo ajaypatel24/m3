@@ -1,4 +1,4 @@
-import {Form, Table, Row, Col} from "react-bootstrap";
+import {Form, Table, Row, Col, Button} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -573,7 +573,7 @@ export default class ProcessTable extends React.Component {
                         </tbody>
 
                     </Table>
-                    <button type="submit" onClick={this.handleSubmit}>test</button>
+                    <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </Form>
 
 
