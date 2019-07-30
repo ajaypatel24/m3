@@ -23,6 +23,7 @@ export default class Bilan extends React.Component {
             g: 'heelo',
             isLoading: true,
             h: [],
+            BilanRow: [],
 
         };
 
@@ -54,7 +55,7 @@ export default class Bilan extends React.Component {
 
 
         this.sum();
-
+        this.bilanRow();
 
 
 
@@ -63,11 +64,22 @@ export default class Bilan extends React.Component {
 
     componentDidMount() {
 
+        this.bilanRow();
         this.setState({isLoading: false});
         console.log(this.state.TableData);
     }
 
+    bilanRow() {
 
+        axios.get('/bilanrow/')
+            .then(response => {
+                this.setState({BilanRow: response.data})
+
+                console.log(this.state.BilanRow);
+            });
+
+
+    }
     sum() {
         let id = sessionStorage.getItem('UID')
         axios.get('/bilan/' + id,)
@@ -121,15 +133,15 @@ export default class Bilan extends React.Component {
                                 </thead>
 
                                 {
-                                    this.state.TableData.map((attribute) =>
+                                    this.state.BilanRow.map((attribute) =>
 
 
                                         <tbody>
                                         <tr>
 
-                                            <td>{attribute.Nom_procede}</td>
-                                            <td>{attribute.Quantite_an}</td>
-                                            <td>SnoreToast</td>
+                                            <td>{attribute.X11}</td>
+                                            <td>{attribute.X12} {attribute.X21}</td>
+                                            <td>{attribute.X22}</td>
 
                                         </tr>
 

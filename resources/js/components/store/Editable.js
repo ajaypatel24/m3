@@ -9,17 +9,18 @@ export default class Editable extends React.Component {
         this.state = {
             error: '',
             columns: [
-                { title: 'Name', field: 'Nom_procede' },
-                { title: 'Surname', field: 'Quantite_an' },
-                { title: 'Surname', field: 'Quantite_an' },
-                { title: 'Surname', field: 'Quantite_an' },
-                { title: 'Surname', field: 'Quantite_an' },
+                { title: 'Procede', field: 'Nom_procede' },
+                { title: 'Quantite', field: 'Quantite_an' },
+                { title: 'Unite', field: 'Unite_an' },
+                { title: 'GES (kg)', field: 'Emission_GES' },
+                {/*
                 { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
                 {
                     title: 'Birth Place',
                     field: 'birthCity',
                     lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
                 },
+                */}
             ],
 
 
@@ -43,12 +44,13 @@ export default class Editable extends React.Component {
     render() {
         return (
             <MaterialTable
-                title="Editable Preview"
+                title="Procede"
                 columns={this.state.columns}
                 data={this.state.TableData}
                 editable={{
 
 
+                     /*
                     onRowAdd: newData =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
@@ -60,7 +62,7 @@ export default class Editable extends React.Component {
                                 resolve()
                             }, 1000)
                         }),
-
+                    */
 
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve, reject) => {

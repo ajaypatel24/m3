@@ -53,6 +53,7 @@ Route::get('/info', 'CategorieController@p');
 /* Register Controller */
 Route::post('/contact/{Id}', 'RegisterController@contactInfo'); //add extra user info
 Route::get('/contact/{Id}', 'RegisterController@profileInfo'); //gets all user info
+Route::get('/bilanrow/', 'BilanController@bilanRow'); //gets all user info
 
 
 
