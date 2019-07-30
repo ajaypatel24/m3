@@ -98,7 +98,7 @@ export default class EnergyTable extends React.Component {
             validated: false,
             error: '',
             TableData: [],
-            DisplayData: '',
+            DisplayData: sessionStorage.getItem('Empty'),
 
         }
 
@@ -134,22 +134,19 @@ export default class EnergyTable extends React.Component {
 
                 });
 
-            if (this.state.TableData[0] == "") {
-                this.setState({DisplayData: false})
-            }
-            else {
-                console.log(this.state.TableData[0])
-                this.setState({DisplayData: true})
+            console.log(this.state.TableData);
+            if (this.state.TableData != null) {
+                console.log('notnull')
             }
     }
 
     componentWillMount = () => {
         if (this.state.TableData[0] == "") {
-            this.setState({DisplayData: false})
+            sessionStorage.setItem('Empty', 'true')
         }
         else {
             console.log(this.state.TableData[0])
-            this.setState({DisplayData: true})
+            sessionStorage.setItem('Empty', 'false')
         }
     }
 
@@ -160,11 +157,11 @@ export default class EnergyTable extends React.Component {
 
 
             if (this.state.TableData[0] == "") {
-                this.setState({DisplayData: false})
+               sessionStorage.setItem('Empty', 'true')
             }
             else {
                 console.log(this.state.TableData[0])
-                this.setState({DisplayData: true})
+                sessionStorage.setItem('Empty', 'false')
             }
 
 
@@ -628,11 +625,10 @@ export default class EnergyTable extends React.Component {
                         <h1> Table d'Energie </h1>
                     </Col>
                     <Col lg="4">
-                        <Button onClick={this.checkNull}>test</Button>
+                        {/* <Button onClick={this.checkNull}>test</Button> */}
                         {
 
-
-                            this.state.DisplayData ?
+                            this.state.DisplayData === 'true' ?
                             <Alert variant="info" content>{this.checkNull} Data Submitted, Click to Edit</Alert>
 
                             :
