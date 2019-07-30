@@ -73,3 +73,4 @@ Route::post('/procede/', 'ProcedeController@tableProcedeSave');
 Route::get('/bilan/{id}', 'BilanController@sumProcede');
 Route::get('/bilanX13/', 'BilanController@sumX13');
 
+Route::post('/e/{Qan}/{FK}/{id}', 'EnergyController@updateEnergy');

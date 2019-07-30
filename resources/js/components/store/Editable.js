@@ -7,8 +7,12 @@ export default class Editable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            error: '',
             columns: [
                 { title: 'Name', field: 'Nom_procede' },
+                { title: 'Surname', field: 'Quantite_an' },
+                { title: 'Surname', field: 'Quantite_an' },
+                { title: 'Surname', field: 'Quantite_an' },
                 { title: 'Surname', field: 'Quantite_an' },
                 { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
                 {
@@ -17,10 +21,7 @@ export default class Editable extends React.Component {
                     lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
                 },
             ],
-            data: [
-                { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-                { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-            ],
+
 
             TableData: [],
         }
@@ -46,7 +47,8 @@ export default class Editable extends React.Component {
                 columns={this.state.columns}
                 data={this.state.TableData}
                 editable={{
-                    /*
+
+
                     onRowAdd: newData =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
@@ -58,33 +60,50 @@ export default class Editable extends React.Component {
                                 resolve()
                             }, 1000)
                         }),
-                        */
+
 
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
                                 {
-                                    const data = this.state.TableData;
-                                    const index = data.indexOf(oldData);
-                                    data[index] = newData;
+                                    const data = newData;
+                                    var Q_an = data.Quantite_an
+                                    var FK = data.Categorie_idCategorie
+                                    let id = sessionStorage.getItem('UID');
+                                    const data2 = this.state.TableData;
+                                    const index = data2.indexOf(oldData);
+                                    data2[index] = newData;
+                                    console.log(data);
+
                                     this.setState({ data }, () => resolve());
-                                }
-                                resolve()
-                            }, 1000)
-                        }),
-                    onRowDelete: oldData =>
-                        new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                {
-                                    let data = this.state.TableData;
-                                    const index = data.indexOf(oldData);
-                                    data.splice(index, 1);
-                                    this.setState({ data }, () => resolve());
+                                    fetch('/e/' + Q_an + '/' + FK + '/' + id,{
+                                        method: 'POST',
+                                        body: JSON.stringify(data),
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                            "Content-type": "application/json"
+                                        }
+
+                                    })
+                                        .then(function (response) {
+                                            console.log(response.data);
+                                            console.log('Request succeeded with JSON response', response);
+
+
+                                        })
+                                        .catch(function (error) {
+
+                                            console.log('Request failed', error);
+                                            console.log("why");
+                                        });
                                 }
                                 resolve()
                             }, 1000)
                         }),
                 }}
+
+
+
             />
         )
     }
