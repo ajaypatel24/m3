@@ -104,7 +104,7 @@ export default class TopTabs extends React.Component {
                 </Tab>
 
                 <Tab eventKey="Bilan" title={Bilan}>
-                    {/* <FormBilan/> */}
+                     <FormBilan/>
                 </Tab>
 
             </Tabs>

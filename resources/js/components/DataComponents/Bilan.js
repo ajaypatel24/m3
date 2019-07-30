@@ -27,7 +27,7 @@ export default class Bilan extends React.Component {
         };
 
 
-        this.test = this.test.bind(this);
+
     }
 
 
@@ -38,22 +38,33 @@ export default class Bilan extends React.Component {
      */
     componentWillMount() {
 
+
         let uid = sessionStorage.getItem('UID');
         axios.get('/inventaire/' + uid)
             .then(response => {
                 this.setState({TableData: response.data})
 
                 console.log(this.state.TableData)
+                console.log(this.state.TableData[0].idProcede);
 
             });
 
+        //this.state.TableData.forEach((data)=>console.log(data.idProcede))
+
+
+
         this.sum();
+
+
+
+
 
     }
 
     componentDidMount() {
 
         this.setState({isLoading: false});
+        console.log(this.state.TableData);
     }
 
 
@@ -65,33 +76,14 @@ export default class Bilan extends React.Component {
 
                 console.log(this.state.h);
             });
+
+        this.state.TableData.forEach((data)=>console.log(data.idProcede))
     }
+
 
     /**
      * functionlity test method
      */
-    test() {
-        var tableData = new Array();
-        var l = 1;
-        let uid = sessionStorage.getItem('UID');
-        axios.get('/inventaire/' + uid)
-            .then(response => {
-                this.setState({TableData: response.data})
-                l = response.data.length;
-
-                var i;
-                for (i = 0; i < l; i++) {
-                    tableData[i] = this.state.TableData[i][0];
-                }
-
-                console.log("defined");
-                console.log(tableData[0]);
-
-
-            });
-
-
-    }
 
 
     render() {
@@ -107,9 +99,12 @@ export default class Bilan extends React.Component {
                 <br/>
 
 
-                {
 
-                    this.state.TableData.map((rowdata, i) =>
+
+
+
+
+
                         <div>
                             <Table>
                                 <thead>
@@ -125,26 +120,29 @@ export default class Bilan extends React.Component {
 
                                 </thead>
 
-                                <tbody>
-                                {rowdata.map((subRowData, k) =>
+                                {
+                                    this.state.TableData.map((attribute) =>
 
 
-                                    <tr>
+                                        <tbody>
+                                        <tr>
 
-                                        <td >{subRowData.Nom_procede}</td>
-                                        <td >{subRowData.Quantite_an} {subRowData.Unite_an}</td>
-                                        <td >{subRowData.Num_affiche}</td>
-                                        <td >{subRowData.Emission_GES}  </td>
+                                            <td>{attribute.Nom_procede}</td>
+                                            <td>{attribute.Quantite_an}</td>
+                                            <td>SnoreToast</td>
 
-                                    </tr>
+                                        </tr>
 
-                                )
-                                }
-                                </tbody>
+                                        </tbody>
+                                    )
+                                    }
+
+
                             </Table>
                         </div>
-                    )
-                }
+
+
+
                 <tr>
                     <td>Total Scope 1: {this.state.h[0]} kg</td>
                 </tr>
