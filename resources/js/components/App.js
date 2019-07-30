@@ -23,7 +23,7 @@ import TransportEntry from "./FormComponents/Transport/TransportEntry";
 import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
-
+import Editable from "./store/Editable";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -104,7 +104,9 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
                         <PrivateRoute exact path="/dechet" component={DechetDirect}/>
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
+                        <Route exact path="/Edit" component={Editable}/>
                         <Route component={NoMatch}/>
+
 
 
                     </Switch>

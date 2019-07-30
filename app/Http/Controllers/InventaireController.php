@@ -103,7 +103,7 @@ class InventaireController extends Controller
 
 
 
-        return $ArrayReturn;
+        return $g;
 
 
     }
