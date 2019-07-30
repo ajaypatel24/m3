@@ -85,18 +85,22 @@ class TransportController extends Controller
 
 
 
+
         $Transport->Libelle_Deplacement = request('VehiculeCat');
         $Transport->Origine = 't';
         $Transport->Destination = 't';
         $Transport->idDeplacement = $VehiculeId.$InttoString;
         $Transport->UID = request('UID');
-        $Transport->Nb_km_AR = 1;
+        $Transport->Nb_km_AR = request('Kilometres');
         $Transport->Nb_voyageurs_An = 1;
         $Transport->Nb_voyageurs = request('NombreVoitures');
         $Transport->Type_Deplacement = request('Vehicule');
-        $Transport->Emission_GES = $CoeffGES;
+
         $Transport->Type_Deplacement = request('Vehicule');
         $Transport->Covoiturage = 1;
+
+        $Transport->Emission_GES = request('Kilometres') * request('NombreVoitures') * 1 * $CoeffGES;
+
 
 
         $Transport->save();
@@ -147,5 +151,7 @@ class TransportController extends Controller
             ->where('UID', $id)
             ->delete();
     }
+
+
 
 }

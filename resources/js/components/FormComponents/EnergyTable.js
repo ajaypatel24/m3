@@ -1,4 +1,4 @@
-import {Col, Form, Row, Table} from "react-bootstrap";
+import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -17,6 +17,7 @@ export default class EnergyTable extends React.Component {
 
         this.handleChange = this.handleChange.bind(this); //handle change function
         this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
+        this.checkNull = this.checkNull.bind(this);
 
         this.state = {
 
@@ -94,7 +95,10 @@ export default class EnergyTable extends React.Component {
             UID: "",
             TableSubmit: sessionStorage.getItem('TableSubmit'),
             EnergyCategories: [],
-
+            validated: false,
+            error: '',
+            TableData: [],
+            DisplayData: sessionStorage.getItem('Empty'),
 
         }
 
@@ -102,7 +106,9 @@ export default class EnergyTable extends React.Component {
     }
 
         componentDidMount() {
-        let uid = sessionStorage.getItem('UID');
+
+
+            let uid = sessionStorage.getItem('UID');
         console.log(uid);
         axios.get('/scian/' + uid)
             .then(response => {
@@ -118,9 +124,49 @@ export default class EnergyTable extends React.Component {
 
 
         console.log(this.state.EnergyCategories);
+
+            axios.get('/inventaire/' + uid)
+                .then(response => {
+                    this.setState({TableData: response.data})
+
+                    console.log(this.state.TableData)
+                    console.log('yes');
+
+                });
+
+            console.log(this.state.TableData);
+            if (this.state.TableData != null) {
+                console.log('notnull')
+            }
+    }
+
+    componentWillMount = () => {
+        if (this.state.TableData[0] == "") {
+            sessionStorage.setItem('Empty', 'true')
+        }
+        else {
+            console.log(this.state.TableData[0])
+            sessionStorage.setItem('Empty', 'false')
+        }
     }
 
 
+    checkNull = () => {
+        console.log('hello2');
+
+
+
+            if (this.state.TableData[0] == "") {
+               sessionStorage.setItem('Empty', 'true')
+            }
+            else {
+                console.log(this.state.TableData[0])
+                sessionStorage.setItem('Empty', 'false')
+            }
+
+
+        console.log(this.state.DisplayData);
+    }
 
     /*
         componentDidMount() {
@@ -144,6 +190,10 @@ export default class EnergyTable extends React.Component {
         console.log("Value: ", e.target.value);
     };
 
+
+
+
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -159,31 +209,48 @@ export default class EnergyTable extends React.Component {
         }
         else {
         */
+        let g = this;
 
 
 
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
 
+            fetch('/categorie', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
-        fetch('/categorie', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                    console.log(data.status);
+                    if (data.status === 500) {
+                        g.setState({error: 'All fields must be numerical'})
+                    }
+                    else if (data.status === 200) {
+                        g.setState({error: 'Data submitted successfully'})
+                        window.location.reload();
+                    }
+                })
+                .catch(function (error) {
 
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+        }
+        this.setState(({validated: true}));
 
         /* this.setState(({validated: true})); */
         console.log((data));
+
 
 
     };
@@ -208,6 +275,7 @@ export default class EnergyTable extends React.Component {
      *
      */
     render() {
+        const {validated} = this.state;
         return (
             <div>
                 {this.state.EnergyCategories.map(attribute => {
@@ -239,10 +307,13 @@ export default class EnergyTable extends React.Component {
                             name="Charbon"
                             placeholder="valeur"
                             value={this.state.Charbon}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="CharbonUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange}
+                                          pattern="^[a-z]+$"
+                                          >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -259,11 +330,13 @@ export default class EnergyTable extends React.Component {
                             name="Coke"
                             placeholder="valeur"
                             value={this.state.Coke}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$"
+                            >
                         </Form.Control>
                         </td>
                         <td><Form.Control as="select" name="CokeUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -274,15 +347,16 @@ export default class EnergyTable extends React.Component {
                     </tr>
                 bois =
                     <tr>
-                        <td>{attribute.Coal}</td>
+                        <td>{attribute.Bois}</td>
                         <td><Form.Control
                             name="Bois"
                             placeholder="valeur"
                             value={this.state.Bois}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="BoisUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -301,9 +375,10 @@ export default class EnergyTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.VapeurFroid}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="VapeurUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange}>
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -323,11 +398,12 @@ export default class EnergyTable extends React.Component {
                             name="Vin"
                             placeholder="valeur"
                             value={this.state.Vin}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
 
                         </Form.Control></td>
                         <td><Form.Control as="select" name="VinUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -347,10 +423,11 @@ export default class EnergyTable extends React.Component {
                             name="Biere"
                             placeholder="valeur"
                             value={this.state.Biere}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="BiereUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -370,10 +447,11 @@ export default class EnergyTable extends React.Component {
                             name="Halocarbunes"
                             placeholder="valeur"
                             value={this.state.Halocarbunes}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="HaloUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange}>
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -392,10 +470,11 @@ export default class EnergyTable extends React.Component {
                             name="CNC"
                             placeholder="valeur"
                             value={this.state.CNC}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="UsinageUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange}>
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -415,10 +494,11 @@ export default class EnergyTable extends React.Component {
                             name="Soudure"
                             placeholder="valeur"
                             value={this.state.Soudure}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="SoudureUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -442,9 +522,10 @@ export default class EnergyTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.Bois}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="BoisUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -465,9 +546,10 @@ export default class EnergyTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.n2osol}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="n2osolUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -487,10 +569,11 @@ export default class EnergyTable extends React.Component {
                             name="n2oanimaux"
                             placeholder="valeur"
                             value={this.state.n2oanimaux}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="n2oanimauxUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange} >
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -510,10 +593,11 @@ export default class EnergyTable extends React.Component {
                             name="AutreMethane"
                             placeholder="valeur"
                             value={this.state.AutreMethane}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="AutreMethaneUnite"
-                                          onChange={this.handleChange} required>
+                                          onChange={this.handleChange}>
                             <option></option>
                             <option value="Litre">Litre</option>
                             <option value="Kg">Kg</option>
@@ -532,18 +616,39 @@ export default class EnergyTable extends React.Component {
         return (
 
 
+
             <div>
 
+
                 <Row>
-                    <Col lg="12">
+                    <Col lg="4">
                         <h1> Table d'Energie </h1>
+                    </Col>
+                    <Col lg="4">
+                        {/* <Button onClick={this.checkNull}>test</Button> */}
+                        {
+
+                            this.state.DisplayData === 'true' ?
+                            <Alert variant="info" content>{this.checkNull} Data Submitted, Click to Edit</Alert>
+
+                            :
+
+                            null
+                        }
+                    </Col>
+                    <Col lg="5">
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         <h6> Remplire les données nécessaires </h6>
                     </Col>
                 </Row>
 
 
 
-                    <Form
+                    <Form noValidate
+                          validated={validated}
                         onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
                         <Table responsive> {/**/}
                             <thead>
@@ -567,10 +672,15 @@ export default class EnergyTable extends React.Component {
 
                             <tr>
                                 <td>{attribute.NaturalGas}</td>
-                                <td><Form.Control name="GazNaturel" placeholder="valeur" value={this.state.GazNaturel}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="GazNaturel"
+                                    placeholder="valeur"
+                                    value={this.state.GazNaturel}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$">
+                                </Form.Control></td>
                                 <td><Form.Control as="select" name="GazUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange}>
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -581,11 +691,17 @@ export default class EnergyTable extends React.Component {
                             </tr>
                             <tr>
                                 <td>{attribute.Propane}</td>
-                                <td><Form.Control name="Propane" placeholder="valeur" value={this.state.Propane}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="Propane"
+                                    placeholder="valeur"
+                                    value={this.state.Propane}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$">
+                                </Form.Control></td>
                                 <td><Form.Control as="select" name="PropaneUnite"
-                                                  onChange={this.handleChange} required>
-                                    <option></option>
+                                                  onChange={this.handleChange}
+                                                  >
+                                    <option> </option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
@@ -595,11 +711,15 @@ export default class EnergyTable extends React.Component {
                             </tr>
                             <tr>
                                 <td>{attribute.Gasoline}</td>
-                                <td><Form.Control name="EssencePompe" placeholder="valeur"
-                                                  value={this.state.EssencePompe}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="EssencePompe"
+                                    placeholder="valeur"
+                                    value={this.state.EssencePompe}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$"
+                                ></Form.Control></td>
                                 <td><Form.Control as="select" name="EssenceUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange} >
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -611,10 +731,15 @@ export default class EnergyTable extends React.Component {
 
                             <tr>
                                 <td>{attribute.Diesel}</td>
-                                <td><Form.Control name="GazolePompe" placeholder="valeur" value={this.state.GazolePompe}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="GazolePompe"
+                                    placeholder="valeur"
+                                    value={this.state.GazolePompe}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$"
+                                ></Form.Control></td>
                                 <td><Form.Control as="select" name="GazoleUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange}>
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -625,11 +750,15 @@ export default class EnergyTable extends React.Component {
                             </tr>
                             <tr>
                                 <td>{attribute.Domesticfueloil}</td>
-                                <td><Form.Control name="FioulDomestique" placeholder="valeur"
-                                                  value={this.state.FioulDomestique}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="FioulDomestique"
+                                    placeholder="valeur"
+                                    value={this.state.FioulDomestique}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$"
+                                ></Form.Control></td>
                                 <td><Form.Control as="select" name="FioulUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange}>
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -640,10 +769,15 @@ export default class EnergyTable extends React.Component {
                             </tr>
                             <tr>
                                 <td>{attribute.Lightfueloil}</td>
-                                <td><Form.Control name="MazoutLeger" placeholder="valeur" value={this.state.MazoutLeger}
-                                                  onChange={this.handleChange}></Form.Control></td>
+                                <td><Form.Control
+                                    name="MazoutLeger"
+                                    placeholder="valeur"
+                                    value={this.state.MazoutLeger}
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$">
+                                </Form.Control></td>
                                 <td><Form.Control as="select" name="MazoutUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange} >
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -666,9 +800,10 @@ export default class EnergyTable extends React.Component {
                                                   placeholder="valeur"
                                                   value={this.state.Biodiesel}
                                                   onChange={this.handleChange}
+                                                  pattern="^[0-9]+$"
                                 ></Form.Control></td>
                                 <td><Form.Control as="select" name="BiodieselUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange} >
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -688,9 +823,10 @@ export default class EnergyTable extends React.Component {
                                                   placeholder="valeur"
                                                   value={this.state.Fossil}
                                                   onChange={this.handleChange}
+                                                  pattern="^[0-9]+$"
                                 ></Form.Control></td>
                                 <td><Form.Control as="select" name="FossileUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange} >
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -709,9 +845,11 @@ export default class EnergyTable extends React.Component {
                                     name="TotalElectricite"
                                     placeholder="valeur"
                                     value={this.state.TotalElectricite}
-                                    onChange={this.handleChange}></Form.Control></td>
+                                    onChange={this.handleChange}
+                                    pattern="^[0-9]+$">
+                                </Form.Control></td>
                                 <td><Form.Control as="select" name="ElectriciteUnite"
-                                                  onChange={this.handleChange} required>
+                                                  onChange={this.handleChange} >
                                     <option></option>
                                     <option value="Litre">Litre</option>
                                     <option value="Kg">Kg</option>
@@ -726,7 +864,26 @@ export default class EnergyTable extends React.Component {
 
                             </tbody>
                         </Table>
-                        <button type="submit" onClick={this.handleSubmit}>test</button>
+                        <Row>
+                            <Col lg="3">
+                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
+                            </Col>
+                            <Col lg="9">
+                        {
+                            {
+                                'All fields must be numerical':
+                                    <Alert variant="danger"
+                                           className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                   'Data submitted successfully':
+                                    <Alert variant="success"
+                                           className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                '':
+                                    null,
+                            }[this.state.error]
+                        }
+                            </Col>
+                        </Row>
+
                     </Form>
 
 

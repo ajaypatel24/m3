@@ -266,6 +266,11 @@ export default class PrestartQuestion extends React.Component {
 
 
             <div>
+                <h1>Prestart Questions</h1>
+                <p><FormattedHTMLMessage id="Prestart.PrestartDescription"
+                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                         description="Welcome header on app main page"
+                                         values={{what: 'react-intl'}}/></p>
                 {!this.state.formComplete ?
 
 

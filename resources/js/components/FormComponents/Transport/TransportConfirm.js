@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Form, Row, Button ,Table } from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
-
+import { withSnackbar } from "notistack";
 import Stepper from './Stepper'
 import axios from "axios";
 import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
@@ -75,6 +75,7 @@ export default class TransportConfirm extends React.Component {
 
         })
             .then(function (response) {
+
                 console.log(response.data)
 
 
@@ -131,6 +132,7 @@ export default class TransportConfirm extends React.Component {
                                                     <th>Unite</th>
                                                     <th>Num Affiche</th>
                                                     <th>Procede</th>
+                                                    <th>Kilometres AR</th>
                                                     <th>Quantite an</th>
                                                     <th>Unite</th>
                                                     <th>GES</th>
@@ -148,6 +150,7 @@ export default class TransportConfirm extends React.Component {
                                                         <td>{subRowData.idDeplacement}</td>
                                                         <td>{subRowData.Libelle_Deplacement}</td>
                                                         <td>{subRowData.Nb_voyageurs}</td>
+                                                        <td>{subRowData.Nb_km_AR} Km</td>
                                                         <td>{subRowData.Nb_voyageurs_An}</td>
                                                         <td>{subRowData.Type_Deplacement}</td>
                                                         <td>{subRowData.Emission_GES}</td>

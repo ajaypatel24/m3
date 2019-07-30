@@ -1,22 +1,12 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown, Card, Row, Col, FormGroup, Alert} from 'react-bootstrap';
-import SideNavigation from './NavComponents/SideNavigation';
-import Particles from 'react-particles-js';
+import {Alert, Button, Card, Col, Form, Row} from 'react-bootstrap';
 
 
 import '../../sass/navstyle.css'
 import axios from "axios";
-import Avatar from '@material-ui/core/Avatar';
 import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
-import Snackbar from '@material-ui/core/Snackbar'
-import Chip from '@material-ui/core/Chip'
-import SignIn from "./Authentication/SignIn"
-import DoneIcon from '@material-ui/icons/Done';
-import {SnackbarContent} from "@material-ui/core";
-import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
-
-import messages from './messages'
+import {FormattedHTMLMessage} from 'react-intl';
 
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
@@ -89,10 +79,8 @@ export default class LoginComponent extends React.Component {
     }
 
 
-
-
     callbackFunction = (childata) => {
-        this.setState ({LoginOrSignUp: childata})
+        this.setState({LoginOrSignUp: childata})
         return childata;
     }
 
@@ -118,93 +106,90 @@ export default class LoginComponent extends React.Component {
         ]);
 
 
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 
-            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .catch(error => { //catches login errors
 
-                .catch(error => { //catches login errors
+                switch (error.code) {
+                    case 'auth/wrong-password':
+                        this.setState({error: 'Invalid Password'})
+                        break;
+                    case 'auth/invalid-email':
+                        this.setState({error: 'Please enter a valid Email Address'})
+                        break;
+                    case 'auth/user-not-found':
+                        this.setState({error: 'User: ' + this.state.email + ' does not exist'})
+                        break;
 
-                    switch(error.code) {
-                        case 'auth/wrong-password':
-                            this.setState({error: 'Invalid Password'})
-                            break;
-                        case 'auth/invalid-email':
-                            this.setState({error: 'Please enter a valid Email Address'})
-                            break;
-                        case 'auth/user-not-found':
-                            this.setState({error: 'User: ' +this.state.email +' does not exist'})
-                            break;
-
-                    }
-                    /*
-                        console.log(error.code);
-                        this.setState({error: error.code})
-                        */
-
-                    this.setState({
-                        email: '',
-                        password: '',
-                    })
-
-                })
-                .then(function (user) {
-
-
-                    let uid = firebase.auth().currentUser.uid;
-
-                    console.log(uid); //important, exclusive Uid that will be used to identify user
-
-
-                    fetch('/login', {
-                        method: 'POST',
-                        body: JSON.stringify(uid),
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                            "Content-type": "application/json"
-                        }
-                    })
-                        .then(function (data) {
-
-
-                            sessionStorage.setItem('authenticated', 'true');
-                            sessionStorage.setItem('UID', uid);
-                            currentComponent.getName();
-                            currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-
-                            setTimeout(function () {
-                                window.location.href = '#/profile/';
-                                window.location.reload();
-                            }, 20)
-                            console.log('Request succeeded with JSON response', data);
-
-
-                        })
-                        .catch(function (error) {
-                            console.log('Request failed', error);
-                        });
-
-
-                }).catch(function (error) {
-                // Handle Errors here.
-
-
-                if (error.code === 400) {
-                    console.log("either email or password is incorrect");
                 }
-                //console.log("dr yeet");
-                //var errorCode = error.code;
-                ///var errorMessage = error.message;
-                //return;
-                // ...
-            });
+                /*
+                    console.log(error.code);
+                    this.setState({error: error.code})
+                    */
 
+                this.setState({
+                    email: '',
+                    password: '',
+                })
+
+            })
+            .then(function (user) {
+
+
+                let uid = firebase.auth().currentUser.uid;
+
+                console.log(uid); //important, exclusive Uid that will be used to identify user
+
+
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(uid),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(function (data) {
+
+
+                        sessionStorage.setItem('authenticated', 'true');
+                        sessionStorage.setItem('UID', uid);
+                        currentComponent.getName();
+                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+
+                        setTimeout(function () {
+                            window.location.href = '#/profile/';
+                            window.location.reload();
+                        }, 20)
+                        console.log('Request succeeded with JSON response', data);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    });
+
+
+            }).catch(function (error) {
+            // Handle Errors here.
+
+
+            if (error.code === 400) {
+                console.log("either email or password is incorrect");
+            }
+            //console.log("dr yeet");
+            //var errorCode = error.code;
+            ///var errorMessage = error.message;
+            //return;
+            // ...
+        });
 
 
         console.log("from login");
 
 
     };
-
 
 
     /**
@@ -318,53 +303,61 @@ export default class LoginComponent extends React.Component {
                     }}
                 />
                 */}
-            <Row>
+                <Row>
 
-                <Col lg="1">
+                    <Col lg="1">
 
-                </Col>
-
-
-
-                <Col lg="3" sm="4">
-                    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-                    <img
-                        style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}
-                        src={window.location.origin + "/img/ecosystem.svg"}
-                        width="300"
-                        height="100"
-                        className="d-inline-block align-top"
-                        alt="Cadet Logo"
-                    />
-                    </div>
-
-                </Col>
+                    </Col>
 
 
-            <Col lg="8" sm="8">
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-                {!this.state.LoginOrSignUp ?
-                    <Card>
+                    <Col lg="3" sm="4">
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+                            <img
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    height: '100vh'
+                                }}
+                                src={window.location.origin + "/img/ecosystem.svg"}
+                                width="300"
+                                height="100"
+                                className="d-inline-block align-top"
+                                alt="Cadet Logo"
+                            />
+                        </div>
 
-                            <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person /><FormattedHTMLMessage id="login.SignIn"
-                                                                                                                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                                                        description="Welcome header on app main page"
-                                                                                                                                        values={{what: 'react-intl'}}/></Card.Header>
-                            <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"} width="147" height="147"/>
-                            <Card.Body>
-                                <Card.Text className="d-flex justify-content-center"> <FormattedHTMLMessage id="login.Intro"
-                                                                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                            description="Welcome header on app main page"
-                                                                                                            values={{what: 'react-intl'}}/> </Card.Text>
+                    </Col>
 
 
-                                {this.state.error === '' ?
-                                   null
-                                    :
-                                    <Alert variant="danger"
-                                           className="d-flex justify-content-center">{this.state.error}</Alert>
-                                }
-                                {/*
+                    <Col lg="8" sm="8">
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+                            {!this.state.LoginOrSignUp ?
+                                <Card>
+
+                                    <Card.Header
+                                        className="d-flex justify-content-center login-btn-color-font"><Person/><FormattedHTMLMessage
+                                        id="login.SignIn"
+                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                        description="Welcome header on app main page"
+                                        values={{what: 'react-intl'}}/></Card.Header>
+                                    <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"}
+                                              width="140" height="147"/>
+                                    <Card.Body>
+                                        <Card.Text className="d-flex justify-content-center"> <FormattedHTMLMessage
+                                            id="login.Intro"
+                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                            description="Welcome header on app main page"
+                                            values={{what: 'react-intl'}}/> </Card.Text>
+
+
+                                        {this.state.error === '' ?
+                                            null
+                                            :
+                                            <Alert variant="danger"
+                                                   className="d-flex justify-content-center">{this.state.error}</Alert>
+                                        }
+                                        {/*
                                         <Chip className="d-flex justify-content-center"
                                               label={this.state.error}
                                               color="secondary"
@@ -373,105 +366,99 @@ export default class LoginComponent extends React.Component {
                                         />
                                         */}
 
-                                {/* <Button onClick={this.error}>press</Button> */}
-                                <Card.Text className="d-flex justify-content-center"> </Card.Text>
-                                <Form>
+                                        {/* <Button onClick={this.error}>press</Button> */}
+                                        <Card.Text className="d-flex justify-content-center"> </Card.Text>
+                                        <Form>
 
-                                    <Form.Group>
+                                            <Form.Group>
 
-                                        <Form.Group>
+                                                <Form.Group>
 
-                                            <p>{this.error}</p>
+                                                    <p>{this.error}</p>
 
-                                            <Form.Label className="mr-sm-2"><FormattedHTMLMessage id="login.email"
-                                                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                  description="Welcome header on app main page"
-                                                                                                  values={{what: 'react-intl'}}/></Form.Label>
-                                            <Form.Control
-                                                required
-                                                name="email"
-                                                type="text"
-                                                placeholder="Username"
-                                                onChange={this.handleChange}
-                                                value={this.state.email}
-                                               />
+                                                    <Form.Label className="mr-sm-2"><FormattedHTMLMessage
+                                                        id="login.email"
+                                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                        description="Welcome header on app main page"
+                                                        values={{what: 'react-intl'}}/></Form.Label>
+                                                    <Form.Control
+                                                        required
+                                                        name="email"
+                                                        type="text"
+                                                        placeholder="Username"
+                                                        onChange={this.handleChange}
+                                                        value={this.state.email}
+                                                    />
 
-                                        </Form.Group>
-
-
-                                        <Form.Label className="mr-sm-2"> <FormattedHTMLMessage id="login.password"
-                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                               description="Welcome header on app main page"
-                                                                                               values={{what: 'react-intl'}}/> </Form.Label>
+                                                </Form.Group>
 
 
-                                        <Form.Group>
-                                            <Form.Control
-                                                required
-                                                name="password"
-                                                type="password"
-                                                placeholder="Password"
-                                                onChange={this.handleChange}
-                                                value={this.state.password}
-                                               />
-                                        </Form.Group>
-                                    </Form.Group>
+                                                <Form.Label className="mr-sm-2"> <FormattedHTMLMessage
+                                                    id="login.password"
+                                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                    description="Welcome header on app main page"
+                                                    values={{what: 'react-intl'}}/> </Form.Label>
 
 
-                                    <Form.Group>
-                                        <Row>
-                                            <Col lg="6">
-                                        <Button variant="outline-info" onClick={this.handleLoginRequest} onKeyDown={handleKeyDown}><FormattedHTMLMessage id="login.Login"
-                                                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                                               description="Welcome header on app main page"
-                                                                                                                               values={{what: 'react-intl'}}/></Button>
-                                            </Col>
-                                            <Col lg="4">
-                                        <Button variant="outline-info" onClick={this.handleSwitch}><FormattedHTMLMessage id="login.SignUp"
-                                                                                                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                                                                         description="Welcome header on app main page"
-                                                                                                                         values={{what: 'react-intl'}}/></Button>
-                                            </Col>
-                                        </Row>
-                                    </Form.Group>
+                                                <Form.Group>
+                                                    <Form.Control
+                                                        required
+                                                        name="password"
+                                                        type="password"
+                                                        placeholder="Password"
+                                                        onChange={this.handleChange}
+                                                        value={this.state.password}
+                                                    />
+                                                </Form.Group>
+
+                                                <Row>
+
+                                                    <Col>
+                                                        <Button variant="secondary" onClick={this.handleLoginRequest}
+                                                                onKeyDown={handleKeyDown}><FormattedHTMLMessage
+                                                            id="login.Login"
+                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                            description="Welcome header on app main page"/></Button>
+                                                    </Col>
+                                                    <Col>
+                                                        <Button variant="outline-info"
+                                                                onClick={this.handleSwitch}><FormattedHTMLMessage
+                                                            id="login.SignUp"
+                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                            description="Welcome header on app main page"/></Button>
+                                                    </Col>
+
+                                                </Row>
+                                            </Form.Group>
 
 
-                                </Form>
+                                        </Form>
 
 
-                            </Card.Body>
+                                    </Card.Body>
 
-                    </Card>
+                                </Card>
 
-                :
+                                :
 
 
-                    <Col lg="6">
-                    <Card>
-                        <Register parentCallback={this.callbackFunction}/>
-                    </Card>
+                                <Col lg="6">
+                                    <Card>
+                                        <Register parentCallback={this.callbackFunction}/>
+                                    </Card>
+                                </Col>
+
+                            }
+
+
+                        </div>
                     </Col>
 
-                }
 
-
-
-
-
-                </div>
-                    </Col>
-
-
-
-
-            </Row>
-
+                </Row>
 
 
             </div>
-
-
-
 
 
         );

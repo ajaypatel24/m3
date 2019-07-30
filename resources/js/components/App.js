@@ -21,6 +21,8 @@ import TransportFormShortDistanceGeneral from "./FormComponents/Transport/Transp
 import TransportEntry from "./FormComponents/Transport/TransportEntry";
 
 import Dialog from "./NavComponents/Dialog"
+import DechetDirect from "./FormComponents/DechetDirect";
+import UtilisationFDV from "./FormComponents/UtilisationFDV";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -100,6 +102,8 @@ export default class App extends React.Component {
                                       component={TransportFormShortDistanceSpecific}/>
 
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
+                        <PrivateRoute exact path="/dechet" component={DechetDirect}/>
+                        <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
                         <Route component={NoMatch}/>
 
 
@@ -140,7 +144,7 @@ export const PrivateRoute = ({component: Component, ...rest}) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/",
+                            pathname: "/home",
                             state: {from: props.location}
                         }}
                     />

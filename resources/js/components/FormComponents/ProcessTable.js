@@ -1,4 +1,4 @@
-import {Form, Table, Row, Col} from "react-bootstrap";
+import {Form, Table, Row, Col, Button} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -77,11 +77,11 @@ export default class ProcessTable extends React.Component {
             AutreMethane: "",
             AutreMethaneUnite: "",
 
-            n2osol: "",
-            n2osolUnite: "",
+            N2OSol: "",
+            N2OSolUnite: "",
 
-            n2oanimaux: "",
-            n2oanimauxUnite: "",
+            N2OAnimaux: "",
+            N2OAnimauxUnite: "",
 
             MethaneAnimaux: "",
             MethaneAnimauxUnite: "",
@@ -91,8 +91,9 @@ export default class ProcessTable extends React.Component {
 
 
             SCIAN: "",
-            UID: "",
+            UID: sessionStorage.getItem('UID'),
             TableSubmit: sessionStorage.getItem('TableSubmit'),
+            validated: false
 
 
         }
@@ -154,27 +155,32 @@ export default class ProcessTable extends React.Component {
         */
 
 
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
 
 
+            fetch('/procede/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
-        fetch('/categorie', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
-
-
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+        }
+        this.setState(({validated: true}));
         /* this.setState(({validated: true})); */
         console.log((data));
 
@@ -201,16 +207,16 @@ export default class ProcessTable extends React.Component {
      *
      */
     render() {
-        let charbon;
-        let coke;
+        const {validated} = this.state;
+
         let bois;
 
-        let achatvapeurfroid;
+
         let vin;
         let biere;
 
-        let n2osol;
-        let n2oanimaux;
+        let N2OSol;
+        let N2OAnimaux;
 
         let autremethane;
         let halocarbures;
@@ -222,52 +228,7 @@ export default class ProcessTable extends React.Component {
             case 'SCIAN 21':
             case 'SCIAN 31-33':
 
-                charbon =
-                    <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.Charbon"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
-                        <td><Form.Control
-                            name="Charbon"
-                            placeholder="valeur"
-                            value={this.state.Charbon}
-                            onChange={this.handleChange}>
-                        </Form.Control></td>
-                        <td><Form.Control as="select" name="CharbonUnite"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
-                coke =
-                    <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.Coke"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
-                        <td>
-                            <Form.Control
-                                name="Coke"
-                                placeholder="valeur"
-                                value={this.state.Coke}
-                                onChange={this.handleChange}>
-                            </Form.Control>
-                        </td>
-                        <td><Form.Control as="select" name="CokeUnite"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
+
                 bois =
                     <tr>
                         <td><FormattedHTMLMessage id="EnergyTable.Wood"
@@ -291,29 +252,6 @@ export default class ProcessTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-
-                achatvapeurfroid =
-                    <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.VapFroid"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></td>
-                        <td><Form.Control
-                            name="VapeurFroid"
-                            placeholder="valeur"
-                            value={this.state.VapeurFroid}
-                            onChange={this.handleChange}
-                        ></Form.Control></td>
-                        <td><Form.Control as="select" name="VapeurUnite"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
-                    </tr>
 
                 vin =
                     <tr>
@@ -384,6 +322,7 @@ export default class ProcessTable extends React.Component {
                         <td>1.23</td>
                         <td>0</td>
                     </tr>
+
                 usinage =
                     <tr>
                         <td><FormattedHTMLMessage id="EnergyTable.Usinage"
@@ -456,19 +395,19 @@ export default class ProcessTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-                n2osol =
+                N2OSol =
                     <tr>
                         <td><FormattedHTMLMessage id="EnergyTable.n2o"
                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                   description="Welcome header on app main page"
                                                   values={{what: 'react-intl'}}/></td>
                         <td><Form.Control
-                            name="n2osol"
+                            name="N2OSol"
                             placeholder="valeur"
-                            value={this.state.n2osol}
+                            value={this.state.N2OSol}
                             onChange={this.handleChange}
                         ></Form.Control></td>
-                        <td><Form.Control as="select" name="n2osolUnite"
+                        <td><Form.Control as="select" name="N2OSolUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
                             <option value="Litre">Litre</option>
@@ -479,19 +418,19 @@ export default class ProcessTable extends React.Component {
                         <td>0</td>
                     </tr>
 
-                n2oanimaux =
+                N2OAnimaux =
                     <tr>
-                        <td><FormattedHTMLMessage id="EnergyTable.n2oAnimaux"
+                        <td><FormattedHTMLMessage id="EnergyTable.N2OAnimaux"
                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                   description="Welcome header on app main page"
                                                   values={{what: 'react-intl'}}/></td>
                         <td><Form.Control
-                            name="n2oanimaux"
+                            name="N2OAnimaux"
                             placeholder="valeur"
-                            value={this.state.n2oanimaux}
+                            value={this.state.N2OAnimaux}
                             onChange={this.handleChange}>
                         </Form.Control></td>
-                        <td><Form.Control as="select" name="n2oanimauxUnite"
+                        <td><Form.Control as="select" name="N2OAnimauxUnite"
                                           onChange={this.handleChange} required>
                             <option></option>
                             <option value="Litre">Litre</option>
@@ -544,7 +483,8 @@ export default class ProcessTable extends React.Component {
 
                 <br/>
 
-                <Form
+                <Form noValidate
+                      validated={validated}
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
                     <Table responsive> {/**/}
                         <thead>
@@ -570,9 +510,9 @@ export default class ProcessTable extends React.Component {
 
                         {biere}
 
-                        {n2osol}
+                        {N2OSol}
 
-                        {n2oanimaux}
+                        {N2OAnimaux}
 
                         <tr>
                             <td><FormattedHTMLMessage id="EnergyTable.AnimalMethane"
@@ -633,7 +573,7 @@ export default class ProcessTable extends React.Component {
                         </tbody>
 
                     </Table>
-                    <button type="submit" onClick={this.handleSubmit}>test</button>
+                    <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </Form>
 
 
