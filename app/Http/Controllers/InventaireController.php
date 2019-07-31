@@ -122,6 +122,8 @@ class InventaireController extends Controller
      *
      */
     function addIntrant($id) {
+        $r =  json_decode($id); //decodes array to add parameters to database
+
 
         $Intrant = new Intrant();
 
@@ -132,8 +134,6 @@ class InventaireController extends Controller
             ->count() > 0) {
 
                 echo "exists";
-
-
             }
 
             else {
@@ -241,6 +241,19 @@ class InventaireController extends Controller
 
 
         return $intrants;
+    }
+
+    function editIntrant($NameData, $Nom, $Quantite, $Unite, $uid ) {
+        $r = DB::table('intrants')
+            ->where('nom_intrant', '=', $NameData)
+            ->where('UID', '=', $uid)
+            ->update([
+                'nom_intrant' => $Nom,
+                'quantite_an' => $Quantite,
+                'unite' => $Unite
+            ]);
+
+        return $r;
     }
 
 
