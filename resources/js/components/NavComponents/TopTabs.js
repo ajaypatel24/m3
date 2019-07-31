@@ -2,7 +2,8 @@ import FormBilan from '../DataComponents/Bilan'
 import {FormattedHTMLMessage} from 'react-intl'
 import React from 'react'
 import {Tab, Tabs} from 'react-bootstrap'
-import Editable from "../store/Editable";
+import EnergyTableEditData from "../DataComponents/EnergyTableEditData";
+import IntrantEditData from "../DataComponents/IntrantEditData";
 
 /**giving errors, but actually syntactically correct */
 
@@ -79,7 +80,7 @@ export default class TopTabs extends React.Component {
 
                 <Tab eventKey="Energie" title={Energie}>
                     {/* <EnergyTableData/> */}
-                    <Editable/>
+                    <EnergyTableEditData/>
 
                 </Tab>
 
@@ -88,7 +89,7 @@ export default class TopTabs extends React.Component {
                 </Tab>
 
                 <Tab eventKey="Matières" title={Matieres}>
-
+                    <IntrantEditData />
                 </Tab>
 
                 <Tab eventKey="Productivité" title={Productivite}>

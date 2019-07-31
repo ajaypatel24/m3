@@ -320,8 +320,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
+
                     </tr>
                 coke =
                     <tr>
@@ -343,8 +342,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
+
                     </tr>
                 bois =
                     <tr>
@@ -363,8 +361,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>place</td>
-                        <td>0</td>
+
                     </tr>
 
 
@@ -385,8 +382,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 vin =
@@ -410,8 +406,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 biere =
@@ -434,8 +429,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 halocarbures =
@@ -458,8 +452,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
                 usinage =
                     <tr>
@@ -481,8 +474,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 Soudure =
@@ -505,8 +497,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 break;
@@ -532,8 +523,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>place</td>
-                        <td>0</td>
+
                     </tr>
 
                 n2osol =
@@ -556,8 +546,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 n2oanimaux =
@@ -580,8 +569,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 autremethane =
@@ -604,8 +592,7 @@ export default class EnergyTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
                 break;
 
@@ -658,14 +645,11 @@ export default class EnergyTable extends React.Component {
                             </tr>
                             <tr>
                                 <th colSpan="3">Compatiblisation direct des combustibles</th>
-                                <th>Facteur Combustion</th>
-                                <th>Total GES</th>
                             </tr>
                             <tr>
                                 <th>Combustibles fossiles, sources fixes</th>
                                 <th>Consommation</th>
                                 <th>Unite</th>
-
 
                             </tr>
                             </thead>
@@ -687,8 +671,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>2.3</td>
-                                <td>0</td>
+
                             </tr>
                             <tr>
                                 <td>{attribute.Propane}</td>
@@ -707,8 +690,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>1.2</td>
-                                <td>0</td>
+
                             </tr>
                             <tr>
                                 <td>{attribute.Gasoline}</td>
@@ -726,8 +708,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>0</td>
-                                <td>0</td>
+
                             </tr>
 
                             <tr>
@@ -746,8 +727,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>2.3</td>
-                                <td>0</td>
+
                             </tr>
                             <tr>
                                 <td>{attribute.Domesticfueloil}</td>
@@ -765,8 +745,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>1.2</td>
-                                <td>0</td>
+
                             </tr>
                             <tr>
                                 <td>{attribute.Lightfueloil}</td>
@@ -784,8 +763,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>0</td>
-                                <td>0</td>
+
                             </tr>
 
 
@@ -794,7 +772,7 @@ export default class EnergyTable extends React.Component {
                             {coke}
 
 
-                            <th colSpan="4">Combustibles d'origine organique, sources fixes</th>
+                            <th colSpan="3">Combustibles d'origine organique, sources fixes</th>
                             <tr>
                                 <td>{attribute.Biodiesel}</td>
                                 <td><Form.Control name="Biodiesel"
@@ -810,8 +788,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>1.2</td>
-                                <td>0</td>
+
                             </tr>
 
 
@@ -833,11 +810,10 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>2.3</td>
-                                <td>0</td>
+
                             </tr>
 
-                            <th colSpan="4">Electricite achetee</th>
+                            <th colSpan="3">Electricite achetee</th>
 
 
                             <tr>
@@ -856,8 +832,7 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
-                                <td>1.2</td>
-                                <td>0</td>
+
                             </tr>
 
                             {achatvapeurfroid}

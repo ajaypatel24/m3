@@ -126,22 +126,22 @@ export default class Bilan extends React.Component {
                                 <tr>
                                     <th>Categorie d'Emissions</th>
                                     <th>Numeros</th>
-                                    <th>Postes d'emissions</th>
+                                    {/* <th>Postes d'emissions</th> */}
                                     <th>Emissions de GES (kg)</th>
                                 </tr>
 
                                 </thead>
 
                                 {
-                                    this.state.BilanRow.map((attribute) =>
+                                    this.state.TableData.map((attribute) =>
 
 
                                         <tbody>
                                         <tr>
 
-                                            <td>{attribute.X11}</td>
-                                            <td>{attribute.X12} {attribute.X21}</td>
-                                            <td>{attribute.X22}</td>
+                                            <td>{attribute.Nom_procede}</td>
+                                            <td>{attribute.Quantite_an} {attribute.Unite_an}</td>
+                                            <td>{attribute.Emission_GES}</td>
 
                                         </tr>
 

@@ -248,8 +248,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>place</td>
-                        <td>0</td>
+
                     </tr>
 
 
@@ -273,8 +272,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 biere =
@@ -296,8 +294,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 halocarbures =
@@ -319,8 +316,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 usinage =
@@ -342,8 +338,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 Soudure =
@@ -365,8 +360,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 break;
@@ -391,8 +385,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>place</td>
-                        <td>0</td>
+
                     </tr>
 
                 N2OSol =
@@ -414,8 +407,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 N2OAnimaux =
@@ -437,8 +429,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
 
                 autremethane =
@@ -460,8 +451,7 @@ export default class ProcessTable extends React.Component {
                             <option value="Kg">Kg</option>
                             <option value="KWH">KWH</option>
                         </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
+
                     </tr>
                 break;
 
@@ -491,8 +481,7 @@ export default class ProcessTable extends React.Component {
 
                         <tr>
                             <th colSpan="3">Compatiblisation direct des combustibles</th>
-                            <th>Facteur Combustion</th>
-                            <th>Total GES</th>
+
                         </tr>
                         <tr>
                             <th>Combustibles fossiles, sources fixes</th>
@@ -525,14 +514,13 @@ export default class ProcessTable extends React.Component {
                                               onChange={this.handleChange}
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="MethaneAnimauxUnite"
-                                              onChange={this.handleChange} required>
+                                              onChange={this.handleChange}>
                                 <option></option>
                                 <option value="Litre">Litre</option>
                                 <option value="Kg">Kg</option>
                                 <option value="KWH">KWH</option>
                             </Form.Control></td>
-                            <td>1.23</td>
-                            <td>0</td>
+
                         </tr>
 
                         {autremethane}
@@ -554,14 +542,13 @@ export default class ProcessTable extends React.Component {
                                               onChange={this.handleChange}
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="CammionageUnite"
-                                              onChange={this.handleChange} required>
+                                              onChange={this.handleChange} >
                                 <option></option>
                                 <option value="Litre">Litre</option>
                                 <option value="Kg">Kg</option>
                                 <option value="KWH">KWH</option>
                             </Form.Control></td>
-                            <td>1.23</td>
-                            <td>0</td>
+
                         </tr>
 
                         <tr><FormattedHTMLMessage id="EnergyTable.EndOfLife"

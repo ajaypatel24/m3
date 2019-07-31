@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
 import PrestartQuestion from "./FormComponents/PrestartQuestion";
-import EnergyTableData from "./DataComponents/EnergyTableData";
+import EnergyTableData from "./Deprecated/EnergyTableData";
 import ContactInformationData from "./DataComponents/ContactInformationData";
 import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
@@ -19,11 +19,11 @@ import TransportFormLongDistance from "./FormComponents/Transport/TransportFormL
 import TransportFormShortDistanceSpecific from "./FormComponents/Transport/TransportShortDistanceSpecific";
 import TransportFormShortDistanceGeneral from "./FormComponents/Transport/TransportShortDistanceGeneral";
 import TransportEntry from "./FormComponents/Transport/TransportEntry";
-
+import IntrantEditData from "./DataComponents/IntrantEditData";
 import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
-import Editable from "./store/Editable";
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -104,9 +104,8 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
                         <PrivateRoute exact path="/dechet" component={DechetDirect}/>
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
-                        <Route exact path="/Edit" component={Editable}/>
+                        <Route exact path="/Edit" component={IntrantEditData}/>
                         <Route component={NoMatch}/>
-
 
 
                     </Switch>

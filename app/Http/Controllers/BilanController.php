@@ -227,23 +227,16 @@ class BilanController extends Controller
 
         $data = array();
 
-            $X11 = $this->sumX11($uid);
-            $X13 = $this->sumX13($uid);
-            $X21 = $this->sumX21($uid);
-            $X22 = $this->sumX22($uid);
-            $X31 = $this->sumX31($uid);
-            $X32 = $this->sumX32($uid);
+            $X11 = number_format($this->sumX11($uid), 2, '.', '');
+            $X13 = number_format($this->sumX13($uid), 2, '.', '');
+            $X21 = number_format($this->sumX21($uid), 2, '.', '');
+            $X22 = number_format($this->sumX22($uid), 2, '.', '');
+            $X31 = number_format($this->sumX31($uid), 2, '.', '');
+            $X32 = number_format($this->sumX32($uid), 2, '.', '');
 
 
 
             array_push($data, $X11, $X13, $X21, $X22, $X31, $X32);
-            echo $PosteEmission["X11"];
-            echo $PosteEmission["X12"];
-            echo $PosteEmission["X13"];
-            echo $PosteEmission["X21"];
-            echo $PosteEmission["X22"];
-            echo $PosteEmission["X31"];
-            echo $PosteEmission["X32"];
             return $data;
 
 
