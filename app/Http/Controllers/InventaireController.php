@@ -122,8 +122,12 @@ class InventaireController extends Controller
      *
      */
     function addIntrant($id) {
-        $r =  json_decode($id); //decodes array to add parameters to database
+        $parameters =  json_decode($id); //decodes array to add parameters to database
 
+        foreach ($parameters as $e) {
+            echo $e;
+            echo "\n";
+        }
 
         $Intrant = new Intrant();
 

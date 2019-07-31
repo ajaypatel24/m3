@@ -3,18 +3,19 @@ import MaterialTable from 'material-table'
 import axios from "axios/index";
 import {Form} from "react-bootstrap";
 {/*
-                <option value="kg">Kg</option>
-                <option value="t">Ton</option>
-                <option value="L">L</option>
-                <option value="m3">m3</option>
-                <option value="lbs">lbs</option>
-                <option value="tm">Ton (metric)</option>
-                <option value="gal">Gal</option>
-                <option value="bac240L">Dumpster (240L)</option>
-                <option value="bac360L">Dumpster (360L)</option>
-        <option value="VC">Cubic Yards</option>
-        <option value="teqCO2">GHG (Ton)</option>
-        <option value="kgeqCO2">GHG (Kg)</option>
+                <option value="1xY"> Once per year</option>
+                                                <option value="2xY"> Twice per year</option>
+                                                <option value="3xY"> Three times per year</option>
+                                                <option value="4xY"> Four times per year</option>
+                                                <option value="2xM"> Every two Months</option>
+                                                <option value="6W"> Every six weeks</option>
+                                                <option value="1xM"> Every month</option>
+                                                <option value="3W"> Every three weeks</option>
+                                                <option value="2W"> Every two weeks</option>
+                                                <option value="1W"> Every week</option>
+                                                <option value="3BD"> Every Three business days</option>
+                                                <option value="2BD"> Every Two business days</option>
+                                                <option value="1BD"> Each business day</option>
         */}
 
 export default class IntrantEditData extends React.Component {
@@ -46,7 +47,36 @@ export default class IntrantEditData extends React.Component {
 
                 },
                 },
-        { title: 'GES (kg)', field: 'GES_annuel', editable: 'never'},
+                { title: 'Frequence', field: 'y',
+
+                    lookup: {
+                        true: 'Yearly',
+                        false: 'Per Delivery'
+
+
+                    },
+                },
+                { title: 'Nombre de Transports', field: 'NbTransport'},
+                { title: 'Provenance', field: 'provenance'},
+                { title: "Frequence d'Achat", field: 'FreqAchat',
+                    lookup: {
+                        '1xY': "Once per year",
+                        '2xY': "Twice per year",
+                        '3xY': "Three per year",
+                        '4xY': "Four per year",
+                        '2xM': "Every two Months",
+                        '6W': "Every six weeks",
+                        '1xM': "Every month",
+                        '3W': "Every three weeks",
+                        '2W': "Every two weeks",
+                        '1W': "Every week",
+                        '3BD': "Every Three business days",
+                        '2BD': "Every Two business days",
+                        '1BD': "Every business day",
+                    },
+                },
+
+
 
 
             ],
@@ -108,6 +138,10 @@ export default class IntrantEditData extends React.Component {
                                    h.push(newData.nom_intrant);
                                    h.push(newData.quantite_an);
                                    h.push(newData.unite);
+                                   h.push(newData.NbTransport)
+                                   h.push(newData.y);
+                                   h.push(newData.provenance);
+                                   h.push(newData.FreqAchat)
 
 
 
