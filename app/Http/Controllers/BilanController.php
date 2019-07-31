@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 class BilanController extends Controller
 {
 
-        function sumX11($id) {
+        function sumX11($uid) {
             $data = array();
             $values = array();
             $q = DB::table('categorie')
@@ -37,7 +37,7 @@ class BilanController extends Controller
             foreach ($data as $v) {
                 $r = DB::table('procede')
                     ->select('Emission_GES')
-                    ->where('UID', '=', $id)
+                    ->where('UID', '=', $uid)
                     ->where('Categorie_idCategorie', '=', $v)
                     ->first();
 
@@ -53,7 +53,7 @@ class BilanController extends Controller
 
         }
 
-        function sumX13($id) {
+        function sumX13($uid) {
             $data = array();
             $values = array();
             $q = DB::table('categorie')
@@ -69,7 +69,7 @@ class BilanController extends Controller
             foreach ($data as $v) {
                 $r = DB::table('procede')
                     ->select('Emission_GES')
-                    ->where('UID', '=', $id)
+                    ->where('UID', '=', $uid)
                     ->where('Categorie_idCategorie', '=', $v)
                     ->first();
 
@@ -83,7 +83,7 @@ class BilanController extends Controller
         }
 
 
-    function sumX21($id) {
+    function sumX21($uid) {
     $data = array();
     $values = array();
     $q = DB::table('categorie')
@@ -99,7 +99,7 @@ class BilanController extends Controller
     foreach ($data as $v) {
         $r = DB::table('procede')
             ->select('Emission_GES')
-            ->where('UID', '=', $id)
+            ->where('UID', '=', $uid)
             ->where('Categorie_idCategorie', '=', $v)
             ->first();
 
@@ -112,7 +112,7 @@ class BilanController extends Controller
     return array_sum($values);
 }
 
-    function sumX22($id) {
+    function sumX22($uid) {
         $data = array();
         $values = array();
         $q = DB::table('categorie')
@@ -128,7 +128,7 @@ class BilanController extends Controller
         foreach ($data as $v) {
             $r = DB::table('procede')
                 ->select('Emission_GES')
-                ->where('UID', '=', $id)
+                ->where('UID', '=', $uid)
                 ->where('Categorie_idCategorie', '=', $v)
                 ->first();
 
@@ -141,23 +141,23 @@ class BilanController extends Controller
         return array_sum($values);
     }
 
-    function sumX31($id) {
+    function sumX31($uid) {
 
         $t = DB::table('intrants')
             ->select('GES_annuel')
             ->where('immobilisation', '=', 0)
-            ->where('UID','=',$id)
+            ->where('UID','=',$uid)
             ->sum('GES_annuel');
 
         return (float) $t;
     }
 
-    function sumX32($id) {
+    function sumX32($uid) {
 
         $t = DB::table('intrants')
             ->select('GES_annuel')
             ->where('immobilisation', '=', 1)
-            ->where('UID','=',$id)
+            ->where('UID','=',$uid)
             ->sum('GES_annuel');
 
         return (float) $t;
@@ -197,7 +197,7 @@ class BilanController extends Controller
 
 
     }
-    function sumProcede($id) {
+    function sumProcede($uid) {
         $PosteEmission = [
             "X11" => "Émissions directes des sources fixes de combustion",
             "X12" => "Émissions directes des sources mobiles de combustion",
@@ -227,12 +227,12 @@ class BilanController extends Controller
 
         $data = array();
 
-            $X11 = $this->sumX11($id);
-            $X13 = $this->sumX13($id);
-            $X21 = $this->sumX21($id);
-            $X22 = $this->sumX22($id);
-            $X31 = $this->sumX31($id);
-            $X32 = $this->sumX32($id);
+            $X11 = $this->sumX11($uid);
+            $X13 = $this->sumX13($uid);
+            $X21 = $this->sumX21($uid);
+            $X22 = $this->sumX22($uid);
+            $X31 = $this->sumX31($uid);
+            $X32 = $this->sumX32($uid);
 
 
 
