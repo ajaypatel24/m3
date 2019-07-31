@@ -121,20 +121,22 @@ class InventaireController extends Controller
      * add an intrant to the database based on user id
      *
      */
-    function addIntrant($id) {
-        $parameters =  json_decode($id); //decodes array to add parameters to database
+    function addIntrant($array, $uid) {
+        $parameters =  json_decode($array); //decodes array to add parameters to database
 
         foreach ($parameters as $e) {
             echo $e;
             echo "\n";
         }
 
+
+
         $Intrant = new Intrant();
 
         //returns exists if intrant with the same name
             if (DB::table('intrants')
-            ->where('nom_intrant', '=', request('NomIntrant'))
-            ->where('UID', '=', $id)
+            ->where('nom_intrant', '=', $parameters[0])
+            ->where('UID', '=', $uid)
             ->count() > 0) {
 
                 echo "exists";
@@ -155,10 +157,10 @@ class InventaireController extends Controller
                     ->Score_CC_uni;
 
 
-                $Intrant->idIntrant = request('NomIntrant');
-                $Mod = request('Yearly'); //per delivery or yearly
-                $Quantite = request('QuantiteAn');
-                $freq = request('Frequency');
+                $Intrant->idIntrant = $parameters[0];
+                $Mod = $parameters[4]; //per delivery or yearly
+                $Quantite = $parameters[1];
+                $freq = $parameters[6];
 
                 if ($Mod == 'true') { //per delivery specified
 
@@ -207,8 +209,8 @@ class InventaireController extends Controller
 
                 }
                 else { //yearly specified
-                    $Intrant->quantite_an = request('QuantiteAn');
-                    $Intrant->GES_annuel = $CoeffCC * request('QuantiteAn');
+                    $Intrant->quantite_an = $parameters[1];
+                    $Intrant->GES_annuel = $CoeffCC * $parameters[1];
                 }
 
 
@@ -217,19 +219,125 @@ class InventaireController extends Controller
                 //adding rest of values to database
 
                     $Intrant->Ressource_idressource = $r;
-                $Intrant->nom_intrant = request('NomIntrant');
+                $Intrant->nom_intrant = $parameters[0];
                 $Intrant->ressource = request('Ressource');
                 $Intrant->duree_vie_immo = request('DureeVie');
 
-                $Intrant->provenance = request('Provenance');
-                $Intrant->NbTransport = request('NbTransport');
-                $Intrant->unite = request('Unite');
-                $Intrant->UID = $id;
+                $Intrant->provenance = $parameters[5];
+                $Intrant->NbTransport = $parameters[3];
+                $Intrant->unite = $parameters[2];
+                $Intrant->UID = $uid;
                 $Intrant->save();
             }
     }
 
+    function addIntrantBackup($id) {
+        $parameters =  json_decode($id); //decodes array to add parameters to database
 
+        foreach ($parameters as $e) {
+            echo $e;
+            echo "\n";
+        }
+
+        $Intrant = new Intrant();
+
+        //returns exists if intrant with the same name
+        if (DB::table('intrants')
+                ->where('nom_intrant', '=', request('NomIntrant'))
+                ->where('UID', '=', $id)
+                ->count() > 0) {
+
+            echo "exists";
+        }
+
+        else {
+
+            $r = DB::table('ressource')
+                ->select('idRessource')
+                ->where('Nom_RessourceFR', '=', 'Fertilisant 1')
+                ->first()
+                ->idRessource;
+
+            $CoeffCC = DB::table('ressource')
+                ->select('Score_CC_uni')
+                ->where('idRessource', '=', $r)
+                ->first()
+                ->Score_CC_uni;
+
+
+            $Intrant->idIntrant = request('NomIntrant');
+            $Mod = request('Yearly'); //per delivery or yearly
+            $Quantite = request('QuantiteAn');
+            $freq = request('Frequency');
+
+            if ($Mod == 'true') { //per delivery specified
+
+                switch ($freq) {
+                    case '1xY':
+                        break;
+                    case '2xY':
+                        $Quantite = $Quantite * 2;
+                        break;
+                    case '3xY':
+                        $Quantite = $Quantite * 3;
+                        break;
+                    case '4xY':
+                        $Quantite = $Quantite * 4;
+                        break;
+                    case '2xM':
+                        $Quantite = $Quantite * 6;
+                        break;
+                    case '6M':
+                        $Quantite = $Quantite * 9;
+                        break;
+                    case '1xM':
+                        $Quantite = $Quantite * 12;
+                        break;
+                    case '3W':
+                        $Quantite = $Quantite * 16;
+                        break;
+                    case '2W':
+                        $Quantite = $Quantite * 24;
+                        break;
+                    case '1W':
+                        $Quantite = $Quantite * 48;
+                        break;
+                    case '3BD':
+                        $Quantite = $Quantite * 82;
+                        break;
+                    case '2BD':
+                        $Quantite = $Quantite * 125;
+                        break;
+                    case '1BD':
+                        $Quantite = $Quantite * 250;
+                        break;
+                }
+                $Intrant->quantite_an = $Quantite;
+                $Intrant->GES_annuel = $CoeffCC * $Quantite;
+
+            }
+            else { //yearly specified
+                $Intrant->quantite_an = request('QuantiteAn');
+                $Intrant->GES_annuel = $CoeffCC * request('QuantiteAn');
+            }
+
+
+
+
+            //adding rest of values to database
+
+            $Intrant->Ressource_idressource = $r;
+            $Intrant->nom_intrant = request('NomIntrant');
+            $Intrant->ressource = request('Ressource');
+            $Intrant->duree_vie_immo = request('DureeVie');
+
+            $Intrant->provenance = request('Provenance');
+            $Intrant->NbTransport = request('NbTransport');
+            $Intrant->unite = request('Unite');
+            $Intrant->UID = $id;
+            $Intrant->save();
+        }
+    }
     /**
      * @param $id
      * @return \Illuminate\Support\Collection
@@ -248,16 +356,26 @@ class InventaireController extends Controller
     }
 
     function editIntrant($NameData, $Nom, $Quantite, $Unite, $uid ) {
-        $r = DB::table('intrants')
-            ->where('nom_intrant', '=', $NameData)
-            ->where('UID', '=', $uid)
-            ->update([
-                'nom_intrant' => $Nom,
-                'quantite_an' => $Quantite,
-                'unite' => $Unite
-            ]);
+        if (DB::table('intrants')
+                ->where('nom_intrant', '=', $Nom)
+                ->where('UID', '=', $uid)
+                ->count() > 0) {
 
-        return $r;
+            echo $Nom;
+
+
+        }
+        else {
+            return DB::table('intrants')
+                ->where('nom_intrant', '=', $NameData)
+                ->where('UID', '=', $uid)
+                ->update([
+                    'nom_intrant' => $Nom,
+                    'quantite_an' => $Quantite,
+                    'unite' => $Unite
+                ]);
+
+        }
     }
 
 

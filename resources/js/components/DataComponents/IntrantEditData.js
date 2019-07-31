@@ -1,7 +1,7 @@
 import React from 'react'
 import MaterialTable from 'material-table'
 import axios from "axios/index";
-import {Form} from "react-bootstrap";
+import {Form, Alert} from "react-bootstrap";
 {/*
                 <option value="1xY"> Once per year</option>
                                                 <option value="2xY"> Twice per year</option>
@@ -22,7 +22,7 @@ export default class IntrantEditData extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: '',
+            error: false,
             columns: [
                 { title: 'Procede', field: 'nom_intrant' },
                 { title: 'Quantite', field: 'quantite_an' },
@@ -112,7 +112,13 @@ export default class IntrantEditData extends React.Component {
 
     render() {
         return (
+            <div>
+
+
+
+
             <MaterialTable
+
                 title="Intrants"
                 columns={this.state.columns}
                 data={this.state.Rows}
@@ -124,9 +130,21 @@ export default class IntrantEditData extends React.Component {
                        new Promise((resolve, reject) => {
                            setTimeout(() => {
                                {
+
+
                                    const data = this.state.Rows;
-                                   data.push(newData);
-                                   this.setState({ data }, () => resolve());
+                                   this.state.Rows.map(attribute => {
+                                       if (newData.nom_intrant === attribute.nom_intrant) {
+                                           this.setState({error: true})
+                                       }
+                                       else {
+                                           data.push(newData);
+                                           this.setState({ data }, () => resolve());
+                                       }
+                                   })
+
+
+
                                    let id = sessionStorage.getItem('UID');
                                    const data2 = newData;
 
@@ -135,17 +153,17 @@ export default class IntrantEditData extends React.Component {
 
                                    var h = [];
 
-                                   h.push(newData.nom_intrant);
-                                   h.push(newData.quantite_an);
-                                   h.push(newData.unite);
-                                   h.push(newData.NbTransport)
-                                   h.push(newData.y);
-                                   h.push(newData.provenance);
-                                   h.push(newData.FreqAchat)
+                                   h.push(newData.nom_intrant); //0
+                                   h.push(newData.quantite_an); //1
+                                   h.push(newData.unite); //2
+                                   h.push(newData.NbTransport) //3
+                                   h.push(newData.y); //4
+                                   h.push(newData.provenance); //5
+                                   h.push(newData.FreqAchat) //6
 
 
 
-                                   fetch('/intrants/' + JSON.stringify(h) , {
+                                   fetch('/intrants/' + JSON.stringify(h) + '/' + id ,{
                                        method: 'POST',
                                        body: JSON.stringify(data2),
                                        headers: {
@@ -254,6 +272,7 @@ export default class IntrantEditData extends React.Component {
 
 
             />
+            </div>
         )
     }
 }
