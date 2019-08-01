@@ -92,18 +92,10 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
 
     clearState = () => {
         this.setState({
-            NumAffiche: "",
-            NomIntrant: "",
-            QuantiteAn: "",
-            Ressource: "",
-            Immobilisation: "",
-            DureeVie: "",
-            NbTransport: "",
-            Unite: "",
-            Provenance: "",
-            Frequency: "",
-            Confirmed: "",
-            UID: sessionStorage.getItem('UID'),
+            Vehicule: '',
+            NombreVoitures: '',
+            JoursOuvrables: '',
+            Kilometres: '',
         })
     }
 
@@ -206,17 +198,20 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                 .then(function (response) {
                     console.log(response.data)
                     console.log('Request succeeded with JSON response', data);
+                    this.clearState();
 
 
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
                     console.log("why");
+                    this.clearState;
                 });
         }
 
         this.setState(({validated: true}));
         this.getTableRows();
+
 
 
 

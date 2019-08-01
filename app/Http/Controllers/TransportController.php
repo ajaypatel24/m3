@@ -88,7 +88,7 @@ class TransportController extends Controller
 
 
 
-        $Transport->Libelle_Deplacement = request('VehiculeCat');
+        $Transport->Libelle_Deplacement = 'Journalier';
         $Transport->Origine = 't';
         $Transport->Destination = 't';
         $Transport->idDeplacement = $VehiculeId.$InttoString;
