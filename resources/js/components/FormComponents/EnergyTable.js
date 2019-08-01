@@ -146,33 +146,38 @@ export default class EnergyTable extends React.Component {
             if(
                 NumberRegex.test(data.GazNaturel)
                 && NumberRegex.test(data.Propane)
-                /*
-                && NumberRegex.test(data.Biere)
+
                 && NumberRegex.test(data.Biodiesel)
-                && NumberRegex.test(data.Bois)
-                && NumberRegex.test(data.Charbon)
-                && NumberRegex.test(data.CNC)
-                && NumberRegex.test(data.Coke)
                 && NumberRegex.test(data.EssencePompe)
                 && NumberRegex.test(data.FioulDomestique)
                 && NumberRegex.test(data.GazolePompe)
-                && NumberRegex.test(data.Halocarbunes)
                 && NumberRegex.test(data.MazoutLeger)
-                && NumberRegex.test(data.MethaneAnimaux)
-                && NumberRegex.test(data.N2OAnimaux)
-                && NumberRegex.test(data.N2OSol)
-                && NumberRegex.test(data.Propane)
-                && NumberRegex.test(data.Soudure)
                 && NumberRegex.test(data.TotalElectricite)
-                && NumberRegex.test(data.VapeurFroid)
-                && NumberRegex.test(data.Vin)
+            /*
+            && NumberRegex.test(data.EssencePompe)
+            && NumberRegex.test(data.FioulDomestique)
+            && NumberRegex.test(data.GazolePompe)
+            && NumberRegex.test(data.Halocarbunes)
+            && NumberRegex.test(data.MazoutLeger)
+            && NumberRegex.test(data.MethaneAnimaux)
+            && NumberRegex.test(data.N2OAnimaux)
+            && NumberRegex.test(data.N2OSol)
+            && NumberRegex.test(data.Propane)
+            && NumberRegex.test(data.Soudure)
+            && NumberRegex.test(data.TotalElectricite)
+            && NumberRegex.test(data.VapeurFroid)
+            && NumberRegex.test(data.Vin)
 
-                 */
+             */
             ) {
                 console.log('true')
 
             }
             else {
+                if (data.Biodiesel === ""){
+                    console.log('hihi');
+                }
+
                 console.log("nah")
             }
     }
