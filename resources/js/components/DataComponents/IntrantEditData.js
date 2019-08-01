@@ -2,21 +2,7 @@ import React from 'react'
 import MaterialTable from 'material-table'
 import axios from "axios/index";
 import {Form, Alert} from "react-bootstrap";
-{/*
-                <option value="1xY"> Once per year</option>
-                                                <option value="2xY"> Twice per year</option>
-                                                <option value="3xY"> Three times per year</option>
-                                                <option value="4xY"> Four times per year</option>
-                                                <option value="2xM"> Every two Months</option>
-                                                <option value="6W"> Every six weeks</option>
-                                                <option value="1xM"> Every month</option>
-                                                <option value="3W"> Every three weeks</option>
-                                                <option value="2W"> Every two weeks</option>
-                                                <option value="1W"> Every week</option>
-                                                <option value="3BD"> Every Three business days</option>
-                                                <option value="2BD"> Every Two business days</option>
-                                                <option value="1BD"> Each business day</option>
-        */}
+
 
 export default class IntrantEditData extends React.Component {
     constructor(props) {
@@ -28,32 +14,13 @@ export default class IntrantEditData extends React.Component {
                 { title: 'Quantite', field: 'quantite_an' },
                 { title: 'Unite', field: 'unite' ,
 
-                lookup: {
-                kWh: 'kWh',
-                MWh: 'MWh',
-                    kg: 'kg',
-                    Ton: 'Ton',
-                    TonMetric: 'Ton (metric)',
-                    L: 'L',
-                    m3: 'm^3',
-                    lbs: 'lbs',
-                    Gal: 'gal',
-                    bac240L: 'Dumpster (240L)',
-                    bac360L: 'Dumpster (360L)',
-                    VC: 'cubic yard',
-                    teqCO2L: 'GHG (ton)',
-                    kgeqCO2L: 'GHG (kg)',
 
-
-                },
                 },
                 { title: 'Frequence', field: 'y',
 
                     lookup: {
-                        true: 'Yearly',
-                        false: 'Per Delivery'
-
-
+                        false: 'Yearly',
+                        true: 'Per Delivery'
                     },
                 },
                 { title: 'Nombre de Transports', field: 'NbTransport'},
@@ -137,11 +104,13 @@ export default class IntrantEditData extends React.Component {
                                        if (newData.nom_intrant === attribute.nom_intrant) {
                                            this.setState({error: true})
                                        }
-                                       else {
+                                   });
+
+                                       if (this.state.error === false) {
                                            data.push(newData);
                                            this.setState({ data }, () => resolve());
                                        }
-                                   })
+
 
 
 

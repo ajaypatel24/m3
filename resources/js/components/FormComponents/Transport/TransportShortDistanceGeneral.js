@@ -182,33 +182,42 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
     }
 
 
-    store = () => {
+    handleSubmit (e) {
         let data = this.state;
         console.log(data);
 
         let id = sessionStorage.getItem('UID');
 
-        fetch('/deplacement/' + id, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (response) {
-                console.log(response.data)
-                console.log('Request succeeded with JSON response', data);
-
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
+            fetch('/deplacement/' + id, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
+                .then(function (response) {
+                    console.log(response.data)
+                    console.log('Request succeeded with JSON response', data);
 
+
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+        }
+
+        this.setState(({validated: true}));
         this.getTableRows();
+
 
 
     }
@@ -229,51 +238,6 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
         window.location.reload();
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-
-        //VERY IMPORTANT
-        const data = this.state;
-        //checks all auth
-        const form = e.currentTarget;
-
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-
-        let id = sessionStorage.getItem('UID');
-
-
-        console.table([data]);
-        fetch('/intrants/' + id, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (response) {
-                console.log(response.data)
-                console.log('Request succeeded with JSON response', data);
-
-
-            })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
-
-        this.getTableRows();
-        this.clearState();
-
-
-
-    }
 
 
 
@@ -412,7 +376,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                 <Row>
                                     <Col lg="4">
                                         <Button type="submit"
-                                                onClick={this.store}>Submit</Button>
+                                                onClick={this.handleSubmit}>Submit</Button>
                                     </Col>
                                 </Row>
 

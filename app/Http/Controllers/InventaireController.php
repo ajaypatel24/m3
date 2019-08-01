@@ -161,6 +161,9 @@ class InventaireController extends Controller
                 $Mod = $parameters[4]; //per delivery or yearly
                 $Quantite = $parameters[1];
                 $freq = $parameters[6];
+                echo $freq;
+                echo "\n";
+                echo $Mod;
 
                 if ($Mod == 'true') { //per delivery specified
 

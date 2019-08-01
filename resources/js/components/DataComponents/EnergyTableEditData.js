@@ -11,7 +11,19 @@ export default class EnergyTableEditData extends React.Component {
             columns: [
                 { title: 'Procede', field: 'Nom_procede' },
                 { title: 'Quantite', field: 'Quantite_an' },
-                { title: 'Unite', field: 'Unite_an' },
+                {
+                    title: 'Unite', field: 'Unite_an',
+                    lookup: {
+                        Kg: 'Kg',
+                        KWH: 'kWh',
+                        Litre: 'L'
+
+
+                    },
+                },
+
+
+
                 { title: 'GES (kg)', field: 'Emission_GES' },
                 {/*
                 { title: 'Birth Year', field: 'birthYear', type: 'numeric' },

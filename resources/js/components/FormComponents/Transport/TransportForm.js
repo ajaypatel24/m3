@@ -182,25 +182,32 @@ export default class TransportForm extends React.Component {
 
         let id = sessionStorage.getItem('UID');
 
-        fetch('/deplacement/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                "Content-type": "application/json"
-            }
-
-        })
-            .then(function (response) {
-                console.log(response.data)
-                console.log('Request succeeded with JSON response', data);
-
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
+            fetch('/deplacement/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-type": "application/json"
+                }
 
             })
-            .catch(function (error) {
-                console.log('Request failed', error);
-                console.log("why");
-            });
+                .then(function (response) {
+                    console.log(response.data)
+                    console.log('Request succeeded with JSON response', data);
+
+
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
+        }
 
         this.getTableRows();
 
@@ -226,19 +233,13 @@ export default class TransportForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-
+        let id = sessionStorage.getItem('UID');
         //VERY IMPORTANT
         const data = this.state;
         //checks all auth
-        const form = e.currentTarget;
-
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
 
 
-        let id = sessionStorage.getItem('UID');
+
 
 
         console.table([data]);
