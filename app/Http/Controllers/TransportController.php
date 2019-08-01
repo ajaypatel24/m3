@@ -14,6 +14,7 @@ class TransportController extends Controller
         $array = [];
         $TransportMethods = DB::table('typevehicule')
             ->select('Type_transport')
+            ->where('Type_transport', '!=', 'Journalier')
             ->distinct()
             ->get();
 
@@ -34,6 +35,7 @@ class TransportController extends Controller
         $TransportMethods = DB::table('typevehicule')
             ->select('Lib_VehiculeEN')
             ->where('Type_transport', '=', $category)
+            ->where('Lib_VehiculeEN','!=', "")
             ->distinct()
             ->get();
 

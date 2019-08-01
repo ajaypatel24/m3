@@ -1,43 +1,168 @@
-import React from 'react';
-import {Button, Col, Form, Row} from 'react-bootstrap';
-import {FormattedHTMLMessage} from "react-intl";
+import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
 
+import React from "react";
+import axios from 'axios/index';
+import { FormattedHTMLMessage } from 'react-intl'
 
 /**
- * Additonal info to provide once user signs in
- *
- *
+ * Energy table with conditional rendering allowing users
+ * to add their energy expenditures to the database
  */
-
 export default class DechetDirect extends React.Component {
-    /**
-     *
-     * @param props
-     * Fonction: role at company
-     * Telephone: Number 1
-     * Telephone2: Optional number 2
-     * PosteTelephone: Work Number
-     * Langue: FR or EN
-     */
+
+
     constructor(props) {
         super(props);
 
+
+        this.handleChange = this.handleChange.bind(this); //handle change function
+        this.handleSubmit = this.handleSubmit.bind(this); //handle submit function
+
+
         this.state = {
-            Fonction: "",
-            Telephone: "",
-            Telephone2: "",
-            PosteTelephone: "",
-            Langue: "",
+
+            GazNaturel: "",
+            GazUnite: "",
+
+            Propane: "",
+            PropaneUnite: "",
+
+            EssencePompe: "",
+            EssenceUnite: "",
+
+            GazolePompe: "",
+            GazoleUnite: "",
+
+            FioulDomestique: "",
+            FioulUnite: "",
+
+            MazoutLeger: "",
+            MazoutUnite: "",
+
+            Charbon: "",
+            CharbonUnite: "",
+
+            Cammionage: "",
+            CammionageUnite: "",
+
+            TotalElectricite: "",
+            ElectriciteUnite: "",
+
+            Fossil: "",
+            FossileUnite: "",
+
+            Biodiesel: "",
+            BiodieselUnite: "",
+
+            Bois: "",
+            BoisUnite: "",
+
+            Soudure: "",
+            SoudureUnite: "",
+
+            CNC: "",
+            UsinageUnite: "",
+
+            VapeurFroid: "",
+            VapeurUnite: "",
+
+            Vin: "",
+            VinUnite: "",
+
+            Biere: "",
+            BiereUnite: "",
+
+            Halocarbunes: "",
+            HaloUnite: "",
+
+            AutreMethane: "",
+            AutreMethaneUnite: "",
+
+            n2osol: "",
+            n2osolUnite: "",
+
+            n2oanimaux: "",
+            n2oanimauxUnite: "",
+
+            MethaneAnimaux: "",
+            MethaneAnimauxUnite: "",
+
+            Coke: "",
+            CokeUnite: "",
+
+
+            SCIAN: "",
+            UID: "",
+            TableSubmit: sessionStorage.getItem('TableSubmit'),
+            EnergyCategories: [],
+            validated: false,
+            error: '',
+            TableData: [],
+            DisplayData: sessionStorage.getItem('Empty'),
+
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
-    /**
-     * Allows user to write into forms
-     * @param e
-     */
+    componentDidMount() {
+
+
+        let uid = sessionStorage.getItem('UID');
+        console.log(uid);
+        axios.get('/scian/' + uid)
+            .then(response => {
+                console.log(response.data);
+                this.setState({SCIAN: response.data, UID: uid});
+            });
+
+        axios.get('/test/')
+            .then(response => {
+                console.log(response.data);
+                this.setState({EnergyCategories: response.data});
+            });
+
+
+        console.log(this.state.EnergyCategories);
+
+        axios.get('/inventaire/' + uid)
+            .then(response => {
+                this.setState({TableData: response.data})
+
+                console.log(this.state.TableData)
+                console.log('yes');
+
+            });
+
+        console.log(this.state.TableData);
+        if (this.state.TableData != null) {
+            console.log('notnull')
+        }
+    }
+
+    componentWillMount = () => {
+        if (this.state.TableData[0] == "") {
+            sessionStorage.setItem('Empty', 'true')
+        } else {
+            console.log(this.state.TableData[0])
+            sessionStorage.setItem('Empty', 'false')
+        }
+    }
+
+
+
+
+    /*
+        componentDidMount() {
+            axios.get('/prestart')
+                .then(response => {
+                    this.setState({categories: response.data});
+
+                });
+        }
+        */
+
+
     handleChange(e) {
 
         this.setState({
@@ -50,27 +175,33 @@ export default class DechetDirect extends React.Component {
     };
 
 
-    /**
-     * Posts information into the database using the contact controller method
-     * checks that all forms are valid beforehand
-     * @param e
-     */
     handleSubmit(e) {
         e.preventDefault();
-
 
         const data = this.state; //VERY IMPORTANT
 
         //checks all auth
+        /*
         const form = e.currentTarget;
 
-        //checks that all forms are valid before submission
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
-        } else { //post to database by using the contact/{id} route
-            let id = sessionStorage.getItem('UID');
-            fetch('/contact/' + id, {
+        }
+        else {
+        */
+        let g = this;
+
+        console.log(data);
+
+
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        } else {
+
+            fetch('/categorie', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -80,178 +211,204 @@ export default class DechetDirect extends React.Component {
 
             })
                 .then(function (data) {
-                    console.log("success")
-                    //console.log('Request succeeded with JSON response', data);
+                    console.log('Request succeeded with JSON response', data);
+                    console.log(data.status);
+                    if (data.status === 500) {
+                        g.setState({error: 'All fields must be numerical'})
+                    } else if (data.status === 200) {
+                        g.setState({error: 'Data submitted successfully'})
+                        //window.location.reload();
+                    }
                 })
                 .catch(function (error) {
-                    console.log('Request failed', error);
-                    //console.log("why");
-                });
 
+                    console.log('Request failed', error);
+                    console.log("why");
+                });
         }
         this.setState(({validated: true}));
-        console.log(data);
+
+        /* this.setState(({validated: true})); */
+        console.log((data));
 
 
     };
 
+
     /**
-     * Make use of Form, Form.Row, Form.Group to make contact information form page
-     * General form to add a form box
+     * Restrictions (2019-06-14)
      *
-     * <Form.Group as={Col} controlId="formGridEmail">
-     * <Form.Label>Fonction</Form.Label>
-     * <Form.Control
-     *      name="{name}" //include same name in state
-     *      required
-     *      value={this.state.{statename}} //
-     *      onChange={this.handleChange}
-     *      type="text"
-     *      placeholder="{name}"
-     *      pattern="^[a-zA-Z]+$" //pattern that the input MUST obey
-     *      />
-     * </Form.Group>
-     * @returns {*}
+     * CHARBON                  21; 32; 33
+     * COKE                     21; 32; 33
+     * BOIS                     11; 21; 32; 33
+     * ACHATS VAPEUR/FROID      21; 32; 33
+     * FERMENTATION VIN         31
+     * GAZIFICATION BIERRE      31
+     * EMISSION N2O ENGRAIS SOL 11; 31
+     * EMISSION N2O ANIMAUX     11
+     * AUTRES EMISSIONS METHANE 11
+     * EMISSIONS HALOCARBURES   21; 32; 33
+     * USINAGE ET TOURNAGE      21; 32; 33
+     * SOUDURE                  21; 32; 33
+     *
+     *
      */
     render() {
         const {validated} = this.state;
 
         return (
+
+
             <div>
+
+
                 <Row>
-                    <Col lg="12">
-                        <h1> Déchets Directs </h1>
-                        <h6> Remplir les formulaires </h6>
+                    <Col lg="4">
+                        <h1> Dechets Directs </h1>
+                    </Col>
+                    <Col lg="4">
+
+                        {
+
+                            this.state.DisplayData === 'true' ?
+                                <Alert variant="info" content>Data Submitted, Click to Edit</Alert>
+
+                                :
+
+                                null
+                        }
+                    </Col>
+                    <Col lg="5">
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h6> Remplire les données nécessaires </h6>
                     </Col>
                 </Row>
 
-                <br/>
 
                 <Form noValidate
                       validated={validated}
-                      onSubmit={e => this.handleSubmit(e)}
-                      method="POST" action="/"
-                      enctype="multipart/form-data">
+                      onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
+                    <Table responsive> {/**/}
+                        <thead>
+                        <tr>
+                            <th colSpan="3">Dechets Directs</th>
+                        </tr>
+                        <tr>
+                            <th>Fin de vie des matières résiduelles</th>
+                            <th>Consommation</th>
+                            <th>Unite</th>
 
-                    <Form.Row>
-                        <Col lg="4">
-                            <Form.Group controlId="formGridEmail">
-                                <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Role"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></Form.Label>
-                                <Form.Control
-                                    name="Fonction"
-                                    required
-                                    value={this.state.Fonction}
-                                    onChange={this.handleChange}
-                                    type="text"
-                                    placeholder="Fonction"
-                                    pattern="^[a-zA-Z]+$"
-                                />
-                            </Form.Group>
-                        </Col>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                        <Col lg="4">
-                            <Form.Group controlId="formGridCity">
-                                <Form.Label><FormattedHTMLMessage id="ContactInformationForm.City"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></Form.Label>
-                                <Form.Control
-                                    name="City"
-                                    required
-                                    type="text"
-                                    placeholder="City"
-                                    onChange={this.handleChange}
-                                    value={this.state.City}
-                                    pattern="^[a-zA-Z]+$"
-                                />
-                            </Form.Group>
-                        </Col>
-
-                        <Col lg="4">
-                            <Form.Group controlId="formGridState">
-                                <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Language"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></Form.Label>
-                                <Form.Control as="select"
-                                              name="Langue"
-                                              required
+                        <tr>
+                            <td>Recycling of mixed waste</td>
+                            <td><Form.Control
+                                name="GazNaturel"
+                                placeholder="valeur"
+                                value={this.state.GazNaturel}
+                                onChange={this.handleChange}
+                                pattern="^[0-9]+$">
+                            </Form.Control></td>
+                            <td><Form.Control as="select" name="GazUnite"
                                               onChange={this.handleChange}>
-                                    <option></option>
-                                    <option value="EN">EN</option>
-                                    <option value="FR">FR</option>
-                                </Form.Control>
-                            </Form.Group>
+                                <option value="Kg">Kg</option>
+                            </Form.Control></td>
+
+                        </tr>
+                        <tr>
+                            <td>Infill of domestic waste</td>
+                            <td><Form.Control
+                                name="Propane"
+                                placeholder="valeur"
+                                value={this.state.Propane}
+                                onChange={this.handleChange}
+                                pattern="^[0-9]+$">
+                            </Form.Control></td>
+                            <td><Form.Control as="select" name="PropaneUnite"
+                                              onChange={this.handleChange}
+                            >
+                                <option value="Kg">Kg</option>
+                            </Form.Control></td>
+
+                        </tr>
+                        <tr>
+                            <td>Incineration of domestic waste</td>
+                            <td><Form.Control
+                                name="EssencePompe"
+                                placeholder="valeur"
+                                value={this.state.EssencePompe}
+                                onChange={this.handleChange}
+                                pattern="^[0-9]+$"
+                            ></Form.Control></td>
+                            <td><Form.Control as="select" name="EssenceUnite"
+                                              onChange={this.handleChange}>
+                                <option value="Kg">Kg</option>
+                            </Form.Control></td>
+
+                        </tr>
+
+
+
+
+
+
+
+
+                        <th colSpan="3">Matière organique</th>
+                        <tr>
+                            <td>Composed organic material</td>
+                            <td><Form.Control
+                                name="GazolePompe"
+                                placeholder="valeur"
+                                value={this.state.GazolePompe}
+                                onChange={this.handleChange}
+                                pattern="^[0-9]+$"
+                            ></Form.Control></td>
+                            <td><Form.Control as="select" name="GazoleUnite"
+                                              onChange={this.handleChange}>
+                                <option value="Kg">Kg</option>
+                            </Form.Control></td>
+
+                        </tr>
+
+
+
+
+
+
+                        </tbody>
+                    </Table>
+                    <Row>
+                        <Col lg="3">
+                            <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                         </Col>
+                        <Col lg="9">
+                            {
+                                {
+                                    'All fields must be numerical':
+                                        <Alert variant="danger"
+                                               className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                    'Data submitted successfully':
+                                        <Alert variant="success"
+                                               className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                    '':
+                                        null,
+                                }[this.state.error]
+                            }
+                        </Col>
+                    </Row>
 
-
-                    </Form.Row>
-
-                    <Form.Row>
-
-                        <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone"
-                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                              description="Welcome header on app main page"
-                                                              values={{what: 'react-intl'}}/></Form.Label>
-                            <Form.Control
-                                name="Telephone"
-                                required
-                                value={this.state.Telephone}
-                                onChange={this.handleChange}
-                                type="text"
-                                placeholder="Telephone"
-                                pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-                            />
-                        </Form.Group>
-
-
-
-                        <Form.Group as={Col} controlId="formGridAddress1">
-                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.Telephone2"
-                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                              description="Welcome header on app main page"
-                                                              values={{what: 'react-intl'}}/></Form.Label>
-                            <Form.Control
-                                name="Telephone2"
-                                value={this.state.Telephone2}
-                                onChange={this.handleChange}
-                                type="text"
-                                placeholder="Telephone"
-                                pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-
-                            />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label><FormattedHTMLMessage id="ContactInformationForm.WorkTelephone"
-                                                              defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                              description="Welcome header on app main page"
-                                                              values={{what: 'react-intl'}}/></Form.Label>
-                            <Form.Control
-                                name="PosteTelephone"
-                                required
-                                value={this.state.PosteTelephone}
-                                onChange={this.handleChange}
-                                type="text"
-                                placeholder="Poste Telephone"
-                                pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
-
-                            />
-                        </Form.Group>
-                    </Form.Row>
-
-
-
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
                 </Form>
-            </div>
-        );
 
+
+            </div>
+
+
+        )
     }
 }

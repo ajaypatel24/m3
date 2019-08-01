@@ -43,7 +43,7 @@ export default class TransportFormShortDistance extends React.Component {
 
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleChange2 = this.handleChange2.bind(this);
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTableRows = this.getTableRows.bind(this);
         this.changeDelete = this.changeDelete.bind(this);
@@ -60,6 +60,13 @@ export default class TransportFormShortDistance extends React.Component {
         console.log(this.state.VehiculeCat);
         this.setState({LongDistance: 'Step1'})
 
+
+        console.log('executes');
+        axios.get('/libelledata/' + 'journalier')
+            .then(response => {
+                console.log(response.data);
+                this.setState({Libelle: response.data});
+            });
 
 
     }
@@ -135,22 +142,6 @@ export default class TransportFormShortDistance extends React.Component {
         console.log("Value: ", e.target.value);
     }
 
-    handleChange2(e) {
-
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
-
-        console.log('executes');
-        axios.get('/libelledata/' + e.target.value)
-            .then(response => {
-                console.log(response.data);
-                this.setState({Libelle: response.data});
-            });
-    }
 
 
     getTableRows = () => {
@@ -370,32 +361,6 @@ export default class TransportFormShortDistance extends React.Component {
                                     </Row>
                                     <br/>
                                     <Row>
-                                        <Col lg="5">
-
-                                            <Form.Label><FormattedHTMLMessage
-                                                id="TransportForm.VehiculeCategory"
-                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                description="Welcome header on app main page"
-                                                values={{what: 'react-intl'}}/></Form.Label>
-                                            <Form.Control as='select'
-                                                          name="VehiculeCat"
-                                                          required
-                                                          type="text"
-                                                          placeholder="Quantite"
-                                                          onChange={this.handleChange2}
-                                                          value={this.state.VehiculeCat}
-
-                                            >
-
-
-                                                <option></option>
-                                                {this.state.rows.map(vehicule => (
-                                                    <option>
-                                                        {vehicule}
-                                                    </option>
-                                                ))}
-                                            </Form.Control>
-                                        </Col>
 
                                         <Col lg="7">
 

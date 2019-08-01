@@ -411,7 +411,7 @@ export default class TransportFormLongDistance extends React.Component {
                                                           disabled={this.state.VehiculeCat === null}
                                             >
 
-                                                <option></option>
+
                                                 {this.state.Libelle.map(vehicule => (
                                                     <option>
                                                         {vehicule}

@@ -62,6 +62,16 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
 
 
 
+
+        console.log('executes');
+        axios.get('/libelledata/' + 'journalier/')
+            .then(response => {
+                console.log(response.data);
+                this.setState({Libelle: response.data});
+            });
+
+
+
     }
 
 
@@ -146,7 +156,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
         console.log("Value: ", e.target.value);
 
         console.log('executes');
-        axios.get('/libelledata/' + e.target.value)
+        axios.get('/libelledata/' + 'journalier/')
             .then(response => {
                 console.log(response.data);
                 this.setState({Libelle: response.data});
@@ -309,32 +319,6 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
 
 
                                     <Row>
-                                        <Col lg="5">
-
-                                            <Form.Label><FormattedHTMLMessage
-                                                id="TransportForm.VehiculeCategory"
-                                                defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                description="Welcome header on app main page"
-                                                values={{what: 'react-intl'}}/></Form.Label>
-                                            <Form.Control as='select'
-                                                          name="VehiculeCat"
-                                                          required
-                                                          type="text"
-                                                          placeholder="Quantite"
-                                                          onChange={this.handleChange2}
-                                                          value={this.state.VehiculeCat}
-
-                                            >
-
-
-                                                <option></option>
-                                                {this.state.rows.map(vehicule => (
-                                                    <option>
-                                                        {vehicule}
-                                                    </option>
-                                                ))}
-                                            </Form.Control>
-                                        </Col>
 
                                         <Col lg="7">
 
@@ -350,7 +334,6 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                                           placeholder="Quantite"
                                                           onChange={this.handleChange}
                                                           value={this.state.Vehicule}
-                                                          disabled={this.state.VehiculeCat === null}
                                             >
 
                                                 <option></option>
