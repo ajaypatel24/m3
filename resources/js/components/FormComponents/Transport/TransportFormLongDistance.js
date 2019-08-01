@@ -15,28 +15,17 @@ export default class TransportFormLongDistance extends React.Component {
 
         this.state = {
 
-            NumAffiche: "",
-            NomIntrant: "",
-            QuantiteAn: "",
-            Ressource: "",
-            Immobilisation: "",
-            DureeVie: "",
-            NbTransport: "",
-            Unite: "",
-            Provenance: "",
-            Frequency: "",
-            Yearly: "",
-            Delete: true,
+            NomVoyage: '',
+            Origine: '',
+            Destination: '',
+            NombrePassagers: '',
+            FrequenceAnnuelle: '',
+            Kilometres: '',
+            Vehicule: '',
+            VehiculeCat: '',
             UID: sessionStorage.getItem('UID'),
             rows: [],
             Libelle: [],
-            NombreVoiture: '',
-            JoursOuvrables: '',
-            SpecificOrGeneral: '',
-            VehiculeCat: '',
-            Vehicule: '',
-            Kilometres: '',
-            Confirmed: '',
             LongDistance: sessionStorage.getItem('LongDistance')
 
         };
@@ -184,12 +173,17 @@ export default class TransportFormLongDistance extends React.Component {
         let id = sessionStorage.getItem('UID');
 
         const form = e.currentTarget;
+        console.log(form.checkValidity());
+        console.log('boi');
         if (form.checkValidity() === false) {
+
+            console.log(form.checkValidity)
             e.preventDefault();
             e.stopPropagation();
+
         }
         else {
-            fetch('/deplacement/', {
+            fetch('/deplacementlong/' + id, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -326,13 +320,13 @@ export default class TransportFormLongDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="Kilometres"
+                                                name="NomVoyage"
                                                 required
                                                 type="text"
                                                 placeholder="Nom Voyage"
                                                 onChange={this.handleChange}
-                                                value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                value={this.state.NomVoyage}
+                                                pattern="^[a-zA-Z]+$"
                                             />
                                         </Col>
 
@@ -343,13 +337,13 @@ export default class TransportFormLongDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="Kilometres"
+                                                name="Origine"
                                                 required
                                                 type="text"
                                                 placeholder="Origine"
                                                 onChange={this.handleChange}
-                                                value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                value={this.state.Origine}
+                                                pattern="^[a-zA-Z]+$"
                                             />
                                         </Col>
 
@@ -360,13 +354,13 @@ export default class TransportFormLongDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="Kilometres"
+                                                name="Destination"
                                                 required
                                                 type="text"
                                                 placeholder="Destination"
                                                 onChange={this.handleChange}
-                                                value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                value={this.state.Destination}
+                                                pattern="^[a-zA-Z]+$"
                                             />
                                         </Col>
                                     </Row>
@@ -386,7 +380,7 @@ export default class TransportFormLongDistance extends React.Component {
                                                           name="VehiculeCat"
                                                           required
                                                           type="text"
-                                                          placeholder="Quantite"
+                                                          placeholder="VehiculeCat"
                                                           onChange={this.handleChange2}
                                                           value={this.state.VehiculeCat}
 
@@ -420,6 +414,7 @@ export default class TransportFormLongDistance extends React.Component {
                                             >
 
 
+                                                <option></option>
                                                 {this.state.Libelle.map(vehicule => (
                                                     <option>
                                                         {vehicule}
@@ -446,7 +441,7 @@ export default class TransportFormLongDistance extends React.Component {
                                                 placeholder="Kilometres"
                                                 onChange={this.handleChange}
                                                 value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 
@@ -457,13 +452,13 @@ export default class TransportFormLongDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="NombreVoitures"
+                                                name="NombrePassagers"
                                                 required
                                                 type="text"
                                                 placeholder="Nombre de Passagers"
                                                 onChange={this.handleChange}
-                                                value={this.state.NombreVoitures}
-                                                pattern="^[0-9]$"
+                                                value={this.state.NombrePassagers}
+                                                pattern="^[0-9]+$"
 
                                             />
                                         </Col>
@@ -475,13 +470,13 @@ export default class TransportFormLongDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="JoursOuvrables"
+                                                name="FrequenceAnnuelle"
                                                 required
                                                 type="text"
                                                 placeholder="Frequence Annuelle"
                                                 onChange={this.handleChange}
-                                                value={this.state.JoursOuvrables}
-                                                pattern="^[0-9]$"
+                                                value={this.state.FrequenceAnnuelle}
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 

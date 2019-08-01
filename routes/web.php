@@ -64,6 +64,8 @@ Route::get('/test/', 'CategorieController@getEnergyCategory');
 
 
 Route::post('/deplacement/{id}', 'TransportController@shortDeplacement');
+
+Route::post('/deplacementlong/{id}', 'TransportController@longDeplacement');
 Route::get('/transport/{id}', 'TransportController@getSubmissions');
 
 

@@ -40,14 +40,14 @@ class Deplacement extends Migration
 
 
             $table->string('idDeplacement', 20)->primary();
-            $table->string('Libelle_Deplacement',30)->nullable();
+            $table->string('Libelle_Deplacement',200)->nullable();
             $table->string('Origine', 60);
             $table->string('Destination', 60);
             $table->integer('Nb_km_AR');
             $table->integer('Nb_voyageurs')->default(1);
             $table->integer('Nb_voyageurs_An')->default(1);
             $table->string('Type_Deplacement', 150);
-            $table->decimal('Emission_GES',18,7);
+            $table->decimal('Emission_GES',60,7);
             $table->string('UID', 60);
             $table->boolean('Vehicule_Compagnie')->nullable();
             $table->integer('Covoiturage')->default(1);

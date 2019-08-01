@@ -98,7 +98,6 @@ class TransportController extends Controller
         $Transport->Nb_voyageurs = request('NombreVoitures');
         $Transport->Type_Deplacement = request('Vehicule');
 
-        $Transport->Type_Deplacement = request('Vehicule');
         $Transport->Covoiturage = 1;
 
         $Transport->Emission_GES = request('Kilometres') * request('NombreVoitures') * 1 * $CoeffGES;
@@ -106,6 +105,60 @@ class TransportController extends Controller
 
 
         $Transport->save();
+
+
+
+
+    }
+
+    public function longDeplacement(request $request) {
+        $Transport = new Deplacement();
+        $Random = mt_rand(1,100);
+        $InttoString = intval($Random);
+
+        $VehiculeId = DB::table('typevehicule') //ideal query to extract a single value
+        ->select('idVehicule')
+            ->where('Lib_VehiculeEN', '=', request('Vehicule'))
+            ->first()
+            ->idVehicule;
+
+
+        $CoeffGES = DB::table('typevehicule')
+            ->select('Coeff_GES_km')
+            ->where('Lib_VehiculeEN', '=', request('Vehicule'))
+            ->first()
+            ->Coeff_GES_km;
+
+
+        $Transport->TypeVehicule_idVehicule = $VehiculeId;
+        //$TransportEntry->Inventaire_idInventaire = "-1";
+        $Transport->Categorie_idCategorie = "cat30";
+
+
+
+
+        $Transport->Libelle_Deplacement = request('Libelle_Deplacement');
+        $Transport->Origine = request('Origine');
+        $Transport->Destination = request('Destination');
+        $Transport->idDeplacement = $VehiculeId.$InttoString;
+        $Transport->UID = request('UID');
+        $Transport->Nb_km_AR = request('Kilometres');
+
+        $Transport->Nb_voyageurs_An = request('NombrePassagers');
+        $Transport->Nb_voyageurs = request('NombrePassagers');
+        $Transport->Libelle_Deplacement = request('Vehicule');
+        $Transport->Type_Deplacement = request('VehiculeCat');
+
+        $Transport->Covoiturage = 1;
+
+        $Transport->Emission_GES = request('Kilometres') * request('NombreVoitures') * 1 * $CoeffGES;
+
+
+
+        $Transport->save();
+
+
+
 
 
 

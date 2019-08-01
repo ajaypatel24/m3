@@ -4,6 +4,8 @@ import React from "react";
 import axios from 'axios/index';
 import { FormattedHTMLMessage } from 'react-intl'
 
+const NumberRegex = new RegExp("^[0-9]+$");
+
 /**
  * Energy table with conditional rendering allowing users
  * to add their energy expenditures to the database
@@ -140,6 +142,41 @@ export default class EnergyTable extends React.Component {
             }
     }
 
+    validateInput(data) {
+            if(
+                NumberRegex.test(data.GazNaturel)
+                && NumberRegex.test(data.Propane)
+                /*
+                && NumberRegex.test(data.Biere)
+                && NumberRegex.test(data.Biodiesel)
+                && NumberRegex.test(data.Bois)
+                && NumberRegex.test(data.Charbon)
+                && NumberRegex.test(data.CNC)
+                && NumberRegex.test(data.Coke)
+                && NumberRegex.test(data.EssencePompe)
+                && NumberRegex.test(data.FioulDomestique)
+                && NumberRegex.test(data.GazolePompe)
+                && NumberRegex.test(data.Halocarbunes)
+                && NumberRegex.test(data.MazoutLeger)
+                && NumberRegex.test(data.MethaneAnimaux)
+                && NumberRegex.test(data.N2OAnimaux)
+                && NumberRegex.test(data.N2OSol)
+                && NumberRegex.test(data.Propane)
+                && NumberRegex.test(data.Soudure)
+                && NumberRegex.test(data.TotalElectricite)
+                && NumberRegex.test(data.VapeurFroid)
+                && NumberRegex.test(data.Vin)
+
+                 */
+            ) {
+                console.log('true')
+
+            }
+            else {
+                console.log("nah")
+            }
+    }
+
     componentWillMount = () => {
         if (this.state.TableData[0] == "") {
             sessionStorage.setItem('Empty', 'true')
@@ -199,6 +236,9 @@ export default class EnergyTable extends React.Component {
 
         const data = this.state; //VERY IMPORTANT
 
+
+
+        this.validateInput(data);
         //checks all auth
         /*
         const form = e.currentTarget;
@@ -211,10 +251,11 @@ export default class EnergyTable extends React.Component {
         */
         let g = this;
 
-        console.log(data);
 
 
         const form = e.currentTarget;
+        console.log(form.checkValidity());
+        console.log(form);
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
