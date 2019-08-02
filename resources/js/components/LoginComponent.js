@@ -419,6 +419,12 @@ export default class LoginComponent extends React.Component {
 
                                                 <Row>
 
+                                                    <Col lg="7">Forgot password</Col>
+                                                    <Col lg="4"></Col>
+                                                </Row>
+<br/>
+                                                <Row>
+
                                                     <Col>
                                                         <Button variant="secondary" onClick={this.handleLoginRequest}
                                                                 onKeyDown={handleKeyDown}><FormattedHTMLMessage
