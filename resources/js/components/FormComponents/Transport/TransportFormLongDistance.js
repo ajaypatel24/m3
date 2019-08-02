@@ -1,10 +1,11 @@
 import React from 'react';
-import {Col, Form, Row, Button  } from "react-bootstrap";
+import {Col, Form, Row, Button, Alert  } from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
 
 import Stepper from './Stepper'
-
+const NumberRegex = new RegExp("^[0-9]+$");
+const WordRegex = new RegExp("^[A-z]+$");
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
@@ -26,7 +27,8 @@ export default class TransportFormLongDistance extends React.Component {
             UID: sessionStorage.getItem('UID'),
             rows: [],
             Libelle: [],
-            LongDistance: sessionStorage.getItem('LongDistance')
+            LongDistance: sessionStorage.getItem('LongDistance'),
+            error: false,
 
         };
 
@@ -165,7 +167,22 @@ export default class TransportFormLongDistance extends React.Component {
         return localStorage.getItem('cat');
     }
 
-
+    validate(data) {
+        if (
+            WordRegex.test(data.Origine) &&
+            WordRegex.test(data.Destination) &&
+            WordRegex.test(data.NomVoyage) &&
+            NumberRegex.test(data.Kilometres) &&
+            NumberRegex.test(data.NombrePassagers) &&
+            NumberRegex.test(data.FrequenceAnnuelle)
+        ) {
+            this.setState({error: false})
+            return true
+        }
+        else {
+            this.setState({error: true})
+        }
+    }
     handleSubmit (e){
         let data = this.state;
         console.log(data);
@@ -175,7 +192,7 @@ export default class TransportFormLongDistance extends React.Component {
         const form = e.currentTarget;
         console.log(form.checkValidity());
         console.log('boi');
-        if (form.checkValidity() === false) {
+        if (this.validate(data) === false) {
 
             console.log(form.checkValidity)
             e.preventDefault();
@@ -493,6 +510,16 @@ export default class TransportFormLongDistance extends React.Component {
                                     <Col lg="4">
                                         <Button type="submit"
                                                 onClick={this.handleSubmit}>Submit</Button>
+                                    </Col>
+                                    <Col lg="8">
+                                        {
+                                        this.state.error ?
+                                            <Alert variant="danger">Please check your input</Alert>
+
+                                            :
+
+                                            null
+                                        }
                                     </Col>
                                 </Row>
 
