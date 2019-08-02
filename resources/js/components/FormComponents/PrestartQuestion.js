@@ -162,6 +162,7 @@ export default class PrestartQuestion extends React.Component {
             BusinessClass: "",
             BusinessType: "",
             DiffCorpAddress: "",
+            DiffCorp: '',
             UID: sessionStorage.getItem('UID'),
             validated: false,
             formComplete: false,
@@ -223,11 +224,22 @@ export default class PrestartQuestion extends React.Component {
      */
     handleChange(e) {
 
-        this.setState({
-            [e.target.name]: e.target.value
+        if (!e.target.checked) {
+            console.log('oi')
+            this.setState({
+                [e.target.name]: "",
         });
 
+        }
+        else {
+            this.setState({
+                [e.target.name]: e.target.value
+            });
+        }
 
+
+
+        console.log("checked: ", e.target.checked);
         console.log("Name: ", e.target.name);
         console.log("Value: ", e.target.value);
     };
@@ -369,9 +381,12 @@ export default class PrestartQuestion extends React.Component {
 
                         <Form.Group>
                             <Col sm="5">
-                                <Form.Check controlId="CheckCorp" type="checkbox" label="different corporate address"
-                                            value="DiffCorpAddress"/>
-                                <Form.Control
+                                <Form.Check name="DiffCorp" controlId="CheckCorp" type="checkbox" label="different corporate address"
+                                            onChange={this.handleChange} value="DiffCorpAddress"/>
+                                {
+                                    this.state.DiffCorp === "DiffCorpAddress" ?
+
+                                    <Form.Control
 
                                     controlId="corpAddress"
                                     name="CorporateAddress"
@@ -381,7 +396,11 @@ export default class PrestartQuestion extends React.Component {
                                     onChange={this.handleChange}
                                     value={this.state.CorporateAddress}
                                     pattern="^[0-9]+ [a-z]+$"
-                                />
+                                    />
+
+                                :
+                                null
+                                }
 
 
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
