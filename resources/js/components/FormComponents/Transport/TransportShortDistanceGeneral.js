@@ -1,10 +1,10 @@
 import React from 'react';
-import {Col, Form, Row, Button  } from "react-bootstrap";
+import {Col, Form, Row, Button, Alert} from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
 
 import Stepper from './Stepper'
-
+const NumberRegex = new RegExp("^[0-9]+$");
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
@@ -37,7 +37,8 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
             Vehicule: '',
             Kilometres: '',
             Confirmed: '',
-            LongDistance: sessionStorage.getItem('LongDistance')
+            LongDistance: sessionStorage.getItem('LongDistance'),
+            error: false,
 
         };
 
@@ -173,6 +174,18 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
         return localStorage.getItem('cat');
     }
 
+    validate(data) {
+        if (NumberRegex.test(data.NombreVoitures) &&
+            NumberRegex.test(data.JoursOuvrables) &&
+            NumberRegex.test(data.Kilometres)) {
+            this.setState({error: false});
+            return true
+        }
+        else {
+            this.setState({error: true});
+            return false;
+        }
+    }
 
     handleSubmit (e) {
         let data = this.state;
@@ -181,7 +194,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
         let id = sessionStorage.getItem('UID');
 
         const form = e.currentTarget;
-        if (form.checkValidity() === false) {
+        if (this.validate(data) === false) {
             e.preventDefault();
             e.stopPropagation();
         }
@@ -322,7 +335,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                                 placeholder="Intrant"
                                                 onChange={this.handleChange}
                                                 value={this.state.NombreVoitures}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
 
                                             />
                                         </Col>
@@ -340,7 +353,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                                 placeholder="220"
                                                 onChange={this.handleChange}
                                                 value={this.state.JoursOuvrables}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 
@@ -357,7 +370,7 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                                 placeholder="Intrant"
                                                 onChange={this.handleChange}
                                                 value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 
@@ -372,6 +385,16 @@ export default class TransportFormShortDistanceGeneral extends React.Component {
                                     <Col lg="4">
                                         <Button type="submit"
                                                 onClick={this.handleSubmit}>Submit</Button>
+                                    </Col>
+                                    <Col lg="8">
+                                        {
+                                            this.state.error ?
+                                                <Alert variant="danger">Please check your input</Alert>
+
+                                                :
+
+                                                null
+                                        }
                                     </Col>
                                 </Row>
 
