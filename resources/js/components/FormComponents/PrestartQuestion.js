@@ -225,7 +225,6 @@ export default class PrestartQuestion extends React.Component {
     handleChange(e) {
 
         if (!e.target.checked) {
-            console.log('oi')
             this.setState({
                 [e.target.name]: "",
         });

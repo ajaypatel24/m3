@@ -7,7 +7,6 @@ import Dashboard from "./Dashboard";
 import Login from "./LoginComponent";
 import TopTabs from "./NavComponents/TopTabs";
 import EnergyTable from "./FormComponents/EnergyTable"
-import IntrantForm from "./FormComponents/IntrantForm"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
@@ -19,6 +18,8 @@ import TransportFormLongDistance from "./FormComponents/Transport/TransportFormL
 import TransportFormShortDistanceSpecific from "./FormComponents/Transport/TransportShortDistanceSpecific";
 import TransportFormShortDistanceGeneral from "./FormComponents/Transport/TransportShortDistanceGeneral";
 import TransportEntry from "./FormComponents/Transport/TransportEntry";
+
+import TransportMarchandises from "./DataComponents/TransportMarchandises";
 import IntrantEditData from "./DataComponents/IntrantEditData";
 import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
@@ -81,7 +82,7 @@ export default class App extends React.Component {
                         <BlockRoute exact path="/aboutus" component={Dashboard}/>
                         <BlockRoute exact path="/login" component={Login}/>
                         <Route exact path="/data" component={EnergyTableData}/>
-
+                        <PrivateRoute exact path="/TransportMarchandises" component={TransportMarchandises}/>
                         <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
                         <PrivateRoute exact path="/home" component={TopTabs}/>
                         <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
@@ -90,7 +91,6 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
 
                         <Route exact path="/test" component={Test}/>
-
 
                         <Route exact path="/Dialog" component={Dialog}/>
                         <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
@@ -104,6 +104,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
                         <PrivateRoute exact path="/dechet" component={DechetDirect}/>
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
+
                         <Route exact path="/Edit" component={IntrantEditData}/>
                         <Route component={NoMatch}/>
 

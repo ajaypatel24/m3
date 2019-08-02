@@ -85,19 +85,19 @@ export default function SideNavigation() {
                     </ListItem>
                 </Link>
 
-                <Link to="/transport">
+                <Link to="/TransportMarchandises">
                     <ListItem button key="EcoTest">
                         <ListItemIcon><MailIcon /></ListItemIcon>
                         <ListItemText primary="EcoTest" />
                     </ListItem>
                 </Link>
-                <Link to="/transport">
+                <Link to="/TransportMarchandises">
                     <ListItem button key="EcoReport">
                         <ListItemIcon><MailIcon /></ListItemIcon>
                         <ListItemText primary="EcoReport" />
                     </ListItem>
                 </Link>
-                <Link to="/transport">
+                <Link to="/TransportMarchandises">
                     <ListItem button key="EcoComm">
                         <ListItemIcon><MailIcon /></ListItemIcon>
                         <ListItemText primary="EcoComm" />
