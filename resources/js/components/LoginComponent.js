@@ -54,6 +54,11 @@ export default class LoginComponent extends React.Component {
      * test method to see who is logged in
      * @constructor
      */
+
+    componentWillMount() {
+        console.log(React.version);
+    }
+
     VerifyUser = () => {
 
 
@@ -159,7 +164,7 @@ export default class LoginComponent extends React.Component {
 
 
                         setTimeout(function () {
-                            window.location.href = '#/profile/';
+                            window.location.href = '/';
                             window.location.reload();
                         }, 20)
                         console.log('Request succeeded with JSON response', data);
@@ -199,7 +204,7 @@ export default class LoginComponent extends React.Component {
     handleKeyPress(e) {
         let currentComponent = this
         if (e.key === 'Enter') {
-            console.log('test');
+            console.log('RealSideNav.js');
             currentComponent.handleLoginRequest;
         }
 
@@ -409,6 +414,7 @@ export default class LoginComponent extends React.Component {
                                                         onChange={this.handleChange}
                                                         value={this.state.password}
                                                     />
+
                                                 </Form.Group>
 
                                                 <Row>

@@ -18,4 +18,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+
+    /** @test */
+    public function add_user_from_register() {
+        $response = $this->post('/register', [
+
+        ]);
+    }
 }

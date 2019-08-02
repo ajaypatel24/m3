@@ -4,7 +4,7 @@ import SideNavigation from './NavComponents/SideNavigation';
 import SideNav from './NavComponents/Sidenav';
 import {IntlProvider, FormattedHTMLMessage} from "react-intl";
 
-import test from './NavComponents/test'
+import test from './NavComponents/RealSideNav'
 
 import '../../sass/navstyle.css'
 import axios from "axios";
