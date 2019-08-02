@@ -180,7 +180,9 @@ export default class TransportFormLongDistance extends React.Component {
             return true
         }
         else {
+
             this.setState({error: true})
+            return false
         }
     }
     handleSubmit (e){

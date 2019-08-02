@@ -88,7 +88,7 @@ class TransportController extends Controller
 
 
 
-        $Transport->Libelle_Deplacement = 'Journalier';
+        $Transport->Libelle_Deplacement = request('Vehicule');
         $Transport->Origine = 't';
         $Transport->Destination = 't';
         $Transport->idDeplacement = $VehiculeId.$InttoString;
@@ -96,7 +96,7 @@ class TransportController extends Controller
         $Transport->Nb_km_AR = request('Kilometres');
         $Transport->Nb_voyageurs_An = 1;
         $Transport->Nb_voyageurs = request('NombreVoitures');
-        $Transport->Type_Deplacement = request('Vehicule');
+        $Transport->Type_Deplacement =  'Journalier';
 
         $Transport->Covoiturage = 1;
 

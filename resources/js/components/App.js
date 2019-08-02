@@ -86,7 +86,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/home" component={TopTabs}/>
                         <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                         <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
-                        <PrivateRoute exact path="/intrant" component={IntrantForm}/>
+                        <PrivateRoute exact path="/intrant" component={IntrantEditData}/>
                         <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
 
                         <Route exact path="/test" component={Test}/>

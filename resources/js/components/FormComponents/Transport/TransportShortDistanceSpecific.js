@@ -1,10 +1,9 @@
 import React from 'react';
-import {Col, Form, Row, Button  } from "react-bootstrap";
+import {Col, Form, Row, Button, Alert  } from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
-import Helmet from 'react-helmet';
 
-import Stepper from './Stepper'
-
+const NumberRegex = new RegExp("^[0-9]+$");
+const WordRegex = new RegExp("^[A-z]+$");
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
@@ -16,6 +15,8 @@ export default class TransportFormShortDistance extends React.Component {
         this.state = {
 
             NumAffiche: "",
+            NomComplet: "",
+            Role: "",
             NomIntrant: "",
             QuantiteAn: "",
             Ressource: "",
@@ -37,7 +38,8 @@ export default class TransportFormShortDistance extends React.Component {
             Vehicule: '',
             Kilometres: '',
             Confirmed: '',
-            LongDistance: sessionStorage.getItem('LongDistance')
+            LongDistance: sessionStorage.getItem('LongDistance'),
+            error: '',
 
         };
 
@@ -218,6 +220,29 @@ export default class TransportFormShortDistance extends React.Component {
         window.location.reload();
     }
 
+    validate(data) {
+        if (
+            WordRegex.test(data.NomComplet) &&
+            WordRegex.test(data.Role) &&
+            NumberRegex.test(data.NombreVoiture) &&
+            NumberRegex.test(data.JoursOuvrables) &&
+            NumberRegex.test(data.Kilometres)
+        )
+        {
+            this.setState({error: false})
+            console.log('pee')
+            return true
+        }
+        else {
+            this.setState({error: true})
+            console.log(WordRegex.test(data.NomComplet) + ' ' + WordRegex.test(data.Role) + ' '
+                + NumberRegex.test(data.NombreVoiture) + ' ' + NumberRegex.test(data.JoursOuvrables)
+              +' '  + NumberRegex.test(data.Kilometres) )
+            return false
+        }
+
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -229,7 +254,7 @@ export default class TransportFormShortDistance extends React.Component {
 
         let id = sessionStorage.getItem('UID');
 
-        if (form.checkValidity() === false) {
+        if (this.validate(data) === false) {
             e.preventDefault();
             e.stopPropagation();
         }
@@ -320,13 +345,13 @@ export default class TransportFormShortDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="NombreVoitures"
+                                                name="NomComplet"
                                                 required
                                                 type="text"
-                                                placeholder="Intrant"
+                                                placeholder="Nom Complet"
                                                 onChange={this.handleChange}
-                                                value={this.state.NombreVoitures}
-                                                pattern="^[0-9]$"
+                                                value={this.state.NomComplet}
+                                                pattern="^[a-zA-Z]+$"
 
                                             />
                                         </Col>
@@ -339,13 +364,13 @@ export default class TransportFormShortDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="JoursOuvrables"
+                                                name="Role"
                                                 required
                                                 type="text"
-                                                placeholder="220"
+                                                placeholder="Role"
                                                 onChange={this.handleChange}
-                                                value={this.state.JoursOuvrables}
-                                                pattern="^[0-9]$"
+                                                value={this.state.Role}
+                                                pattern="^[a-zA-Z]+$"
                                             />
                                         </Col>
 
@@ -411,13 +436,13 @@ export default class TransportFormShortDistance extends React.Component {
                                                 description="Welcome header on app main page"
                                                 values={{what: 'react-intl'}}/></Form.Label>
                                             <Form.Control
-                                                name="NombreVoitures"
+                                                name="NombreVoiture"
                                                 required
                                                 type="text"
-                                                placeholder="Intrant"
+                                                placeholder="Nombre Voitures"
                                                 onChange={this.handleChange}
-                                                value={this.state.NombreVoitures}
-                                                pattern="^[0-9]$"
+                                                value={this.state.NombreVoiture}
+                                                pattern="^[0-9]+$"
 
                                             />
                                         </Col>
@@ -435,7 +460,7 @@ export default class TransportFormShortDistance extends React.Component {
                                                 placeholder="220"
                                                 onChange={this.handleChange}
                                                 value={this.state.JoursOuvrables}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 
@@ -452,7 +477,7 @@ export default class TransportFormShortDistance extends React.Component {
                                                 placeholder="Intrant"
                                                 onChange={this.handleChange}
                                                 value={this.state.Kilometres}
-                                                pattern="^[0-9]$"
+                                                pattern="^[0-9]+$"
                                             />
                                         </Col>
 
@@ -467,6 +492,16 @@ export default class TransportFormShortDistance extends React.Component {
                                     <Col lg="4">
                                         <Button type="submit"
                                                 onClick={this.handleSubmit}>Submit</Button>
+                                    </Col>
+                                    <Col lg="8">
+                                        {
+                                            this.state.error ?
+                                                <Alert variant="danger">Please check your input</Alert>
+
+                                                :
+
+                                                null
+                                        }
                                     </Col>
                                 </Row>
 
