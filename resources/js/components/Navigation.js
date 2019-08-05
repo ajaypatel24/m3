@@ -291,9 +291,9 @@ export default class Navigation extends React.Component {
 
                     <Nav className="mr-auto">
                         <Nav.Link href="#/">{Nav1}</Nav.Link>
-                        <Nav.Link href="#/profile">{Nav2}</Nav.Link>
+                        <Nav.Link href="#/tr">Forms</Nav.Link>
                         <Nav.Link href="#/prestart_questions">{Nav3}</Nav.Link>
-                        <Nav.Link onClick="document.getElementById('signup').scrollIntoView();">{Nav4}</Nav.Link>
+                        <Nav.Link href="#/dr">Data</Nav.Link>
                         <Nav.Link href="#/aboutus">{Nav5}</Nav.Link>
                     </Nav>
                     {/** End always rendered section */}

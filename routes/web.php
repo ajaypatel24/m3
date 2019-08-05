@@ -56,6 +56,9 @@ Route::get('/contact/{Id}', 'RegisterController@profileInfo'); //gets all user i
 Route::get('/bilanrow/', 'BilanController@bilanRow'); //gets all user info
 
 
+Route::post('/dechet/{Id}', 'DechetController@addDechet');
+
+
 
 
 

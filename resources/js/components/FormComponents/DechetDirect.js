@@ -21,74 +21,18 @@ export default class DechetDirect extends React.Component {
 
         this.state = {
 
-            GazNaturel: "",
-            GazUnite: "",
+            RecycleWaste: '',
+            RecycleWasteUnite: '',
 
-            Propane: "",
-            PropaneUnite: "",
+            DomesticWaste: '',
+            DomesticWasteUnite: '',
 
-            EssencePompe: "",
-            EssenceUnite: "",
+            Incineration: '',
+            IncinerationUnite: '',
 
-            GazolePompe: "",
-            GazoleUnite: "",
+            OrganicComposed: '',
+            OrganicComposedUnite: '',
 
-            FioulDomestique: "",
-            FioulUnite: "",
-
-            MazoutLeger: "",
-            MazoutUnite: "",
-
-            Charbon: "",
-            CharbonUnite: "",
-
-            Cammionage: "",
-            CammionageUnite: "",
-
-            TotalElectricite: "",
-            ElectriciteUnite: "",
-
-            Fossil: "",
-            FossileUnite: "",
-
-            Biodiesel: "",
-            BiodieselUnite: "",
-
-            Bois: "",
-            BoisUnite: "",
-
-            Soudure: "",
-            SoudureUnite: "",
-
-            CNC: "",
-            UsinageUnite: "",
-
-            VapeurFroid: "",
-            VapeurUnite: "",
-
-            Vin: "",
-            VinUnite: "",
-
-            Biere: "",
-            BiereUnite: "",
-
-            Halocarbunes: "",
-            HaloUnite: "",
-
-            AutreMethane: "",
-            AutreMethaneUnite: "",
-
-            n2osol: "",
-            n2osolUnite: "",
-
-            n2oanimaux: "",
-            n2oanimauxUnite: "",
-
-            MethaneAnimaux: "",
-            MethaneAnimauxUnite: "",
-
-            Coke: "",
-            CokeUnite: "",
 
 
             SCIAN: "",
@@ -116,51 +60,12 @@ export default class DechetDirect extends React.Component {
                 this.setState({SCIAN: response.data, UID: uid});
             });
 
-        axios.get('/test/')
-            .then(response => {
-                console.log(response.data);
-                this.setState({EnergyCategories: response.data});
-            });
-
-
-        console.log(this.state.EnergyCategories);
-
-        axios.get('/inventaire/' + uid)
-            .then(response => {
-                this.setState({TableData: response.data})
-
-                console.log(this.state.TableData)
-                console.log('yes');
-
-            });
-
-        console.log(this.state.TableData);
-        if (this.state.TableData != null) {
-            console.log('notnull')
-        }
     }
 
     componentWillMount = () => {
-        if (this.state.TableData[0] == "") {
-            sessionStorage.setItem('Empty', 'true')
-        } else {
-            console.log(this.state.TableData[0])
-            sessionStorage.setItem('Empty', 'false')
-        }
+
     }
 
-
-
-
-    /*
-        componentDidMount() {
-            axios.get('/prestart')
-                .then(response => {
-                    this.setState({categories: response.data});
-
-                });
-        }
-        */
 
 
     handleChange(e) {
@@ -190,6 +95,8 @@ export default class DechetDirect extends React.Component {
         }
         else {
         */
+
+        let id = sessionStorage.getItem('UID');
         let g = this;
 
         console.log(data);
@@ -201,7 +108,7 @@ export default class DechetDirect extends React.Component {
             e.stopPropagation();
         } else {
 
-            fetch('/categorie', {
+            fetch('/dechet/' + id, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -308,13 +215,13 @@ export default class DechetDirect extends React.Component {
                         <tr>
                             <td>Recycling of mixed waste</td>
                             <td><Form.Control
-                                name="GazNaturel"
+                                name="RecycleWaste"
                                 placeholder="valeur"
-                                value={this.state.GazNaturel}
+                                value={this.state.RecycleWaste}
                                 onChange={this.handleChange}
                                 pattern="^[0-9]+$">
                             </Form.Control></td>
-                            <td><Form.Control as="select" name="GazUnite"
+                            <td><Form.Control as="select" name="RecycleWasteUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
                             </Form.Control></td>
@@ -323,13 +230,13 @@ export default class DechetDirect extends React.Component {
                         <tr>
                             <td>Infill of domestic waste</td>
                             <td><Form.Control
-                                name="Propane"
+                                name="DomesticWaste"
                                 placeholder="valeur"
-                                value={this.state.Propane}
+                                value={this.state.DomesticWaste}
                                 onChange={this.handleChange}
                                 pattern="^[0-9]+$">
                             </Form.Control></td>
-                            <td><Form.Control as="select" name="PropaneUnite"
+                            <td><Form.Control as="select" name="DomesticWasteUnite"
                                               onChange={this.handleChange}
                             >
                                 <option value="Kg">Kg</option>
@@ -339,13 +246,13 @@ export default class DechetDirect extends React.Component {
                         <tr>
                             <td>Incineration of domestic waste</td>
                             <td><Form.Control
-                                name="EssencePompe"
+                                name="Incineration"
                                 placeholder="valeur"
-                                value={this.state.EssencePompe}
+                                value={this.state.Incineration}
                                 onChange={this.handleChange}
                                 pattern="^[0-9]+$"
                             ></Form.Control></td>
-                            <td><Form.Control as="select" name="EssenceUnite"
+                            <td><Form.Control as="select" name="IncinerationUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
                             </Form.Control></td>
@@ -363,13 +270,13 @@ export default class DechetDirect extends React.Component {
                         <tr>
                             <td>Composed organic material</td>
                             <td><Form.Control
-                                name="GazolePompe"
+                                name="OrganicComposed"
                                 placeholder="valeur"
-                                value={this.state.GazolePompe}
+                                value={this.state.OrganicComposed}
                                 onChange={this.handleChange}
                                 pattern="^[0-9]+$"
                             ></Form.Control></td>
-                            <td><Form.Control as="select" name="GazoleUnite"
+                            <td><Form.Control as="select" name="OrganicComposedUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
                             </Form.Control></td>

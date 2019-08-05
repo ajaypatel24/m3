@@ -25,6 +25,8 @@ import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
 import testtabs from "./Deprecated/TabPanel";
+import DataPanel from "./Deprecated/DataPanel";
+import EnergyTableEditData from "./DataComponents/EnergyTableEditData";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -112,6 +114,7 @@ export default class App extends React.Component {
 
                         <Route exact path="/Edit" component={IntrantEditData}/>
                         <Route exact path="/tr" component={testtabs}/>
+                        <Route exact path="/dr" component={DataPanel}/>
                         <Route component={NoMatch}/>
 
 

@@ -14,6 +14,23 @@ export default class IntrantEditData extends React.Component {
                 { title: 'Quantite', field: 'quantite_an' },
                 { title: 'Unite', field: 'unite' ,
 
+                    lookup: {
+                "GJ":'GJ',
+               "kWh":'kWh',
+               "MWh":'MWh',
+               "kg":'Kg',
+               "t":'Ton',
+               "L":'L',
+                "m3":'m3',
+               "lbs":'lbs',
+               "tm":'Ton (metric)',
+               "gal":'Gal',
+               "bac240L":'Dumpster (240L)',
+                "bac360L":'Dumpster (360L)',
+        "VC":'Cubic Yards',
+       "teqCO2":'GHG (Ton)',
+       "kgeqCO2":'GHG (Kg)',
+                    },
 
                 },
                 { title: 'Frequence', field: 'y',
