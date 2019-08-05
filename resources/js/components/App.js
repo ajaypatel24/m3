@@ -18,7 +18,7 @@ import TransportFormLongDistance from "./FormComponents/Transport/TransportFormL
 import TransportFormShortDistanceSpecific from "./FormComponents/Transport/TransportShortDistanceSpecific";
 import TransportFormShortDistanceGeneral from "./FormComponents/Transport/TransportShortDistanceGeneral";
 import TransportEntry from "./FormComponents/Transport/TransportEntry";
-
+import Navigation from "./Navigation";
 import TransportMarchandises from "./DataComponents/TransportMarchandises";
 import IntrantEditData from "./DataComponents/IntrantEditData";
 import Dialog from "./NavComponents/Dialog"
@@ -73,7 +73,7 @@ export default class App extends React.Component {
 
                         :
 
-                        null
+                        <Navigation/>
                     }
 
                     <Switch>

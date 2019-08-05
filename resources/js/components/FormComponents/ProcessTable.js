@@ -3,7 +3,7 @@ import {Form, Table, Row, Col, Button} from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
 import { FormattedHTMLMessage } from 'react-intl'
-
+import Container from '@material-ui/core/Container';
 /**
  * Energy table with conditional rendering allowing users
  * to add their energy expenditures to the database
@@ -462,7 +462,7 @@ export default class ProcessTable extends React.Component {
         return (
 
 
-            <div>
+            <Container maxWidth="lg">
 
                 <Row>
                     <Col lg="12">
@@ -674,7 +674,7 @@ export default class ProcessTable extends React.Component {
                 */}
 
 
-            </div>
+            </Container>
 
 
         )

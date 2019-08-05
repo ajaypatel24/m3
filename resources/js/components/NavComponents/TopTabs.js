@@ -5,6 +5,8 @@ import {Tab, Tabs} from 'react-bootstrap'
 import EnergyTableEditData from "../DataComponents/EnergyTableEditData";
 import IntrantEditData from "../DataComponents/IntrantEditData";
 
+import Container from '@material-ui/core/Container';
+
 /**giving errors, but actually syntactically correct */
 
 const Compagnie = <FormattedHTMLMessage id="TopTabs.Compagnie"
@@ -64,6 +66,8 @@ export default class TopTabs extends React.Component {
 
     render() {
         return (
+
+            <Container maxwidth="lg">
             <Tabs
                 id="controlled-tab-example"
                 activeKey={this.state.key}
@@ -80,7 +84,11 @@ export default class TopTabs extends React.Component {
 
                 <Tab eventKey="Energie" title={Energie}>
                     {/* <EnergyTableData/> */}
+                    <br/>
+                    <Container maxwidth="lg">
                     <EnergyTableEditData/>
+                    </Container>
+                    <br/>
 
                 </Tab>
 
@@ -89,7 +97,11 @@ export default class TopTabs extends React.Component {
                 </Tab>
 
                 <Tab eventKey="Matières" title={Matieres}>
+                    <br/>
+                    <Container maxwidth="lg">
                     <IntrantEditData />
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="Productivité" title={Productivite}>
@@ -105,10 +117,14 @@ export default class TopTabs extends React.Component {
                 </Tab>
 
                 <Tab eventKey="Bilan" title={Bilan}>
+                    <Container maxwidth="sm">
                      <FormBilan/>
+                    </Container>
+                    <br/>
                 </Tab>
 
             </Tabs>
+            </Container>
         );
     }
 }

@@ -237,8 +237,9 @@ export default function ResponsiveDrawer(props) {
 
 
                 </Toolbar>
-                */}
                 <Navigation parentMethod={handleDrawerToggle}/>
+                */}
+
                 <IconButton
                     color="inherit"
                     aria-label="Open drawer"

@@ -11,6 +11,7 @@ import messages from "./messages"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { SnackbarProvider } from "notistack";
 import { red, amber, blue } from "@material-ui/core/colors/red"
+import Container from '@material-ui/core/Container';
 const theme = createMuiTheme({
     palette: {
         primary: red, //navbar things
@@ -45,13 +46,16 @@ addLocaleData(fr);
                     :
 
 
+
                     <MuiThemeProvider theme={theme}>
                         <SnackbarProvider maxSnack={1}>
-                    <Test>
+                            {/* <Test> */}
                         <App/>
-                    </Test>
+                            {/* </Test> */}
                         </SnackbarProvider>
                     </MuiThemeProvider>
+
+
             }
         </IntlProvider>, document.getElementById('root'));
 

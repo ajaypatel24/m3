@@ -3,7 +3,7 @@ import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
 import { FormattedHTMLMessage } from 'react-intl'
-
+import Container from '@material-ui/core/Container';
 /**
  * Energy table with conditional rendering allowing users
  * to add their energy expenditures to the database
@@ -259,7 +259,7 @@ export default class DechetDirect extends React.Component {
         return (
 
 
-            <div>
+            <Container maxWidth="lg">
 
 
                 <Row>
@@ -406,7 +406,7 @@ export default class DechetDirect extends React.Component {
                 </Form>
 
 
-            </div>
+            </Container>
 
 
         )

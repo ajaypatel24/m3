@@ -6,7 +6,7 @@ import SideNav from "../NavComponents/Sidenav";
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
 const PostalRegex = new RegExp("/^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$/");
-
+import Container from '@material-ui/core/Container';
 
 
 
@@ -276,7 +276,7 @@ export default class PrestartQuestion extends React.Component {
 
 
 
-            <div>
+            <Container maxWidth="lg">
                 <h1>Prestart Questions</h1>
                 <p><FormattedHTMLMessage id="Prestart.PrestartDescription"
                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
@@ -794,7 +794,7 @@ export default class PrestartQuestion extends React.Component {
                     </div>
             }
 
-            </div>
+            </Container>
 
 
 

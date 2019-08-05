@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button, Carousel, Col, Container, Jumbotron, Row, Card, ListGroup, ListGroupItem, Image  } from 'react-bootstrap';
+import {Button, Carousel, Col, Jumbotron, Row, Card, ListGroup, ListGroupItem, Image  } from 'react-bootstrap';
 import SignUpForm from './Authentication/Register';
 import '../../sass/test.css'
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
-
+import Container from '@material-ui/core/Container';
 const width = '22rem';
 
 let element = document.getElementById("signup");
@@ -44,7 +44,7 @@ export default class Dashboard extends React.Component {
     }
     render() {
         return (
-            <Container className="mt-4">
+            <Container maxWidth="lg">
                 <Row>
                     <Col lg="12">
 

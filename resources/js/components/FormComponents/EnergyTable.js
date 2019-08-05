@@ -3,7 +3,7 @@ import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
 import React from "react";
 import axios from 'axios/index';
 import { FormattedHTMLMessage } from 'react-intl'
-
+import Container from '@material-ui/core/Container';
 const NumberRegex = new RegExp("^[0-9]+$");
 
 /**
@@ -651,7 +651,7 @@ export default class EnergyTable extends React.Component {
 
 
 
-            <div>
+            <Container maxWidth="lg">
 
 
                 <Row>
@@ -911,7 +911,7 @@ export default class EnergyTable extends React.Component {
 
 
 
-            </div>
+            </Container>
 
 
         )

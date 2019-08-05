@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import {FormattedHTMLMessage} from "react-intl";
 
-
+import Container from '@material-ui/core/Container';
 /**
  * Additonal info to provide once user signs in
  *
@@ -117,7 +117,7 @@ export default class UtilisationFDV extends React.Component {
         const {validated} = this.state;
 
         return (
-            <div>
+            <Container maxWidth="lg">
                 <Row>
                     <Col lg="12">
                         <h1> Utilisation & Fin de Vie </h1>
@@ -250,7 +250,7 @@ export default class UtilisationFDV extends React.Component {
                         Submit
                     </Button>
                 </Form>
-            </div>
+            </Container>
         );
 
     }
