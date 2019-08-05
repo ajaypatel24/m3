@@ -259,7 +259,7 @@ export default class DechetDirect extends React.Component {
         return (
 
 
-            <Container maxWidth="lg">
+            <div>
 
 
                 <Row>
@@ -406,7 +406,7 @@ export default class DechetDirect extends React.Component {
                 </Form>
 
 
-            </Container>
+            </div>
 
 
         )

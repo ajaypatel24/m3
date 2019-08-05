@@ -6,6 +6,11 @@ import EnergyTableEditData from "../DataComponents/EnergyTableEditData";
 import IntrantEditData from "../DataComponents/IntrantEditData";
 
 import Container from '@material-ui/core/Container';
+import ProcessTable from "../FormComponents/ProcessTable";
+import EnergyTable from "../FormComponents/EnergyTable";
+import TransportEntry from "../FormComponents/Transport/TransportEntry";
+import DechetDirect from "../FormComponents/DechetDirect"
+import UtilisationFDV from "../FormComponents/UtilisationFDV"
 
 /**giving errors, but actually syntactically correct */
 
@@ -74,11 +79,19 @@ export default class TopTabs extends React.Component {
                 onSelect={key => this.setState({key})}
             >
                 <Tab eventKey="Compagnie" title={Compagnie}>
-
+                    <br/>
+                    <Container maxWidth="lg">
+                        <EnergyTable />
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="Revenus" title={Revenue}>
-
+                    <br/>
+                    <Container maxwidth="lg">
+                        <IntrantEditData />
+                    </Container>
+                    <br/>
                 </Tab>
 
 
@@ -86,34 +99,48 @@ export default class TopTabs extends React.Component {
                     {/* <EnergyTableData/> */}
                     <br/>
                     <Container maxwidth="lg">
-                    <EnergyTableEditData/>
+                        <ProcessTable />
                     </Container>
                     <br/>
 
                 </Tab>
 
                 <Tab eventKey="Déchets" title={Dechets}>
-
+                    <br/>
+                    <Container maxWidth="lg">
+                        <TransportEntry/>
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="Matières" title={Matieres}>
                     <br/>
                     <Container maxwidth="lg">
-                    <IntrantEditData />
+                        <DechetDirect />
                     </Container>
                     <br/>
                 </Tab>
 
                 <Tab eventKey="Productivité" title={Productivite}>
-
+                    <br/>
+                    <Container maxWidth="lg">
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="RH" title={RH}>
-
+                    <br/>
+                    <Container maxWidth="lg">
+                        <UtilisationFDV/>
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="Risques" title={Risques}>
-
+                    <br/>
+                    <Container maxWidth="lg">
+                    </Container>
+                    <br/>
                 </Tab>
 
                 <Tab eventKey="Bilan" title={Bilan}>

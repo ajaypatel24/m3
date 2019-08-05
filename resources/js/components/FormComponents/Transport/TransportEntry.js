@@ -5,6 +5,29 @@ import TransportFormLongDistance from './TransportFormLongDistance'
 import TransportConfirm from './TransportConfirm'
 import {Button, Col, Form, Jumbotron, Row} from "react-bootstrap";
 
+import clsx from 'clsx';
+import Button1 from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
+
+const useStyles = makeStyles(theme => ({
+    button: {
+        margin: theme.spacing(1),
+    },
+    leftIcon: {
+        marginRight: theme.spacing(1),
+    },
+    rightIcon: {
+        marginLeft: theme.spacing(1),
+    },
+    iconSmall: {
+        fontSize: 20,
+    },
+}));
 /**
  * Table de transport used to store all transportation
  * uses by the company, will begin development soon
@@ -17,7 +40,9 @@ const Component = {
     LongDistance: <TransportFormLongDistance/>,
     Confirm: <TransportConfirm/>
 }
+
 export default class TransportEntry extends React.Component {
+
     constructor(props) {
         super(props);
 
@@ -36,9 +61,19 @@ export default class TransportEntry extends React.Component {
 
     componentWillMount = () => {
         this.setState({SpecificOrGeneral: ''});
+
     }
     //
+
+    componentLength (obj) {
+        var r = 0, key;
+        for (key in obj) {
+            r++;
+        }
+        return r-1;
+    }
     pageForward = () => {
+        console.log("array length: " + Component.length)
         if (this.state.SpecificOrGeneral === "V1") {
             this.setState({PageIndex: this.state.PageIndex + 1})
             console.log(this.state.PageIndex);
@@ -50,6 +85,7 @@ export default class TransportEntry extends React.Component {
     }
 
     pageBackward = () => {
+        this.componentLength(Component);
         this.setState({PageIndex: (this.state.PageIndex - 1)})
         console.log(this.state.PageIndex);
     }
@@ -113,9 +149,8 @@ export default class TransportEntry extends React.Component {
                                                     <Form.Control as="select" name="SpecificOrGeneral"
                                                                   onChange={this.handleChange} required>
                                                         <option></option>
-                                                        <option value="V1"> Emissions by Vehicule Type</option>
-                                                        <option value="V2"> Emissions by Individual Employees
-                                                        </option>
+                                                        <option value="V1"> Emissions by Vehicule Type </option>
+                                                        <option value="V2"> Emissions by Individual Employees </option>
 
                                                     </Form.Control>
                                                 </Col>
@@ -211,23 +246,41 @@ export default class TransportEntry extends React.Component {
 
                                 </Row>
 
+                                <Row>
+
                                 {
-                                    this.state.PageIndex === 0 || this.state.PageIndex === Component.length - 1 ?
+                                    this.state.PageIndex === 0 || this.state.PageIndex === this.componentLength(Component) ?
 
                                         null
 
                                         :
 
+                                        <div>
                                         <Row>
+                                        </Row>
+                                        <Row>
+
                                             <Col lg="4">
                                                 <Button onClick={this.pageBackward}>Prev</Button>
                                             </Col>
-                                            <Col lg="4">
-                                                <Button onClick={this.pageForward}>Next</Button>
-                                            </Col>
+                                            {this.state.PageIndex < this.componentLength(Component) - 1 ?
+                                                <Col lg="4">
+                                                    <Button onClick={this.pageForward}>Next</Button>
+                                                </Col>
+
+                                                :
+
+                                                null
+                                            }
+
+
+
 
                                         </Row>
+                                        </div>
                                 }
+
+                                </Row>
                             </Row>
 
 

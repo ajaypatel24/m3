@@ -207,6 +207,7 @@ export default class ProcessTable extends React.Component {
      *
      */
     render() {
+
         const {validated} = this.state;
 
         let bois;
@@ -462,7 +463,7 @@ export default class ProcessTable extends React.Component {
         return (
 
 
-            <Container maxWidth="lg">
+            <div>
 
                 <Row>
                     <Col lg="12">
@@ -564,119 +565,10 @@ export default class ProcessTable extends React.Component {
                 </Form>
 
 
-                {/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-
-
-                {/*
-                <Table responsive striped bordered hover variant="dark">
-                    <thead>
-
-                    <tr>
-                        <th colSpan="5">Hors Energie</th>
-                    </tr>
-                    <tr>
-                        <th colSpan="3">Compatiblisation direct des procedes</th>
-                        <th>Facteur sur site</th>
-                        <th>Total GES</th>
-                    </tr>
-                    <tr>
-                        <th>Combustibles fossiles, sources fixes</th>
-                        <th>Consommation</th>
-                        <th>Unite</th>
-
-
-                    </tr>
-
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.2</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>2.3</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.2</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions de CO2 hors energie</td>
-                        <td><Form.Control name="x[]" placeholder="valeur"></Form.Control></td>
-                        <td><Form.Control as="select" name="SectorActivity"
-                                          onChange={this.handleChange} required>
-                            <option></option>
-                            <option value="Litre">Litre</option>
-                            <option value="Kg">Kg</option>
-                            <option value="KWH">KWH</option>
-                        </Form.Control></td>
-                        <td>1.23</td>
-                        <td>0</td>
-                    </tr>
-                    </tbody>
-                </Table>
-
-                */}
-
-
-            </Container>
+            </div>
 
 
         )
+
     };
 }

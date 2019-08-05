@@ -117,7 +117,7 @@ export default class UtilisationFDV extends React.Component {
         const {validated} = this.state;
 
         return (
-            <Container maxWidth="lg">
+            <div>
                 <Row>
                     <Col lg="12">
                         <h1> Utilisation & Fin de Vie </h1>
@@ -250,7 +250,7 @@ export default class UtilisationFDV extends React.Component {
                         Submit
                     </Button>
                 </Form>
-            </Container>
+            </div>
         );
 
     }

@@ -338,10 +338,10 @@ export default class Navigation extends React.Component {
 
 
 
-                        <Navbar.Collapse className="justify-content-end" inline>
+                        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" inline>
                             <Avatar>{this.state.initial}</Avatar>
                             <Navbar.Text>
-                                <NavDropdown id="collasible-nav-dropdown">
+                                <NavDropdown id="basic-nav-dropdown">
                                     <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
                                     <NavDropdown.Item href="#/Team">{Team}</NavDropdown.Item>
                                     <NavDropdown.Item href="#/action3.2">h</NavDropdown.Item>

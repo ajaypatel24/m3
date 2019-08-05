@@ -324,6 +324,7 @@ export default class EnergyTable extends React.Component {
     render() {
         const {validated} = this.state;
         return (
+
             <div>
                 {this.state.EnergyCategories.map(attribute => {
         let charbon;
@@ -651,9 +652,10 @@ export default class EnergyTable extends React.Component {
 
 
 
-            <Container maxWidth="lg">
 
 
+
+            <div>
                 <Row>
                     <Col lg="4">
                         <h1> Table d'Energie </h1>
@@ -907,11 +909,12 @@ export default class EnergyTable extends React.Component {
                         </Row>
 
                     </Form>
+            </div>
 
 
 
 
-            </Container>
+
 
 
         )

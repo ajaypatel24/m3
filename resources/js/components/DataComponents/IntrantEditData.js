@@ -1,7 +1,7 @@
 import React from 'react'
 import MaterialTable from 'material-table'
 import axios from "axios/index";
-import {Form, Alert} from "react-bootstrap";
+import {Form, Alert, Col} from "react-bootstrap";
 
 
 export default class IntrantEditData extends React.Component {
@@ -82,6 +82,10 @@ export default class IntrantEditData extends React.Component {
             <div>
 
 
+                <Col lg="4">
+                    <h1> Intrants </h1>
+                </Col>
+                <br/>
 
 
             <MaterialTable
