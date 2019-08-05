@@ -8,6 +8,12 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import EnergyTable from '../FormComponents/EnergyTable'
+import ProcessTable from "../FormComponents/ProcessTable";
+import IntrantEditData from "../DataComponents/IntrantEditData";
+import IntrantTransportForm from "../FormComponents/IntrantTransportForm";
+import TransportEntry from "../FormComponents/Transport/TransportEntry";
+import DechetDirect from "../FormComponents/DechetDirect";
+import UtilisationFDV from "../FormComponents/UtilisationFDV";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -69,15 +75,13 @@ export default function FullWidthTabs() {
                     variant="fullWidth"
                     aria-label="full width tabs example"
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    <Tab label="Item Four" {...a11yProps(3)} />
-                    <Tab label="Item Five" {...a11yProps(4)} />
-                    <Tab label="Item Six" {...a11yProps(5)} />
-                    <Tab label="Item Seven" {...a11yProps(6)} />
-                    <Tab label="Item Eight" {...a11yProps(7)} />
-                    <Tab label="Item Nine" {...a11yProps(8)} />
+                    <Tab label="Energie" {...a11yProps(0)} />
+                    <Tab label="Procedes" {...a11yProps(1)} />
+                    <Tab label="Intrant" {...a11yProps(2)} />
+                    <Tab label="Intrant Transport" {...a11yProps(3)} />
+                    <Tab label="Transport Employes" {...a11yProps(4)} />
+                    <Tab label="Dechets" {...a11yProps(5)} />
+                    <Tab label="Utilisation/FDV" {...a11yProps(6)} />
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -89,29 +93,24 @@ export default function FullWidthTabs() {
                     <EnergyTable />
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    Item Two
+                    <ProcessTable />
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
+                    <IntrantEditData/>
                 </TabPanel>
                 <TabPanel value={value} index={3} dir={theme.direction}>
-                    Item Three
+                    <IntrantTransportForm/>
                 </TabPanel>
                 <TabPanel value={value} index={4} dir={theme.direction}>
-                    Item Three
+                    <TransportEntry/>
                 </TabPanel>
                 <TabPanel value={value} index={5} dir={theme.direction}>
-                    Item Three
+                    <DechetDirect />
                 </TabPanel>
                 <TabPanel value={value} index={6} dir={theme.direction}>
-                    Item Three
+                    <UtilisationFDV/>
                 </TabPanel>
-                <TabPanel value={value} index={7} dir={theme.direction}>
-                    Item Three
-                </TabPanel>
-                <TabPanel value={value} index={8} dir={theme.direction}>
-                    Item Three
-                </TabPanel>
+
             </SwipeableViews>
         </div>
     );
