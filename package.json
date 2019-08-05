@@ -43,6 +43,7 @@
         "react-particles-js": "^2.6.0",
         "react-router": "^2.8.1",
         "react-router-dom": "^5.0.1",
+        "react-swipeable-views": "^0.13.3",
         "react-transition-group": "^4.2.2"
     }
 }
