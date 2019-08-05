@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dechet extends Model
 {
-    protected $table 'procede';
+    protected $table = 'procede';
 }
