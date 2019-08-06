@@ -55,6 +55,8 @@ export default function IntrantTransportForm() {
 
             });
 
+
+
     }
 
     const [count, setCount] = useState([1,2,3,4,5]);
@@ -83,7 +85,7 @@ export default function IntrantTransportForm() {
                     <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem>
-                    <MenuItem value={3}>{count[0]}</MenuItem>
+                    <MenuItem value={3}>test</MenuItem>
                 </Select>
             </FormControl>
 
