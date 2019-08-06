@@ -37,6 +37,7 @@ class Procede extends Migration
             $table->integer('Num_affiche')->default(-1)->nullable();
             $table->string('Nom_procede',45)->nullable();
             $table->integer('Quantite_an')->default(-1)->nullable();
+            $table->string('Type_Procede',50);
             $table->string('Unite_an', 10)->default('N/A')->nullable();
             $table->integer('Scope')->default(-1)->nullable();
             $table->decimal('Emission_GES', 9,4)->nullable();

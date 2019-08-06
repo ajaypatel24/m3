@@ -112,7 +112,10 @@ class CategorieController extends Controller
         $id = $categorie->UID = request('UID');
 
 
-        $user = DB::table('procede')->where('UID', $id)->value('UID');
+        $user = DB::table('procede')
+            ->where('UID', $id)
+            ->where('Type_Procede','=','Energie')
+            ->value('UID');
         if ($user === null) {
 
 
@@ -148,6 +151,7 @@ class CategorieController extends Controller
                     'Unite_an' => $categorie->unit = request($unit),
                     'Emission_GES' => $CoeffGES * $Quantite_an,
                     'UID' => $categorie->UID = request('UID'),
+                    'Type_Procede' => 'Energie',
                 );
 
                 array_push($data, $r);

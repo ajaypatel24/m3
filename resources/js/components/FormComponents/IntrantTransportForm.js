@@ -1,251 +1,96 @@
-import React from 'react'
-import MaterialTable from 'material-table'
-import axios from "axios/index";
-import {Form, Alert, Col} from "react-bootstrap";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import axios from "axios";
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
 
-export default class IntrantTransportForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: false,
-            columns: [
-                { title: 'Procede', field: 'nom_intrant' },
-                { title: 'Quantite', field: 'quantite_an' },
-                { title: 'Unite', field: 'unite' ,
+export default function IntrantTransportForm() {
+    const classes = useStyles();
+    const [values, setValues] = React.useState({
+        age: '',
+        name: 'hai',
+    });
 
+    const inputLabel = React.useRef(null);
+    const [labelWidth, setLabelWidth] = React.useState(0);
+    React.useEffect(() => {
+        setLabelWidth(inputLabel.current.offsetWidth);
+    }, []);
 
-                },
-                { title: 'Frequence', field: 'y',
-
-                    lookup: {
-                        false: 'Yearly',
-                        true: 'Per Delivery'
-                    },
-                },
-                { title: 'Nombre de Transports', field: 'NbTransport'},
-                { title: 'Provenance', field: 'provenance'},
-                { title: "Frequence d'Achat", field: 'FreqAchat',
-                    lookup: {
-                        '1xY': "Once per year",
-                        '2xY': "Twice per year",
-                        '3xY': "Three per year",
-                        '4xY': "Four per year",
-                        '2xM': "Every two Months",
-                        '6W': "Every six weeks",
-                        '1xM': "Every month",
-                        '3W': "Every three weeks",
-                        '2W': "Every two weeks",
-                        '1W': "Every week",
-                        '3BD': "Every Three business days",
-                        '2BD': "Every Two business days",
-                        '1BD': "Every business day",
-                    },
-                },
-
-
-
-
-            ],
-
-
-            Rows: [],
-        }
+    function handleChange(event) {
+        setValues(oldValues => ({
+            ...oldValues,
+            [event.target.name]: event.target.value,
+        }));
     }
-
-    componentWillMount() {
+    function componentWillMount() {
 
         let uid = sessionStorage.getItem('UID');
-        axios.get('/intrants/' + uid)
+        axios.get('/inventaire/' + uid)
             .then(response => {
-                console.log(response.data);
-                console.log('poog');
-                this.setState({Rows: response.data});
+                var t = response.data;
+                console.log(t[0]);
+                return t;
+
+
             });
 
-
-        console.log(this.state.Rows);
     }
 
-    getTableRows = () => {
-        //let uid = sessionStorage.getItem('UID');
-        let uid = this.state.UID;
-        axios.get('/intrants/' + uid)
-            .then(response => {
-                console.log(response.data);
-                this.setState({Rows: response.data});
-            });
-    }
+    const [count, setCount] = useState([1,2,3,4,5]);
 
-    render() {
-        return (
-            <div>
-
-
-                <Col lg="4">
-                    <h1> Intrants </h1>
-                </Col>
-                <br/>
-
-
-                <MaterialTable
-
-                    title="Intrants"
-                    columns={this.state.columns}
-                    data={this.state.Rows}
-                    editable={{
-
-
-
-                        onRowAdd: newData =>
-                            new Promise((resolve, reject) => {
-                                setTimeout(() => {
-                                    {
-
-
-                                        const data = this.state.Rows;
-                                        this.state.Rows.map(attribute => {
-                                            if (newData.nom_intrant === attribute.nom_intrant) {
-                                                this.setState({error: true})
-                                            }
-                                        });
-
-                                        if (this.state.error === false) {
-                                            data.push(newData);
-                                            this.setState({ data }, () => resolve());
-                                        }
+    return (
+        <form className={classes.root} autoComplete="off">
 
 
 
 
-                                        let id = sessionStorage.getItem('UID');
-                                        const data2 = newData;
-
-
-                                        console.log(newData);
-
-                                        var h = [];
-
-                                        h.push(newData.nom_intrant); //0
-                                        h.push(newData.quantite_an); //1
-                                        h.push(newData.unite); //2
-                                        h.push(newData.NbTransport) //3
-                                        h.push(newData.y); //4
-                                        h.push(newData.provenance); //5
-                                        h.push(newData.FreqAchat) //6
 
 
 
-                                        fetch('/intrants/' + JSON.stringify(h) + '/' + id ,{
-                                            method: 'POST',
-                                            body: JSON.stringify(data2),
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                                "Content-type": "application/json"
-                                            }
-
-                                        })
-                                            .then(function (response) {
-                                                console.log(response.data2)
-                                                console.log('Request succeeded with JSON response', data2);
-
-
-                                            })
-                                            .catch(function (error) {
-                                                console.log('Request failed', error);
-                                                console.log("why");
-                                            });
-                                    }
-                                    resolve()
-                                }, 1000)
-                            }),
-
-
-                        onRowUpdate: (newData, oldData) =>
-                            new Promise((resolve, reject) => {
-                                setTimeout(() => {
-                                    {
-                                        const data = newData;
-                                        const NameData = oldData.nom_intrant;
-                                        var Q_an = data.quantite_an
-                                        var Nom = data.nom_intrant
-                                        let id = sessionStorage.getItem('UID');
-                                        let Unite = data.unite
-                                        const data2 = this.state.Rows;
-                                        const index = data2.indexOf(oldData);
-                                        data2[index] = newData;
-                                        console.log(data);
-
-                                        this.setState({ data }, () => resolve());
-                                        fetch('/EditIntrant/' + NameData + '/' + Nom + '/' + Q_an + '/' + Unite + '/' + id,{
-                                            method: 'POST',
-                                            body: JSON.stringify(data),
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                                "Content-type": "application/json"
-                                            }
-
-                                        })
-                                            .then(function (response) {
-                                                console.log(response.data);
-                                                console.log('Request succeeded with JSON response', response);
-
-
-                                            })
-                                            .catch(function (error) {
-
-                                                console.log('Request failed', error);
-                                                console.log("why");
-                                            });
-                                    }
-                                    resolve()
-                                }, 1000)
-                            }),
-
-                        onRowDelete: oldData =>
-                            new Promise((resolve, reject) => {
-                                setTimeout(() => {
-                                    {
-                                        let data2 = this.state.Rows;
-                                        const index = data2.indexOf(oldData);
-                                        data2.splice(index, 1);
-                                        this.setState({ data2 }, () => resolve());
-                                        let data = oldData;
-                                        let nom = data.nom_intrant
-                                        console.log(nom);
-                                        let uid = sessionStorage.getItem('UID');
-
-                                        fetch('/delIntrants/' + nom + '/' + uid, {
-                                            method: 'POST',
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                                "Content-type": "application/json"
-                                            }
-
-                                        })
-                                            .then(function (response) {
-                                                console.log(response.data)
-
-
-                                            })
-                                            .catch(function (error) {
-                                                console.log('Request failed', error);
-                                                console.log("why");
-                                            });
-                                    }
-                                    resolve()
-                                }, 100)
-                            }),
+            <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+                    Age
+                </InputLabel>
+                <Select
+                    value={values.age}
+                    onChange={handleChange}
+                    input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+                >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={3}>{count[0]}</MenuItem>
+                </Select>
+            </FormControl>
 
 
 
 
-                    }}
 
-
-
-                />
-            </div>
-        )
-    }
+        </form>
+    );
 }

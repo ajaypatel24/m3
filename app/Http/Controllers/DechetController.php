@@ -32,7 +32,10 @@ class DechetController extends Controller
            request('OrganicComposed')
         */
 
-        $user = DB::table('procede')->where('UID', $id)->value('UID');
+        $user = DB::table('procede')
+            ->where('UID', $id)
+            ->where('Type_Procede','=','Dechets')
+            ->value('UID');
         if ($user === null) {
 
             foreach ($DechetArray as $key => $value) {
@@ -62,6 +65,7 @@ class DechetController extends Controller
                     'Unite_an' => $Unite,
                     'Emission_GES' => $Emission_GES,
                     'UID' => $Dechet->UID = request('UID'),
+                    'Type_Procede' => 'Dechets',
                 );
 
                 array_push($data, $r);

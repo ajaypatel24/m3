@@ -24,8 +24,8 @@ import IntrantEditData from "./DataComponents/IntrantEditData";
 import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
-import testtabs from "./Deprecated/TabPanel";
-import DataPanel from "./Deprecated/DataPanel";
+import testtabs from "./NavComponents/TabPanel";
+import DataPanel from "./NavComponents/DataPanel";
 import EnergyTableEditData from "./DataComponents/EnergyTableEditData";
 
 export default class App extends React.Component {
