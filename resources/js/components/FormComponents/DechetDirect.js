@@ -223,6 +223,7 @@ export default class DechetDirect extends React.Component {
                             </Form.Control></td>
                             <td><Form.Control as="select" name="RecycleWasteUnite"
                                               onChange={this.handleChange}>
+                                <option></option>
                                 <option value="Kg">Kg</option>
                                 <option value="L">L</option>
                             </Form.Control></td>
@@ -240,6 +241,7 @@ export default class DechetDirect extends React.Component {
                             <td><Form.Control as="select" name="DomesticWasteUnite"
                                               onChange={this.handleChange}
                             >
+                                <option></option>
                                 <option value="Kg">Kg</option>
                                 <option value="L">L</option>
                             </Form.Control></td>
@@ -256,6 +258,7 @@ export default class DechetDirect extends React.Component {
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="IncinerationUnite"
                                               onChange={this.handleChange}>
+                                <option></option>
                                 <option value="Kg">Kg</option>
                                 <option value="L">L</option>
                             </Form.Control></td>
@@ -281,6 +284,7 @@ export default class DechetDirect extends React.Component {
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="OrganicComposedUnite"
                                               onChange={this.handleChange}>
+                                <option></option>
                                 <option value="Kg">Kg</option>
                                 <option value="L">L</option>
                             </Form.Control></td>

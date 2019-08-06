@@ -704,7 +704,10 @@ export default class EnergyTable extends React.Component {
                             <tbody>
 
                             <tr>
-                                <td>{attribute.NaturalGas}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.Gaz"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="GazNaturel"
                                     placeholder="valeur"
@@ -722,7 +725,10 @@ export default class EnergyTable extends React.Component {
 
                             </tr>
                             <tr>
-                                <td>{attribute.Propane}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.Propane"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="Propane"
                                     placeholder="valeur"
@@ -741,7 +747,10 @@ export default class EnergyTable extends React.Component {
 
                             </tr>
                             <tr>
-                                <td>{attribute.Gasoline}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.PumpFuel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="EssencePompe"
                                     placeholder="valeur"
@@ -760,7 +769,10 @@ export default class EnergyTable extends React.Component {
                             </tr>
 
                             <tr>
-                                <td>{attribute.Diesel}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.Diesel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="GazolePompe"
                                     placeholder="valeur"
@@ -778,7 +790,10 @@ export default class EnergyTable extends React.Component {
 
                             </tr>
                             <tr>
-                                <td>{attribute.Domesticfueloil}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.HeatingOil"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="FioulDomestique"
                                     placeholder="valeur"
@@ -796,7 +811,10 @@ export default class EnergyTable extends React.Component {
 
                             </tr>
                             <tr>
-                                <td>{attribute.Lightfueloil}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.LightOil"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="MazoutLeger"
                                     placeholder="valeur"
@@ -822,7 +840,10 @@ export default class EnergyTable extends React.Component {
 
                             <th colSpan="3">Combustibles d'origine organique, sources fixes</th>
                             <tr>
-                                <td>{attribute.Biodiesel}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.Biodiesel"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control name="Biodiesel"
                                                   placeholder="valeur"
                                                   value={this.state.Biodiesel}
@@ -844,7 +865,10 @@ export default class EnergyTable extends React.Component {
 
 
                             <tr>
-                                <td>{attribute.GasHeating}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.FossilHeating"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control name="Fossil"
                                                   placeholder="valeur"
                                                   value={this.state.Fossil}
@@ -865,7 +889,10 @@ export default class EnergyTable extends React.Component {
 
 
                             <tr>
-                                <td>{attribute.Electricity}</td>
+                                <td><FormattedHTMLMessage id="EnergyTable.Electricite"
+                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                          description="Welcome header on app main page"
+                                                          values={{what: 'react-intl'}}/></td>
                                 <td><Form.Control
                                     name="TotalElectricite"
                                     placeholder="valeur"

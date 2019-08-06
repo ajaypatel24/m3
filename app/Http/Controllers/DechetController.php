@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DechetController extends Controller
 {
-    public function addDechet(request $request)
+    public function addDechet(request $request, $id)
     {
 
         $Dechet = new Dechet();
@@ -32,43 +32,49 @@ class DechetController extends Controller
            request('OrganicComposed')
         */
 
+        $user = DB::table('procede')->where('UID', $id)->value('UID');
+        if ($user === null) {
 
-        foreach ($DechetArray as $key => $value) {
-            $CoeffGES = DB::table('categorie')
-                ->select('Coefficient_GES')
-                ->where('Partie_InventaireEN', '=', 'Direct waste')
-                ->where('Nom_CategorieEN', '=', $DechetArray[$key])
-                ->first()
-                ->Coefficient_GES;
+            foreach ($DechetArray as $key => $value) {
+                $CoeffGES = DB::table('categorie')
+                    ->select('Coefficient_GES')
+                    ->where('Partie_InventaireEN', '=', 'Direct waste')
+                    ->where('Nom_CategorieEN', '=', $DechetArray[$key])
+                    ->first()
+                    ->Coefficient_GES;
 
-            $IdCategorie = DB::table('categorie')
-                ->select('idCategorie')
-                ->where('Partie_InventaireEN', '=', 'Direct waste')
-                ->where('Nom_CategorieEN', '=', $DechetArray[$key])
-                ->first()
-                ->idCategorie;
+                $IdCategorie = DB::table('categorie')
+                    ->select('idCategorie')
+                    ->where('Partie_InventaireEN', '=', 'Direct waste')
+                    ->where('Nom_CategorieEN', '=', $DechetArray[$key])
+                    ->first()
+                    ->idCategorie;
 
                 $Quantite_an = request($key);
-                $Unite = request($key.'Unite');
+                $Unite = request($key . 'Unite');
                 echo $Unite;
                 $Emission_GES = $Quantite_an * $CoeffGES;
-            $r = array(
-                'Categorie_idCategorie' => $IdCategorie,
-                'idProcede' => $key . $InttoString,
-                'Nom_procede' => $key,
-                'Quantite_an' => $Quantite_an,
-                'Unite_an' => $Unite,
-                'Emission_GES' => $Emission_GES,
-                'UID' => $Dechet->UID = request('UID'),
-            );
+                $r = array(
+                    'Categorie_idCategorie' => $IdCategorie,
+                    'idProcede' => $key . $InttoString,
+                    'Nom_procede' => $key,
+                    'Quantite_an' => $Quantite_an,
+                    'Unite_an' => $Unite,
+                    'Emission_GES' => $Emission_GES,
+                    'UID' => $Dechet->UID = request('UID'),
+                );
 
-            array_push($data, $r);
+                array_push($data, $r);
 
+            }
+
+            DB::table('procede')->insert($data);
+
+            print_r($data);
+
+        } else {
+            echo 'hi';
         }
-
-        DB::table('procede')->insert($data);
-
-       print_r($data);
 
     }
 
