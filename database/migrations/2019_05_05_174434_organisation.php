@@ -26,7 +26,7 @@ class Organisation extends Migration
 
 
 
-            $table->integer("Scian_idScian");
+            $table->string("Scian_idScian");
 
             $table->
             foreign("Scian_idScian")->

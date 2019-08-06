@@ -36,7 +36,7 @@ export default class DechetDirect extends React.Component {
 
 
             SCIAN: "",
-            UID: "",
+            UID: sessionStorage.getItem('UID'),
             TableSubmit: sessionStorage.getItem('TableSubmit'),
             EnergyCategories: [],
             validated: false,
@@ -224,6 +224,7 @@ export default class DechetDirect extends React.Component {
                             <td><Form.Control as="select" name="RecycleWasteUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
+                                <option value="L">L</option>
                             </Form.Control></td>
 
                         </tr>
@@ -240,6 +241,7 @@ export default class DechetDirect extends React.Component {
                                               onChange={this.handleChange}
                             >
                                 <option value="Kg">Kg</option>
+                                <option value="L">L</option>
                             </Form.Control></td>
 
                         </tr>
@@ -255,6 +257,7 @@ export default class DechetDirect extends React.Component {
                             <td><Form.Control as="select" name="IncinerationUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
+                                <option value="L">L</option>
                             </Form.Control></td>
 
                         </tr>
@@ -279,6 +282,7 @@ export default class DechetDirect extends React.Component {
                             <td><Form.Control as="select" name="OrganicComposedUnite"
                                               onChange={this.handleChange}>
                                 <option value="Kg">Kg</option>
+                                <option value="L">L</option>
                             </Form.Control></td>
 
                         </tr>

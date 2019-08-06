@@ -17,7 +17,7 @@ class Scian extends Migration
         {
 
 
-            $table->integer("idScian")->primary();
+            $table->string("idScian")->primary();
             $table->integer("Code_2");
             $table->integer("Code_6");
             $table->string("Secteur_EN", 200);
