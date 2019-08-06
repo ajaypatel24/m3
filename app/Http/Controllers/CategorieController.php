@@ -62,8 +62,8 @@ class CategorieController extends Controller
             "PropaneUnite" => "Propane",
             "EssenceUnite" => "Gasoline",
             "GazoleUnite" => "Diesel",
-            "FioulUnite" =>"Domestic fuel oil",
-            "MazoutUnite" => "Light fuel oil",
+            "FioulUnite" =>"Domestic Fuel Oil",
+            "MazoutUnite" => "Light Fuel Oil",
             "CharbonUnite" => "Coal",
             "ElectriciteUnite" => "Electricity",
             "BiodieselUnite" =>"Biodiesel",
@@ -72,7 +72,7 @@ class CategorieController extends Controller
             "UsinageUnite" => "CNC Machining Turning",
             "VapeurUnite" => "Cold Vapor",
             "VinUnite" =>"Fermenting Wine",
-            "BiereUnite" => "Gasification of beer",
+            "BiereUnite" => "Gasification of Beer",
             "HaloUnite" => "Halocarbons/Other",
             "AutreMethaneUnite" =>"Other Methane",
             "N2OSolUnite" => "N2O Fertilizer ",
@@ -121,6 +121,7 @@ class CategorieController extends Controller
             foreach ($category as $unit => $cat) {
 
 
+                echo $DatabaseCat[$unit];
 
                     $Key = DB::table('categorie')
                         ->select('idCategorie')
@@ -170,6 +171,12 @@ class CategorieController extends Controller
 
             foreach ($category as $unit => $cat) { //loop continues since element is not null
 
+                echo $unit;
+                echo "\n";
+
+                echo $DatabaseCat[$unit];
+                echo "\n";
+
 
                 $Key = DB::table('categorie')
                     ->select('idCategorie')
@@ -192,6 +199,7 @@ class CategorieController extends Controller
                 else {
                     continue;
                 }
+
 
             }
 
