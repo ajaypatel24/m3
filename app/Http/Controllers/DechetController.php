@@ -73,7 +73,33 @@ class DechetController extends Controller
             print_r($data);
 
         } else {
-            echo 'hi';
+            foreach ($DechetArray as $unit => $cat) { //loop continues since element is not null
+
+                echo 'pee';
+
+                $Key = DB::table('categorie')
+                    ->select('idCategorie')
+                    ->where('Nom_CategorieEN', '=', $DechetArray[$unit])
+                    ->first()
+                    ->idCategorie;
+
+
+
+                if (request($unit) != '') { //avoids wiping previous values
+                    DB::table('procede')//updates fields based on UID and category name
+                    ->where('UID', $id)
+                        ->where('Nom_procede', $unit)
+                        ->update([
+                            'Categorie_idCategorie' => $Key,
+                            'Quantite_an' => request($unit),
+                            'Unite_an' => $Unite = request($unit . 'Unite'),
+                        ]);
+                }
+                else {
+                    continue;
+                }
+
+            }
         }
 
     }
@@ -85,6 +111,14 @@ class DechetController extends Controller
 
     public function editDechet($uid)
     {
-        return true;
+        $DechetArray = [
+            'RecycleWaste' => 'Recycling of mixed waste',
+            'DomesticWaste' => 'Infill of domestic waste',
+            'Incineration' => 'Incineration of domestic waste',
+            'OrganicComposed' => 'Composed organic material',
+
+        ];
+
+
     }
 }
