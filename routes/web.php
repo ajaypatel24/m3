@@ -83,3 +83,5 @@ Route::get('/bilanX13/', 'BilanController@sumX13');
 Route::post('/e/{Qan}/{FK}/{id}', 'EnergyController@updateEnergy');
 Route::post('/EditIntrant/{NameData}/{Nom}/{Quantite}/{Unite}/{id}', 'InventaireController@editIntrant');
 
+
+Route::get('/IHT/{intrant}', 'IntrantHasTransportController@test');

@@ -11,7 +11,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import axios from "axios";
-import {Col, Form, Row, Card} from "react-bootstrap";
+import {Col, Form, Row, Card, Button} from "react-bootstrap";
 import {FormattedHTMLMessage} from "react-intl";
 import MaterialTable from "material-table";
 import Transport from '@material-ui/icons/Person';
@@ -48,6 +48,11 @@ export default function IntrantTransportForm() {
             ...oldValues,
             [event.target.name]: event.target.value,
         }));
+        console.log(event.target.value);
+        setIntrantData(event.target.value);
+
+
+        getMoreData(event.target.value)
     }
     function componentWillMount() {
 
@@ -66,6 +71,18 @@ export default function IntrantTransportForm() {
     }
 
     const [Intrant, setIntrant] = React.useState([]);
+
+    const [IntrantData, setIntrantData] = React.useState('');
+
+
+
+    async function getMoreData(IntrantData) { //get specific transport, test on intrants
+
+        let id = sessionStorage.getItem('UID');
+        const res = await fetch("/IHT/" + IntrantData);
+    }
+
+
 
     async function fetchData() {
         let id = sessionStorage.getItem('UID');
@@ -88,6 +105,7 @@ export default function IntrantTransportForm() {
 
             <Row>
         <h1> Transport des Intrants </h1>
+                <h1> {IntrantData} </h1>
             </Row>
 
 
@@ -108,10 +126,9 @@ export default function IntrantTransportForm() {
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>{Intrant[0]}</MenuItem>
-                    <MenuItem value={20}>{Intrant[1]}</MenuItem>
-                    <MenuItem value={30}>{Intrant[2]}</MenuItem>
-                    <MenuItem value={3}>test</MenuItem>
+                    <MenuItem value={Intrant[0]}>{Intrant[0]}</MenuItem>
+                    <MenuItem value={Intrant[1]}>{Intrant[1]}</MenuItem>
+                    <MenuItem value={Intrant[2]}>{Intrant[2]}</MenuItem>
                 </Select>
             </FormControl>
 
@@ -128,7 +145,7 @@ export default function IntrantTransportForm() {
                     <Card.Header className="d-flex justify-content-center login-btn-color-font"><Transport />Transport</Card.Header>
                 <Card.Body>
             <Form.Group controlId="validationCustom01">
-                <Col sm="5">
+
                     <Form.Label>fdsfdsf</Form.Label>
                     <Form.Control
                         name="BusinessName"
@@ -138,11 +155,11 @@ export default function IntrantTransportForm() {
 
                        />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Col>
+
             </Form.Group>
 
             <Form.Group controlId="validationCustom01">
-                <Col sm="5">
+
                     <Form.Label>fdsfdsf</Form.Label>
                     <Form.Control
                         name="BusinessName"
@@ -152,11 +169,11 @@ export default function IntrantTransportForm() {
 
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Col>
+
             </Form.Group>
 
             <Form.Group controlId="validationCustom02">
-                <Col sm="5">
+
 
 
                     <Form.Label>fdsfsd</Form.Label>
@@ -174,11 +191,11 @@ export default function IntrantTransportForm() {
 
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 
-                </Col>
+
             </Form.Group>
 
             <Form.Group>
-                <Col sm="5">
+
 
                     <Form.Label>fdsfdsf</Form.Label>
                     <Form.Control
@@ -193,8 +210,11 @@ export default function IntrantTransportForm() {
 
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 
-                </Col>
+
             </Form.Group>
+
+
+                    <Button variant="primary">Submit</Button>
                 </Card.Body>
                 </Card>
 
@@ -208,7 +228,7 @@ export default function IntrantTransportForm() {
 
                 <Col lg="9">
             <MaterialTable
-                title="Procede"
+                title="Transports"
                 columns={[
                     { title: 'Procede', field: 'Nom_procede' },
                     { title: 'Quantite', field: 'Quantite_an' },
