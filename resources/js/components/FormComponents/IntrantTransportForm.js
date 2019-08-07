@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 export default function IntrantTransportForm() {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        age: '',
+        Intrant: '',
         name: 'hai',
     });
 
@@ -104,8 +104,14 @@ export default function IntrantTransportForm() {
         <div>
 
             <Row>
-        <h1> Transport des Intrants </h1>
-                <h1> {IntrantData} </h1>
+                {
+                    IntrantData === '' ?
+                        <h1>Transport des Intrants</h1>
+
+                        :
+
+                        <h1> Transport: {IntrantData} </h1>
+                }
             </Row>
 
 
@@ -115,13 +121,13 @@ export default function IntrantTransportForm() {
             <Row>
 
             <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-                    Age
+                <InputLabel ref={inputLabel} htmlFor="outlined-Intrant-simple">
+                    Intrant
                 </InputLabel>
                 <Select
-                    value={values.age}
+                    value={values.Intrant}
                     onChange={handleChange}
-                    input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+                    input={<OutlinedInput labelWidth={labelWidth} name="Intrant" id="outlined-Intrant-simple" />}
                 >
                     <MenuItem value="">
                         <em>None</em>
