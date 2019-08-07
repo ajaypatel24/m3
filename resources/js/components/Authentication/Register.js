@@ -2,6 +2,7 @@ import {Button, Card, Form, FormGroup, Row, Col, Alert} from "react-bootstrap";
 import React from 'react';
 import MailIcon from '@material-ui/icons/Mail';
 import Person from '@material-ui/icons/Person';
+
 import {FormattedHTMLMessage} from "react-intl";
 /**
  * Registartion form using firebase to create an account in the m3

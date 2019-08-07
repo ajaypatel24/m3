@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import PrestartQuestion from "./FormComponents/PrestartQuestion";
 import EnergyTableData from "./Deprecated/EnergyTableData";
 import ContactInformationData from "./DataComponents/ContactInformationData";

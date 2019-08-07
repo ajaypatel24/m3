@@ -11,9 +11,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import axios from "axios";
-import {Col, Form} from "react-bootstrap";
+import {Col, Form, Row, Card} from "react-bootstrap";
 import {FormattedHTMLMessage} from "react-intl";
 import MaterialTable from "material-table";
+import Transport from '@material-ui/icons/Person';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -79,20 +80,21 @@ export default function IntrantTransportForm() {
 
     useEffect(() => {
         fetchData();
-    });
+    }, []); //[] stops infinte execution
 
     return (
 
         <div>
+
+            <Row>
         <h1> Transport des Intrants </h1>
-        <form className={classes.root} autoComplete="off">
+            </Row>
 
 
 
 
 
-
-
+            <Row>
 
             <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
@@ -113,7 +115,18 @@ export default function IntrantTransportForm() {
                 </Select>
             </FormControl>
 
+            </Row>
+
+            <Row>
+
+
+                <Col lg="3">
             <Form.Group>
+
+
+                <Card>
+                    <Card.Header className="d-flex justify-content-center login-btn-color-font"><Transport />Transport</Card.Header>
+                <Card.Body>
             <Form.Group controlId="validationCustom01">
                 <Col sm="5">
                     <Form.Label>fdsfdsf</Form.Label>
@@ -163,6 +176,7 @@ export default function IntrantTransportForm() {
 
                 </Col>
             </Form.Group>
+
             <Form.Group>
                 <Col sm="5">
 
@@ -181,14 +195,18 @@ export default function IntrantTransportForm() {
 
                 </Col>
             </Form.Group>
+                </Card.Body>
+                </Card>
+
             </Form.Group>
 
 
 
 
 
-        </form>
+                </Col>
 
+                <Col lg="9">
             <MaterialTable
                 title="Procede"
                 columns={[
@@ -221,20 +239,17 @@ export default function IntrantTransportForm() {
                 editable={{
 
 
-                    /*
-                   onRowAdd: newData =>
-                       new Promise((resolve, reject) => {
-                           setTimeout(() => {
-                               {
-                                   const data = this.state.TableData;
-                                   data.push(newData);
-                                   this.setState({ data }, () => resolve());
-                               }
-                               resolve()
-                           }, 1000)
-                       }),
-                   */
-
+                    onRowAdd: newData =>
+                        new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                {
+                                    const data = this.state.data;
+                                    data.push(newData);
+                                    this.setState({ data }, () => resolve());
+                                }
+                                resolve()
+                            }, 1000)
+                        }),
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
@@ -247,11 +262,30 @@ export default function IntrantTransportForm() {
                                 resolve()
                             }, 1000)
                         }),
+                    onRowDelete: oldData =>
+                        new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                {
+                                    let data = this.state.data;
+                                    const index = data.indexOf(oldData);
+                                    data.splice(index, 1);
+                                    this.setState({ data }, () => resolve());
+                                }
+                                resolve()
+                            }, 1000)
+                        }),
                 }}
 
 
 
             />
+
+                </Col>
+
+            </Row>
+
+
+
         </div>
     );
 }
