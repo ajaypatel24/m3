@@ -32,9 +32,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function IntrantTransportForm() {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        Intrant: '',
-        name: 'hai',
+    const [values, setValues] = React.useState({ //application state here
+        BusinessName: '',
+
     });
 
     const inputLabel = React.useRef(null);
@@ -52,7 +52,8 @@ export default function IntrantTransportForm() {
         setIntrantData(event.target.value);
 
 
-        getMoreData(event.target.value)
+console.log([event.target.name] + ':' + event.target.value);
+        //getMoreData(event.target.value)
     }
     function componentWillMount() {
 
@@ -72,6 +73,7 @@ export default function IntrantTransportForm() {
 
     function g() {
 
+        console.log(values.BusinessName);
         let data = IntrantData;
         fetch('/poo/' + data , {
             method: 'POST',
@@ -86,11 +88,12 @@ export default function IntrantTransportForm() {
                 console.log('Request succeeded with JSON response', data);
                 console.log(data.status);
                 if (data.status === 500) {
-                    g.setState({error: 'All fields must be numerical'})
+
+                    console.log('500');
                 }
                 else if (data.status === 200) {
-                    g.setState({error: 'Data submitted successfully'})
-                    //window.location.reload();
+
+                    console.log('200');
                 }
             })
             .catch(function (error) {
@@ -103,6 +106,8 @@ export default function IntrantTransportForm() {
     const [Intrant, setIntrant] = React.useState([]);
 
     const [IntrantData, setIntrantData] = React.useState('');
+
+
 
 
 
@@ -187,10 +192,10 @@ export default function IntrantTransportForm() {
 
                     <Form.Label>Origine</Form.Label>
                     <Form.Control
-                        name="BusinessName"
+                        name="Origine"
                         required
                         type="text"
-
+                        onChange={handleChange}
 
                        />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -201,9 +206,10 @@ export default function IntrantTransportForm() {
 
                     <Form.Label>Destination</Form.Label>
                     <Form.Control
-                        name="BusinessName"
+                        name="Destination"
                         required
                         type="text"
+                        onChange={handleChange}
 
 
                     />
@@ -217,10 +223,11 @@ export default function IntrantTransportForm() {
 
                     <Form.Label>Transporteur</Form.Label>
                     <Form.Control
-                        name="QuebecAddress"
+                        name="Transporteur"
                         required
                         type="text"
 
+                        onChange={handleChange}
 
 
                         pattern="^[0-9]+ [A-z]+$"
@@ -241,10 +248,12 @@ export default function IntrantTransportForm() {
                     <Form.Label>Choix du Vehicule</Form.Label>
                     <Form.Control
                         as='select'
-                        name="City"
+                        name="ChoixVehicule"
                         required
                         type="text"
                         pattern="^[a-zA-Z]+$"
+                        onChange={handleChange}
+
                     >
 
                         <option></option>
