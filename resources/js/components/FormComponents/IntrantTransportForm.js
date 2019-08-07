@@ -70,6 +70,36 @@ export default function IntrantTransportForm() {
 
     }
 
+    function g() {
+
+        let data = IntrantData;
+        fetch('/poo/' + data , {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (data) {
+                console.log('Request succeeded with JSON response', data);
+                console.log(data.status);
+                if (data.status === 500) {
+                    g.setState({error: 'All fields must be numerical'})
+                }
+                else if (data.status === 200) {
+                    g.setState({error: 'Data submitted successfully'})
+                    //window.location.reload();
+                }
+            })
+            .catch(function (error) {
+
+                console.log('Request failed', error);
+                console.log("why");
+            });
+    }
+
     const [Intrant, setIntrant] = React.useState([]);
 
     const [IntrantData, setIntrantData] = React.useState('');
@@ -91,6 +121,9 @@ export default function IntrantTransportForm() {
             .json()
             .then(res => setIntrant(res))
     }
+
+
+
 
 
 
@@ -152,7 +185,7 @@ export default function IntrantTransportForm() {
                 <Card.Body>
             <Form.Group controlId="validationCustom01">
 
-                    <Form.Label>fdsfdsf</Form.Label>
+                    <Form.Label>Origine</Form.Label>
                     <Form.Control
                         name="BusinessName"
                         required
@@ -166,7 +199,7 @@ export default function IntrantTransportForm() {
 
             <Form.Group controlId="validationCustom01">
 
-                    <Form.Label>fdsfdsf</Form.Label>
+                    <Form.Label>Destination</Form.Label>
                     <Form.Control
                         name="BusinessName"
                         required
@@ -182,7 +215,7 @@ export default function IntrantTransportForm() {
 
 
 
-                    <Form.Label>fdsfsd</Form.Label>
+                    <Form.Label>Transporteur</Form.Label>
                     <Form.Control
                         name="QuebecAddress"
                         required
@@ -203,16 +236,22 @@ export default function IntrantTransportForm() {
             <Form.Group>
 
 
-                    <Form.Label>fdsfdsf</Form.Label>
+
+
+                    <Form.Label>Choix du Vehicule</Form.Label>
                     <Form.Control
+                        as='select'
                         name="City"
                         required
                         type="text"
-
-
-
                         pattern="^[a-zA-Z]+$"
-                    />
+                    >
+
+                        <option></option>
+                        <option>
+                            vehicule
+                        </option>
+                    </Form.Control>
 
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 
@@ -220,7 +259,7 @@ export default function IntrantTransportForm() {
             </Form.Group>
 
 
-                    <Button variant="primary">Submit</Button>
+                    <Button variant="primary" onClick={g}>Submit</Button>
                 </Card.Body>
                 </Card>
 

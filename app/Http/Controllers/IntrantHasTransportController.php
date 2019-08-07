@@ -18,4 +18,9 @@ class IntrantHasTransportController extends Controller
 
 
     }
+
+    function poo($id) {
+        echo $id;
+        echo 'poo';
+    }
 }
