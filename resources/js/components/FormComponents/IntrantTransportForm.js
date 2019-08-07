@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+
+import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -59,7 +61,21 @@ export default function IntrantTransportForm() {
 
     }
 
-    const [count, setCount] = useState([1,2,3,4,5]);
+    const [Intrants, setIntrants] = React.useState([]);
+
+    async function fetchData() {
+        const res = await fetch("/bilanrow/");
+        res
+            .json()
+            .then(res => setIntrants(res))
+    }
+
+
+
+
+    useEffect(() => {
+        fetchData();
+    });
 
     return (
         <form className={classes.root} autoComplete="off">
@@ -67,6 +83,7 @@ export default function IntrantTransportForm() {
 
 
 
+            <span>{JSON.stringify(Intrants)}</span>
 
 
 
