@@ -8,6 +8,7 @@ use App\Intrant;
 use App\TableInventaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\Table;
 
 /**
  * Class InventaireController
@@ -356,6 +357,22 @@ class InventaireController extends Controller
 
 
         return $intrants;
+    }
+
+    function getIntrantTransport($id) {
+        $array = [];
+
+            $r = DB::table('intrants')
+                ->select('nom_intrant')
+                ->where('UID', $id)
+                ->get();
+
+        foreach ($r as $value) {
+            $array[] = $value->nom_intrant;
+        }
+
+
+        return $array;
     }
 
     function editIntrant($NameData, $Nom, $Quantite, $Unite, $uid ) {

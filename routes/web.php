@@ -45,6 +45,7 @@ Route::post('/intrants/{array}/{Id}', 'InventaireController@addIntrant'); //add 
 Route::get('intrants/{Id}', 'InventaireController@getIntrant'); //gets intrants
 Route::get('/inventaire/{Id}', 'InventaireController@inventaireData'); //gets energy table data
 Route::post('delIntrants/{name}/{id}', 'InventaireController@deleteIntrant'); //delete single intrant
+Route::get('/getIntrant/{id}', 'InventaireController@getIntrantTransport');
 
 /* Categorie Controller */
 Route::post('/categorie', 'CategorieController@tableEnergySave');
