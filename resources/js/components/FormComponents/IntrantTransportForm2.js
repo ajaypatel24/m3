@@ -11,6 +11,7 @@ import Transport from '@material-ui/icons/Person';
 import Container from '@material-ui/core/Container';
 
 
+
 export default class IntrantTransportForm2 extends React.Component {
     constructor(props) {
         super(props);
@@ -100,6 +101,7 @@ export default class IntrantTransportForm2 extends React.Component {
 
                     console.log('200');
                 }
+
             })
             .catch(function (error) {
 
@@ -147,7 +149,27 @@ export default class IntrantTransportForm2 extends React.Component {
                 </Row>
 
 
-
+<Row>
+    <Col lg="12">
+        <FormControl variant="outlined" >
+            <InputLabel ref="heelo" htmlFor="outlined-age-simple">
+                Age
+            </InputLabel>
+            <Select
+                value="Age"
+                onChange={this.handleChange}
+                input={<OutlinedInput labelWidth="100%" name="age" id="outlined-age-simple" />}
+            >
+                <MenuItem value="">
+                    <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+        </FormControl>
+    </Col>
+</Row>
 
 
                 <Row>
