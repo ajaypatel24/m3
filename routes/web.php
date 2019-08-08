@@ -89,3 +89,8 @@ Route::post('/poo/{id}', 'IntrantHasTransportController@poo');
 
 Route::post('/addTransport/{id}', 'IntrantHasTransportController@addTransport');
 Route::get('/getTransport/{id}', 'IntrantHasTransportController@getTransport');
+
+
+Route::get('/getTransportMethods/{intrant}', 'IntrantHasTransportController@getIntrantTransport' );
+
+Route::post('/IntrantTransport/{intrant}/{id}','IntrantHasTransportController@addIntrantHasTransport');

@@ -18,10 +18,10 @@ export default class IntrantTransportForm2 extends React.Component {
         this.state = {
             error: '',
             columns: [
-                { title: 'Lib_origine', field: 'Lib_origine' },
-                { title: 'Lib_destination', field: 'Lib_destination' },
-                { title: 'Nb_km', field: 'Nb_km' },
-                { title: 'Nom_Transporteur', field: 'Nom_Transporteur' },
+                { title: 'Intrant_idIntrant', field: 'Intrant_idIntrant' },
+                { title: 'Quantite', field: 'Quantite' },
+                { title: 'Frequence', field: 'Frequence' },
+                { title: 'Unite', field: 'Unite' },
 
 
                 {/*
@@ -43,12 +43,15 @@ export default class IntrantTransportForm2 extends React.Component {
             Transporteur: '',
             Kilometrage: '',
             Intrants: [],
+            ChoixIntrant: '',
+            Change: '',
 
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.g = this.g.bind(this);
 
+        this.getTransport2 = this.getTransport2.bind(this);
     }
 
     componentWillMount() {
@@ -74,10 +77,65 @@ export default class IntrantTransportForm2 extends React.Component {
             });
     }
 
+    test() {
+
+        let data = this.state;
+        let id = sessionStorage.getItem('UID');
+        let intrant = this.state.ChoixIntrant;
+        fetch('/IntrantTransport/' + intrant + '/' + id, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                "Content-type": "application/json"
+            }
+
+        })
+            .then(function (data) {
+                console.log('Request succeeded with JSON response', data);
+                console.log(data.status);
+                if (data.status === 500) {
+
+                    console.log('500');
+                }
+                else if (data.status === 200) {
+
+                    console.log('200');
+                }
+
+            })
+            .catch(function (error) {
+
+                console.log('Request failed', error);
+                console.log("why");
+            });
+
+    }
+
+
+    getTransport2() {
+
+
+        let intrant = this.state.ChoixIntrant;
+
+        if (intrant != '') {
+            this.setState({Change: true})
+        }
+        else {
+            this.setState({Change: ''})
+        }
+        axios.get('/getTransportMethods/' + intrant)
+            .then(response => {
+                this.setState({TableData: response.data})
+            });
+
+    }
+
     g() {
 
         let id = sessionStorage.getItem('UID');
-        let data = this.state
+        let data = this.state;
+
 
         fetch('/addTransport/' + id , {
             method: 'POST',
@@ -108,10 +166,8 @@ export default class IntrantTransportForm2 extends React.Component {
             });
 
 
-        console.log('hfh');
-
-
         this.getTransport();
+        this.test();
 
 
 
@@ -139,19 +195,21 @@ export default class IntrantTransportForm2 extends React.Component {
                 <Row>
                     {
                         <div>
-                            {this.state.ChoixVehicule === '' ?
+                            {this.state.Change === '' ?
 
                                 <h1>Transport des Intrants</h1>
 
                                 :
 
 
-                                <h1> Transport: {this.state.ChoixVehicule} </h1>
+                                <h1> Transport: {this.state.ChoixIntrant} </h1>
                             }
                         </div>
                     }
                 </Row>
 
+
+                {/*
 
 <Row>
     <Col lg="12">
@@ -175,11 +233,11 @@ export default class IntrantTransportForm2 extends React.Component {
     </Col>
 </Row>
 
-
+*/}
                 <Row>
 
 
-                            <Col lg="4">
+                            <Col lg="3">
                     <Form.Group>
 
 
@@ -189,7 +247,7 @@ export default class IntrantTransportForm2 extends React.Component {
                         <Form.Label>Choix du Vehicule</Form.Label>
                         <Form.Control
                             as='select'
-                            name="ChoixVehicule"
+                            name="ChoixIntrant"
                             required
                             type="text"
                             pattern="^[a-zA-Z]+$"
@@ -207,7 +265,13 @@ export default class IntrantTransportForm2 extends React.Component {
 
 
                     </Form.Group>
+
                             </Col>
+                    <Col lg="4">
+                        <Form.Group>
+                        <Button onClick={this.getTransport2} variant="primary">Confirm</Button>
+                        </Form.Group>
+                    </Col>
 
 
                 </Row>

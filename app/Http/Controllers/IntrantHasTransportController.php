@@ -64,6 +64,49 @@ class IntrantHasTransportController extends Controller
         return $r;
 
     }
+
+
+    function addIntrantHasTransport($intrant, $uid) {
+
+        $IntrantTransport = new IntrantHasTransport();
+        $IntrantID = DB::table('intrants')
+            ->select('idIntrant')
+            ->where('nom_intrant','=', $intrant)
+            ->where('UID','=',$uid)
+            ->first()
+            ->idIntrant;
+
+
+        $IntrantTransport->Intrant_idIntrant = $IntrantID;
+        $IntrantTransport->save();
+
+    }
+
+    function getIntrantTransport($intrant) {
+
+        if ($intrant == '') {
+            return null;
+        }
+        $IntrantID = DB::table('intrants')
+            ->select('idIntrant')
+            ->where('nom_intrant','=', $intrant)
+            ->first()
+            ->idIntrant;
+
+        $r = DB::table('intrant_has_transport')
+            ->select('Intrant_idIntrant')
+            ->where('Intrant_idIntrant', '=', $IntrantID)
+            ->get();
+
+
+
+        return $r;
+
+
+
+    }
+
+
 }
 
 
