@@ -119,7 +119,7 @@ export default class IntrantTransportForm2 extends React.Component {
         let intrant = this.state.ChoixIntrant;
 
         if (intrant != '') {
-            this.setState({Change: true})
+            this.setState({Change: this.state.ChoixIntrant})
         }
         else {
             this.setState({Change: ''})
@@ -202,7 +202,7 @@ export default class IntrantTransportForm2 extends React.Component {
                                 :
 
 
-                                <h1> Transport: {this.state.ChoixIntrant} </h1>
+                                <h1> Transport: {this.state.Change} </h1>
                             }
                         </div>
                     }
