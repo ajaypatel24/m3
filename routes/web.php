@@ -86,3 +86,6 @@ Route::post('/EditIntrant/{NameData}/{Nom}/{Quantite}/{Unite}/{id}', 'Inventaire
 
 Route::get('/IHT/{intrant}', 'IntrantHasTransportController@test');
 Route::post('/poo/{id}', 'IntrantHasTransportController@poo');
+
+Route::post('/addTransport/{id}', 'IntrantHasTransportController@addTransport');
+Route::get('/getTransport/{id}', 'IntrantHasTransportController@getTransport');

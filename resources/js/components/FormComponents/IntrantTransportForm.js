@@ -33,7 +33,12 @@ const useStyles = makeStyles(theme => ({
 export default function IntrantTransportForm() {
     const classes = useStyles();
     const [values, setValues] = React.useState({ //application state here
-        BusinessName: '',
+        ChoixVehicule: '',
+        Origine: '',
+        Destination: '',
+        Transporteur: '',
+        Kilometrage: '',
+
 
     });
 
@@ -73,9 +78,10 @@ console.log([event.target.name] + ':' + event.target.value);
 
     function g() {
 
-        console.log(values.BusinessName);
-        let data = IntrantData;
-        fetch('/poo/' + data , {
+        let id = sessionStorage.getItem('UID');
+        console.log(values);
+        let data = values;
+        fetch('/addTransport/' + id , {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -127,6 +133,10 @@ console.log([event.target.name] + ':' + event.target.value);
             .then(res => setIntrant(res))
     }
 
+    async function getTransport() {
+        let id = sessionStorage.getItem('UID');
+        const res = await fetch('/')
+    }
 
 
 
@@ -266,7 +276,28 @@ console.log([event.target.name] + ':' + event.target.value);
 
 
             </Form.Group>
+                <Form.Group controlId="validationCustom02">
 
+
+
+                    <Form.Label>Kilometres</Form.Label>
+                    <Form.Control
+                        name="Kilometrage"
+                        required
+                        type="text"
+
+                        onChange={handleChange}
+
+
+                        pattern="^[0-9]+ [A-z]+$"
+
+                    />
+
+
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+
+                </Form.Group>
 
                     <Button variant="primary" onClick={g}>Submit</Button>
                 </Card.Body>
