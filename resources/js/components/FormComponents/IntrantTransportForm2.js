@@ -68,11 +68,9 @@ export default class IntrantTransportForm2 extends React.Component {
 
     getTransport() {
         let uid = sessionStorage.getItem('UID');
-
         axios.get('/getTransport/' + uid)
             .then(response => {
                 this.setState({TableData: response.data})
-
             });
     }
 
@@ -108,6 +106,12 @@ export default class IntrantTransportForm2 extends React.Component {
                 console.log('Request failed', error);
                 console.log("why");
             });
+
+
+        console.log('hfh');
+
+
+        this.getTransport();
 
 
 
