@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class IntrantHasTransportController extends Controller
 {
-    function test($intrant) {
+    function test($intrant)
+    {
         $r = DB::table('intrants')
             ->select('nom_intrant')
             ->where('nom_intrant', '=', $intrant)
@@ -21,13 +22,15 @@ class IntrantHasTransportController extends Controller
 
     }
 
-    function poo($id) {
+    function poo($id)
+    {
         echo $id;
         echo 'poo';
 
     }
 
-    function addTransport (request $request, $id) {
+    function addTransport(request $request, $id)
+    {
 
         echo request('Origine');
         echo request('Destination');
@@ -43,22 +46,24 @@ class IntrantHasTransportController extends Controller
         //$Transport->Co_transport = request('ChoixVehicule');
 
 
-
         $Transport->save();
 
 
     }
-    function getTransport($id) {
-        $r = DB::table('transport')
-            ->where('UID','=', $id)
-            ->distinct()
-            ->get();
 
+    function getTransport($id)
+    {
+        $g = array();
+        $values = array();
+        $r = DB::table('transport')
+            ->where('UID', '=', $id)
+            ->whereNotNull('UID')
+            ->get();
 
 
         return $r;
 
     }
-
-
 }
+
+

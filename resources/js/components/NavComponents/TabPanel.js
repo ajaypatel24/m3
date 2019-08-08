@@ -10,7 +10,7 @@ import Box from '@material-ui/core/Box/index';
 import EnergyTable from '../FormComponents/EnergyTable'
 import ProcessTable from "../FormComponents/ProcessTable";
 import IntrantEditData from "../DataComponents/IntrantEditData";
-import IntrantTransportForm from "../FormComponents/IntrantTransportForm";
+import IntrantTransportForm2 from "../FormComponents/IntrantTransportForm2";
 import TransportEntry from "../FormComponents/Transport/TransportEntry";
 import DechetDirect from "../FormComponents/DechetDirect";
 import UtilisationFDV from "../FormComponents/UtilisationFDV";
@@ -99,7 +99,7 @@ export default function FullWidthTabs() {
                     <IntrantEditData/>
                 </TabPanel>
                 <TabPanel value={value} index={3} dir={theme.direction}>
-                    <IntrantTransportForm/>
+                    <IntrantTransportForm2/>
                 </TabPanel>
                 <TabPanel value={value} index={4} dir={theme.direction}>
                     <TransportEntry/>

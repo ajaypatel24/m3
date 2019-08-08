@@ -114,6 +114,7 @@ console.log([event.target.name] + ':' + event.target.value);
     const [IntrantData, setIntrantData] = React.useState('');
 
 
+    const [Transport, setTransport] = React.useState([]);
 
 
 
@@ -135,16 +136,21 @@ console.log([event.target.name] + ':' + event.target.value);
 
     async function getTransport() {
         let id = sessionStorage.getItem('UID');
-        const res = await fetch('/')
+        const res = await fetch('/getTransport/' + id)
+
+        res
+            .json()
+            .then(res => setTransport(res))
+
+
+
     }
-
-
-
 
 
 
     useEffect(() => {
         fetchData();
+        getTransport();
     }, []); //[] stops infinte execution
 
     return (
