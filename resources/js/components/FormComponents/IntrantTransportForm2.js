@@ -8,6 +8,7 @@ import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import MenuItem from "@material-ui/core/MenuItem";
 import Transport from '@material-ui/icons/Person';
+import Container from '@material-ui/core/Container';
 
 
 export default class IntrantTransportForm2 extends React.Component {
@@ -16,22 +17,12 @@ export default class IntrantTransportForm2 extends React.Component {
         this.state = {
             error: '',
             columns: [
-                { title: 'Procede', field: 'Nom_procede' },
-                { title: 'Quantite', field: 'Quantite_an' },
-                {
-                    title: 'Unite', field: 'Unite_an',
-                    lookup: {
-                        Kg: 'Kg',
-                        KWH: 'kWh',
-                        Litre: 'L'
+                { title: 'Lib_origine', field: 'Lib_origine' },
+                { title: 'Lib_destination', field: 'Lib_destination' },
+                { title: 'Nb_km', field: 'Nb_km' },
+                { title: 'Nom_Transporteur', field: 'Nom_Transporteur' },
 
 
-                    },
-                },
-
-
-
-                { title: 'GES (kg)', field: 'Emission_GES' },
                 {/*
                 { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
                 {
@@ -70,12 +61,25 @@ export default class IntrantTransportForm2 extends React.Component {
 
             });
 
+        this.getTransport();
+
+    }
+
+    getTransport() {
+        let uid = sessionStorage.getItem('UID');
+
+        axios.get('/getTransport/' + uid)
+            .then(response => {
+                this.setState({TableData: response.data})
+
+            });
     }
 
     g() {
 
         let id = sessionStorage.getItem('UID');
         let data = this.state
+
         fetch('/addTransport/' + id , {
             method: 'POST',
             body: JSON.stringify(data),
@@ -102,6 +106,9 @@ export default class IntrantTransportForm2 extends React.Component {
                 console.log('Request failed', error);
                 console.log("why");
             });
+
+
+
     }
     handleChange(e) {
 
@@ -126,11 +133,15 @@ export default class IntrantTransportForm2 extends React.Component {
                 <Row>
                     {
                         <div>
-                            <h1>{this.state.Intrants}</h1>
+                            {this.state.ChoixVehicule === '' ?
+
+                                <h1>Transport des Intrants</h1>
+
+                                :
 
 
-
-                            <h1> Transport: {this.state.Intrants} </h1>
+                                <h1> Transport: {this.state.ChoixVehicule} </h1>
+                            }
                         </div>
                     }
                 </Row>
@@ -141,7 +152,10 @@ export default class IntrantTransportForm2 extends React.Component {
 
                 <Row>
 
+
+                            <Col lg="4">
                     <Form.Group>
+
 
 
 
@@ -167,6 +181,8 @@ export default class IntrantTransportForm2 extends React.Component {
 
 
                     </Form.Group>
+                            </Col>
+
 
                 </Row>
 
@@ -303,29 +319,7 @@ export default class IntrantTransportForm2 extends React.Component {
                             editable={{
 
 
-                                onRowAdd: newData =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            {
-                                                const data = this.state.data;
-                                                data.push(newData);
-                                                this.setState({ data }, () => resolve());
-                                            }
-                                            resolve()
-                                        }, 1000)
-                                    }),
-                                onRowUpdate: (newData, oldData) =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            {
-                                                const data = this.state.data;
-                                                const index = data.indexOf(oldData);
-                                                data[index] = newData;
-                                                this.setState({ data }, () => resolve());
-                                            }
-                                            resolve()
-                                        }, 1000)
-                                    }),
+
                                 onRowDelete: oldData =>
                                     new Promise((resolve, reject) => {
                                         setTimeout(() => {
