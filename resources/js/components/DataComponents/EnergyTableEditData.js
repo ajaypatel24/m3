@@ -62,20 +62,6 @@ export default class EnergyTableEditData extends React.Component {
                 editable={{
 
 
-                     /*
-                    onRowAdd: newData =>
-                        new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                {
-                                    const data = this.state.TableData;
-                                    data.push(newData);
-                                    this.setState({ data }, () => resolve());
-                                }
-                                resolve()
-                            }, 1000)
-                        }),
-                    */
-
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
