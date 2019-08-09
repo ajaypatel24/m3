@@ -16,6 +16,7 @@ class Transport extends Migration
         Schema::create('transport', function (Blueprint $table) {
 
 
+            $table->string('idTransport', 50)->primary();
             $table->string('UID',60)->nullable();
             $table->string('Lib_origine',20)->nullable();
             $table->string('Lib_destination',20)->nullable();

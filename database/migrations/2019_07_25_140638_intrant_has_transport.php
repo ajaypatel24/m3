@@ -23,14 +23,14 @@ class IntrantHasTransport extends Migration
             on("intrants");
 
 
-            /*
 
-            $table->string("Transport_idTransport", 10);
+
+            $table->string("Transport_idTransport", 50)->nullable();
             $table->
             foreign("Transport_idTransport")->
-            references("idCategorie")->
+            references("idTransport")->
             on("transport");
-            */
+
 
 
 
