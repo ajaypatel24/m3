@@ -28,6 +28,7 @@ import UtilisationFDV from "./FormComponents/UtilisationFDV";
 import testtabs from "./NavComponents/TabPanel";
 import DataPanel from "./NavComponents/DataPanel";
 import EnergyTableEditData from "./DataComponents/EnergyTableEditData";
+import DataComponent from "./DataComponents/DataComponent"
 
 import GraphTest from "./DataComponents/GraphComponent/GraphTest"
 import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
@@ -115,10 +116,11 @@ export default class App extends React.Component {
 
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
                         <PrivateRoute exact path="/dechet" component={DechetDirect}/>
+                        <PrivateRoute exact path="/AllData" component={DataComponent}/>
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
 
                         <Route exact path="/Edit" component={IntrantEditData}/>
-                        <PrivateRoute exact path="/tr" component={testtabs}/>
+
                         <Route exact path="/dr" component={DataPanel}/>
                         <Route component={NoMatch}/>
 

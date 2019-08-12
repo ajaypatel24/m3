@@ -12,7 +12,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import EnergyIcon from '@material-ui/icons/power';
 import IntrantIcon from '@material-ui/icons/input';
-import DataIcon from '@material-ui/icons/equalizer';
+import DataIcon from '@material-ui/icons/description';
 import ProcedeIcon from '@material-ui/icons/notes';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Home';
@@ -119,7 +119,7 @@ export default function ResponsiveDrawer(props) {
             <div className={classes.toolbar} />
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
 
-                <h2>EcoSystem</h2>
+                <h2>Inventaire</h2>
                 {/*}
                 <img
 
@@ -176,6 +176,12 @@ export default function ResponsiveDrawer(props) {
                         <ListItem button key="EcoReport">
                             <ListItemIcon><DechetIcon /></ListItemIcon>
                             <ListItemText primary="Dechets" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/AllData" style={{ textDecoration: 'none' }}>
+                        <ListItem button key="EcoReport">
+                            <ListItemIcon><DataIcon /></ListItemIcon>
+                            <ListItemText primary="Data" />
                         </ListItem>
                     </Link>
 
