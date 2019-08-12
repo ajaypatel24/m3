@@ -49,9 +49,9 @@ addLocaleData(fr);
 
                     <MuiThemeProvider theme={theme}>
                         <SnackbarProvider maxSnack={1}>
-                            {/* <Test> */}
-                        <App/>
-                            {/* </Test> */}
+                             <Test>
+                                <App/>
+                             </Test>
                         </SnackbarProvider>
                     </MuiThemeProvider>
 

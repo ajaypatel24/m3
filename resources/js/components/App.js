@@ -80,10 +80,7 @@ export default class App extends React.Component {
 
                         :
 
-                        <div>
-                        <Navigation/>
-                        <br/>
-                        </div>
+                        null
                     }
 
                     <Switch>
