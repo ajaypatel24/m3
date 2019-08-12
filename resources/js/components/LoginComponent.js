@@ -7,6 +7,7 @@ import axios from "axios";
 import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
 import {FormattedHTMLMessage} from 'react-intl';
+import Background from "./DataComponents/GraphComponent/images/182226.jpg";
 
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
@@ -19,6 +20,14 @@ const handleKeyDown = (evt) => evt.which === 13 ? this.handleLoginRequest : {}
  * has clickable name to log in and out
  *
  */
+
+var sectionStyle = {
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${Background})`,
+    backgroundSize: 'cover' //ultra key part of background image
+
+};
 export default class LoginComponent extends React.Component {
 
 
@@ -295,6 +304,8 @@ export default class LoginComponent extends React.Component {
             /** Begin Navbar */
 
 
+            <section style={ sectionStyle }>
+
             <div style={{overflowX: 'hidden'}}> {/*disables very unappealing shaking when state changes */}
 
                 {/*
@@ -315,6 +326,7 @@ export default class LoginComponent extends React.Component {
                     </Col>
 
 
+                    {/*
                     <Col lg="3" sm="4">
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                             <img
@@ -333,9 +345,10 @@ export default class LoginComponent extends React.Component {
                         </div>
 
                     </Col>
+                    */}
 
 
-                    <Col lg="8" sm="8">
+                    <Col md={{ span: 6, offset: 2 }}>
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                             {!this.state.LoginOrSignUp ?
                                 <Card>
@@ -471,6 +484,7 @@ export default class LoginComponent extends React.Component {
 
 
             </div>
+            </section>
 
 
         );

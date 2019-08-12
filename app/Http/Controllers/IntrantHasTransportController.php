@@ -38,6 +38,8 @@ class IntrantHasTransportController extends Controller
         echo request('ChoixVehicule');
         $Transport = new IntrantTransport(); //table transport
 
+
+        $Transport->idTransport = rand(1, 1000);
         $Transport->Lib_origine = request('Origine');
         $Transport->Lib_destination = request('Destination');
         $Transport->UID = $id;
@@ -75,6 +77,7 @@ class IntrantHasTransportController extends Controller
             ->where('UID','=',$uid)
             ->first()
             ->idIntrant;
+
 
 
         $IntrantTransport->Intrant_idIntrant = $IntrantID;

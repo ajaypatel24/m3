@@ -37,6 +37,7 @@
         "notistack": "^0.8.9",
         "npm": "^6.10.2",
         "react-bootstrap": "^1.0.0-beta.9",
+        "react-google-charts": "^3.0.14",
         "react-google-recaptcha": "^1.1.0",
         "react-helmet": "^5.2.1",
         "react-intl": "^2.9.0",

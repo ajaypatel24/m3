@@ -2,6 +2,7 @@ import React from 'react'
 import MaterialTable from 'material-table'
 import axios from "axios/index";
 import {Button, Card, Col, Form, Row} from "react-bootstrap";
+import { Chart } from "react-google-charts";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -256,9 +257,11 @@ export default class IntrantTransportForm2 extends React.Component {
                         >
 
                             <option></option>
-                            <option>{this.state.Intrants[0]}</option>
-                            <option>{this.state.Intrants[1]}</option>
-                            <option>{this.state.Intrants[2]}</option>
+                            {this.state.Intrants.map(Intrant => (
+                                <option>
+                                    {Intrant}
+                                </option>
+                            ))}
                         </Form.Control>
 
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -431,6 +434,53 @@ export default class IntrantTransportForm2 extends React.Component {
                     </Col>
 
                 </Row>
+
+                <Row>
+                    <Col lg="6">
+                    <Chart
+                        width={'500px'}
+                        height={'300px'}
+                        chartType="PieChart"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['Task', 'Hours per Day'],
+                            ['Work', 11],
+                            ['Eat', 2],
+                            ['Commute', 2],
+                            ['Watch TV', 2],
+                            ['Sleep', 7],
+                        ]}
+                        options={{
+                            title: 'My Daily Activities',
+                            // Just add this option
+                            is3D: true,
+                        }}
+                        rootProps={{ 'data-testid': '2' }}
+                    />
+                    </Col>
+                    <Col lg="6">
+                        <Chart
+                            width={'500px'}
+                            height={'300px'}
+                            chartType="PieChart"
+                            loader={<div>Loading Chart</div>}
+                            data={[
+                                ['Task', 'Hours per Day'],
+                                ['Work', 11],
+                                ['Eat', 2],
+                                ['Commute', 2],
+                                ['Watch TV', 2],
+                                ['Sleep', 7],
+                            ]}
+                            options={{
+                                title: 'My Daily Activities',
+                            }}
+                            rootProps={{ 'data-testid': '1' }}
+                        />
+                    </Col>
+                </Row>
+
+
 
 
 

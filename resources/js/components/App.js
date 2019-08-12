@@ -28,6 +28,10 @@ import testtabs from "./NavComponents/TabPanel";
 import DataPanel from "./NavComponents/DataPanel";
 import EnergyTableEditData from "./DataComponents/EnergyTableEditData";
 
+import GraphTest from "./DataComponents/GraphComponent/GraphTest"
+import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
+
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -97,8 +101,11 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/intrant" component={IntrantEditData}/>
                         <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
 
+                        <Route exact path="/background" component={BackgroundImage} />
                         <Route exact path="/test" component={Test}/>
 
+
+                        <Route exact path="/Graph" component={GraphTest}/>
                         <Route exact path="/Dialog" component={Dialog}/>
                         <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                         <PrivateRoute exact path="/team" component={Team}/>
