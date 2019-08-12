@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, Row} from "react-bootstrap";
+import {Col, Form, Row, Button} from "react-bootstrap";
 import { FormattedHTMLMessage } from "react-intl";
 
 /**
@@ -197,6 +197,14 @@ render()
     const {validated} = this.state;
     return (
         <div>
+
+            <Row>
+                <Col>
+                    <h1> Intrants </h1>
+
+                    <h6> Remplire les données nécessaires </h6>
+                </Col>
+            </Row>
             <div className="container">
                 <div className="row clearfix">
                     <div className="col-md-12 column">
@@ -211,7 +219,7 @@ render()
 
 
 
-                                <Col lg="3">
+                                <Col>
 
                                     <p>{this.state.Delete}</p>
                                     <Form noValidate
@@ -221,6 +229,8 @@ render()
                                           enctype="multipart/form-data">
 
                                         <Form.Group>
+                                            <Row>
+                                                <Col lg="4">
                                             <Form.Label><FormattedHTMLMessage id="IntrantForm.NomIntrant"
                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                               description="Welcome header on app main page"
@@ -234,12 +244,13 @@ render()
                                                 value={this.state.NomIntrant}
 
                                             />
-                                        </Form.Group>
+                                                </Col>
 
 
-                                        <Form.Group>
-                                            <Row>
-                                                <Col lg="7">
+                                                <Col lg="4">
+
+
+
                                                     <Form.Label><FormattedHTMLMessage id="IntrantForm.Quantity"
                                                                                       defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                                       description="Welcome header on app main page"
@@ -254,8 +265,34 @@ render()
                                                         pattern="^[a-zA-Z]+$"
 
                                                     />
+                                                    <Form.Check
+                                                        required
+                                                        name="Yearly"
+                                                        inline label=<FormattedHTMLMessage id="IntrantForm.PerDelivery"
+                                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                        description="Welcome header on app main page"
+                                                        values={{what: 'react-intl'}}/>
+                                                    type='radio'
+                                                    id={`inline-radio-1`}
+                                                    onChange={this.handleChange}
+                                                    value={true}
+                                                    pattern="^[a-zA-Z]+$"/>
+                                                    <Form.Check
+                                                        name="Yearly"
+                                                        inline label=<FormattedHTMLMessage id="IntrantForm.Yearly"
+                                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                        description="Welcome header on app main page"
+                                                        values={{what: 'react-intl'}}/>
+                                                    onChange={this.handleChange}
+                                                    type='radio'
+                                                    id={`inline-radio-2`}
+                                                    value={false}/>
+
                                                 </Col>
-                                                <Col lg="5">
+
+
+
+                                                <Col lg="4">
 
                                                     {/* simple dropdown menu */}
                                                     <Form.Label><FormattedHTMLMessage id="IntrantForm.Unite"
@@ -290,6 +327,12 @@ render()
                                                     </Form.Control>
                                                 </Col>
                                             </Row>
+                                        </Form.Group>
+
+                                        {/*
+
+                                        <Form.Group>
+
 
                                             <Form.Check
                                                 required
@@ -314,12 +357,18 @@ render()
                                                 id={`inline-radio-2`}
                                                 value={false}/>
 
-
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
 
+                                        */}
+
+
+
+
 
                                         <Form.Group>
+                                            <Row>
+                                                <Col>
                                             <Form.Label><FormattedHTMLMessage id="IntrantForm.Provenance"
                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                               description="Welcome header on app main page"
@@ -333,9 +382,10 @@ render()
                                                 value={this.state.Provenance}
 
                                             />
-                                        </Form.Group>
+                                                </Col>
 
-                                        <Form.Group>
+                                                <Col>
+
                                             <Form.Label><FormattedHTMLMessage id="IntrantForm.NbTransport"
                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                               description="Welcome header on app main page"
@@ -349,6 +399,8 @@ render()
                                                 value={this.state.NbTransport}
 
                                             />
+                                                </Col>
+                                            </Row>
                                         </Form.Group>
 
                                         <Form.Group>
@@ -387,13 +439,14 @@ render()
 
 
 
-                                        <button type="submit" onClick={this.handleSubmit}>submit</button>
+                                        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
 
                                     </Form>
 
 
                                 </Col>
 
+                        </Row>
 
                             {/**
                              * if in delete mode, render the form below
@@ -412,6 +465,8 @@ render()
                              * ex: attribute.{elementName}
                              *
                              * */}
+
+                            {/*
                             <Col lg="7">
 
 
@@ -461,7 +516,9 @@ render()
 
 
                             </Col>
-                        </Row>
+
+                            */}
+
                     </div>
                 </div>
             </div>
