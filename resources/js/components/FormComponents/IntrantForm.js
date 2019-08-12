@@ -203,16 +203,12 @@ render()
 
                         <Row>
 
-                            <Col lg="1">
-                                <button onClick={this.changeDelete}>Switch</button>
-                            </Col>
-
                             {/**
                              * this.state.Delete checks if the form is in delete mode or not, it renders the
                              * component accordingly and can easily be switched using the switch button above
                              */}
 
-                            {this.state.Delete ?
+
 
 
                                 <Col lg="3">
@@ -399,41 +395,13 @@ render()
                                 </Col>
 
 
-                                /**
-                                 * if in delete mode, render the form below
-                                 */
-
-                                :
-
-                                <Col lg="3">
-                                    <Form noValidate
-                                          validated={validated}
-                                          onSubmit={e => this.handleSubmit(e)}
-                                          method="POST" action="/"
-                                          enctype="multipart/form-data">
+                            {/**
+                             * if in delete mode, render the form below
+                             */
+                            }
 
 
-                                        <Form.Label><FormattedHTMLMessage id="IntrantForm.IntrantDelete"
-                                                                          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                          description="Welcome header on app main page"
-                                                                          values={{what: 'react-intl'}}/></Form.Label>
-                                        <Form.Control
-                                            name="NomIntrant"
-                                            required
-                                            type="text"
-                                            placeholder="Intrant"
-                                            onChange={this.handleChange}
-                                            value={this.state.NomIntrant}
-
-                                        />
-
-                                        <button type="submit" onClick={this.handleDelete}>Delete</button>
-
-                                    </Form>
-                                </Col>
-
-
-                            } {/** end form rendering */}
+                            {/** end form rendering */}
 
 
                             {/** end form rendering

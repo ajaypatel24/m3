@@ -10,10 +10,18 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import EnergyIcon from '@material-ui/icons/power';
+import IntrantIcon from '@material-ui/icons/input';
+import DataIcon from '@material-ui/icons/equalizer';
+import ProcedeIcon from '@material-ui/icons/notes';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
+import MailIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
+import TransportIcon from '@material-ui/icons/FlightLand';
+import DechetIcon from '@material-ui/icons/Delete';
+import LogoutIcon from '@material-ui/icons/PersonOutline';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Toolbar from'@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link, HashRouter, Route } from 'react-router-dom'
@@ -29,7 +37,7 @@ import '../../../sass/navstyle.css'
 
 import Navigation from "../Navigation"
 
-const drawerWidth = 240;
+const drawerWidth = 215;
 
 import grey from '@material-ui/core/colors/grey'
 
@@ -68,7 +76,7 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: theme.spacing(3), //padding between top    nav and content
     },
 
 }));
@@ -107,9 +115,11 @@ export default function ResponsiveDrawer(props) {
 
     const drawer = (
         <div>
-            <div className={classes.toolbar} />
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
 
+            <div className={classes.toolbar} />
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+
+                <h2>EcoSystem</h2>
                 {/*}
                 <img
 
@@ -122,7 +132,7 @@ export default function ResponsiveDrawer(props) {
 
                 */}
 
-<h2> EcoSystem</h2>
+
 
             </div>
             <Divider />
@@ -135,63 +145,40 @@ export default function ResponsiveDrawer(props) {
                         </ListItem>
                     </Link>
 
-                    <Link to="/prestart_questions" style={{ textDecoration: 'none' }}>
+                    <Link to="/EnergyTable" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoDo" >
-                            <ListItemIcon ><MailIcon color="secondary" /></ListItemIcon>
-                            <ListItemText primary="EcoDo" />
+                            <ListItemIcon ><EnergyIcon /></ListItemIcon>
+                            <ListItemText primary="Energie" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/route" style={{ textDecoration: 'none' }}>
+                    <Link to="/ProcessTable" style={{ textDecoration: 'none' }}>
                         <ListItem button key="Ecometrics">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="Ecometrics" />
+                            <ListItemIcon><ProcedeIcon /></ListItemIcon>
+                            <ListItemText primary="Procedes" />
                         </ListItem>
                     </Link>
 
                     <Link to="/intrant" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoAct">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="EcoAct" />
+                            <ListItemIcon><IntrantIcon /></ListItemIcon>
+                            <ListItemText primary="Intrants" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/TransportMarchandises" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="EcoTest">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="EcoTest" />
-                        </ListItem>
-                    </Link>
-                    <Link to="/EnergyTable" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="EcoReport">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="EcoReport" />
-                        </ListItem>
-                    </Link>
-                    <Link to="/ProcessTable" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="EcoComm">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="EcoComm" />
-                        </ListItem>
-                    </Link>
                     <Link to="/transport" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="Chat Room">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="Chat Room" />
+                        <ListItem button key="EcoTest">
+                            <ListItemIcon><TransportIcon /></ListItemIcon>
+                            <ListItemText primary="Transport" />
                         </ListItem>
                     </Link>
                     <Link to="/dechet" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="Calendar">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="Calendar" />
+                        <ListItem button key="EcoReport">
+                            <ListItemIcon><DechetIcon /></ListItemIcon>
+                            <ListItemText primary="Dechets" />
                         </ListItem>
                     </Link>
-                    <Link to="/FDV" style={{ textDecoration: 'none' }}>
-                        <ListItem button key="Documents">
-                            <ListItemIcon><MailIcon /></ListItemIcon>
-                            <ListItemText primary="Documents" />
-                        </ListItem>
-                    </Link>
+
 
 
                 </List>
@@ -200,13 +187,13 @@ export default function ResponsiveDrawer(props) {
                 <Divider />
                 <Link to="/contactinfo" style={{ textDecoration: 'none' }}>
                     <ListItem button key="Settings">
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><SettingsIcon /></ListItemIcon>
                         <ListItemText primary="Settings" />
                     </ListItem>
                 </Link>
 
                 <ListItem button key="Logout" onClick={handleLogout} color="secondary">
-                    <ListItemIcon color="secondary"><MailIcon color="secondary"/></ListItemIcon>
+                    <ListItemIcon ><LogoutIcon/></ListItemIcon>
                     <ListItemText primary="Logout" color="secondary" />
                 </ListItem>
 
@@ -237,8 +224,9 @@ export default function ResponsiveDrawer(props) {
 
 
                 </Toolbar>
-                <Navigation parentMethod={handleDrawerToggle}/>
                 */}
+                <Navigation parentMethod={handleDrawerToggle}/>
+
 
                 <IconButton
                     color="inherit"

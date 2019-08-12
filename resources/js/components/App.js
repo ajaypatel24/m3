@@ -21,6 +21,7 @@ import TransportEntry from "./FormComponents/Transport/TransportEntry";
 import Navigation from "./Navigation";
 import TransportMarchandises from "./DataComponents/TransportMarchandises";
 import IntrantEditData from "./DataComponents/IntrantEditData";
+import IntrantForm from "./FormComponents/IntrantForm";
 import Dialog from "./NavComponents/Dialog"
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
@@ -69,7 +70,6 @@ export default class App extends React.Component {
         return (
 
             <div>
-
                 <HashRouter>
 
 
@@ -83,6 +83,7 @@ export default class App extends React.Component {
                         null
                     }
 
+
                     <Switch>
 
 
@@ -95,7 +96,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/" component={TopTabs}/>
                         <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                         <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
-                        <PrivateRoute exact path="/intrant" component={IntrantEditData}/>
+                        <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                         <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
 
                         <Route exact path="/background" component={BackgroundImage} />
@@ -117,7 +118,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
 
                         <Route exact path="/Edit" component={IntrantEditData}/>
-                        <Route exact path="/tr" component={testtabs}/>
+                        <PrivateRoute exact path="/tr" component={testtabs}/>
                         <Route exact path="/dr" component={DataPanel}/>
                         <Route component={NoMatch}/>
 
