@@ -20,6 +20,7 @@
 * **Material UI** : https://material-ui.com/ => Google style components for pages 
 * **React Intl** : https://github.com/formatjs/react-intl => Translation functionality
 * **Codacy** : https://www.codacy.com/ => Automated code review 
+* **React-Google-Charts** : https://www.npmjs.com/package/react-google-charts#bar-chart => Collection of data graphs
 
 * **Laravel Forge** : https://forge.laravel.com/ => future server management
 **Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
