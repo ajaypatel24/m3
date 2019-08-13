@@ -14,15 +14,15 @@ import IntrantTransportForm2 from "../FormComponents/IntrantTransportForm2";
 import TransportEntry from "../FormComponents/Transport/TransportEntry";
 import DechetDirect from "../FormComponents/DechetDirect";
 import UtilisationFDV from "../FormComponents/UtilisationFDV";
-function TabPanel(props) {
+function DataComponenet(props) {
     const { children, value, index, ...other } = props;
 
     return (
         <Typography
             component="div"
-            role="tabpanel"
+            role="DataComponenet"
             hidden={value !== index}
-            id={`full-width-tabpanel-${index}`}
+            id={`full-width-DataComponenet-${index}`}
             aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
@@ -31,7 +31,7 @@ function TabPanel(props) {
     );
 }
 
-TabPanel.propTypes = {
+DataComponenet.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
@@ -40,7 +40,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
     return {
         id: `full-width-tab-${index}`,
-        'aria-controls': `full-width-tabpanel-${index}`,
+        'aria-controls': `full-width-DataComponenet-${index}`,
     };
 }
 
@@ -72,7 +72,7 @@ export default function DataComponent() {
                     onChange={handleChange}
                     indicatorColor="primary"
                     textColor="primary"
-                    variant="fullWidth"
+
                     aria-label="full width tabs example"
                 >
                     <Tab label="Energie" {...a11yProps(0)} />
@@ -88,24 +88,24 @@ export default function DataComponent() {
                 index={value}
                 onChangeIndex={handleChangeIndex}
             >
-                <TabPanel value={value} index={0} dir={theme.direction}>
+                <DataComponenet value={value} index={0} dir={theme.direction}>
                     <EnergyTable />
-                </TabPanel>
-                <TabPanel value={value} index={1} dir={theme.direction}>
+                </DataComponenet>
+                <DataComponenet value={value} index={1} dir={theme.direction}>
                     <ProcessTable />
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
+                </DataComponenet>
+                <DataComponenet value={value} index={2} dir={theme.direction}>
                     <IntrantEditData/>
-                </TabPanel>
-                <TabPanel value={value} index={3} dir={theme.direction}>
+                </DataComponenet>
+                <DataComponenet value={value} index={3} dir={theme.direction}>
                     <IntrantTransportForm2/>
-                </TabPanel>
-                <TabPanel value={value} index={4} dir={theme.direction}>
+                </DataComponenet>
+                <DataComponenet value={value} index={4} dir={theme.direction}>
                     <TransportEntry/>
-                </TabPanel>
-                <TabPanel value={value} index={5} dir={theme.direction}>
+                </DataComponenet>
+                <DataComponenet value={value} index={5} dir={theme.direction}>
                     <DechetDirect />
-                </TabPanel>
+                </DataComponenet>
 
             </SwipeableViews>
         </div>

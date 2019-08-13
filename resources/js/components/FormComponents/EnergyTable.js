@@ -1,4 +1,4 @@
-import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
+import {Col, Form, Row, Table, Button, Alert, Card} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -686,6 +686,7 @@ export default class EnergyTable extends React.Component {
                     <Form noValidate
                           validated={validated}
                         onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
+                        <Card>
                         <Table responsive> {/**/}
                             <thead>
                             <tr>
@@ -844,12 +845,15 @@ export default class EnergyTable extends React.Component {
                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                           description="Welcome header on app main page"
                                                           values={{what: 'react-intl'}}/></td>
+
                                 <td><Form.Control name="Biodiesel"
                                                   placeholder="valeur"
                                                   value={this.state.Biodiesel}
                                                   onChange={this.handleChange}
                                                   pattern="^[0-9]+$"
                                 ></Form.Control></td>
+
+
                                 <td><Form.Control as="select" name="BiodieselUnite"
                                                   onChange={this.handleChange} >
                                     <option></option>
@@ -857,6 +861,8 @@ export default class EnergyTable extends React.Component {
                                     <option value="Kg">Kg</option>
                                     <option value="KWH">KWH</option>
                                 </Form.Control></td>
+
+
 
                             </tr>
 
@@ -915,10 +921,15 @@ export default class EnergyTable extends React.Component {
 
                             </tbody>
                         </Table>
+
+                        </Card>
+                        <br/>
                         <Row>
                             <Col lg="3">
                         <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                             </Col>
+
+
                             <Col lg="9">
                         {
                             {
@@ -934,6 +945,8 @@ export default class EnergyTable extends React.Component {
                         }
                             </Col>
                         </Row>
+
+
 
                     </Form>
             </div>

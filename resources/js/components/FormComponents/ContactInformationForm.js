@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, Row} from 'react-bootstrap';
+import {Button, Col, Form, Row, Card} from 'react-bootstrap';
 import {FormattedHTMLMessage} from "react-intl";
 
 import Container from '@material-ui/core/Container';
@@ -134,6 +134,7 @@ export default class ContactInformationForm extends React.Component {
                       method="POST" action="/"
                       enctype="multipart/form-data">
 
+
                     <Form.Row>
                         <Col lg="4">
                         <Form.Group controlId="formGridEmail">
@@ -245,6 +246,7 @@ export default class ContactInformationForm extends React.Component {
                     </Form.Group>
                     </Form.Row>
 
+                    <br/>
 
 
                     <Button variant="primary" type="submit">

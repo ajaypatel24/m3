@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, Row, Button} from "react-bootstrap";
+import {Col, Form, Row, Button, Card} from "react-bootstrap";
 import { FormattedHTMLMessage } from "react-intl";
 
 /**
@@ -205,6 +205,8 @@ render()
                     <h6> Remplire les données nécessaires </h6>
                 </Col>
             </Row>
+
+            <Card>
             <div className="container">
                 <div className="row clearfix">
                     <div className="col-md-12 column">
@@ -439,9 +441,10 @@ render()
 
 
 
-                                        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+
 
                                     </Form>
+
 
 
                                 </Col>
@@ -522,6 +525,10 @@ render()
                     </div>
                 </div>
             </div>
+            </Card>
+            <br/>
+            <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+
         </div>
     );
 

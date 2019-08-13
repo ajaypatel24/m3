@@ -1,4 +1,4 @@
-import {Col, Form, Row, Table, Button, Alert} from "react-bootstrap";
+import {Col, Form, Row, Table, Button, Alert, Card} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -198,6 +198,7 @@ export default class DechetDirect extends React.Component {
                 <Form noValidate
                       validated={validated}
                       onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
+                    <Card>
                     <Table responsive> {/**/}
                         <thead>
                         <tr>
@@ -298,6 +299,8 @@ export default class DechetDirect extends React.Component {
 
                         </tbody>
                     </Table>
+                    </Card>
+                    <br/>
                     <Row>
                         <Col lg="3">
                             <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>

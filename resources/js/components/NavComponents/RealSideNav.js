@@ -12,7 +12,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import EnergyIcon from '@material-ui/icons/power';
 import IntrantIcon from '@material-ui/icons/input';
-import DataIcon from '@material-ui/icons/description';
+import DataIcon from '@material-ui/icons/equalizer';
 import ProcedeIcon from '@material-ui/icons/notes';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Home';
@@ -21,6 +21,7 @@ import TransportIcon from '@material-ui/icons/FlightLand';
 import DechetIcon from '@material-ui/icons/Delete';
 import LogoutIcon from '@material-ui/icons/PersonOutline';
 import SettingsIcon from '@material-ui/icons/Settings';
+import BilanIcon from '@material-ui/icons/Assignment';
 import Toolbar from'@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -182,6 +183,12 @@ export default function ResponsiveDrawer(props) {
                         <ListItem button key="EcoReport">
                             <ListItemIcon><DataIcon /></ListItemIcon>
                             <ListItemText primary="Data" />
+                        </ListItem>
+                    </Link>
+                    <Link to="/Bilan" style={{ textDecoration: 'none' }}>
+                        <ListItem button key="EcoReport">
+                            <ListItemIcon><BilanIcon /></ListItemIcon>
+                            <ListItemText primary="Bilan" />
                         </ListItem>
                     </Link>
 

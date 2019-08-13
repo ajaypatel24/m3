@@ -1,4 +1,4 @@
-import {Form, Table, Row, Col, Button} from "react-bootstrap";
+import {Form, Table, Row, Col, Button, Card} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -477,6 +477,7 @@ export default class ProcessTable extends React.Component {
                 <Form noValidate
                       validated={validated}
                     onSubmit={e => this.handleSubmit(e)} method="POST" action="/">
+                    <Card>
                     <Table responsive> {/**/}
                         <thead>
 
@@ -552,15 +553,21 @@ export default class ProcessTable extends React.Component {
 
                         </tr>
 
-                        <tr><FormattedHTMLMessage id="EnergyTable.EndOfLife"
+                        <tr>
+                            <td><FormattedHTMLMessage id="EnergyTable.EndOfLife"
                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                   description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/></tr>
+                                                      values={{what: 'react-intl'}}/></td>
+
+
+                            </tr>
 
 
                         </tbody>
 
                     </Table>
+                    </Card>
+                    <br/>
                     <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </Form>
 
