@@ -12,7 +12,14 @@ export default class GraphTest extends React.Component {
     }
     render () {
         return (
-            <div>
+            <div >
+                <Row>
+                    <Col>
+                        <h1> Home </h1>
+                        <p> Data des donnees </p>
+                    </Col>
+                </Row>
+
                 <Row>
                     <Col lg="6">
                         <Chart
@@ -128,73 +135,109 @@ export default class GraphTest extends React.Component {
                     </Col>
                 </Row>
 
+
                 <Row>
-                    <Col md={{ span: 6, offset: 3 }}>
-
-                        <Chart
-                            width={'600px'}
-                            height={'400px'}
-                            chartType="Scatter"
-                            loader={<div>Loading Chart</div>}
-                            data={[
-                                ['Student ID', 'Hours Studied', 'Final'],
-                                [0, 0, 67],
-                                [1, 1, 88],
-                                [2, 2, 77],
-                                [3, 3, 93],
-                                [4, 4, 85],
-                                [5, 5, 91],
-                                [6, 6, 71],
-                                [7, 7, 78],
-                                [8, 8, 93],
-                                [9, 9, 80],
-                                [10, 10, 82],
-                                [11, 0, 75],
-                                [12, 5, 80],
-                                [13, 3, 90],
-                                [14, 1, 72],
-                                [15, 5, 75],
-                                [16, 6, 68],
-                                [17, 7, 98],
-                                [18, 3, 82],
-                                [19, 9, 94],
-                                [20, 2, 79],
-                                [21, 2, 95],
-                                [22, 2, 86],
-                                [23, 3, 67],
-                                [24, 4, 60],
-                                [25, 2, 80],
-                                [26, 6, 92],
-                                [27, 2, 81],
-                                [28, 8, 79],
-                                [29, 9, 83],
-                            ]}
-                            options={{
-                                // Material design options
-                                chart: {
-                                    title: "Students' Final Grades",
-                                    subtitle: 'based on hours studied',
-                                },
-                                width: 800,
-                                height: 500,
-                                series: {
-                                    0: { axis: 'hours studied' },
-                                    1: { axis: 'final grade' },
-                                },
-                                axes: {
-                                    y: {
-                                        'hours studied': { label: 'Hours Studied' },
-                                        'final grade': { label: 'Final Exam Grade' },
-                                    },
-                                },
-                            }}
-                            rootProps={{ 'data-testid': '4' }}
-                            legendToggle
-                        />
-                    </Col>
+                <Chart
+                    width={'100%'}
+                    height={'200px'}
+                    chartType="Timeline"
+                    loader={<div>Loading Chart</div>}
+                    data={[
+                        [
+                            { type: 'string', id: 'Position' },
+                            { type: 'string', id: 'Name' },
+                            { type: 'date', id: 'Start' },
+                            { type: 'date', id: 'End' },
+                        ],
+                        [
+                            'President',
+                            'George Washington',
+                            new Date(1789, 3, 30),
+                            new Date(1797, 2, 4),
+                        ],
+                        ['President', 'John Adams', new Date(1797, 2, 4), new Date(1801, 2, 4)],
+                        [
+                            'President',
+                            'Thomas Jefferson',
+                            new Date(1801, 2, 4),
+                            new Date(1809, 2, 4),
+                        ],
+                        [
+                            'Vice President',
+                            'John Adams',
+                            new Date(1789, 3, 21),
+                            new Date(1797, 2, 4),
+                        ],
+                        [
+                            'Vice President',
+                            'Thomas Jefferson',
+                            new Date(1797, 2, 4),
+                            new Date(1801, 2, 4),
+                        ],
+                        [
+                            'Vice President',
+                            'Aaron Burr',
+                            new Date(1801, 2, 4),
+                            new Date(1805, 2, 4),
+                        ],
+                        [
+                            'Vice President',
+                            'George Clinton',
+                            new Date(1805, 2, 4),
+                            new Date(1812, 3, 20),
+                        ],
+                        [
+                            'Secretary of State',
+                            'John Jay',
+                            new Date(1789, 8, 25),
+                            new Date(1790, 2, 22),
+                        ],
+                        [
+                            'Secretary of State',
+                            'Thomas Jefferson',
+                            new Date(1790, 2, 22),
+                            new Date(1793, 11, 31),
+                        ],
+                        [
+                            'Secretary of State',
+                            'Edmund Randolph',
+                            new Date(1794, 0, 2),
+                            new Date(1795, 7, 20),
+                        ],
+                        [
+                            'Secretary of State',
+                            'Timothy Pickering',
+                            new Date(1795, 7, 20),
+                            new Date(1800, 4, 12),
+                        ],
+                        [
+                            'Secretary of State',
+                            'Charles Lee',
+                            new Date(1800, 4, 13),
+                            new Date(1800, 5, 5),
+                        ],
+                        [
+                            'Secretary of State',
+                            'John Marshall',
+                            new Date(1800, 5, 13),
+                            new Date(1801, 2, 4),
+                        ],
+                        [
+                            'Secretary of State',
+                            'Levi Lincoln',
+                            new Date(1801, 2, 5),
+                            new Date(1801, 4, 1),
+                        ],
+                        [
+                            'Secretary of State',
+                            'James Madison',
+                            new Date(1801, 4, 2),
+                            new Date(1809, 2, 3),
+                        ],
+                    ]}
+                    rootProps={{ 'data-testid': '3' }}
+                />
                 </Row>
-
-
 
 
 

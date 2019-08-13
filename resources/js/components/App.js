@@ -94,6 +94,7 @@ export default class App extends React.Component {
                         <BlockRoute exact path="/login" component={Login}/>
                         <Route exact path="/data" component={EnergyTableData}/>
 
+                        <PrivateRoute exact path="/home" component={GraphTest}/>
                         <PrivateRoute exact path="/IntrantTransport" component={IntrantTransportForm2}/>
                         <PrivateRoute exact path="/TransportSwitch" component={TransportTabSwitch} />
                         <PrivateRoute exact path="/TransportMarchandises" component={TransportMarchandises}/>

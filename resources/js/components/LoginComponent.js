@@ -475,9 +475,9 @@ export default class LoginComponent extends React.Component {
 
 
                                 <Col lg="6">
-                                    <Card>
+
                                         <Register parentCallback={this.callbackFunction}/>
-                                    </Card>
+
                                 </Col>
 
                             }

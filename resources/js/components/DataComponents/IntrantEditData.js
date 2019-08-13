@@ -33,13 +33,7 @@ export default class IntrantEditData extends React.Component {
                     },
 
                 },
-                { title: 'Frequence', field: 'y',
 
-                    lookup: {
-                        false: 'Yearly',
-                        true: 'Per Delivery'
-                    },
-                },
                 { title: 'Nombre de Transports', field: 'NbTransport'},
                 { title: 'Provenance', field: 'provenance'},
                 { title: "Frequence d'Achat", field: 'FreqAchat',
@@ -107,7 +101,7 @@ export default class IntrantEditData extends React.Component {
 
             <MaterialTable
 
-                title="Intrants"
+                title="Quantite Annuel Intrants"
                 columns={this.state.columns}
                 data={this.state.Rows}
                 editable={{

@@ -2,7 +2,7 @@ import {Button, Card, Form, FormGroup, Row, Col, Alert} from "react-bootstrap";
 import React from 'react';
 import MailIcon from '@material-ui/icons/Mail';
 import Person from '@material-ui/icons/Person';
-
+import "../animation.css"
 import {FormattedHTMLMessage} from "react-intl";
 /**
  * Registartion form using firebase to create an account in the m3
@@ -206,6 +206,7 @@ export default class SignUpForm extends React.Component {
             <div>
                 <br/>
                 <br/>
+                <Card id="test">
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
                 <Card.Body>
                     {this.state.error === '' ?
@@ -260,7 +261,7 @@ export default class SignUpForm extends React.Component {
                                               onChange={this.handleChangePasswordStrength}
                                               placeholder="Password"/>
                                 <Form.Text className="text-muted">
-                                    <FormattedHTMLMessage id="Register.PasswordRequiremenets"
+                                    <FormattedHTMLMessage id="Register.PasswordRequirements"
                                     defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                     description="Welcome header on app main page"
                                     values={{what: 'react-intl'}}/>
@@ -314,6 +315,7 @@ export default class SignUpForm extends React.Component {
                         </FormGroup>
                     </form>
                 </Card.Body>
+                </Card>
             </div>
         );
     }
