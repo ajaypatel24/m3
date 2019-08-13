@@ -140,7 +140,7 @@ export default class TransportEntry extends React.Component {
 
                                             <Row>
                                                 <Col lg="12">
-                                                    <h1> Transport: Employees </h1>
+                                                    <h1> Transport des Employees </h1>
                                                     <h6> Choisie un des types d'analyse </h6>
                                                 </Col>
                                             </Row>

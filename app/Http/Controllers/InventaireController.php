@@ -238,10 +238,7 @@ class InventaireController extends Controller
     function addIntrantBackup($id) {
         $parameters =  json_decode($id); //decodes array to add parameters to database
 
-        foreach ($parameters as $e) {
-            echo $e;
-            echo "\n";
-        }
+        print_r( $parameters);
 
         $Intrant = new Intrant();
 

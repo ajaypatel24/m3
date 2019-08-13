@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, Row, Button, Card} from "react-bootstrap";
+import {Col, Form, Row, Button, Card, Alert} from "react-bootstrap";
 import { FormattedHTMLMessage } from "react-intl";
 
 /**
@@ -27,6 +27,8 @@ export default class IntrantForm extends React.Component {
             Delete: true,
             UID: sessionStorage.getItem('UID'),
             rows: [],
+            error: '',
+            validated: false
 
         };
 
@@ -66,6 +68,7 @@ export default class IntrantForm extends React.Component {
             Unite: "",
             Provenance: "",
             Frequency: "",
+            validated: false,
         })
     }
 
@@ -110,7 +113,8 @@ export default class IntrantForm extends React.Component {
 
     handleChange(e) {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            error: '',
         });
 
 
@@ -151,7 +155,10 @@ export default class IntrantForm extends React.Component {
 
         //VERY IMPORTANT
         const data = this.state;
+
         //checks all auth
+
+
         const form = e.currentTarget;
 
         if (form.checkValidity() === false) {
@@ -162,7 +169,7 @@ export default class IntrantForm extends React.Component {
 
         let id = sessionStorage.getItem('UID');
 
-
+        let g = this;
         console.table([data]);
         fetch('/intrants/' + id, {
             method: 'POST',
@@ -175,8 +182,19 @@ export default class IntrantForm extends React.Component {
         })
             .then(function (response) {
                 console.log(response.data)
+                console.log(response.status);
                 console.log('Request succeeded with JSON response', data);
 
+                if (response.status === 500) {
+                    g.setState({error: 'Ensure all data fits the criteria'})
+
+                }
+                else if (response.status === 200) {
+                    g.setState({error: 'Data submitted successfully'})
+                    g.clearState();
+
+                    //window.location.reload();
+                }
 
             })
             .catch(function (error) {
@@ -184,8 +202,9 @@ export default class IntrantForm extends React.Component {
                 console.log("why");
             });
 
-        this.getTableRows();
-        this.clearState();
+        this.setState(({validated: true}));
+
+
 
 
 
@@ -264,7 +283,7 @@ render()
                                                         placeholder=""
                                                         onChange={this.handleChange}
                                                         value={this.state.QuantiteAn}
-                                                        pattern="^[a-zA-Z]+$"
+                                                        pattern="^[0-9]+$"
 
                                                     />
                                                     <Form.Check
@@ -278,7 +297,9 @@ render()
                                                     id={`inline-radio-1`}
                                                     onChange={this.handleChange}
                                                     value={true}
-                                                    pattern="^[a-zA-Z]+$"/>
+                                                    pattern="^[a-zA-Z]+$" />
+
+
                                                     <Form.Check
                                                         name="Yearly"
                                                         inline label=<FormattedHTMLMessage id="IntrantForm.Yearly"
@@ -399,6 +420,7 @@ render()
                                                 placeholder="# de Transports"
                                                 onChange={this.handleChange}
                                                 value={this.state.NbTransport}
+                                                pattern="^[0-9]+$"
 
                                             />
                                                 </Col>
@@ -527,7 +549,26 @@ render()
             </div>
             </Card>
             <br/>
+
+            <Row>
+                <Col>
             <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+                </Col>
+                <Col>
+                    {
+                        {
+                            'Ensure all data fits the criteria':
+                                <Alert variant="danger"
+                                       className="d-flex justify-content-center">{this.state.error}</Alert>,
+                            'Data submitted successfully':
+                                <Alert variant="success"
+                                       className="d-flex justify-content-center">{this.state.error}</Alert>,
+                            '':
+                                null,
+                        }[this.state.error]
+                    }
+                </Col>
+            </Row>
 
         </div>
     );

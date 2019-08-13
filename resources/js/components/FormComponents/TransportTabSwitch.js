@@ -76,8 +76,9 @@ export default class TransportTabSwitch extends React.Component {
                         <h6> Employees & Intrants </h6>
                     </Col>
                 </Row>
+                <br/>
                 <Row>
-                    <Col lg="12">
+                    <Col lg="6">
                 <Card className="text-center">
                     <Card.Header>INTRANTS</Card.Header>
                     <Card.Body>
@@ -90,10 +91,8 @@ export default class TransportTabSwitch extends React.Component {
                     <Card.Footer className="text-muted">2 days ago</Card.Footer>
                 </Card>
                     </Col>
-                </Row>
-                <br/>
-                <Row>
-                    <Col lg="12">
+
+                    <Col lg="6">
                 <Card className="text-center">
                     <Card.Header>EMPLOYES</Card.Header>
                     <Card.Body>

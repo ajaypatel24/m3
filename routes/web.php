@@ -41,7 +41,7 @@ Route::get('/querytest', 'PrestartController@testQuery');
 
 /* Inventaire Controller */
 Route::post('/intrants', 'InventaireController@store');
-Route::post('/intrants/{array}/{Id}', 'InventaireController@addIntrant'); //add new intrant
+Route::post('/intrants/{Id}', 'InventaireController@addIntrantBackup'); //add new intrant
 Route::get('intrants/{Id}', 'InventaireController@getIntrant'); //gets intrants
 Route::get('/inventaire/{Id}', 'InventaireController@inventaireData'); //gets energy table data
 Route::post('delIntrants/{name}/{id}', 'InventaireController@deleteIntrant'); //delete single intrant
