@@ -30,6 +30,8 @@ import { red, amber } from "@material-ui/core/colors/red"
 
 import '../../../sass/navstyle.css'
 
+import '../animation.css'
+
 
 
 
@@ -167,7 +169,7 @@ export default function ResponsiveDrawer(props) {
                         </ListItem>
                     </Link>
 
-                    <Link to="/transport" style={{ textDecoration: 'none' }}>
+                    <Link to="/TransportSwitch" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoTest">
                             <ListItemIcon><TransportIcon /></ListItemIcon>
                             <ListItemText primary="Transport" />

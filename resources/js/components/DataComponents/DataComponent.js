@@ -7,22 +7,25 @@ import Tabs from '@material-ui/core/Tabs/index';
 import Tab from '@material-ui/core/Tab/index';
 import Typography from '@material-ui/core/Typography/index';
 import Box from '@material-ui/core/Box/index';
-import EnergyTable from '../FormComponents/EnergyTable'
+import EnergyTableEditData from '../DataComponents/EnergyTableEditData'
 import ProcessTable from "../FormComponents/ProcessTable";
 import IntrantEditData from "../DataComponents/IntrantEditData";
 import IntrantTransportForm2 from "../FormComponents/IntrantTransportForm2";
 import TransportEntry from "../FormComponents/Transport/TransportEntry";
 import DechetDirect from "../FormComponents/DechetDirect";
 import UtilisationFDV from "../FormComponents/UtilisationFDV";
+import { CSSTransition } from "react-transition-group"
+
+import "../animation.css"
 function DataComponenet(props) {
     const { children, value, index, ...other } = props;
 
     return (
         <Typography
             component="div"
-            role="DataComponenet"
+            role="DataComponent"
             hidden={value !== index}
-            id={`full-width-DataComponenet-${index}`}
+            id={`full-width-DataComponent-${index}`}
             aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
@@ -40,14 +43,14 @@ DataComponenet.propTypes = {
 function a11yProps(index) {
     return {
         id: `full-width-tab-${index}`,
-        'aria-controls': `full-width-DataComponenet-${index}`,
+        'aria-controls': `full-width-DataComponent-${index}`,
     };
 }
 
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
-        width: '100%',
+        //width: '100%',
     },
 }));
 
@@ -76,11 +79,11 @@ export default function DataComponent() {
                     aria-label="full width tabs example"
                 >
                     <Tab label="Energie" {...a11yProps(0)} />
-                    <Tab label="Procedes" {...a11yProps(1)} />
-                    <Tab label="Intrant" {...a11yProps(2)} />
-                    <Tab label="Intrant Transport" {...a11yProps(3)} />
-                    <Tab label="Transport Employes" {...a11yProps(4)} />
-                    <Tab label="Dechets" {...a11yProps(5)} />
+                    {/* <Tab label="Procedes" {...a11yProps(1)} /> */}
+                    <Tab label="Intrant" {...a11yProps(1)} />
+                    <Tab label="Transport" {...a11yProps(2)} />
+                    {/* <Tab label="Transport Employes" {...a11yProps(4)} /> */}
+                    {/* <Tab label="Dechets" {...a11yProps(5)} /> */}
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -89,23 +92,30 @@ export default function DataComponent() {
                 onChangeIndex={handleChangeIndex}
             >
                 <DataComponenet value={value} index={0} dir={theme.direction}>
-                    <EnergyTable />
+
+                    <EnergyTableEditData/>
                 </DataComponenet>
+                {/*
                 <DataComponenet value={value} index={1} dir={theme.direction}>
                     <ProcessTable />
                 </DataComponenet>
-                <DataComponenet value={value} index={2} dir={theme.direction}>
+                */}
+                <DataComponenet value={value} index={1} dir={theme.direction}>
                     <IntrantEditData/>
                 </DataComponenet>
+                {/*
                 <DataComponenet value={value} index={3} dir={theme.direction}>
                     <IntrantTransportForm2/>
                 </DataComponenet>
-                <DataComponenet value={value} index={4} dir={theme.direction}>
+                */}
+                <DataComponenet value={value} index={2} dir={theme.direction}>
                     <TransportEntry/>
                 </DataComponenet>
+                {/*
                 <DataComponenet value={value} index={5} dir={theme.direction}>
                     <DechetDirect />
                 </DataComponenet>
+                */}
 
             </SwipeableViews>
         </div>

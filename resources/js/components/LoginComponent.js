@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert, Button, Card, Col, Form, Row} from 'react-bootstrap';
-
+import { CSSTransition } from 'react-transition-group'
 
 import '../../sass/navstyle.css'
 import axios from "axios";
@@ -8,7 +8,7 @@ import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
 import {FormattedHTMLMessage} from 'react-intl';
 import Background from "./DataComponents/GraphComponent/images/182226.jpg";
-
+import './animation.css'
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -351,7 +351,10 @@ export default class LoginComponent extends React.Component {
                     <Col md={{ span: 6, offset: 2 }}>
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                             {!this.state.LoginOrSignUp ?
-                                <Card>
+
+
+                                <Card id="test">
+
 
                                     <Card.Header
                                         className="d-flex justify-content-center login-btn-color-font"><Person/><FormattedHTMLMessage
@@ -435,7 +438,7 @@ export default class LoginComponent extends React.Component {
                                                     <Col lg="7">Forgot password</Col>
                                                     <Col lg="4"></Col>
                                                 </Row>
-<br/>
+                                                    <br/>
                                                 <Row>
 
                                                     <Col>
@@ -462,7 +465,11 @@ export default class LoginComponent extends React.Component {
 
                                     </Card.Body>
 
+
                                 </Card>
+
+
+
 
                                 :
 

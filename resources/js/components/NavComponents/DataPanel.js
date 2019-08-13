@@ -15,6 +15,8 @@ import IntrantTransportForm from "../FormComponents/IntrantTransportForm";
 import TransportEntry from "../FormComponents/Transport/TransportEntry";
 import DechetDirect from "../FormComponents/DechetDirect";
 import UtilisationFDV from "../FormComponents/UtilisationFDV";
+import {CSSTransition} from "react-transition-group";
+import '../animation.css'
 function DataPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -67,6 +69,7 @@ export default function FullWidthTabs() {
 
     return (
         <div className={classes.root}>
+
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}
@@ -89,7 +92,10 @@ export default function FullWidthTabs() {
                 onChangeIndex={handleChangeIndex}
             >
                 <DataPanel value={value} index={0} dir={theme.direction}>
-                    <EnergyTableEditData />
+
+                            <EnergyTableEditData/>
+
+
                 </DataPanel>
                 <DataPanel value={value} index={1} dir={theme.direction}>
 

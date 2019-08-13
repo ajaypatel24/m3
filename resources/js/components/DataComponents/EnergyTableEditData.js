@@ -10,6 +10,7 @@ export default class EnergyTableEditData extends React.Component {
             error: '',
             columns: [
                 { title: 'Procede', field: 'Nom_procede' },
+                { title: 'Type', field: 'Type_Procede' },
                 { title: 'Quantite', field: 'Quantite_an' },
                 {
                     title: 'Unite', field: 'Unite_an',
