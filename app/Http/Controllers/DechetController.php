@@ -79,7 +79,6 @@ class DechetController extends Controller
         } else {
             foreach ($DechetArray as $unit => $cat) { //loop continues since element is not null
 
-                echo 'pee';
 
                 $Key = DB::table('categorie')
                     ->select('idCategorie')
