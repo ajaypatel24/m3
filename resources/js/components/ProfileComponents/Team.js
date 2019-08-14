@@ -69,22 +69,25 @@ export default function SpanningTable() {
                 </TableHead>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Desc</TableCell>
-                        <TableCell align="right">Qty.</TableCell>
-                        <TableCell align="right">@</TableCell>
-                        <TableCell align="right">Price</TableCell>
+                        <TableCell>Categories d'Emissions</TableCell>
+                        <TableCell >Numeros</TableCell>
+                        <TableCell >Postes d'Emissions</TableCell>
+                        <TableCell align="right">Emissions de GES (kg)</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
+                    {/*
                     {rows.map(row => (
                         <TableRow key={row.desc}>
                             <TableCell>{row.desc}</TableCell>
-                            <TableCell align="right">{row.qty}</TableCell>
-                            <TableCell align="right">{row.unit}</TableCell>
-                            <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+                            <TableCell >{row.qty}</TableCell>
+                            <TableCell >{row.unit}</TableCell>
+                            <TableCell >{ccyFormat(row.price)}</TableCell>
                         </TableRow>
                     ))}
+                    */}
 
+                    {/* Scope 1 */}
                     <TableRow>
                         <TableCell rowSpan={5}>Scope 1</TableCell>
                         <TableCell colSpan={2}>Subtotal</TableCell>
@@ -92,129 +95,136 @@ export default function SpanningTable() {
                     </TableRow>
                     <TableRow>
                         <TableCell>Tax</TableCell>
-                        <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
 
 
 
-
+                    {/* Scope 2 */}
                     <TableRow>
                         <TableCell rowSpan={3}>Scope 2</TableCell>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
 
 
+
+
+                    {/* Scope 3 */}
                     <TableRow>
                         <TableCell rowSpan={17}>Scope 3</TableCell>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell>Total</TableCell>
+                        <TableCell >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                    </TableRow>
+
                 </TableBody>
             </Table>
         </Paper>

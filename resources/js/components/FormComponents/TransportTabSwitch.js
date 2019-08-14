@@ -86,9 +86,9 @@ export default class TransportTabSwitch extends React.Component {
                         <Card.Text>
                             Modifier le transport des intrants
                         </Card.Text>
-                        <Button id="Intrant" variant="primary" onClick={this.selection}>Go somewhere</Button>
+                        <Button id="Intrant" size="lg" variant="outline-info" onClick={this.selection}>Intrants</Button>
                     </Card.Body>
-                    <Card.Footer className="text-muted">2 days ago</Card.Footer>
+                    <Card.Footer className="text-muted"></Card.Footer>
                 </Card>
                     </Col>
 
@@ -100,9 +100,9 @@ export default class TransportTabSwitch extends React.Component {
                         <Card.Text>
                             Modifier le transport des employes
                         </Card.Text>
-                        <Button id="Employee" variant="primary" onClick={this.selection}>Go somewhere</Button>
+                        <Button id="Employee" size="lg" variant="outline-info" onClick={this.selection}>Employes</Button>
                     </Card.Body>
-                    <Card.Footer className="text-muted">2 days ago</Card.Footer>
+                    <Card.Footer className="text-muted"></Card.Footer>
                 </Card>
                     </Col>
                 </Row>
