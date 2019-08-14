@@ -24,7 +24,7 @@
 
 * **Laravel Forge** : https://forge.laravel.com/ => future server management
 * https://laracasts.com/series/learn-laravel-forge/episodes/5
-**Asynchronous Requests**: fetch (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
 
 **Testing** : Mocha (test runner), Chai (assertion), Enzyme (component tests) and Jest (snapshot tests)
 
