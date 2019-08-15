@@ -122,6 +122,7 @@ export default class LoginComponent extends React.Component {
 
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 
+
             .catch(error => { //catches login errors
 
                 switch (error.code) {
@@ -149,40 +150,47 @@ export default class LoginComponent extends React.Component {
             })
             .then(function (user) {
 
+                let emailVerified = firebase.auth().currentUser.emailVerified;
+                console.log(emailVerified)
 
-                let uid = firebase.auth().currentUser.uid;
+                if (emailVerified) {
+                    let uid = firebase.auth().currentUser.uid;
 
-                console.log(uid); //important, exclusive Uid that will be used to identify user
-
-
-                fetch('/login', {
-                    method: 'POST',
-                    body: JSON.stringify(uid),
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Content-type": "application/json"
-                    }
-                })
-                    .then(function (data) {
+                    console.log(uid); //important, exclusive Uid that will be used to identify user
 
 
-                        sessionStorage.setItem('authenticated', 'true');
-                        sessionStorage.setItem('UID', uid);
-                        currentComponent.getName();
-                        currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
-
-
-                        setTimeout(function () {
-                            window.location.href = '/';
-                            window.location.reload();
-                        }, 20)
-                        console.log('Request succeeded with JSON response', data);
-
-
+                    fetch('/login', {
+                        method: 'POST',
+                        body: JSON.stringify(uid),
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            "Content-type": "application/json"
+                        }
                     })
-                    .catch(function (error) {
-                        console.log('Request failed', error);
-                    });
+                        .then(function (data) {
+
+
+                            sessionStorage.setItem('authenticated', 'true');
+                            sessionStorage.setItem('UID', uid);
+                            currentComponent.getName();
+                            currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
+
+
+                            setTimeout(function () {
+                                window.location.href = '/';
+                                window.location.reload();
+                            }, 20)
+                            console.log('Request succeeded with JSON response', data);
+
+
+                        })
+                        .catch(function (error) {
+                            console.log('Request failed', error);
+                        });
+                }
+                else {
+                    this.setState({error: "Please Verify your Email Address"})
+                }
 
 
             }).catch(function (error) {
@@ -192,12 +200,10 @@ export default class LoginComponent extends React.Component {
             if (error.code === 400) {
                 console.log("either email or password is incorrect");
             }
-            //console.log("dr yeet");
-            //var errorCode = error.code;
-            ///var errorMessage = error.message;
-            //return;
-            // ...
+
         });
+
+
 
 
         console.log("from login");

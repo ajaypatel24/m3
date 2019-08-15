@@ -11,6 +11,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Transport from '@material-ui/icons/Person';
 import Container from '@material-ui/core/Container';
 
+import "../animation.css"
+
 
 
 export default class IntrantTransportForm2 extends React.Component {
@@ -210,35 +212,12 @@ export default class IntrantTransportForm2 extends React.Component {
                 </Row>
 
 
-                {/*
 
-<Row>
-    <Col lg="12">
-        <FormControl variant="outlined" >
-            <InputLabel ref="heelo" htmlFor="outlined-age-simple">
-                Age
-            </InputLabel>
-            <Select
-                value="Age"
-                onChange={this.handleChange}
-                input={<OutlinedInput labelWidth="100%" name="age" id="outlined-age-simple" />}
-            >
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-        </FormControl>
-    </Col>
-</Row>
-
-*/}
                 <div className="col-md-12 column">
                 <Row>
 
 
+                    <div id="matTable">
                             <Col lg="3">
                     <Form.Group>
 
@@ -276,6 +255,7 @@ export default class IntrantTransportForm2 extends React.Component {
                         <Button onClick={this.getTransport2} variant="primary">Confirm</Button>
                         </Form.Group>
                     </Col>
+                    </div>
 
 
                 </Row>
@@ -287,7 +267,8 @@ export default class IntrantTransportForm2 extends React.Component {
                         <Form.Group>
 
 
-                            <Card>
+                            <div id="matTable">
+                            <Card >
                                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Transport />Transport</Card.Header>
                                 <Card.Body>
                                     <Form.Group controlId="validationCustom01">
@@ -396,6 +377,7 @@ export default class IntrantTransportForm2 extends React.Component {
                                     <Button variant="primary" onClick={this.g}>Submit</Button>
                                 </Card.Body>
                             </Card>
+                            </div>
 
                         </Form.Group>
 
@@ -406,6 +388,7 @@ export default class IntrantTransportForm2 extends React.Component {
                     </Col>
 
                     <Col lg="9">
+                        <div id="matTable">
                         <MaterialTable
                             title="Transports"
                             columns={this.state.columns}
@@ -431,6 +414,7 @@ export default class IntrantTransportForm2 extends React.Component {
 
 
                         />
+                        </div>
 
                     </Col>
 

@@ -37,3 +37,9 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 800px) {
+    #matTable {
+        width: 50%;
+    }
+}

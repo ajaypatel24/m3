@@ -284,7 +284,7 @@ export default class EnergyTable extends React.Component {
                     }
                     else if (data.status === 200) {
                         g.setState({error: 'Data submitted successfully'})
-                        window.location.reload();
+
                     }
                 })
                 .catch(function (error) {

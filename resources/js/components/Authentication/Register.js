@@ -149,6 +149,13 @@ export default class SignUpForm extends React.Component {
             })
             .then(function () {
             // SECURITY PROBLEM ?
+
+                console.log('pe')
+                firebase.auth().currentUser.sendEmailVerification().then(function () {
+
+                })
+
+
             let data = {
                 uid: firebase.auth().currentUser.uid,
                 name: name,
