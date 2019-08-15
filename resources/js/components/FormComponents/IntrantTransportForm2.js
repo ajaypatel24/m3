@@ -235,6 +235,7 @@ export default class IntrantTransportForm2 extends React.Component {
 </Row>
 
 */}
+                <div className="col-md-12 column">
                 <Row>
 
 
@@ -435,55 +436,11 @@ export default class IntrantTransportForm2 extends React.Component {
 
                 </Row>
 
-                <Row>
-                    <Col lg="6">
-                    <Chart
-                        width={'500px'}
-                        height={'300px'}
-                        chartType="PieChart"
-                        loader={<div>Loading Chart</div>}
-                        data={[
-                            ['Task', 'Hours per Day'],
-                            ['Work', 11],
-                            ['Eat', 2],
-                            ['Commute', 2],
-                            ['Watch TV', 2],
-                            ['Sleep', 7],
-                        ]}
-                        options={{
-                            title: 'My Daily Activities',
-                            // Just add this option
-                            is3D: true,
-                        }}
-                        rootProps={{ 'data-testid': '2' }}
-                    />
-                    </Col>
-                    <Col lg="6">
-                        <Chart
-                            width={'500px'}
-                            height={'300px'}
-                            chartType="PieChart"
-                            loader={<div>Loading Chart</div>}
-                            data={[
-                                ['Task', 'Hours per Day'],
-                                ['Work', 11],
-                                ['Eat', 2],
-                                ['Commute', 2],
-                                ['Watch TV', 2],
-                                ['Sleep', 7],
-                            ]}
-                            options={{
-                                title: 'My Daily Activities',
-                            }}
-                            rootProps={{ 'data-testid': '1' }}
-                        />
-                    </Col>
-                </Row>
 
 
 
 
-
+                </div>
             </div>
         );
     }

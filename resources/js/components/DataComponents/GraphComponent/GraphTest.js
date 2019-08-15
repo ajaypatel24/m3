@@ -12,7 +12,7 @@ export default class GraphTest extends React.Component {
     }
     render () {
         return (
-            <Container maxWidth="lg" >
+            <div className="container">
                 <Row>
                     <Col>
                         <h1> Home </h1>
@@ -24,7 +24,7 @@ export default class GraphTest extends React.Component {
                 <Row>
                     <Col lg={6} >
                         <Chart
-                            width={'500px'}
+                            width={'100%'}
                             height={'300px'}
                             chartType="PieChart"
                             loader={<div>Loading Chart</div>}
@@ -47,7 +47,7 @@ export default class GraphTest extends React.Component {
 
                     <Col lg={6}>
                         <Chart
-                            width={'500px'}
+                            width={'100%'}
                             height={'300px'}
                             chartType="PieChart"
                             loader={<div>Loading Chart</div>}
@@ -71,7 +71,7 @@ export default class GraphTest extends React.Component {
                 <Row>
                     <Col lg={6} sm={12} xs={12}>
                         <Chart
-                            width={'500px'}
+                            width={'100%'}
                             height={'300px'}
                             chartType="Line"
                             loader={<div>Loading Chart</div>}
@@ -108,7 +108,7 @@ export default class GraphTest extends React.Component {
                     </Col>
                     <Col lg={6} xs={12}>
                         <Chart
-                            width={'500px'}
+                            width={'100%'}
                             height={'300px'}
                             chartType="BarChart"
                             loader={<div>Loading Chart</div>}
@@ -246,7 +246,7 @@ export default class GraphTest extends React.Component {
 
 
 
-            </Container>
+            </div>
 
 
 
