@@ -152,8 +152,12 @@ export default class SignUpForm extends React.Component {
 
                 console.log('pe')
                 firebase.auth().currentUser.sendEmailVerification().then(function () {
+                    this.setState({error: "Email Verificaiton Link Sent"})
 
                 })
+
+                alert("Email Verification Link Sent");
+
 
 
             let data = {

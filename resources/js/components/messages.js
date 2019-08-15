@@ -193,7 +193,7 @@ export default {
         /** Login */
         'login.SignIn': "Connexion",
         'login.Intro': "Please sign in to view your account",
-        'login.email': "Courreil",
+        'login.email': "Courriel",
         'login.password': "Mot de passe",
         'login.SignUp': "s'inscrire",
         'login.Login' : "Connexion",
@@ -201,7 +201,7 @@ export default {
         /** Register */
         'Register.Name': "Nom",
         'Register.Organization': "Organization",
-        'Register.Email': "Courreil",
+        'Register.Email': "Courriel",
         'Register.Password': "Mot de passe",
         'Register.RetypePassword': "Retype Password",
         'Register.Register': "s'inscrire",
@@ -214,7 +214,7 @@ export default {
         'ContactInformationData.Name': "Nom",
         'ContactInformationData.Organization': "Organization",
         'ContactInformationData.Role': "Role",
-        'ContactInformationData.Email': "Courreil",
+        'ContactInformationData.Email': "Courriel",
         'ContactInformationData.Telephone': "Téléphone",
         'ContactInformationData.Telephone2': "Téléphone 2",
         'ContactInformationData.CorpTelephone': "Téléphone Poste",
