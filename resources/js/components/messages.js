@@ -74,7 +74,7 @@ export default {
         'IntrantForm.PerDelivery': "Per Delivery",
         'IntrantForm.Yearly': "Yearly",
         'IntrantForm.Provenance': "Origin",
-        'IntrantForm.NbTransport': "Number of Transports",
+        'IntrantForm.NbTransport': "Transports",
         'IntrantForm.Frequency': "Buying Frequency",
         'IntrantForm.IntrantDelete': "Input Name",
 

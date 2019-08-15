@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row} from "react-bootstrap";
+import {Col, Row, Container} from "react-bootstrap";
 import {Chart} from "react-google-charts";
 
 
@@ -12,13 +12,14 @@ export default class GraphTest extends React.Component {
     }
     render () {
         return (
-            <div >
+            <Container maxWidth="lg" >
                 <Row>
                     <Col>
                         <h1> Home </h1>
                         <p> Data des donnees </p>
                     </Col>
                 </Row>
+
 
                 <Row>
                     <Col lg="6">
@@ -64,6 +65,7 @@ export default class GraphTest extends React.Component {
                         />
                     </Col>
                 </Row>
+
 
                 <Row>
                     <Col lg="6">
@@ -243,7 +245,7 @@ export default class GraphTest extends React.Component {
 
 
 
-            </div>
+            </Container>
 
 
 

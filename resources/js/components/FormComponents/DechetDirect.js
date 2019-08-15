@@ -206,8 +206,9 @@ export default class DechetDirect extends React.Component {
                         </tr>
                         <tr>
                             <th>Fin de vie des matières résiduelles</th>
-                            <th>Consommation</th>
                             <th>Unite</th>
+                            <th>Consommation</th>
+
 
                         </tr>
                         </thead>
@@ -250,6 +251,7 @@ export default class DechetDirect extends React.Component {
                         </tr>
                         <tr>
                             <td>Incineration of domestic waste</td>
+
                             <td><Form.Control
                                 name="Incineration"
                                 placeholder="valeur"
@@ -257,12 +259,14 @@ export default class DechetDirect extends React.Component {
                                 onChange={this.handleChange}
                                 pattern="^[0-9]+$"
                             ></Form.Control></td>
+
                             <td><Form.Control as="select" name="IncinerationUnite"
                                               onChange={this.handleChange}>
                                 <option></option>
                                 <option value="Kg">Kg</option>
                                 <option value="L">L</option>
                             </Form.Control></td>
+
 
                         </tr>
 

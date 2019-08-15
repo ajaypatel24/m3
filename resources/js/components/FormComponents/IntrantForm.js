@@ -409,15 +409,15 @@ render()
 
                                                 <Col>
 
-                                            <Form.Label><FormattedHTMLMessage id="IntrantForm.NbTransport"
+                                            <Form.Label>{/* <FormattedHTMLMessage id="IntrantForm.NbTransport"
                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                               description="Welcome header on app main page"
-                                                                              values={{what: 'react-intl'}}/></Form.Label>
+                                                                              values={{what: 'react-intl'}}/> */} Transports</Form.Label>
                                             <Form.Control
                                                 name="NbTransport"
                                                 required
                                                 type="text"
-                                                placeholder="# de Transports"
+                                                placeholder="# of Transports"
                                                 onChange={this.handleChange}
                                                 value={this.state.NbTransport}
                                                 pattern="^[0-9]+$"
