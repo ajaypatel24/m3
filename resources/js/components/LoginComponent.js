@@ -247,6 +247,13 @@ export default class LoginComponent extends React.Component {
 
     }
 
+    forgotPassword = () => {
+        var email = this.state.email;
+        firebase.auth().sendPasswordResetEmail(email).then({
+
+        })
+    }
+
     handleChangePasswordStrength(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -442,7 +449,7 @@ export default class LoginComponent extends React.Component {
 
                                                 <Row>
 
-                                                    <Col lg="7">Forgot password</Col>
+                                                    <Col lg="7"><Button onClick={this.forgotPassword}>Forgot password</Button></Col>
                                                     <Col lg="4"></Col>
                                                 </Row>
                                                     <br/>
