@@ -22,7 +22,7 @@ export default class GraphTest extends React.Component {
 
 
                 <Row>
-                    <Col lg="6">
+                    <Col lg={6} >
                         <Chart
                             width={'500px'}
                             height={'300px'}
@@ -44,7 +44,8 @@ export default class GraphTest extends React.Component {
                             rootProps={{ 'data-testid': '2' }}
                         />
                     </Col>
-                    <Col lg="6">
+
+                    <Col lg={6}>
                         <Chart
                             width={'500px'}
                             height={'300px'}
@@ -68,10 +69,10 @@ export default class GraphTest extends React.Component {
 
 
                 <Row>
-                    <Col lg="6">
+                    <Col lg={6} sm={12} xs={12}>
                         <Chart
-                            width={'600px'}
-                            height={'400px'}
+                            width={'500px'}
+                            height={'300px'}
                             chartType="Line"
                             loader={<div>Loading Chart</div>}
                             data={[
@@ -105,7 +106,7 @@ export default class GraphTest extends React.Component {
                             rootProps={{ 'data-testid': '3' }}
                         />
                     </Col>
-                    <Col lg="6">
+                    <Col lg={6} xs={12}>
                         <Chart
                             width={'500px'}
                             height={'300px'}
