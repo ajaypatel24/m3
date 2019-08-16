@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Form, Nav, Navbar, NavDropdown, InputGroup} from 'react-bootstrap';
-import SideNavigation from './NavComponents/SideNavigation';
-import SideNav from './NavComponents/Sidenav';
+
+
 import {IntlProvider, FormattedHTMLMessage} from "react-intl";
 
 import test from './NavComponents/RealSideNav'

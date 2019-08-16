@@ -28,9 +28,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link, HashRouter, Route } from 'react-router-dom'
 import { red, amber } from "@material-ui/core/colors/red"
 
+import {FormattedHTMLMessage} from 'react-intl';
+
 import '../../../sass/navstyle.css'
 
-import '../animation.css'
+import '../../../sass/animation.css'
 
 
 
@@ -49,6 +51,50 @@ const primary = grey[500];
 
 
 
+const Compagnie = <FormattedHTMLMessage id="TopTabs.Compagnie"
+                                        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                        description="Welcome header on app main page"
+                                        values={{what: 'react-intl'}}/>
+
+const Revenue = <FormattedHTMLMessage id="TopTabs.Revenue"
+                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                      description="Welcome header on app main page"
+                                      values={{what: 'react-intl'}}/>
+
+const Energie = <FormattedHTMLMessage id="TopTabs.Energie"
+                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                      description="Welcome header on app main page"
+                                      values={{what: 'react-intl'}}/>
+
+const Dechets = <FormattedHTMLMessage id="TopTabs.Dechets"
+                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                      description="Welcome header on app main page"
+                                      values={{what: 'react-intl'}}/>
+
+const Matieres = <FormattedHTMLMessage id="TopTabs.Matieres"
+                                       defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                       description="Welcome header on app main page"
+                                       values={{what: 'react-intl'}}/>
+
+const Productivite = <FormattedHTMLMessage id="TopTabs.Productivite"
+                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                           description="Welcome header on app main page"
+                                           values={{what: 'react-intl'}}/>
+
+const RH = <FormattedHTMLMessage id="TopTabs.RH"
+                                 defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                 description="Welcome header on app main page"
+                                 values={{what: 'react-intl'}}/>
+
+const Risques = <FormattedHTMLMessage id="TopTabs.Risques"
+                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                      description="Welcome header on app main page"
+                                      values={{what: 'react-intl'}}/>
+
+const Bilan = <FormattedHTMLMessage id="TopTabs.Bilan"
+                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                    description="Welcome header on app main page"
+                                    values={{what: 'react-intl'}}/>
 
 
 const useStyles = makeStyles(theme => ({

@@ -11,7 +11,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Transport from '@material-ui/icons/Person';
 import Container from '@material-ui/core/Container';
 
-import "../animation.css"
+import "../../../sass/animation.css"
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Form} from 'react-bootstrap';
 import { FormattedHTMLMessage } from 'react-intl';
-import SideNav from "../NavComponents/Sidenav";
+
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"
@@ -224,17 +224,27 @@ export default class PrestartQuestion extends React.Component {
      */
     handleChange(e) {
 
+        /*
         if (!e.target.checked) {
             this.setState({
                 [e.target.name]: "",
         });
 
+         */
+
+        if (e.target.name === "DiffCorp") {
+            console.log(e.target.name);
+            this.setState({DiffCorp: e.target.checked})
         }
+
         else {
+
+            console.log(e.target.name);
             this.setState({
                 [e.target.name]: e.target.value
             });
         }
+
 
 
 
@@ -270,6 +280,8 @@ export default class PrestartQuestion extends React.Component {
      * when finished click on submit to submit the data
      */
     render() {
+
+
         const {validated} = this.state;
         return (
 
@@ -303,7 +315,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="BusinessName"
                                     required
                                     type="text"
-                                    placeholder={BusinessName}
+                                    placeholder="Business Name"
                                     onChange={this.handleChange}
                                     value={this.state.BusinessName}/>
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -383,7 +395,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Check name="DiffCorp" controlId="CheckCorp" type="checkbox" label="different corporate address"
                                             onChange={this.handleChange} value="DiffCorpAddress"/>
                                 {
-                                    this.state.DiffCorp === "DiffCorpAddress" ?
+                                    this.state.DiffCorp === true ?
 
                                     <Form.Control
 

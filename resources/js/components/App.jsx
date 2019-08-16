@@ -1,11 +1,11 @@
 import React from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import PrestartQuestion from "./FormComponents/PrestartQuestion";
-import EnergyTableData from "./Deprecated/EnergyTableData";
+
 import ContactInformationData from "./DataComponents/ContactInformationData";
-import Dashboard from "./Dashboard";
+
 import Login from "./LoginComponent";
-import TopTabs from "./NavComponents/TopTabs";
+
 import EnergyTable from "./FormComponents/EnergyTable"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
@@ -22,18 +22,20 @@ import Navigation from "./Navigation";
 import TransportMarchandises from "./DataComponents/TransportMarchandises";
 import IntrantEditData from "./DataComponents/IntrantEditData";
 import IntrantForm from "./FormComponents/IntrantForm";
-import Dialog from "./NavComponents/Dialog"
+
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
-import testtabs from "./NavComponents/TabPanel";
+
 import DataPanel from "./NavComponents/DataPanel";
-import EnergyTableEditData from "./DataComponents/EnergyTableEditData";
+
 import DataComponent from "./DataComponents/DataComponent"
 
 import GraphTest from "./DataComponents/GraphComponent/GraphTest"
 import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
 import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
 import IntrantTransportForm2 from "./FormComponents/IntrantTransportForm2";
+
+
 
 
 export default class App extends React.Component {
@@ -90,9 +92,10 @@ export default class App extends React.Component {
                     <Switch>
 
 
-                        <BlockRoute exact path="/aboutus" component={Dashboard}/>
+                        {/* <Route exact path="/troute" component={Dialog} /> */}
+
                         <BlockRoute exact path="/login" component={Login}/>
-                        <Route exact path="/data" component={EnergyTableData}/>
+
 
                         <PrivateRoute exact path="/home" component={GraphTest}/>
                         <PrivateRoute exact path="/IntrantTransport" component={IntrantTransportForm2}/>
@@ -110,7 +113,7 @@ export default class App extends React.Component {
 
 
                         <Route exact path="/Graph" component={GraphTest}/>
-                        <Route exact path="/Dialog" component={Dialog}/>
+
                         <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                         <PrivateRoute exact path="/team" component={Team}/>
                         <PrivateRoute exact path="/transport" component={TransportEntry}/>

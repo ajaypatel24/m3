@@ -8,7 +8,7 @@ import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
 import {FormattedHTMLMessage} from 'react-intl';
 import Background from "./DataComponents/GraphComponent/images/182226.jpg";
-import './animation.css'
+import '../../sass/animation.css'
 
 const CityRegex = new RegExp("^[a-zA-Z]+$"); //
 const AddressRegex = new RegExp("^[0-9]+ [A-z]+$"); //"civic number" "street name"

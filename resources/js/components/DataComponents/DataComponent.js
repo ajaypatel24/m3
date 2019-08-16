@@ -16,7 +16,7 @@ import DechetDirect from "../FormComponents/DechetDirect";
 import UtilisationFDV from "../FormComponents/UtilisationFDV";
 import { CSSTransition } from "react-transition-group"
 
-import "../animation.css"
+import "../../../sass/animation.css"
 function DataComponenet(props) {
     const { children, value, index, ...other } = props;
 
