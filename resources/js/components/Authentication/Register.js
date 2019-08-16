@@ -10,6 +10,8 @@ import {FormattedHTMLMessage} from "react-intl";
  * firebase authentication system as well as the 'register' table
  * in the database
  */
+
+const EmailVerification = "Email Verifcation Link Sent";
 export default class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
@@ -44,6 +46,16 @@ export default class SignUpForm extends React.Component {
             [e.target.name]: e.target.value
         });
     };
+
+    clearState = () => {
+        this.setState({
+            name: '',
+            organization: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
+        })
+    }
 
     sendData = () => {
         this.props.parentCallback(false);
@@ -92,6 +104,7 @@ export default class SignUpForm extends React.Component {
     {
         e.preventDefault();
 
+        let currentComponent = this
         // Checks passwords match
         if (this.state.password !== this.state.passwordConfirm) {
             this.setState({
@@ -117,6 +130,7 @@ export default class SignUpForm extends React.Component {
                         this.setState({error: 'Error: Invalid Email',
                                             email: '',
                                             password: '',})
+
                         
                         break;
                     case 'auth/weak-password':
@@ -124,12 +138,14 @@ export default class SignUpForm extends React.Component {
                                             password: '',
                                             passwordConfirm: '',})
 
+
                         break;
                     case 'auth/email-already-in-use':
                         this.setState({error: 'Error: This email is in use',
                                             email: '',
                                             password: '',
                                             passwordConfirm: '',})
+
 
                         break;
 
@@ -141,10 +157,13 @@ export default class SignUpForm extends React.Component {
                     this.setState({error: error.code})
                     */
 
+
                 this.setState({
                     email: '',
                     password: '',
                 })
+
+            return;
 
             })
             .then(function () {
@@ -152,11 +171,9 @@ export default class SignUpForm extends React.Component {
 
                 console.log('pe')
                 firebase.auth().currentUser.sendEmailVerification().then(function () {
-                    this.setState({error: "Email Verificaiton Link Sent"})
-
+                    currentComponent.setState({error: "Email Verifcation Link Sent"})
                 })
 
-                alert("Email Verification Link Sent");
 
 
 
@@ -166,6 +183,8 @@ export default class SignUpForm extends React.Component {
                 organization: organization,
                 email: email
             };
+
+                currentComponent.clearState
 
             fetch('/register', {
                 method: 'POST',
@@ -220,12 +239,7 @@ export default class SignUpForm extends React.Component {
                 <Card id="test">
                 <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
                 <Card.Body>
-                    {this.state.error === '' ?
-                        null
-                        :
-                        <Alert variant="danger"
-                               className="d-flex justify-content-center">{this.state.error}</Alert>
-                    }
+
                     <form id="registerForm">
                         <FormGroup role="form">
 
@@ -325,6 +339,13 @@ export default class SignUpForm extends React.Component {
 
                         </FormGroup>
                     </form>
+                    {this.state.error === '' ? (
+                        null
+                    ) : this.state.error === "Email Verifcation Link Sent" ? (
+                        <Alert variant="success" className="d-flex justify-content-center">{this.state.error}</Alert>
+                    ) : (
+                        <Alert variant="danger" className="d-flex justify-content-center">{this.state.error}</Alert>
+                    )}
                 </Card.Body>
                 </Card>
             </div>
