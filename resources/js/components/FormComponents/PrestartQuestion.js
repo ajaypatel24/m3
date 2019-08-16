@@ -334,7 +334,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="QuebecAddress"
                                     required
                                     type="text"
-                                    placeholder={QuebecAddress}
+                                    placeholder="Quebec Address"
                                     onChange={this.handleChange}
                                     value={this.state.QuebecAddress}
                                     pattern="^[0-9]+ [A-z]+$"
@@ -357,7 +357,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="City"
                                     required
                                     type="text"
-                                    placeholder={City}
+                                    placeholder="City"
                                     onChange={this.handleChange}
                                     value={this.state.City}
                                     pattern="^[a-zA-Z]+$"
@@ -379,7 +379,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="PostalCode"
                                     required
                                     type="text"
-                                    placeholder={PostalCode}
+                                    placeholder="Postal Code"
                                     onChange={this.handleChange}
                                     value={this.state.PostalCode}
                                     pattern="^[a-z][0-9][a-z]\s?[0-9][a-z][0-9]$"
@@ -403,7 +403,7 @@ export default class PrestartQuestion extends React.Component {
                                     name="CorporateAddress"
                                     required
                                     type="text"
-                                    placeholder={CorporateAddress}
+                                    placeholder="Corporate Address"
                                     onChange={this.handleChange}
                                     value={this.state.CorporateAddress}
                                     pattern="^[0-9]+ [a-z]+$"
@@ -751,7 +751,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Control as="textarea" required rows="3" name="OfferToClient" type="text"
                                               onChange={this.handleChange}
                                               value={this.state.OfferToClient}
-                                              placeholder={ShortDescription}>
+                                              placeholder="Short Description">
 
                                 </Form.Control>
                             </Col>
