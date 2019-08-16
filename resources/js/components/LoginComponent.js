@@ -52,6 +52,7 @@ export default class LoginComponent extends React.Component {
         console.log(sessionStorage.getItem('authenticated'));
 
         this.handleChange = this.handleChange.bind(this);
+        this.change = this.change.bind(this);
         //this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
         this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
@@ -104,6 +105,14 @@ export default class LoginComponent extends React.Component {
      * to access their data on the website
      */
 
+    change = () => {
+         this.setState({error: "Email not verified"});
+         console.log('hi')
+    }
+
+    goNext = async () => {
+        await this.change();
+    }
 
     handleSwitch = () => {
         this.setState({LoginOrSignUp: !this.state.LoginOrSignUp})
@@ -175,6 +184,7 @@ export default class LoginComponent extends React.Component {
                             currentComponent.getName();
                             currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
+                            currentComponent.setState({error: 'Logged In'})
 
                             setTimeout(function () {
                                 window.location.href = '/';
@@ -188,8 +198,9 @@ export default class LoginComponent extends React.Component {
                             console.log('Request failed', error);
                         });
                 }
-                else {
-                    this.setState({error: "Please Verify your Email Address"})
+                else if (!emailVerified) {
+                    currentComponent.setState({error: "Email has not been verified"})
+                    console.log(this.state.error)
                 }
 
 
@@ -205,8 +216,9 @@ export default class LoginComponent extends React.Component {
 
 
 
-
+        //this.change();
         console.log("from login");
+        console.log(this.state.error);
 
 
     };
@@ -293,7 +305,8 @@ export default class LoginComponent extends React.Component {
     handleChange(e) {
 
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            error: '',
         });
 
         console.log("Name: ", e.target.name);
@@ -386,12 +399,14 @@ export default class LoginComponent extends React.Component {
                                             values={{what: 'react-intl'}}/> </Card.Text>
 
 
-                                        {this.state.error === '' ?
+                                        {this.state.error === '' ? (
                                             null
-                                            :
-                                            <Alert variant="danger"
-                                                   className="d-flex justify-content-center">{this.state.error}</Alert>
-                                        }
+                                        ) : this.state.error === 'Logged In' ? (
+                                            <Alert variant="success" className="d-flex justify-content-center">{this.state.error}</Alert>
+                                        ) : (
+                                            <Alert variant="danger" className="d-flex justify-content-center">{this.state.error}</Alert>
+                                        )}
+
                                         {/*
                                         <Chip className="d-flex justify-content-center"
                                               label={this.state.error}
