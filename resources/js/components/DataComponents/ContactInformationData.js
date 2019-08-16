@@ -33,7 +33,6 @@ export default class ContactInformationData extends React.Component {
      */
     componentDidMount() {
         let uid = sessionStorage.getItem('UID');
-        console.log(uid);
         axios.get('/contact/' + uid)
             .then(response => {
                 this.setState({profile: response.data});
@@ -43,7 +42,6 @@ export default class ContactInformationData extends React.Component {
 
         axios.get('/name/' + uid)
             .then(response => {
-                console.log(response.data);
                 sessionStorage.setItem('name', response.data);
                 this.setState({name: response.data});
             });

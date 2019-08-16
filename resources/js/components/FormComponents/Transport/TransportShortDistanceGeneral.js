@@ -3,7 +3,7 @@ import {Col, Form, Row, Button, Alert} from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
 
-import Stepper from './Stepper'
+
 const NumberRegex = new RegExp("^[0-9]+$");
 /**
  * Table de transport used to store all transportation

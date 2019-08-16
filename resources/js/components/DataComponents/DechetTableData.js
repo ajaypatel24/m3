@@ -24,14 +24,7 @@ export default class DechetTableData extends React.Component {
 
 
                 { title: 'GES (kg)', field: 'Emission_GES' },
-                {/*
-                { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-                {
-                    title: 'Birth Place',
-                    field: 'birthCity',
-                    lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-                },
-                */}
+
             ],
 
 
@@ -46,8 +39,6 @@ export default class DechetTableData extends React.Component {
             .then(response => {
                 this.setState({TableData: response.data})
 
-                console.log(this.state.TableData)
-
             });
 
     }
@@ -61,19 +52,7 @@ export default class DechetTableData extends React.Component {
                 editable={{
 
 
-                    /*
-                   onRowAdd: newData =>
-                       new Promise((resolve, reject) => {
-                           setTimeout(() => {
-                               {
-                                   const data = this.state.TableData;
-                                   data.push(newData);
-                                   this.setState({ data }, () => resolve());
-                               }
-                               resolve()
-                           }, 1000)
-                       }),
-                   */
+
 
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve, reject) => {
@@ -86,7 +65,7 @@ export default class DechetTableData extends React.Component {
                                     const data2 = this.state.TableData;
                                     const index = data2.indexOf(oldData);
                                     data2[index] = newData;
-                                    console.log(data);
+
 
                                     this.setState({ data }, () => resolve());
                                     fetch('/e/' + Q_an + '/' + FK + '/' + id,{
@@ -99,15 +78,13 @@ export default class DechetTableData extends React.Component {
 
                                     })
                                         .then(function (response) {
-                                            console.log(response.data);
                                             console.log('Request succeeded with JSON response', response);
 
 
                                         })
                                         .catch(function (error) {
-
                                             console.log('Request failed', error);
-                                            console.log("why");
+
                                         });
                                 }
                                 resolve()

@@ -73,13 +73,13 @@ export default class TransportEntry extends React.Component {
         return r-1;
     }
     pageForward = () => {
-        console.log("array length: " + Component.length)
+
         if (this.state.SpecificOrGeneral === "V1") {
             this.setState({PageIndex: this.state.PageIndex + 1})
-            console.log(this.state.PageIndex);
+
         } else if (this.state.SpecificOrGeneral === "V2") {
             this.setState({PageIndex: this.state.PageIndex + 1})
-            console.log(this.state.PageIndex);
+
         }
         this.setState({PageIndex: this.state.PageIndex + 1})
     }
@@ -87,13 +87,11 @@ export default class TransportEntry extends React.Component {
     pageBackward = () => {
         this.componentLength(Component);
         this.setState({PageIndex: (this.state.PageIndex - 1)})
-        console.log(this.state.PageIndex);
+
     }
 
 
-    test = () => {
-        console.log(this.state.PageIndex);
-    }
+
 
     handleChange(e) {
         this.setState({
@@ -101,22 +99,17 @@ export default class TransportEntry extends React.Component {
         });
 
 
+        {/*
         console.log("Name: ", e.target.name);
         console.log("Value: ", e.target.value);
+        */}
     }
 
     changeOption = () => {
 
-        /*
-                if (this.state.SpecificOrGeneral === "V1") {
-                    window.location.href = '#/transport/general/short';
-                } else {
-                    window.location.href = '#/transport/specific/short';
-                }
-        */
         if (this.state.SpecificOrGeneral != '') {
             this.setState({PageIndex: (this.state.PageIndex + 1)})
-            console.log(this.state.PageIndex + "eyo");
+
         }
     }
 

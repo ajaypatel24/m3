@@ -11,7 +11,7 @@ import ContactInformationForm from "./FormComponents/ContactInformationForm"
 import Team from "./ProfileComponents/Team"
 import ProcessTable from "./FormComponents/ProcessTable"
 import Test from "./NavComponents/RealSideNav"
-import NoMatch from "./Authentication/NoMatch"
+import PageNotFound from "./Authentication/PageNotFound"
 import en from "react-intl/locale-data/en"
 import fr from "react-intl/locale-data/fr"
 import TransportFormLongDistance from "./FormComponents/Transport/TransportFormLongDistance";
@@ -26,7 +26,7 @@ import IntrantForm from "./FormComponents/IntrantForm";
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
 
-import DataPanel from "./NavComponents/DataPanel";
+
 
 import DataComponent from "./DataComponents/DataComponent"
 
@@ -34,6 +34,7 @@ import GraphTest from "./DataComponents/GraphComponent/GraphTest"
 import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
 import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
 import IntrantTransportForm2 from "./FormComponents/IntrantTransportForm2";
+
 
 
 
@@ -92,7 +93,7 @@ export default class App extends React.Component {
                     <Switch>
 
 
-                        {/* <Route exact path="/troute" component={Dialog} /> */}
+
 
                         <BlockRoute exact path="/login" component={Login}/>
 
@@ -129,8 +130,8 @@ export default class App extends React.Component {
 
                         <Route exact path="/Edit" component={IntrantEditData}/>
 
-                        <Route exact path="/dr" component={DataPanel}/>
-                        <Route component={NoMatch}/>
+
+                        <Route component={PageNotFound}/>
 
 
                     </Switch>

@@ -58,13 +58,11 @@ export default class TransportMarchandises extends React.Component {
         let uid = sessionStorage.getItem('UID');
         axios.get('/intrants/' + uid)
             .then(response => {
-                console.log(response.data);
-                console.log('poog');
+
                 this.setState({Rows: response.data});
             });
 
 
-        console.log(this.state.Rows);
     }
 
     getTableRows = () => {
@@ -72,7 +70,7 @@ export default class TransportMarchandises extends React.Component {
         let uid = this.state.UID;
         axios.get('/intrants/' + uid)
             .then(response => {
-                console.log(response.data);
+
                 this.setState({Rows: response.data});
             });
     }
@@ -118,7 +116,7 @@ export default class TransportMarchandises extends React.Component {
                                         const data2 = newData;
 
 
-                                        console.log(newData);
+
 
                                         var h = [];
 
@@ -142,14 +140,12 @@ export default class TransportMarchandises extends React.Component {
 
                                         })
                                             .then(function (response) {
-                                                console.log(response.data2)
                                                 console.log('Request succeeded with JSON response', data2);
 
 
                                             })
                                             .catch(function (error) {
                                                 console.log('Request failed', error);
-                                                console.log("why");
                                             });
                                     }
                                     resolve()
@@ -170,7 +166,7 @@ export default class TransportMarchandises extends React.Component {
                                         const data2 = this.state.Rows;
                                         const index = data2.indexOf(oldData);
                                         data2[index] = newData;
-                                        console.log(data);
+
 
                                         this.setState({ data }, () => resolve());
                                         fetch('/EditIntrant/' + NameData + '/' + Nom + '/' + Q_an + '/' + Unite + '/' + id,{
@@ -183,7 +179,7 @@ export default class TransportMarchandises extends React.Component {
 
                                         })
                                             .then(function (response) {
-                                                console.log(response.data);
+
                                                 console.log('Request succeeded with JSON response', response);
 
 
@@ -191,7 +187,7 @@ export default class TransportMarchandises extends React.Component {
                                             .catch(function (error) {
 
                                                 console.log('Request failed', error);
-                                                console.log("why");
+
                                             });
                                     }
                                     resolve()
@@ -208,7 +204,7 @@ export default class TransportMarchandises extends React.Component {
                                         this.setState({ data2 }, () => resolve());
                                         let data = oldData;
                                         let nom = data.nom_intrant
-                                        console.log(nom);
+
                                         let uid = sessionStorage.getItem('UID');
 
                                         fetch('/delIntrants/' + nom + '/' + uid, {
@@ -220,13 +216,13 @@ export default class TransportMarchandises extends React.Component {
 
                                         })
                                             .then(function (response) {
-                                                console.log(response.data)
+                                                console.log("Request succeeded", response)
 
 
                                             })
                                             .catch(function (error) {
                                                 console.log('Request failed', error);
-                                                console.log("why");
+
                                             });
                                     }
                                     resolve()

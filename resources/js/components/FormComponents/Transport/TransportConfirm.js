@@ -3,7 +3,7 @@ import {Col, Form, Row, Button ,Table } from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
 import { withSnackbar } from "notistack";
-import Stepper from './Stepper'
+
 import axios from "axios";
 import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import {makeStyles} from "@material-ui/core";
@@ -51,7 +51,6 @@ export default class TransportConfirm extends React.Component {
         axios.get('/transport/' + id,)
             .then(response => {
                 this.setState({TableData: response.data})
-                console.log("defined");
 
             });
     }
@@ -65,7 +64,7 @@ export default class TransportConfirm extends React.Component {
         e.preventDefault();
         let uid = this.state.UID;
         let transport = this.state.Transport;
-        console.log('/deltransport/' + e.target.value + '/' + uid);
+
         fetch('/deltransport/' + e.target.value + '/' + uid, {
             method: 'POST',
             headers: {
@@ -76,13 +75,13 @@ export default class TransportConfirm extends React.Component {
         })
             .then(function (response) {
 
-                console.log(response.data)
+                console.log('Request suceeded', response.data)
 
 
             })
             .catch(function (error) {
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
 
@@ -99,7 +98,6 @@ export default class TransportConfirm extends React.Component {
         let uid = this.state.UID;
         axios.get('/transport/' + uid)
             .then(response => {
-                console.log(response.data);
                 this.setState({TableData: response.data});
             });
     }

@@ -14,7 +14,7 @@ import '../../../sass/test.css'
  * or not
  */
 
-export default class NoMatch extends React.Component {
+export default class PageNotFound extends React.Component {
     constructor(props) {
         super(props);
 

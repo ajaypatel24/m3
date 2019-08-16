@@ -6,8 +6,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import axios from "axios";
 
 const TAX_RATE = 0.07;
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,6 +33,17 @@ function priceRow(qty, unit) {
 function createRow(desc, qty, unit) {
     const price = priceRow(qty, unit);
     return { desc, qty, unit, price };
+}
+
+function componentWillMount() {
+
+    let uid = sessionStorage.getItem('UID');
+    axios.get('/bilan/' + uid)
+        .then(response => {
+            subtotal(response.data)
+
+        });
+
 }
 
 function subtotal(items) {

@@ -293,13 +293,6 @@ export default class SignUpForm extends React.Component {
                                 </Form.Text>
                             </Form.Group>
 
-                            {/*
-                            <div className={"mt-3 red-text ".concat(this.state.passwordStrength)}>
-                                Password must contain at least 8 characters, and at least one lowercase character,
-                                uppercase character and number.
-                            </div>
-                            */}
-
                             <Form.Group controlId="signUpFormPasswordCheck">
                                 <Form.Label><FormattedHTMLMessage id="Register.RetypePassword"
                                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"

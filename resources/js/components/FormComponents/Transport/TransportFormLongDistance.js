@@ -3,7 +3,7 @@ import {Col, Form, Row, Button, Alert  } from "react-bootstrap";
 import {FormattedHTMLMessage, FormattedMessage} from "react-intl";
 import Helmet from 'react-helmet';
 
-import Stepper from './Stepper'
+
 const NumberRegex = new RegExp("^[0-9]+$");
 const WordRegex = new RegExp("^[A-z]+$");
 /**
@@ -49,33 +49,15 @@ export default class TransportFormLongDistance extends React.Component {
     componentWillMount = () => {
         this.getTableRows();
         sessionStorage.setItem('LongDistance', 'Step1')
-        console.log(this.state.VehiculeCat);
+
         this.setState({LongDistance: 'Step1'})
 
 
 
     }
 
-    test = () => {
-        console.log('test');
-    }
 
 
-
-    /*
-    fixQuantity = () => {
-        console.table([this.state.Yearly, this.state.Frequency]);
-
-
-        }
-    }
-
-*/
-
-    buttonclick = () => {
-        console.log('hello');
-        console.log(sessionStorage.getItem('LongDistance'));
-    }
 
     clearState = () => {
         this.setState({
@@ -108,13 +90,12 @@ export default class TransportFormLongDistance extends React.Component {
 
         })
             .then(function (response) {
-                console.log(response.data)
+                console.log('Request failed', error);
 
 
             })
             .catch(function (error) {
                 console.log('Request failed', error);
-                console.log("why");
             });
 
 

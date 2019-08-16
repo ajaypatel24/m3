@@ -48,8 +48,6 @@ export default class EnergyTableEditData extends React.Component {
             .then(response => {
                 this.setState({TableData: response.data})
 
-                console.log(this.state.TableData)
-
             });
 
     }
@@ -74,7 +72,7 @@ export default class EnergyTableEditData extends React.Component {
                                     const data2 = this.state.TableData;
                                     const index = data2.indexOf(oldData);
                                     data2[index] = newData;
-                                    console.log(data);
+
 
                                     this.setState({ data }, () => resolve());
                                     fetch('/e/' + Q_an + '/' + FK + '/' + id,{
@@ -87,7 +85,6 @@ export default class EnergyTableEditData extends React.Component {
 
                                     })
                                         .then(function (response) {
-                                            console.log(response.data);
                                             console.log('Request succeeded with JSON response', response);
 
 
@@ -95,7 +92,6 @@ export default class EnergyTableEditData extends React.Component {
                                         .catch(function (error) {
 
                                             console.log('Request failed', error);
-                                            console.log("why");
                                         });
                                 }
                                 resolve()
