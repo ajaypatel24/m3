@@ -120,6 +120,8 @@ try {
     if ($user === null) {
 
 
+
+
         $data = array();
 
         foreach ($category as $unit => $cat) {
@@ -155,9 +157,12 @@ try {
                 'Type_Procede' => 'Energie',
             );
 
+
+
             array_push($data, $r);
         }
 
+        print_r($data);
 
         DB::table('procede')->insert($data);
 

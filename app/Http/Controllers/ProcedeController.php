@@ -26,19 +26,34 @@ class ProcedeController extends Controller
 
 
 
+                "CammionageUnite" => "Freight transportation by tonnes per kilometer",
+                "SoudureUnite" => "Welding",
+                "UsinageUnite" => "CNC Machining Turning",
+                "VinUnite" => "Fermenting Wine",
+                "BiereUnite" => "Gasification of Beer",
+                "HaloUnite" => "Halocarbons/Other",
+                "AutreMethaneUnite" => "Other Methane",
+                "N2OSolUnite" => "N2O Fertilizer ",
+                "N2OAnimauxUnite" => "N2O Animals",
+                "MethaneAnimauxUnite" => "Animal Methane",
+
+
+            ];
+
+            $categoryState = [
                 "CammionageUnite" => "Cammionage",
                 "SoudureUnite" => "Soudure",
-                "UsinageUnite" => "CNC",
+                "UsinageUnite" => "Usinage",
                 "VinUnite" => "Vin",
                 "BiereUnite" => "Biere",
-                "HaloUnite" => "Halocarbunes",
+                "HaloUnite" => "Halocarbures",
                 "AutreMethaneUnite" => "AutreMethane",
                 "N2OSolUnite" => "N2OSol",
                 "N2OAnimauxUnite" => "N2OAnimaux",
                 "MethaneAnimauxUnite" => "MethaneAnimaux",
+                ];
 
 
-            ];
 
 
             $id = $categorie->UID = request('UID');
@@ -60,6 +75,9 @@ class ProcedeController extends Controller
                         ->first()
                         ->idCategorie;
 
+                    echo $Key;
+
+
 
                     $CoeffGES = DB::table('categorie')
                         ->select('Coefficient_GES')
@@ -68,14 +86,15 @@ class ProcedeController extends Controller
                         ->Coefficient_GES;
 
 
-                    $Quantite_an = $categorie->cat = request($cat);
+                    $Quantite_an = $categorie->cat = request($categoryState[$unit]);
 
                     $r = array(
-                        'idProcede' => $cat.$InttoString,
-                        'Nom_procede' => $cat,
-                        'Quantite_an' => $categorie->cat = request($cat),
+                        'Categorie_idCategorie' => $Key,
+                        'idProcede' => $categoryState[$unit]. $InttoString,
+                        'Nom_procede' => $categoryState[$unit],
+                        'Quantite_an' => $categorie->cat = request($categoryState[$unit]),
                         'Unite_an' => $categorie->unit = request($unit),
-                        'Emission_GES' => $CoeffGES * $Quantite_an,
+                        'Emission_GES' => $CoeffGES * $Quantite_an ,
                         'UID' => $categorie->UID = request('UID'),
                         'Type_Procede' => 'Procede',
                     );
@@ -99,23 +118,32 @@ class ProcedeController extends Controller
                  * if the value isn't null, the loop continues
                  */
 
+
+
                 foreach ($category as $unit => $cat) { //loop continues since element is not null
                     print_r($cat);
                     echo "\n";
 
-                    /*
-                    if (!request($cat) && !request($unit)) {
-                        continue;
-                    }
-                    */
+                    $Key = DB::table('categorie')
+                        ->select('idCategorie')
+                        ->where('Nom_CategorieEN', '=', $category[$unit])
+                        ->first()
+                        ->idCategorie;
 
-                    if (request($cat) != '') {
+                    $CoeffGES = DB::table('categorie')
+                        ->select('Coefficient_GES')
+                        ->where('idCategorie','=', $Key)
+                        ->first()
+                        ->Coefficient_GES;
+
+                    if (request($categoryState[$unit]) != '') {
                         DB::table('procede')//updates fields based on UID and category name
                         ->where('UID', $id)
-                            ->where('Nom_procede', $cat)
+                            ->where('Nom_procede', $categoryState[$unit])
                             ->update([
-                                'Quantite_an' => $categorie->$cat = request($cat),
-                                'Unite_an' => $categorie->$unit = request($unit)
+                                'Quantite_an' => $categorie->$cat = request($categoryState[$unit]),
+                                'Unite_an' => $categorie->$unit = request($unit),
+                                'Emission_GES' => $CoeffGES * request($categoryState[$unit]),
                             ]);
                     }
                     else {

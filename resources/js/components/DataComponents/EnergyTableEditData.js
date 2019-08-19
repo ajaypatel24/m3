@@ -9,8 +9,8 @@ export default class EnergyTableEditData extends React.Component {
         this.state = {
             error: '',
             columns: [
-                { title: 'Procede', field: 'Nom_procede' },
-                { title: 'Type', field: 'Type_Procede' },
+                { title: 'Procede', field: 'Nom_procede', editable: 'never' },
+                { title: 'Type', field: 'Type_Procede', editable: 'never' },
                 { title: 'Quantite', field: 'Quantite_an' },
                 {
                     title: 'Unite', field: 'Unite_an',
@@ -22,18 +22,8 @@ export default class EnergyTableEditData extends React.Component {
 
                     },
                 },
+                { title: 'GES (kg)', field: 'Emission_GES', editable: 'never' },
 
-
-
-                { title: 'GES (kg)', field: 'Emission_GES' },
-                {/*
-                { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-                {
-                    title: 'Birth Place',
-                    field: 'birthCity',
-                    lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-                },
-                */}
             ],
 
 
