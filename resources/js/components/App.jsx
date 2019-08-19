@@ -35,6 +35,7 @@ import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
 import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
 import IntrantTransportForm2 from "./FormComponents/IntrantTransportForm2";
 import UserSetup from "./FormComponents/UserSetup";
+import Settings from "./ProfileComponents/Settings"
 
 
 
@@ -116,6 +117,7 @@ export default class App extends React.Component {
 
                         <Route exact path="/Graph" component={GraphTest}/>
 
+                        <PrivateRoute exact path="/Settings" component={Settings} />
                         <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                         <PrivateRoute exact path="/team" component={Team}/>
                         <PrivateRoute exact path="/transport" component={TransportEntry}/>
@@ -123,6 +125,7 @@ export default class App extends React.Component {
                                       component={TransportFormShortDistanceGeneral}/>
                         <PrivateRoute exact path="/:transport/specific/short"
                                       component={TransportFormShortDistanceSpecific}/>
+
 
                         <PrivateRoute exact path="/:transport/long" component={TransportFormLongDistance}/>
                         <PrivateRoute exact path="/dechet" component={DechetDirect}/>

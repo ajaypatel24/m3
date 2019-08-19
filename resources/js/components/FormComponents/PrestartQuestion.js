@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, Card} from 'react-bootstrap';
+import {Button, Col, Form, Card, Row} from 'react-bootstrap';
 import { FormattedHTMLMessage } from 'react-intl';
 
 
@@ -307,7 +307,8 @@ export default class PrestartQuestion extends React.Component {
                         {/*group 2*/}
 
                         <Form.Group controlId="validationCustom01">
-                            <Col sm="5">
+                            <Row>
+                            <Col lg="4">
                                 <Form.Label><FormattedHTMLMessage id="Prestart.BusinessName"
                                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                   description="Welcome header on app main page"
@@ -321,10 +322,8 @@ export default class PrestartQuestion extends React.Component {
                                     value={this.state.BusinessName}/>
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             </Col>
-                        </Form.Group>
 
-                        <Form.Group controlId="validationCustom02">
-                            <Col sm="5">
+                            <Col lg="4">
 
 
                                 <Form.Label><FormattedHTMLMessage id="Prestart.QuebecAddress"
@@ -346,9 +345,8 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 
                             </Col>
-                        </Form.Group>
-                        <Form.Group>
-                            <Col sm="5">
+
+                            <Col lg="4">
 
                                 <Form.Label><FormattedHTMLMessage id="Prestart.City"
                                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
@@ -367,6 +365,7 @@ export default class PrestartQuestion extends React.Component {
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 
                             </Col>
+                            </Row>
                         </Form.Group>
                         <Form.Group>
                             <Col sm="5">
