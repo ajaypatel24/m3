@@ -126,10 +126,11 @@ export default class ContactInformationForm extends React.Component {
 
                 <br/>
 
+                <div className="container">
+                    <div className="row clearfix">
+                        <div className="col-md-12 column">
                 <Card>
-                    <div className="container">
-                        <div className="row clearfix">
-                            <div className="col-md-12 column">
+
                                 <br/>
                 <Form noValidate
                       validated={validated}
@@ -250,10 +251,11 @@ export default class ContactInformationForm extends React.Component {
                     </Form.Row>
 
                 </Form>
-                            </div>
+
+                </Card>
                         </div>
                     </div>
-                </Card>
+                </div>
                     <br/>
 
 

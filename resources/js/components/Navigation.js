@@ -292,43 +292,10 @@ export default class Navigation extends React.Component {
                      if authenticated === false */}
 
 
-                    {/*
-                    {sessionStorage.getItem('authenticated') != 'true' ?
-                        <Form inline>
-                            <br/>
-                            <br/>
-
-                            <Form.Label className="mr-sm-2">Sign In</Form.Label>
-
-                            <Form.Control
-                                required
-                                name="email"
-                                type="text"
-                                placeholder="Username"
-                                className="mr-sm-2"
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                                onKeyPress={this.handleKeyPress}/>
-
-                            <Form.Control
-                                required
-                                name="password"
-                                type="password"
-                                placeholder="Password"
-                                className="mr-sm-2"
-                                onChange={this.handleChange}
-                                value={this.state.password}
-                                onKeyPress={this.handleKeyPress}/>
-
-                            <Button variant="outline-info" onClick={this.handleLoginRequest}>Login</Button>
-
-                        </Form>
-
-                        : /**if authenticated === true */
 
 
 
-                        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" inline>
+                        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
                             <Avatar>{this.state.initial}</Avatar>
                             <Navbar.Text>
                                 <NavDropdown id="basic-nav-dropdown">
