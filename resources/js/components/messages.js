@@ -77,6 +77,9 @@ export default {
         'IntrantForm.NbTransport': "Transports",
         'IntrantForm.Frequency': "Buying Frequency",
         'IntrantForm.IntrantDelete': "Input Name",
+        'IntrantForm.Categorie1': "Category 1",
+        'IntrantForm.Categorie2': "Category 2",
+        'IntrantForm.Categorie3': "Category 3",
 
         /**Prestart Question */
         'Prestart.PrestartDescription': "Questions to help provide necessary forms",
@@ -257,15 +260,18 @@ export default {
 
 
         /**Intrant Form*/
-        'IntrantForm.NomIntrant': "Input Name",
-        'IntrantForm.Quantity': "Quantity",
-        'IntrantForm.Unite': "Unit",
-        'IntrantForm.PerDelivery': "Per Delivery",
-        'IntrantForm.Yearly': "Yearly",
-        'IntrantForm.Provenance': "Origin",
-        'IntrantForm.NbTransport': "Number of Transports",
-        'IntrantForm.Frequency': "Buying Frequency",
+        'IntrantForm.NomIntrant': "Nom Intrant",
+        'IntrantForm.Quantity': "Quantité",
+        'IntrantForm.Unite': "Unité",
+        'IntrantForm.PerDelivery': "Par Livraison",
+        'IntrantForm.Yearly': "Annuel",
+        'IntrantForm.Provenance': "Origine",
+        'IntrantForm.NbTransport': "Nombre de Transports",
+        'IntrantForm.Frequency': "Fréquence d'Achat",
         'IntrantForm.IntrantDelete': "Input Name",
+        'IntrantForm.Categorie1': "Categorie 1",
+        'IntrantForm.Categorie2': "Categorie 2",
+        'IntrantForm.Categorie3': "Categorie 3",
 
         /**Prestart Question */
         'Prestart.PrestartDescription': "Questions pour aider à fournir les formulaires nécessaires",

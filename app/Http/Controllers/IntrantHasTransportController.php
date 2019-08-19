@@ -22,12 +22,6 @@ class IntrantHasTransportController extends Controller
 
     }
 
-    function poo($id)
-    {
-        echo $id;
-        echo 'poo';
-
-    }
 
     function addTransport(request $request, $id)
     {

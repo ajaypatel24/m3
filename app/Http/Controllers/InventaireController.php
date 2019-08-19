@@ -125,10 +125,13 @@ class InventaireController extends Controller
     function addIntrant($array, $uid) {
         $parameters =  json_decode($array); //decodes array to add parameters to database
 
+
+        print_r($parameters);
         foreach ($parameters as $e) {
             echo $e;
             echo "\n";
         }
+
 
 
 
@@ -255,7 +258,9 @@ class InventaireController extends Controller
 
             $r = DB::table('ressource')
                 ->select('idRessource')
-                ->where('Nom_RessourceFR', '=', 'Fertilisant 1')
+                ->where('Categorie_1', '=', request('Cat1'))
+                ->where('SCategorie_2', '=', request('Cat2'))
+                ->where('SCategorie_3', '=', request('Cat3'))
                 ->first()
                 ->idRessource;
 
@@ -412,6 +417,69 @@ class InventaireController extends Controller
             ->where('nom_intrant',$name)
             ->where('UID', $id)
             ->delete();
+    }
+
+    public function getCategory1 ()
+    { //returns all distinct transportation methods
+
+        $Cat1 = [];
+        $Category1 = DB::table('ressource')
+            ->select('Categorie_1')
+            ->where('Categorie_1', '!=', "")
+            ->distinct()
+            ->get();
+
+        $Category2 = DB::table('ressource')
+            ->select('SCategorie_2')
+            ->where('SCategorie_2', '!=', "")
+            ->distinct()
+            ->get();
+
+        $Category3 = DB::table('ressource')
+            ->select('SCategorie_3')
+            ->where('SCategorie_3', '!=', "")
+            ->distinct()
+            ->get();
+
+        foreach ($Category1 as $value) {
+            $Cat1[] = $value->Categorie_1;
+        }
+
+
+        return $Cat1;
+
+    }
+
+    public function getCategory2($Cat1) {
+        $Cat2 = [];
+        $Category2 = DB::table('ressource')
+            ->select('SCategorie_2')
+            ->where('SCategorie_2', '!=', "")
+            ->where('Categorie_1','=', $Cat1)
+            ->distinct()
+            ->get();
+
+        foreach ($Category2 as $value) {
+            $Cat2[] = $value->SCategorie_2;
+        }
+
+        return $Cat2;
+    }
+
+    public function getCategory3($Cat2) {
+        $Cat3 = [];
+        $Category3 = DB::table('ressource')
+            ->select('SCategorie_3')
+            ->where('SCategorie_3', '!=', "")
+            ->where('SCategorie_2','=', $Cat2)
+            ->distinct()
+            ->get();
+
+        foreach ($Category3 as $value) {
+            $Cat3[] = $value->SCategorie_3;
+        }
+
+        return $Cat3;
     }
 }
 

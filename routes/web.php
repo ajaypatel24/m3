@@ -92,5 +92,9 @@ Route::get('/getTransport/{id}', 'IntrantHasTransportController@getTransport');
 
 
 Route::get('/getTransportMethods/{intrant}', 'IntrantHasTransportController@getIntrantTransport' );
+Route::get('/Category1/', 'InventaireController@getCategory1' );
+Route::get('/Category2/{Cat1}/', 'InventaireController@getCategory2' );
+Route::get('/Category3/{Cat2}/', 'InventaireController@getCategory3' );
+
 
 Route::post('/IntrantTransport/{intrant}/{id}','IntrantHasTransportController@addIntrantHasTransport');

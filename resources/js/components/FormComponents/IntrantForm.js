@@ -28,7 +28,15 @@ export default class IntrantForm extends React.Component {
             UID: sessionStorage.getItem('UID'),
             rows: [],
             error: '',
-            validated: false
+            validated: false,
+
+            Cat1: '',
+            Cat2: '',
+            Cat3: '',
+            Categorie1: [],
+            Categorie2: [],
+            Categorie3: [],
+
 
         };
 
@@ -38,11 +46,13 @@ export default class IntrantForm extends React.Component {
         this.getTableRows = this.getTableRows.bind(this);
         this.changeDelete = this.changeDelete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.getCategories = this.getCategories.bind(this);
 
     }
 
     componentWillMount = () => {
         this.getTableRows();
+        this.getCategories();
     }
 
 
@@ -69,6 +79,9 @@ export default class IntrantForm extends React.Component {
             Provenance: "",
             Frequency: "",
             validated: false,
+            Cat1: '',
+            Cat2: '',
+            Cat3: '',
         })
     }
 
@@ -79,6 +92,15 @@ export default class IntrantForm extends React.Component {
      *
      * Uses the /delIntrants/{intrant}/{id} route which calls a post method to delete
      */
+
+    getCategories = () => {
+        axios.get('/Category1/')
+            .then(response => {
+                console.log(response.data);
+                this.setState({Categorie1: response.data});
+            });
+    }
+
 
     handleDelete(e) {
         e.preventDefault();
@@ -112,10 +134,27 @@ export default class IntrantForm extends React.Component {
      */
 
     handleChange(e) {
+
+
+
         this.setState({
             [e.target.name]: e.target.value,
             error: '',
         });
+
+        if (e.target.name === "Cat1") {
+            axios.get('/Category2/' + e.target.value)
+                .then(response => {
+                    this.setState({Categorie2: response.data});
+                });
+        }
+
+        else if (e.target.name === "Cat2") {
+            axios.get('/Category3/' + e.target.value)
+                .then(response => {
+                    this.setState({Categorie3: response.data});
+                });
+        }
 
 
         console.log("Name: ", e.target.name);
@@ -231,6 +270,7 @@ render()
                     <div className="col-md-12 column">
 
                         <Row>
+
 
                             {/**
                              * this.state.Delete checks if the form is in delete mode or not, it renders the
@@ -427,6 +467,90 @@ render()
                                             </Row>
                                         </Form.Group>
 
+
+
+
+                                        <Form.Group>
+                                            <Row>
+                                                <Col lg="4">
+                                                    <Form.Label><FormattedHTMLMessage id="IntrantForm.Categorie1"
+                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                               description="Welcome header on app main page"
+                                                                                               values={{what: 'react-intl'}}/></Form.Label>
+
+                                                    {/* dropdown menu */}
+                                                    <Form.Control as="select" name="Cat1" placeholder="Select Range"
+                                                                  required
+                                                                  value={this.state.Cat1}
+                                                                  onChange={this.handleChange}
+
+
+                                                    >
+
+                                                        <option></option>
+                                                        {this.state.Categorie1.map(Cat => (
+                                                            <option>
+                                                                {Cat}
+                                                            </option>
+                                                        ))}
+
+
+                                                    </Form.Control>
+                                                </Col>
+                                                <Col lg="4">
+                                                    <Form.Label><FormattedHTMLMessage id="IntrantForm.Categorie2"
+                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                               description="Welcome header on app main page"
+                                                                                               values={{what: 'react-intl'}}/></Form.Label>
+
+                                                    {/* dropdown menu */}
+                                                    <Form.Control as="select" name="Cat2" placeholder="Select Range"
+                                                                  required
+                                                                  value={this.state.Cat2}
+                                                                  onChange={this.handleChange}
+
+
+                                                    >
+
+                                                        <option></option>
+                                                        {this.state.Categorie2.map(Cat => (
+                                                            <option>
+                                                                {Cat}
+                                                            </option>
+                                                        ))}
+
+
+                                                    </Form.Control>
+                                                </Col>
+                                                <Col lg="4">
+                                                    <Form.Label><FormattedHTMLMessage id="IntrantForm.Categorie3"
+                                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+                                                                                               description="Welcome header on app main page"
+                                                                                               values={{what: 'react-intl'}}/></Form.Label>
+
+                                                    {/* dropdown menu */}
+                                                    <Form.Control as="select" name="Cat3" placeholder="Select Range"
+                                                                  required
+                                                                  value={this.state.Cat3}
+                                                                  onChange={this.handleChange}
+
+                                                    >
+
+                                                        <option></option>
+                                                        {this.state.Categorie3.map(Cat => (
+                                                            <option>
+                                                                {Cat}
+                                                            </option>
+                                                        ))}
+
+
+                                                    </Form.Control>
+                                                </Col>
+
+
+                                            </Row>
+                                        </Form.Group>
+
                                         <Form.Group>
                                             <Form.Label><FormattedHTMLMessage id="IntrantForm.Frequency"
                                                                               defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
@@ -460,8 +584,6 @@ render()
 
                                             </Form.Control>
                                         </Form.Group>
-
-
 
 
 

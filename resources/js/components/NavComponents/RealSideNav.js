@@ -233,7 +233,7 @@ export default function ResponsiveDrawer(props) {
                             <ListItemText primary="Data" />
                         </ListItem>
                     </Link>
-                    <Link to="/Bilan" style={{ textDecoration: 'none' }}>
+                    <Link to="/Team" style={{ textDecoration: 'none' }}>
                         <ListItem button key="EcoReport">
                             <ListItemIcon><BilanIcon /></ListItemIcon>
                             <ListItemText primary="Bilan" />

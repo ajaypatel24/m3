@@ -85,8 +85,16 @@ class ProcedeController extends Controller
                         ->first()
                         ->Coefficient_GES;
 
-
                     $Quantite_an = $categorie->cat = request($categoryState[$unit]);
+                    $EmissionGES = 0;
+                    if ($CoeffGES == -1) {
+                        $EmissionGES = -1;
+                    }
+                    else {
+                        $EmissionGES = $CoeffGES * $Quantite_an ;
+                    }
+
+
 
                     $r = array(
                         'Categorie_idCategorie' => $Key,
@@ -94,7 +102,7 @@ class ProcedeController extends Controller
                         'Nom_procede' => $categoryState[$unit],
                         'Quantite_an' => $categorie->cat = request($categoryState[$unit]),
                         'Unite_an' => $categorie->unit = request($unit),
-                        'Emission_GES' => $CoeffGES * $Quantite_an ,
+                        'Emission_GES' => $EmissionGES ,
                         'UID' => $categorie->UID = request('UID'),
                         'Type_Procede' => 'Procede',
                     );
@@ -136,6 +144,17 @@ class ProcedeController extends Controller
                         ->first()
                         ->Coefficient_GES;
 
+                    echo "\n";
+                    echo $CoeffGES;
+                    echo "\n";
+
+                    if ($CoeffGES == -1) {
+                        $EmissionGES = -1;
+                    }
+                    else {
+                        $EmissionGES = $CoeffGES * request($categoryState[$unit]) ;
+                    }
+
                     if (request($categoryState[$unit]) != '') {
                         DB::table('procede')//updates fields based on UID and category name
                         ->where('UID', $id)
@@ -143,7 +162,7 @@ class ProcedeController extends Controller
                             ->update([
                                 'Quantite_an' => $categorie->$cat = request($categoryState[$unit]),
                                 'Unite_an' => $categorie->$unit = request($unit),
-                                'Emission_GES' => $CoeffGES * request($categoryState[$unit]),
+                                'Emission_GES' => $EmissionGES,
                             ]);
                     }
                     else {
