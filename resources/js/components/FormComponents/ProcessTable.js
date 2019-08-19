@@ -1,4 +1,4 @@
-import {Form, Table, Row, Col, Button, Card} from "react-bootstrap";
+import {Form, Table, Row, Col, Button, Card, Alert} from "react-bootstrap";
 
 import React from "react";
 import axios from 'axios/index';
@@ -93,7 +93,8 @@ export default class ProcessTable extends React.Component {
             SCIAN: "",
             UID: sessionStorage.getItem('UID'),
             TableSubmit: sessionStorage.getItem('TableSubmit'),
-            validated: false
+            validated: false,
+            error: '',
 
 
         }
@@ -103,15 +104,15 @@ export default class ProcessTable extends React.Component {
 
     componentDidMount() {
         let uid = sessionStorage.getItem('UID');
-        console.log(uid);
+
         axios.get('/scian/' + uid)
             .then(response => {
-                console.log(response.data);
+
                 this.setState({SCIAN: response.data, UID: uid});
             });
 
 
-        console.log(this.state.SCIAN);
+
     }
 
 
@@ -134,8 +135,7 @@ export default class ProcessTable extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     handleSubmit(e) {
@@ -153,6 +153,8 @@ export default class ProcessTable extends React.Component {
         }
         else {
         */
+
+        let g = this;
 
 
         const form = e.currentTarget;
@@ -173,16 +175,21 @@ export default class ProcessTable extends React.Component {
 
             })
                 .then(function (data) {
-                    console.log('Request succeeded with JSON response', data);
+                    if (data.status === 500) {
+                        g.setState({error: 'All fields must be numerical'})
+                    }
+                    else if (data.status === 200) {
+                        g.setState({error: 'Data submitted successfully'})
+
+                    }
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
         }
         this.setState(({validated: true}));
         /* this.setState(({validated: true})); */
-        console.log((data));
 
 
     };
@@ -241,6 +248,7 @@ export default class ProcessTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.Bois}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="BoisUnite"
                                           onChange={this.handleChange} required>
@@ -263,7 +271,8 @@ export default class ProcessTable extends React.Component {
                             name="Vin"
                             placeholder="valeur"
                             value={this.state.Vin}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
 
                         </Form.Control></td>
                         <td><Form.Control as="select" name="VinUnite"
@@ -286,7 +295,8 @@ export default class ProcessTable extends React.Component {
                             name="Biere"
                             placeholder="valeur"
                             value={this.state.Biere}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="BiereUnite"
                                           onChange={this.handleChange} required>
@@ -308,7 +318,8 @@ export default class ProcessTable extends React.Component {
                             name="Halocarbunes"
                             placeholder="valeur"
                             value={this.state.Halocarbunes}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="HaloUnite"
                                           onChange={this.handleChange} required>
@@ -330,7 +341,8 @@ export default class ProcessTable extends React.Component {
                             name="CNC"
                             placeholder="valeur"
                             value={this.state.CNC}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="UsinageUnite"
                                           onChange={this.handleChange} required>
@@ -352,7 +364,8 @@ export default class ProcessTable extends React.Component {
                             name="Soudure"
                             placeholder="valeur"
                             value={this.state.Soudure}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="SoudureUnite"
                                           onChange={this.handleChange} required>
@@ -378,6 +391,7 @@ export default class ProcessTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.Bois}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="BoisUnite"
                                           onChange={this.handleChange} required>
@@ -400,6 +414,7 @@ export default class ProcessTable extends React.Component {
                             placeholder="valeur"
                             value={this.state.N2OSol}
                             onChange={this.handleChange}
+                            pattern="^[0-9]+$"
                         ></Form.Control></td>
                         <td><Form.Control as="select" name="N2OSolUnite"
                                           onChange={this.handleChange} required>
@@ -421,7 +436,8 @@ export default class ProcessTable extends React.Component {
                             name="N2OAnimaux"
                             placeholder="valeur"
                             value={this.state.N2OAnimaux}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="N2OAnimauxUnite"
                                           onChange={this.handleChange} required>
@@ -443,7 +459,8 @@ export default class ProcessTable extends React.Component {
                             name="AutreMethane"
                             placeholder="valeur"
                             value={this.state.AutreMethane}
-                            onChange={this.handleChange}>
+                            onChange={this.handleChange}
+                            pattern="^[0-9]+$">
                         </Form.Control></td>
                         <td><Form.Control as="select" name="AutreMethaneUnite"
                                           onChange={this.handleChange} required>
@@ -514,6 +531,7 @@ export default class ProcessTable extends React.Component {
                                               placeholder="valeur"
                                               value={this.state.MethaneAnimaux}
                                               onChange={this.handleChange}
+                                              pattern="^[0-9]+$"
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="MethaneAnimauxUnite"
                                               onChange={this.handleChange}>
@@ -542,6 +560,7 @@ export default class ProcessTable extends React.Component {
                                               placeholder="valeur"
                                               value={this.state.Cammionage}
                                               onChange={this.handleChange}
+                                              pattern="^[0-9]+$"
                             ></Form.Control></td>
                             <td><Form.Control as="select" name="CammionageUnite"
                                               onChange={this.handleChange} >
@@ -568,7 +587,28 @@ export default class ProcessTable extends React.Component {
                     </Table>
                     </Card>
                     <br/>
+
+                    <Row>
+                        <Col lg="3">
                     <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
+                        </Col>
+
+
+                            <Col lg="9">
+                                {
+                                    {
+                                        'All fields must be numerical':
+                                            <Alert variant="danger"
+                                                   className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                        'Data submitted successfully':
+                                            <Alert variant="success"
+                                                   className="d-flex justify-content-center">{this.state.error}</Alert>,
+                                        '':
+                                            null,
+                                    }[this.state.error]
+                                }
+                            </Col>
+                    </Row>
                 </Form>
 
 

@@ -111,35 +111,32 @@ export default class EnergyTable extends React.Component {
 
 
             let uid = sessionStorage.getItem('UID');
-        console.log(uid);
+
         axios.get('/scian/' + uid)
             .then(response => {
-                console.log(response.data);
+
                 this.setState({SCIAN: response.data, UID: uid});
             });
 
             axios.get('/test/')
                 .then(response => {
-                    console.log(response.data);
+
                     this.setState({EnergyCategories: response.data});
                 });
 
 
-        console.log(this.state.EnergyCategories);
+
 
             axios.get('/inventaire/' + uid)
                 .then(response => {
                     this.setState({TableData: response.data})
 
-                    console.log(this.state.TableData)
-                    console.log('yes');
+
 
                 });
 
-            console.log(this.state.TableData);
-            if (this.state.TableData != null) {
-                console.log('notnull')
-            }
+
+
     }
 
     validateInput(data) {
@@ -173,13 +170,7 @@ export default class EnergyTable extends React.Component {
                 console.log('true')
 
             }
-            else {
-                if (data.Biodiesel === ""){
-                    console.log('hihi');
-                }
 
-                console.log("nah")
-            }
     }
 
     componentWillMount = () => {
@@ -187,14 +178,14 @@ export default class EnergyTable extends React.Component {
             sessionStorage.setItem('Empty', 'true')
         }
         else {
-            console.log(this.state.TableData[0])
+
             sessionStorage.setItem('Empty', 'false')
         }
     }
 
 
     checkNull = () => {
-        console.log('hello2');
+
 
 
 
@@ -202,23 +193,15 @@ export default class EnergyTable extends React.Component {
                sessionStorage.setItem('Empty', 'true')
             }
             else {
-                console.log(this.state.TableData[0])
+
                 sessionStorage.setItem('Empty', 'false')
             }
 
 
-        console.log(this.state.DisplayData);
+
     }
 
-    /*
-        componentDidMount() {
-            axios.get('/prestart')
-                .then(response => {
-                    this.setState({categories: response.data});
 
-                });
-        }
-        */
 
 
     handleChange(e) {
@@ -227,9 +210,6 @@ export default class EnergyTable extends React.Component {
             [e.target.name]: e.target.value
         });
 
-
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
     };
 
 
@@ -259,8 +239,7 @@ export default class EnergyTable extends React.Component {
 
 
         const form = e.currentTarget;
-        console.log(form.checkValidity());
-        console.log(form);
+
         if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
@@ -278,7 +257,7 @@ export default class EnergyTable extends React.Component {
             })
                 .then(function (data) {
                     console.log('Request succeeded with JSON response', data);
-                    console.log(data.status);
+
                     if (data.status === 500) {
                         g.setState({error: 'All fields must be numerical'})
                     }
@@ -290,13 +269,13 @@ export default class EnergyTable extends React.Component {
                 .catch(function (error) {
 
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
         }
         this.setState(({validated: true}));
 
         /* this.setState(({validated: true})); */
-        console.log((data));
+
 
 
 

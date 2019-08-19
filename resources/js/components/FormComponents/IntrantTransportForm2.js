@@ -64,7 +64,7 @@ export default class IntrantTransportForm2 extends React.Component {
             .then(response => {
                 this.setState({Intrants: response.data});
 
-                console.log(this.state.TableData)
+
 
             });
 
@@ -96,7 +96,7 @@ export default class IntrantTransportForm2 extends React.Component {
         })
             .then(function (data) {
                 console.log('Request succeeded with JSON response', data);
-                console.log(data.status);
+
                 if (data.status === 500) {
 
                     console.log('500');
@@ -109,7 +109,7 @@ export default class IntrantTransportForm2 extends React.Component {
             .catch(function (error) {
 
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
     }
@@ -149,7 +149,7 @@ export default class IntrantTransportForm2 extends React.Component {
         })
             .then(function (data) {
                 console.log('Request succeeded with JSON response', data);
-                console.log(data.status);
+
                 if (data.status === 500) {
 
                     console.log('500');
@@ -162,7 +162,7 @@ export default class IntrantTransportForm2 extends React.Component {
             .catch(function (error) {
 
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
 
@@ -180,8 +180,7 @@ export default class IntrantTransportForm2 extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     render() {

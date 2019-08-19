@@ -145,7 +145,7 @@ function handleLogout () {
 }
 
 function callbackFunction (childata) {
-    console.log(childata);
+
     return childata;
 }
 
@@ -159,7 +159,7 @@ export default function ResponsiveDrawer(props) {
 
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
-        console.log(mobileOpen);
+
     }
 
     const drawer = (

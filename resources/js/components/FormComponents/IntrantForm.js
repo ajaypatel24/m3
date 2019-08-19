@@ -96,7 +96,7 @@ export default class IntrantForm extends React.Component {
     getCategories = () => {
         axios.get('/Category1/')
             .then(response => {
-                console.log(response.data);
+
                 this.setState({Categorie1: response.data});
             });
     }
@@ -115,13 +115,13 @@ export default class IntrantForm extends React.Component {
 
         })
             .then(function (response) {
-                console.log(response.data)
+                console.log('Request succeeded', response);
 
 
             })
             .catch(function (error) {
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
 
@@ -157,8 +157,7 @@ export default class IntrantForm extends React.Component {
         }
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     }
 
     /**
@@ -170,7 +169,7 @@ export default class IntrantForm extends React.Component {
         let uid = this.state.UID;
         axios.get('/intrants/' + uid)
             .then(response => {
-                console.log(response.data);
+
                 this.setState({rows: response.data});
             });
     }
@@ -182,7 +181,7 @@ export default class IntrantForm extends React.Component {
      */
     changeDelete = () => {
         this.setState({Delete: !this.state.Delete})
-        console.log(this.state.Delete);
+
     }
 
     /**
@@ -220,8 +219,7 @@ export default class IntrantForm extends React.Component {
 
         })
             .then(function (response) {
-                console.log(response.data)
-                console.log(response.status);
+
                 console.log('Request succeeded with JSON response', data);
 
                 if (response.status === 500) {
@@ -238,7 +236,7 @@ export default class IntrantForm extends React.Component {
             })
             .catch(function (error) {
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
         this.setState(({validated: true}));

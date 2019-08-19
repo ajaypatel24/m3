@@ -45,8 +45,7 @@ export default class UtilisationFDV extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
 
@@ -80,17 +79,17 @@ export default class UtilisationFDV extends React.Component {
 
             })
                 .then(function (data) {
-                    console.log("success")
-                    //console.log('Request succeeded with JSON response', data);
+
+                    console.log('Request succeeded with JSON response', data);
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
-                    //console.log("why");
+
                 });
 
         }
         this.setState(({validated: true}));
-        console.log(data);
+
 
 
     };

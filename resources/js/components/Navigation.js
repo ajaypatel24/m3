@@ -70,7 +70,7 @@ export default class Navigation extends React.Component {
         };
 
 
-        console.log(sessionStorage.getItem('authenticated'));
+
 
         this.handleChange = this.handleChange.bind(this);
         //this.handleLoginRequest = this.handleLoginRequest.bind(this);
@@ -120,7 +120,7 @@ export default class Navigation extends React.Component {
 
                 let uid = firebase.auth().currentUser.uid;
 
-                console.log(uid); //important, exclusive Uid that will be used to identify user
+
 
 
                 fetch('/login', {
@@ -156,18 +156,12 @@ export default class Navigation extends React.Component {
             }).catch(function (error) {
             // Handle Errors here.
             if (error.code === 400) {
-                console.log("either email or password is incorrect");
+                console.log("400")
             }
-            //console.log("dr yeet");
-            //var errorCode = error.code;
-            ///var errorMessage = error.message;
-            //return;
-            // ...
+
         });
 
 
-        console.log("from login");
-        console.log(currentComponent.state.authenticated);
 
 
     };
@@ -180,15 +174,12 @@ export default class Navigation extends React.Component {
     handleKeyPress(e) {
         let currentComponent = this
         if (e.key === 'Enter') {
-            console.log('test');
+
             currentComponent.handleLoginRequest;
         }
 
     }
 
-    sendData = () => {
-        console.log(this.props.handleDrawerToggle);
-    }
 
     /**
      * handles logout request with firebase, on logout
@@ -201,7 +192,7 @@ export default class Navigation extends React.Component {
             console.log(firebase.auth().currentUser);
         });
 
-        console.log(this.state.authenticated);
+
         window.location.href = '#/';
         sessionStorage.removeItem('authenticated');
         sessionStorage.removeItem('UID');
@@ -218,7 +209,7 @@ export default class Navigation extends React.Component {
         let id = sessionStorage.getItem('UID');
         axios.get('/name/' + id)
             .then(response => {
-                console.log(response.data);
+
                 sessionStorage.setItem('name', response.data);
                 this.setState({name: response.data});
             });
@@ -245,8 +236,7 @@ export default class Navigation extends React.Component {
             [e.target.name]: e.target.value
         });
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     ;

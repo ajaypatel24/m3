@@ -45,8 +45,7 @@ export default class TransportTabSwitch extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     selection(e) {

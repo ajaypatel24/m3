@@ -49,7 +49,7 @@ export default class LoginComponent extends React.Component {
         };
 
 
-        console.log(sessionStorage.getItem('authenticated'));
+
 
         this.handleChange = this.handleChange.bind(this);
         this.change = this.change.bind(this);
@@ -69,29 +69,7 @@ export default class LoginComponent extends React.Component {
         console.log(React.version);
     }
 
-    VerifyUser = () => {
 
-
-        console.table([
-            (sessionStorage.getItem('authenticated')),
-            (sessionStorage.getItem('UID')),
-            (this.state.authenticated)]
-        )
-
-
-    }
-
-    switch = () => {
-        if (localStorage.getItem('lang') === 'fr') {
-            localStorage.setItem('lang', 'en');
-        } else if (localStorage.getItem('lang') === 'en') {
-            localStorage.setItem('lang', 'fr');
-        } else {
-            localStorage.setItem('lang', 'en');
-        }
-
-        window.location.reload();
-    }
 
 
     callbackFunction = (childata) => {
@@ -107,7 +85,7 @@ export default class LoginComponent extends React.Component {
 
     change = () => {
          this.setState({error: "Email not verified"});
-         console.log('hi')
+
     }
 
     goNext = async () => {
@@ -123,10 +101,7 @@ export default class LoginComponent extends React.Component {
         let currentComponent = this
 
 
-        console.table([
-            this.state.email,
-            this.state.password
-        ]);
+
 
 
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -146,10 +121,7 @@ export default class LoginComponent extends React.Component {
                         break;
 
                 }
-                /*
-                    console.log(error.code);
-                    this.setState({error: error.code})
-                    */
+
 
                 this.setState({
                     email: '',
@@ -160,12 +132,12 @@ export default class LoginComponent extends React.Component {
             .then(function (user) {
 
                 let emailVerified = firebase.auth().currentUser.emailVerified;
-                console.log(emailVerified)
+
 
                 if (emailVerified) {
                     let uid = firebase.auth().currentUser.uid;
 
-                    console.log(uid); //important, exclusive Uid that will be used to identify user
+
 
 
                     fetch('/login', {
@@ -200,7 +172,7 @@ export default class LoginComponent extends React.Component {
                 }
                 else if (!emailVerified) {
                     currentComponent.setState({error: "Email has not been verified"})
-                    console.log(this.state.error)
+
                 }
 
 
@@ -209,16 +181,14 @@ export default class LoginComponent extends React.Component {
 
 
             if (error.code === 400) {
-                console.log("either email or password is incorrect");
+
             }
 
         });
 
 
 
-        //this.change();
-        console.log("from login");
-        console.log(this.state.error);
+
 
 
     };
@@ -231,7 +201,7 @@ export default class LoginComponent extends React.Component {
     handleKeyPress(e) {
         let currentComponent = this
         if (e.key === 'Enter') {
-            console.log('RealSideNav.js');
+
             currentComponent.handleLoginRequest;
         }
 
@@ -249,7 +219,7 @@ export default class LoginComponent extends React.Component {
             console.log(firebase.auth().currentUser);
         });
 
-        console.log(this.state.authenticated);
+
         window.location.href = '#/';
         sessionStorage.removeItem('authenticated');
         sessionStorage.removeItem('UID');
@@ -290,7 +260,7 @@ export default class LoginComponent extends React.Component {
         let id = sessionStorage.getItem('UID');
         axios.get('/name/' + id)
             .then(response => {
-                console.log(response.data);
+
                 sessionStorage.setItem('name', response.data);
                 this.setState({name: response.data});
             });
@@ -309,8 +279,7 @@ export default class LoginComponent extends React.Component {
             error: '',
         });
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     ;

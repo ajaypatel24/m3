@@ -53,10 +53,10 @@ export default class DechetDirect extends React.Component {
 
 
         let uid = sessionStorage.getItem('UID');
-        console.log(uid);
+
         axios.get('/scian/' + uid)
             .then(response => {
-                console.log(response.data);
+
                 this.setState({SCIAN: response.data, UID: uid});
             });
 
@@ -75,8 +75,7 @@ export default class DechetDirect extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
 
@@ -99,7 +98,7 @@ export default class DechetDirect extends React.Component {
         let id = sessionStorage.getItem('UID');
         let g = this;
 
-        console.log(data);
+
 
 
         const form = e.currentTarget;
@@ -119,7 +118,7 @@ export default class DechetDirect extends React.Component {
             })
                 .then(function (data) {
                     console.log('Request succeeded with JSON response', data);
-                    console.log(data.status);
+
                     if (data.status === 500) {
                         g.setState({error: 'All fields must be numerical'})
                     } else if (data.status === 200) {
@@ -130,13 +129,13 @@ export default class DechetDirect extends React.Component {
                 .catch(function (error) {
 
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
         }
         this.setState(({validated: true}));
 
         /* this.setState(({validated: true})); */
-        console.log((data));
+
 
 
     };

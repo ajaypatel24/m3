@@ -206,12 +206,12 @@ export default class PrestartQuestion extends React.Component {
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
 
         }
         this.setState(({validated: true}));
-        console.log(data);
+
 
 
 
@@ -233,13 +233,13 @@ export default class PrestartQuestion extends React.Component {
          */
 
         if (e.target.name === "DiffCorp") {
-            console.log(e.target.name);
+
             this.setState({DiffCorp: e.target.checked})
         }
 
         else {
 
-            console.log(e.target.name);
+
             this.setState({
                 [e.target.name]: e.target.value
             });
@@ -248,9 +248,7 @@ export default class PrestartQuestion extends React.Component {
 
 
 
-        console.log("checked: ", e.target.checked);
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     };
 
     handleOptionChange(changeEvent) {
@@ -263,7 +261,7 @@ export default class PrestartQuestion extends React.Component {
 
     handleCheck() {
         if (this.state.DiffCorpAddress != "") {
-            console.log(this.state.DiffCorpAddress);
+
             return true;
         }
         return false;
@@ -271,7 +269,7 @@ export default class PrestartQuestion extends React.Component {
 
     changeSubmission = () => {
         this.setState({formComplete: false});
-        console.log(this.state.formComplete);
+
     }
 
 
