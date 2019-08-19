@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form} from 'react-bootstrap';
+import {Button, Col, Form, Card} from 'react-bootstrap';
 import { FormattedHTMLMessage } from 'react-intl';
 
 
@@ -297,7 +297,10 @@ export default class PrestartQuestion extends React.Component {
                 {!this.state.formComplete ?
 
 
-                    < Form noValidate
+                    <div>
+                    <Card>
+                        <br/>
+                    <Form noValidate
                            validated={validated}
                            onSubmit={e => this.handleSubmit(e)} method="POST" action="/"
                            enctype="multipart/form-data"> {/*start of form*/}
@@ -783,18 +786,23 @@ export default class PrestartQuestion extends React.Component {
                             </Col>
                         </Form.Group>
 
-                        <Col sm="5">
-                            <Button variant="primary"
+                    </Form>
+                    </Card>
+
+
+                        <br/>
+                            <Button onClick={this.handleSubmit} variant="primary"
                                     type="submit" /*onClick={this.handleSubmit} disabled={!this.formValid()} */  >
                                 <FormattedHTMLMessage id="Prestart.Submit"
                                                       defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                       description="Welcome header on app main page"
                                                       values={{what: 'react-intl'}}/>
                             </Button>
-                        </Col>
+
+                    </div>
 
 
-                    </Form>
+
 
                     :
 

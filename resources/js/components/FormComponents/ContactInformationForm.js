@@ -128,6 +128,11 @@ export default class ContactInformationForm extends React.Component {
 
                 <br/>
 
+                <Card>
+                    <div className="container">
+                        <div className="row clearfix">
+                            <div className="col-md-12 column">
+                                <br/>
                 <Form noValidate
                       validated={validated}
                       onSubmit={e => this.handleSubmit(e)}
@@ -246,13 +251,18 @@ export default class ContactInformationForm extends React.Component {
                     </Form.Group>
                     </Form.Row>
 
+                </Form>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
                     <br/>
 
 
-                    <Button variant="primary" type="submit">
+                    <Button onClick={this.handleSubmit} variant="primary" type="submit">
                         Submit
                     </Button>
-                </Form>
+
             </Container>
         );
 

@@ -34,6 +34,7 @@ import GraphTest from "./DataComponents/GraphComponent/GraphTest"
 import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
 import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
 import IntrantTransportForm2 from "./FormComponents/IntrantTransportForm2";
+import UserSetup from "./FormComponents/UserSetup";
 
 
 
@@ -98,7 +99,7 @@ export default class App extends React.Component {
                         <BlockRoute exact path="/login" component={Login}/>
 
 
-                        <PrivateRoute exact path="/home" component={GraphTest}/>
+                        <PrivateRoute exact path="/home" component={UserSetup}/>
                         <PrivateRoute exact path="/IntrantTransport" component={IntrantTransportForm2}/>
                         <PrivateRoute exact path="/TransportSwitch" component={TransportTabSwitch} />
                         <PrivateRoute exact path="/TransportMarchandises" component={TransportMarchandises}/>
@@ -128,6 +129,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/AllData" component={DataComponent}/>
                         <PrivateRoute exact path="/FDV" component={UtilisationFDV}/>
 
+                        <PrivateRoute exact path="/UserSetup" component={GraphTest} />
                         <Route exact path="/Edit" component={IntrantEditData}/>
 
 
