@@ -244,7 +244,7 @@ export default class ContactInformationForm extends React.Component {
                             onChange={this.handleChange}
                             type="text"
                             placeholder="Poste Telephone"
-                            pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+                            pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"  ////fix regex
 
                         />
                     </Form.Group>

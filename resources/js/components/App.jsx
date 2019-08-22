@@ -29,7 +29,7 @@ import UtilisationFDV from "./FormComponents/UtilisationFDV";
 
 
 import DataComponent from "./DataComponents/DataComponent"
-
+import ForgotPassword from "./Authentication/ForgotPassword";
 import GraphTest from "./DataComponents/GraphComponent/GraphTest"
 import BackgroundImage from "./DataComponents/GraphComponent/BackgroundImage";
 import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
@@ -98,6 +98,8 @@ export default class App extends React.Component {
 
 
                         <BlockRoute exact path="/login" component={Login}/>
+                        <PrivateRoute exact path="/forgot" component={ForgotPassword} />
+
 
 
                         <PrivateRoute exact path="/home" component={UserSetup}/>
@@ -110,6 +112,7 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                         <PrivateRoute exact path="/intrant" component={IntrantForm}/>
                         <PrivateRoute exact path="/contactinfo" component={ContactInformationForm}/>
+
 
                         <Route exact path="/background" component={BackgroundImage} />
                         <Route exact path="/test" component={Test}/>

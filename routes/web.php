@@ -64,6 +64,8 @@ Route::post('/dechet/{Id}', 'DechetController@addDechet');
 
 
 
+
+
 Route::get('/test/', 'CategorieController@getEnergyCategory');
 
 

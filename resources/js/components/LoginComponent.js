@@ -6,6 +6,7 @@ import '../../sass/navstyle.css'
 import axios from "axios";
 import Person from '@material-ui/icons/Person';
 import Register from "./Authentication/Register";
+import ForgotPassword from "./Authentication/ForgotPassword";
 import {FormattedHTMLMessage} from 'react-intl';
 import Background from "./DataComponents/GraphComponent/images/182226.jpg";
 import '../../sass/animation.css'
@@ -56,7 +57,7 @@ export default class LoginComponent extends React.Component {
         //this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
         this.handleChangePasswordStrength = this.handleChangePasswordStrength.bind(this);
-
+        this.forgotPassword = this.forgotPassword.bind(this);
     }
 
 
@@ -77,6 +78,11 @@ export default class LoginComponent extends React.Component {
         return childata;
     }
 
+    callbackFunction2 = (childata2) => {
+        this.setState({LoginOrSignUp: childata2})
+        return childata2;
+    }
+
     /**
      * handles login request using firebase to check credentials, if firebase
      * approves of the login, then a UID is assigned which allows the user
@@ -92,9 +98,7 @@ export default class LoginComponent extends React.Component {
         await this.change();
     }
 
-    handleSwitch = () => {
-        this.setState({LoginOrSignUp: !this.state.LoginOrSignUp})
-    }
+
     handleLoginRequest = () => {
 
 
@@ -229,11 +233,23 @@ export default class LoginComponent extends React.Component {
 
     }
 
+    handleSwitch = () => {
+        this.setState({LoginOrSignUp: !this.state.LoginOrSignUp})
+
+        console.log(this.state.LoginOrSignUp)
+    }
     forgotPassword = () => {
+        {/*
         var email = this.state.email;
         firebase.auth().sendPasswordResetEmail(email).then({
 
         })
+        */}
+
+        this.setState({
+            LoginOrSignUp: "forgot",
+        })
+        console.log(this.state.LoginOrSignUp);
     }
 
     handleChangePasswordStrength(e) {
@@ -340,13 +356,20 @@ export default class LoginComponent extends React.Component {
                         </div>
 
                     </Col>
+
+                    {this.state.error === '' ? (
+                        null
+                    ) : this.state.error === "Email Verifcation Link Sent" ? (
+                        <Alert variant="success" className="d-flex justify-content-center">{this.state.error}</Alert>
+                    ) : (
+                        <Alert variant="danger" className="d-flex justify-content-center">{this.state.error}</Alert>
+                    )}
                     */}
 
 
                     <Col md={{ span: 6, offset: 2 }}>
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-                            {!this.state.LoginOrSignUp ?
-
+                            {!this.state.LoginOrSignUp ? (
 
 
                                 <Card id="test">
@@ -371,9 +394,11 @@ export default class LoginComponent extends React.Component {
                                         {this.state.error === '' ? (
                                             null
                                         ) : this.state.error === 'Logged In' ? (
-                                            <Alert variant="success" className="d-flex justify-content-center">{this.state.error}</Alert>
+                                            <Alert variant="success"
+                                                   className="d-flex justify-content-center">{this.state.error}</Alert>
                                         ) : (
-                                            <Alert variant="danger" className="d-flex justify-content-center">{this.state.error}</Alert>
+                                            <Alert variant="danger"
+                                                   className="d-flex justify-content-center">{this.state.error}</Alert>
                                         )}
 
                                         {/*
@@ -433,10 +458,11 @@ export default class LoginComponent extends React.Component {
 
                                                 <Row>
 
-                                                    <Col lg="7"><Button onClick={this.forgotPassword}>Forgot password</Button></Col>
+                                                    <Col lg="7"><Button onClick={this.forgotPassword}>Forgot
+                                                        Password</Button></Col>
                                                     <Col lg="4"></Col>
                                                 </Row>
-                                                    <br/>
+                                                <br/>
                                                 <Row>
 
                                                     <Col>
@@ -466,18 +492,26 @@ export default class LoginComponent extends React.Component {
 
                                 </Card>
 
-
-
-
-                                :
+                            ) : this.state.LoginOrSignUp === "forgot" ? (
 
 
                                 <Col lg="6">
-
-                                        <Register parentCallback={this.callbackFunction}/>
-
+                                    <ForgotPassword parentCallback={this.callbackFunction2}/>
                                 </Col>
 
+                            )
+
+                             : this.state.LoginOrSignUp ? (
+
+
+                                <Col lg="6">
+                                    <Register parentCallback={this.callbackFunction}/>
+                                </Col>
+
+
+)
+                                :
+                                null
                             }
 
 
