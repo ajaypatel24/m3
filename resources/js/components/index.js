@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from "react-intl";
 import App from "./App"
-import Test from "./NavComponents/RealSideNav"
+import SideNavigation from "./NavComponents/RealSideNav"
 import Login from "./LoginComponent";
 import { addLocaleData } from "react-intl"
 import en from "react-intl/locale-data/en"
@@ -49,9 +49,9 @@ addLocaleData(fr);
 
                     <MuiThemeProvider theme={theme}>
                         <SnackbarProvider maxSnack={1}>
-                             <Test>
+                             <SideNavigation>
                                 <App/>
-                             </Test>
+                             </SideNavigation>
                         </SnackbarProvider>
                     </MuiThemeProvider>
 

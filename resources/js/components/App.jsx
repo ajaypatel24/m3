@@ -8,7 +8,7 @@ import Login from "./LoginComponent";
 
 import EnergyTable from "./FormComponents/EnergyTable"
 import ContactInformationForm from "./FormComponents/ContactInformationForm"
-import Team from "./ProfileComponents/Team"
+import Team from "./ProfileComponents/Bilan"
 import ProcessTable from "./FormComponents/ProcessTable"
 import Test from "./NavComponents/RealSideNav"
 import PageNotFound from "./Authentication/PageNotFound"
@@ -195,7 +195,7 @@ export const Home = ({component: Component, ...rest}) => {
             {...rest}
             render={props =>
                 sessionStorage.getItem('authenticated') === null ? (
-                    <p>hihi</p>
+                    <p></p>
                 ) : <p/>
 
             }

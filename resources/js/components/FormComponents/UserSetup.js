@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ContactInformationForm from "./ContactInformationForm";
 import PrestartQuestion from "./PrestartQuestion";
+import { Button as Button1 } from "react-bootstrap";
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,6 +27,9 @@ function getSteps() {
     return ['User Information', 'Required Set Up Questions', 'Finish'];
 }
 
+function refresh () {
+    window.location.reload();
+}
 function getStepContent(stepIndex) {
     switch (stepIndex) {
         case 0:
@@ -33,7 +37,7 @@ function getStepContent(stepIndex) {
         case 1:
             return <PrestartQuestion/>;
         case 2:
-            return 'This is the bit I really care about!';
+            return <div> <p>'Sign Up Complete'</p> <Button1 onClick={refresh}>Finish</Button1> </div>;
         default:
             return 'Uknown stepIndex';
     }
@@ -53,7 +57,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
 
     function handleReset() {
-        setActiveStep(0);
+        window.location.reload();
     }
 
     return (

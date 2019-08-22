@@ -10,6 +10,7 @@ const NumberRegex = new RegExp("^[0-9]+$");
  * Energy table with conditional rendering allowing users
  * to add their energy expenditures to the database
  */
+
 export default class EnergyTable extends React.Component {
 
 

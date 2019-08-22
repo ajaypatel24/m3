@@ -25,7 +25,7 @@ import BilanIcon from '@material-ui/icons/Assignment';
 import Toolbar from'@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Link, HashRouter, Route } from 'react-router-dom'
+import { Link, HashRouter, Route, withRouter } from 'react-router-dom'
 import { red, amber } from "@material-ui/core/colors/red"
 
 import {FormattedHTMLMessage} from 'react-intl';
@@ -153,6 +153,7 @@ export default function ResponsiveDrawer(props) {
     const { container } = props;
     const { children } = props;
 
+    const { pathname } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
