@@ -115,10 +115,10 @@ export default class LoginComponent extends React.Component {
 
                 switch (error.code) {
                     case 'auth/wrong-password':
-                        this.setState({error: 'Invalid Password'})
+                        this.setState({error: 'Mot de Passe Invalide'})
                         break;
                     case 'auth/invalid-email':
-                        this.setState({error: 'Please enter a valid Email Address'})
+                        this.setState({error: 'Courriel Invalide'})
                         break;
                     case 'auth/user-not-found':
                         this.setState({error: 'User: ' + this.state.email + ' does not exist'})
@@ -376,24 +376,24 @@ export default class LoginComponent extends React.Component {
 
 
                                     <Card.Header
-                                        className="d-flex justify-content-center login-btn-color-font"><Person/><FormattedHTMLMessage
+                                        className="d-flex justify-content-center login-btn-color-font"><Person/>{/*<FormattedHTMLMessage
                                         id="login.SignIn"
                                         defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                         description="Welcome header on app main page"
-                                        values={{what: 'react-intl'}}/></Card.Header>
+                                        values={{what: 'react-intl'}}/>*/}Connexion</Card.Header>
                                     <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"}
                                               width="140" height="147"/>
                                     <Card.Body>
-                                        <Card.Text className="d-flex justify-content-center"> <FormattedHTMLMessage
+                                        <Card.Text className="d-flex justify-content-center"> {/*<FormattedHTMLMessage
                                             id="login.Intro"
                                             defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                             description="Welcome header on app main page"
-                                            values={{what: 'react-intl'}}/> </Card.Text>
+                                            values={{what: 'react-intl'}}/>*/} </Card.Text>
 
 
                                         {this.state.error === '' ? (
                                             null
-                                        ) : this.state.error === 'Logged In' ? (
+                                        ) : this.state.error === 'Succès' ? (
                                             <Alert variant="success"
                                                    className="d-flex justify-content-center">{this.state.error}</Alert>
                                         ) : (
