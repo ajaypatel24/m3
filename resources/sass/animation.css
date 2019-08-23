@@ -5,6 +5,14 @@
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
 }
+
+#BigAvatar {
+
+    height: 185px;
+    width: 185px;
+    margin: 10px;
+    backgroundColor: #fff;
+}
 @keyframes fadein {
     from {
         opacity:0;

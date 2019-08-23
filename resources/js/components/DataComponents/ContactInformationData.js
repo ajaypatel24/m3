@@ -9,7 +9,11 @@ import {FormattedHTMLMessage} from "react-intl";
  * by clicking on profile dropdown item
  */
 
+import "../../../sass/animation.css";
+
+
 export default class ContactInformationData extends React.Component {
+
 
 
     constructor(props) {
@@ -77,7 +81,7 @@ export default class ContactInformationData extends React.Component {
                                                           defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                           description="Welcome header on app main page"
                                                           values={{what: 'react-intl'}}/></h1>
-                                <Avatar>{this.state.name}</Avatar>
+                                <Avatar id="BigAvatar"><h1>{this.state.name}</h1></Avatar>
                             </Col>
 
                             <Col lg="7">

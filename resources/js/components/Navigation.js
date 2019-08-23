@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Nav, Navbar, NavDropdown, InputGroup} from 'react-bootstrap';
+import {Button, Form, Nav, Navbar, NavDropdown, DropdownButton, Dropdown, ButtonToolbar, SplitButton} from 'react-bootstrap';
 
 
 import {IntlProvider, FormattedHTMLMessage} from "react-intl";
@@ -280,38 +280,60 @@ export default class Navigation extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
 
                     <Nav className="mr-auto">
-                        <Nav.Link href="#/">{Nav1}</Nav.Link>
-                        <Nav.Link href="#/tr">Forms</Nav.Link>
-                        <Nav.Link href="#/prestart_questions">{Nav3}</Nav.Link>
-                        <Nav.Link href="#/dr">Data</Nav.Link>
-                        <Nav.Link href="#/aboutus">{Nav5}</Nav.Link>
+                        <Nav.Link href="#/null">{Nav1}</Nav.Link>
+                        <Nav.Link href="#/null1">Forms</Nav.Link>
+                        <Nav.Link href="#/null2">{Nav3}</Nav.Link>
+                        <Nav.Link href="#/null3">Data</Nav.Link>
+                        <Nav.Link href="#/null4">{Nav5}</Nav.Link>
                     </Nav>
-                    {/** End always rendered section */}
-
-                    {/** Begin conditional section, condition: authenticated or not
-                     if authenticated === false */}
 
 
 
 
 
-                        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
-                            <Avatar>{this.state.initial}</Avatar>
-                            <Navbar.Text>
-                                <NavDropdown id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
-                                    <NavDropdown.Item href="#/Team">{Team}</NavDropdown.Item>
-                                    <NavDropdown.Item href="#/action3.2">h</NavDropdown.Item>
 
-                                    <NavDropdown.Divider/>
-                                    <NavDropdown.Item onClick={this.handleLogout}>{Logout}</NavDropdown.Item>
-                                </NavDropdown>
-                            </Navbar.Text>
 
-                        </Navbar.Collapse>
 
-                    }
+
                 </Navbar.Collapse>
+
+                {/**
+                 Non Utilisé
+                 */}
+                {/*
+
+                <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+                    <Navbar.Text>
+                        <NavDropdown id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#/Contact">Profile</NavDropdown.Item>
+                            <NavDropdown.Item href="#/Team">{Team}</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item onClick={this.handleLogout}>{Logout}</NavDropdown.Item>
+                        </NavDropdown>
+                    </Navbar.Text>
+
+
+
+                </Navbar.Collapse>
+
+                */}
+
+                <ButtonToolbar>
+
+                        <DropdownButton
+                            drop='left'
+                            variant="secondary-outline"
+                            title=''
+                            id={`dropdown-button-drop-left`}
+                            key='left'
+                        >
+                            <Dropdown.Item href="#/Contact">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#/Team">Équipe</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={this.handleLogout}>{Logout}</Dropdown.Item>
+                        </DropdownButton>
+                    <Avatar>{this.state.initial}</Avatar>
+                </ButtonToolbar>
             </Navbar>
 
 
