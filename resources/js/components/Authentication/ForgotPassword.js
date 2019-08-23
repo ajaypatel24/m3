@@ -19,7 +19,7 @@ export default class ForgotPassword extends React.Component {
         this.state = {
             name: '',
             organization: '',
-            email: '',
+            Email: '',
             password: '',
             passwordConfirm: '',
             passwordStrength: 'd-none',
@@ -43,7 +43,8 @@ export default class ForgotPassword extends React.Component {
      */
     handleChange(e) {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            error: '',
         });
     };
 
@@ -70,19 +71,60 @@ export default class ForgotPassword extends React.Component {
 
     forgotPassword = () => {
 
-        var email = this.state.email;
-        if (email === '') {
 
-            this.setState({
-                error: 'NoEmail'
-        })
-        }
-        else {
+        let currentComponent = this
 
-            firebase.auth().sendPasswordResetEmail(email).then({})
-        }
 
-}
+
+        let email = this.state.Email;
+
+
+        firebase.auth().sendPasswordResetEmail(email)
+
+            .then(error => {
+
+                currentComponent.setState({error: 'Courriel Envoyé'})
+
+            })
+            .catch(error => { //catches login errors
+
+                switch (error.code) {
+                    case "auth/user-not-found":
+                        currentComponent.setState({error: "l'Utilisateur n'existe pas"})
+                        break;
+                    case 'auth/invalid-email':
+                        currentComponent.setState({error: 'Courriel Invalide'})
+                        break;
+
+                }
+
+                return
+
+
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
 
 
     /**
@@ -228,7 +270,7 @@ export default class ForgotPassword extends React.Component {
             console.log(error.message);
 
             if (error.code === 'auth/email-already-in-use') {
-                alert("this email is already in use");
+
             }
             console.log(error.code);
             console.log(error.message);
@@ -253,8 +295,10 @@ export default class ForgotPassword extends React.Component {
                 <br/>
                 <br/>
                 <Card id="test">
-                    <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />  Forgot Password</Card.Header>
+                    <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />  Oublier Mot de Passe </Card.Header>
+
                     <Card.Body>
+                        <Card.Text>Entrer le courriel associé au compte. Un lien de restitution sera envoyer.</Card.Text>
 
                         <form id="registerForm">
 
@@ -267,34 +311,34 @@ export default class ForgotPassword extends React.Component {
                                  * </Form.Group>
                                  */}
                                 <Form.Group controlId="signUpFormName">
-                                    <Form.Label><FormattedHTMLMessage id="Register.Name"
-                                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                      description="Welcome header on app main page"
-                                                                      values={{what: 'react-intl'}}/></Form.Label>
-                                    <Form.Control name="name" type="text" onChange={this.handleChange}
-                                                  placeholder="Email"/>
+                                    <Form.Label>Courriel</Form.Label>
+                                    <Form.Control name="Email" type="text" onChange={this.handleChange}
+                                                  placeholder="Courriel"/>
                                 </Form.Group>
 
 
 
                                 </form>
 
+                        {this.state.error === '' ? (
+                            null
+                        ) : this.state.error === 'Courriel Envoyé' ? (
+                            <Alert variant="success"
+                                   className="d-flex justify-content-center">{this.state.error}</Alert>
+                        ) : (
+                            <Alert variant="danger"
+                                   className="d-flex justify-content-center">{this.state.error}</Alert>
+                        )}
+
                         <Row>
                             <Col>
                         <Button variant="outline-info"  onClick={this.sendData}>
-                            <FormattedHTMLMessage id="Register.SignIn"
-                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                  description="Welcome header on app main page"
-                                                  values={{what: 'react-intl'}}/>
+                            Retour
                         </Button>
                             </Col>
 
                             <Col>
-                            <Button variant="outline-info"  onClick={this.forgotPassword}>
-                                <FormattedHTMLMessage id="Register.SignIn"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/>
+                            <Button variant="primary"  onClick={this.forgotPassword}>Confirme
                             </Button>
                             </Col>
                         </Row>

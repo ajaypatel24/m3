@@ -121,7 +121,7 @@ export default class LoginComponent extends React.Component {
                         this.setState({error: 'Courriel Invalide'})
                         break;
                     case 'auth/user-not-found':
-                        this.setState({error: 'User: ' + this.state.email + ' does not exist'})
+                        this.setState({error: ': ' + this.state.email + ' does not exist'})
                         break;
 
                 }
@@ -160,7 +160,7 @@ export default class LoginComponent extends React.Component {
                             currentComponent.getName();
                             currentComponent.setState({authenticated: sessionStorage.getItem('authenticated')});
 
-                            currentComponent.setState({error: 'Logged In'})
+                            currentComponent.setState({error: 'Succès'})
 
                             setTimeout(function () {
                                 window.location.href = '/';
@@ -384,11 +384,7 @@ export default class LoginComponent extends React.Component {
                                     <Card.Img variant="top" src={window.location.origin + "/img/IE_logo.svg"}
                                               width="140" height="147"/>
                                     <Card.Body>
-                                        <Card.Text className="d-flex justify-content-center"> {/*<FormattedHTMLMessage
-                                            id="login.Intro"
-                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                            description="Welcome header on app main page"
-                                            values={{what: 'react-intl'}}/>*/} </Card.Text>
+                                        <Card.Text className="d-flex justify-content-center"> Se connecter à l'outil de EcoSystemIE </Card.Text>
 
 
                                         {this.state.error === '' ? (
@@ -429,7 +425,7 @@ export default class LoginComponent extends React.Component {
                                                         required
                                                         name="email"
                                                         type="text"
-                                                        placeholder="Username"
+                                                        placeholder="Courriel"
                                                         onChange={this.handleChange}
                                                         value={this.state.email}
                                                     />
@@ -449,7 +445,7 @@ export default class LoginComponent extends React.Component {
                                                         required
                                                         name="password"
                                                         type="password"
-                                                        placeholder="Password"
+                                                        placeholder="Mot de Passe"
                                                         onChange={this.handleChange}
                                                         value={this.state.password}
                                                     />
@@ -458,8 +454,7 @@ export default class LoginComponent extends React.Component {
 
                                                 <Row>
 
-                                                    <Col lg="7"><Button onClick={this.forgotPassword}>Forgot
-                                                        Password</Button></Col>
+                                                    <Col lg="7"><Button onClick={this.forgotPassword}>Récupérer votre compte</Button></Col>
                                                     <Col lg="4"></Col>
                                                 </Row>
                                                 <br/>
@@ -467,17 +462,11 @@ export default class LoginComponent extends React.Component {
 
                                                     <Col>
                                                         <Button variant="secondary" onClick={this.handleLoginRequest}
-                                                                onKeyDown={handleKeyDown}><FormattedHTMLMessage
-                                                            id="login.Login"
-                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                            description="Welcome header on app main page"/></Button>
+                                                                onKeyDown={handleKeyDown}>Connexion</Button>
                                                     </Col>
                                                     <Col>
                                                         <Button variant="outline-info"
-                                                                onClick={this.handleSwitch}><FormattedHTMLMessage
-                                                            id="login.SignUp"
-                                                            defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                            description="Welcome header on app main page"/></Button>
+                                                                onClick={this.handleSwitch}>S'Inscrire</Button>
                                                     </Col>
 
                                                 </Row>

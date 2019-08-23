@@ -127,21 +127,21 @@ export default class SignUpForm extends React.Component {
 
                 switch(error.code) {
                     case 'auth/invalid-email':
-                        this.setState({error: 'Error: Invalid Email',
+                        this.setState({error: 'Erreur: Courriel Invalide',
                                             email: '',
                                             password: '',})
 
                         
                         break;
                     case 'auth/weak-password':
-                        this.setState({error: 'Error: Password too weak',
+                        this.setState({error: 'Erreur: Mot de Passe trop Faible',
                                             password: '',
                                             passwordConfirm: '',})
 
 
                         break;
                     case 'auth/email-already-in-use':
-                        this.setState({error: 'Error: This email is in use',
+                        this.setState({error: 'Erreur: Courriel deja enregistrer',
                                             email: '',
                                             password: '',
                                             passwordConfirm: '',})
@@ -171,7 +171,7 @@ export default class SignUpForm extends React.Component {
 
                 console.log('pe')
                 firebase.auth().currentUser.sendEmailVerification().then(function () {
-                    currentComponent.setState({error: "Email Verifcation Link Sent"})
+                    currentComponent.setState({error: "Verification enovyé par courriel"})
                 })
 
 
@@ -212,7 +212,7 @@ export default class SignUpForm extends React.Component {
             console.log(error.message);
 
             if (error.code === 'auth/email-already-in-use') {
-                alert("this email is already in use");
+
             }
             console.log(error.code);
             console.log(error.message);
@@ -237,7 +237,7 @@ export default class SignUpForm extends React.Component {
                 <br/>
                 <br/>
                 <Card id="test">
-                <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />Sign Up</Card.Header>
+                <Card.Header className="d-flex justify-content-center login-btn-color-font"><Person />S'Inscrire</Card.Header>
                 <Card.Body>
 
                     <form id="registerForm">
@@ -256,16 +256,16 @@ export default class SignUpForm extends React.Component {
                                                                   description="Welcome header on app main page"
                                                                   values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="name" type="text" onChange={this.handleChange}
-                                              placeholder="Enter name"/>
+                                              placeholder="Nom Complet"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormOrganization">
-                                <Form.Label><FormattedHTMLMessage id="Register.Organization"
+                                <Form.Label>Organisation{/* <FormattedHTMLMessage id="Register.Organization"
                                                                   defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
                                                                   description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></Form.Label>
+                                                                  values={{what: 'react-intl'}}/> */} </Form.Label>
                                 <Form.Control name="organization" onChange={this.handleChange} type="text"
-                                              placeholder="Enter organization name"/>
+                                              placeholder="Nom d'Organisation"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormEmail">
@@ -274,7 +274,7 @@ export default class SignUpForm extends React.Component {
                                                                   description="Welcome header on app main page"
                                                                   values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="email" type="email" onChange={this.handleChange}
-                                              placeholder="Enter email"/>
+                                              placeholder="Courriel"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormPassword">
@@ -284,32 +284,23 @@ export default class SignUpForm extends React.Component {
                                                                   values={{what: 'react-intl'}}/></Form.Label>
                                 <Form.Control name="password" type="password"
                                               onChange={this.handleChangePasswordStrength}
-                                              placeholder="Password"/>
-                                <Form.Text className="text-muted">
-                                    <FormattedHTMLMessage id="Register.PasswordRequirements"
-                                    defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                    description="Welcome header on app main page"
-                                    values={{what: 'react-intl'}}/>
+                                              placeholder="Mot de Passe"/>
+                                <Form.Text className="text-muted">Minimum de 8 caractères, 1 majuscule, 1 miniscule et 1 numéro
+
                                 </Form.Text>
                             </Form.Group>
 
                             <Form.Group controlId="signUpFormPasswordCheck">
-                                <Form.Label><FormattedHTMLMessage id="Register.RetypePassword"
-                                                                  defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                                  description="Welcome header on app main page"
-                                                                  values={{what: 'react-intl'}}/></Form.Label>
+                                <Form.Label>Confirmer Mot de Passe</Form.Label>
                                 <Form.Control name="passwordConfirm" type="password" onChange={this.handleChange}
-                                              placeholder="Retype Password"/>
+                                              placeholder="Confirmer mot de passe"/>
                             </Form.Group>
 
                             <Form.Group>
                                 <Row>
                                     <Col lg="6">
                             <Button variant="outline-info" type="submit" onClick={this.handleSubmit}>
-                                <FormattedHTMLMessage id="Register.Register"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/>
+                                S'Inscrire
                             </Button>
                                     </Col>
 
@@ -334,7 +325,7 @@ export default class SignUpForm extends React.Component {
                     </form>
                     {this.state.error === '' ? (
                         null
-                    ) : this.state.error === "Email Verifcation Link Sent" ? (
+                    ) : this.state.error === "Verification enovyé par courriel" ? (
                         <Alert variant="success" className="d-flex justify-content-center">{this.state.error}</Alert>
                     ) : (
                         <Alert variant="danger" className="d-flex justify-content-center">{this.state.error}</Alert>
