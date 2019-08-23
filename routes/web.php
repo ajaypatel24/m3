@@ -102,3 +102,4 @@ Route::get('/Category3/{Cat2}/', 'InventaireController@getCategory3' );
 
 
 Route::post('/IntrantTransport/{intrant}/{id}','IntrantHasTransportController@addIntrantHasTransport');
+Route::get('/FinishSetup/{id}', 'RegisterController@verifySetup');

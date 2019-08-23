@@ -26,7 +26,7 @@ import IntrantForm from "./FormComponents/IntrantForm";
 import DechetDirect from "./FormComponents/DechetDirect";
 import UtilisationFDV from "./FormComponents/UtilisationFDV";
 
-
+import axios from 'axios'
 
 import DataComponent from "./DataComponents/DataComponent"
 import ForgotPassword from "./Authentication/ForgotPassword";
@@ -36,6 +36,7 @@ import TransportTabSwitch from "./FormComponents/TransportTabSwitch";
 import IntrantTransportForm2 from "./FormComponents/IntrantTransportForm2";
 import UserSetup from "./FormComponents/UserSetup";
 import Settings from "./ProfileComponents/Settings"
+import ImmobilisationForm from "./FormComponents/ImmobilisationForm";
 
 
 
@@ -63,6 +64,9 @@ export default class App extends React.Component {
         window.location.reload();
 
     }
+
+
+
 
 
     /**
@@ -101,13 +105,13 @@ export default class App extends React.Component {
                         <PrivateRoute exact path="/forgot" component={ForgotPassword} />
 
 
-
-                        <PrivateRoute exact path="/home" component={UserSetup}/>
+                        <PrivateRoute exact path="/" component={UserSetup}/>
+                        <PrivateRoute exact path="/home" component={GraphTest}/>
                         <PrivateRoute exact path="/IntrantTransport" component={IntrantTransportForm2}/>
                         <PrivateRoute exact path="/TransportSwitch" component={TransportTabSwitch} />
                         <PrivateRoute exact path="/TransportMarchandises" component={TransportMarchandises}/>
                         <PrivateRoute exact path="/prestart_questions/" component={PrestartQuestion}/>
-                        <PrivateRoute exact path="/" component={GraphTest}/>
+
                         <PrivateRoute exact path="/EnergyTable" component={EnergyTable}/>
                         <PrivateRoute exact path="/ProcessTable" component={ProcessTable}/>
                         <PrivateRoute exact path="/intrant" component={IntrantForm}/>
@@ -120,6 +124,7 @@ export default class App extends React.Component {
 
                         <Route exact path="/Graph" component={GraphTest}/>
 
+                        <PrivateRoute exact path="/Immobilisation" component={ImmobilisationForm} />
                         <PrivateRoute exact path="/Settings" component={Settings} />
                         <PrivateRoute exact path="/Contact" component={ContactInformationData}/>
                         <PrivateRoute exact path="/team" component={Team}/>
@@ -166,7 +171,7 @@ export default class App extends React.Component {
  * The consts below create a PrivateRoute and BlockedRoute Tag
  * which allows for the blocking of specific routes contingent
  * on whether the user is logged in or not. This is done using a
- * sessionStorage parameter authenticated
+ * sessionStorage parameter: authenticated
  */
 
 export const PrivateRoute = ({component: Component, ...rest}) => {
@@ -179,7 +184,7 @@ export const PrivateRoute = ({component: Component, ...rest}) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/home",
+                            pathname: "/",
                             state: {from: props.location}
                         }}
                     />

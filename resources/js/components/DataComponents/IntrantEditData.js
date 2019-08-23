@@ -36,23 +36,7 @@ export default class IntrantEditData extends React.Component {
 
                 { title: 'Nombre de Transports', field: 'NbTransport'},
                 { title: 'Provenance', field: 'provenance'},
-                { title: "Frequence d'Achat", field: 'FreqAchat',
-                    lookup: {
-                        '1xY': "Once per year",
-                        '2xY': "Twice per year",
-                        '3xY': "Three per year",
-                        '4xY': "Four per year",
-                        '2xM': "Every two Months",
-                        '6W': "Every six weeks",
-                        '1xM': "Every month",
-                        '3W': "Every three weeks",
-                        '2W': "Every two weeks",
-                        '1W': "Every week",
-                        '3BD': "Every Three business days",
-                        '2BD': "Every Two business days",
-                        '1BD': "Every business day",
-                    },
-                },
+                { title: "Durée de Vie (ans)", field: 'duree_vie_immo'},
 
 
 

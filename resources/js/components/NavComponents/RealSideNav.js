@@ -20,6 +20,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import TransportIcon from '@material-ui/icons/FlightLand';
 import DechetIcon from '@material-ui/icons/Delete';
 import LogoutIcon from '@material-ui/icons/PersonOutline';
+import ImmobilisationIcon from '@material-ui/icons/InvertColors'
 import SettingsIcon from '@material-ui/icons/Settings';
 import BilanIcon from '@material-ui/icons/Assignment';
 import Toolbar from'@material-ui/core/Toolbar';
@@ -213,6 +214,13 @@ export default function ResponsiveDrawer(props) {
                         <ListItem button key="EcoAct">
                             <ListItemIcon><IntrantIcon /></ListItemIcon>
                             <ListItemText primary="Intrants" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Immobilisation" style={{ textDecoration: 'none' }}>
+                        <ListItem button key="EcoAct">
+                            <ListItemIcon><ImmobilisationIcon /></ListItemIcon>
+                            <ListItemText primary="Immobilisation" />
                         </ListItem>
                     </Link>
 

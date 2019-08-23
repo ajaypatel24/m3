@@ -37,9 +37,9 @@ function getStepContent(stepIndex) {
         case 1:
             return <PrestartQuestion/>;
         case 2:
-            return <div> <p>'Sign Up Complete'</p> <Button1 onClick={refresh}>Finish</Button1> </div>;
+            return <p>'Sign Up Complete'</p> ;
         default:
-            return 'Uknown stepIndex';
+            return 'Unknown stepIndex';
     }
 }
 
@@ -57,8 +57,12 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
 
     function handleReset() {
+        sessionStorage.setItem('C', 'true');
+        window.location.href = '#/EnergyTable'
         window.location.reload();
     }
+
+
 
     return (
         <div className={classes.root}>
@@ -73,7 +77,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 {activeStep === steps.length ? (
                     <div>
                         <Typography className={classes.instructions}>All steps completed</Typography>
-                        <Button onClick={handleReset}>Reset</Button>
+                        <Button onClick={handleReset}>Complete Setup</Button>
                     </div>
                 ) : (
                     <div>

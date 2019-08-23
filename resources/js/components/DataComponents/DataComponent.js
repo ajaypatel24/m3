@@ -68,10 +68,10 @@ export default function ScrollableTabsButtonAuto() {
                     centered
                 >
                     <Tab label="Energy, Procedes, Dechets" {...a11yProps(0)} />
-                    <Tab label="Intrants" {...a11yProps(1)} />
+                    <Tab label="Intrants & Immobilisations" {...a11yProps(1)} />
                     <Tab label="Item Three" {...a11yProps(2)} />
                     <Tab label="Item Four" {...a11yProps(3)} />
-                    <Tab label="Item Five" {...a11yProps(4)} />
+
 
 
                 </Tabs>
@@ -91,9 +91,7 @@ export default function ScrollableTabsButtonAuto() {
             <TabPanel value={value} index={4}>
                 Item Five
             </TabPanel>
-            <TabPanel value={value} index={5}>
-                Item Six
-            </TabPanel>
+
 
         </div>
     );

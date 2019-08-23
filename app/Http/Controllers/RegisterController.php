@@ -66,4 +66,36 @@ class RegisterController extends Controller
 
         return $information;
     }
+
+    function verifySetup($uid) {
+        $r = DB::table('register')
+            ->select('telephone')
+            ->where('uid', '=', $uid)
+            ->first()
+            ->telephone;
+
+
+            $pre = DB::table('prestart')
+                ->select('UID')
+                ->where('UID', '=', $uid)
+                ->get()
+                ->first();
+
+
+
+        echo $r;
+        echo "\n";
+        echo $pre;
+
+        echo "\n";
+
+        if ($r == null || $pre == null) {
+            return 'false';
+        }
+        else {
+            return 'true';
+        }
+
+
+    }
 }

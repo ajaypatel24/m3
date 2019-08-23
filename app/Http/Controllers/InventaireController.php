@@ -260,7 +260,7 @@ class InventaireController extends Controller
                 ->select('idRessource')
                 ->where('Categorie_1', '=', request('Cat1'))
                 ->where('SCategorie_2', '=', request('Cat2'))
-                ->where('SCategorie_3', '=', request('Cat3'))
+               /* ->where('SCategorie_3', '=', request('Cat3')) */
                 ->first()
                 ->idRessource;
 
@@ -336,7 +336,7 @@ class InventaireController extends Controller
             $Intrant->nom_intrant = request('NomIntrant');
             $Intrant->ressource = request('Ressource');
             $Intrant->duree_vie_immo = request('DureeVie');
-
+            $Intrant->immobilisation = request('Immobilisation');
             $Intrant->provenance = request('Provenance');
             $Intrant->NbTransport = request('NbTransport');
             $Intrant->unite = request('Unite');
@@ -426,18 +426,6 @@ class InventaireController extends Controller
         $Category1 = DB::table('ressource')
             ->select('Categorie_1')
             ->where('Categorie_1', '!=', "")
-            ->distinct()
-            ->get();
-
-        $Category2 = DB::table('ressource')
-            ->select('SCategorie_2')
-            ->where('SCategorie_2', '!=', "")
-            ->distinct()
-            ->get();
-
-        $Category3 = DB::table('ressource')
-            ->select('SCategorie_3')
-            ->where('SCategorie_3', '!=', "")
             ->distinct()
             ->get();
 

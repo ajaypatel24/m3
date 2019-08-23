@@ -169,9 +169,10 @@ export default class SignUpForm extends React.Component {
             .then(function () {
             // SECURITY PROBLEM ?
 
-                console.log('pe')
+
                 firebase.auth().currentUser.sendEmailVerification().then(function () {
                     currentComponent.setState({error: "Verification enovyé par courriel"})
+                    window.location.reload();
                 })
 
 
