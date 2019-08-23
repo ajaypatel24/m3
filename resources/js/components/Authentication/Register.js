@@ -299,20 +299,18 @@ export default class SignUpForm extends React.Component {
                             <Form.Group>
                                 <Row>
                                     <Col lg="6">
-                            <Button variant="outline-info" type="submit" onClick={this.handleSubmit}>
+
+                                        <Button variant="outline-info"  onClick={this.sendData}>
+                                            Retour
+                                        </Button>
+                                    </Col>
+                                    <Col lg="6">
+                            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                                 S'Inscrire
                             </Button>
                                     </Col>
 
-                                    <Col lg="6">
 
-                            <Button variant="outline-info"  onClick={this.sendData}>
-                                <FormattedHTMLMessage id="Register.SignIn"
-                                                      defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-                                                      description="Welcome header on app main page"
-                                                      values={{what: 'react-intl'}}/>
-                            </Button>
-                                    </Col>
                                 </Row>
                             </Form.Group>
 
