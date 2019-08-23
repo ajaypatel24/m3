@@ -133,7 +133,7 @@ const useStyles = makeStyles(theme => ({
 
 function handleLogout () {
     firebase.auth().signOut().then(function () {
-        console.log(firebase.auth().currentUser);
+
     });
 
 

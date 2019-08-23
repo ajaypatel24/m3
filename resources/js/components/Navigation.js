@@ -144,7 +144,7 @@ export default class Navigation extends React.Component {
                             window.location.href = '#/profile/';
                             window.location.reload();
                         }, 20)
-                        console.log('Request succeeded with JSON response', data);
+                        console.log('Request succeeded with JSON response');
 
 
                     })
@@ -189,7 +189,7 @@ export default class Navigation extends React.Component {
      */
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
-            console.log(firebase.auth().currentUser);
+
         });
 
 

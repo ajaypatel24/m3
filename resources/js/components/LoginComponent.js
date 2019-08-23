@@ -166,7 +166,7 @@ export default class LoginComponent extends React.Component {
                                 window.location.href = '/';
                                 window.location.reload();
                             }, 20)
-                            console.log('Request succeeded with JSON response', data);
+                            console.log('Request succeeded with JSON response');
 
 
                         })
@@ -220,7 +220,7 @@ export default class LoginComponent extends React.Component {
      */
     handleLogout = () => {
         firebase.auth().signOut().then(function () {
-            console.log(firebase.auth().currentUser);
+
         });
 
 
@@ -236,7 +236,7 @@ export default class LoginComponent extends React.Component {
     handleSwitch = () => {
         this.setState({LoginOrSignUp: !this.state.LoginOrSignUp})
 
-        console.log(this.state.LoginOrSignUp)
+
     }
     forgotPassword = () => {
         {/*
@@ -249,7 +249,7 @@ export default class LoginComponent extends React.Component {
         this.setState({
             LoginOrSignUp: "forgot",
         })
-        console.log(this.state.LoginOrSignUp);
+
     }
 
     handleChangePasswordStrength(e) {

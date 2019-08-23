@@ -64,7 +64,7 @@ class PrestartController extends Controller
     public function index() {
         $users = DB::table('prestart')->get();
 
-        echo $users;
+
     }
 
     /**
@@ -75,7 +75,7 @@ class PrestartController extends Controller
     public function search($id) {
         $users = DB::table('register')->where('uid', $id)->value('email', 'name');
 
-        echo $users;
+
     }
 
     /**
@@ -86,7 +86,7 @@ class PrestartController extends Controller
     public function searchSCIAN($id) {
         $users = DB::table('prestart')->where('uid', $id)->value('SectorActivity');
 
-        echo $users;
+
     }
 
     /**
@@ -126,8 +126,6 @@ class PrestartController extends Controller
             ->get();
             */
 
-        //echo "<pre>";
-        //print_r($data);
 
         return $data;
 

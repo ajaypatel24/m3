@@ -55,7 +55,7 @@ class DechetController extends Controller
 
                 $Quantite_an = request($key);
                 $Unite = request($key . 'Unite');
-                echo $Unite;
+
                 $Emission_GES = $Quantite_an * $CoeffGES;
                 $r = array(
                     'Categorie_idCategorie' => $IdCategorie,
@@ -74,7 +74,7 @@ class DechetController extends Controller
 
             DB::table('procede')->insert($data);
 
-            print_r($data);
+
 
         } else {
             foreach ($DechetArray as $unit => $cat) { //loop continues since element is not null

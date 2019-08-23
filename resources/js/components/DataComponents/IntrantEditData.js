@@ -137,7 +137,7 @@ export default class IntrantEditData extends React.Component {
 
                                    })
                                        .then(function (response) {
-                                           console.log('Request succeeded with JSON response', data2);
+                                           console.log('Request succeeded with JSON response');
 
 
                                        })
@@ -177,7 +177,7 @@ export default class IntrantEditData extends React.Component {
                                     })
                                         .then(function (response) {
 
-                                            console.log('Request succeeded with JSON response', response);
+                                            console.log('Request succeeded with JSON response');
 
 
                                         })
@@ -213,7 +213,7 @@ export default class IntrantEditData extends React.Component {
 
                                     })
                                         .then(function (response) {
-                                            console.log(response.data)
+
 
 
                                         })

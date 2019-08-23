@@ -78,7 +78,7 @@ export default class DechetTableData extends React.Component {
 
                                     })
                                         .then(function (response) {
-                                            console.log('Request succeeded with JSON response', response);
+                                            console.log('Request succeeded with JSON response');
 
 
                                         })

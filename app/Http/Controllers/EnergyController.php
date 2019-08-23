@@ -28,11 +28,7 @@ class EnergyController extends Controller
             ->Coefficient_GES;
 
 
-        echo $Key;
-        echo '\n';
-        echo $CoeffGES;
 
-        echo $Qan * $CoeffGES;
 
         DB::table('procede')
                 ->where('Categorie_idCategorie', '=', $FK)

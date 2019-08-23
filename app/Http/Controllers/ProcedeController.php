@@ -75,7 +75,7 @@ class ProcedeController extends Controller
                         ->first()
                         ->idCategorie;
 
-                    echo $Key;
+
 
 
 
@@ -108,10 +108,7 @@ class ProcedeController extends Controller
                     );
 
                     array_push($data, $r);
-                    echo $unit;
-                    echo "\n";
-                    echo $cat;
-                    echo "\n";
+
                 }
 
 
@@ -129,8 +126,8 @@ class ProcedeController extends Controller
 
 
                 foreach ($category as $unit => $cat) { //loop continues since element is not null
-                    print_r($cat);
-                    echo "\n";
+
+
 
                     $Key = DB::table('categorie')
                         ->select('idCategorie')
@@ -144,9 +141,6 @@ class ProcedeController extends Controller
                         ->first()
                         ->Coefficient_GES;
 
-                    echo "\n";
-                    echo $CoeffGES;
-                    echo "\n";
 
                     if ($CoeffGES == -1) {
                         $EmissionGES = -1;

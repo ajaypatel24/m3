@@ -140,7 +140,7 @@ export default class TransportMarchandises extends React.Component {
 
                                         })
                                             .then(function (response) {
-                                                console.log('Request succeeded with JSON response', data2);
+                                                console.log('Request succeeded with JSON response');
 
 
                                             })
@@ -180,7 +180,7 @@ export default class TransportMarchandises extends React.Component {
                                         })
                                             .then(function (response) {
 
-                                                console.log('Request succeeded with JSON response', response);
+                                                console.log('Request succeeded with JSON response');
 
 
                                             })
@@ -216,7 +216,7 @@ export default class TransportMarchandises extends React.Component {
 
                                         })
                                             .then(function (response) {
-                                                console.log("Request succeeded", response)
+                                                console.log("Request succeeded")
 
 
                                             })

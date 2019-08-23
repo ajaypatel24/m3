@@ -95,7 +95,7 @@ export default class IntrantTransportForm2 extends React.Component {
 
         })
             .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
+                console.log('Request succeeded with JSON response');
 
                 if (data.status === 500) {
 
@@ -148,7 +148,7 @@ export default class IntrantTransportForm2 extends React.Component {
 
         })
             .then(function (data) {
-                console.log('Request succeeded with JSON response', data);
+                console.log('Request succeeded with JSON response');
 
                 if (data.status === 500) {
 

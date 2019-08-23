@@ -117,7 +117,7 @@ export default class ImmobilisationForm extends React.Component {
 
         })
             .then(function (response) {
-                console.log('Request succeeded', response);
+                console.log('Request succeeded');
 
 
             })
@@ -222,7 +222,7 @@ export default class ImmobilisationForm extends React.Component {
         })
             .then(function (response) {
 
-                console.log('Request succeeded with JSON response', data);
+                console.log('Request succeeded with JSON response');
 
                 if (response.status === 500) {
                     g.setState({error: 'Ensure all data fits the criteria'})

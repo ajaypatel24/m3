@@ -62,7 +62,7 @@ export default class ForgotPassword extends React.Component {
         this.props.parentCallback(false);
     }
     componentDidMount = () => {
-        console.log(this.state.LoginOrRegister);
+
     }
 
     handleSwitch = () => {
@@ -181,7 +181,7 @@ export default class ForgotPassword extends React.Component {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .catch(error => { //catches login errors
 
-                console.log(error.code);
+
 
                 switch(error.code) {
                     case 'auth/invalid-email':
@@ -210,10 +210,7 @@ export default class ForgotPassword extends React.Component {
                 }
 
 
-                /*
-                    console.log(error.code);
-                    this.setState({error: error.code})
-                    */
+
 
 
                 this.setState({
@@ -227,7 +224,7 @@ export default class ForgotPassword extends React.Component {
             .then(function () {
                 // SECURITY PROBLEM ?
 
-                console.log('pe')
+
                 firebase.auth().currentUser.sendEmailVerification().then(function () {
                     currentComponent.setState({error: "Email Verifcation Link Sent"})
                 })
@@ -253,7 +250,7 @@ export default class ForgotPassword extends React.Component {
                     }
                 })
                     .then(function (data) {
-                        console.log('Request succeeded with JSON response', data);
+
 
 
                     })
@@ -262,18 +259,18 @@ export default class ForgotPassword extends React.Component {
                     });
 
 
-                console.log(data);
+
 
             }).catch(function (error) {
             // Sign Up errors
             console.log(error.code);
-            console.log(error.message);
+
 
             if (error.code === 'auth/email-already-in-use') {
 
             }
             console.log(error.code);
-            console.log(error.message);
+
         });
 
 

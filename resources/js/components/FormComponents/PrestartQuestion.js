@@ -201,7 +201,7 @@ export default class PrestartQuestion extends React.Component {
 
             })
                 .then(function (data) {
-                    console.log('Request succeeded with JSON response', data);
+                    console.log('Request succeeded with JSON response');
                     q.setState({formComplete: true})
                 })
                 .catch(function (error) {

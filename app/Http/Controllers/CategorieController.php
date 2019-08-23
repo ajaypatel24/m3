@@ -127,7 +127,7 @@ try {
         foreach ($category as $unit => $cat) {
 
 
-            echo $DatabaseCat[$unit];
+
 
             $Key = DB::table('categorie')
                 ->select('idCategorie')
@@ -162,7 +162,7 @@ try {
             array_push($data, $r);
         }
 
-        print_r($data);
+
 
         DB::table('procede')->insert($data);
 
@@ -178,11 +178,6 @@ try {
 
         foreach ($category as $unit => $cat) { //loop continues since element is not null
 
-            echo $unit;
-            echo "\n";
-
-            echo $DatabaseCat[$unit];
-            echo "\n";
 
 
             $Key = DB::table('categorie')

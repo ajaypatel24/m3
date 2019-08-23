@@ -59,14 +59,14 @@ export default class TransportFormShortDistance extends React.Component {
     componentWillMount = () => {
         this.getTableRows();
         sessionStorage.setItem('LongDistance', 'Step1')
-        console.log(this.state.VehiculeCat);
+
         this.setState({LongDistance: 'Step1'})
 
 
-        console.log('executes');
+
         axios.get('/libelledata/' + 'journalier')
             .then(response => {
-                console.log(response.data);
+
                 this.setState({Libelle: response.data});
             });
 
@@ -84,10 +84,7 @@ export default class TransportFormShortDistance extends React.Component {
 
 */
 
-    buttonclick = () => {
-        console.log('hello');
-        console.log(sessionStorage.getItem('LongDistance'));
-    }
+
 
     clearState = () => {
         this.setState({
@@ -120,13 +117,13 @@ export default class TransportFormShortDistance extends React.Component {
 
         })
             .then(function (response) {
-                console.log(response.data)
+
 
 
             })
             .catch(function (error) {
                 console.log('Request failed', error);
-                console.log("why");
+
             });
 
 
@@ -140,8 +137,7 @@ export default class TransportFormShortDistance extends React.Component {
         });
 
 
-        console.log("Name: ", e.target.name);
-        console.log("Value: ", e.target.value);
+
     }
 
 
@@ -151,9 +147,9 @@ export default class TransportFormShortDistance extends React.Component {
         let uid = this.state.UID;
         axios.get('/transportdata/')
             .then(response => {
-                console.log(response.data);
+
                 this.setState({rows: response.data});
-                console.log(this.state.rows);
+
             });
 
 
@@ -166,7 +162,7 @@ export default class TransportFormShortDistance extends React.Component {
 
     store = () => {
         let data = this.state;
-        console.log(data);
+
 
         let id = sessionStorage.getItem('UID');
 
@@ -186,14 +182,14 @@ export default class TransportFormShortDistance extends React.Component {
 
             })
                 .then(function (response) {
-                    console.log(response.data)
-                    console.log('Request succeeded with JSON response', data);
+
+                    console.log('Request succeeded with JSON response');
 
 
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
 
         }
@@ -206,11 +202,11 @@ export default class TransportFormShortDistance extends React.Component {
 
     changeDelete = () => {
         this.setState({Delete: !this.state.Delete})
-        console.log(this.state.Delete);
+
     }
 
     changeOption = () => {
-        console.log(this.state.SpecificOrGeneral);
+
         this.setState({Confirmed: this.state.SpecificOrGeneral})
     }
 
@@ -230,14 +226,12 @@ export default class TransportFormShortDistance extends React.Component {
         )
         {
             this.setState({error: false})
-            console.log('pee')
+
             return true
         }
         else {
             this.setState({error: true})
-            console.log(WordRegex.test(data.NomComplet) + ' ' + WordRegex.test(data.Role) + ' '
-                + NumberRegex.test(data.NombreVoiture) + ' ' + NumberRegex.test(data.JoursOuvrables)
-              +' '  + NumberRegex.test(data.Kilometres) )
+
             return false
         }
 
@@ -273,14 +267,14 @@ export default class TransportFormShortDistance extends React.Component {
 
             })
                 .then(function (response) {
-                    console.log(response.data)
-                    console.log('Request succeeded with JSON response', data);
+
+                    console.log('Request succeeded with JSON response');
 
 
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
-                    console.log("why");
+
                 });
         }
         this.setState(({validated: true}));

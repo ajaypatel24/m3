@@ -117,7 +117,7 @@ export default class DechetDirect extends React.Component {
 
             })
                 .then(function (data) {
-                    console.log('Request succeeded with JSON response', data);
+                    console.log('Request succeeded with JSON response');
 
                     if (data.status === 500) {
                         g.setState({error: 'All fields must be numerical'})

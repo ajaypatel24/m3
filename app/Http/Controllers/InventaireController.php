@@ -126,11 +126,7 @@ class InventaireController extends Controller
         $parameters =  json_decode($array); //decodes array to add parameters to database
 
 
-        print_r($parameters);
-        foreach ($parameters as $e) {
-            echo $e;
-            echo "\n";
-        }
+
 
 
 
@@ -241,7 +237,6 @@ class InventaireController extends Controller
     function addIntrantBackup($id) {
         $parameters =  json_decode($id); //decodes array to add parameters to database
 
-        print_r( $parameters);
 
         $Intrant = new Intrant();
 
@@ -383,7 +378,6 @@ class InventaireController extends Controller
                 ->where('UID', '=', $uid)
                 ->count() > 0) {
 
-            echo $Nom;
 
 
         }

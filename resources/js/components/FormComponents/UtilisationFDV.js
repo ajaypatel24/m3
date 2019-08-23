@@ -80,7 +80,7 @@ export default class UtilisationFDV extends React.Component {
             })
                 .then(function (data) {
 
-                    console.log('Request succeeded with JSON response', data);
+                    console.log('Request succeeded with JSON response');
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);

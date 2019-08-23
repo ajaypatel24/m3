@@ -83,11 +83,7 @@ class RegisterController extends Controller
 
 
 
-        echo $r;
-        echo "\n";
-        echo $pre;
 
-        echo "\n";
 
         if ($r == null || $pre == null) {
             return 'false';

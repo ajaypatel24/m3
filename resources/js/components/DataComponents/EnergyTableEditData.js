@@ -75,7 +75,7 @@ export default class EnergyTableEditData extends React.Component {
 
                                     })
                                         .then(function (response) {
-                                            console.log('Request succeeded with JSON response', response);
+                                            console.log('Request succeeded with JSON response');
 
 
                                         })

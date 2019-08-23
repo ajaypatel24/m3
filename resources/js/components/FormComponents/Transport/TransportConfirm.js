@@ -75,7 +75,7 @@ export default class TransportConfirm extends React.Component {
         })
             .then(function (response) {
 
-                console.log('Request suceeded', response.data)
+                console.log('Request suceeded')
 
 
             })

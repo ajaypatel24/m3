@@ -99,7 +99,7 @@ export default class TransportForm extends React.Component {
 
         })
             .then(function (response) {
-                console.log('Request suceeded', error);
+                console.log('Request suceeded');
 
 
             })
@@ -185,7 +185,7 @@ export default class TransportForm extends React.Component {
             })
                 .then(function (response) {
 
-                    console.log('Request succeeded with JSON response', data);
+                    console.log('Request succeeded with JSON response');
 
 
                 })
@@ -239,7 +239,7 @@ export default class TransportForm extends React.Component {
         })
             .then(function (response) {
 
-                console.log('Request succeeded with JSON response', data);
+                console.log('Request succeeded with JSON response');
 
 
             })

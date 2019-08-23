@@ -17,7 +17,7 @@ class IntrantHasTransportController extends Controller
             ->where('nom_intrant', '=', $intrant)
             ->first()
             ->nom_intrant;
-        echo $r;
+
 
 
     }
@@ -26,10 +26,7 @@ class IntrantHasTransportController extends Controller
     function addTransport(request $request, $id)
     {
 
-        echo request('Origine');
-        echo request('Destination');
-        echo request('Transporteur');
-        echo request('ChoixVehicule');
+
         $Transport = new IntrantTransport(); //table transport
 
 
