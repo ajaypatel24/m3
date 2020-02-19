@@ -2,3 +2,4 @@
 
 ## Projet M3
 ECOSystemIE http://www.ecosystemie.com/ proposes a personalized approach of Sustainable Management of businesses
+-project was taken down as there was a shortage of developers to help maintain it, it is now hosted by me on heroku to continue to showcase it instead of on digital ocean
